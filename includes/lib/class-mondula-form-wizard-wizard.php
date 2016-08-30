@@ -1,0 +1,261 @@
+<?php
+
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+
+/**
+ * Description of mondula-form-wizard-wizard
+ *
+ * @author alex
+ */
+class Mondula_Form_Wizard_Wizard {
+
+    /**
+     *
+     * @var array
+     */
+    private $_steps = array();
+
+
+
+    public function __construct() {
+    }
+
+    /**
+     *
+     * @param $array $elements Elements of the step to add
+     * @return void
+     */
+    public function add_step ( $steps ) {
+        $this->_steps[] = $steps;
+    }
+
+    private function _get_class ( $len ) {
+        // PRO FEATURE
+        // switch ( $len ) {
+        //     case 3:
+        //         return 'fw-one_third';
+        //     case 2:
+        //         return 'fw-one_half';
+        //     default:
+        //         return '';
+        // }
+        return '';
+    }
+
+    private function render_progress_bar () {
+        $cnt = count( $this->_steps );
+        ?>
+<div class="fw-progress-wrap">
+    <ul class="fw-progress-bar">
+        <?php
+        for ($i = 0; $i < $cnt; $i++) {
+            $step = $this->_steps[$i];
+            ?>
+        <li class="fw-progress-step" data-id="<?php echo $i; ?>"><?php echo $step->render_title(); ?></li>
+            <?php
+        }
+        ?>
+    </ul>
+</div>
+        <?php
+    }
+
+    private function render_step_title ( $parts ) {
+        $width = $this->_get_class( count($parts) );
+?>
+<div class="fw-step-title">
+    <?php
+        $len = count($parts);
+        for ($i = 0; $i < $len; $i++) {
+            $part = $parts[$i];
+            if ($i > 0 && $part->same_title($parts[$i - 1])) {
+                $class = $width . ' fw-title-hidden';
+            } else {
+                $class = $width;
+            }
+            ?>
+    <div class="fw-step-part-title <?php echo $class; ?>">
+            <?php
+                $part->render_title();
+            ?>
+    </div>
+            <?php
+        }
+    ?>
+</div>
+<?php
+    }
+
+    private function render_step_body ( $parts ) {
+        $class = $this->_get_class( count($parts) );
+?>
+<div class="fw-step-body">
+    <?php
+        $cnt = count( $parts );
+        for ( $i = 0; $i < $cnt; $i++ ) {
+            ?>
+    <div class="fw-step-part <?php echo $class; ?>" data-partId="<?php echo $i; ?>">
+            <?php
+                $part = $parts[$i];
+                $part->render_body( $i );
+            ?>
+    </div>
+            <?php
+        }
+    ?>
+</div>
+<?php
+    }
+
+    private function render_step_parts ( $parts ) {
+        $cnt = count( $parts );
+        $width = $this->_get_class( $cnt );
+
+        for ($i = 0; $i < $cnt; $i++) {
+            $part = $parts[$i];
+            if ($i > 0 && $part->same_title($parts[$i - 1])) {
+                $hidden = ' fw-title-hidden';
+            } else {
+                $hidden = '';
+            }
+            ?>
+<div class="fw-step-part <?php echo $width; ?>" data-partId="<?php echo $i ?>">
+    <div class="fw-step-part-title <?php echo $hidden; ?>">
+            <?php
+                $part->render_title();
+            ?>
+    </div>
+    <div class="fw-step-part-body">
+            <?php
+                $part->render_body( $i );
+            ?>
+    </div>
+</div>
+            <?php
+        }
+    }
+
+    /**
+     *
+     */
+    public function render ( $wizardId ) {
+        ob_start();
+?>
+<div id="mondula-form-wizard" class="fw-wizard" data-stepCount="<?php echo count( $this->_steps )?>">
+    <div class="fw-progress-bar-container">
+        <div class="fw-container">
+    <?php
+        $this->render_progress_bar( $this->_steps );
+    ?>
+        </div>
+    </div>
+    <div class="fw-wizard-step-header-container">
+        <div class="fw-container">
+        <?php
+        $len = count( $this->_steps );
+        for ($i = 0; $i < $len; $i++) {
+            $step = $this->_steps[$i];
+            ?>
+        <div class="fw-wizard-step-header" data-stepId="<?php echo $i; ?>">
+            <h2><?php echo $step->render_headline(); ?></h2>
+            <p class="fw-copytext"><?php $step->render_copy_text(); ?></p>
+        </div>
+        <?php
+        }
+        ?>
+        </div>
+    </div>
+    <div class="fw-wizard-step-container">
+        <div class="fw-container">
+    <?php
+        for ($i = 0; $i < $len; $i++) {
+            $step = $this->_steps[$i];
+            ?>
+        <div class="fw-wizard-step" data-stepId="<?php echo $i; ?>">
+            <?php
+                $step->render( $wizardId, $i );
+            ?>
+            <div class="fw-clearfix"></div>
+        </div>
+        <?php
+        }
+    ?>
+        </div>
+    </div>
+    <div class="fw-wizard-button-container">
+        <div class="fw-container">
+            <div class="fw-wizard-buttons">
+                <button class="fw-button-previous"><?php _e( 'Previous Step' ) ?></button>
+                <button class="fw-button-next"><?php _e( 'Next Step' ) ?></button>
+                <!-- TODO remove me -->
+                <button class="fw-button-dump" style="display: none;">Dump</button>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+        ob_end_flush();
+    }
+
+    private function render_header_html () {
+        ?>
+<div>Hallo,</div>
+<div>gew&auml;hlte Optionen:</div>
+        <?php
+    }
+
+    private function render_header () {
+        echo "Hallo," . PHP_EOL . PHP_EOL;
+        echo "gewählte Optionen:" . PHP_EOL;
+    }
+
+    private function render_body ( $data, $name, $email ) {
+        foreach ( $data as $key => $value ) {
+            echo PHP_EOL .  $key . PHP_EOL . PHP_EOL;
+            foreach ( $value as $value2 ) {
+                foreach ( $value2 as $key2 => $value3 ) {
+                    echo "\t" . $key2 . " - " . $value3 . PHP_EOL;
+                }
+
+//                $step = $this->_steps[$key];
+//                $step[$key2]->render_mail( $value2 );
+            }
+            echo PHP_EOL;
+        }
+
+        echo PHP_EOL . "Name: " . $name . PHP_EOL;
+        echo "Email: " . $email . PHP_EOL;
+    }
+
+    private function render_footer () {
+        echo PHP_EOL . "Mfg" . PHP_EOL;
+    }
+
+    private function render_footer_html() {
+       ?>
+<div>Mfg</div>
+       <?php
+    }
+
+    public function render_mail ( $data, $name, $email ) {
+        ob_start();
+        $this->render_header();
+        $this->render_body( $data, $name, $email );
+        $this->render_footer();
+        $result = ob_get_contents();
+        ob_end_clean();
+        return $result;
+    }
+
+    public function as_aa() {
+        $steps_json = array();
+        foreach ($this->_steps as $step) {
+            $steps_json[] = $step->as_aa();
+        }
+        return array(
+            'steps' => $steps_json
+        );
+    }
+}
