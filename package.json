@@ -1,0 +1,26 @@
+{
+  "name": "wordpress-plugin-template",
+  "title": "WordPress Plugin Template",
+  "version": "1.0.0",
+  "homepage": "https://github.com/hlashbrooke/WordPress-Plugin-Template",
+  "main": "Gruntfile.js",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-concat": "~0.5.1",
+    "grunt-contrib-cssmin": "~0.9.0",
+    "grunt-contrib-less": "~0.11.1",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-notify": "~0.4.1",
+    "gulp": "~3.9.0",
+    "gulp-concat": "~2.6.0",
+    "gulp-debug-streams": "^3.0.0",
+    "gulp-minify": "0.0.11",
+    "gulp-newer": "~0.5.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.3"
+  },
+  "dependencies": {
+    "grunt-sync": "~0.2.4"
+  }
+}

@@ -1,0 +1,535 @@
+.fw-wizard {
+
+
+
+
+}
+
+.fw-clearfix {
+    clear: both;
+}
+
+.fw-one_half {
+    width: 50% !important;
+    float: left;
+}
+
+.fw-one_third {
+    width: 33.3333% !important;
+    float: left;
+}
+
+.fw-wizard p {
+    margin-bottom: 2px;
+}
+
+.fw-block-header {
+    font-size: 120%;
+}
+
+.fw-step-block {
+    margin-bottom: 20px;
+}
+
+.fw-wizard label {
+
+    font-size: 110%;
+}
+
+.fw-wizard-step {
+    display: none;
+}
+
+.fw-wizard-step-header {
+    height: 0;
+    overflow: hidden;
+}
+
+.fw-wizard-step-header.fw-current {
+    height: auto;
+}
+
+.fw-wizard-step.fw-current {
+    display: block;
+    margin-top:20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+
+.fw-wizard-step-container {
+	width:100%;
+	background:#f5f5f5;
+	padding-top:20px;
+	padding-bottom:20px;
+	border-top:1px solid #eee;
+	border-bottom:1px solid #eee;
+}
+
+
+.fw-step-part {
+    float: left;
+    width: 100%;
+}
+
+.fw-step-title {
+    font-family: 'Raleway', 'Georgia';
+    font-weight: 400;
+    font-size: 25px;
+    color:#57aed1;
+    text-shadow: 0em 0.015em #fff;
+}
+
+.fw-step-part-title {
+    width: 100%;
+    float: left;
+    margin-bottom: 25px;
+    font-family: 'Raleway', 'Georgia';
+    font-weight: 400;
+    font-size: 22px;
+    color:#57aed1;
+    text-shadow: 0em 0.015em #fff;
+}
+
+.fw-step-part-title.fw-title-hidden {
+    visibility: hidden;
+}
+
+.fw-input-container {
+    padding: 10px;
+}
+
+.fw-text-input {
+    font-family: inherit;
+    width: 88%;
+    margin: 0 0 15px;
+    padding: 18px 6%;
+    border: 0;
+    outline: 0;
+    font-size: 13px;
+    background-color: #fff;
+    color: #91003e;
+}
+
+.fw-text-input:focus {
+    color: #fff;
+    background-color: #080808;
+}
+
+.fw-wizard-buttons button,
+.fw-btn-submit {
+    height: 39px;
+    line-height: 39px;
+    padding: 0 22px;
+    font-size: 11px;
+    color:  #fff;
+    border: 0px;
+    background-color: #57aed1;
+}
+
+.fw-wizard-buttons button:hover,
+.fw-btn-submit:hover {
+    color: #fff;
+    background-color: #4891ae;
+    border-color: #4891ae;
+}
+
+.fw-wizard-buttons button:focus,
+.fw-btn-submit:focus {
+   outline-width: 0;
+}
+
+.fw-btn-submit {
+    float: right;
+}
+
+p.fw-step-summary-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 120%;
+    font-weight:bold;
+    color:#111;
+}
+
+p.fw-step-summary {
+    font-size: 110%;
+    margin-bottom: 10px;
+    margin-left: 0;
+}
+
+
+.fw-one_half label {
+}
+
+.fw-conditional-then-container {
+    position: relative;
+}
+
+.fw-conditional-then {
+    visibility: hidden;
+    position: absolute;
+
+    top: 0;
+    left: 0;
+}
+
+.fw-conditional-then.fw-selected {
+    visibility: visible;
+}
+
+
+
+/* ----- Changes DB ------------------------------------------------------------- */
+
+
+
+
+.fw-block-header {
+	color:#111;
+}
+
+.fw-wizard-buttons button {
+	cursor: pointer;
+	text-transform:uppercase;
+}
+
+input.fw-text-input {
+	border:1px solid #ddd;
+}
+
+.fw-input-container {
+    padding: 0px;
+}
+
+.fw-input-container.fw-first {
+	margin-right:15px;
+}
+
+.fw-btn-submit {
+    float: none;
+    width:100%;
+    background:#fff;
+    color:#333;
+    cursor: pointer;
+    padding-bottom: 15px;
+    border:1px solid #ddd;
+    text-transform:uppercase;
+}
+
+
+
+.fw-one_half label {
+	color:#57aed1;
+}
+
+.fw-radio-row label {
+	color:#777;
+}
+
+.fw-btn-submit:hover {
+    float: none;
+    width:100%;
+    background:#fff;
+    border:1px solid #ddd;
+    color:#333;
+}
+
+.fw-text-input:focus {
+	background-color: #57aed1 !important;
+	color:#fff !important;
+}
+
+@media screen and (max-width: 700px) {
+
+span.fw-radio-row {
+	display: block;
+}
+
+}
+
+
+.fw-step-part-body .fw-step-summary-part {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+
+
+@media all and (min-width: 1023px) {
+
+.fw-wizard-buttons, .fw-progress-bar-container {
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    width: 1100px;
+}
+
+}
+
+.fw-wizard-buttons {
+	margin-top: 30px;
+}
+
+
+p.fw-copytext {
+	margin-bottom:30px !important;
+}
+
+
+.fw-wizard-step-header h2 {
+	font-size:26px;
+	margin-bottom:15px;
+}
+
+
+
+
+
+/* ----- Progress bar ------------------------------------------------------------- */
+
+
+@-webkit-keyframes myanimation {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 50%;
+  }
+}
+/* line 36, ../sass/progress.scss */
+/*h1 {
+  text-align: center;
+  font-family: 'PT Sans Caption', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 20px 0;
+  color: #777;
+}*/
+
+/* line 45, ../sass/progress.scss */
+.fw-progress-wrap {
+  color: #444;
+  font-family: 'PT Sans Caption', sans-serif;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  max-width: 1200px;
+  min-height: 55px;
+  position: relative;
+}
+
+/* line 54, ../sass/progress.scss */
+ul.fw-progress-bar li {
+  color: #ccc;
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 20px 14px 80px;
+  position: relative;
+}
+/* line 61, ../sass/progress.scss */
+ul.fw-progress-bar li:before {
+  -webkit-box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+  background: #ddd;
+  border: 2px solid #FFF;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  left: 0;
+  line-height: 37px;
+  height: 35px;
+  position: absolute;
+  text-align: center;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  top: 4px;
+  width: 35px;
+  z-index: 999;
+}
+/* line 79, ../sass/progress.scss */
+ul.fw-progress-bar li.fw-active {
+  color: #57aed1;
+  font-weight: bold;
+}
+/* line 82, ../sass/progress.scss */
+ul.fw-progress-bar li.fw-active:before {
+  background: #57aed1;
+  z-index: 99999;
+}
+/* line 87, ../sass/progress.scss */
+ul.fw-progress-bar li.fw-visited {
+  background: #ECECEC;
+  color: #8bc53f;
+  z-index: 99999;
+}
+/* line 91, ../sass/progress.scss */
+ul.fw-progress-bar li.fw-visited:before {
+  background: #8bc53f;
+  z-index: 99999;
+}
+/* line 97, ../sass/progress.scss */
+ul.fw-progress-bar li:nth-child(1):before {
+  content: "1";
+}
+/* line 102, ../sass/progress.scss */
+ul.fw-progress-bar li:nth-child(2):before {
+  content: "2";
+}
+/* line 107, ../sass/progress.scss */
+ul.fw-progress-bar li:nth-child(3):before {
+  content: "3";
+}
+/* line 112, ../sass/progress.scss */
+ul.fw-progress-bar li:nth-child(4):before {
+  content: "4";
+}
+/* line 117, ../sass/progress.scss */
+ul.fw-progress-bar li:nth-child(5):before {
+  content: "5";
+}
+/* line 122, ../sass/progress.scss */
+ul.fw-progress-bar li:nth-child(6):before {
+  content: "6";
+}
+
+
+ul.fw-progress-bar li.fw-progress-step.fw-visited:before {
+  content: "âœ“";
+}
+
+/* line 127, ../sass/progress.scss */
+ul.fw-progress-bar a {
+  color: #57aed1;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media all and (min-width: 800px) {
+  /* line 138, ../sass/progress.scss */
+  .fw-progress-bar li.fw-active:after {
+    -webkit-animation: myanimation 3s 0;
+    background-size: 35px 35px;
+    background-color: #57aed1;
+    background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+    -webkit-box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    content: "";
+    height: 15px;
+    width: 100%;
+    /*left: 50%;*/
+    position: absolute;
+    top: -50px;
+    z-index: 0;
+  }
+
+  .fw-progress-bar li:last-child.fw-active:after {
+    width: 0;
+  }
+
+  /* line 150, ../sass/progress.scss */
+  .checkout-wrap {
+    margin: 80px auto;
+  }
+
+  /* line 153, ../sass/progress.scss */
+  ul.fw-progress-bar {
+/*    -webkit-box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    background-size: 35px 35px;
+    background-color: #EcEcEc;
+    background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent);*/
+    border-radius: 15px;
+    height: 15px;
+    margin: 0 auto;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  li.fw-progress-step::after {
+    content: "";
+    -webkit-box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    background-size: 35px 35px;
+    background-color: #EcEcEc;
+
+    margin: 0 auto;
+    padding: 0;
+
+    background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent);
+
+    height: 15px;
+    width: 100%;
+    left: 2%;
+    position: absolute;
+    top: -50px;
+    z-index: 0;
+  }
+
+  li.fw-progress-step:last-child::after {
+      width: 0;
+  }
+
+  /* line 162, ../sass/progress.scss */
+  ul.fw-progress-bar:before {
+    background-size: 35px 35px;
+    background-color: #57aed1;
+    background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+    -webkit-box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    content: " ";
+    height: 15px;
+    left: 0;
+    position: absolute;
+    /*width: 10%;*/
+  }
+  /* line 172, ../sass/progress.scss */
+  ul.fw-progress-bar li {
+    display: inline-block;
+    margin: 50px 0 0;
+    padding: 0;
+    text-align: left;
+    width: 19%;
+  }
+  /* line 178, ../sass/progress.scss */
+  ul.fw-progress-bar li:before {
+    height: 45px;
+    /*left: 40%;*/
+    line-height: 45px;
+    position: absolute;
+    top: -65px;
+    width: 45px;
+    z-index: 99;
+  }
+  /* line 187, ../sass/progress.scss */
+  ul.fw-progress-bar li.fw-visited {
+    background: none;
+  }
+  /* line 189, ../sass/progress.scss */
+  ul.fw-progress-bar li.fw-visited:after {
+    background-size: 35px 35px;
+    background-color: #8bc53f;
+    background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+    -webkit-box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    content: "";
+    height: 15px;
+    /*left: 50%;*/
+    position: absolute;
+    top: -50px;
+    width: 100%;
+    z-index: 99;
+  }
+}
