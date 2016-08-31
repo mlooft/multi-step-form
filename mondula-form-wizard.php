@@ -22,6 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // Load plugin class files
 require_once( 'includes/class-mondula-form-wizard.php' );
 require_once( 'includes/class-mondula-form-wizard-settings.php' );
+require_once( 'includes/class-mondula-form-wizard-settings-api.php' );
 
 // Load plugin libraries
 require_once( 'includes/lib/class-mondula-form-wizard-admin-api.php' );

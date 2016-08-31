@@ -271,7 +271,7 @@ class Mondula_Form_Wizard_Shortcode {
                 // add_filter( 'wp_mail_content_type', array( $this , 'set_html_content_type' ) );
 
                 $content = $this->_wizard->render_mail( $data, $name, $email );
-                $mail = wp_mail( 'alexander@mondula.com', 'Mail', $content );
+                $mail = wp_mail( 'lewe.ohlsen@mondula.com', 'mondula-form-wizard', $content );
 
                 // remove_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
 
