@@ -165,6 +165,7 @@ class Mondula_Form_Wizard_Admin {
                         <div class="fw-elements">
                             <a class="fw-element-step button-secondary"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ) ?></a>
                             <h4>Drag & drop elements to steps on the right</h4>
+                            <span id="ContactName">Test</span>
                             <a class="fw-draggable-block fw-element-radio button-secondary" data-type="radio"><i class="fa fa-arrows"></i> Radio Buttons</a>
                             <a class="fw-draggable-block fw-element-checkbox button-secondary" data-type="checkbox"><i class="fa fa-arrows"></i> Checkbox</a>
                             <a class="fw-draggable-block fw-element-text button-secondary" data-type="text"><i class="fa fa-arrows"></i> Text field</a>

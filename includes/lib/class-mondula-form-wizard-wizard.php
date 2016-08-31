@@ -44,16 +44,30 @@ class Mondula_Form_Wizard_Wizard {
         return '';
     }
 
+    private function fw_get_option($option, $section, $default = '') {
+      $options = get_option($section);
+      if ( isset( $options[$option] ) )
+		    echo $options[$option];
+	    else
+		    return $default;
+    }
+
     private function render_progress_bar () {
         $cnt = count( $this->_steps );
         ?>
 <div class="fw-progress-wrap">
-    <ul class="fw-progress-bar">
+
+    <ul class="fw-progress-bar"
+        data-activecolor="<?php $this->fw_get_option('activecolor' ,'fw_settings_styling', '#57aed1');?>"
+        data-donecolor="<?php $this->fw_get_option('donecolor' ,'fw_settings_styling', '#57aed1');?>"
+        data-nextcolor="<?php $this->fw_get_option('nextcolor' ,'fw_settings_styling', '#57aed1');?>">
         <?php
         for ($i = 0; $i < $cnt; $i++) {
             $step = $this->_steps[$i];
             ?>
-        <li class="fw-progress-step" data-id="<?php echo $i; ?>"><?php echo $step->render_title(); ?></li>
+        <li class="fw-progress-step"
+            data-id="<?php echo $i; ?>">
+            <?php echo $step->render_title(); ?></li>
             <?php
         }
         ?>
@@ -258,4 +272,6 @@ class Mondula_Form_Wizard_Wizard {
             'steps' => $steps_json
         );
     }
+
+
 }
