@@ -198,16 +198,16 @@ class Mondula_Form_Wizard_Wizard {
     ?>
         </div>
     </div>
+    <?php if (count($this->_steps) > 1) { ?>
     <div class="fw-wizard-button-container">
         <div class="fw-container">
             <div class="fw-wizard-buttons">
                 <button class="fw-button-previous"><?php _e( 'Previous Step' ) ?></button>
                 <button class="fw-button-next"><?php _e( 'Next Step' ) ?></button>
-                <!-- TODO remove me -->
-                <button class="fw-button-dump" style="display: none;">Dump</button>
             </div>
         </div>
     </div>
+    <?php } ?>
 </div>
 <?php
         ob_end_flush();
