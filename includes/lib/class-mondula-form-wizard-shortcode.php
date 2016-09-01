@@ -47,7 +47,7 @@ class Mondula_Form_Wizard_Shortcode {
         foreach ($options as $opt) {
             $elements[] = array( 'type' => 'option', 'value' => $opt );
         }
-        return new Mondula_Form_Wizard_Block_Radio( $elements );
+        return new Mondula_Form_Wizard_Block_Radio( $elements, 'true' ); // TODO: make required variable
     }
 
     private function conditional( $options, $elements ) {

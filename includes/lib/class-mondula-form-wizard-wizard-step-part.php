@@ -34,7 +34,7 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
         for ( $i = 0; $i < $cnt; $i++ ) {
             $block = $this->_blocks[$i];
             ?>
-  <div class="fw-step-block" data-blockId="<?php echo $i ?>" data-type="<?php echo $block->get_type(); ?>">
+  <div class="fw-step-block" data-blockId="<?php echo $i ?>" data-type="<?php echo $block->get_type(); ?>" data-required="<?php echo $block->get_required() ?>">
             <?php
             array_push( $ids, $i );
             $block->render( $ids );

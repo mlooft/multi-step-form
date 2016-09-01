@@ -10,16 +10,18 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
 
     private $_elements;
+    private $_required;
 
     protected static $type = "fw-radio";
 
-    public function __construct ( $elements ) {
+    public function __construct ( $elements, $required ) {
         $this->_elements = $elements;
+        $this->_required = $required;
     }
 
-    // public function get_type( ) {
-    //     return self::$_type;
-    // }
+    public function get_required( ) {
+      return $this->_required;
+    }
 
     public function render( $ids ) {
         $cnt = count( $this->_elements );
@@ -50,12 +52,14 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
     public function as_aa() {
         return array(
             'type' => 'radio',
-            'elements' => $this->_elements
+            'elements' => $this->_elements,
+            'required' => $this->_required
         );
     }
 
     public static function from_aa( $aa ) {
         $elements = isset( $aa['elements'] ) ? $aa['elements'] : array();
-        return new Mondula_Form_Wizard_Block_Radio( $elements );
+        $required = $aa['required'];
+        return new Mondula_Form_Wizard_Block_Radio( $elements, $required );
     }
 }
