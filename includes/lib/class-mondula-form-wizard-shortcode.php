@@ -248,7 +248,7 @@ class Mondula_Form_Wizard_Shortcode {
         $data = array();
         $data['date'] = current_time( 'mysql' );
         $data['title'] = 'Generated';
-        $data['wizard'] = unserialize( $this->_wizard );
+        $data['wizard'] = $this->_wizard;
 
 //        $wpdb->insert( $table, $data );
 
