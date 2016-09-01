@@ -10,18 +10,24 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Mondula_Form_Wizard_Block_Textarea extends Mondula_Form_Wizard_Block {
 
     private $_label;
+    private $_required;
 
     protected static $type = "fw-textarea";
 
-    public function __construct ( $label ) {
+    public function __construct ( $label, $required ) {
         $this->_label = $label;
+        $this->_required = $required;
+    }
+
+    public function get_required( ) {
+      return $this->_required;
     }
 
     // TODO: add text field label variable and ids
     public function render( $ids ) {
         ?>
     <div class="fw-input-container">
-        <label><?php echo $this->_label ?></label><textarea class="fw-textarea" data-id="textarea" data-required></textarea>
+        <label><?php echo $this->_label ?></label><textarea class="fw-textarea" data-id="textarea"></textarea>
     </div>
     <div class="fw-clearfix"></div>
         <?php
@@ -36,12 +42,14 @@ class Mondula_Form_Wizard_Block_Textarea extends Mondula_Form_Wizard_Block {
     public function as_aa() {
         return array(
             'type' => 'textarea',
-            'label' => $this->_label
+            'label' => $this->_label,
+            'required' => $this->_required
         );
     }
 
     public static function from_aa( $aa ) {
         $label = $aa['label'];
-        return new Mondula_Form_Wizard_Block_Textarea( $label );
+        $required = $aa['required'];
+        return new Mondula_Form_Wizard_Block_Textarea( $label, $required );
     }
 }

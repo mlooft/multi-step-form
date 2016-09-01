@@ -11,6 +11,10 @@ class Mondula_Form_Wizard_Step_Submit extends Mondula_Form_Wizard_Block {
 
     protected static $type = "fw-submit";
 
+    public function get_required( ) {
+      return 'true';
+    }
+
     public function render( $ids ) {
         ?>
 <div id="wizard-summary" class="fw-wizard-summary"></div>
