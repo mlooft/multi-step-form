@@ -315,10 +315,7 @@ ul.fw-progress-bar li {
 }
 /* line 61, ../sass/progress.scss */
 ul.fw-progress-bar li:before {
-  -webkit-box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
   background: #ddd;
-  border: 2px solid #FFF;
   border-radius: 50%;
   color: #fff;
   font-size: 16px;
@@ -331,7 +328,7 @@ ul.fw-progress-bar li:before {
   text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
   top: 4px;
   width: 35px;
-  z-index: 999;
+  z-index: 1;
 }
 /* line 79, ../sass/progress.scss */
 ul.fw-progress-bar li.fw-active {
@@ -341,18 +338,18 @@ ul.fw-progress-bar li.fw-active {
 /* line 82, ../sass/progress.scss */
 ul.fw-progress-bar li.fw-active:before {
   background: #57aed1;
-  z-index: 99999;
+  z-index: 1;
 }
 /* line 87, ../sass/progress.scss */
 ul.fw-progress-bar li.fw-visited {
   background: #ECECEC;
   color: #8bc53f;
-  z-index: 99999;
+  z-index: 1;
 }
 /* line 91, ../sass/progress.scss */
 ul.fw-progress-bar li.fw-visited:before {
   background: #8bc53f;
-  z-index: 99999;
+  z-index: 1;
 }
 /* line 97, ../sass/progress.scss */
 ul.fw-progress-bar li:nth-child(1):before {
@@ -486,7 +483,7 @@ ul.fw-progress-bar a {
     position: absolute;
     top: -65px;
     width: 45px;
-    z-index: 99;
+    z-index: 1;
   }
   /* line 187, ../sass/progress.scss */
   ul.fw-progress-bar li.fw-visited {
@@ -506,6 +503,6 @@ ul.fw-progress-bar a {
     position: absolute;
     top: -50px;
     width: 100%;
-    z-index: 99;
+    z-index: 0;
   }
 }
