@@ -1,5 +1,5 @@
-input.fw-text-input.fw-invalid {
-    border: 2px solid red!important;
+.fw-invalid {
+    background-color: #FF91A4;
 }
 
 .fw-clearfix {
