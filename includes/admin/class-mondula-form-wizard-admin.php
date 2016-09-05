@@ -46,7 +46,6 @@ class Mondula_Form_Wizard_Admin {
     public function setup_menu () {
         $all = add_menu_page( 'Mondula Form Wizard', 'Wizards', 'manage_options', 'mondula-form-wizard', array( $this, 'menu' ), 'dashicons-feedback', '35' );
         $add = add_submenu_page( 'mondula-form-wizard', 'Mondula List Table', 'Add new', 'manage_options', 'mondula-form-wizard&edit', array( $this, 'menu' ));
-        add_submenu_page( 'mondula-form-wizard', 'Mondula List Table', 'List Table', 'manage_options', 'mondula-form-wizard&list', array( $this, 'menu' ));
 
         add_action( 'admin_print_styles-' . $all, array( $this, 'admin_js' ) );
         add_action( 'admin_print_styles-' . $add, array( $this, 'admin_js' ) );
@@ -111,7 +110,7 @@ class Mondula_Form_Wizard_Admin {
         ?>
 <div class="wrap">
     <div id="icon-users" class="icon32"></div>
-    <h2>List Table</h2>
+    <h2>Form Wizards</h2>
     <form id="fw-wizard-table" method="get">
         <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
     <?php $table->display(); ?>
@@ -163,6 +162,7 @@ class Mondula_Form_Wizard_Admin {
                     <h3>Mondula Form Wizard</h3>
                     <div class="inside">
                         <div class="fw-elements">
+                            <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="Wizard Title">
                             <a class="fw-element-step button-secondary"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ) ?></a>
                             <h4>Drag & drop elements to steps on the right</h4>
                             <a class="fw-draggable-block fw-element-radio button-secondary" data-type="radio"><i class="fa fa-arrows"></i> Radio Buttons</a>

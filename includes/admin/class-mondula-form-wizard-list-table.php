@@ -19,27 +19,27 @@ if( ! class_exists( 'WP_List_Table' ) ) {
 class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 
     var $example_data = array(
-        array( 
+        array(
             'title' => 'Wizard 1',
             'shortcode' => '[wizard id=1]',
             'date' => '2015-07-13'
         )
     );
-    
+
     private $_wizard_service;
-    
+
     private $_text_domain;
-    
+
     public function __construct ( Mondula_Form_Wizard_Wizard_Service $wizard_service, $text_domain ) {
-        parent::__construct( array( 
+        parent::__construct( array(
             'screen' => get_current_screen()
         ) );
         $this->_wizard_service = $wizard_service;
         $this->_text_domain = $text_domain;
     }
-    
+
     function get_columns ( ) {
-       $columns = array( 
+       $columns = array(
            'cb' => '<input type="checkbox" />',
            'title' => 'Title',
            'shortcode' => 'Shortcode',
@@ -47,7 +47,7 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
        );
        return $columns;
     }
-    
+
     public function column_default( $item, $column_name ) {
         switch( $column_name ) {
             case 'title':
@@ -63,18 +63,18 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
                 return print_r( $item, true );
         }
     }
-    
+
     public function column_title( $item ) {
         $edit_url = esc_url( add_query_arg( array( 'edit' => $item['id'] ) ) );
         $delete_url = esc_url( add_query_arg ( array ( 'delete' => $item['id'] ) ) );
-        
+
         $actions = array(
             'fw-edit' => '<a href="' . $edit_url . '">' . __( 'Edit', $this->_text_domain ) . '</a>',
             'fw-delete' => '<a href="' . $delete_url . '">' . __( 'Delete', $this->_text_domain ) . '</a>'
         );
-        return sprintf('Title %1$s', $this->row_actions($actions));
+        return sprintf('<a href="' . $edit_url . '">' . __( $item['title'] , $this->_text_domain ) . '</a>'.'%1$s', $this->row_actions($actions));
     }
-    
+
 //    public function handle_row_actions( $item, $column_name, $primary ) {
 //        switch ($column_name) {
 //            case 'title':
@@ -83,32 +83,32 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 //                return 'default';
 //        }
 //    }
-        
-    
+
+
     function prepare_items ( ) {
         $columns = $this->get_columns();
         $hidden = array();
         $sortable = array();
         $this->_column_headers = array( $columns, $hidden, $sortable );
         $this->items = $this->_wizard_service->get_all();
-        
+
         $this->process_bulk_action();
     }
-    
-    
+
+
     function get_bulk_actions () {
         $actions = array(
             'delete' => 'Delete'
         );
         return $actions;
     }
-    
+
     function column_cb($item) {
         return sprintf(
             '<input type="checkbox" name="wizard[]" value="%s" />', $item['id']
         );
     }
-    
+
     public function process_bulk_action() {
 
         // security check!
