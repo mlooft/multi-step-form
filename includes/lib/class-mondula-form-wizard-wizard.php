@@ -4,19 +4,9 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 
-/**
- * Description of mondula-form-wizard-wizard
- *
- * @author alex
- */
 class Mondula_Form_Wizard_Wizard {
 
-    /**
-     *
-     * @var array
-     */
     private $_steps = array();
-
 
 
     public function __construct() {
@@ -104,23 +94,23 @@ class Mondula_Form_Wizard_Wizard {
 
     private function render_step_body ( $parts ) {
         $class = $this->_get_class( count($parts) );
-?>
-<div class="fw-step-body">
-    <?php
-        $cnt = count( $parts );
-        for ( $i = 0; $i < $cnt; $i++ ) {
-            ?>
-    <div class="fw-step-part <?php echo $class; ?>" data-partId="<?php echo $i; ?>">
+        ?>
+        <div class="fw-step-body">
             <?php
-                $part = $parts[$i];
-                $part->render_body( $i );
+                $cnt = count( $parts );
+                for ( $i = 0; $i < $cnt; $i++ ) {
+                    ?>
+            <div class="fw-step-part <?php echo $class; ?>" data-partId="<?php echo $i; ?>">
+                    <?php
+                        $part = $parts[$i];
+                        $part->render_body( $i );
+                    ?>
+            </div>
+                    <?php
+                }
             ?>
-    </div>
-            <?php
-        }
-    ?>
-</div>
-<?php
+        </div>
+        <?php
     }
 
     private function render_step_parts ( $parts ) {
@@ -135,18 +125,18 @@ class Mondula_Form_Wizard_Wizard {
                 $hidden = '';
             }
             ?>
-<div class="fw-step-part <?php echo $width; ?>" data-partId="<?php echo $i ?>">
-    <div class="fw-step-part-title <?php echo $hidden; ?>">
-            <?php
-                $part->render_title();
-            ?>
-    </div>
-    <div class="fw-step-part-body">
-            <?php
-                $part->render_body( $i );
-            ?>
-    </div>
-</div>
+            <div class="fw-step-part <?php echo $width; ?>" data-partId="<?php echo $i ?>">
+                <div class="fw-step-part-title <?php echo $hidden; ?>">
+                        <?php
+                            $part->render_title();
+                        ?>
+                </div>
+                <div class="fw-step-part-body">
+                        <?php
+                            $part->render_body( $i );
+                        ?>
+                </div>
+            </div>
             <?php
         }
     }
@@ -156,67 +146,67 @@ class Mondula_Form_Wizard_Wizard {
      */
     public function render ( $wizardId ) {
         ob_start();
-?>
-<div id="mondula-form-wizard" class="fw-wizard" data-stepCount="<?php echo count( $this->_steps )?>">
-    <div class="fw-progress-bar-container">
-        <div class="fw-container">
-    <?php
-        $this->render_progress_bar( $this->_steps );
-    ?>
-        </div>
-    </div>
-    <div class="fw-wizard-step-header-container">
-        <div class="fw-container">
-        <?php
-        $len = count( $this->_steps );
-        for ($i = 0; $i < $len; $i++) {
-            $step = $this->_steps[$i];
-            ?>
-        <div class="fw-wizard-step-header" data-stepId="<?php echo $i; ?>">
-            <h2><?php echo $step->render_headline(); ?></h2>
-            <p class="fw-copytext"><?php $step->render_copy_text(); ?></p>
-        </div>
-        <?php
-        }
         ?>
-        </div>
-    </div>
-    <div class="fw-wizard-step-container">
-        <div class="fw-container">
-    <?php
-        for ($i = 0; $i < $len; $i++) {
-            $step = $this->_steps[$i];
-            ?>
-        <div class="fw-wizard-step" data-stepId="<?php echo $i; ?>">
+        <div id="mondula-form-wizard" class="fw-wizard" data-stepCount="<?php echo count( $this->_steps )?>">
+            <div class="fw-progress-bar-container">
+                <div class="fw-container">
             <?php
-                $step->render( $wizardId, $i );
+                $this->render_progress_bar( $this->_steps );
             ?>
-            <div class="fw-clearfix"></div>
+                </div>
+            </div>
+            <div class="fw-wizard-step-header-container">
+                <div class="fw-container">
+                <?php
+                $len = count( $this->_steps );
+                for ($i = 0; $i < $len; $i++) {
+                    $step = $this->_steps[$i];
+                    ?>
+                <div class="fw-wizard-step-header" data-stepId="<?php echo $i; ?>">
+                    <h2><?php echo $step->render_headline(); ?></h2>
+                    <p class="fw-copytext"><?php $step->render_copy_text(); ?></p>
+                </div>
+                <?php
+                }
+                ?>
+                </div>
+            </div>
+            <div class="fw-wizard-step-container">
+                <div class="fw-container">
+            <?php
+                for ($i = 0; $i < $len; $i++) {
+                    $step = $this->_steps[$i];
+                    ?>
+                <div class="fw-wizard-step" data-stepId="<?php echo $i; ?>">
+                    <?php
+                        $step->render( $wizardId, $i );
+                    ?>
+                    <div class="fw-clearfix"></div>
+                </div>
+                <?php
+                }
+            ?>
+                </div>
+            </div>
+            <?php if (count($this->_steps) > 1) { ?>
+            <div class="fw-wizard-button-container">
+                <div class="fw-container">
+                    <div class="fw-wizard-buttons">
+                        <button class="fw-button-previous"><?php _e( 'Previous Step' ) ?></button>
+                        <button class="fw-button-next"><?php _e( 'Next Step' ) ?></button>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
         </div>
         <?php
-        }
-    ?>
-        </div>
-    </div>
-    <?php if (count($this->_steps) > 1) { ?>
-    <div class="fw-wizard-button-container">
-        <div class="fw-container">
-            <div class="fw-wizard-buttons">
-                <button class="fw-button-previous"><?php _e( 'Previous Step' ) ?></button>
-                <button class="fw-button-next"><?php _e( 'Next Step' ) ?></button>
-            </div>
-        </div>
-    </div>
-    <?php } ?>
-</div>
-<?php
         ob_end_flush();
     }
 
     private function render_header_html () {
         ?>
-<div>Hallo,</div>
-<div>gew&auml;hlte Optionen:</div>
+        <div>Hallo,</div>
+        <div>gew&auml;hlte Optionen:</div>
         <?php
     }
 
@@ -249,7 +239,7 @@ class Mondula_Form_Wizard_Wizard {
 
     private function render_footer_html() {
        ?>
-<div>Mfg</div>
+       <div>Mfg</div>
        <?php
     }
 
