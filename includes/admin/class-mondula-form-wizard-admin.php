@@ -44,8 +44,8 @@ class Mondula_Form_Wizard_Admin {
     }
 
     public function setup_menu () {
-        $all = add_menu_page( 'Mondula Form Wizard', 'Wizards', 'manage_options', 'mondula-form-wizard', array( $this, 'menu' ), 'dashicons-feedback', '35' );
-        $add = add_submenu_page( 'mondula-form-wizard', 'Mondula List Table', 'Add new', 'manage_options', 'mondula-form-wizard&edit', array( $this, 'menu' ));
+        $all = add_menu_page( 'Mondula Form Wizard', 'Form Wizards', 'manage_options', 'mondula-form-wizard', array( $this, 'menu' ), 'dashicons-feedback', '35' );
+        $add = add_submenu_page( 'mondula-form-wizard', 'Mondula List Table', 'Add New', 'manage_options', 'mondula-form-wizard&edit', array( $this, 'menu' ));
 
         add_action( 'admin_print_styles-' . $all, array( $this, 'admin_js' ) );
         add_action( 'admin_print_styles-' . $add, array( $this, 'admin_js' ) );
@@ -108,40 +108,40 @@ class Mondula_Form_Wizard_Admin {
         $table = new Mondula_Form_Wizard_List_Table( $this->_wizard_service, $this->_text_domain );
         $table->prepare_items();
         ?>
-<div class="wrap">
-    <div id="icon-users" class="icon32"></div>
-    <h2>Form Wizards</h2>
-    <form id="fw-wizard-table" method="get">
-        <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
-    <?php $table->display(); ?>
-    </form>
-</div>
+        <div class="wrap">
+            <div id="icon-users" class="icon32"></div>
+            <h2>Form Wizards</h2>
+            <form id="fw-wizard-table" method="get">
+                <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
+            <?php $table->display(); ?>
+            </form>
+        </div>
         <?php
     }
 
     public function wizard_list() {
         $edit_url = esc_url( add_query_arg( array('edit' => '')) );
         ?>
-<div class="wrap">
-    <h2>Wizard <a class="add-new-h2" href="<?php echo $edit_url; ?>">Add new</a></h2>
-    <ul class="subsubsub"></ul>
-    <form>
+        <div class="wrap">
+            <h2>Wizard <a class="add-new-h2" href="<?php echo $edit_url; ?>">Add New</a></h2>
+            <ul class="subsubsub"></ul>
+            <form>
 
-        <div class="tablenav top"></div>
-        <table class="wp-list-table widefat fixed striped posts">
-            <thead>
-                <tr>
-                    <th scope="col">Titel</th>
-                    <th scope="col">Shortcode</th>
-                    <th scope="col">Datum</th>
-                </tr>
-            </thead>
-            <?php
+                <div class="tablenav top"></div>
+                <table class="wp-list-table widefat fixed striped posts">
+                    <thead>
+                        <tr>
+                            <th scope="col">Titel</th>
+                            <th scope="col">Shortcode</th>
+                            <th scope="col">Datum</th>
+                        </tr>
+                    </thead>
+                    <?php
 
-            ?>
-        </table>
-    </form>
-</div>
+                    ?>
+                </table>
+            </form>
+        </div>
         <?php
     }
 
@@ -149,49 +149,87 @@ class Mondula_Form_Wizard_Admin {
         echo esc_url( add_query_arg( array('edit' => '') ) );
         add_thickbox();
         ?>
-<div class="wrap">
-    <!--<pre>
-        <?php //var_dump( $_GET ); var_dump( empty($id ) ); ?>
-    </pre> -->
-    <!--<button type="button" class="fw-button-save">Save</button>-->
-    <a href="#TB_inline?width=400&height=200&inlineId=fw-thickbox-content" class="thickbox">Thickbox!</a>
-    <div id="fw-elements-container" class="fw-elements-container">
-        <div class="postbox-container">
-            <div class="metabox-holder">
-                <div class="postbox">
-                    <h3>Mondula Form Wizard</h3>
-                    <div class="inside">
-                        <div class="fw-elements">
-                            <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="Wizard Title">
-                            <a class="fw-element-step button-secondary"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ) ?></a>
-                            <h4>Drag & drop elements to steps on the right</h4>
-                            <a class="fw-draggable-block fw-element-radio button-secondary" data-type="radio"><i class="fa fa-arrows"></i> Radio Buttons</a>
-                            <a class="fw-draggable-block fw-element-checkbox button-secondary" data-type="checkbox"><i class="fa fa-arrows"></i> Checkbox</a>
-                            <a class="fw-draggable-block fw-element-text button-secondary" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
-                            <a class="fw-draggable-block fw-element-textarea button-secondary" data-type="textarea"><i class="fa fa-arrows"></i> Text Area</a>
-                            <a class="fw-draggable-block fw-element-submit button-secondary" data-type="submit"><i class="fa fa-arrows"></i> Submit</a>
-                        </div>
-                        <div class="fw-actions">
-                            <button class="button button-primary button-large fw-button-save"><?php _e( 'Save' ) ?></button>
+        <div class="wrap">
+            <!--<pre>
+                <?php //var_dump( $_GET ); var_dump( empty($id ) ); ?>
+            </pre> -->
+            <!--<button type="button" class="fw-button-save">Save</button>-->
+            <h2 class="nav-tab-wrapper">
+                <a class="nav-tab nav-tab-active" id="fw-nav-steps">Steps</a>
+                <a class="nav-tab" id="fw-nav-mail">Mail Settings</a>
+            </h2>
+            <div class="fw-mail-settings-container" style="display:none;">
+              <div class="wrap">
+                      <table class="form-table">
+                          <tr valign="top">
+                          <th scope="row">Send Mails To:</th>
+                          <td>
+                            <input type="text" class="fw-mail-to"/>
+                            <p class="description">Email address to which the mails are sent</p>
+                          </td>
+                          </tr>
+                          <tr valign="top">
+                          <th scope="row">Subject:</th>
+                          <td>
+                            <input type="text" class="fw-mail-subject"/>
+                          </td>
+                          </tr>
+                          <tr valign="top">
+                          <th scope="row">From Email Address:</th>
+                          <td>
+                            <input type="text" class="fw-mail-from" />
+                            <p class="description">Specify an email address from which the mails are sent</p>
+                          </td>
+                          </tr>
+
+                          <tr valign="top">
+                          <th scope="row">Email Header:</th>
+                          <td>
+                            <textarea rows="5" cols="55" class="fw-mail-header"></textarea>
+                            <p class="description">Introductory text for email</p>
+                          </td>
+                          </tr>
+                      </table>
+                      <button class="button button-primary button-large fw-button-save"><?php _e( 'Save' ) ?></button>
+              </div>
+            </div>
+            <div id="fw-elements-container" class="fw-elements-container">
+                <div class="postbox-container">
+                    <div class="metabox-holder">
+                        <div class="postbox">
+                            <h3>Mondula Form Wizard</h3>
+                            <div class="inside">
+                                <div class="fw-elements">
+                                    <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="Wizard Title">
+                                    <a class="fw-element-step button-secondary"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ) ?></a>
+                                    <h4>Drag & drop elements to steps on the right</h4>
+                                    <a class="fw-draggable-block fw-element-radio button-secondary" data-type="radio"><i class="fa fa-arrows"></i> Radio Buttons</a>
+                                    <a class="fw-draggable-block fw-element-checkbox button-secondary" data-type="checkbox"><i class="fa fa-arrows"></i> Checkbox</a>
+                                    <a class="fw-draggable-block fw-element-text button-secondary" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
+                                    <a class="fw-draggable-block fw-element-textarea button-secondary" data-type="textarea"><i class="fa fa-arrows"></i> Text Area</a>
+                                    <a class="fw-draggable-block fw-element-submit button-secondary" data-type="submit"><i class="fa fa-arrows"></i> Submit</a>
+                                </div>
+                                <div class="fw-actions">
+                                    <button class="button button-primary button-large fw-button-save"><?php _e( 'Save' ) ?></button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div id="fw-wizard-container" class="fw-wizard-container"></div>
-    <div id="fw-elements-modal">
-        <p>Content!</p>
-    </div>
-    <div id="fw-thickbox-content" style="display:none;">
-      <div id="fw-thickbox-radio">Radio Buttons</div>
-      <div id="fw-thickbox-checkbox">Checkbox</div>
-      <div id="fw-thickbox-text">Text Field</div>
-      <div id="fw-thickbox-textarea">Text Area</div>
-      <div id="fw-thickbox-submit">Submit</div>
-    </div>
+            <div id="fw-wizard-container" class="fw-wizard-container"></div>
+            <div id="fw-elements-modal">
+                <p>Content!</p>
+            </div>
+            <div id="fw-thickbox-content" style="display:none;">
+              <div id="fw-thickbox-radio">Radio Buttons</div>
+              <div id="fw-thickbox-checkbox">Checkbox</div>
+              <div id="fw-thickbox-text">Text Field</div>
+              <div id="fw-thickbox-textarea">Text Area</div>
+              <div id="fw-thickbox-submit">Submit</div>
+            </div>
 
-</div>
+        </div>
         <?php
     }
 
