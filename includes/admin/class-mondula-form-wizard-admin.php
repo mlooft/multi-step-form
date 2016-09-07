@@ -174,13 +174,6 @@ class Mondula_Form_Wizard_Admin {
                             <input type="text" class="fw-mail-subject"/>
                           </td>
                           </tr>
-                          <tr valign="top">
-                          <th scope="row">From Email Address:</th>
-                          <td>
-                            <input type="text" class="fw-mail-from" />
-                            <p class="description">Specify an email address from which the mails are sent</p>
-                          </td>
-                          </tr>
 
                           <tr valign="top">
                           <th scope="row">Email Header:</th>
