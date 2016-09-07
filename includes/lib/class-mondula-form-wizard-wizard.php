@@ -7,9 +7,17 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Mondula_Form_Wizard_Wizard {
 
     private $_steps = array();
-
+    private $_maildata = array();
 
     public function __construct() {
+    }
+
+    public function get_maildata(){
+      return $this->_maildata;
+    }
+
+    public function set_maildata ( $maildata ) {
+      $this->_maildata = $maildata;
     }
 
     /**
@@ -147,7 +155,7 @@ class Mondula_Form_Wizard_Wizard {
     public function render ( $wizardId ) {
         ob_start();
         ?>
-        <div id="mondula-form-wizard" class="fw-wizard" data-stepCount="<?php echo count( $this->_steps )?>">
+        <div id="mondula-form-wizard" class="fw-wizard" data-stepCount="<?php echo count( $this->_steps )?>" data-wizardid="<?php echo $wizardId ?>">
             <div class="fw-progress-bar-container">
                 <div class="fw-container">
             <?php
@@ -205,14 +213,12 @@ class Mondula_Form_Wizard_Wizard {
 
     private function render_header_html () {
         ?>
-        <div>Hallo,</div>
-        <div>gew&auml;hlte Optionen:</div>
+        <div><?php echo $this->_maildata['header']?></div>
         <?php
     }
 
     private function render_header () {
-        echo "Hallo," . PHP_EOL . PHP_EOL;
-        echo "gewählte Optionen:" . PHP_EOL;
+        echo $this->_maildata['header'] . PHP_EOL . PHP_EOL;
     }
 
     private function render_body ( $data, $name, $email ) {
@@ -233,13 +239,15 @@ class Mondula_Form_Wizard_Wizard {
         echo "Email: " . $email . PHP_EOL;
     }
 
+    // TODO mail footer
     private function render_footer () {
-        echo PHP_EOL . "Mfg" . PHP_EOL;
+        echo PHP_EOL . "End of form submission" . PHP_EOL;
     }
 
+    // TODO html mail footer
     private function render_footer_html() {
        ?>
-       <div>Mfg</div>
+       <div>End of form submission</div>
        <?php
     }
 
@@ -259,7 +267,8 @@ class Mondula_Form_Wizard_Wizard {
             $steps_json[] = $step->as_aa();
         }
         return array(
-            'steps' => $steps_json
+            'steps' => $steps_json,
+            'mail' => $this->_maildata
         );
     }
 

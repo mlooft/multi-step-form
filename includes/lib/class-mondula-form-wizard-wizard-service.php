@@ -42,6 +42,7 @@ class Mondula_Form_Wizard_Wizard_Service {
         //var_dump( $wizard_json );
         $wizard = new Mondula_Form_Wizard_Wizard();
         // $w = json_decode( $wizard_json );
+        $wizard->set_maildata( $wizard_json['mail'] );
         foreach ($wizard_json['steps'] as $step) {
             $wizard->add_step( Mondula_Form_Wizard_Wizard_Step::from_aa( $step ) );
         }
