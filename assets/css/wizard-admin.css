@@ -184,3 +184,14 @@ div#TB_ajaxContent > div {
     padding: 15px;
     margin: 5px;
 }
+.ui-tooltip {
+  color: white;
+  background-color: #5a5a5a;
+  border-radius: 10px;
+  z-index: 430;
+  width: 100px;
+  padding: 10px;
+  -webkit-box-shadow: 1px 1px 30px 0px rgba(0,0,0,0.42);
+  -moz-box-shadow: 1px 1px 30px 0px rgba(0,0,0,0.42);
+  box-shadow: 1px 1px 30px 0px rgba(0,0,0,0.42);
+}
