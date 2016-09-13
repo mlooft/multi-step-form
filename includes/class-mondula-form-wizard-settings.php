@@ -27,7 +27,7 @@ class Mondula_Form_Wizard_Settings {
     function get_settings_sections() {
         $sections = array(
             array(
-                'id' => 'wedevs_basics',
+                'id' => 'fw_settings_basic',
                 'title' => __( 'Basic Settings', 'wedevs' )
             ),
             array(
@@ -48,85 +48,86 @@ class Mondula_Form_Wizard_Settings {
      */
     function get_settings_fields() {
         $settings_fields = array(
-            'wedevs_basics' => array(
+            'fw_settings_basic' => array(
+                // array(
+                //     'name'              => 'text_val',
+                //     'label'             => __( 'Text Input', 'wedevs' ),
+                //     'desc'              => __( 'Text input description', 'wedevs' ),
+                //     'type'              => 'text',
+                //     'default'           => 'Title',
+                //     'sanitize_callback' => 'intval'
+                // ),
+                // array(
+                //     'name'              => 'number_input',
+                //     'label'             => __( 'Number Input', 'wedevs' ),
+                //     'desc'              => __( 'Number field with validation callback `intval`', 'wedevs' ),
+                //     'type'              => 'number',
+                //     'default'           => 'Title',
+                //     'sanitize_callback' => 'intval'
+                // ),
+                // array(
+                //     'name'  => 'textarea',
+                //     'label' => __( 'Textarea Input', 'wedevs' ),
+                //     'desc'  => __( 'Textarea description', 'wedevs' ),
+                //     'type'  => 'textarea'
+                // ),
                 array(
-                    'name'              => 'text_val',
-                    'label'             => __( 'Text Input', 'wedevs' ),
-                    'desc'              => __( 'Text input description', 'wedevs' ),
-                    'type'              => 'text',
-                    'default'           => 'Title',
-                    'sanitize_callback' => 'intval'
-                ),
-                array(
-                    'name'              => 'number_input',
-                    'label'             => __( 'Number Input', 'wedevs' ),
-                    'desc'              => __( 'Number field with validation callback `intval`', 'wedevs' ),
-                    'type'              => 'number',
-                    'default'           => 'Title',
-                    'sanitize_callback' => 'intval'
-                ),
-                array(
-                    'name'  => 'textarea',
-                    'label' => __( 'Textarea Input', 'wedevs' ),
-                    'desc'  => __( 'Textarea description', 'wedevs' ),
-                    'type'  => 'textarea'
-                ),
-                array(
-                    'name'  => 'checkbox',
-                    'label' => __( 'Checkbox', 'wedevs' ),
-                    'desc'  => __( 'Checkbox Label', 'wedevs' ),
-                    'type'  => 'checkbox'
-                ),
-                array(
-                    'name'    => 'radio',
-                    'label'   => __( 'Radio Button', 'wedevs' ),
-                    'desc'    => __( 'A radio button', 'wedevs' ),
+                    'name'    => 'mailformat',
+                    'label'   => __( 'Mail Format', 'wedevs' ),
+                    'desc'    => __( 'Choose formatting for form emails', 'wedevs' ),
                     'type'    => 'radio',
                     'options' => array(
-                        'yes' => 'Yes',
-                        'no'  => 'No'
+                        'html' => 'HTML',
+                        'text'  => 'Plain Text'
                     )
                 ),
                 array(
-                    'name'    => 'multicheck',
-                    'label'   => __( 'Multile checkbox', 'wedevs' ),
-                    'desc'    => __( 'Multi checkbox description', 'wedevs' ),
-                    'type'    => 'multicheck',
-                    'options' => array(
-                        'one'   => 'One',
-                        'two'   => 'Two',
-                        'three' => 'Three',
-                        'four'  => 'Four'
-                    )
-                ),
-                array(
-                    'name'    => 'selectbox',
-                    'label'   => __( 'A Dropdown', 'wedevs' ),
-                    'desc'    => __( 'Dropdown description', 'wedevs' ),
-                    'type'    => 'select',
-                    'default' => 'no',
-                    'options' => array(
-                        'yes' => 'Yes',
-                        'no'  => 'No'
-                    )
-                ),
-                array(
-                    'name'    => 'password',
-                    'label'   => __( 'Password', 'wedevs' ),
-                    'desc'    => __( 'Password description', 'wedevs' ),
-                    'type'    => 'password',
-                    'default' => ''
-                ),
-                array(
-                    'name'    => 'file',
-                    'label'   => __( 'File', 'wedevs' ),
-                    'desc'    => __( 'File description', 'wedevs' ),
-                    'type'    => 'file',
-                    'default' => '',
-                    'options' => array(
-                        'button_label' => 'Choose Image'
-                    )
+                    'name'  => 'showsummary',
+                    'label' => __( 'Summary', 'wedevs' ),
+                    'desc'  => __( 'Display Summary at the end of each form', 'wedevs' ),
+                    'type'  => 'checkbox',
+                    'default' => 'on'
                 )
+                // array(
+                //     'name'    => 'multicheck',
+                //     'label'   => __( 'Multile checkbox', 'wedevs' ),
+                //     'desc'    => __( 'Multi checkbox description', 'wedevs' ),
+                //     'type'    => 'multicheck',
+                //     'options' => array(
+                //         'one'   => 'One',
+                //         'two'   => 'Two',
+                //         'three' => 'Three',
+                //         'four'  => 'Four'
+                //     )
+                // ),
+                // array(
+                //     'name'    => 'selectbox',
+                //     'label'   => __( 'A Dropdown', 'wedevs' ),
+                //     'desc'    => __( 'Dropdown description', 'wedevs' ),
+                //     'type'    => 'select',
+                //     'default' => 'no',
+                //     'options' => array(
+                //         'yes' => 'Yes',
+                //         'no'  => 'No'
+                //     )
+                // ),
+                // array(
+                //     'name'    => 'password',
+                //     'label'   => __( 'Password', 'wedevs' ),
+                //     'desc'    => __( 'Password description', 'wedevs' ),
+                //     'type'    => 'password',
+                //     'default' => ''
+                // ),
+                // array(
+                //     'name'    => 'file',
+                //     'label'   => __( 'File', 'wedevs' ),
+                //     'desc'    => __( 'File description', 'wedevs' ),
+                //     'type'    => 'file',
+                //     'default' => '',
+                //     'options' => array(
+                //         'button_label' => 'Choose Image'
+                //     )
+                // )
             ),
             'fw_settings_styling' => array(
                 array(

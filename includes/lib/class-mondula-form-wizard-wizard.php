@@ -42,7 +42,7 @@ class Mondula_Form_Wizard_Wizard {
         return '';
     }
 
-    private function fw_get_option($option, $section, $default = '') {
+    public static function fw_get_option($option, $section, $default = '') {
       $options = get_option($section);
       if ( isset( $options[$option] ) )
 		    echo $options[$option];
