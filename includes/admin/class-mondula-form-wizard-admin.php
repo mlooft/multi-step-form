@@ -146,7 +146,6 @@ class Mondula_Form_Wizard_Admin {
     }
 
     public function edit( $id ) {
-        echo esc_url( add_query_arg( array('edit' => '') ) );
         add_thickbox();
         ?>
         <div class="wrap">
