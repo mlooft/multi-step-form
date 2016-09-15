@@ -42,6 +42,9 @@
 .thickbox > i.fa.fa-plus {
     font-size: 1.5em;
 }
+.fa-caret-down, .fa-caret-right {
+  cursor: pointer;
+}
 .fw-add-element .fw-add-element-button {
     visibility: hidden
 }
