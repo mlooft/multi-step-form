@@ -125,7 +125,7 @@
     border-left: 8px solid green;
 }
 .fw-step-block[data-type="submit"] {
-    border-left: 8px solid #0085ba;
+    border-left: 8px solid #00255a;
 }
 .fw-column-buttons {
     display: none;
@@ -173,11 +173,11 @@ button.fw-radio-add.button-secondary {
 }
 .fw-block-heading {
   font-size: 18px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 .fw-block-heading > h4 {
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   margin-top: 0px;
 }
 .fw-block-hndle{
