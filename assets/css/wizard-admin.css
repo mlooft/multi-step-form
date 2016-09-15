@@ -16,14 +16,17 @@
 .fw-wizard-container .meta-box-sortables {
     min-height: 200px
 }
-.fw-movediv {
+.fw-movediv, .fw-collapsediv {
+    font-size: 16px;
     float: left;
     width: 27px;
     height: 30px;
-    padding-top: 11px;
+    padding-top: 14px;
+    padding-left: 5px;
     text-align: center
 }
 .fw-trashdiv {
+    font-size: 16px;
     float: right;
     width: 27px;
     height: 30px;
@@ -59,6 +62,12 @@
 }
 .fw-step-part {
     float: left
+}
+.fw-step-h1 {
+  float:left;
+}
+.fw-step-h1 > span{
+  padding-left: 10px!important;
 }
 .fw-clearfix {
     clear: both
