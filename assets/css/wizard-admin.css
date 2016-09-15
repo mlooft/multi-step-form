@@ -198,3 +198,9 @@ div#TB_ajaxContent > div {
   -moz-box-shadow: 1px 1px 30px 0px rgba(0,0,0,0.42);
   box-shadow: 1px 1px 30px 0px rgba(0,0,0,0.42);
 }
+.fw-block-placeholder {
+  display: block;
+  height: 25px;
+  background-color: #dadada;
+  border: 4px dashed #0085ba;
+}
