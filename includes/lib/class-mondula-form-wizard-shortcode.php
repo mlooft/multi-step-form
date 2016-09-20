@@ -79,13 +79,19 @@ class Mondula_Form_Wizard_Shortcode {
 
         if ( wp_verify_nonce( $nonce, $this->_token) ) {
             if ( ! empty( $data ) ) {
-                // add_filter( 'wp_mail_content_type', array( $this , 'set_html_content_type' ) );
-
-                $content = $wizard->render_mail( $data, $name, $email );
+                $mailformat = Mondula_Form_Wizard_Wizard::fw_get_option('mailformat' ,'fw_settings_basic', 'true');
+                $content = $wizard->render_mail( $data, $name, $email, $mailformat);
                 $maildata = $wizard->get_maildata();
-                $mail = wp_mail( $maildata['to'], $maildata['subject'], $content );
 
-                // remove_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
+                if($mailformat == "html") {
+                  add_filter( 'wp_mail_content_type', array( $this , 'set_html_content_type' ) );
+                  $headers = array('Content-Type: text/html; charset=UTF-8');
+                } else {
+                  $headers = array('Content-Type: text/plain; charset=UTF-8');
+                }
+                $mail = wp_mail( $maildata['to'], $maildata['subject'], $content , $headers);
+
+                remove_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
 
                 if ( ! $mail ) {
                     var_dump( $phpmailer->ErrorInfo );

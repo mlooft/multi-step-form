@@ -45,7 +45,7 @@ class Mondula_Form_Wizard_Wizard {
     public static function fw_get_option($option, $section, $default = '') {
       $options = get_option($section);
       if ( isset( $options[$option] ) )
-		    echo $options[$option];
+		    return $options[$option];
 	    else
 		    return $default;
     }
@@ -213,12 +213,25 @@ class Mondula_Form_Wizard_Wizard {
 
     private function render_header_html () {
         ?>
-        <div><?php echo $this->_maildata['header']?></div>
+        <html><body>
+        <h3><?php echo $this->_maildata['header']?></h3>
+        <table rules="all" style="border-color: #dadada;" cellpadding="10">
         <?php
     }
 
     private function render_header () {
         echo $this->_maildata['header'] . PHP_EOL . PHP_EOL;
+    }
+
+    private function render_body_html( $data, $name, $email ){
+      foreach ( $data as $key => $value ) {
+          echo "<tr style='background: #eee;'><td><strong>" . $key . "</strong> </td></tr>";
+          foreach ( $value as $value2 ) {
+              foreach ( $value2 as $key2 => $value3 ) {
+                  echo "<tr><td><strong>". $key2 ."</strong></td><td>". $value3 ."</td></tr>  ";
+              }
+          }
+      }
     }
 
     private function render_body ( $data, $name, $email ) {
@@ -228,9 +241,6 @@ class Mondula_Form_Wizard_Wizard {
                 foreach ( $value2 as $key2 => $value3 ) {
                     echo "\t" . $key2 . " - " . $value3 . PHP_EOL;
                 }
-
-//                $step = $this->_steps[$key];
-//                $step[$key2]->render_mail( $value2 );
             }
             echo PHP_EOL;
         }
@@ -247,15 +257,23 @@ class Mondula_Form_Wizard_Wizard {
     // TODO html mail footer
     private function render_footer_html() {
        ?>
-       <div>End of form submission</div>
+       </table>
+       </body></html>
        <?php
     }
 
-    public function render_mail ( $data, $name, $email ) {
-        ob_start();
-        $this->render_header();
-        $this->render_body( $data, $name, $email );
-        $this->render_footer();
+    public function render_mail ( $data, $name, $email, $mailformat ) {
+        if ($mailformat == 'text') {
+          ob_start();
+          $this->render_header();
+          $this->render_body( $data, $name, $email );
+          $this->render_footer();
+        } else {
+          ob_start();
+          $this->render_header_html();
+          $this->render_body_html( $data, $name, $email );
+          $this->render_footer_html();
+        }
         $result = ob_get_contents();
         ob_end_clean();
         return $result;
