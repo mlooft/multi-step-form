@@ -216,3 +216,6 @@ div#TB_ajaxContent > div {
   background-color: #dadada;
   border: 4px dashed #0085ba;
 }
+p.fw-block-spoiler {
+    margin: 5px 10px 0;
+}

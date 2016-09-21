@@ -29,7 +29,11 @@
     }
 
     function renderBlockHeading(heading){
-      var headingHtml = '<div class="fw-block-heading"><i class="fa fa-caret-down" aria-hidden="true"></i><h4 class="fw-block-hndle">' + '&nbsp;' + heading + '</h4></div>';
+      var headingHtml = '<div class="fw-block-heading">';
+      headingHtml += '<i class="fa fa-caret-down" aria-hidden="true"></i>';
+      headingHtml += '<h4 class="fw-block-hndle">&nbsp;' + heading + '</h4>';
+      headingHtml += '</div>';
+      headingHtml += '<p class="fw-block-spoiler" style="display:none"></p>';
       return headingHtml;
     }
 
@@ -40,7 +44,7 @@
      */
     function renderRadioHeader(radioHeader) {
         var radioHeaderHtml = '<div class="fw-radio-option-element" data-type="header"><label>Label</label>';
-        radioHeaderHtml += '<input type="text" class="fw-radio-header" value="' + radioHeader + '"></input>'
+        radioHeaderHtml += '<input type="text" class="fw-radio-header fw-block-label" value="' + radioHeader + '"></input>'
         radioHeaderHtml += '</div>';
         return radioHeaderHtml;
     }
@@ -98,7 +102,7 @@
         var textHtml;
         textHtml = renderBlockHeading('Checkbox');
         textHtml += '<p>This is a checkbox. Please specify a label below.</p>';
-        textHtml += '<input type="text" class="fw-text-label" placeholder="Label" value="' + block.label + '"></input><br/>';
+        textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
         textHtml += '<input type="checkbox" class="fw-required"'+ checkRequired(block) + '/><label>require checked</label>'
         return textHtml;
     }
@@ -108,7 +112,7 @@
         var textHtml;
         textHtml = renderBlockHeading('Text Field');
         textHtml += '<p>This is a text field. Please specify a label below.</p>';
-        textHtml += '<input type="text" class="fw-text-label" placeholder="Label" value="' + block.label + '"></input><br/>';
+        textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
         textHtml += '<input type="checkbox" class="fw-required"'+ checkRequired(block) + '/><label>required</label>'
         return textHtml;
     }
@@ -118,7 +122,7 @@
         var textAreaHtml;
         textAreaHtml = renderBlockHeading('Text Area');
         textAreaHtml += '<p>This is a text area. Please specify a label below.</p>';
-        textAreaHtml += '<input type="text" class="fw-textarea-label" placeholder="Label" value="' + block.label + '"></input><br/>';
+        textAreaHtml += '<input type="text" class="fw-textarea-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
         textAreaHtml += '<input type="checkbox" class="fw-required"'+ checkRequired(block) + '/><label>required</label>'
         return textAreaHtml;
     }
@@ -358,7 +362,6 @@
      */
     function getBlockData($block) {
         var block = {};
-
         var type = block['type'] = $block.attr('data-type');
         switch (type) {
             case 'radio':
@@ -375,9 +378,7 @@
                 break;
             case 'submit':
                 break;
-                // TODO add other elements here
         }
-
         return block;
     }
 
@@ -752,6 +753,9 @@
       });
 
       $('.fw-block-heading > i').unbind('click').click(function(e) {
+        var $block = $(this).parent().parent();
+        var blockLabel = $block.find('.fw-block-label').val();
+        $block.find('.fw-block-spoiler').text(blockLabel);
         $(this).parent().siblings().toggle();
         $(this).toggleClass('fa-caret-right');
       });
