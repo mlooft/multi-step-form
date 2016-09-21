@@ -69,7 +69,7 @@
     margin-bottom: 25px;
     font-family: 'Raleway', 'Georgia';
     font-weight: 400;
-    font-size: 22px;
+    font-size: 2em;
     color:#57aed1;
     text-shadow: 0em 0.015em #fff;
 }
@@ -85,8 +85,6 @@
 .fw-text-input {
     font-family: inherit;
     width: 88%;
-    margin: 0 0 15px;
-    padding: 18px 6%;
     border: 0;
     outline: 0;
     font-size: 13px;
@@ -226,6 +224,7 @@ input.fw-text-input {
 
 span.fw-radio-row {
 	display: block;
+  padding-right: 10px;
 }
 
 }

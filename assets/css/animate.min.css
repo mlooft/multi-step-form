@@ -1,5 +1,5 @@
 @media screen and (min-width:1023px){.fw-wizard-step{position:relative;display:block;height:0;overflow:hidden;opacity:0;margin-right:0;-webkit-transition:opacity 1.2s linear}
-.fw-wizard-step.fw-current{display:block;height:auto;width:100%;padding:30px;overflow:visible;opacity:1;-webkit-transition:opacity 1.2s linear;transition:opacity 1.2s linear}
+.fw-wizard-step.fw-current{display:block;height:auto;width:100%;padding:10px 0;overflow:visible;opacity:1;-webkit-transition:opacity 1.2s linear;transition:opacity 1.2s linear}
 .fw-wizard-step .fw-step-part:nth-of-type(1){position:relative;left:-4%;-webkit-transition:left .8s linear;transition:left .8s linear}
 .fw-wizard-step .fw-step-part:nth-of-type(2){position:relative;right:-4%;-webkit-transition:right .8s linear;transition:right .8s linear}
 .fw-wizard-step.fw-current .fw-step-part:nth-of-type(1){left:0}.fw-wizard-step.fw-current .fw-step-part:nth-of-type(2){right:0}

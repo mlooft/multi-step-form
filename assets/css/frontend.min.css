@@ -3,9 +3,9 @@
 .fw-block-header{font-size:120%}.fw-step-block{margin-bottom:20px}.fw-wizard label{font-size:110%}
 .fw-wizard-step{display:none}.fw-wizard-step-header{height:0;overflow:hidden}.fw-wizard-step-header.fw-current{height:auto}
 .fw-wizard-step.fw-current{display:block}.fw-step-part{float:left;width:100%}.fw-step-title{font-family:'Raleway','Georgia';font-weight:400;font-size:25px;color:#57aed1;text-shadow:0 .015em #fff}
-.fw-step-part-title{width:100%;float:left;margin-bottom:25px;font-family:'Raleway','Georgia';font-weight:400;font-size:22px;color:#57aed1;text-shadow:0 .015em #fff}
+.fw-step-part-title{width:100%;float:left;margin-bottom:25px;font-family:'Raleway','Georgia';font-weight:400;font-size:2em;color:#57aed1;text-shadow:0 .015em #fff}
 .fw-step-part-title.fw-title-hidden{visibility:hidden}.fw-input-container{padding:10px}
-.fw-text-input{font-family:inherit;width:88%;margin:0 0 15px;padding:18px 6%;border:0;outline:0;font-size:13px;background-color:#fff;color:#91003e}
+.fw-text-input{font-family:inherit;width:88%;border:0;outline:0;font-size:13px;background-color:#fff;color:#91003e}
 .fw-text-input:focus{color:#fff;background-color:#080808}.fw-wizard-buttons button,.fw-btn-submit{height:39px;line-height:39px;padding:0 22px;font-size:11px;color:#fff;border:0;background-color:#57aed1}
 .fw-wizard-buttons button:hover,.fw-btn-submit:hover{color:#fff;background-color:#4891ae;border-color:#4891ae}
 .fw-wizard-buttons button:focus,.fw-btn-submit:focus{outline-width:0}.fw-btn-submit{float:right}
@@ -16,7 +16,7 @@ p.fw-step-summary{font-size:110%;margin-bottom:10px;margin-left:0}.fw-conditiona
 input.fw-text-input{border:1px solid #ddd}.fw-input-container{padding:0}.fw-input-container.fw-first{margin-right:15px}
 .fw-btn-submit{float:none;width:100%;background:#fff;color:#333;cursor:pointer;padding-bottom:15px;border:1px solid #ddd;text-transform:uppercase}
 .fw-one_half label{color:#57aed1}.fw-radio-row label{color:#777}.fw-btn-submit:hover{float:none;width:100%;background:#fff;border:1px solid #ddd;color:#333}
-.fw-text-input:focus{background-color:#57aed1 !important;color:#fff !important}@media screen and (max-width:700px){span.fw-radio-row{display:block}
+.fw-text-input:focus{background-color:#57aed1 !important;color:#fff !important}@media screen and (max-width:700px){span.fw-radio-row{display:block;padding-right:10px}
 }.fw-step-part-body .fw-step-summary-part{background:#fff none repeat scroll 0 0;border:1px solid #ddd;margin-top:40px;margin-bottom:40px;padding-bottom:20px;padding-left:20px}
 @media all and (min-width:1023px){.fw-wizard-buttons,.fw-progress-bar-container{margin-left:auto;margin-right:auto;margin-top:0;width:1100px}
 }.fw-wizard-buttons{margin-top:30px}p.fw-copytext{margin-bottom:30px !important}.fw-wizard-step-header h2{font-size:26px;margin-bottom:15px}
