@@ -74,13 +74,10 @@ class Mondula_Form_Wizard_Admin {
                 'json' => $json
             );
             wp_localize_script( $this->_token . '-wizard-admin', 'wizard', $ajax ); // array( 'i18n' => $i18n, 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'json' => $json ) );
-
             wp_enqueue_script( $this->_token . '-wizard-admin');
 
-            wp_register_style( $this->_token . '-wizard-admin', esc_url( $this->_assets_url ) . 'css/wizard-admin.min.css', array(), $this->_version );
+            wp_register_style( $this->_token . '-wizard-admin', esc_url( $this->_assets_url ) . 'css/wizard-admin'. $this->_script_suffix. '.css', array(), $this->_version );
             wp_enqueue_style( $this->_token . '-wizard-admin' );
-
-            // wp_enqueue_style( 'wp-jquery-ui-dialog' );
         }
     }
 
