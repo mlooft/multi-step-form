@@ -77,7 +77,7 @@ class Mondula_Form_Wizard_Admin {
 
             wp_enqueue_script( $this->_token . '-wizard-admin');
 
-            wp_register_style( $this->_token . '-wizard-admin', esc_url( $this->_assets_url ) . 'css/wizard-admin.css', array(), $this->_version );
+            wp_register_style( $this->_token . '-wizard-admin', esc_url( $this->_assets_url ) . 'css/wizard-admin.min.css', array(), $this->_version );
             wp_enqueue_style( $this->_token . '-wizard-admin' );
 
             // wp_enqueue_style( 'wp-jquery-ui-dialog' );
