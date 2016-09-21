@@ -30,15 +30,8 @@ gulp.task('css', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('assets/js/javascripts/*.js', ['javascripts']);
-
-    gulp.watch('**', ['sync']).on('change', function (evt) {
-        if (evt.type === 'deleted') {
-            grunt.log(evt);
-        }
-    });
+    gulp.watch('assets/js/*.js', ['js']);
+    gulp.watch('assets/css/*.js', ['css']);
 });
 
-
-
-gulp.task('default', ['javascripts', 'uglify', 'watch', 'sync']);
+gulp.task('default', ['js', 'css', 'watch']);
