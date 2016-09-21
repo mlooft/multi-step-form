@@ -717,15 +717,14 @@
       });
 
       // add part handler
-      $('.fw-add-part').click(function(event) {
+      $('.fw-add-part').unbind( "click" ).click(function(event) {
           addPart(event);
           setupDragNDrop();
       });
 
-      $('.fw-collapsediv').click(function(event) {
+      $('.fw-collapsediv').unbind( "click" ).click(function(event) {
           $(this).parent().find('.fw-step').slideToggle();
           $(this).find('.fa').toggleClass('fa-caret-right');
-
       });
 
       // remove part handler
