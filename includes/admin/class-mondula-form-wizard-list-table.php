@@ -43,6 +43,7 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
            'cb' => '<input type="checkbox" />',
            'title' => 'Title',
            'shortcode' => 'Shortcode',
+           'sendto' => 'Send to',
            'date' => 'Date'
        );
        return $columns;
@@ -52,13 +53,17 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
         switch( $column_name ) {
             case 'title':
                 $actions = array(
-                    'EDit' => '<a href="#"></a>'
+                    'Edit' => '<a href="#"></a>'
                 );
                 $this->row_actions( $actions );
             case 'date':
                 return $item[ $column_name ];
             case 'shortcode':
                 return '[wizard id="' .  $item['id'] .'"]';
+            case 'sendto':
+                $wiz = unserialize( $item['wizard'] );
+                $maildata = call_user_func(array($wiz, 'get_maildata'));
+                return $maildata['to'];
             default:
                 return print_r( $item, true );
         }
