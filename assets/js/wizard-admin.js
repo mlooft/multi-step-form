@@ -28,6 +28,11 @@
           .fadeOut('slow');
     }
 
+    function renderBlockHeading(heading){
+      var headingHtml = '<div class="fw-block-heading"><i class="fa fa-caret-down" aria-hidden="true"></i><h4 class="fw-block-hndle">' + '&nbsp;' + heading + '</h4></div>';
+      return headingHtml;
+    }
+
     /**
      * renderRadioHeader - renders the header for radio
      *
@@ -61,7 +66,7 @@
         var i, n, optCount = 0;
         var radioHtml = '';
         var element;
-        radioHtml += '<div class="fw-block-heading"><i class="fa fa-caret-down" aria-hidden="true"></i><h4 class="fw-block-hndle">' + '&nbsp;' + wizard.i18n.radioHeading + '</h4></div>'
+        radioHtml += renderBlockHeading(wizard.i18n.radioHeading);
             // elements
         radioHtml += '<div class="fw-radio-option-container">';
         for (i = 0, n = radio.elements.length; i < n; i++) {
@@ -91,7 +96,7 @@
     function renderCheckbox(block) {
         log('checkbox', block);
         var textHtml;
-        textHtml = '<div class="fw-block-heading"><i class="fa fa-caret-down" aria-hidden="true"></i><h4 class="fw-block-hndle">' + '&nbsp;' +'Checkbox</h4></div>';
+        textHtml = renderBlockHeading('Checkbox');
         textHtml += '<p>This is a checkbox. Please specify a label below.</p>';
         textHtml += '<input type="text" class="fw-text-label" placeholder="Label" value="' + block.label + '"></input><br/>';
         textHtml += '<input type="checkbox" class="fw-required"'+ checkRequired(block) + '/><label>require checked</label>'
@@ -101,8 +106,7 @@
     function renderTextInput(block) {
         log('textInput', block);
         var textHtml;
-        textHtml = '<div class="fw-block-heading"><i class="fa fa-caret-down" aria-hidden="true"></i><h4 class="fw-block-hndle">' + '&nbsp;' +'Text field </h4>';
-        textHtml += '</div>'
+        textHtml = renderBlockHeading('Text Field');
         textHtml += '<p>This is a text field. Please specify a label below.</p>';
         textHtml += '<input type="text" class="fw-text-label" placeholder="Label" value="' + block.label + '"></input><br/>';
         textHtml += '<input type="checkbox" class="fw-required"'+ checkRequired(block) + '/><label>required</label>'
@@ -112,7 +116,7 @@
     function renderTextArea(block) {
         log('textArea', block);
         var textAreaHtml;
-        textAreaHtml = '<div class="fw-block-heading"><i class="fa fa-caret-down" aria-hidden="true"></i><h4 class="fw-block-hndle">' + '&nbsp;' +'Text area</h4></div>';
+        textAreaHtml = renderBlockHeading('Text Area');
         textAreaHtml += '<p>This is a text area. Please specify a label below.</p>';
         textAreaHtml += '<input type="text" class="fw-textarea-label" placeholder="Label" value="' + block.label + '"></input><br/>';
         textAreaHtml += '<input type="checkbox" class="fw-required"'+ checkRequired(block) + '/><label>required</label>'
