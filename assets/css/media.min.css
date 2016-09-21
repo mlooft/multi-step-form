@@ -1,0 +1,6 @@
+.fw-container{margin-right:auto;margin-left:auto;width:100%}@media screen and (max-width:1200px){.fw-container{margin-right:auto;margin-left:auto;width:100%}
+}@media screen and (max-width:1000px){.fw-container{margin-right:auto;margin-left:auto;width:768px}
+}@media screen and (max-width:768px){.fw-container{margin-right:auto;margin-left:auto;width:600px}
+}@media screen and (max-width:600px){.fw-container{margin-right:auto;margin-left:auto;width:420px}
+}@media screen and (max-width:480px){.fw-container{margin-right:auto;margin-left:auto;width:300px}
+}
