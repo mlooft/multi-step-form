@@ -18,7 +18,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('css', function () {
-  gulp.src(['assets/css/*.css', '!assets/js/*.min.css'])
+  gulp.src(['assets/css/*.css', '!assets/css/*.min.css'])
     .pipe(uglifycss({
       "maxLineLen": 80,
       "uglyComments": true
