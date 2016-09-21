@@ -43,7 +43,7 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
            'cb' => '<input type="checkbox" />',
            'title' => 'Title',
            'shortcode' => 'Shortcode',
-           'sendto' => 'Send to',
+           'sendto' => 'Send mails to',
            'date' => 'Date'
        );
        return $columns;
