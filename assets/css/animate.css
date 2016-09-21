@@ -12,7 +12,7 @@
         display: block;
         height: auto;
         width: 100%;
-        padding: 30px;
+        padding: 10px 0;
         overflow: visible;
         opacity: 1;
         -webkit-transition: opacity 1.2s linear;
