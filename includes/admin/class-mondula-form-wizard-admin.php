@@ -197,6 +197,7 @@ class Mondula_Form_Wizard_Admin {
                                     <a class="fw-draggable-block fw-element-text button-secondary" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
                                     <a class="fw-draggable-block fw-element-textarea button-secondary" data-type="textarea"><i class="fa fa-arrows"></i> Text Area</a>
                                     <a class="fw-draggable-block fw-element-submit button-secondary" data-type="submit"><i class="fa fa-arrows"></i> Submit</a>
+                                    <div class="fw-draggable-block fw-element-submit button-secondary" data-type="submit"><div class="fw-buttonlabel">Submit</div></div>
                                 </div>
                                 <div class="fw-actions">
                                     <button class="button button-primary button-large fw-button-save"><?php _e( 'Save' ) ?></button>
