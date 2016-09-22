@@ -104,28 +104,12 @@
     width: 90%;
     background-color: #F5F5F5;
     border: 1px solid #e0e0e0;
-    -webkit-box-shadow: 5px 5px 10px 0px rgba(219, 219, 219, 1);
-    -moz-box-shadow: 5px 5px 10px 0px rgba(219, 219, 219, 1);
-    box-shadow: 5px 5px 10px 0px rgba(219, 219, 219, 1);
 }
 .fw-step-block {
-  padding: 10px;
+  overflow: hidden;
   margin: 25px 10px;
-}
-.fw-step-block[data-type="radio"] {
-    border-left: 8px solid mediumaquamarine;
-}
-.fw-step-block[data-type="checkbox"] {
-    border-left: 8px solid #0085ba;
-}
-.fw-step-block[data-type="text"] {
-    border-left: 8px solid crimson;
-}
-.fw-step-block[data-type="textarea"] {
-    border-left: 8px solid green;
-}
-.fw-step-block[data-type="submit"] {
-    border-left: 8px solid #00255a;
+  border: 1px solid #dadada;
+
 }
 .fw-column-buttons {
     display: none;
@@ -149,10 +133,6 @@ a.fw-add-part.button-secondary {
 .fw-remove-part {
     color: crimson;
     float: right;
-}
-.fw-remove-block {
-  color: crimson;
-  float: right;
 }
 .fw-remove-radio-option {
   display: inline-block;
@@ -216,6 +196,59 @@ div#TB_ajaxContent > div {
   background-color: #dadada;
   border: 4px dashed #0085ba;
 }
-p.fw-block-spoiler {
-    margin: 5px 10px 0;
+.fw-step-block[data-type="text"] > .fw-block-action {
+  background-color: #CE1836;
+}
+.fw-step-block[data-type="textarea"] > .fw-block-action {
+  background-color: #EDB92E;
+}
+.fw-step-block[data-type="checkbox"] > .fw-block-action {
+  background-color: #F85931;
+}
+.fw-step-block[data-type="radio"] > .fw-block-action {
+  background-color: #009989;
+}
+.fw-step-block[data-type="submit"] > .fw-block-action {
+  background-color: #A3A948;
+}
+input.fw-required {
+    float: left;
+    margin-top: 2px;
+}
+.fw-block-action {
+  float: left;
+  background-color: crimson;
+  width: 5%;
+  padding-bottom: 500em;
+  margin-bottom: -500em;
+}
+.fw-toggle-block, .fw-move-block, .fw-remove-block {
+  float: left;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+.fa-remove.fw-remove-block {
+  margin-top: 10px;
+}
+.fw-block-action > h4 {
+  float: left;
+  font-size: 11px;
+  width: 100%;
+  color: white;
+  transform: rotate(90deg);
+  text-transform: uppercase;
+  margin-bottom: 100%;
+}
+.fw-block-action > i {
+    margin: 3px 0px;
+}
+.fw-block-fields {
+  float:left;
+  width: 80%;
+  margin-left: 15px;
+}
+.fw-block-fields > label {
+    font-weight: 600;
+    margin-left: 3px;
 }

@@ -28,12 +28,14 @@
           .fadeOut('slow');
     }
 
-    function renderBlockHeading(heading){
-      var headingHtml = '<div class="fw-block-heading">';
-      headingHtml += '<i class="fa fa-caret-down" aria-hidden="true"></i>';
-      headingHtml += '<h4 class="fw-block-hndle">&nbsp;' + heading + '</h4>';
+    function renderBlockAction(type){
+
+      var headingHtml = '<div class="fw-block-action">';
+      headingHtml += '<i class="fa fa-remove fw-remove-block" title="remove element" aria-hidden="true"></i>'
+      headingHtml += '<i class="fa fa-caret-down fw-toggle-block" aria-hidden="true"></i>';
+      headingHtml += '<i class="fa fa-arrows fw-move-block" aria-hidden="true"></i>';
+      headingHtml += '<h4 class="fw-block-hndle">&nbsp;' + type + '</h4>';
       headingHtml += '</div>';
-      headingHtml += '<p class="fw-block-spoiler" style="display:none"></p>';
       return headingHtml;
     }
 
@@ -70,7 +72,6 @@
         var i, n, optCount = 0;
         var radioHtml = '';
         var element;
-        radioHtml += renderBlockHeading(wizard.i18n.radioHeading);
             // elements
         radioHtml += '<div class="fw-radio-option-container">';
         for (i = 0, n = radio.elements.length; i < n; i++) {
@@ -94,14 +95,13 @@
     }
 
     function renderSubmit(block) {
-        return '<div class="fw-block-heading"><i class="fa fa-caret-down" aria-hidden="true"></i><h4 class="fw-block-hndle">' + '&nbsp;' + 'Form Submit</h4></div><p>Contains a field for name and email</p>';
+        return '<p>Contains a field for name and email</p>';
     }
 
     function renderCheckbox(block) {
         log('checkbox', block);
-        var textHtml;
-        textHtml = renderBlockHeading('Checkbox');
-        textHtml += '<p>This is a checkbox. Please specify a label below.</p>';
+        var textHtml = '';
+        textHtml += '<label>Label</label>';
         textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
         textHtml += '<input type="checkbox" class="fw-required"'+ checkRequired(block) + '/><label>require checked</label>'
         return textHtml;
@@ -109,9 +109,8 @@
 
     function renderTextInput(block) {
         log('textInput', block);
-        var textHtml;
-        textHtml = renderBlockHeading('Text Field');
-        textHtml += '<p>This is a text field. Please specify a label below.</p>';
+        var textHtml = '';
+        textHtml += '<label>Label</label>';
         textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
         textHtml += '<input type="checkbox" class="fw-required"'+ checkRequired(block) + '/><label>required</label>'
         return textHtml;
@@ -119,9 +118,8 @@
 
     function renderTextArea(block) {
         log('textArea', block);
-        var textAreaHtml;
-        textAreaHtml = renderBlockHeading('Text Area');
-        textAreaHtml += '<p>This is a text area. Please specify a label below.</p>';
+        var textAreaHtml = '';
+        textAreaHtml += '<label>Label</label>';
         textAreaHtml += '<input type="text" class="fw-textarea-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
         textAreaHtml += '<input type="checkbox" class="fw-required"'+ checkRequired(block) + '/><label>required</label>'
         return textAreaHtml;
@@ -132,9 +130,8 @@
         var error = false;
         var blockHtml = '<div class="fw-step-block" data-type="' + block.type + '" >';
         // removepart button
-        blockHtml += '<div class="fw-remove-block" title="remove element">'
-        blockHtml += '<i class="fa fa-times"></i>'
-        blockHtml += '</div>'
+        blockHtml += renderBlockAction(block.type);
+        blockHtml += '<div class="fw-block-fields">'
         switch (block.type) {
             case 'radio':
                 if (!block.elements) {
@@ -168,6 +165,8 @@
             default:
                 break;
         }
+        blockHtml += '</div>';
+        blockHtml += '<div class="fw-clearfix"></div>';
         blockHtml += '</div>';
         if (error) {
           blockHtml = '';
