@@ -28,11 +28,11 @@
     }
 
     function renderBlockAction(type){
-      var headingHtml = '<div class="fw-block-action">';
+      var headingHtml = '<div class="fw-block-action fw-block-hndle">';
       headingHtml += '<i class="fa fa-remove fw-remove-block" title="remove element" aria-hidden="true"></i>'
       headingHtml += '<i class="fa fa-caret-down fw-toggle-block" aria-hidden="true"></i>';
-      headingHtml += '<i class="fa fa-arrows fw-move-block" aria-hidden="true"></i>';
-      headingHtml += '<h4 class="fw-block-hndle">&nbsp;' + type.substring(0,5) + '</h4>';
+      headingHtml += '<i class="fa fa-arrows fw-move-block fw-block-hndle" aria-hidden="true"></i>';
+      headingHtml += '<h4>&nbsp;' + type.substring(0,5) + '</h4>';
       headingHtml += '</div>';
       return headingHtml;
     }

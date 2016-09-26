@@ -386,13 +386,13 @@ ul.fw-progress-bar a {
 div[data-required="true"]:not([data-type="fw-radio"]) label:after {
   content: "*";
   color: red;
-  font-size: 20px;
+  font-size: 25px
 }
 
 div[data-type="fw-radio"][data-required="true"] .fw-block-header:after {
   content: "*";
   color: red;
-  font-size: 20px;
+  font-size: 25px
 }
 
 @media all and (min-width: 800px) {
