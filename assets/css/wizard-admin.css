@@ -107,7 +107,7 @@
 }
 .fw-step-block {
   overflow: hidden;
-  margin: 25px 10px;
+  margin: 10px;
   border: 1px solid #dadada;
 
 }
@@ -192,6 +192,7 @@ div#TB_ajaxContent > div {
 }
 .fw-block-placeholder {
   display: block;
+  margin: 10px;
   height: 100px;
   background-color: #dadada;
   border: 4px dashed #0085ba;
@@ -293,6 +294,32 @@ input.fw-required {
     line-height: 2.5;
     overflow: hidden;
 }
+.fw-draggable-block {
+  display: inline-block;
+  padding: 10px 5px;
+  width: 70%;
+  margin-bottom: 5px;
+  background-color: #f7f7f7;
+  border: 1px solid #cecece;
+  color: #5c5c5c;
+  cursor: move;
+}
+.fw-draggable-block[data-type=radio] {
+    border-left: 6px solid #009989;
+}
+.fw-draggable-block[data-type=text] {
+    border-left: 6px solid #ef1e64;
+}
+.fw-draggable-block[data-type=checkbox] {
+    border-left: 6px solid #4051b7;
+}
+.fw-draggable-block[data-type=textarea] {
+    border-left: 6px solid #ff5722;
+}
+.fw-draggable-block[data-type=submit] {
+    border-left: 6px solid #8bc34a;
+}
+
 @media screen and (max-width: 960px) {
   #fw-alert {
     left: 36px;

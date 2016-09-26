@@ -93,7 +93,11 @@
     }
 
     function renderSubmit(block) {
-        return '<p>Contains a field for name and email</p>';
+        var submitHtml = '';
+        submitHtml += '<p>This will allow the user to submit the form. <br>You can only have one submit-block.</p>';
+        submitHtml += '<label><input type="checkbox" class="fw-submit-name"/>Require Name</label>';
+        submitHtml += '<label><input type="checkbox" class="fw-submit-mail"/>Require E-Mail Address</label>';
+        return submitHtml;
     }
 
     function renderCheckbox(block) {

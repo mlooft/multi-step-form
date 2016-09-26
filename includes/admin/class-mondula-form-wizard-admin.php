@@ -195,11 +195,11 @@ class Mondula_Form_Wizard_Admin {
                                     <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="Wizard Title">
                                     <a class="fw-element-step button-secondary"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ) ?></a>
                                     <h4>Drag & drop elements to steps on the right</h4>
-                                    <a class="fw-draggable-block fw-element-radio button-secondary" data-type="radio"><i class="fa fa-arrows"></i> Radio Buttons</a>
-                                    <a class="fw-draggable-block fw-element-checkbox button-secondary" data-type="checkbox"><i class="fa fa-arrows"></i> Checkbox</a>
-                                    <a class="fw-draggable-block fw-element-text button-secondary" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
-                                    <a class="fw-draggable-block fw-element-textarea button-secondary" data-type="textarea"><i class="fa fa-arrows"></i> Text Area</a>
-                                    <a class="fw-draggable-block fw-element-submit button-secondary" data-type="submit"><i class="fa fa-arrows"></i> Submit</a>
+                                    <a class="fw-draggable-block fw-element-radio" data-type="radio"><i class="fa fa-arrows"></i> Radio Buttons</a>
+                                    <a class="fw-draggable-block fw-element-checkbox" data-type="checkbox"><i class="fa fa-arrows"></i> Checkbox</a>
+                                    <a class="fw-draggable-block fw-element-text" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
+                                    <a class="fw-draggable-block fw-element-textarea" data-type="textarea"><i class="fa fa-arrows"></i> Text Area</a>
+                                    <a class="fw-draggable-block fw-element-submit" data-type="submit"><i class="fa fa-arrows"></i> Submit</a>
                                 </div>
                                 <div class="fw-actions">
                                     <button class="button button-primary button-large fw-button-save"><?php _e( 'Save' ) ?></button>
