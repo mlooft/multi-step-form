@@ -453,6 +453,8 @@ jQuery( document ).ready( function ( $ ) {
                 }
                 if(!valid){
                   formValid = false;
+                  // TODO: custom message
+                  submitAlert('Submit Failed: Some required fields are empty. Please check the highlighted steps.', false);
                 }
             }
         );
@@ -467,15 +469,15 @@ jQuery( document ).ready( function ( $ ) {
      * @param  {string} rsp the response message
      * @param  {boolean} success successful submit of fail
      */
-    function responseMessage(rsp, success) {
-      var clss;
+    function submitAlert(message, success) {
       if (success) {
-        clss = 'fw-success';
-      } else {
-        clss = 'fw-failed';
+        $('.fw-submit-alert').addClass('fw-submit-success');
       }
-      console.log('Response: ' + rsp + success);
-      $('.fw-submit').append('<p class="' + clss + '">' + rsp + '</p>');
+      else {
+        $('.fw-submit-alert').addClass('fw-submit-fail');
+      }
+      $('.fw-submit-alert').text(message);
+      $('.fw-submit-alert').slideDown();
     }
 
     function submit(evt) {
@@ -508,7 +510,8 @@ jQuery( document ).ready( function ( $ ) {
                 nonce: ajax.nonce
             },
             function (resp) {
-                log('resp', resp);
+                // TODO: customizable success message
+                submitAlert("Success! Your data was submitted.", true);
             }
         ).fail(function (resp) {
             warn('response', resp);
