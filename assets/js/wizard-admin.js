@@ -15,17 +15,16 @@
     function alertMessage(message, success){
       var color;
       if (success) {
-        color = 'green';
+        color = '#4caf50';
       } else {
-        color = 'red';
+        color = '#f44336';
       }
-      $('<div class="fw-alert" style="color:' + color + '"><strong>' +
-               message + '</strong></div>')
-          .hide().appendTo(".fw-actions")
-          .fadeIn(500)
+      $('<div id="fw-alert" style="background-color:' + color + '">' +
+               message + '</div>')
+          .hide().appendTo("#wpbody-content")
+          .slideDown()
           .delay(3000)
-          .fadeOut('slow')
-          .fadeOut('slow');
+          .slideUp();
     }
 
     function renderBlockAction(type){
@@ -741,23 +740,10 @@
           removeBlock(event);
       })
 
-      $('.fw-button-one-column').click(function(event) {
-          $(this).addClass("fw-pressed");
-          $('.fw-button-two-columns').removeClass("fw-pressed");
+      $('.fw-block-action > .fa-caret-down').unbind( "click" ).click(function(event) {
+        $(this).parent().parent().toggleClass('fw-block-collapsed');
       });
 
-      $('.fw-button-two-columns').click(function(event) {
-          $(this).addClass("fw-pressed");
-          $('.fw-button-one-column').removeClass("fw-pressed");
-      });
-
-      $('.fw-block-heading > i').unbind('click').click(function(e) {
-        var $block = $(this).parent().parent();
-        var blockLabel = $block.find('.fw-block-label').val();
-        $block.find('.fw-block-spoiler').text(blockLabel);
-        $(this).parent().siblings().toggle();
-        $(this).toggleClass('fa-caret-right');
-      });
 
       $('.fw-remove-block').click(function(event) {
           removeBlock(event);

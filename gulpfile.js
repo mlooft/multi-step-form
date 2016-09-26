@@ -5,6 +5,7 @@ var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
 var debug = require('gulp-debug-streams');
 var uglifycss = require('gulp-uglifycss');
+var livereload = require('gulp-livereload');
 
 var base = 'assets/js';
 
@@ -14,7 +15,8 @@ gulp.task('js', function() {
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('assets/js/'));
+    .pipe(gulp.dest('assets/js/'))
+    .pipe(livereload());
 });
 
 gulp.task('css', function () {
@@ -26,10 +28,12 @@ gulp.task('css', function () {
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('assets/css/'));
+    .pipe(gulp.dest('assets/css/'))
+    .pipe(livereload());
 });
 
 gulp.task('watch', function () {
+    livereload.listen();
     gulp.watch('assets/js/*.js', ['js']);
     gulp.watch('assets/css/*.css', ['css']);
 });
