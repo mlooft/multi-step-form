@@ -197,19 +197,19 @@ div#TB_ajaxContent > div {
   border: 4px dashed #0085ba;
 }
 .fw-step-block[data-type="text"] > .fw-block-action {
-  background-color: #CE1836;
+  background-color: #EF1E64;
 }
 .fw-step-block[data-type="textarea"] > .fw-block-action {
-  background-color: #EDB92E;
+  background-color: #ff5722;
 }
 .fw-step-block[data-type="checkbox"] > .fw-block-action {
-  background-color: #F85931;
+  background-color: #4051B7;
 }
 .fw-step-block[data-type="radio"] > .fw-block-action {
   background-color: #009989;
 }
 .fw-step-block[data-type="submit"] > .fw-block-action {
-  background-color: #A3A948;
+  background-color: #8bc34a;
 }
 input.fw-required {
     float: left;
@@ -217,7 +217,6 @@ input.fw-required {
 }
 .fw-block-action {
   float: left;
-  background-color: crimson;
   width: 5%;
   padding-bottom: 500em;
   margin-bottom: -500em;
