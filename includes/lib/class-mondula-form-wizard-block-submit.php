@@ -43,6 +43,8 @@ class Mondula_Form_Wizard_Step_Submit extends Mondula_Form_Wizard_Block {
         <?php } ?>
         <div class="fw-clearfix"></div>
         <button type="button" class="fw-btn-submit">Submit</button>
+        <div class="fw-clearfix"></div>
+        <div class="fw-submit-alert" style="display:none"></div>
         <?php
     }
 
