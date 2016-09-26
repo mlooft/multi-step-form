@@ -383,6 +383,18 @@ ul.fw-progress-bar a {
   text-decoration: none;
 }
 
+div[data-required="true"]:not([data-type="fw-radio"]) label:after {
+  content: "*";
+  color: red;
+  font-size: 20px;
+}
+
+div[data-type="fw-radio"][data-required="true"] .fw-block-header:after {
+  content: "*";
+  color: red;
+  font-size: 20px;
+}
+
 @media all and (min-width: 800px) {
   /* line 138, ../sass/progress.scss */
   .fw-progress-bar li.fw-active:after {
