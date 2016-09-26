@@ -29,8 +29,8 @@ ul.fw-progress-bar li:nth-child(1):before{content:"1"}ul.fw-progress-bar li:nth-
 ul.fw-progress-bar li:nth-child(3):before{content:"3"}ul.fw-progress-bar li:nth-child(4):before{content:"4"}
 ul.fw-progress-bar li:nth-child(5):before{content:"5"}ul.fw-progress-bar li:nth-child(6):before{content:"6"}
 ul.fw-progress-bar a{color:#57aed1;font-size:16px;font-weight:600;text-decoration:none}
-div[data-required="true"]:not([data-type="fw-radio"]) label:after{content:"*";color:red;font-size:20px}
-div[data-type="fw-radio"][data-required="true"] .fw-block-header:after{content:"*";color:red;font-size:20px}
+div[data-required="true"]:not([data-type="fw-radio"]) label:after{content:"*";color:red;font-size:25px}
+div[data-type="fw-radio"][data-required="true"] .fw-block-header:after{content:"*";color:red;font-size:25px}
 @media all and (min-width:800px){.fw-progress-bar li.fw-active:after{-webkit-animation:myanimation 3s 0;background-size:35px 35px;background-image:-webkit-linear-gradient(-45deg,rgba(255,255,255,0.2) 25%,transparent 25%,transparent 50%,rgba(255,255,255,0.2) 50%,rgba(255,255,255,0.2) 75%,transparent 75%,transparent);background-image:-moz-linear-gradient(-45deg,rgba(255,255,255,0.2) 25%,transparent 25%,transparent 50%,rgba(255,255,255,0.2) 50%,rgba(255,255,255,0.2) 75%,transparent 75%,transparent);-webkit-box-shadow:inset 2px 2px 2px 0 rgba(0,0,0,0.2);box-shadow:inset 2px 2px 2px 0 rgba(0,0,0,0.2);content:"";height:15px;width:100%;position:absolute;top:-50px;z-index:0}
 .fw-progress-bar li:last-child.fw-active:after{width:0}.checkout-wrap{margin:80px auto}
 ul.fw-progress-bar{border-radius:15px;height:15px;margin:0 auto;padding:0;position:absolute;width:100%}
