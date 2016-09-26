@@ -87,7 +87,7 @@
         }
         radioHtml += '</div>';
         radioHtml += '<button class="fw-radio-add button-secondary"><i class="fa fa-plus" aria-hidden="true"></i> Add radio option</button><br/>';
-        radioHtml += '<input type="checkbox" class="fw-required"'+ checkRequired(radio) + '/><label>choice required</label>'
+        radioHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(radio) + '/> choice required</label>'
 
         return radioHtml;
     }
@@ -101,7 +101,7 @@
         var textHtml = '';
         textHtml += '<label>Label</label>';
         textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textHtml += '<input type="checkbox" class="fw-required"'+ checkRequired(block) + '/><label>require checked</label>'
+        textHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>require checked</label>'
         return textHtml;
     }
 
@@ -110,7 +110,7 @@
         var textHtml = '';
         textHtml += '<label>Label</label>';
         textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textHtml += '<input type="checkbox" class="fw-required"'+ checkRequired(block) + '/><label>required</label>'
+        textHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>required</label>'
         return textHtml;
     }
 
@@ -119,7 +119,7 @@
         var textAreaHtml = '';
         textAreaHtml += '<label>Label</label>';
         textAreaHtml += '<input type="text" class="fw-textarea-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textAreaHtml += '<input type="checkbox" class="fw-required"'+ checkRequired(block) + '/><label>required</label>'
+        textAreaHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>required</label>'
         return textAreaHtml;
     }
 
@@ -486,6 +486,10 @@
             handle: '.hndle',
             tolerance: 'pointer',
             placeholder: 'fw-block-placeholder',
+            start: function(event, ui) {
+              var height = $(ui.item).height();
+              $('.fw-block-placeholder').height(height);
+            },
             update: function(event, ui) {
                 warn('sortables update', event, ui);
                 $(ui.item).removeAttr('style');
@@ -500,6 +504,10 @@
           tolerance: 'intersect',
           placeholder: 'fw-block-placeholder',
           revert: 100,
+          start: function(event, ui) {
+            var height = $(ui.item).height();
+            $('.fw-block-placeholder').height(height);
+          },
           update: function(event, ui) {
               warn('block sortables update', event, ui);
               var blockType = $(ui.item).attr('data-type');
@@ -746,7 +754,17 @@
 
       $('.fw-remove-block').click(function(event) {
           removeBlock(event);
-      })
+      });
+      $('.fw-toggle-block').click(function(event) {
+        var $block = $(this).parent().parent();
+        if ($block.hasClass('fw-block-collapsed')) {
+          var label = $block.find('.fw-block-label').val();
+          $(this).siblings('h4').text(label);
+        } else {
+          var blockType = $block.data('type');
+          $(this).siblings('h4').text(blockType.substring(0,5));
+        }
+      });
     }
 
 

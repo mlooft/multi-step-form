@@ -16,7 +16,7 @@
 .postbox{min-width:200px}.fw-part-title{font-size:1.7em;line-height:100%;height:1.7em;width:95%}
 .fw-remove-part{color:crimson;float:right}.fw-remove-radio-option{display:inline-block;margin-left:10px}
 .fw-radio-header{height:3em;width:100%;margin-bottom:20px}.fw-radio-option,input[type=text]{height:2.5em;width:60%;margin-bottom:10px}
-button.fw-radio-add.button-secondary{margin-top:10px}.fw-block-heading{font-size:18px;margin-bottom:0}
+button.fw-radio-add.button-secondary{margin:10px 0}.fw-block-heading{font-size:18px;margin-bottom:0}
 .fw-block-heading>h4{display:inline-block;margin-bottom:0;margin-top:0}.fw-block-hndle{cursor:all-scroll}
 .fw-alert{margin-top:10px;color:green}.fw-alert .fw-alert-fail{color:red}div#TB_ajaxContent>div{display:inline-block;border:1px solid gray;width:26%;text-align:center;padding:15px;margin:5px}
 .ui-tooltip{color:white;background-color:#5a5a5a;border-radius:10px;z-index:430;width:100px;padding:10px;-webkit-box-shadow:1px 1px 30px 0 rgba(0,0,0,0.42);-moz-box-shadow:1px 1px 30px 0 rgba(0,0,0,0.42);box-shadow:1px 1px 30px 0 rgba(0,0,0,0.42)}
@@ -28,9 +28,9 @@ button.fw-radio-add.button-secondary{margin-top:10px}.fw-block-heading{font-size
 .fw-step-block[data-type="submit"]>.fw-block-action{background-color:#8bc34a}
 input.fw-required{float:left;margin-top:2px}.fw-block-action{float:left;width:5%;padding-bottom:500em;margin-bottom:-500em}
 .fw-toggle-block,.fw-move-block,.fw-remove-block{float:left;width:100%;color:white;text-align:center}
-.fa-remove.fw-remove-block{margin-top:10px}.fw-block-action>h4{float:left;font-size:11px;width:100%;color:white;transform:rotate(90deg);text-transform:uppercase;margin-bottom:100%}
-.fw-block-action>i{margin:3px 0}.fw-block-fields{float:left;width:80%;margin-left:15px}
-.fw-block-fields>label{font-weight:600;margin-left:3px}.fw-block-collapsed .fw-block-fields{display:none}
-.fw-block-collapsed .fw-block-action{transform-origin:100% 0;transform:rotate(-90deg)}
+.fa-remove.fw-remove-block{margin-top:10px}.fw-block-action>h4{float:left;font-size:11px;width:100%;color:white;white-space:nowrap;transform:rotate(90deg);text-transform:uppercase;margin-bottom:100%}
+.fw-block-action>i{margin:3px 0}.fw-block-fields{float:left;width:80%;margin-left:15px;padding:15px 0}
+.fw-block-fields>label{font-weight:600;margin-left:3px}.fw-block-collapsed{height:28px}
+.fw-block-collapsed .fw-block-fields{display:none}.fw-block-collapsed .fw-block-action{transform-origin:100% 0;transform:rotate(-90deg);margin-left:-30px}
 #fw-alert{display:none;position:fixed;z-index:101;top:32px;left:160px;right:0;color:white;font-weight:600;background:#4caf50;text-align:center;line-height:2.5;overflow:hidden}
 @media screen and (max-width:960px){#fw-alert{left:36px}}

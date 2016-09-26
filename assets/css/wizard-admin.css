@@ -149,7 +149,7 @@ a.fw-add-part.button-secondary {
   margin-bottom: 10px;
 }
 button.fw-radio-add.button-secondary {
-  margin-top: 10px;
+  margin: 10px 0;
 }
 .fw-block-heading {
   font-size: 18px;
@@ -235,6 +235,7 @@ input.fw-required {
   font-size: 11px;
   width: 100%;
   color: white;
+  white-space: nowrap;
   transform: rotate(90deg);
   text-transform: uppercase;
   margin-bottom: 100%;
@@ -246,10 +247,14 @@ input.fw-required {
   float:left;
   width: 80%;
   margin-left: 15px;
+  padding: 15px 0;
 }
 .fw-block-fields > label {
     font-weight: 600;
     margin-left: 3px;
+}
+.fw-block-collapsed {
+  height: 28px;
 }
 .fw-block-collapsed .fw-block-fields {
   display: none;
@@ -257,6 +262,7 @@ input.fw-required {
 .fw-block-collapsed .fw-block-action {
   transform-origin: 100% 0;
   transform: rotate(-90deg);
+  margin-left: -30px;
 }
 /*.fw-block-collapsed .fa {
   width:auto;
