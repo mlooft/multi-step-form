@@ -192,7 +192,7 @@ div#TB_ajaxContent > div {
 }
 .fw-block-placeholder {
   display: block;
-  height: 25px;
+  height: 100px;
   background-color: #dadada;
   border: 4px dashed #0085ba;
 }
@@ -251,4 +251,45 @@ input.fw-required {
 .fw-block-fields > label {
     font-weight: 600;
     margin-left: 3px;
+}
+.fw-block-collapsed .fw-block-fields {
+  display: none;
+}
+.fw-block-collapsed .fw-block-action {
+  transform-origin: 100% 0;
+  transform: rotate(-90deg);
+}
+/*.fw-block-collapsed .fa {
+  width:auto;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.fw-block-collapsed > .fw-block-action {
+  height: 35px;
+  width: 100%;
+}
+.fw-block-collapsed h4 {
+  padding: 2px 10px 0;
+  line-height: 0;
+  width: auto;
+  transform: none;
+}*/
+#fw-alert {
+    display: none;
+    position: fixed;
+    z-index: 101;
+    top: 32px;
+    left: 160px;
+    right: 0;
+    color: white;
+    font-weight: 600;
+    background: #4caf50;
+    text-align: center;
+    line-height: 2.5;
+    overflow: hidden;
+}
+@media screen and (max-width: 960px) {
+  #fw-alert {
+    left: 36px;
+  }
 }
