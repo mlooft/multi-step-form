@@ -18,7 +18,7 @@ class Mondula_Form_Wizard_Step_Submit extends Mondula_Form_Wizard_Block {
     public function render( $ids ) {
         ?>
 <button type="button" class="fw-toggle-summary" style="display:none;">SHOW SUMMARY</button>
-<div id="wizard-summary" class="fw-wizard-summary" style="display:none;" data-showsummary="<?php Mondula_Form_Wizard_Wizard::fw_get_option('showsummary' ,'fw_settings_basic', 'true');?>"></div>
+<div id="wizard-summary" class="fw-wizard-summary" style="display:none;" data-showsummary="<?php echo Mondula_Form_Wizard_Wizard::fw_get_option('showsummary' ,'fw_settings_basic', 'true');?>"></div>
 <div class="fw-clearfix"></div>
 <div class="fw-one_half">
     <div class="fw-input-container fw-first">
