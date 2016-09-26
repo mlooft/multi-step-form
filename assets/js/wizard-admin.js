@@ -759,7 +759,7 @@
         var $block = $(this).parent().parent();
         if ($block.hasClass('fw-block-collapsed')) {
           var label = $block.find('.fw-block-label').val();
-          $(this).siblings('h4').text(label);
+          $(this).siblings('h4').text(label.substring(0,60));
         } else {
           var blockType = $block.data('type');
           $(this).siblings('h4').text(blockType.substring(0,5));
