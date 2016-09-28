@@ -4,6 +4,7 @@ var newer = require('gulp-newer');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
 var debug = require('gulp-debug-streams');
+var less = require('gulp-less');
 var uglifycss = require('gulp-uglifycss');
 var livereload = require('gulp-livereload');
 
@@ -20,7 +21,8 @@ gulp.task('js', function() {
 });
 
 gulp.task('css', function () {
-  gulp.src(['assets/css/*.css', '!assets/css/*.min.css'])
+  gulp.src(['assets/css/*.css', 'assets/css/*.less', '!assets/css/*.min.css'])
+    .pipe(less())
     .pipe(uglifycss({
       "maxLineLen": 80,
       "uglyComments": true
@@ -36,6 +38,7 @@ gulp.task('watch', function () {
     livereload.listen();
     gulp.watch('assets/js/*.js', ['js']);
     gulp.watch('assets/css/*.css', ['css']);
+    gulp.watch('assets/css/*.less', ['css']);
 });
 
 gulp.task('default', ['js', 'css', 'watch']);

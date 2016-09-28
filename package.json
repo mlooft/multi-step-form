@@ -8,6 +8,7 @@
     "gulp": "*",
     "gulp-concat": "*",
     "gulp-debug-streams": "*",
+    "gulp-less": "^3.1.0",
     "gulp-livereload": "^3.8.1",
     "gulp-newer": "*",
     "gulp-rename": "*",
