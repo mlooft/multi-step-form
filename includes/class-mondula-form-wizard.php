@@ -141,10 +141,6 @@ class Mondula_Form_Wizard {
 	public function enqueue_styles () {
 		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'css/frontend.min.css', array(), $this->_version );
 		wp_enqueue_style( $this->_token . '-frontend' );
-    wp_register_style( $this->_token . '-animate', esc_url( $this->assets_url ) . 'css/animate.min.css', array(), $this->_version );
-		wp_enqueue_style( $this->_token . '-animate' );
-    wp_register_style( $this->_token . '-media', esc_url( $this->assets_url ) . 'css/media.min.css', array(), $this->_version );
-		wp_enqueue_style( $this->_token . '-media' );
 	}
 
 	/**
