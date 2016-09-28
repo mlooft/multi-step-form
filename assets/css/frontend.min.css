@@ -3,7 +3,7 @@
 .fw-block-header{font-size:120%}.fw-step-block{margin-bottom:20px}.fw-wizard label{font-size:110%}
 .fw-wizard-step{display:none}.fw-wizard-step-header{height:0;overflow:hidden}.fw-wizard-step-header.fw-current{height:auto}
 .fw-wizard-step.fw-current{display:block}.fw-step-part{float:left;width:100%}.fw-step-title{font-family:'Raleway','Georgia';font-weight:400;font-size:25px;color:#57aed1;text-shadow:0 .015em #fff}
-.fw-step-part-title{width:100%;float:left;margin-bottom:25px;font-family:'Raleway','Georgia';font-weight:400;font-size:2em;color:#57aed1;text-shadow:0 .015em #fff}
+.fw-step-part-title{width:100%;float:left;margin-bottom:10px;font-family:'Raleway','Georgia';font-weight:400;font-size:2em;color:#57aed1;text-shadow:0 .015em #fff}
 .fw-step-part-title.fw-title-hidden{visibility:hidden}.fw-input-container{padding:10px}
 .fw-text-input{font-family:inherit;width:88%;border:0;outline:0;font-size:13px;background-color:#fff;color:#91003e}
 .fw-text-input:focus{color:#fff;background-color:#080808}.fw-wizard-buttons button,.fw-btn-submit{height:39px;line-height:39px;padding:0 22px;font-size:11px;color:#fff;border:0;background-color:#57aed1}
