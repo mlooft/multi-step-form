@@ -100,27 +100,31 @@ jQuery( document ).ready( function ( $ ) {
         enablePrevious($wizard);
     }
 
-    function textSummary(summaryObj, $block, title) {
+    function textSummary(summaryObj, $block, title, required) {
       var header = $block.find('label').text();
       var value = $block.find('.fw-text-input').val();
-      pushToSummary(summaryObj, title, header, value);
+      pushToSummary(summaryObj, title, header, value, required);
     }
 
-    function textareaSummary(summaryObj, $block, title) {
+    function textareaSummary(summaryObj, $block, title, required) {
       var header = $block.find('label').text();
       var value = $block.find('.fw-textarea').val();
-      pushToSummary(summaryObj, title, header, value);
+      pushToSummary(summaryObj, title, header, value, required);
     }
 
-    function pushToSummary(summaryObj, title, header, value) {
+    function pushToSummary(summaryObj, title, header, value, required) {
+      var s = {};
       if (value) {
-        var s = {};
         s[header] = value;
         getArray(summaryObj, title).push(s);
+      } else if (required == 'true') {
+        s['<p class="fw-step-summary fw-summary-invalid">' + header] = '</p>';
+        getArray(summaryObj, title).push(s);
       }
+
     }
 
-    function radioSummary(summaryObj, $block, title){
+    function radioSummary(summaryObj, $block, title, required){
       var header = $block.find('.fw-block-header').text();
       var value = '';
       $block.find('.fw-radio-row').each(function(idx, element) {
@@ -128,16 +132,19 @@ jQuery( document ).ready( function ( $ ) {
           value = $(element).find('label').text();
         }
       });
-      pushToSummary(summaryObj, title, header, value);
+      pushToSummary(summaryObj, title, header, value, required);
     }
 
-    function checkboxSummary(summaryObj, $block, title) {
+    function checkboxSummary(summaryObj, $block, title, required) {
       var header = $block.find('label').text();
       var value;
       if ($block.find('.fw-checkbox').is(':checked')) {
         value = 'yes';
       }
-      pushToSummary(summaryObj, title, header, value);
+      if($block.hasClass('fw-invalid')) {
+        console.log('INVALID' + $block);
+      }
+      pushToSummary(summaryObj, title, header, value, required);
     }
 
     function stepSummary($wizard, stepNum, summaryObj) {
@@ -146,15 +153,15 @@ jQuery( document ).ready( function ( $ ) {
         $step.find('.fw-step-part').each(function (idx, element) {
             var title = $(element).find('.fw-step-part-title').text().trim();
             $(element).find('.fw-step-block').each(function (idx, element) {
-
+              var required = $(element).attr('data-required');
               switch ($(element).attr('data-type')) {
-                case 'fw-text': textSummary(summaryObj, $(element), title);
+                case 'fw-text': textSummary(summaryObj, $(element), title, required);
                   break;
-                case 'fw-textarea': textareaSummary(summaryObj, $(element), title);
+                case 'fw-textarea': textareaSummary(summaryObj, $(element), title, required);
                   break;
-                case 'fw-radio': radioSummary(summaryObj, $(element), title);
+                case 'fw-radio': radioSummary(summaryObj, $(element), title, required);
                   break;
-                case 'fw-checkbox': checkboxSummary(summaryObj, $(element), title);
+                case 'fw-checkbox': checkboxSummary(summaryObj, $(element), title, required);
                   break;
               }
             });
@@ -424,9 +431,13 @@ jQuery( document ).ready( function ( $ ) {
       var name = $element.find('[data-id=name]').val();
       var email = $element.find('[data-id=email]').val();
       var valid = true;
-      if(!name || !email || !validateEmail(email)) {
-        $element.addClass('fw-invalid');
-        valid = false;
+      if (!name || !email || !validateEmail(email)) {
+        if (!$element.contains('input')) {
+          valid = true;
+        } else {
+          $element.addClass('fw-invalid');
+          valid = false;
+        }
       }
       return valid;
     }
@@ -444,15 +455,12 @@ jQuery( document ).ready( function ( $ ) {
                     break;
                   case 'fw-textarea': valid = validateTextArea($element);
                   console.log('AREA' + valid);
-
                     break;
                   case 'fw-text': valid = validateText($element);
                   console.log('TEXT' + valid);
-
                     break;
                   case 'fw-checkbox': valid = validateCheckbox($element);
                   console.log('CHECK' + valid);
-
                     break;
                   case 'fw-submit': valid = validateSubmit($element);
                   console.log('SUBMIT' + valid);
@@ -462,7 +470,7 @@ jQuery( document ).ready( function ( $ ) {
                 if(!valid){
                   formValid = false;
                   // TODO: custom message
-                  submitAlert('Submit Failed: Some required fields are empty. Please check the highlighted steps.', false);
+                  submitAlert('Submit Failed: Some required fields are empty. Please check the highlighted steps or the summary.', false);
                 }
             }
         );

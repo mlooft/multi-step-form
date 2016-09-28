@@ -19,24 +19,32 @@ class Mondula_Form_Wizard_Step_Submit extends Mondula_Form_Wizard_Block {
     }
 
     public function get_required( ) {
-      return $_namerequired && $_mailrequired;
+      return "true";
     }
 
     public function render( $ids ) {
         ?>
         <?php if ($this->_namerequired) { ?>
-          <div class="fw-one_half">
+          <?php if ($this->_mailrequired) { ?>
+            <div class="fw-one_half">
+          <?php } ?>
               <div class="fw-input-container fw-first">
-                  <label>Name</label><input type="text" class="fw-text-input" data-id="name" data-required >
+                  <label>Name</label><input type="text" class="fw-text-input" data-id="name" data-required="true" >
               </div>
-          </div>
+          <?php if ($this->_mailrequired) { ?>
+            </div>
+          <?php } ?>
         <?php } ?>
         <?php if ($this->_mailrequired) { ?>
-        <div class="fw-one_half">
-            <div class="fw-input-container">
-                <label>Email</label><input type="text" class="fw-text-input" data-id="email" data-required >
+          <?php if ($this->_namerequired) { ?>
+            <div class="fw-one_half">
+          <?php } ?>
+              <div class="fw-input-container">
+                  <label>Email</label><input type="text" class="fw-text-input" data-id="email" data-required="true" >
+              </div>
+          <?php if ($this->_namerequired) { ?>
             </div>
-        </div>
+          <?php } ?>
         <?php } ?>
         <div class="fw-clearfix"></div>
         <button type="button" class="fw-toggle-summary" style="display:none;">SHOW SUMMARY</button>
