@@ -355,7 +355,7 @@ jQuery( document ).ready( function ( $ ) {
         var id = $target.attr('data-id');
         var obj = getObj($wizard, $target);
         obj[id] = value;
-        // TODO u sure bout tis?
+        $target.parents('.fw-step-block').removeClass('fw-invalid');
         updateSummary($wizard);
     }
 
@@ -365,6 +365,14 @@ jQuery( document ).ready( function ( $ ) {
         log('stepCount', getStepCount($wizard));
         log('data', data);
         log('summary', getSummary($wizard));
+    }
+
+    function checkInvalidChange(event) {
+      // remove fw-invalid when invalid text field is changed
+      console.log($(this).parents('.fw-step-block'));
+      if($block.hasClass('fw-invalid')){
+        $block.removeClass('fw-invalid');
+      }
     }
 
     function validateRadio($element) {
@@ -538,6 +546,9 @@ jQuery( document ).ready( function ( $ ) {
         $('.fw-radio').change(checkRadio);
         $('.fw-radio-conditional').change(checkConditional);
         $('.fw-text-input').on('change input', textOnChange);
+        $('.fw-checkbox, .fw-radio').on('change', function() {
+          $(this).parents('.fw-step-block').removeClass('fw-invalid');
+        });
         $('.fw-btn-submit').click(submit);
         log(ajax);
 
