@@ -6,9 +6,9 @@
 .fw-wizard-step.fw-current{display:block}.fw-step-part{float:left;width:100%}.fw-step-title{font-family:'Raleway','Georgia';font-weight:400;font-size:25px;color:#57aed1;text-shadow:0 .015em #fff}
 .fw-step-part-title{width:100%;float:left;margin-top:20px;margin-bottom:10px;font-family:'Raleway','Georgia';font-weight:400;font-size:2em;color:#57aed1;text-shadow:0 .015em #fff}
 .fw-step-part-title.fw-title-hidden{visibility:hidden}.fw-input-container{padding:10px;padding:0}
-.fw-text-input{font-family:inherit;width:88%;border:0;outline:0;font-size:13px;background-color:#fff;color:#91003e}
+.fw-text-input{font-family:inherit;width:100%;border:0;outline:0;line-height:2em;font-size:13px;background-color:#fff;color:#91003e}
 .fw-text-input:focus{color:#fff;background-color:#080808;background-color:#57aed1 !important;color:#fff !important}
-.fw-wizard-buttons{margin-top:30px}.fw-wizard-buttons button{height:39px;line-height:39px;padding:0 22px;font-size:11px;color:#fff;border:0;background-color:#57aed1;cursor:pointer;text-transform:uppercase}
+.fw-wizard-buttons{margin-top:30px}.fw-wizard-buttons button{height:39px;line-height:39px;padding:0 22px;margin-top:10px;font-size:11px;color:#fff;border:0;background-color:#57aed1;cursor:pointer;text-transform:uppercase}
 .fw-wizard-buttons button:hover{color:#fff;background-color:#4891ae;border-color:#4891ae}
 .fw-wizard-buttons button:focus{outline-width:0}.fw-btn-submit,.fw-toggle-summary{height:39px;line-height:39px;padding:0 22px;font-size:11px;border:0;background-color:#57aed1;width:100%;background:#fff;color:#333;cursor:pointer;padding-bottom:15px;margin-top:15px;border:1px solid #ddd;text-transform:uppercase}
 .fw-btn-submit:hover,.fw-toggle-summary:hover{color:#fff;background-color:#4891ae;border-color:#4891ae;float:none;width:100%;background:#fff;border:1px solid #ddd;color:#333}
