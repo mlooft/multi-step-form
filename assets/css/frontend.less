@@ -15,6 +15,7 @@
 /* ----------------------------- Progress bar -----------------------------*/
 .fw-invalid {
 	background-color: #FF91A4;
+	padding: 10px 20px;
 }
 .fw-clearfix {
 	clear: both;
@@ -36,6 +37,7 @@
 	}
 	label {
 		font-size: 110%;
+		line-height: 110%;
 	}
 }
 .fw-block-header {
@@ -88,8 +90,7 @@
 	visibility: hidden;
 }
 .fw-input-container {
-	padding: 10px;
-	padding: 0px;
+	padding: 10px 0;
 }
 .fw-text-input {
 	font-family: @font-family_2;
@@ -171,6 +172,9 @@ p.fw-step-summary {
 	margin-bottom: 10px;
 	margin-left: 0;
 }
+.fw-summary-invalid {
+	color: red;
+}
 .fw-conditional-then-container {
 	position: relative;
 }
@@ -185,9 +189,6 @@ p.fw-step-summary {
 }
 input.fw-text-input {
 	border: 1px solid #ddd;
-}
-.fw-input-container.fw-first {
-	margin-right: 15px;
 }
 .fw-radio-row {
 	label {
