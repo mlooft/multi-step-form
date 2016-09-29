@@ -422,17 +422,6 @@
       return mailData;
     }
 
-    // Event handlers
-
-    function removeStep() {
-        var $this = $(this);
-        var $step = $this.closest('.postbox');
-        // make step fade out and remove it
-        $step.slideUp("slow", function() {
-            $step.remove();
-        });
-    }
-
     function save() {
         var $container = $(container);
         var title  = $('.fw-wizard-title').val();
@@ -654,6 +643,16 @@
         setupThickbox();
     }
 
+    function removeStep() {
+      var $this = $(this);
+      var $step = $this.closest('.postbox');
+      var r = confirm("Do you really want to delete this step?");
+      if (r == true) {
+        $step.slideUp(700, function() {
+            $step.remove();
+        });
+      }
+    }
 
     /**
      * removePart - removes a part (section) from a step
@@ -661,15 +660,24 @@
      * @param  evt the addPart-Button in a step
      */
     function removePart(evt) {
-        var target = evt.target;
-        log('removing part', $(target).closest('.fw-step-part'));
-        $(target).closest('.fw-step-part').remove();
+        var $part = $(evt.target).closest('.fw-step-part');
+        var r = confirm("Do you really want to delete this section?");
+        if (r == true) {
+          $part.slideUp(500, function() {
+              $part.remove();
+          });
+        }
     }
 
     function removeBlock(evt) {
-        var target = evt.target;
-        log('removing block', $(target).closest('.fw-step-block'));
-        $(target).closest('.fw-step-block').remove();
+        var $block = $(evt.target).closest('.fw-step-block');
+        var label = $block.find('.fw-block-label').val();
+        var r = confirm("Do you really want to delete this block?\n\n" + label);
+        if (r == true) {
+          $block.slideUp(300, function() {
+              $block.remove();
+          });
+        }
     }
 
     function setupThickbox() {
@@ -750,12 +758,12 @@
       });
 
       // remove part handler
-      $('.fw-remove-part').click(function(event) {
+      $('.fw-remove-part').unbind( "click" ).click(function(event) {
           removePart(event);
       })
 
       // remove block handler
-      $('.fw-remove-block').click(function(event) {
+      $('.fw-remove-block').unbind( "click" ).click(function(event) {
           removeBlock(event);
       })
 
@@ -763,10 +771,6 @@
         $(this).parent().parent().toggleClass('fw-block-collapsed');
       });
 
-
-      $('.fw-remove-block').click(function(event) {
-          removeBlock(event);
-      });
       $('.fw-toggle-block').click(function(event) {
         var $block = $(this).parent().parent();
         if ($block.hasClass('fw-block-collapsed')) {
