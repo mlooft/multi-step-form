@@ -31,12 +31,13 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
             if ($element['type'] === 'option') {
                 ?>
                 <span class="fw-radio-row">
-                    <label data-labelId="<?php echo $i ?>"><input type="radio" name="<?php echo $group; ?>" class="fw-radio" data-id="<?php echo $i; ?>"><?php echo $element['value']; ?></label>
+                    <input id="<?php echo $group.'-'.$i ?>" type="radio" name="<?php echo $group; ?>" class="fw-radio" data-id="<?php echo $i; ?>">
+                    <label for="<?php echo $group.'-'.$i; ?>" data-labelId="<?php echo $i ?>"><?php echo $element['value']; ?></label>
                 </span>
                 <?php
             } else if ($element['type'] === 'header') {
                 ?>
-<p class="fw-block-header"><?php echo $element['value']; ?></p>
+                <p class="fw-block-header"><?php echo $element['value']; ?></p>
                 <?php
             }
         }
