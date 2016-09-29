@@ -98,6 +98,9 @@ jQuery( document ).ready( function ( $ ) {
             disableNext($wizard);
         }
         enablePrevious($wizard);
+        $('html, body').animate({
+          scrollTop: $("#mondula-form-wizard").offset().top - 100
+        }, 500);
     }
 
     function textSummary(summaryObj, $block, title, required) {
