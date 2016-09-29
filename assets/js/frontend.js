@@ -219,20 +219,16 @@ jQuery( document ).ready( function ( $ ) {
         var $summary = $wizard.find('.fw-wizard-summary');
         $summary.empty();
         $summary.append(summary);
-        if (summary) {
-          $('.fw-toggle-summary').show();
-          $('.fw-toggle-summary').toggle(
-            function(){
-                $('.fw-wizard-summary').slideDown();
-                $('.fw-toggle-summary').text('hide summary');
-            },
-            function(){
-                $('.fw-wizard-summary').slideUp();
-                $('.fw-toggle-summary').text('show summary');
-            });
-        } else {
-          $('.fw-toggle-summary').hide();
-        }
+        $('.fw-toggle-summary').show();
+        $('.fw-toggle-summary').toggle(
+          function(){
+              $('.fw-wizard-summary').slideDown();
+              $('.fw-toggle-summary').text('hide summary');
+          },
+          function(){
+              $('.fw-wizard-summary').slideUp();
+              $('.fw-toggle-summary').text('show summary');
+          });
     }
 
     function getWizard($elt) {
@@ -561,7 +557,6 @@ jQuery( document ).ready( function ( $ ) {
           $(this).parents('.fw-step-block').removeClass('fw-invalid');
         });
         $('.fw-btn-submit').click(submit);
-        log(ajax);
 
         // TODO: generate function for setting up
         //  colors
@@ -581,6 +576,7 @@ jQuery( document ).ready( function ( $ ) {
           console.log('nextColor: ' + nextColor);
           $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ';} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:'+ nextColor +';}</style>');
         }
+        updateSummary($('.fw-wizard'));
 
     }
 
