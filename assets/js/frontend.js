@@ -219,7 +219,6 @@ jQuery( document ).ready( function ( $ ) {
         var $summary = $wizard.find('.fw-wizard-summary');
         $summary.empty();
         $summary.append(summary);
-        $('.fw-toggle-summary').show();
         $('.fw-toggle-summary').toggle(
           function(){
               $('.fw-wizard-summary').slideDown();

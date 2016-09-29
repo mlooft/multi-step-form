@@ -224,7 +224,7 @@ input.fw-radio {
     content: "\2022";
     color: @color_1;
 		text-align: center;
-    line-height: 16px;
+    line-height: 100%;
 	}
 }
 
@@ -367,7 +367,10 @@ ul.fw-progress-bar {
 /* ----------------------------- Animations -----------------------------*/
 
 
-// @media screen and (min-width:1023px) {
+@media screen and (min-width:1023px) {
+	.fw-invalid, .fw-step-block {
+		transition: all .2s ease-in-out;
+	}
 //   .fw-wizard-step {
 //   position: relative;
 //   display: block;
@@ -396,7 +399,7 @@ ul.fw-progress-bar {
 //   	right: 0;
 //   }
 //   }
-// }
+}
 
 
 /* ----------------------------- Media Queries -----------------------------*/
