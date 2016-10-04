@@ -10,7 +10,8 @@
 .fw-wizard-buttons button:hover{color:#fff;background-color:#4891ae;border-color:#4891ae}
 .fw-wizard-buttons button:focus{outline-width:0}.fw-btn-submit,.fw-toggle-summary{height:39px;line-height:39px;padding:0 22px;font-size:11px;border:0;background-color:#57aed1;width:100%;background:#fff;color:#333;cursor:pointer;padding-bottom:15px;margin-top:15px;border:1px solid #ddd;text-transform:uppercase}
 .fw-btn-submit:hover,.fw-toggle-summary:hover{color:#fff;background-color:#4891ae;border-color:#4891ae;float:none;width:100%;background:#fff;border:1px solid #ddd;color:#333}
-.fw-btn-submit:focus,.fw-toggle-summary:focus{outline-width:0}p.fw-step-summary-title{margin-top:20px;margin-bottom:10px;font-size:1.2em;font-weight:bold;color:#111}
+.fw-btn-submit:focus,.fw-toggle-summary:focus{outline-width:0}.fw-submit-alert{margin:10px 0}
+p.fw-step-summary-title{margin-top:20px;margin-bottom:10px;font-size:1.2em;font-weight:bold;color:#111}
 p.fw-step-summary{font-size:1.1em;margin-bottom:10px;margin-left:0}.fw-summary-invalid{color:red}
 .fw-conditional-then-container{position:relative}.fw-conditional-then{visibility:hidden;position:absolute;top:0;left:0}
 .fw-conditional-then.fw-selected{visibility:visible}input.fw-text-input{border:1px solid #ddd}
