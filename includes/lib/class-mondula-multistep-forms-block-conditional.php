@@ -8,7 +8,7 @@
 
 
 /**
- * Description of class-mondula-form-wizard-step-conditional
+ * Description of class-mondula-multistep-forms-step-conditional
  *
  * @author alex
  */

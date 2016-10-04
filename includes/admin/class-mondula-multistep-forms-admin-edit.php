@@ -8,7 +8,7 @@
 
 
 /**
- * Description of class-mondula-form-wizard-admin-edit
+ * Description of class-mondula-multistep-forms-admin-edit
  *
  * @author alex
  */

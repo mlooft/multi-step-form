@@ -12,7 +12,7 @@ if( ! class_exists( 'WP_List_Table' ) ) {
 }
 
 /**
- * Description of class-mondula-form-wizard-list-table
+ * Description of class-mondula-multistep-forms-list-table
  *
  * @author alex
  */

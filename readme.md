@@ -1,4 +1,4 @@
-# Mondula Form Wizard
+# Multi-Step Form Builder
 Contributors: hlashbrooke
 Donate link: http://www.hughlashbrooke.com/donate
 Tags: wordpress, plugin, template
@@ -16,7 +16,7 @@ This is where you can give a much longer description of your plugin that you can
 
 ## Installation
 
-Installing "Mondula Form Wizard" can be done either by searching for "Mondula Form Wizard" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
+Installing "Multi-Step Form Builder" can be done either by searching for "Multi-Step Form Builder" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
 
 1. Download the plugin via WordPress.org
 1. Upload the ZIP file through the 'Plugins > Add New > Upload' screen in your WordPress dashboard

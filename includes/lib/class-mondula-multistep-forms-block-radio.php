@@ -3,7 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Description of class-mondula-form-wizard-block-radio
+ * Description of class-mondula-multistep-forms-block-radio
  *
  * @author alex
  */

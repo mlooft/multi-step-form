@@ -8,7 +8,7 @@
 
 
 /**
- * Description of class-mondula-form-wizard-block
+ * Description of class-mondula-multistep-forms-block
  *
  * @author alex
  */

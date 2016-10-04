@@ -1,8 +1,8 @@
-# Copyright (C) 2014 Mondula Form Wizard
-# This file is distributed under the same license as the Mondula Form Wizard package.
+# Copyright (C) 2014 Multi-Step Form Builder
+# This file is distributed under the same license as the Multi-Step Form Builder package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mondula Form Wizard 1.0\n"
+"Project-Id-Version: Multi-Step Form Builder 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/WordPress-Plugin-Template\n"
 "POT-Creation-Date: 2014-04-07 11:28:06+00:00\n"
 "MIME-Version: 1.0\n"
@@ -12,386 +12,386 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:52
-#: includes/post-types/class-mondula-form-wizard-post_type.php:42
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:52
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:42
 msgctxt "post type general name"
 msgid "Post Type"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:53
-#: includes/post-types/class-mondula-form-wizard-post_type.php:43
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:53
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:43
 msgctxt "post type singular name"
 msgid "Post Type"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:55
-#: includes/post-types/class-mondula-form-wizard-post_type.php:45
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:55
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:45
 msgid "Add New %s"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:55
-#: classes/post-types/class-mondula-form-wizard-post_type.php:56
-#: classes/post-types/class-mondula-form-wizard-post_type.php:57
-#: classes/post-types/class-mondula-form-wizard-post_type.php:59
-#: includes/post-types/class-mondula-form-wizard-post_type.php:45
-#: includes/post-types/class-mondula-form-wizard-post_type.php:46
-#: includes/post-types/class-mondula-form-wizard-post_type.php:47
-#: includes/post-types/class-mondula-form-wizard-post_type.php:49
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:55
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:56
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:57
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:59
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:45
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:46
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:47
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:49
 msgid "Post"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:56
-#: includes/post-types/class-mondula-form-wizard-post_type.php:46
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:56
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:46
 msgid "Edit %s"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:57
-#: includes/post-types/class-mondula-form-wizard-post_type.php:47
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:57
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:47
 msgid "New %s"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:58
-#: includes/post-types/class-mondula-form-wizard-post_type.php:48
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:58
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:48
 msgid "All %s"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:58
-#: classes/post-types/class-mondula-form-wizard-post_type.php:60
-#: classes/post-types/class-mondula-form-wizard-post_type.php:61
-#: classes/post-types/class-mondula-form-wizard-post_type.php:62
-#: includes/post-types/class-mondula-form-wizard-post_type.php:48
-#: includes/post-types/class-mondula-form-wizard-post_type.php:50
-#: includes/post-types/class-mondula-form-wizard-post_type.php:51
-#: includes/post-types/class-mondula-form-wizard-post_type.php:52
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:58
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:60
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:61
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:62
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:48
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:50
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:51
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:52
 msgid "Posts"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:59
-#: includes/post-types/class-mondula-form-wizard-post_type.php:49
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:59
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:49
 msgid "View %s"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:60
-#: includes/post-types/class-mondula-form-wizard-post_type.php:50
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:60
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:50
 msgid "Search %a"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:61
-#: includes/post-types/class-mondula-form-wizard-post_type.php:51
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:61
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:51
 msgid "No %s Found"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:62
-#: includes/post-types/class-mondula-form-wizard-post_type.php:52
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:62
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:52
 msgid "No %s Found In Trash"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:64
-#: includes/post-types/class-mondula-form-wizard-post_type.php:54
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:64
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:54
 msgid "*Posts"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:95
-#: classes/post-types/class-mondula-form-wizard-post_type.php:105
-#: includes/post-types/class-mondula-form-wizard-post_type.php:85
-#: includes/post-types/class-mondula-form-wizard-post_type.php:95
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:95
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:105
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:85
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:95
 msgid "Terms"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:96
-#: includes/post-types/class-mondula-form-wizard-post_type.php:86
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:96
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:86
 msgid "Term"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:97
-#: includes/post-types/class-mondula-form-wizard-post_type.php:87
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:97
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:87
 msgid "Search Terms"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:98
-#: includes/post-types/class-mondula-form-wizard-post_type.php:88
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:98
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:88
 msgid "All Terms"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:99
-#: includes/post-types/class-mondula-form-wizard-post_type.php:89
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:99
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:89
 msgid "Parent Term"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:100
-#: includes/post-types/class-mondula-form-wizard-post_type.php:90
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:100
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:90
 msgid "Parent Term:"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:101
-#: includes/post-types/class-mondula-form-wizard-post_type.php:91
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:101
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:91
 msgid "Edit Term"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:102
-#: includes/post-types/class-mondula-form-wizard-post_type.php:92
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:102
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:92
 msgid "Update Term"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:103
-#: includes/post-types/class-mondula-form-wizard-post_type.php:93
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:103
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:93
 msgid "Add New Term"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:104
-#: includes/post-types/class-mondula-form-wizard-post_type.php:94
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:104
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:94
 msgid "New Term Name"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:125
-#: includes/post-types/class-mondula-form-wizard-post_type.php:115
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:125
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:115
 msgid "Custom Field"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:180
-#: includes/post-types/class-mondula-form-wizard-post_type.php:170
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:180
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:170
 msgid "Post updated. %sView post%s."
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:181
-#: includes/post-types/class-mondula-form-wizard-post_type.php:171
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:181
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:171
 msgid "Custom field updated."
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:182
-#: includes/post-types/class-mondula-form-wizard-post_type.php:172
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:182
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:172
 msgid "Custom field deleted."
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:183
-#: includes/post-types/class-mondula-form-wizard-post_type.php:173
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:183
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:173
 msgid "Post updated."
 msgstr ""
 
 #. translators: %s: date and time of the revision
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:185
-#: includes/post-types/class-mondula-form-wizard-post_type.php:175
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:185
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:175
 msgid "Post restored to revision from %s."
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:186
-#: includes/post-types/class-mondula-form-wizard-post_type.php:176
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:186
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:176
 msgid "Post published. %sView post%s."
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:187
-#: includes/post-types/class-mondula-form-wizard-post_type.php:177
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:187
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:177
 msgid "Post saved."
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:188
-#: includes/post-types/class-mondula-form-wizard-post_type.php:178
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:188
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:178
 msgid "Post submitted. %sPreview post%s."
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:189
-#: includes/post-types/class-mondula-form-wizard-post_type.php:179
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:189
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:179
 msgid "Post scheduled for: %1$s. %2$sPreview post%3$s."
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:189
-#: includes/post-types/class-mondula-form-wizard-post_type.php:179
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:189
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:179
 msgid "M j, Y @ G:i"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:190
-#: includes/post-types/class-mondula-form-wizard-post_type.php:180
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:190
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:180
 msgid "Post draft updated. %sPreview post%s."
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:201
-#: includes/post-types/class-mondula-form-wizard-post_type.php:191
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:201
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:191
 msgid "Post Details"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:295
-#: includes/post-types/class-mondula-form-wizard-post_type.php:285
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:295
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:285
 msgid "Enter the post title here"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:308
-#: includes/post-types/class-mondula-form-wizard-post_type.php:298
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:308
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:298
 msgid "Custom field:"
 msgstr ""
 
-#: classes/post-types/class-mondula-form-wizard-post_type.php:309
-#: includes/post-types/class-mondula-form-wizard-post_type.php:299
+#: classes/post-types/class-mondula-multistep-forms-post_type.php:309
+#: includes/post-types/class-mondula-multistep-forms-post_type.php:299
 msgid "Description of this custom field."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:70
-#: includes/class-mondula-form-wizard-settings.php:405
+#: includes/class-mondula-multistep-forms-settings.php:70
+#: includes/class-mondula-multistep-forms-settings.php:405
 msgid "Plugin Settings"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:99
+#: includes/class-mondula-multistep-forms-settings.php:99
 msgid "Settings"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:111
+#: includes/class-mondula-multistep-forms-settings.php:111
 msgid "Standard"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:112
+#: includes/class-mondula-multistep-forms-settings.php:112
 msgid "These are fairly standard form input fields."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:116
+#: includes/class-mondula-multistep-forms-settings.php:116
 msgid "Some Text"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:117
+#: includes/class-mondula-multistep-forms-settings.php:117
 msgid "This is a standard text field."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:120
-#: includes/class-mondula-form-wizard-settings.php:128
-#: includes/class-mondula-form-wizard-settings.php:136
+#: includes/class-mondula-multistep-forms-settings.php:120
+#: includes/class-mondula-multistep-forms-settings.php:128
+#: includes/class-mondula-multistep-forms-settings.php:136
 msgid "Placeholder text"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:124
+#: includes/class-mondula-multistep-forms-settings.php:124
 msgid "A Password"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:125
+#: includes/class-mondula-multistep-forms-settings.php:125
 msgid "This is a standard password field."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:132
+#: includes/class-mondula-multistep-forms-settings.php:132
 msgid "Some Secret Text"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:133
+#: includes/class-mondula-multistep-forms-settings.php:133
 msgid "This is a secret text field - any data saved here will not be displayed after the page has reloaded, but it will be saved."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:140
+#: includes/class-mondula-multistep-forms-settings.php:140
 msgid "A Text Block"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:141
+#: includes/class-mondula-multistep-forms-settings.php:141
 msgid "This is a standard text area."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:144
+#: includes/class-mondula-multistep-forms-settings.php:144
 msgid "Placeholder text for this textarea"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:148
+#: includes/class-mondula-multistep-forms-settings.php:148
 msgid "An Option"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:149
+#: includes/class-mondula-multistep-forms-settings.php:149
 msgid "A standard checkbox - if you save this option as checked then it will store the option as 'on', otherwise it will be an empty string."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:155
+#: includes/class-mondula-multistep-forms-settings.php:155
 msgid "A Select Box"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:156
+#: includes/class-mondula-multistep-forms-settings.php:156
 msgid "A standard select box."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:163
+#: includes/class-mondula-multistep-forms-settings.php:163
 msgid "Some Options"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:164
+#: includes/class-mondula-multistep-forms-settings.php:164
 msgid "A standard set of radio buttons."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:171
+#: includes/class-mondula-multistep-forms-settings.php:171
 msgid "Some Items"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:172
+#: includes/class-mondula-multistep-forms-settings.php:172
 msgid "You can select multiple items and they will be stored as an array."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:181
+#: includes/class-mondula-multistep-forms-settings.php:181
 msgid "Extra"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:182
+#: includes/class-mondula-multistep-forms-settings.php:182
 msgid "These are some extra input fields that maybe aren't as common as the others."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:186
+#: includes/class-mondula-multistep-forms-settings.php:186
 msgid "A Number"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:187
+#: includes/class-mondula-multistep-forms-settings.php:187
 msgid "This is a standard number field - if this field contains anything other than numbers then the form will not be submitted."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:190
+#: includes/class-mondula-multistep-forms-settings.php:190
 msgid "42"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:194
+#: includes/class-mondula-multistep-forms-settings.php:194
 msgid "Pick a colour"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:195
+#: includes/class-mondula-multistep-forms-settings.php:195
 msgid "This uses WordPress' built-in colour picker - the option is stored as the colour's hex code."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:201
+#: includes/class-mondula-multistep-forms-settings.php:201
 msgid "An Image"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:202
+#: includes/class-mondula-multistep-forms-settings.php:202
 msgid "This will upload an image to your media library and store the attachment ID in the option field. Once you have uploaded an imge the thumbnail will display above these buttons."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:209
+#: includes/class-mondula-multistep-forms-settings.php:209
 msgid "A Multi-Select Box"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:210
+#: includes/class-mondula-multistep-forms-settings.php:210
 msgid "A standard multi-select box - the saved data is stored as an array."
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:354
+#: includes/class-mondula-multistep-forms-settings.php:354
 msgid "Upload an image"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:354
+#: includes/class-mondula-multistep-forms-settings.php:354
 msgid "Use image"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:354
+#: includes/class-mondula-multistep-forms-settings.php:354
 msgid "Upload new image"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:355
+#: includes/class-mondula-multistep-forms-settings.php:355
 msgid "Remove image"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:410
+#: includes/class-mondula-multistep-forms-settings.php:410
 msgid "All"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:427
+#: includes/class-mondula-multistep-forms-settings.php:427
 msgid "Save Settings"
 msgstr ""
 
-#: includes/class-mondula-form-wizard-settings.php:458
-#: includes/class-mondula-form-wizard-settings.php:467
-#: includes/class-mondula-form-wizard.php:207
-#: includes/class-mondula-form-wizard.php:216
+#: includes/class-mondula-multistep-forms-settings.php:458
+#: includes/class-mondula-multistep-forms-settings.php:467
+#: includes/class-mondula-multistep-forms.php:207
+#: includes/class-mondula-multistep-forms.php:216
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 #. Plugin Name of the plugin/theme
-msgid "Mondula Form Wizard"
+msgid "Multi-Step Form Builder"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

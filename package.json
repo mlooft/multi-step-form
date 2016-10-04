@@ -1,6 +1,6 @@
 {
-  "name": "mondula-form-wizard",
-  "title": "Mondula Form Wizard",
+  "name": "mondula-multistep-forms",
+  "title": "Multi-Step Form Builder",
   "version": "1.0.0",
   "homepage": "https://github.com/hlashbrooke/WordPress-Plugin-Template",
   "main": "gulpfile.js",
@@ -17,11 +17,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leweohlsen/mondula-form-wizard.git"
+    "url": "git+https://github.com/leweohlsen/mondula-multistep-forms.git"
   },
   "author": "Lewe Ohlsen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/leweohlsen/mondula-form-wizard/issues"
+    "url": "https://github.com/leweohlsen/mondula-multistep-forms/issues"
   }
 }

@@ -99,7 +99,7 @@ jQuery( document ).ready( function ( $ ) {
         }
         enablePrevious($wizard);
         $('html, body').animate({
-          scrollTop: $("#mondula-form-wizard").offset().top - 100
+          scrollTop: $("#mondula-multistep-forms").offset().top - 100
         }, 500);
     }
 
@@ -449,20 +449,14 @@ jQuery( document ).ready( function ( $ ) {
                 var type = $element.attr('data-type');
                 switch (type) {
                   case 'fw-radio': valid = validateRadio($element);
-                  console.log('RADIO' + valid);
                     break;
                   case 'fw-textarea': valid = validateTextArea($element);
-                  console.log('AREA' + valid);
                     break;
                   case 'fw-text': valid = validateText($element);
-                  console.log('TEXT' + valid);
                     break;
                   case 'fw-checkbox': valid = validateCheckbox($element);
-                  console.log('CHECK' + valid);
                     break;
                   case 'fw-submit': valid = validateSubmit($element);
-                  console.log('SUBMIT' + valid);
-
                     break;
                 }
                 if(!valid){
@@ -512,7 +506,7 @@ jQuery( document ).ready( function ( $ ) {
     }
 
     function post(summary, name, email) {
-        var id = $('#mondula-form-wizard').attr('data-wizardid');
+        var id = $('#mondula-multistep-forms').attr('data-wizardid');
         $.post(
             ajax.ajaxurl,
             {
@@ -575,9 +569,9 @@ jQuery( document ).ready( function ( $ ) {
           console.log('nextColor: ' + nextColor);
           $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ';} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:'+ nextColor +';}</style>');
         }
-        $('#mondula-form-wizard').append('<p>powered by Mondula Form Wizard</p>');
-        $('#mondula-form-wizard > p').css({ "font-size" : "0.8em", "margin-top" : "40px", "color": "#9e9e9e" });
-        $('#mondula-form-wizard > p').show();
+        $('#mondula-multistep-forms').append('<p>powered by Multi-Step Form Builder</p>');
+        $('#mondula-multistep-forms > p').css({ "font-size" : "0.8em", "margin-top" : "40px", "color": "#9e9e9e" });
+        $('#mondula-multistep-forms > p').show();
         updateSummary($('.fw-wizard'));
 
     }
