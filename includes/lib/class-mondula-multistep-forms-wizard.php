@@ -214,8 +214,19 @@ class Mondula_Form_Wizard_Wizard {
     private function render_header_html () {
         ?>
         <html><body>
-        <h3><?php echo $this->_maildata['header']?></h3>
-        <table rules="all" style="border-color: #dadada;" cellpadding="10">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tbody><tr>
+              <td bgcolor="#ffffff" align="center" style="padding: 20px 15px 70px;" class="section-padding">
+                  <table border="0" cellpadding="0" cellspacing="0" width="500" class="responsive-table">
+                      <tbody><tr>
+                          <td>
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tbody><tr>
+                                      <td>
+                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                              <tbody><tr>
+                                                  <td align="left" style="font-size: 22px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding-copy"><?php echo $this->_maildata['header']?></td>
+                                              </tr>
         <?php
     }
 
@@ -224,14 +235,25 @@ class Mondula_Form_Wizard_Wizard {
     }
 
     private function render_body_html( $data, $name, $email ){
-      foreach ( $data as $key => $value ) {
-          echo "<tr style='background: #eee;'><td><strong>" . $key . "</strong> </td></tr>";
-          foreach ( $value as $value2 ) {
-              foreach ( $value2 as $key2 => $value3 ) {
-                  echo "<tr><td><strong>". $key2 ."</strong></td><td>". $value3 ."</td></tr>  ";
-              }
-          }
-      }
+                                              foreach ( $data as $key => $value ) {
+                                                  echo '<tr><td align="left" style="padding: 30px 0 10px 0; font-size: 20px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy"><strong>' . $key . '</strong> </td></tr>';
+                                                  foreach ( $value as $value2 ) {
+                                                      foreach ( $value2 as $key2 => $value3 ) {
+                                                          echo '<tr><td align="left" style="border:solid 1px #dadada; border-width:0 0 1px 0; padding: 10px 0 10px 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">'. $key2 .'</td><td align="left" style=" border:solid 1px #dadada; border-width:0 0 1px 0; 10px 0 10px 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">'. $value3 .'</td></tr>';
+                                                      }
+                                                  }
+                                              } ?>
+                                          </tbody></table>
+                                      </td>
+                                  </tr>
+                              </tbody></table>
+                          </td>
+                      </tr>
+                  </tbody></table>
+              </td>
+          </tr>
+      </tbody></table>
+      <?php
     }
 
     private function render_body ( $data, $name, $email ) {
@@ -257,7 +279,26 @@ class Mondula_Form_Wizard_Wizard {
     // TODO html mail footer
     private function render_footer_html() {
        ?>
-       </table>
+       <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td bgcolor="#f5f5f5" align="center">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                    <tbody><tr>
+                        <td style="padding: 40px 0px 40px 0px;">
+                            <!-- UNSUBSCRIBE COPY -->
+                            <table width="500" border="0" cellspacing="0" cellpadding="0" align="center" class="responsive-table">
+                                <tbody><tr>
+                                    <td align="center" valign="middle" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                                        <span class="appleFooter" style="color:#666666;">powered by Multi-Step Form Builder | made with ♥ by <a href="http://mondula.com">Mondula GmbH</a></span>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </td>
+        </tr>
+    </tbody></table>
        </body></html>
        <?php
     }
