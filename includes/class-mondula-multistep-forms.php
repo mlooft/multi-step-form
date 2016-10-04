@@ -120,7 +120,7 @@ class Mondula_Form_Wizard {
                             $this->assets_url,
                             $this->script_suffix,
                             $this->_version,
-                            'mondula-form-wizard' // text domain
+                            'mondula-multistep-forms' // text domain
                         );
 		}
 
@@ -184,7 +184,7 @@ class Mondula_Form_Wizard {
 	 * @return  void
 	 */
 	public function load_localisation () {
-		load_plugin_textdomain( 'mondula-form-wizard', false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
+		load_plugin_textdomain( 'mondula-multistep-forms', false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
 	}
 
 	/**
@@ -194,7 +194,7 @@ class Mondula_Form_Wizard {
 	 * @return  void
 	 */
 	public function load_plugin_textdomain () {
-	    $domain = 'mondula-form-wizard';
+	    $domain = 'mondula-multistep-forms';
 
 	    $locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 

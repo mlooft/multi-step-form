@@ -3,7 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Description of class-mondula-form-wizard-step-options
+ * Description of class-mondula-multistep-forms-step-options
  *
  * @author alex
  */

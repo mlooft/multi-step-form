@@ -8,7 +8,7 @@
 
 
 /**
- * Description of class-mondula-form-wizard-admin
+ * Description of class-mondula-multistep-forms-admin
  *
  * @author alex
  */
@@ -44,8 +44,8 @@ class Mondula_Form_Wizard_Admin {
     }
 
     public function setup_menu () {
-        $all = add_menu_page( 'Mondula Form Wizard', 'Form Wizards', 'manage_options', 'mondula-form-wizard', array( $this, 'menu' ), 'dashicons-feedback', '35' );
-        $add = add_submenu_page( 'mondula-form-wizard', 'Mondula List Table', 'Add New', 'manage_options', 'mondula-form-wizard&edit', array( $this, 'menu' ));
+        $all = add_menu_page( 'Multi-Step Form Builder', 'Multi-Step Forms', 'manage_options', 'mondula-multistep-forms', array( $this, 'menu' ), 'dashicons-feedback', '35' );
+        $add = add_submenu_page( 'mondula-multistep-forms', 'Mondula List Table', 'Add New', 'manage_options', 'mondula-multistep-forms&edit', array( $this, 'menu' ));
 
         add_action( 'admin_print_styles-' . $all, array( $this, 'admin_js' ) );
         add_action( 'admin_print_styles-' . $add, array( $this, 'admin_js' ) );
@@ -189,7 +189,7 @@ class Mondula_Form_Wizard_Admin {
                 <div class="postbox-container">
                     <div class="metabox-holder">
                         <div class="postbox">
-                            <h3>Mondula Form Wizard</h3>
+                            <h3>Multi-Step Form Builder</h3>
                             <div class="inside">
                                 <div class="fw-elements">
                                     <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="Wizard Title">

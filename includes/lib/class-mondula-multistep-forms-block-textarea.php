@@ -3,16 +3,16 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Description of class-mondula-form-wizard-block-submit
+ * Description of class-mondula-multistep-forms-block-submit
  *
  * @author alex
  */
-class Mondula_Form_Wizard_Block_Text extends Mondula_Form_Wizard_Block {
+class Mondula_Form_Wizard_Block_Textarea extends Mondula_Form_Wizard_Block {
 
     private $_label;
     private $_required;
 
-    protected static $type = "fw-text";
+    protected static $type = "fw-textarea";
 
     public function __construct ( $label, $required ) {
         $this->_label = $label;
@@ -27,7 +27,7 @@ class Mondula_Form_Wizard_Block_Text extends Mondula_Form_Wizard_Block {
     public function render( $ids ) {
         ?>
     <div class="fw-input-container">
-        <label><?php echo $this->_label ?></label><input type="text" class="fw-text-input" data-id="text">
+        <label><?php echo $this->_label ?></label><textarea class="fw-textarea" data-id="textarea"></textarea>
     </div>
     <div class="fw-clearfix"></div>
         <?php
@@ -41,7 +41,7 @@ class Mondula_Form_Wizard_Block_Text extends Mondula_Form_Wizard_Block {
 
     public function as_aa() {
         return array(
-            'type' => 'text',
+            'type' => 'textarea',
             'label' => $this->_label,
             'required' => $this->_required
         );
@@ -50,6 +50,6 @@ class Mondula_Form_Wizard_Block_Text extends Mondula_Form_Wizard_Block {
     public static function from_aa( $aa ) {
         $label = $aa['label'];
         $required = $aa['required'];
-        return new Mondula_Form_Wizard_Block_Text( $label, $required );
+        return new Mondula_Form_Wizard_Block_Textarea( $label, $required );
     }
 }
