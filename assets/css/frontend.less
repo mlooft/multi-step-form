@@ -220,7 +220,8 @@ input.fw-text-input {
 /* CUSTOM RADIO BUTTONS */
 
 input.fw-radio {
-  display: none;
+  position: absolute;
+	left: -9999px;
 }
 .fw-radio-row {
 	input[type=radio]:checked + label:before {
@@ -229,13 +230,17 @@ input.fw-radio {
 		text-align: center;
     line-height: 100%;
 	}
+	input[type=radio]:focus + label:before {
+		border-color: @color_1;
+	}
 }
 
 /* CUSTOM CHECKBOXES */
 
 [data-type=fw-checkbox] {
 	input {
-	  display: none;
+	  position: absolute;
+		left: -9999px;
 	}
 	label:before {
   	border-radius: 3px;
@@ -246,6 +251,9 @@ input.fw-radio {
 	  color: @color_1;
 	  text-align: center;
     line-height: 15px;
+	}
+	input[type=checkbox]:focus + label:before {
+		border-color: @color_1;
 	}
 }
 
