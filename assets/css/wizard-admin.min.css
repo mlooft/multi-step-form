@@ -29,7 +29,7 @@ div#TB_ajaxContent>div{display:inline-block;border:1px solid gray;width:26%;text
 input.fw-required{float:left;margin-top:2px}.fw-block-action{float:left;width:5%;padding-bottom:500em;margin-bottom:-500em}
 .fw-block-action>h4{float:left;font-size:11px;width:100%;color:white;white-space:nowrap;transform:rotate(90deg);text-transform:uppercase;margin-bottom:100%}
 .fw-block-action>i{margin:3px 0}.fw-toggle-block{float:left;width:100%;color:white;text-align:center}
-.fw-move-block{float:left;width:100%;color:white;text-align:center}.fw-remove-block{float:left;width:100%;color:white;text-align:center}
+.fw-move-block{float:left;width:100%;color:white;text-align:center}.fw-remove-block{float:left;width:100%;color:white;text-align:center;cursor:pointer}
 .fa-remove.fw-remove-block{margin-top:10px}.fw-block-fields{float:left;width:80%;margin-left:15px;padding:15px 0}
 .fw-block-fields>label{font-weight:600;margin-left:3px}.fw-block-collapsed{height:28px}
 .fw-block-collapsed .fw-block-fields{display:none}.fw-block-collapsed .fw-block-action{transform-origin:100% 0;transform:rotate(-90deg);margin-left:-30px}
