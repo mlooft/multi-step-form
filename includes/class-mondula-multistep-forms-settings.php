@@ -8,11 +8,17 @@ class Mondula_Form_Wizard_Settings {
 
     private $settings_api;
 		private static $_instance = null;
+    private $_parent = null;
 
-    function __construct() {
+    private $_text_domain = 'mondula-multistep-forms';
+
+    function __construct( $parent ) {
         $this->settings_api = new Mondula_Form_Wizard_Settings_API;
+
         add_action( 'admin_init', array($this, 'admin_init') );
         add_action( 'admin_menu', array($this, 'admin_menu') );
+
+        $this->_parent = $parent;
     }
     function admin_init() {
         //set the settings
@@ -28,15 +34,15 @@ class Mondula_Form_Wizard_Settings {
         $sections = array(
             array(
                 'id' => 'fw_settings_basic',
-                'title' => __( 'Basic Settings', 'wedevs' )
+                'title' => __( 'Basic Settings', $this->_text_domain )
             ),
             array(
                 'id' => 'fw_settings_styling',
-                'title' => __( 'Styling', 'wedevs' )
+                'title' => __( 'Styling', $this->_text_domain )
             ),
             array(
                 'id' => 'wedevs_others',
-                'title' => __( 'Other Settings', 'wpuf' )
+                'title' => __( 'Other Settings', $this->_text_domain )
             )
         );
         return $sections;
@@ -51,30 +57,30 @@ class Mondula_Form_Wizard_Settings {
             'fw_settings_basic' => array(
                 // array(
                 //     'name'              => 'text_val',
-                //     'label'             => __( 'Text Input', 'wedevs' ),
-                //     'desc'              => __( 'Text input description', 'wedevs' ),
+                //     'label'             => __( 'Text Input', $this->_text_domain ),
+                //     'desc'              => __( 'Text input description', $this->_text_domain ),
                 //     'type'              => 'text',
                 //     'default'           => 'Title',
                 //     'sanitize_callback' => 'intval'
                 // ),
                 // array(
                 //     'name'              => 'number_input',
-                //     'label'             => __( 'Number Input', 'wedevs' ),
-                //     'desc'              => __( 'Number field with validation callback `intval`', 'wedevs' ),
+                //     'label'             => __( 'Number Input', $this->_text_domain ),
+                //     'desc'              => __( 'Number field with validation callback `intval`', $this->_text_domain ),
                 //     'type'              => 'number',
                 //     'default'           => 'Title',
                 //     'sanitize_callback' => 'intval'
                 // ),
                 // array(
                 //     'name'  => 'textarea',
-                //     'label' => __( 'Textarea Input', 'wedevs' ),
-                //     'desc'  => __( 'Textarea description', 'wedevs' ),
+                //     'label' => __( 'Textarea Input', $this->_text_domain ),
+                //     'desc'  => __( 'Textarea description', $this->_text_domain ),
                 //     'type'  => 'textarea'
                 // ),
                 array(
                     'name'    => 'mailformat',
-                    'label'   => __( 'Mail Format', 'wedevs' ),
-                    'desc'    => __( 'Choose formatting for form emails', 'wedevs' ),
+                    'label'   => __( 'Mail Format', $this->_text_domain ),
+                    'desc'    => __( 'Choose formatting for form emails', $this->_text_domain ),
                     'type'    => 'radio',
                     'options' => array(
                         'html' => 'HTML',
@@ -83,15 +89,15 @@ class Mondula_Form_Wizard_Settings {
                 ),
                 array(
                     'name'  => 'showsummary',
-                    'label' => __( 'Summary', 'wedevs' ),
-                    'desc'  => __( 'Display Summary at the end of each form', 'wedevs' ),
+                    'label' => __( 'Summary', $this->_text_domain ),
+                    'desc'  => __( 'Display Summary at the end of each form', $this->_text_domain ),
                     'type'  => 'checkbox',
                     'default' => 'on'
                 )
                 // array(
                 //     'name'    => 'multicheck',
-                //     'label'   => __( 'Multile checkbox', 'wedevs' ),
-                //     'desc'    => __( 'Multi checkbox description', 'wedevs' ),
+                //     'label'   => __( 'Multile checkbox', $this->_text_domain ),
+                //     'desc'    => __( 'Multi checkbox description', $this->_text_domain ),
                 //     'type'    => 'multicheck',
                 //     'options' => array(
                 //         'one'   => 'One',
@@ -102,8 +108,8 @@ class Mondula_Form_Wizard_Settings {
                 // ),
                 // array(
                 //     'name'    => 'selectbox',
-                //     'label'   => __( 'A Dropdown', 'wedevs' ),
-                //     'desc'    => __( 'Dropdown description', 'wedevs' ),
+                //     'label'   => __( 'A Dropdown', $this->_text_domain ),
+                //     'desc'    => __( 'Dropdown description', $this->_text_domain ),
                 //     'type'    => 'select',
                 //     'default' => 'no',
                 //     'options' => array(
@@ -113,15 +119,15 @@ class Mondula_Form_Wizard_Settings {
                 // ),
                 // array(
                 //     'name'    => 'password',
-                //     'label'   => __( 'Password', 'wedevs' ),
-                //     'desc'    => __( 'Password description', 'wedevs' ),
+                //     'label'   => __( 'Password', $this->_text_domain ),
+                //     'desc'    => __( 'Password description', $this->_text_domain ),
                 //     'type'    => 'password',
                 //     'default' => ''
                 // ),
                 // array(
                 //     'name'    => 'file',
-                //     'label'   => __( 'File', 'wedevs' ),
-                //     'desc'    => __( 'File description', 'wedevs' ),
+                //     'label'   => __( 'File', $this->_text_domain ),
+                //     'desc'    => __( 'File description', $this->_text_domain ),
                 //     'type'    => 'file',
                 //     'default' => '',
                 //     'options' => array(
@@ -132,30 +138,30 @@ class Mondula_Form_Wizard_Settings {
             'fw_settings_styling' => array(
                 array(
                     'name'    => 'activecolor',
-                    'label'   => __( 'Active Step Color', 'wedevs' ),
-                    'desc'    => __( 'Choose a color for the active step', 'wedevs' ),
+                    'label'   => __( 'Active Step Color', $this->_text_domain ),
+                    'desc'    => __( 'Choose a color for the active step', $this->_text_domain ),
                     'type'    => 'color',
                     'default' => ''
                 ),
 								array(
                     'name'    => 'donecolor',
-                    'label'   => __( 'Visited Step Color', 'wedevs' ),
-                    'desc'    => __( 'Choose a color for the completed steps', 'wedevs' ),
+                    'label'   => __( 'Visited Step Color', $this->_text_domain ),
+                    'desc'    => __( 'Choose a color for the completed steps', $this->_text_domain ),
                     'type'    => 'color',
                     'default' => ''
                 ),
                 array(
                     'name'    => 'nextcolor',
-                    'label'   => __( 'Next Step Color', 'wedevs' ),
-                    'desc'    => __( 'Choose a color for the steps to follow', 'wedevs' ),
+                    'label'   => __( 'Next Step Color', $this->_text_domain ),
+                    'desc'    => __( 'Choose a color for the steps to follow', $this->_text_domain ),
                     'type'    => 'color',
                     'default' => ''
                 ),
 								array(
                     'name'  => 'customcss',
-                    'label' => __( 'Custom CSS', 'wedevs' ),
+                    'label' => __( 'Custom CSS', $this->_text_domain ),
 										// TODO add link for CSS class list
-                    'desc'  => __( 'Enter your CSS here. You can find a List of CSS-classes HERE', 'wedevs' ),
+                    'desc'  => __( 'Enter your CSS here. You can find a List of CSS-classes HERE', $this->_text_domain ),
                     'type'  => 'textarea'
                 )
 
@@ -163,27 +169,27 @@ class Mondula_Form_Wizard_Settings {
             'wedevs_others' => array(
                 array(
                     'name'    => 'text',
-                    'label'   => __( 'Text Input', 'wedevs' ),
-                    'desc'    => __( 'Text input description', 'wedevs' ),
+                    'label'   => __( 'Text Input', $this->_text_domain ),
+                    'desc'    => __( 'Text input description', $this->_text_domain ),
                     'type'    => 'text',
                     'default' => 'Title'
                 ),
                 array(
                     'name'  => 'textarea',
-                    'label' => __( 'Textarea Input', 'wedevs' ),
-                    'desc'  => __( 'Textarea description', 'wedevs' ),
+                    'label' => __( 'Textarea Input', $this->_text_domain ),
+                    'desc'  => __( 'Textarea description', $this->_text_domain ),
                     'type'  => 'textarea'
                 ),
                 array(
                     'name'  => 'checkbox',
-                    'label' => __( 'Checkbox', 'wedevs' ),
-                    'desc'  => __( 'Checkbox Label', 'wedevs' ),
+                    'label' => __( 'Checkbox', $this->_text_domain ),
+                    'desc'  => __( 'Checkbox Label', $this->_text_domain ),
                     'type'  => 'checkbox'
                 ),
                 array(
                     'name'    => 'radio',
-                    'label'   => __( 'Radio Button', 'wedevs' ),
-                    'desc'    => __( 'A radio button', 'wedevs' ),
+                    'label'   => __( 'Radio Button', $this->_text_domain ),
+                    'desc'    => __( 'A radio button', $this->_text_domain ),
                     'type'    => 'radio',
                     'options' => array(
                         'yes' => 'Yes',
@@ -192,8 +198,8 @@ class Mondula_Form_Wizard_Settings {
                 ),
                 array(
                     'name'    => 'multicheck',
-                    'label'   => __( 'Multile checkbox', 'wedevs' ),
-                    'desc'    => __( 'Multi checkbox description', 'wedevs' ),
+                    'label'   => __( 'Multile checkbox', $this->_text_domain ),
+                    'desc'    => __( 'Multi checkbox description', $this->_text_domain ),
                     'type'    => 'multicheck',
                     'options' => array(
                         'one'   => 'One',
@@ -204,8 +210,8 @@ class Mondula_Form_Wizard_Settings {
                 ),
                 array(
                     'name'    => 'selectbox',
-                    'label'   => __( 'A Dropdown', 'wedevs' ),
-                    'desc'    => __( 'Dropdown description', 'wedevs' ),
+                    'label'   => __( 'A Dropdown', $this->_text_domain ),
+                    'desc'    => __( 'Dropdown description', $this->_text_domain ),
                     'type'    => 'select',
                     'options' => array(
                         'yes' => 'Yes',
@@ -214,15 +220,15 @@ class Mondula_Form_Wizard_Settings {
                 ),
                 array(
                     'name'    => 'password',
-                    'label'   => __( 'Password', 'wedevs' ),
-                    'desc'    => __( 'Password description', 'wedevs' ),
+                    'label'   => __( 'Password', $this->_text_domain ),
+                    'desc'    => __( 'Password description', $this->_text_domain ),
                     'type'    => 'password',
                     'default' => ''
                 ),
                 array(
                     'name'    => 'file',
-                    'label'   => __( 'File', 'wedevs' ),
-                    'desc'    => __( 'File description', 'wedevs' ),
+                    'label'   => __( 'File', $this->_text_domain ),
+                    'desc'    => __( 'File description', $this->_text_domain ),
                     'type'    => 'file',
                     'default' => ''
                 )
