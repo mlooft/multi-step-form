@@ -7,6 +7,8 @@ var debug = require('gulp-debug-streams');
 var less = require('gulp-less');
 var uglifycss = require('gulp-uglifycss');
 var livereload = require('gulp-livereload');
+var wpPot = require('gulp-wp-pot');
+var sort = require('gulp-sort');
 
 var base = 'assets/js';
 
@@ -32,6 +34,20 @@ gulp.task('css', function () {
     }))
     .pipe(gulp.dest('assets/css/'))
     .pipe(livereload());
+});
+
+gulp.task('pot', function () {
+    return gulp.src('**/*.php')
+        .pipe(sort())
+        .pipe(wpPot({
+            domain: 'mondula-multistep-forms', // TODO
+            destfile: 'mondula-form-wizard.pot', // TODO
+            package: 'mondula-multistep-forms', // TODO
+            bugReport: 'http://mondula.com/kontakt', // TODO
+            lastTranslator: 'Lewe Ohlsen <lewe.ohlsen@mondula.com>',
+            team: 'Mondula GmbH <wp-plugins@mondula.com>'
+        }))
+        .pipe(gulp.dest('lang'));
 });
 
 gulp.task('watch', function () {
