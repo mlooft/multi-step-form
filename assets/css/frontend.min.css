@@ -4,7 +4,7 @@
 .fw-wizard-step-header h2{font-size:26px;margin:0 0 20px !important}.fw-wizard-step-header.fw-current{height:auto}
 .fw-wizard-step.fw-current{display:block}.fw-step-part{float:left;width:100%}.fw-step-title{font-family:'Raleway','Georgia';font-weight:400;font-size:25px;color:#57aed1;text-shadow:0 .015em #fff}
 .fw-step-part-title{width:100%;float:left;font-family:'Raleway','Georgia';font-weight:400;font-size:2em;margin-top:20px;color:#57aed1;text-shadow:0 .015em #fff}
-.fw-step-part-title.fw-title-hidden{visibility:hidden}.fw-text-input,.fw-textarea{font-family:inherit;width:100%;border:1px solid #ddd;outline:0;line-height:2em;font-size:13px;background-color:#fff;color:#91003e}
+.fw-step-part-title.fw-title-hidden{visibility:hidden}.fw-text-input,.fw-textarea{font-family:inherit;width:100%;border:1px solid #ddd;outline:0;line-height:2em;font-size:13px;background-color:#fff;color:#666}
 .fw-text-input:focus,.fw-textarea:focus{color:#fff;background-color:#080808;background-color:#57aed1 !important;color:#fff !important}
 .fw-textarea{line-height:1.5em}.fw-wizard-buttons{margin-top:30px}.fw-wizard-buttons button{height:39px;line-height:39px;padding:0 22px;margin-top:10px;font-size:11px;color:#fff;border:0;background-color:#57aed1;cursor:pointer;text-transform:uppercase}
 .fw-wizard-buttons button:hover{color:#fff;background-color:#4891ae;border-color:#4891ae}
