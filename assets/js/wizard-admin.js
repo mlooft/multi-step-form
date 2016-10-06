@@ -604,9 +604,10 @@
         setupDragNDrop();
         setupThickbox();
 
+        console.log($step.height());
         // scroll down to new step
         $("html, body").animate({
-            scrollTop: $(document).height()
+            scrollTop: $(document).height() - $step.height() - 140
         }, 500);
 
     }
