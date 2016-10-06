@@ -4,7 +4,7 @@
 @color_4: #111;
 @color_5: #333;
 @color_6: #777;
-@color_7: red;
+@color_7: #F44336;
 @color_8: #444;
 @color_9: #ccc;
 @color_10: #8bc53f;
@@ -164,8 +164,16 @@ p.fw-step-summary {
 	margin-bottom: 10px;
 	margin-left: 0;
 }
+.fw-summary-alert {
+	background-color: @color_7;
+	padding: 10px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 13px;
+	color: white;
+}
 .fw-summary-invalid {
-	color: red;
+	color: @color_7;
 }
 .fw-conditional-then-container {
 	position: relative;
