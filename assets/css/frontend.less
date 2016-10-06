@@ -78,10 +78,10 @@
 .fw-step-part-title.fw-title-hidden {
 	visibility: hidden;
 }
-.fw-text-input {
+.fw-text-input, .fw-textarea {
 	font-family: @font-family_2;
 	width: 100%;
-	border: 0;
+	border: 1px solid #ddd;
 	outline: 0;
 	line-height: 2em;
 	font-size: 13px;
@@ -93,6 +93,9 @@
 		background-color: #57aed1 !important;
 		color: @color_3 !important;
 	}
+}
+.fw-textarea {
+	line-height: 1.5em;
 }
 .fw-wizard-buttons {
 	button {
@@ -175,9 +178,6 @@ p.fw-step-summary {
 }
 .fw-conditional-then.fw-selected {
 	visibility: visible;
-}
-input.fw-text-input {
-	border: 1px solid #ddd;
 }
 .fw-step-block {
 	margin-bottom: 15px;
