@@ -227,7 +227,13 @@ jQuery( document ).ready( function ( $ ) {
           function(){
               $('.fw-wizard-summary').slideUp();
               $('.fw-toggle-summary').text('show summary');
-          });
+          }
+        );
+        if ($('.fw-summary-invalid').length) {
+          $summary.prepend('<div class="fw-summary-alert">Some required Fields are empty<br>Please check the highlighted fields.</div>');
+        } else {
+          $('.fw-summary-alert').remove();
+        }
     }
 
     function getWizard($elt) {
@@ -327,7 +333,7 @@ jQuery( document ).ready( function ( $ ) {
             obj = get(data, wizardId, stepId, partId);
             delete(obj[blockId]);
         }
-
+        updateSummary($wizard);
     }
 
     function checkConditional() {
@@ -407,9 +413,8 @@ jQuery( document ).ready( function ( $ ) {
       if (!$element.find('.fw-textarea').val()) {
         $element.addClass('fw-invalid');
         return false;
-      } else {
-        return true;
       }
+      return true;
     }
 
     function validateCheckbox($element) {
@@ -546,6 +551,7 @@ jQuery( document ).ready( function ( $ ) {
         $('.fw-radio').change(checkRadio);
         $('.fw-radio-conditional').change(checkConditional);
         $('.fw-text-input').on('change input', textOnChange);
+        $('.fw-textarea').on('change input', textOnChange);
         $('.fw-checkbox, .fw-radio').on('change', function() {
           $(this).parents('.fw-step-block').removeClass('fw-invalid');
         });
