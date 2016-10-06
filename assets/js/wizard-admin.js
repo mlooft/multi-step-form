@@ -592,24 +592,27 @@
             title: '',
             blocks: []
         };
-        var $step = $(renderStep({
-            title: '',
-            headline: '',
-            copy_text: '',
-            parts: [part]
-        }));
-        $step.appendTo($(container).find('.meta-box-sortables'));
+        if ($('.fw-step').length < 6) {
+          var $step = $(renderStep({
+              title: '',
+              headline: '',
+              copy_text: '',
+              parts: [part]
+          }));
+          $step.appendTo($(container).find('.meta-box-sortables'));
 
-        setupClickHandlers();
-        setupDragNDrop();
-        setupThickbox();
+          setupClickHandlers();
+          setupDragNDrop();
+          setupThickbox();
 
-        console.log($step.height());
-        // scroll down to new step
-        $("html, body").animate({
-            scrollTop: $(document).height() - $step.height() - 140
-        }, 500);
-
+          console.log($step.height());
+          // scroll down to new step
+          $("html, body").animate({
+              scrollTop: $(document).height() - $step.height() - 140
+          }, 500);
+        } else {
+          alertMessage('ERROR: only 6 steps are allowed in the free version', false);
+        }
     }
 
     /**
