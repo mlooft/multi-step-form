@@ -3,6 +3,12 @@
 @color_3: red;
 @color_4: white;
 @color_5: #5c5c5c;
+@color_text: #EF1E64;
+@color_textarea: #ff5722;
+@color_checkbox: #4051B7;
+@color_radio: #009989;
+@color_submit: #8bc34a;
+
 
 .fw-wizard-container {
 	.postbox-container {
@@ -210,33 +216,47 @@ div#TB_ajaxContent {
 .fw-block-placeholder {
 	display: block;
 	margin: 10px;
-	height: 100px;
-	background-color: #dadada;
-	border: 4px dashed #0085ba;
+	height: 50px!important;
+ 	border: 4px dashed;
+	&[data-type="text"] {
+		border-color: @color_text;
+	}
+	&[data-type="textarea"] {
+		border-color: @color_textarea;
+	}
+	&[data-type="checkbox"] {
+		border-color: @color_checkbox;
+	}
+	&[data-type="radio"] {
+		border-color: @color_radio;
+	}
+	&[data-type="submit"] {
+		border-color: @color_submit;
+	}
 }
 .fw-step-block[data-type="text"] {
 	>.fw-block-action, .fw-block-controls > i {
-		background-color: #EF1E64;
+		background-color: @color_text;
 	}
 }
 .fw-step-block[data-type="textarea"] {
 	>.fw-block-action, .fw-block-controls > i {
-		background-color: #ff5722;
+		background-color: @color_textarea;
 	}
 }
 .fw-step-block[data-type="checkbox"] {
 	>.fw-block-action, .fw-block-controls > i {
-		background-color: #4051B7;
+		background-color: @color_checkbox;
 	}
 }
 .fw-step-block[data-type="radio"] {
 	>.fw-block-action, .fw-block-controls > i {
-		background-color: #009989;
+		background-color: @color_radio;
 	}
 }
 .fw-step-block[data-type="submit"] {
 	>.fw-block-action, .fw-block-controls > i {
-		background-color: #8bc34a;
+		background-color: @color_submit;
 	}
 }
 input.fw-required {
