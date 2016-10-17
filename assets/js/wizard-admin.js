@@ -85,7 +85,7 @@
         }
         radioHtml += '</div>';
         radioHtml += '<button class="fw-radio-add button-secondary"><i class="fa fa-plus" aria-hidden="true"></i> Add radio option</button><br/>';
-        radioHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(radio) + '/> choice required</label>'
+        radioHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(radio) + '/> Required</label>'
 
         return radioHtml;
     }
@@ -95,8 +95,8 @@
         var mailRequired = block.mailrequired && 'checked';
         var submitHtml = '';
         submitHtml += '<p>This will allow the user to submit the form. <br>You can only have one submit-block.</p>';
-        submitHtml += '<label><input type="checkbox" class="fw-submit-name" '+ nameRequired +'/>Require Name</label>';
-        submitHtml += '<label><input type="checkbox" class="fw-submit-mail" '+ mailRequired + '/>Require E-Mail Address</label>';
+        submitHtml += '<label><input type="checkbox" class="fw-submit-name" '+ nameRequired +'/>Name required</label>';
+        submitHtml += '<label><input type="checkbox" class="fw-submit-mail" '+ mailRequired + '/>E-Mail Address required</label>';
         return submitHtml;
     }
 
@@ -105,7 +105,7 @@
         var textHtml = '';
         textHtml += '<label>Label</label>';
         textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>require checked</label>'
+        textHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>'
         return textHtml;
     }
 
@@ -114,7 +114,7 @@
         var textHtml = '';
         textHtml += '<label>Label</label>';
         textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>required</label>'
+        textHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>'
         return textHtml;
     }
 
@@ -123,7 +123,7 @@
         var textAreaHtml = '';
         textAreaHtml += '<label>Label</label>';
         textAreaHtml += '<input type="text" class="fw-textarea-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textAreaHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>required</label>'
+        textAreaHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>'
         return textAreaHtml;
     }
 
@@ -207,7 +207,7 @@
 
         // drag&drop or click here to add elements
         partHtml += '</div><div class="fw-add-element">'
-        partHtml += '<a href="#TB_inline?width=400&height=200&inlineId=fw-thickbox-content" class="thickbox"><i class="fa fa-plus"></i><br> drag and drop elements or click here to add elements</a>'
+        partHtml += '<a href="#TB_inline?width=400&height=200&inlineId=fw-thickbox-content" class="thickbox"><i class="fa fa-plus"></i><br>add block</a>'
         partHtml += '</div>'
 
         partHtml += '</div>'
