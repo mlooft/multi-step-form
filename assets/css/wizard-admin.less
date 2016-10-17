@@ -65,11 +65,17 @@
 		font-size: 1.5em;
 	}
 }
-.fa-caret-down {
+i.fa-caret-up, i.fa-caret-right, i.fa-remove {
+
 	cursor: pointer;
-}
-.fa-caret-right {
-	cursor: pointer;
+	&.fw-icon-rotated::before{
+		transform: rotate(180deg);
+	}
+	&::before {
+		display: inline-block;
+		transform: rotate(0deg);
+		transition: transform .3s cubic-bezier(0.55, 0.09, 0.68, 0.53);
+	}
 }
 .fw-elements-container {
 	.postbox {
@@ -209,27 +215,27 @@ div#TB_ajaxContent {
 	border: 4px dashed #0085ba;
 }
 .fw-step-block[data-type="text"] {
-	>.fw-block-action {
+	>.fw-block-action, .fw-block-controls > i {
 		background-color: #EF1E64;
 	}
 }
 .fw-step-block[data-type="textarea"] {
-	>.fw-block-action {
+	>.fw-block-action, .fw-block-controls > i {
 		background-color: #ff5722;
 	}
 }
 .fw-step-block[data-type="checkbox"] {
-	>.fw-block-action {
+	>.fw-block-action, .fw-block-controls > i {
 		background-color: #4051B7;
 	}
 }
 .fw-step-block[data-type="radio"] {
-	>.fw-block-action {
+	>.fw-block-action, .fw-block-controls > i {
 		background-color: #009989;
 	}
 }
 .fw-step-block[data-type="submit"] {
-	>.fw-block-action {
+	>.fw-block-action, .fw-block-controls > i {
 		background-color: #8bc34a;
 	}
 }
@@ -239,9 +245,12 @@ input.fw-required {
 }
 .fw-block-action {
 	float: left;
-	width: 5%;
+	width: 30px;
 	padding-bottom: 500em;
 	margin-bottom: -500em;
+	>.fw-move-block {
+		margin-top: 10px;
+	}
 	>h4 {
 		float: left;
 		font-size: 11px;
@@ -256,27 +265,25 @@ input.fw-required {
 		margin: 3px 0px;
 	}
 }
-.fw-toggle-block {
-	float: left;
-	width: 100%;
-	color: @color_4;
+.fw-block-controls{
+	float: right;
+	width: 64px;
 	text-align: center;
+	>i {
+		height: 30px;
+		line-height: 30px;
+		display: inline-block;
+		color: white;
+		float: right;
+		width: 30px;
+		margin-left: 2px;
+	}
 }
 .fw-move-block {
 	float: left;
 	width: 100%;
 	color: @color_4;
 	text-align: center;
-}
-.fw-remove-block {
-	float: left;
-	width: 100%;
-	color: @color_4;
-	text-align: center;
-	cursor: pointer;
-}
-.fa-remove.fw-remove-block {
-	margin-top: 10px;
 }
 .fw-block-fields {
 	float: left;
@@ -289,7 +296,7 @@ input.fw-required {
 	}
 }
 .fw-block-collapsed {
-	height: 28px;
+	height: 30px;
 	.fw-block-fields {
 		display: none;
 	}
@@ -297,6 +304,10 @@ input.fw-required {
 		transform-origin: 100% 0;
 		transform: rotate(-90deg);
 		margin-left: -30px;
+	}
+	.fw-block-controls {
+		position: relative;
+		z-index: 5;
 	}
 }
 #fw-alert {
