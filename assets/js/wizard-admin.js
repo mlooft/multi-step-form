@@ -510,6 +510,8 @@
           start: function(event, ui) {
             var height = $(ui.item).height();
             $('.fw-block-placeholder').height(height);
+            $('.fw-block-placeholder').attr('data-type', ui.item.attr('data-type'));
+            console.log($('.fw-block-placeholder'));
           },
           update: function(event, ui) {
               warn('block sortables update', event, ui);
