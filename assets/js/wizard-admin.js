@@ -28,13 +28,11 @@
     }
 
     function renderBlockAction(type){
-      var headingHtml = '<div class="fw-block-action fw-block-hndle">';
-      headingHtml += '<i class="fa fa-remove fw-remove-block" title="remove element" aria-hidden="true"></i>'
-      headingHtml += '<i class="fa fa-caret-down fw-toggle-block" aria-hidden="true"></i>';
-      headingHtml += '<i class="fa fa-arrows fw-move-block fw-block-hndle" aria-hidden="true"></i>';
-      headingHtml += '<h4>&nbsp;' + type.substring(0,5) + '</h4>';
-      headingHtml += '</div>';
-      return headingHtml;
+      var blockAction = '<div class="fw-block-action fw-block-hndle">';
+      blockAction += '<i class="fa fa-arrows fw-move-block fw-block-hndle" aria-hidden="true"></i>';
+      blockAction += '<h4>' + type + '</h4>';
+      blockAction += '</div>';
+      return blockAction;
     }
 
     /**
@@ -133,6 +131,10 @@
         log('block', block);
         var error = false;
         var blockHtml = '<div class="fw-step-block" data-type="' + block.type + '" >';
+        blockHtml += '<div class="fw-block-controls">';
+        blockHtml += '<i class="fa fa-remove fw-remove-block" title="remove element" aria-hidden="true"></i>'
+        blockHtml += '<i class="fa fa-caret-up fw-toggle-block" aria-hidden="true"></i>';
+        blockHtml += '</div>';
         // removepart button
         blockHtml += renderBlockAction(block.type);
         blockHtml += '<div class="fw-block-fields">'
@@ -771,22 +773,20 @@
           removeBlock(event);
       })
 
-      $('.fw-block-action > .fa-caret-down').unbind( "click" ).click(function(event) {
-        $(this).parent().parent().toggleClass('fw-block-collapsed');
-      });
-
-      $('.fw-toggle-block').click(function(event) {
+      $('.fw-toggle-block').unbind( "click" ).click(function(event) {
         var $block = $(this).parent().parent();
+        $block.toggleClass('fw-block-collapsed');
         if ($block.hasClass('fw-block-collapsed')) {
           var label = $block.find('.fw-block-label').val();
-          $(this).siblings('h4').text(label.substring(0,60));
+          $block.find('h4').text(label);
+          $(this).addClass('fw-icon-rotated');
         } else {
           var blockType = $block.data('type');
-          $(this).siblings('h4').text(blockType.substring(0,5));
+          $block.find('h4').text(blockType);
+          $(this).removeClass('fw-icon-rotated');
         }
       });
     }
-
 
     /**
      * run - this function sets everything up
