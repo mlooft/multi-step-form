@@ -273,12 +273,12 @@ class Mondula_Form_Wizard_Wizard {
         echo "Email: " . $email . PHP_EOL;
     }
 
-    // TODO mail footer
     private function render_footer () {
         echo PHP_EOL . "End of form submission" . PHP_EOL;
+        echo "Multi-Step Form Builder | powered by Mondula GmbH ";
+        echo date("Y");
     }
 
-    // TODO html mail footer
     private function render_footer_html() {
        ?>
        <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -291,7 +291,7 @@ class Mondula_Form_Wizard_Wizard {
                             <table width="500" border="0" cellspacing="0" cellpadding="0" align="center" class="responsive-table">
                                 <tbody><tr>
                                     <td align="center" valign="middle" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                                        <span class="appleFooter" style="color:#666666;">powered by Multi-Step Form Builder | made with ♥ by <a href="http://mondula.com">Mondula GmbH</a></span>
+                                        <span class="appleFooter" style="color:#666666;">Multi-Step Form Builder | powered by <a href="http://mondula.com">Mondula GmbH</a> <?php echo date("Y"); ?></span>
                                     </td>
                                 </tr>
                             </tbody></table>
