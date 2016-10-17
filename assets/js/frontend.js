@@ -496,8 +496,6 @@ jQuery( document ).ready( function ( $ ) {
     /**
      * responseMessage - the message that shows up after form submit
      *
-     * TODO: das hier
-     *
      * @param  {string} rsp the response message
      * @param  {boolean} success successful submit of fail
      */
