@@ -7,15 +7,39 @@
 @color_7: #F44336;
 @color_8: #444;
 @color_9: #ccc;
-@color_10: #8bc53f;
+@color_10: #4caf50;
 @font-family_1: 'Raleway', 'Georgia';
 @font-family_2: inherit;
 @font-family_3: 'PT Sans Caption', sans-serif;
 
 /* ----------------------------- Progress bar -----------------------------*/
-.fw-invalid {
-	background-color: #FF91A4;
-	padding: 10px 20px;
+.fw-block-invalid {
+	input,
+	textarea,
+	&[data-type=fw-radio] label:before,
+	&[data-type=fw-checkbox] label:before {
+		border-color: #ef9a9a;
+		background-color: #ffebee;
+	}
+}
+.fw-alert-user {
+	position: fixed;
+	color: white;
+	font-size: 25px;
+	font-weight: 600;
+	text-align: center;
+	width: 50%;
+	padding: 15px;
+	z-index: 4;
+	i {
+		padding-right: 10px;
+	}
+	&.fw-alert-user-fail {
+		background-color: @color_7;
+	}
+	&.fw-alert-user-success {
+		background-color: @color_10;
+	}
 }
 .fw-clearfix {
 	clear: both;
@@ -387,7 +411,7 @@ ul.fw-progress-bar {
 
 
 @media screen and (min-width:1023px) {
-	.fw-invalid, .fw-step-block {
+	.fw-block-invalid, .fw-step-block {
 		transition: all .2s ease-in-out;
 	}
 //   .fw-wizard-step {

@@ -156,6 +156,8 @@ class Mondula_Form_Wizard_Wizard {
         ob_start();
         ?>
         <div id="mondula-multistep-forms" class="fw-wizard" data-stepCount="<?php echo count( $this->_steps )?>" data-wizardid="<?php echo $wizardId ?>">
+            <div class="fw-alert-user" style="display:none;">
+            </div>
             <div class="fw-progress-bar-container">
                 <div class="fw-container">
             <?php
