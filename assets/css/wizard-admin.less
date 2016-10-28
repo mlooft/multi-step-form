@@ -8,6 +8,7 @@
 @color_checkbox: #4051B7;
 @color_email: #9c27b0;
 @color_radio: #009989;
+@color_select: #2196f3;
 @color_submit: #8bc34a;
 
 
@@ -233,6 +234,10 @@ div#TB_ajaxContent {
 	&[data-type="radio"] {
 		border-color: @color_radio;
 	}
+	&[data-type="select"] {
+		border-color: @color_select;
+	}
+
 	&[data-type="submit"] {
 		border-color: @color_submit;
 	}
@@ -260,6 +265,11 @@ div#TB_ajaxContent {
 .fw-step-block[data-type="radio"] {
 	>.fw-block-action, .fw-block-controls > i {
 		background-color: @color_radio;
+	}
+}
+.fw-step-block[data-type="select"] {
+	>.fw-block-action, .fw-block-controls > i {
+		background-color: @color_select;
 	}
 }
 .fw-step-block[data-type="submit"] {
@@ -364,6 +374,9 @@ input.fw-required {
 }
 .fw-draggable-block[data-type=radio] {
 	border-left: 6px solid @color_radio;
+}
+.fw-draggable-block[data-type=select] {
+	border-left: 6px solid @color_select;
 }
 .fw-draggable-block[data-type=text] {
 	border-left: 6px solid @color_text;
