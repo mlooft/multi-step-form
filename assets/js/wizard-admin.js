@@ -424,9 +424,21 @@
       return mailData;
     }
 
+    function validate(data) {
+      var valid = true;
+      for (var i = 0; i < data.wizard.steps.length; i++) {
+          var step = data.wizard.steps[i];
+          if (!step.title) {
+            valid = false;
+          }
+      }
+      return valid;
+    }
+
     function save() {
         var $container = $(container);
         var title  = $('.fw-wizard-title').val();
+        var valid;
         var data = {
             title: title,
             wizard: {}
@@ -440,29 +452,34 @@
             }
         );
 
-        log('save', data);
-        log('ajaxurl', wizard.ajaxurl);
-        log('nonce', wizard.nonce);
+        if (validate(data)) {
 
-        $.ajax({
-            type: 'POST',
-            url: wizard.ajaxurl,
-            dataType: 'json',
-            data: {
-                action: 'fw_wizard_save',
-                data: data,
-                nonce: wizard.nonce,
-                id: wizard.id
-            },
-            success: function(response) {
-                log('response', response);
-                alertMessage(response.data.msg, response.success);
-            },
-            error: function(response) {
-                log('fail', arguments);
-                log('response', response);
-            }
-        });
+          log('save', data);
+          log('ajaxurl', wizard.ajaxurl);
+          log('nonce', wizard.nonce);
+
+          $.ajax({
+              type: 'POST',
+              url: wizard.ajaxurl,
+              dataType: 'json',
+              data: {
+                  action: 'fw_wizard_save',
+                  data: data,
+                  nonce: wizard.nonce,
+                  id: wizard.id
+              },
+              success: function(response) {
+                  log('response', response);
+                  alertMessage(response.data.msg, response.success);
+              },
+              error: function(response) {
+                  log('fail', arguments);
+                  log('response', response);
+              }
+          });
+        } else {
+          alertMessage("WARNING: You need to provide Titles for each step", false);
+        }
     }
 
     /**

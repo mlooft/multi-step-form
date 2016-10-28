@@ -34,7 +34,7 @@ class Mondula_Form_Wizard_Block_Checkbox extends Mondula_Form_Wizard_Block {
     public function render ( $ids ) {
       ?>
       <div class="fw-input-container">
-        <input id="<?php echo $this->generate_id($ids) ?>" type="checkbox" class="fw-checkbox" data-id="checkbox">
+        <input id="<?php echo $this->generate_id($ids) ?>" type="checkbox" class="fw-checkbox" name="<?php echo substr($this->generate_id($ids) , 0 , -2) ?>" data-id="checkbox">
         <label for="<?php echo $this->generate_id($ids) ?>"><?php echo $this->_label ?></label>
       </div>
       <div class="fw-clearfix"></div>
