@@ -83,6 +83,9 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
                     case 'textarea':
                         $blocks[] = Mondula_Form_Wizard_Block_Textarea::from_aa( $block );
                         break;
+                    case 'email':
+                        $blocks[] = Mondula_Form_Wizard_Block_Email::from_aa( $block );
+                        break;
                     case 'submit':
                         $blocks[] = Mondula_Form_Wizard_Step_Submit::from_aa( $block );
                         break;
