@@ -95,8 +95,6 @@
         var mailRequired = block.mailrequired && 'checked';
         var submitHtml = '';
         submitHtml += '<p>This will allow the user to submit the form. <br>You can only have one submit-block.</p>';
-        submitHtml += '<label><input type="checkbox" class="fw-submit-name" '+ nameRequired +'/>Name required</label>';
-        submitHtml += '<label><input type="checkbox" class="fw-submit-mail" '+ mailRequired + '/>E-Mail Address required</label>';
         return submitHtml;
     }
 
@@ -375,11 +373,6 @@
         text['required'] = $text.find('.fw-required').prop('checked');
     }
 
-    function getSubmitData($submit, submit){
-      submit['requirename'] = $('.fw-submit-name').prop('checked');
-      submit['requiremail'] = $('.fw-submit-mail').prop('checked');
-    }
-
     /**
      * getBlockData - get the data from backend input fields
      *
@@ -404,9 +397,6 @@
                 break;
             case 'textarea':
                 getTextareaData($block, block)
-                break;
-            case 'submit':
-                getSubmitData($block, block)
                 break;
         }
         return block;

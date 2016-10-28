@@ -459,6 +459,7 @@ jQuery( document ).ready( function ( $ ) {
 
     function validateStep(idx){
       var valid = true;
+      var emailValid = true;
       var stepValid = true;
       $('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-required="true"]').each(
           function (i, element) {
@@ -472,6 +473,7 @@ jQuery( document ).ready( function ( $ ) {
                 case 'fw-text': valid = validateText($element);
                   break;
                 case 'fw-email': valid = validateEmail($element);
+                  emailValid = valid;
                   break;
                 case 'fw-checkbox': valid = validateCheckbox($element);
                   break;
