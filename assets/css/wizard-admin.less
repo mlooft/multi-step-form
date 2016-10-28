@@ -6,6 +6,7 @@
 @color_text: #EF1E64;
 @color_textarea: #ff5722;
 @color_checkbox: #4051B7;
+@color_email: #9c27b0;
 @color_radio: #009989;
 @color_submit: #8bc34a;
 
@@ -217,6 +218,9 @@ div#TB_ajaxContent {
 	display: block;
 	margin: 10px;
  	border: 4px dashed;
+	&[data-type="email"] {
+		border-color: @color_email;
+	}
 	&[data-type="text"] {
 		border-color: @color_text;
 	}
@@ -236,6 +240,11 @@ div#TB_ajaxContent {
 .fw-step-block[data-type="text"] {
 	>.fw-block-action, .fw-block-controls > i {
 		background-color: @color_text;
+	}
+}
+.fw-step-block[data-type="email"] {
+	>.fw-block-action, .fw-block-controls > i {
+		background-color: @color_email;
 	}
 }
 .fw-step-block[data-type="textarea"] {
@@ -345,7 +354,7 @@ input.fw-required {
 }
 .fw-draggable-block {
 	display: inline-block;
-	padding: 10px 5px;
+	padding: 6px 5px;
 	width: 70%;
 	margin-bottom: 5px;
 	background-color: #f7f7f7;
@@ -354,19 +363,22 @@ input.fw-required {
 	cursor: move;
 }
 .fw-draggable-block[data-type=radio] {
-	border-left: 6px solid #009989;
+	border-left: 6px solid @color_radio;
 }
 .fw-draggable-block[data-type=text] {
-	border-left: 6px solid #ef1e64;
+	border-left: 6px solid @color_text;
+}
+.fw-draggable-block[data-type=email] {
+	border-left: 6px solid @color_email;
 }
 .fw-draggable-block[data-type=checkbox] {
-	border-left: 6px solid #4051b7;
+	border-left: 6px solid @color_checkbox;
 }
 .fw-draggable-block[data-type=textarea] {
-	border-left: 6px solid #ff5722;
+	border-left: 6px solid @color_textarea;
 }
 .fw-draggable-block[data-type=submit] {
-	border-left: 6px solid #8bc34a;
+	border-left: 6px solid @color_submit;
 }
 
 

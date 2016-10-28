@@ -105,7 +105,7 @@
         var textHtml = '';
         textHtml += '<label>Label</label>';
         textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>'
+        textHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>';
         return textHtml;
     }
 
@@ -114,8 +114,16 @@
         var textHtml = '';
         textHtml += '<label>Label</label>';
         textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>'
+        textHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>';
         return textHtml;
+    }
+
+    function renderEmail(block) {
+      var emailHtml = '';
+      emailHtml += '<label>Label</label>';
+      emailHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
+      emailHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>';
+      return emailHtml;
     }
 
     function renderTextArea(block) {
@@ -123,7 +131,7 @@
         var textAreaHtml = '';
         textAreaHtml += '<label>Label</label>';
         textAreaHtml += '<input type="text" class="fw-textarea-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textAreaHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>'
+        textAreaHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>';
         return textAreaHtml;
     }
 
@@ -132,7 +140,7 @@
         var error = false;
         var blockHtml = '<div class="fw-step-block" data-type="' + block.type + '" >';
         blockHtml += '<div class="fw-block-controls">';
-        blockHtml += '<i class="fa fa-remove fw-remove-block" title="remove element" aria-hidden="true"></i>'
+        blockHtml += '<i class="fa fa-remove fw-remove-block" title="remove element" aria-hidden="true"></i>';
         blockHtml += '<i class="fa fa-caret-up fw-toggle-block" aria-hidden="true"></i>';
         blockHtml += '</div>';
         // removepart button
@@ -156,6 +164,9 @@
                 break;
             case 'text':
                 blockHtml += renderTextInput(block);
+                break;
+            case 'email':
+                blockHtml += renderEmail(block);
                 break;
             case 'textarea':
                 blockHtml += renderTextArea(block);
@@ -354,6 +365,11 @@
         text['required'] = $text.find('.fw-required').prop('checked');
     }
 
+    function getEmailData($text, text) {
+        text['label'] = $text.find('.fw-text-label').val();
+        text['required'] = $text.find('.fw-required').prop('checked');
+    }
+
     function getTextareaData($text, text) {
         text['label'] = $text.find('.fw-textarea-label').val();
         text['required'] = $text.find('.fw-required').prop('checked');
@@ -382,6 +398,9 @@
                 break;
             case 'text':
                 getTextData($block, block)
+                break;
+            case 'email':
+                getEmailData($block, block)
                 break;
             case 'textarea':
                 getTextareaData($block, block)
@@ -478,7 +497,7 @@
               }
           });
         } else {
-          alertMessage("WARNING: You need to provide Titles for each step", false);
+          alertMessage("WARNING: You need to provide a title for each step", false);
         }
     }
 

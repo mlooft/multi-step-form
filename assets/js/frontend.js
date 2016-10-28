@@ -407,6 +407,17 @@ jQuery( document ).ready( function ( $ ) {
       return valid;
     }
 
+    function validateEmail($element) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      var email = $element.find('.fw-text-input').val();
+      if (!email || !re.test(email)) {
+        $element.addClass('fw-block-invalid');
+        return false;
+      } else {
+        return true;
+      }
+    }
+
     function validateText($element) {
       if (!$element.find('.fw-text-input').val()) {
         $element.addClass('fw-block-invalid');
@@ -431,16 +442,11 @@ jQuery( document ).ready( function ( $ ) {
       return true;
     }
 
-    function validateEmail(email) {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(email);
-    }
-
     function validateSubmit($element) {
       var name = $element.find('[data-id=name]').val();
       var email = $element.find('[data-id=email]').val();
       var valid = true;
-      if (!name || !email || !validateEmail(email)) {
+      if (!name || !email) {
         if ($element.has('input')) {
           valid = true;
         } else {
@@ -464,6 +470,8 @@ jQuery( document ).ready( function ( $ ) {
                 case 'fw-textarea': valid = validateTextArea($element);
                   break;
                 case 'fw-text': valid = validateText($element);
+                  break;
+                case 'fw-email': valid = validateEmail($element);
                   break;
                 case 'fw-checkbox': valid = validateCheckbox($element);
                   break;
