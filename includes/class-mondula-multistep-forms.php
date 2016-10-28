@@ -141,7 +141,9 @@ class Mondula_Form_Wizard {
 	public function enqueue_styles () {
 		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'css/frontend.min.css', array(), $this->_version );
 		wp_enqueue_style( $this->_token . '-frontend' );
-		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'); 
+		wp_register_style( $this->_token . '-select2', esc_url( $this->assets_url ) . 'css/select2.min.css', array(), $this->_version );
+		wp_enqueue_style( $this->_token . '-select2' );
+		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 	}
 
 	/**
@@ -153,7 +155,9 @@ class Mondula_Form_Wizard {
 	public function enqueue_scripts () {
 		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'js/frontend' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
 		wp_enqueue_script( $this->_token . '-frontend' );
-                wp_localize_script( $this->_token . '-frontend', 'ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'nonce' => wp_create_nonce( $this->_token ) ) );
+		wp_register_script( $this->_token . '-select2', esc_url( $this->assets_url ) . 'js/select2' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
+		wp_enqueue_script( $this->_token . '-select2' );
+		wp_localize_script( $this->_token . '-frontend', 'ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'nonce' => wp_create_nonce( $this->_token ) ) );
 	}
 
 	/**
@@ -164,8 +168,8 @@ class Mondula_Form_Wizard {
 	 */
 	public function admin_enqueue_styles ( $hook = '' ) {
 		wp_enqueue_style( $this->_token . '-admin' );
-                wp_register_style( $this->_token . '-fa', '//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' );
-                wp_enqueue_style( $this->_token . '-fa' );
+    wp_register_style( $this->_token . '-fa', '//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' );
+    wp_enqueue_style( $this->_token . '-fa' );
 	}
 
 	/**

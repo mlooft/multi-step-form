@@ -90,6 +90,26 @@
         return radioHtml;
     }
 
+    function renderSelect(select) {
+        log('select', select);
+        var i = 0;
+        var selectHtml = '';
+        var element;
+        selectHtml += '<div class="fw-select-option-container">';
+        selectHtml += '<label>Label</label>';
+        selectHtml += '<input type="text" class="fw-block-label" value="' + select.label + '"></input>';
+        selectHtml += '<label>Options (one per line)</label>';
+        selectHtml += '<textarea class="fw-select-options" rows="4" cols="50">';
+        for (i = 0; i < select.elements.length; i++) {
+          selectHtml += select.elements[i] + "\n";
+        }
+        selectHtml += '</textarea>';
+        selectHtml += '</div>';
+        selectHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(select) + '/> Required</label>'
+
+        return selectHtml;
+    }
+
     function renderSubmit(block) {
         var nameRequired = block.namerequired && 'checked';
         var mailRequired = block.mailrequired && 'checked';
@@ -156,6 +176,15 @@
                   }];
                 }
                 blockHtml += renderRadio(block);
+                break;
+            case 'select':
+                if (!block.elements) {
+                  block.elements = [ {
+                      type: 'option',
+                      value: ''
+                  }];
+                }
+                blockHtml += renderSelect(block);
                 break;
             case 'checkbox':
                 blockHtml += renderCheckbox(block);
@@ -350,6 +379,14 @@
         radio['required'] = $radio.find('.fw-required').prop('checked');
     }
 
+    function getSelectData($select, select) {
+      // TODO only values that are != ""
+      console.log($select.find(".fw-select-options").val());
+      select['elements'] = $select.find(".fw-select-options").val().split("\n");
+      select['required'] = $select.find('.fw-required').prop('checked');
+      select['label'] = $select.find('.fw-block-label').val();
+    }
+
 
     // TODO: redundant functions
 
@@ -385,6 +422,9 @@
         switch (type) {
             case 'radio':
                 getRadioData($block, block)
+                break;
+            case 'select':
+                getSelectData($block, block)
                 break;
             case 'checkbox':
                 getCheckboxData($block, block)

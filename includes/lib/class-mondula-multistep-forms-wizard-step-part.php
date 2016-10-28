@@ -74,6 +74,9 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
                     case 'radio':
                         $blocks[] = Mondula_Form_Wizard_Block_Radio::from_aa( $block );
                         break;
+                    case 'select':
+                        $blocks[] = Mondula_Form_Wizard_Block_Select::from_aa( $block );
+                        break;
                     case 'checkbox':
                         $blocks[] = Mondula_Form_Wizard_Block_Checkbox::from_aa( $block );
                         break;

@@ -585,6 +585,7 @@ jQuery( document ).ready( function ( $ ) {
         $('.fw-checkbox, .fw-radio').on('change', function() {
           $(this).parents('.fw-step-block').removeClass('fw-block-invalid');
         });
+        $('select').select2();
         $('.fw-btn-submit').click(submit);
 
         // TODO: generate function for setting up
