@@ -75,16 +75,6 @@
 		}
 	}
 }
-a.thickbox {
-    background: @color_4 none repeat scroll 0 0 !important;
-    border: 1px solid @color_7;
-    color: @color_6;
-    padding: 8px 15px;
-    text-decoration: none;
-	>i.fa.fa-plus {
-		font-size: 1em;
-	}
-}
 i.fa-caret-up, i.fa-caret-right, i.fa-remove {
 
 	cursor: pointer;
@@ -149,10 +139,6 @@ i.fa-caret-up, i.fa-caret-right, i.fa-remove {
 .fw-parts-header {
 	display: flex;
 }
-a.fw-add-part.button-secondary {
-	margin-left: 10px;
-	margin-top: 12px;
-}
 .postbox {
 	min-width: 200px;
 }
@@ -185,9 +171,6 @@ input[type=text] {
 	height: 2.5em;
 	width: 60%;
 	margin-bottom: 10px;
-}
-button.fw-radio-add.button-secondary {
-	margin: 10px 0;
 }
 .fw-block-heading {
 	font-size: 18px;
@@ -493,17 +476,40 @@ input.fw-required {
         color: @color_6;
         padding: 10px 15px !important;
         text-decoration:none;
+        display: inline-block;
+        cursor:pointer;
+        line-height:1;
+        margin: 5px 0 10px;
 }
-
+.fw-element-step:hover, .fw-radio-add:hover, .fw-add-part:hover  {
+        background: @color_6 none repeat scroll 0 0;
+        color: @color_8;
+}
 .fw-button-save {
     background: @color_10 none repeat scroll 0 0;
     color: @color_4;
     padding: 10px 15px !important;
     width:100%;
+    border:none !important;
+    cursor:pointer;
 }
-
-fw-button-save:hover {
+.fw-button-save:hover {
         background: @color_11 none repeat scroll 0 0;
+}
+a.fw-add-part{
+	margin-left: 10px;
+	margin-top: 10px;
+}
+a.thickbox {
+    background: @color_4 none repeat scroll 0 0 !important;
+    border: 1px solid @color_7;
+    color: @color_6;
+    padding: 10px 15px;
+    text-decoration: none;
+    line-height:1;
+	>i.fa.fa-plus {
+		font-size: 1em;
+	}
 }
 
 /* -------------------------------------------------------------- */
