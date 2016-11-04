@@ -3,7 +3,7 @@
  * Plugin Name: Multi-Step Form Builder
  * Version: 1.0
  * Plugin URI: http://www.mondula.com/
- * Description: Create and embed multi-step forms.
+ * Description: Create and embed Multi Step Form.
  * Author: Mondula GmbH
  * Author URI: http://www.mondula.com/
  * Requires at least: 4.0
