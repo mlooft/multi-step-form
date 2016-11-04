@@ -144,6 +144,12 @@ jQuery( document ).ready( function ( $ ) {
       pushToSummary(summaryObj, title, header, value, required);
     }
 
+    function selectSummary(summaryObj, $block, title, required) {
+      var header = $block.find('label').text();
+      var value = $block.find('select').select2('data')[0].text;
+      pushToSummary(summaryObj, title, header, value, required);
+    }
+
     function checkboxSummary(summaryObj, $block, title, required) {
       var header = $block.find('label').text();
       var value;
@@ -169,6 +175,8 @@ jQuery( document ).ready( function ( $ ) {
                 case 'fw-textarea': textareaSummary(summaryObj, $(element), title, required);
                   break;
                 case 'fw-radio': radioSummary(summaryObj, $(element), title, required);
+                  break;
+                case 'fw-select': selectSummary(summaryObj, $(element), title, required);
                   break;
                 case 'fw-checkbox': checkboxSummary(summaryObj, $(element), title, required);
                   break;
@@ -407,6 +415,16 @@ jQuery( document ).ready( function ( $ ) {
       return valid;
     }
 
+    function validateSelect($element) {
+      var valid = false;
+      var $select = $element.find("select");
+      if($select.select2("data")[0].selected) {
+        valid = true;
+      }
+      return valid;
+
+    }
+
     function validateEmail($element) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       var email = $element.find('.fw-text-input').val();
@@ -467,6 +485,8 @@ jQuery( document ).ready( function ( $ ) {
               var type = $element.attr('data-type');
               switch (type) {
                 case 'fw-radio': valid = validateRadio($element);
+                  break;
+                case 'fw-select': valid = validateSelect($element);
                   break;
                 case 'fw-textarea': valid = validateTextArea($element);
                   break;
@@ -585,7 +605,10 @@ jQuery( document ).ready( function ( $ ) {
         $('.fw-checkbox, .fw-radio').on('change', function() {
           $(this).parents('.fw-step-block').removeClass('fw-block-invalid');
         });
-        $('select').select2();
+        $('select').select2({
+          // TODO: placeholder not working
+          placeholder: "Select a state"
+        });
         $('.fw-btn-submit').click(submit);
 
         // TODO: generate function for setting up

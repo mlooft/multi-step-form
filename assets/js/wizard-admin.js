@@ -179,10 +179,7 @@
                 break;
             case 'select':
                 if (!block.elements) {
-                  block.elements = [ {
-                      type: 'option',
-                      value: ''
-                  }];
+                  block.elements = [];
                 }
                 blockHtml += renderSelect(block);
                 break;
@@ -380,11 +377,11 @@
     }
 
     function getSelectData($select, select) {
-      // TODO only values that are != ""
       console.log($select.find(".fw-select-options").val());
-      select['elements'] = $select.find(".fw-select-options").val().split("\n");
+      var options = $select.find(".fw-select-options").val().split("\n");
       select['required'] = $select.find('.fw-required').prop('checked');
       select['label'] = $select.find('.fw-block-label').val();
+      select['elements'] = options.filter(function(v){return v !== '' && v !== ' '});
     }
 
 
