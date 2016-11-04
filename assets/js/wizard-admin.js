@@ -235,7 +235,7 @@
         // removepart button
         partHtml += '<div class="fw-remove-part" title="remove section">'
         partHtml += '<i class="fa fa-trash"></i>'
-        partHtml += '</div><div class="inside">'
+        partHtml += '</div><div class="inside connectedSortable">'
 
         // blocks
         partHtml += renderBlocks(part.blocks);
@@ -566,6 +566,7 @@
         $('.fw-step-part .inside').sortable({
           opacity: 0.6,
           cursor: 'move',
+          connectWith: '.connectedSortable',
           handle: '.fw-block-hndle',
           tolerance: 'intersect',
           placeholder: 'fw-block-placeholder',
@@ -956,4 +957,3 @@
 
     $(document).ready(run);
 })(jQuery);
- 
