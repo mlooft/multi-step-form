@@ -28,18 +28,9 @@
     }
 
     function renderBlockAction(type){
-      var labels = {
-        text: 'Text Field',
-        select: 'Select',
-        checkbox: 'Checkbox',
-        radio: 'Radio Buttons',
-        textarea: 'Text Area',
-        email: 'E-Mail',
-        submit: 'Submit'
-      }
       var blockAction = '<div class="fw-block-action fw-block-hndle">';
       blockAction += '<i class="fa fa-arrows fw-move-block fw-block-hndle" aria-hidden="true"></i>';
-      blockAction += '<h4>' + labels[type] + '</h4>';
+      blockAction += '<h4>' + type + '</h4>';
       blockAction += '</div>';
       return blockAction;
     }
@@ -93,7 +84,7 @@
 
         }
         radioHtml += '</div>';
-        radioHtml += '<button class="fw-radio-add button-secondary"><i class="fa fa-plus" aria-hidden="true"></i> Add radio option</button><br/>';
+        radioHtml += '<button class="fw-radio-add"><i class="fa fa-plus" aria-hidden="true"></i> Add radio option</button><br/>';
         radioHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(radio) + '/> Required</label>'
 
         return radioHtml;
@@ -114,12 +105,7 @@
         }
         selectHtml += '</textarea>';
         selectHtml += '</div>';
-        selectHtml += '<label><input type="checkbox" class="fw-select-search"';
-        if (select.search == 'true') {
-          selectHtml += 'checked';
-        }
-        selectHtml += '/>Enable search</label>';
-        selectHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(select) + '/> Required</label>';
+        selectHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(select) + '/> Required</label>'
 
         return selectHtml;
     }
@@ -248,7 +234,7 @@
 
         // removepart button
         partHtml += '<div class="fw-remove-part" title="remove section">'
-        partHtml += '<i class="fa fa-times"></i>'
+        partHtml += '<i class="fa fa-trash"></i>'
         partHtml += '</div><div class="inside">'
 
         // blocks
@@ -257,7 +243,6 @@
         // drag&drop or click here to add elements
         partHtml += '</div><div class="fw-add-element">'
         partHtml += '<a href="#TB_inline?width=400&height=200&inlineId=fw-thickbox-content" class="thickbox"><i class="fa fa-plus"></i> Add Element</a>'
-
         partHtml += '</div>'
 
         partHtml += '</div>'
@@ -291,7 +276,7 @@
             partsHtml += renderPart(parts[i], partClass);
         }
         partsHtml += '<div class="fw-parts-footer">';
-        partsHtml += '<a class="fw-add-part button-secondary"><i class="fa fa-plus"></i> Add Section</a>'
+        partsHtml += '<a class="fw-add-part"><i class="fa fa-plus"></i> Add Section</a>'
         partsHtml += '</div>'
         partsHtml += '</div>'
         return partsHtml;
@@ -397,8 +382,8 @@
       select['required'] = $select.find('.fw-required').prop('checked');
       select['label'] = $select.find('.fw-block-label').val();
       select['elements'] = options.filter(function(v){return v !== '' && v !== ' '});
-      select['search'] = $select.find('.fw-select-search').prop('checked');
     }
+
 
     // TODO: redundant functions
 
@@ -861,17 +846,8 @@
           $block.find('h4').text(label);
           $(this).addClass('fw-icon-rotated');
         } else {
-          var labels = {
-            text: 'Text Field',
-            select: 'Select',
-            checkbox: 'Checkbox',
-            radio: 'Radio Buttons',
-            textarea: 'Text Area',
-            email: 'E-Mail',
-            submit: 'Submit'
-          }
           var blockType = $block.data('type');
-          $block.find('h4').text(labels[blockType]);
+          $block.find('h4').text(blockType);
           $(this).removeClass('fw-icon-rotated');
         }
       });
@@ -980,3 +956,4 @@
 
     $(document).ready(run);
 })(jQuery);
+ 
