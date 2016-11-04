@@ -472,11 +472,17 @@
 
     function validate(data) {
       var valid = true;
-      for (var i = 0; i < data.wizard.steps.length; i++) {
-          var step = data.wizard.steps[i];
-          if (!step.title) {
-            valid = false;
-          }
+      if(data.title == "") {
+        valid = false;
+        alertMessage("WARNING: You need to provide title for the form", false);
+      } else {
+        for (var i = 0; i < data.wizard.steps.length; i++) {
+            var step = data.wizard.steps[i];
+            if (!step.title) {
+              valid = false;
+              alertMessage("WARNING: You need to provide a title for each step", false);
+            }
+        }
       }
       return valid;
     }
@@ -523,8 +529,6 @@
                   log('response', response);
               }
           });
-        } else {
-          alertMessage("WARNING: You need to provide a title for each step", false);
         }
     }
 
