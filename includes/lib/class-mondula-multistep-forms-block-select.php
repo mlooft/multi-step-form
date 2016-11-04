@@ -11,14 +11,16 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
 
     private $_elements;
     private $_required;
+    private $_search;
     private $_label;
 
     protected static $type = "fw-select";
 
-    public function __construct ( $elements, $required, $label ) {
+    public function __construct ( $elements, $required, $label, $search ) {
         $this->_elements = $elements;
         $this->_required = $required;
         $this->_label = $label;
+        $this->_search = $search;
     }
 
     public function get_required( ) {
@@ -30,7 +32,7 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
         $group = $this->generate_id( $ids );
         ?>
           <label><?php echo $this->_label ?></label>
-          <select>
+          <select data-search="<?php echo $this->_search?>">
             <?php for ( $i = 0; $i < $cnt; $i++ ) {
                 $element = $this->_elements[$i];
             ?>
@@ -52,7 +54,8 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
             'type' => 'select',
             'elements' => $this->_elements,
             'required' => $this->_required,
-            'label' => $this->_label
+            'label' => $this->_label,
+            'search' => $this->_search
         );
     }
 
@@ -60,6 +63,7 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
         $elements = isset( $aa['elements'] ) ? $aa['elements'] : array();
         $required = $aa['required'];
         $label = $aa['label'];
-        return new Mondula_Form_Wizard_Block_Select( $elements, $required, $label );
+        $search = $aa['search'];
+        return new Mondula_Form_Wizard_Block_Select( $elements, $required, $label, $search);
     }
 }
