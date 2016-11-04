@@ -44,9 +44,8 @@ class Mondula_Form_Wizard_Admin {
     }
 
     public function setup_menu () {
-        $all = add_menu_page( 'Multi-Step Form Builder', 'Multi-Step Forms', 'manage_options', 'mondula-multistep-forms', array( $this, 'menu' ), 'dashicons-feedback', '35' );
+        $all = add_menu_page( 'Multi-Step Form Builder', 'Multi Step Form', 'manage_options', 'mondula-multistep-forms', array( $this, 'menu' ), 'dashicons-feedback', '35' );
         $add = add_submenu_page( 'mondula-multistep-forms', 'Mondula List Table', 'Add New', 'manage_options', 'mondula-multistep-forms&edit', array( $this, 'menu' ));
-
         add_action( 'admin_print_styles-' . $all, array( $this, 'admin_js' ) );
         add_action( 'admin_print_styles-' . $add, array( $this, 'admin_js' ) );
     }
@@ -159,42 +158,42 @@ class Mondula_Form_Wizard_Admin {
             </h2>
             <div class="fw-mail-settings-container" style="display:none;">
               <div class="wrap">
-                      <table class="form-table">
-                          <tr valign="top">
-                          <th scope="row">Send Mails To:</th>
-                          <td>
-                            <input type="text" class="fw-mail-to"/>
-                            <p class="description">Email address to which the mails are sent</p>
-                          </td>
-                          </tr>
-                          <tr valign="top">
-                          <th scope="row">Subject:</th>
-                          <td>
-                            <input type="text" class="fw-mail-subject"/>
-                          </td>
-                          </tr>
+                <table class="form-table">
+                    <tr valign="top">
+                    <th scope="row">Send Mails To:</th>
+                    <td>
+                      <input type="text" class="fw-mail-to"/>
+                      <p class="description">Email address to which the mails are sent</p>
+                    </td>
+                    </tr>
+                    <tr valign="top">
+                    <th scope="row">Subject:</th>
+                    <td>
+                      <input type="text" class="fw-mail-subject"/>
+                    </td>
+                    </tr>
 
-                          <tr valign="top">
-                          <th scope="row">Email Header:</th>
-                          <td>
-                            <textarea rows="5" cols="55" class="fw-mail-header"></textarea>
-                            <p class="description">Introductory text for email</p>
-                          </td>
-                          </tr>
-                      </table>
-                      <button class="button button-primary button-large fw-button-save"><?php _e( 'Save' ) ?></button>
+                    <tr valign="top">
+                    <th scope="row">Email Header:</th>
+                    <td>
+                      <textarea rows="5" cols="55" class="fw-mail-header"></textarea>
+                      <p class="description">Introductory text for email</p>
+                    </td>
+                    </tr>
+                </table>
+                <button class="fw-button-save"><?php _e( 'Save' ) ?></button>
               </div>
             </div>
             <div id="fw-elements-container" class="fw-elements-container">
                 <div class="postbox-container">
                     <div class="metabox-holder">
                         <div class="postbox">
-                            <h3>Multi-Step Form Builder</h3>
+                            <h3>Multi Step Form</h3>
                             <div class="inside">
                                 <div class="fw-elements">
                                     <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="Wizard Title">
                                     <a class="fw-element-step"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ) ?></a>
-                                    <h4>Drag & drop elements to steps on the right</h4>
+                                    <h4>Drag & Drop an element from below to a section on the right side</h4>
                                     <a class="fw-draggable-block fw-element-radio" data-type="radio"><i class="fa fa-arrows"></i> Radio Buttons</a>
                                     <a class="fw-draggable-block fw-element-select" data-type="select"><i class="fa fa-arrows"></i> Select</a>
                                     <a class="fw-draggable-block fw-element-checkbox" data-type="checkbox"><i class="fa fa-arrows"></i> Checkbox</a>
@@ -231,6 +230,7 @@ class Mondula_Form_Wizard_Admin {
     public function save() {
         // var_dump( $_POST );
         // wp_die('success');
+        $_POST = stripslashes_deep( $_POST );
         $id = isset( $_POST['id'] ) ? $_POST['id'] : '';
         $nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';
         $data = isset( $_POST['data'] ) ? $_POST['data'] : array();

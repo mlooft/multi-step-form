@@ -156,13 +156,6 @@ class Mondula_Form_Wizard_Settings {
                     'desc'    => __( 'Choose a color for the steps to follow', $this->_text_domain ),
                     'type'    => 'color',
                     'default' => ''
-                ),
-								array(
-                    'name'  => 'customcss',
-                    'label' => __( 'Custom CSS', $this->_text_domain ),
-										// TODO add link for CSS class list
-                    'desc'  => __( 'Enter your CSS here. You can find a List of CSS-classes HERE', $this->_text_domain ),
-                    'type'  => 'textarea'
                 )
 
             ),

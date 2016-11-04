@@ -8,7 +8,7 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Generate and embed dynamic multi-step forms. No hassle.
+Generate and embed dynamic Multi Step Form. No hassle.
 
 ## Description
 

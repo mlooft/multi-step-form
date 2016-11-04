@@ -75,16 +75,6 @@
 		}
 	}
 }
-a.thickbox {
-    background: @color_4 none repeat scroll 0 0 !important;
-    border: 1px solid @color_7;
-    color: @color_6;
-    padding: 8px 15px;
-    text-decoration: none;
-	>i.fa.fa-plus {
-		font-size: 1em;
-	}
-}
 i.fa-caret-up, i.fa-caret-right, i.fa-remove {
 
 	cursor: pointer;
@@ -158,10 +148,6 @@ a.fw-add-part {
 	min-width: 200px;
 }
 .fw-part-title {
-	font-size: 1.7em;
-	line-height: 100%;
-	height: 1.7em;
-	width: 95%;
 	margin: 18px 0 10px 13px;
 }
 .fw-remove-part {
@@ -186,9 +172,6 @@ input[type=text] {
 	height: 2.5em;
 	width: 60%;
 	margin-bottom: 10px;
-}
-button.fw-radio-add.button-secondary {
-	margin: 10px 0;
 }
 .fw-block-heading {
 	font-size: 18px;
@@ -341,9 +324,12 @@ div#TB_ajaxContent {
     margin-bottom: 10px;
 }
 .form-field {
-    input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="url"], textarea {
-        padding-left: 10px;
-    }
+  input[type=text] {
+    padding: 5px 20px 5px 20px;
+  }
+  input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="url"], textarea {
+      padding-left: 10px;
+  }
 }
 input.fw-wizard-title {
     width: 100% !important;
@@ -494,17 +480,40 @@ input.fw-required {
         color: @color_6;
         padding: 10px 15px !important;
         text-decoration:none;
+        display: inline-block;
+        cursor:pointer;
+        line-height:1;
+        margin: 5px 0 10px;
 }
-
+.fw-element-step:hover, .fw-radio-add:hover, .fw-add-part:hover  {
+        background: @color_6 none repeat scroll 0 0;
+        color: @color_8;
+}
 .fw-button-save {
     background: @color_10 none repeat scroll 0 0;
     color: @color_4;
     padding: 10px 15px !important;
     width:100%;
+    border:none !important;
+    cursor:pointer;
 }
-
-fw-button-save:hover {
+.fw-button-save:hover {
         background: @color_11 none repeat scroll 0 0;
+}
+a.fw-add-part{
+	margin-left: 10px;
+	margin-top: 10px;
+}
+a.thickbox {
+    background: @color_4 none repeat scroll 0 0 !important;
+    border: 1px solid @color_7;
+    color: @color_6;
+    padding: 10px 15px;
+    text-decoration: none;
+    line-height:1;
+	>i.fa.fa-plus {
+		font-size: 1em;
+	}
 }
 
 /* -------------------------------------------------------------- */
