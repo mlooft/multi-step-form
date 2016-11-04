@@ -80,7 +80,7 @@ a.thickbox {
     border: 1px solid @color_7;
     color: @color_6;
     padding: 8px 15px;
-    text-transform: uppercase;
+    text-decoration: none;
 	>i.fa.fa-plus {
 		font-size: 1em;
 	}
@@ -335,6 +335,10 @@ div#TB_ajaxContent {
         margin-bottom: 10px;
     }
 }
+.fw-step-block textarea{
+    padding: 5px 8px;
+    margin-bottom: 10px;
+}
 .form-field {
     input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="url"], textarea {
         padding-left: 10px;
@@ -446,6 +450,9 @@ input.fw-required {
 	color: @color_5;
 	cursor: move;
 }
+.fw-sticky .fw-draggable-block {
+	width: 91%;
+}
 .fw-draggable-block[data-type=radio] {
 	border-left: 6px solid @color_radio;
 }
@@ -486,6 +493,8 @@ input.fw-required {
         border-color: @color_7;
         box-shadow: 0px !important;
         color: @color_6;
+        width:100%;
+        border:none !important;
     }
 }
 .wp-core-ui {
@@ -494,6 +503,8 @@ input.fw-required {
         height: auto !important;
         margin: 0;
         padding: 4px 15px !important;
+        width:100%;
+        border:none !important;
     }
 }
 .wp-core-ui {
@@ -516,6 +527,8 @@ input.fw-required {
         box-shadow: 0px !important;
         color: @color_4;
         text-shadow: 0px !important;
+        width:100%;
+        border:none !important;
     }
 }
 .wp-core-ui {
