@@ -193,7 +193,7 @@ class Mondula_Form_Wizard_Admin {
                             <div class="inside">
                                 <div class="fw-elements">
                                     <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="Wizard Title">
-                                    <a class="fw-element-step button-secondary"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ) ?></a>
+                                    <a class="fw-element-step"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ) ?></a>
                                     <h4>Drag & drop elements to steps on the right</h4>
                                     <a class="fw-draggable-block fw-element-radio" data-type="radio"><i class="fa fa-arrows"></i> Radio Buttons</a>
                                     <a class="fw-draggable-block fw-element-select" data-type="select"><i class="fa fa-arrows"></i> Select</a>
@@ -204,7 +204,7 @@ class Mondula_Form_Wizard_Admin {
                                     <a class="fw-draggable-block fw-element-submit" data-type="submit"><i class="fa fa-arrows"></i> Submit</a>
                                 </div>
                                 <div class="fw-actions">
-                                    <button class="button button-primary button-large fw-button-save"><?php _e( 'Save' ) ?></button>
+                                    <button class="fw-button-save"><?php _e( 'Save' ) ?></button>
                                 </div>
                             </div>
                         </div>
