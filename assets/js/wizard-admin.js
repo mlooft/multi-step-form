@@ -234,7 +234,7 @@
 
         // removepart button
         partHtml += '<div class="fw-remove-part" title="remove section">'
-        partHtml += '<i class="fa fa-times"></i>'
+        partHtml += '<i class="fa fa-trash"></i>'
         partHtml += '</div><div class="inside">'
 
         // blocks
@@ -242,7 +242,7 @@
 
         // drag&drop or click here to add elements
         partHtml += '</div><div class="fw-add-element">'
-        partHtml += '<a href="#TB_inline?width=400&height=200&inlineId=fw-thickbox-content" class="thickbox"><i class="fa fa-plus"></i><br>add block</a>'
+        partHtml += '<a href="#TB_inline?width=400&height=200&inlineId=fw-thickbox-content" class="thickbox"><i class="fa fa-plus"></i>Add Element</a>'
         partHtml += '</div>'
 
         partHtml += '</div>'
