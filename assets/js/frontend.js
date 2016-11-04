@@ -582,6 +582,22 @@ jQuery( document ).ready( function ( $ ) {
         });
     }
 
+    function setupSelect2() {
+      $('select').each(function(idx, element) {
+        console.log($(element).data('search'));
+        if ($(element).data('search') == false) {
+          $(element).select2({
+            minimumResultsForSearch: Infinity
+          })
+        } else {
+          $('select').select2({
+            // TODO: placeholder not working
+            placeholder: "Select a state"
+          });
+        }
+      });
+    }
+
     function setup() {
         $('.fw-wizard').each(function (idx, element) {
             showStep($(element), 0);
@@ -605,10 +621,9 @@ jQuery( document ).ready( function ( $ ) {
         $('.fw-checkbox, .fw-radio').on('change', function() {
           $(this).parents('.fw-step-block').removeClass('fw-block-invalid');
         });
-        $('select').select2({
-          // TODO: placeholder not working
-          placeholder: "Select a state"
-        });
+
+        setupSelect2();
+
         $('.fw-btn-submit').click(submit);
 
         // TODO: generate function for setting up

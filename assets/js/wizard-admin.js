@@ -105,7 +105,12 @@
         }
         selectHtml += '</textarea>';
         selectHtml += '</div>';
-        selectHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(select) + '/> Required</label>'
+        selectHtml += '<label><input type="checkbox" class="fw-select-search"';
+        if (select.search == 'true') {
+          selectHtml += 'checked';
+        }
+        selectHtml += '/>Enable search</label>';
+        selectHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(select) + '/> Required</label>';
 
         return selectHtml;
     }
@@ -234,7 +239,7 @@
 
         // removepart button
         partHtml += '<div class="fw-remove-part" title="remove section">'
-        partHtml += '<i class="fa fa-trash"></i>'
+        partHtml += '<i class="fa fa-times"></i>'
         partHtml += '</div><div class="inside">'
 
         // blocks
@@ -242,7 +247,7 @@
 
         // drag&drop or click here to add elements
         partHtml += '</div><div class="fw-add-element">'
-        partHtml += '<a href="#TB_inline?width=400&height=200&inlineId=fw-thickbox-content" class="thickbox"><i class="fa fa-plus"></i>Add Element</a>'
+        partHtml += '<a href="#TB_inline?width=400&height=200&inlineId=fw-thickbox-content" class="thickbox"><i class="fa fa-plus"></i><br>add block</a>'
         partHtml += '</div>'
 
         partHtml += '</div>'
@@ -382,8 +387,8 @@
       select['required'] = $select.find('.fw-required').prop('checked');
       select['label'] = $select.find('.fw-block-label').val();
       select['elements'] = options.filter(function(v){return v !== '' && v !== ' '});
+      select['search'] = $select.find('.fw-select-search').prop('checked');
     }
-
 
     // TODO: redundant functions
 
