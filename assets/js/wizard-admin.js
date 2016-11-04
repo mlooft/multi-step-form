@@ -28,9 +28,18 @@
     }
 
     function renderBlockAction(type){
+      var labels = {
+        text: 'Text Field',
+        select: 'Select',
+        checkbox: 'Checkbox',
+        radio: 'Radio Buttons',
+        textarea: 'Text Area',
+        email: 'E-Mail',
+        submit: 'Submit'
+      }
       var blockAction = '<div class="fw-block-action fw-block-hndle">';
       blockAction += '<i class="fa fa-arrows fw-move-block fw-block-hndle" aria-hidden="true"></i>';
-      blockAction += '<h4>' + type + '</h4>';
+      blockAction += '<h4>' + labels[type] + '</h4>';
       blockAction += '</div>';
       return blockAction;
     }
@@ -852,8 +861,17 @@
           $block.find('h4').text(label);
           $(this).addClass('fw-icon-rotated');
         } else {
+          var labels = {
+            text: 'Text Field',
+            select: 'Select',
+            checkbox: 'Checkbox',
+            radio: 'Radio Buttons',
+            textarea: 'Text Area',
+            email: 'E-Mail',
+            submit: 'Submit'
+          }
           var blockType = $block.data('type');
-          $block.find('h4').text(blockType);
+          $block.find('h4').text(labels[blockType]);
           $(this).removeClass('fw-icon-rotated');
         }
       });
