@@ -3,15 +3,23 @@
 @color_3: red;
 @color_4: white;
 @color_5: #5c5c5c;
-@color_text: #EF1E64;
+@color_6: #333333;
+@color_7: #dddddd;
+@color_8: #f5f5f5;
+@color_9: #e0e0e0;
+@color_10: #546e7a;
+@color_11: #455a64;
+@color_text: #2196f3;
 @color_textarea: #ff5722;
 @color_checkbox: #4051B7;
 @color_email: #9c27b0;
 @color_radio: #009989;
-@color_select: #2196f3;
+@color_select: #757575;
 @color_submit: #8bc34a;
 
-
+.postbox .hndle, .stuffbox .hndle {
+    border-bottom: 0px !important;
+}
 .fw-wizard-container {
 	.postbox-container {
 		width: 100%;
@@ -54,11 +62,10 @@
 	cursor: pointer;
 }
 .fw-add-element {
-	margin: 10px 0;
-	border: 3px dashed #9E9E9E;
-	padding: 10px;
-	margin: 10px;
-	text-align: center;
+	margin: 0 0 30px 13px;
+	border: 0 none;
+	padding: 0;
+	text-align: left;
 	.fw-add-element-button {
 		visibility: hidden;
 	}
@@ -68,9 +75,14 @@
 		}
 	}
 }
-.thickbox {
+a.thickbox {
+    background: @color_4 none repeat scroll 0 0 !important;
+    border: 1px solid @color_7;
+    color: @color_6;
+    padding: 8px 15px;
+    text-transform: uppercase;
 	>i.fa.fa-plus {
-		font-size: 1.5em;
+		font-size: 1em;
 	}
 }
 i.fa-caret-up, i.fa-caret-right, i.fa-remove {
@@ -98,8 +110,8 @@ i.fa-caret-up, i.fa-caret-right, i.fa-remove {
 	padding: 10px;
 	margin: 10px;
 	width: 90%;
-	background-color: #F5F5F5;
-	border: 1px solid #e0e0e0;
+	background-color: @color_8;
+	border: 1px solid @color_9;
 }
 .fw-step-h1 {
 	float: left;
@@ -127,8 +139,9 @@ i.fa-caret-up, i.fa-caret-right, i.fa-remove {
 }
 .fw-step-block {
 	overflow: hidden;
-	margin: 10px;
-	border: 1px solid #dadada;
+	margin: 0 0 20px;
+	border: 1px solid @color_7;
+	background: @color_4 none repeat scroll 0 0;
 }
 .fw-column-buttons {
 	display: none;
@@ -148,6 +161,7 @@ a.fw-add-part.button-secondary {
 	line-height: 100%;
 	height: 1.7em;
 	width: 95%;
+	margin: 18px 0 10px 13px;
 }
 .fw-remove-part {
 	color: @color_1;
@@ -194,6 +208,10 @@ button.fw-radio-add.button-secondary {
 		color: @color_3;
 	}
 }
+#TB_title {
+    background: @color_7 none repeat scroll 0 0;
+    border-bottom: none !important;
+}
 div#TB_ajaxContent {
 	>div {
 		display: inline-block;
@@ -204,9 +222,40 @@ div#TB_ajaxContent {
 		margin: 5px;
 	}
 }
+div#TB_ajaxContent {
+    height: auto !important;
+    padding: 20px 15px;
+}
+div#TB_ajaxContent {
+    #fw-thickbox-radio, #fw-thickbox-checkbox, #fw-thickbox-text, #fw-thickbox-email, #fw-thickbox-textarea, #fw-thickbox-select, #fw-thickbox-submit {
+        border: medium none !important;
+        color: @color_4;
+    }
+    #fw-thickbox-radio {
+        background: @color_radio none repeat scroll 0 0;
+    }
+    #fw-thickbox-checkbox {
+        background: @color_checkbox none repeat scroll 0 0;
+    }
+    #fw-thickbox-text {
+        background: @color_text none repeat scroll 0 0;
+    }
+    #fw-thickbox-email {
+        background: @color_email none repeat scroll 0 0;
+    }
+    #fw-thickbox-textarea {
+        background: @color_textarea none repeat scroll 0 0;
+    }
+    #fw-thickbox-select {
+        background: @color_select none repeat scroll 0 0;
+    }
+    #fw-thickbox-submit {
+        background: @color_submit none repeat scroll 0 0;
+    }
+}
 .ui-tooltip {
 	color: @color_4;
-	background-color: #5a5a5a;
+	background-color: @color_5;
 	border-radius: 10px;
 	z-index: 430;
 	width: 100px;
@@ -277,6 +326,23 @@ div#TB_ajaxContent {
 		background-color: @color_submit;
 	}
 }
+.fw-step {
+    input[type="text"] {
+        margin-bottom: 10px;
+    }
+    .fw-step textarea{
+        padding: 5px 8px;
+        margin-bottom: 10px;
+    }
+}
+.form-field {
+    input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="url"], textarea {
+        padding-left: 10px;
+    }
+}
+input.fw-wizard-title {
+    width: 100% !important;
+}
 input.fw-required {
 	float: left;
 	margin-top: 2px;
@@ -330,8 +396,16 @@ input.fw-required {
 	padding: 15px 0;
 	>label {
 		font-weight: 600;
-		margin-left: 3px;
+		margin: 0 0 10px;
 	}
+}
+.form-wrap {
+    label {
+        display: block;
+        font-weight: 600;
+        margin: 0 0 10px;
+        padding: 0;
+    }
 }
 .fw-block-collapsed {
 	height: 30px;
@@ -365,10 +439,10 @@ input.fw-required {
 .fw-draggable-block {
 	display: inline-block;
 	padding: 6px 5px;
-	width: 70%;
-	margin-bottom: 5px;
-	background-color: #f7f7f7;
-	border: 1px solid #cecece;
+	width: 93%;
+	margin-bottom: 7px;
+	background-color: @color_8;
+	border: 1px solid @color_7;
 	color: @color_5;
 	cursor: move;
 }
@@ -393,8 +467,88 @@ input.fw-required {
 .fw-draggable-block[data-type=submit] {
 	border-left: 6px solid @color_submit;
 }
-
-
+.fa.fa-trash {
+    color:@color_6;
+    font-size:16px;
+}
+.fw-mail-settings-container {
+    .fw-button-save {
+        margin-top: 25px;
+        padding: 6px;
+    }
+}
+/* -------------------------------------------------------------- */
+/* --- Wordpress Core ------------------------------------------- */
+/* -------------------------------------------------------------- */
+.wp-core-ui {
+    .button, .button-secondary {
+        background: @color_4 none repeat scroll 0 0;
+        border-color: @color_7;
+        box-shadow: 0px !important;
+        color: @color_6;
+    }
+}
+.wp-core-ui {
+    .button, .button-primary, .button-secondary {
+        border-radius: 0 !important;
+        height: auto !important;
+        margin: 0;
+        padding: 4px 15px !important;
+    }
+}
+.wp-core-ui {
+    .button-group.button-large{
+        height: auto;
+        padding: 4px 30px;
+        width: 100%;
+        .button{
+            height: auto;
+            padding: 4px 30px;
+            width: 100%;
+        }   
+    }
+    
+}
+.wp-core-ui {
+    .button-primary {
+        background: @color_10 none repeat scroll 0 0;
+        border-color:none !important;
+        box-shadow: 0px !important;
+        color: @color_4;
+        text-shadow: 0px !important;
+    }
+}
+.wp-core-ui {
+    .button-primary:hover {
+        background: @color_11 none repeat scroll 0 0;
+    }
+}
+/* -------------------------------------------------------------- */
+/* --- Placeholder ---------------------------------------------- */
+/* -------------------------------------------------------------- */
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #555 !important;
+    font-size: 15px;
+    padding-left: 10px !important;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: #555 !important;
+    font-size: 15px;
+    padding-left: 10px !important;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: #555 !important;
+    font-size: 15px;
+    padding-left: 10px !important;
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: #555 !important;
+    font-size: 15px;
+    padding-left: 10px !important;
+}
+/* -------------------------------------------------------------- */
+/* --- Media Queries -------------------------------------------- */
+/* -------------------------------------------------------------- */
 @media screen and (max-width: 960px) {
   #fw-alert {
     left: 36px;
