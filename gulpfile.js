@@ -57,4 +57,4 @@ gulp.task('watch', function () {
     gulp.watch('assets/css/*.less', ['css']);
 });
 
-gulp.task('default', ['js', 'css']);
+gulp.task('default', ['js', 'css', 'watch']);
