@@ -242,7 +242,7 @@
 
         // drag&drop or click here to add elements
         partHtml += '</div><div class="fw-add-element">'
-        partHtml += '<a href="#TB_inline?width=400&height=200&inlineId=fw-thickbox-content" class="thickbox"><i class="fa fa-plus"></i>Add Element</a>'
+        partHtml += '<a href="#TB_inline?width=400&height=200&inlineId=fw-thickbox-content" class="thickbox"><i class="fa fa-plus"></i> Add Element</a>'
         partHtml += '</div>'
 
         partHtml += '</div>'
@@ -956,3 +956,4 @@
 
     $(document).ready(run);
 })(jQuery);
+ 
