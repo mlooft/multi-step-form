@@ -485,37 +485,26 @@ input.fw-required {
     }
 }
 /* -------------------------------------------------------------- */
-/* --- Wordpress Core ------------------------------------------- */
+/* --- Buttons -------------------------------------------------- */
 /* -------------------------------------------------------------- */
-.wp-core-ui {
-    .button, .button-secondary, .button-primary, .button.fw-button-save {
+.fw-element-step, .fw-radio-add, .fw-add-part  {
         background: @color_8 none repeat scroll 0 0;
-        border-color: @color_7;
-        box-shadow: 0px !important;
+        border: 1px solid @color_7;
         color: @color_6;
-        width:100%;
-        text-shadow: 0px !important;
-        border-radius: 0 !important;
-        height: auto !important;
-        margin: 0;
-        padding: 4px 15px !important;
-    }
+        padding: 10px 15px !important;
 }
-.wp-core-ui {
-    .button.fw-button-save {
-        background: @color_10 none repeat scroll 0 0;
-        border-color:none !important;
-        box-shadow: 0px !important;
-        color: @color_4;
-        border:none !important;
-        margin: 0;
-    }
+
+.fw-button-save {
+    background: @color_10 none repeat scroll 0 0;
+    color: @color_4;
+    padding: 10px 15px !important;
+    width:100%;
 }
-.wp-core-ui {
-    .button.fw-button-save:hover {
+
+fw-button-save:hover {
         background: @color_11 none repeat scroll 0 0;
-    }
 }
+
 /* -------------------------------------------------------------- */
 /* --- Placeholder ---------------------------------------------- */
 /* -------------------------------------------------------------- */
