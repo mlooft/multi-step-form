@@ -550,6 +550,7 @@ jQuery( document ).ready( function ( $ ) {
         $('.fw-block-invalid').each(function(i, element) {
           $(element).removeClass('fw-block-invalid');
         })
+        $('.fw-spinner').show();
         if (validate($wizard)) {
             summary = getSummary($wizard);
             console.log("Summary");
@@ -574,6 +575,7 @@ jQuery( document ).ready( function ( $ ) {
             },
             function (resp) {
                 // TODO: customizable success message
+                $('.fw-spinner').hide();
                 alertUser("Success! Your data was submitted.", true);
             }
         ).fail(function (resp) {
