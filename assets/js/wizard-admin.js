@@ -290,7 +290,8 @@
 
         // title
         stepHtml += '<div class="input form-field">';
-        stepHtml += '<input type="text" class="fw-step-title" value="' + step.title + '" placeholder="' + wizard.i18n.title + '"></input>'
+        stepHtml += '<label for="' + titleId + '"><b>' + wizard.i18n.title + '</b></label>';
+        stepHtml += '<input type="text" class="fw-step-title" value="' + step.title + '"></input>'
         stepHtml += '</div>';
 
         // headline
@@ -669,7 +670,8 @@
             title: '',
             blocks: []
         };
-        if ($('.fw-step').length < 6) {
+        var n = $('.fw-step').length;
+        if (n < 6) {
           var $step = $(renderStep({
               title: '',
               headline: '',
@@ -682,11 +684,12 @@
           setupDragNDrop();
           setupThickbox();
 
-          console.log($step.height());
-          // scroll down to new step
-          $("html, body").animate({
-              scrollTop: $(document).height() - $step.height() - 140
-          }, 500);
+          if (n > 0) {
+            // scroll down to new step
+            $("html, body").animate({
+                scrollTop: $(document).height() - $step.height() - 180
+            }, 500);
+          }
         } else {
           alertMessage('ERROR: only 6 steps are allowed in the free version', false);
         }
