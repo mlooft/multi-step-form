@@ -515,7 +515,9 @@ jQuery( document ).ready( function ( $ ) {
       if (!stepValid) {
         // TODO: custom message
         $('.fw-block-invalid').each(function(idx, element) {
-          $(element).append('<div class="fw-block-invalid-alert">' + err[1] + '</div>');
+          if ($(element).find('.fw-block-invalid-alert').length < 1) {
+            $(element).append('<div class="fw-block-invalid-alert">' + err[1] + '</div>');
+          }
         });
         alertUser(err[0], false);
       }
