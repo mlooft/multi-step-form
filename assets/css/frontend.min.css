@@ -1,5 +1,5 @@
 .fw-block-invalid input,.fw-block-invalid textarea,.fw-block-invalid[data-type=fw-radio] label:before,.fw-block-invalid[data-type=fw-checkbox] label:before{border-color:#ef9a9a;background-color:#ffebee}
-.fw-alert-user{position:fixed;color:white;font-size:25px;font-weight:600;text-align:center;width:50%;padding:15px;z-index:4}
+.fw-alert-user{position:relative;color:white;font-size:25px;font-weight:600;text-align:center;width:50%;padding:15px;z-index:4}
 .fw-alert-user i{padding-right:10px}.fw-alert-user.fw-alert-user-fail{background-color:#f44336}
 .fw-alert-user.fw-alert-user-success{background-color:#4caf50}.fw-clearfix{clear:both}
 .fw-one_half{width:50% !important;float:left}.fw-one_third{width:33.3333% !important;float:left}

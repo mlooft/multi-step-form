@@ -57,8 +57,8 @@ class Mondula_Form_Wizard_Admin {
             $id = isset( $_GET['edit'] ) ? $_GET['edit'] : '';
             $json = $this->_wizard_service->get_as_json( $id );
             $i18n = array(
-                'title' => __( 'Title', $this->_text_domain ),
-                'headline' => __( 'Headline', $this->_text_domain ),
+                'title' => __( 'Step Title', $this->_text_domain ),
+                'headline' => __( 'Step Headline', $this->_text_domain ),
                 'copyText' => __( 'Step description', $this->_text_domain  ),
                 'partTitle' => __( 'Section Title', $this->_text_domain ),
                 'radioHeader' => __( 'Header', $this->_text_domain ),
