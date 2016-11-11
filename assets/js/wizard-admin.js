@@ -291,13 +291,13 @@
         // title
         stepHtml += '<div class="input form-field">';
         stepHtml += '<label for="' + titleId + '"><b>' + wizard.i18n.title + '</b></label>';
-        stepHtml += '<input type="text" class="fw-step-title" value="' + step.title + '"></input>'
+        stepHtml += '<input type="text" class="fw-step-title" title="the step title is displayed below the progress bar" value="' + step.title + '"></input>'
         stepHtml += '</div>';
 
         // headline
         stepHtml += '<div class="input form-field">';
         stepHtml += '<label for="' + headlineId + '"><b>' + wizard.i18n.headline + '</b></label>';
-        stepHtml += '<input type="text" class="fw-step-headline" value="' + step.headline + '"></input>'
+        stepHtml += '<input type="text" class="fw-step-headline" title="the step headline is displayed above the progress bar" value="' + step.headline + '"></input>'
         stepHtml += '</div>';
 
         // copy text
@@ -638,6 +638,8 @@
      * setupTooltips - creates tooltips for better usability
      */
     function setupTooltips() {
+      $('.fw-step-title').tooltip();
+      $('.fw-step-headline').tooltip();
       $('.fw-trashdiv').tooltip();
       $('.fw-remove-part').tooltip();
       $('.fw-remove-block').tooltip();
@@ -952,10 +954,6 @@
             });
 
             $container.on('click', '.fw-trashdiv', removeStep);
-
-            $(".fw-remove-part").tooltip({
-                content: "Remove this section"
-            });
 
             setupDragNDrop();
             setupTooltips();
