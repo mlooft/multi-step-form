@@ -350,6 +350,9 @@
         stepsHtml += '<a class="fw-element-step"><i class="fa fa-plus"></i> Add Step</a>';
         stepsHtml += '</div></div>';
         $(container).html(stepsHtml);
+        if (n == 0) {
+          addStep();
+        }
     }
 
 
@@ -869,9 +872,13 @@
             var $container = $(container);
             log(wizard);
             log(w);
-            // load the wizard title
-            $('.fw-wizard-title').val(w.title);
-
+            
+            if (w.title) {
+              // load the wizard title
+              $('.fw-wizard-title').val(w.title);
+            } else {
+              $('.fw-wizard-title').val('My Multi Step Form');
+            }
             renderSteps(w.wizard.steps);
 
             // get mail settings
