@@ -106,7 +106,7 @@ class Mondula_Form_Wizard_Admin {
         ?>
         <div class="wrap">
             <div id="icon-users" class="icon32"></div>
-            <h2>Form Wizards</h2>
+            <h2>Multi Step Forms</h2>
             <form id="fw-wizard-table" method="get">
                 <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
             <?php $table->display(); ?>
