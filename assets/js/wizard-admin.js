@@ -353,6 +353,7 @@
         $(container).html(stepsHtml);
         if (n == 0) {
           addStep();
+          $(".fw-add-part").trigger("click");
         }
     }
 
