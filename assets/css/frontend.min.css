@@ -10,9 +10,10 @@
 .fw-step-part-title{width:100%;float:left;font-family:'Raleway','Georgia';font-weight:400;font-size:2em;margin-top:20px;color:#57aed1;text-shadow:0 .015em #fff}
 .fw-step-part-title.fw-title-hidden{visibility:hidden}.fw-text-input,.fw-textarea{font-family:inherit;width:100%;border:1px solid #ddd;outline:0;line-height:2em;font-size:13px;background-color:#fff;color:#666}
 .fw-text-input:focus,.fw-textarea:focus{color:#fff;background-color:#080808;background-color:#57aed1 !important;color:#fff !important}
-.fw-textarea{line-height:1.5em}.fw-wizard-buttons{margin-top:30px}.fw-wizard-buttons button{height:39px;line-height:39px;padding:0 22px;margin-top:10px;font-size:11px;color:#fff;border:0;background-color:#57aed1;cursor:pointer;text-transform:uppercase}
-.fw-wizard-buttons button:hover{color:#fff;background-color:#4891ae;border-color:#4891ae}
-.fw-wizard-buttons button:focus{outline-width:0}.fw-btn-submit,.fw-toggle-summary{height:39px;line-height:39px;padding:0 22px;font-size:11px;border:0;background-color:#57aed1;width:100%;background:#fff;color:#333;cursor:pointer;padding-bottom:15px;margin-top:15px;border:1px solid #ddd;text-transform:uppercase}
+.fw-textarea{line-height:1.5em}.fw-wizard-buttons{margin-top:30px}.fw-wizard-buttons button,.fw-wizard-buttons .fw-btn{height:39px;line-height:39px;padding:0 22px;margin-top:10px;font-size:11px;color:#fff;border:0;background-color:#57aed1;cursor:pointer;text-transform:uppercase}
+.fw-wizard-buttons button:hover,.fw-wizard-buttons .fw-btn:hover{color:#fff;background-color:#4891ae;border-color:#4891ae}
+.fw-wizard-buttons button:focus,.fw-wizard-buttons .fw-btn:focus{outline-width:0}
+.fw-btn-submit,.fw-toggle-summary{height:39px;line-height:39px;padding:0 22px;font-size:11px;border:0;background-color:#57aed1;width:100%;background:#fff;color:#333;cursor:pointer;padding-bottom:15px;margin-top:15px;border:1px solid #ddd;text-transform:uppercase}
 .fw-btn-submit:hover,.fw-toggle-summary:hover{color:#fff;background-color:#4891ae;border-color:#4891ae;float:none;width:100%;background:#fff;border:1px solid #ddd;color:#333}
 .fw-btn-submit:focus,.fw-toggle-summary:focus{outline-width:0}.fw-submit-alert{margin:10px 0}
 p.fw-step-summary-title{margin-top:20px;margin-bottom:10px;font-size:1.2em;font-weight:bold;color:#111}
