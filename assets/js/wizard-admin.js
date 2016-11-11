@@ -455,14 +455,25 @@
         return part;
     }
 
-    function getStepData($step) {
+    function getStepData($step, isLast) {
         var step = {};
         step['title'] = $step.find('.fw-step-title').val();
         step['headline'] = $step.find('.fw-step-headline').val();
         step['copy_text'] = $step.find('.fw-step-copy_text').val();
         var parts = step['parts'] = [];
-        $step.find('.fw-step-part').each(function(idx, element) {
-            parts.push(getPartData($(element)))
+        var $parts = $step.find('.fw-step-part');
+        $parts.each(function(idx, element) {
+            parts.push(getPartData($(element)));
+            // add submit to last part of last Step
+            if (isLast && idx == $parts.length - 1) {
+              parts.push({
+                title : 'Submit',
+                blocks : [{
+                    type: 'submit',
+                    value: ''
+                }]
+              })
+            }
         });
 
         return step;
@@ -504,11 +515,14 @@
         // data['title']
         data.wizard.steps = [];
         data.wizard.mail = getMailData();
-        $container.find('.fw-step').each(
+        var $steps = $container.find('.fw-step');
+        $steps.each(
             function(idx, element) {
-                data.wizard.steps.push(getStepData($(element)));
+              var last = idx == $steps.length - 1;
+              data.wizard.steps.push(getStepData($(element), last));
             }
         );
+        data.wizard.steps.push()
 
         if (validate(data)) {
 
@@ -893,6 +907,8 @@
               $('.fw-wizard-title').val('My Multi Step Form');
             }
             renderSteps(w.wizard.steps);
+            
+            $('.fw-step-part').last().remove();
 
             // get mail settings
             renderMailSettings(w.wizard.mail);
