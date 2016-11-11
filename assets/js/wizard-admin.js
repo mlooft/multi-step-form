@@ -346,7 +346,9 @@
         for (i = 0, n = steps.length; i < n; i++) {
             stepsHtml += renderStep(steps[i], i);
         }
-        stepsHtml += '</div></div></div>';
+        stepsHtml += '</div>';
+        stepsHtml += '<a class="fw-element-step"><i class="fa fa-plus"></i> Add Step</a>';
+        stepsHtml += '</div></div>';
         $(container).html(stepsHtml);
     }
 
