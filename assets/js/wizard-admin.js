@@ -290,8 +290,9 @@
 
         // title
         stepHtml += '<div class="input form-field">';
-        stepHtml += '<label for="' + titleId + '"><b>' + wizard.i18n.title + '</b></label>';
-        stepHtml += '<input type="text" class="fw-step-title" title="the step title is displayed below the progress bar" value="' + step.title + '"></input>'
+        stepHtml += '<label for="' + titleId + '"><b>' + wizard.i18n.title + '</b>';
+        stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="the step title is displayed below the progress bar"></i></label>';
+        stepHtml += '<input type="text" class="fw-step-title" value="' + step.title + '"></input>'
         stepHtml += '</div>';
 
         // headline
@@ -315,11 +316,11 @@
 
     function renderStep(step) {
         var stepHtml = '<div class="postbox">' +
-            '<div class="fw-collapsediv"><i class="fa fa-caret-down" aria-hidden="true"></i></div>' +
             '<div class="fw-movediv hndle ui-sortable-handle"><i class="fa fa-arrows"></i></div>' +
             '<h1 class="fw-step-h1 hndle ui-sortable-handle"><span>' +
             step.title + '</span></h1>' +
             '<div class="fw-trashdiv" title="remove step"><i class="fa fa-trash"></i></div>' +
+            '<div class="fw-collapsediv"><i class="fa fa-caret-down" aria-hidden="true"></i></div>' +
             '<div class="fw-clearfix"></div>' +
             renderStepInside(step) +
             '<div class="fw-clearfix"></div>' +
@@ -639,6 +640,8 @@
      * setupTooltips - creates tooltips for better usability
      */
     function setupTooltips() {
+      $('.fa-info-circle').tooltip();
+      // TODO: aufräumen
       $('.fw-step-title').tooltip();
       $('.fw-step-headline').tooltip();
       $('.fw-trashdiv').tooltip();
