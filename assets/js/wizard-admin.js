@@ -776,6 +776,16 @@
                 $part.find('.inside').append(block);
                 setupClickHandlers();
             });
+            // SELECT
+            $("#fw-thickbox-select").unbind('click').click(function(thickRadioEvent) {
+                tb_remove();
+                var block = $(renderBlock({
+                    type: 'select'
+                }));
+                var $part = $(thickEvent.target).parents('.fw-step-part');
+                $part.find('.inside').append(block);
+                setupClickHandlers();
+            });
             // CHECKBOX
             $("#fw-thickbox-checkbox").unbind('click').click(function(thickRadioEvent) {
               tb_remove();

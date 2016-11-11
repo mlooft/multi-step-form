@@ -216,6 +216,7 @@ class Mondula_Form_Wizard_Admin {
             </div>
             <div id="fw-thickbox-content" style="display:none;">
               <div id="fw-thickbox-radio">Radio Buttons</div>
+              <div id="fw-thickbox-select">Select</div>
               <div id="fw-thickbox-checkbox">Checkbox</div>
               <div id="fw-thickbox-text">Text Field</div>
               <div id="fw-thickbox-email">Email</div>
