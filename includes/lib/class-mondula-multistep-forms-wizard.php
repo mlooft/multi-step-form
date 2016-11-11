@@ -156,15 +156,6 @@ class Mondula_Form_Wizard_Wizard {
         ob_start();
         ?>
         <div id="mondula-multistep-forms" class="fw-wizard" data-stepCount="<?php echo count( $this->_steps )?>" data-wizardid="<?php echo $wizardId ?>">
-            <div class="fw-alert-user" style="display:none;">
-            </div>
-            <div class="fw-progress-bar-container">
-                <div class="fw-container">
-            <?php
-                $this->render_progress_bar( $this->_steps );
-            ?>
-                </div>
-            </div>
             <div class="fw-wizard-step-header-container">
                 <div class="fw-container">
                 <?php
@@ -179,6 +170,13 @@ class Mondula_Form_Wizard_Wizard {
                 <?php
                 }
                 ?>
+                </div>
+            </div>
+            <div class="fw-progress-bar-container">
+                <div class="fw-container">
+            <?php
+                $this->render_progress_bar( $this->_steps );
+            ?>
                 </div>
             </div>
             <div class="fw-wizard-step-container">
@@ -208,6 +206,7 @@ class Mondula_Form_Wizard_Wizard {
                 </div>
             </div>
             <?php } ?>
+            <div class="fw-alert-user" style="display:none;"></div>
         </div>
         <?php
         ob_end_flush();
