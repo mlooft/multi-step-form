@@ -290,14 +290,15 @@
 
         // title
         stepHtml += '<div class="input form-field">';
-        stepHtml += '<label for="' + titleId + '"><b>' + wizard.i18n.title + '</b></label>';
+        stepHtml += '<label for="' + titleId + '"><b>' + wizard.i18n.title + '</b>';
+        stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="the step title is displayed below the progress bar"></i></label>';
         stepHtml += '<input type="text" class="fw-step-title" value="' + step.title + '"></input>'
         stepHtml += '</div>';
 
         // headline
         stepHtml += '<div class="input form-field">';
         stepHtml += '<label for="' + headlineId + '"><b>' + wizard.i18n.headline + '</b></label>';
-        stepHtml += '<input type="text" class="fw-step-headline" value="' + step.headline + '"></input>'
+        stepHtml += '<input type="text" class="fw-step-headline" title="the step headline is displayed above the progress bar" value="' + step.headline + '"></input>'
         stepHtml += '</div>';
 
         // copy text
@@ -315,11 +316,11 @@
 
     function renderStep(step) {
         var stepHtml = '<div class="postbox">' +
-            '<div class="fw-collapsediv"><i class="fa fa-caret-down" aria-hidden="true"></i></div>' +
             '<div class="fw-movediv hndle ui-sortable-handle"><i class="fa fa-arrows"></i></div>' +
             '<h1 class="fw-step-h1 hndle ui-sortable-handle"><span>' +
             step.title + '</span></h1>' +
             '<div class="fw-trashdiv" title="remove step"><i class="fa fa-trash"></i></div>' +
+            '<div class="fw-collapsediv"><i class="fa fa-caret-down" aria-hidden="true"></i></div>' +
             '<div class="fw-clearfix"></div>' +
             renderStepInside(step) +
             '<div class="fw-clearfix"></div>' +
@@ -353,6 +354,7 @@
         $(container).html(stepsHtml);
         if (n == 0) {
           addStep();
+          $(".fw-add-part").trigger("click");
         }
     }
 
@@ -455,14 +457,25 @@
         return part;
     }
 
-    function getStepData($step) {
+    function getStepData($step, isLast) {
         var step = {};
         step['title'] = $step.find('.fw-step-title').val();
         step['headline'] = $step.find('.fw-step-headline').val();
         step['copy_text'] = $step.find('.fw-step-copy_text').val();
         var parts = step['parts'] = [];
-        $step.find('.fw-step-part').each(function(idx, element) {
-            parts.push(getPartData($(element)))
+        var $parts = $step.find('.fw-step-part');
+        $parts.each(function(idx, element) {
+            parts.push(getPartData($(element)));
+            // add submit to last part of last Step
+            if (isLast && idx == $parts.length - 1) {
+              parts.push({
+                title : 'Submit',
+                blocks : [{
+                    type: 'submit',
+                    value: ''
+                }]
+              })
+            }
         });
 
         return step;
@@ -504,11 +517,14 @@
         // data['title']
         data.wizard.steps = [];
         data.wizard.mail = getMailData();
-        $container.find('.fw-step').each(
+        var $steps = $container.find('.fw-step');
+        $steps.each(
             function(idx, element) {
-                data.wizard.steps.push(getStepData($(element)));
+              var last = idx == $steps.length - 1;
+              data.wizard.steps.push(getStepData($(element), last));
             }
         );
+        data.wizard.steps.push()
 
         if (validate(data)) {
 
@@ -624,6 +640,10 @@
      * setupTooltips - creates tooltips for better usability
      */
     function setupTooltips() {
+      $('.fa-info-circle').tooltip();
+      // TODO: aufräumen
+      $('.fw-step-title').tooltip();
+      $('.fw-step-headline').tooltip();
       $('.fw-trashdiv').tooltip();
       $('.fw-remove-part').tooltip();
       $('.fw-remove-block').tooltip();
@@ -893,6 +913,8 @@
               $('.fw-wizard-title').val('My Multi Step Form');
             }
             renderSteps(w.wizard.steps);
+            
+            $('.fw-step-part').last().remove();
 
             // get mail settings
             renderMailSettings(w.wizard.mail);
@@ -936,10 +958,6 @@
             });
 
             $container.on('click', '.fw-trashdiv', removeStep);
-
-            $(".fw-remove-part").tooltip({
-                content: "Remove this section"
-            });
 
             setupDragNDrop();
             setupTooltips();

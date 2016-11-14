@@ -183,19 +183,19 @@ class Mondula_Form_Wizard_Wizard {
             </div>
             <div class="fw-wizard-step-container">
                 <div class="fw-container">
-            <?php
-                for ($i = 0; $i < $len; $i++) {
-                    $step = $this->_steps[$i];
-                    ?>
-                <div class="fw-wizard-step" data-stepId="<?php echo $i; ?>">
-                    <?php
-                        $step->render( $wizardId, $i );
-                    ?>
-                    <div class="fw-clearfix"></div>
-                </div>
                 <?php
-                }
-            ?>
+                    for ($i = 0; $i < $len; $i++) {
+                        $step = $this->_steps[$i];
+                        ?>
+                        <div class="fw-wizard-step" data-stepId="<?php echo $i; ?>">
+                            <?php
+                                $step->render( $wizardId, $i );
+                            ?>
+                            <div class="fw-clearfix"></div>
+                        </div>
+                        <?php
+                    }
+                ?>
                 </div>
             </div>
             <?php if (count($this->_steps) > 1) { ?>

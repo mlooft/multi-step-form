@@ -143,7 +143,7 @@ class Mondula_Form_Wizard {
 		wp_enqueue_style( $this->_token . '-frontend' );
 		wp_register_style( $this->_token . '-select2', esc_url( $this->assets_url ) . 'css/select2.min.css', array(), $this->_version );
 		wp_enqueue_style( $this->_token . '-select2' );
-		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 	}
 
 	/**

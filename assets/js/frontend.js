@@ -1,6 +1,11 @@
 jQuery( document ).ready( function ( $ ) {
     "use strict";
     var data = {};
+    var err = [
+      "Please fill all the required fields!",
+      "This field is required",
+      "Some required Fields are empty<br>Please check the highlighted fields."
+    ];
 
     function log() {
         if (window.console) console.log.apply(console, arguments);
@@ -170,6 +175,7 @@ jQuery( document ).ready( function ( $ ) {
             $(element).find('.fw-step-block').each(function (idx, element) {
               var required = $(element).attr('data-required');
               switch ($(element).attr('data-type')) {
+                case 'fw-email':
                 case 'fw-text': textSummary(summaryObj, $(element), title, required);
                   break;
                 case 'fw-textarea': textareaSummary(summaryObj, $(element), title, required);
@@ -244,7 +250,7 @@ jQuery( document ).ready( function ( $ ) {
           }
         );
         if ($('.fw-summary-invalid').length) {
-          $summary.prepend('<div class="fw-summary-alert">Some required Fields are empty<br>Please check the highlighted fields.</div>');
+          $summary.prepend('<div class="fw-summary-alert">' + err[2] + '</div>');
         } else {
           $('.fw-summary-alert').remove();
         }
@@ -381,6 +387,7 @@ jQuery( document ).ready( function ( $ ) {
         var obj = getObj($wizard, $target);
         obj[id] = value;
         $target.parents('.fw-step-block').removeClass('fw-block-invalid');
+        $target.parents('.fw-step-block').find('.fw-block-invalid-alert').remove();
         updateSummary($wizard);
     }
 
@@ -507,7 +514,12 @@ jQuery( document ).ready( function ( $ ) {
       );
       if (!stepValid) {
         // TODO: custom message
-        alertUser('Please fill all the required fields!', false);
+        $('.fw-block-invalid').each(function(idx, element) {
+          if ($(element).find('.fw-block-invalid-alert').length < 1) {
+            $(element).append('<div class="fw-block-invalid-alert">' + err[1] + '</div>');
+          }
+        });
+        alertUser(err[0], false);
       }
       return stepValid;
     }
@@ -551,12 +563,13 @@ jQuery( document ).ready( function ( $ ) {
           $(element).removeClass('fw-block-invalid');
         })
         if (validate($wizard)) {
-            summary = getSummary($wizard);
-            console.log("Summary");
-            console.log(summary);
-            name = $wizard.find('[data-id="name"]').val();
-            email = $wizard.find('[data-id="email"]').val();
-            post(summary, name, email);
+          $('.fw-spinner').show();
+          summary = getSummary($wizard);
+          console.log("Summary");
+          console.log(summary);
+          name = $wizard.find('[data-id="name"]').val();
+          email = $wizard.find('[data-id="email"]').val();
+          post(summary, name, email);
         }
     }
 
@@ -574,6 +587,7 @@ jQuery( document ).ready( function ( $ ) {
             },
             function (resp) {
                 // TODO: customizable success message
+                $('.fw-spinner').hide();
                 alertUser("Success! Your data was submitted.", true);
             }
         ).fail(function (resp) {
@@ -620,6 +634,7 @@ jQuery( document ).ready( function ( $ ) {
         $('.fw-textarea').on('change input', textOnChange);
         $('.fw-checkbox, .fw-radio').on('change', function() {
           $(this).parents('.fw-step-block').removeClass('fw-block-invalid');
+          $(this).parents('.fw-step-block').find('.fw-block-invalid-alert').remove();
         });
 
         setupSelect2();
@@ -644,7 +659,7 @@ jQuery( document ).ready( function ( $ ) {
           console.log('nextColor: ' + nextColor);
           $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ';} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:'+ nextColor +';}</style>');
         }
-        $('#mondula-multistep-forms').append('<p>powered by Multi-Step Form Builder</p>');
+        $('#mondula-multistep-forms').append('<p>powered by Multi Step Form</p>');
         $('#mondula-multistep-forms > p').css({ "font-size" : "0.8em", "margin-top" : "40px", "color": "#9e9e9e" });
         $('#mondula-multistep-forms > p').show();
         updateSummary($('.fw-wizard'));
