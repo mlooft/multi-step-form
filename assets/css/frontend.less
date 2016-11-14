@@ -1,6 +1,7 @@
+@color_white: #fff;
+@color_progress_default: #57aed1;
 @color_1: #57aed1;
 @color_2: #666;
-@color_3: #fff;
 @color_4: #111;
 @color_5: #333;
 @color_6: #777;
@@ -12,7 +13,15 @@
 @font-family_2: inherit;
 @font-family_3: 'PT Sans Caption', sans-serif;
 
-/* ----------------------------- Progress bar -----------------------------*/
+/* ------------------------------------------------------------------------*/
+/* -------- Progress bar --------------------------------------------------*/
+/* ------------------------------------------------------------------------*/
+.wpb_wrapper ul {
+    margin: 0px !important;
+}
+.fw-progress-bar-container {
+    margin-bottom: 50px;
+}
 .fw-block-invalid {
 	input,
 	textarea,
@@ -112,10 +121,10 @@
 	background-color: #fff;
 	color: @color_2;
 	&:focus {
-		color: @color_3;
+		color: @color_white;
 		background-color: #080808;
 		background-color: #57aed1 !important;
-		color: @color_3 !important;
+		color: @color_white !important;
 	}
 }
 .fw-textarea {
@@ -128,13 +137,13 @@
 		padding: 0 22px;
 		margin-top: 10px;
 		font-size: 11px;
-		color: @color_3;
+		color: @color_white;
 		border: 0px;
 		background-color: #57aed1;
 		cursor: pointer;
 		text-transform: uppercase;
 		&:hover {
-			color: @color_3;
+			color: @color_white;
 			background-color: #4891ae;
 			border-color: #4891ae;
 		}
@@ -160,7 +169,7 @@
 	border: 1px solid #ddd;
 	text-transform: uppercase;
 	&:hover {
-		color: @color_3;
+		color: @color_white;
 		background-color: #4891ae;
 		border-color: #4891ae;
 		float: none;
@@ -320,12 +329,11 @@ div[data-type="fw-radio"][data-required="true"] {
 }
 .fw-progress-wrap {
 	color: @color_8;
-	font-family: @font-family_3;
-	margin-top: 40px;
-	margin-bottom: 60px;
-	max-width: 1200px;
-	min-height: 55px;
+	margin: 0px;
+	max-width: 1800px;
+	min-height: 70px;
 	position: relative;
+	border:1px solid #000;
 }
 ul.fw-progress-bar {
 	li {
@@ -333,20 +341,19 @@ ul.fw-progress-bar {
 		display: block;
 		font-size: 16px;
 		font-weight: 600;
-		padding: 14px 20px 14px 80px;
+		padding: 18px 20px 15px 60px;
 		position: relative;
 		&:before {
-			background: #ddd;
+			background: @color_progress_default;
 			border-radius: 50%;
-			color: @color_3;
-			font-size: 16px;
+			color: @color_white;
+			font-size: 35px;
 			font-weight: 700;
 			left: 0;
-			line-height: 37px;
+			line-height: 43px;
 			height: 35px;
 			position: absolute;
 			text-align: center;
-			text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 			top: 4px;
 			width: 35px;
 			z-index: 1;
@@ -381,6 +388,32 @@ ul.fw-progress-bar {
 				content: "6";
 			}
 		}
+		&:nth-child(7) {
+			&:before {
+				content: "7";
+			}
+		}
+		&:nth-child(8) {
+			&:before {
+				content: "8";
+			}
+		}
+		&:nth-child(9) {
+			&:before {
+				content: "9";
+			}
+		}
+		&:nth-child(10) {
+			&:before {
+				content: "10";
+			}
+		}
+		&:last-child {
+			&:before {
+			    font-family: FontAwesome;
+				content: "\f024";
+			}
+		}
 	}
 	li.fw-active {
 		color: @color_1;
@@ -407,7 +440,25 @@ ul.fw-progress-bar {
 	}
 }
 
-/* ----------------------------- Animations -----------------------------*/
+.fw-progress-step.fw-visited::before {
+	content: "\2713"!important;
+}
+
+/* ------ @media ----------------------------------------------------------*/
+
+
+@media screen and (min-width: 769px) {
+     
+     ul.fw-progress-bar li {
+        padding: 10px 20px 10px 0px;
+    }
+
+}
+
+
+/* ------------------------------------------------------------------------*/
+/* ----------------------------- Animations -------------------------------*/
+/* ------------------------------------------------------------------------*/
 
 
 @media screen and (min-width:1023px) {
