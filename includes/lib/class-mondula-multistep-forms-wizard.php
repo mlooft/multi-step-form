@@ -59,7 +59,8 @@ class Mondula_Form_Wizard_Wizard {
         data-progressbarcolor="<?php echo $this->fw_get_option('progressbarcolor', 'fw_settings_styling', '#57aed1');?>"
         data-activecolor="<?php echo $this->fw_get_option('activecolor' ,'fw_settings_styling', '#57aed1');?>"
         data-donecolor="<?php echo $this->fw_get_option('donecolor' ,'fw_settings_styling', '#57aed1');?>"
-        data-nextcolor="<?php echo $this->fw_get_option('nextcolor' ,'fw_settings_styling', '#57aed1');?>">
+        data-nextcolor="<?php echo $this->fw_get_option('nextcolor' ,'fw_settings_styling', '#57aed1');?>"
+        data-buttoncolor="<?php echo $this->fw_get_option('buttoncolor', 'fw_settings_styling', '#57aed1');?>">
         <?php
         for ($i = 0; $i < $cnt; $i++) {
             $step = $this->_steps[$i];

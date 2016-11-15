@@ -664,6 +664,10 @@ jQuery( document ).ready( function ( $ ) {
           console.log('nextColor: ' + nextColor);
           $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ';} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:'+ nextColor +';}</style>');
         }
+        if (buttonColor) {
+          console.log('buttonColor: ' + buttonColor);
+          $('head').append('<style>.fw-button-previous, .fw-button-next { background: ' + buttonColor + ';}</style>');
+        }
         $('#mondula-multistep-forms').append('<p>powered by Multi Step Form</p>');
         $('#mondula-multistep-forms > p').css({ "font-size" : "0.8em", "margin-top" : "40px", "color": "#9e9e9e" });
         $('#mondula-multistep-forms > p').show();
