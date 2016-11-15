@@ -163,6 +163,13 @@ class Mondula_Form_Wizard_Settings {
                     'desc'    => __( 'Choose a color for the steps to follow', $this->_text_domain ),
                     'type'    => 'color',
                     'default' => ''
+                ),
+                array(
+                    'name' => 'buttoncolor',
+                    'label' => __( 'Button Color', $this->_text_domain ),
+                    'desc' => __( 'Choose a color for the buttons', $this->_text_domain ),
+                    'type' => 'color',
+                    'default' => ''
                 )
 
             ),
