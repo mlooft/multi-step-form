@@ -137,13 +137,6 @@ class Mondula_Form_Wizard_Settings {
             ),
             'fw_settings_styling' => array(
                 array(
-                    'name' => 'progressbarcolor',
-                    'label' => __( 'Progress Bar Color', $this->_text_domain ),
-                    'desc' => __( 'Choose a color for the progress bar', $this->_text_domain ),
-                    'type' => 'color',
-                    'default' => ''
-                ),
-                array(
                     'name'    => 'activecolor',
                     'label'   => __( 'Active Step Color', $this->_text_domain ),
                     'desc'    => __( 'Choose a color for the active step', $this->_text_domain ),
@@ -180,7 +173,7 @@ class Mondula_Form_Wizard_Settings {
                     'desc'    => __( 'Text input description', $this->_text_domain ),
                     'type'    => 'text',
                     'default' => 'Title'
-                ),
+                ),data-progressbarcolor="<?php echo $this->fw_get_option('progressbarcolor', 'fw_settings_styling', '#57aed1');?>"
                 array(
                     'name'  => 'textarea',
                     'label' => __( 'Textarea Input', $this->_text_domain ),
@@ -244,7 +237,7 @@ class Mondula_Form_Wizard_Settings {
         return $settings_fields;
     }
     function plugin_page() {
-        echo '<div class="wrap">';
+        echo '<div class="wrap">';data-progressbarcolor="<?php echo $this->fw_get_option('progressbarcolor', 'fw_settings_styling', '#57aed1');?>"
         $this->settings_api->show_navigation();
         $this->settings_api->show_forms();
         echo '</div>';
