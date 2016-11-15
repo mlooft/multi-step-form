@@ -173,7 +173,7 @@ class Mondula_Form_Wizard_Settings {
                     'desc'    => __( 'Text input description', $this->_text_domain ),
                     'type'    => 'text',
                     'default' => 'Title'
-                ),
+                ),data-progressbarcolor="<?php echo $this->fw_get_option('progressbarcolor', 'fw_settings_styling', '#57aed1');?>"
                 array(
                     'name'  => 'textarea',
                     'label' => __( 'Textarea Input', $this->_text_domain ),
