@@ -137,13 +137,20 @@ class Mondula_Form_Wizard_Settings {
             ),
             'fw_settings_styling' => array(
                 array(
+                    'name' => 'progressbarcolor',
+                    'label' => __( 'Progress Bar Color', $this->_text_domain ),
+                    'desc' => __( 'Choose a color for the progress bar', $this->_text_domain ),
+                    'type' => 'color',
+                    'default' => ''
+                ),
+                array(
                     'name'    => 'activecolor',
                     'label'   => __( 'Active Step Color', $this->_text_domain ),
                     'desc'    => __( 'Choose a color for the active step', $this->_text_domain ),
                     'type'    => 'color',
                     'default' => ''
                 ),
-								array(
+				array(
                     'name'    => 'donecolor',
                     'label'   => __( 'Visited Step Color', $this->_text_domain ),
                     'desc'    => __( 'Choose a color for the completed steps', $this->_text_domain ),

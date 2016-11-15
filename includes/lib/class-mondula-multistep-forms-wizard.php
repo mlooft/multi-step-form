@@ -56,6 +56,7 @@ class Mondula_Form_Wizard_Wizard {
 <div class="fw-progress-wrap">
 
     <ul class="fw-progress-bar"
+        data-progressbarcolor="<?php echo $this->fw_get_option('progressbarcolor', 'fw_settings_styling', '#57aed1');?>"
         data-activecolor="<?php echo $this->fw_get_option('activecolor' ,'fw_settings_styling', '#57aed1');?>"
         data-donecolor="<?php echo $this->fw_get_option('donecolor' ,'fw_settings_styling', '#57aed1');?>"
         data-nextcolor="<?php echo $this->fw_get_option('nextcolor' ,'fw_settings_styling', '#57aed1');?>">
