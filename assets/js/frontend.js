@@ -643,22 +643,17 @@ jQuery( document ).ready( function ( $ ) {
 
         // TODO: generate function for setting up
         //  colors
-        var progressbarColor = $('.fw-progress-bar').attr('data-progressbarcolor');
         var activeColor = $('.fw-progress-bar').attr('data-activecolor');
         var doneColor = $('.fw-progress-bar').attr('data-donecolor');
         var nextColor = $('.fw-progress-bar').attr('data-nextcolor');
         $('head').append('<style id="fw-colors"></style>')
-        if (progressbarColor) {
-            console.log('progressbarColor: ' + progressbarColor);
-            $('head').append('<style>.progress { background: ' + progressbarColor + ' !important;}</style>');
-        }
         if (doneColor) {
           console.log('doneColor: ' + doneColor);
           $('head').append('<style>.fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after{ background-color:'+ doneColor +'}</style>');
         }
         if (activeColor) {
           console.log('activeColor: ' + activeColor);
-          $('head').append('<style>ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} ul.fw-progress-bar li.fw-active { color: ' + activeColor +' }</style>');
+          $('head').append('<style>.progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} ul.fw-progress-bar li.fw-active { color: ' + activeColor +' }</style>');
         }
         if (nextColor) {
           console.log('nextColor: ' + nextColor);
