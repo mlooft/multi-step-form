@@ -646,6 +646,7 @@ jQuery( document ).ready( function ( $ ) {
         var activeColor = $('.fw-progress-bar').attr('data-activecolor');
         var doneColor = $('.fw-progress-bar').attr('data-donecolor');
         var nextColor = $('.fw-progress-bar').attr('data-nextcolor');
+        var buttonColor = $('.fw-progress-bar').attr('data-buttoncolor');
         $('head').append('<style id="fw-colors"></style>')
         if (doneColor) {
           console.log('doneColor: ' + doneColor);
@@ -661,10 +662,10 @@ jQuery( document ).ready( function ( $ ) {
         }
         if (buttonColor) {
           console.log('buttonColor: ' + buttonColor);
-          $('head').append('<style>.fw-button-previous, .fw-button-next { background: ' + buttonColor + ';}</style>');
+          $('head').append('<style>.fw-button-previous, .fw-button-next { background: ' + buttonColor + ' !important; }</style>');
         }
         $('#mondula-multistep-forms').append('<p>powered by Multi Step Form</p>');
-        $('#mondula-multistep-forms > p').css({ "font-size" : "0.8em", "margin-top" : "40px", "color": "#9e9e9e" });
+        $('#mondula-multistep-forms > p').css({ "font-size" : "1em", "margin-top" : "40px", "color": "#9e9e9e" });
         $('#mondula-multistep-forms > p').show();
         updateSummary($('.fw-wizard'));
 
