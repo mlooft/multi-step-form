@@ -648,13 +648,13 @@ jQuery( document ).ready( function ( $ ) {
         var nextColor = $('.fw-progress-bar').attr('data-nextcolor');
         var buttonColor = $('.fw-progress-bar').attr('data-buttoncolor');
         $('head').append('<style id="fw-colors"></style>')
-        if (doneColor) {
-          console.log('doneColor: ' + doneColor);
-          $('head').append('<style>.fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after{ background-color:'+ doneColor +'}</style>');
-        }
         if (activeColor) {
           console.log('activeColor: ' + activeColor);
-          $('head').append('<style>.progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} ul.fw-progress-bar li.fw-active { color: ' + activeColor +' }</style>');
+          $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} ul.fw-progress-bar li.fw-active { color: ' + activeColor +' }</style>');
+        }
+         if (doneColor) {
+          console.log('doneColor: ' + doneColor);
+          $('head').append('<style>ul.fw-progress-bar .fw-active:last-child:before, .fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited, ul.fw-progress-bar .fw-active:last-child .txt-ellipsis { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after{ background-color:'+ doneColor +'}</style>');
         }
         if (nextColor) {
           console.log('nextColor: ' + nextColor);
