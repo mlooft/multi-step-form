@@ -27,7 +27,7 @@ class Mondula_Form_Wizard_Block_Text extends Mondula_Form_Wizard_Block {
     public function render( $ids ) {
         ?>
     <div class="fw-input-container">
-        <label><?php echo $this->_label ?></label><input type="text" class="fw-text-input" data-id="text">
+        <h3><?php echo $this->_label ?></h3><input type="text" class="fw-text-input" data-id="text"><span class="fa fa-pencil form-control-feedback" aria-hidden="true"></span>
     </div>
     <div class="fw-clearfix"></div>
         <?php
