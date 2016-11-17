@@ -56,10 +56,10 @@ class Mondula_Form_Wizard_Wizard {
 <div class="fw-progress-wrap">
 
     <ul class="fw-progress-bar"
-        data-activecolor="<?php echo $this->fw_get_option('activecolor' ,'fw_settings_styling', '#57aed1');?>"
-        data-donecolor="<?php echo $this->fw_get_option('donecolor' ,'fw_settings_styling', '#57aed1');?>"
-        data-nextcolor="<?php echo $this->fw_get_option('nextcolor' ,'fw_settings_styling', '#57aed1');?>"
-        data-buttoncolor="<?php echo $this->fw_get_option('buttoncolor', 'fw_settings_styling', '#57aed1');?>">
+        data-activecolor="<?php echo $this->fw_get_option('activecolor' ,'fw_settings_styling', '#546e7a');?>"
+        data-donecolor="<?php echo $this->fw_get_option('donecolor' ,'fw_settings_styling', '#4caf50');?>"
+        data-nextcolor="<?php echo $this->fw_get_option('nextcolor' ,'fw_settings_styling', '#aaa');?>"
+        data-buttoncolor="<?php echo $this->fw_get_option('buttoncolor', 'fw_settings_styling', '#546e7a');?>">
         <?php
         for ($i = 0; $i < $cnt; $i++) {
             $step = $this->_steps[$i];
@@ -203,8 +203,8 @@ class Mondula_Form_Wizard_Wizard {
             <div class="fw-wizard-button-container">
                 <div class="fw-container">
                     <div class="fw-wizard-buttons">
-                        <button class="fw-button-previous"><?php _e( 'Previous Step' ) ?></button>
-                        <button class="fw-button-next"><?php _e( 'Next Step' ) ?></button>
+                        <button class="fw-button-previous"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> &nbsp;<?php _e( 'Previous Step' ) ?></button>
+                        <button class="fw-button-next"><?php _e( 'Next Step' ) ?> &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>
@@ -277,7 +277,7 @@ class Mondula_Form_Wizard_Wizard {
 
     private function render_footer () {
         echo PHP_EOL . "End of form submission" . PHP_EOL;
-        echo "Multi-Step Form Builder | powered by Mondula GmbH ";
+        echo "Multi Step Form | powered by Mondula GmbH ";
         echo date("Y");
     }
 
@@ -293,7 +293,7 @@ class Mondula_Form_Wizard_Wizard {
                             <table width="500" border="0" cellspacing="0" cellpadding="0" align="center" class="responsive-table">
                                 <tbody><tr>
                                     <td align="center" valign="middle" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                                        <span class="appleFooter" style="color:#666666;">Multi-Step Form Builder | powered by <a href="http://mondula.com">Mondula GmbH</a> <?php echo date("Y"); ?></span>
+                                        <span class="appleFooter" style="color:#666666;">Multi Step Form | powered by <a href="http://mondula.com">Mondula GmbH</a> <?php echo date("Y"); ?></span>
                                     </td>
                                 </tr>
                             </tbody></table>
