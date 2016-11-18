@@ -12,15 +12,29 @@ var sort = require('gulp-sort');
 
 var base = 'assets/js';
 
-gulp.task('js', function() {
-  gulp.src(['assets/js/*.js', '!assets/js/*.min.js'])
+gulp.task('js-frontend', function() {
+  gulp.src(['assets/js/frontend/*.js'])
+    .pipe(concat('frontend.js'))
     .pipe(uglify({mangle:false}))
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('assets/js/'))
+    .pipe(gulp.dest('dist'))
     .pipe(livereload());
 });
+
+gulp.task('js-backend', function() {
+  gulp.src(['assets/js/backend/*.js'])
+    .pipe(concat('backend.js'))
+    .pipe(uglify({mangle:false}))
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('dist'))
+    .pipe(livereload());
+});
+
+gulp.task('js', ['js-frontend', 'js-backend']);
 
 gulp.task('css', function () {
   gulp.src(['assets/css/*.css', 'assets/css/*.less', '!assets/css/*.min.css'])
@@ -52,7 +66,8 @@ gulp.task('pot', function () {
 
 gulp.task('watch', function () {
     livereload.listen();
-    gulp.watch('assets/js/*.js', ['js']);
+    gulp.watch('assets/js/frontend/*.js', ['js-frontend']);
+    gulp.watch('assets/js/backend/*.js', ['js-backend']);
     gulp.watch('assets/css/*.css', ['css']);
     gulp.watch('assets/css/*.less', ['css']);
 });
