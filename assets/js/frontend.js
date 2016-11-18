@@ -139,11 +139,14 @@ jQuery( document ).ready( function ( $ ) {
     }
 
     function radioSummary(summaryObj, $block, title, required){
-      var header = $block.find('.fw-block-header').text();
+      var header = $block.find('h3').text();
       var value = '';
-      $block.find('.fw-radio-row').each(function(idx, element) {
-        if($(element).find('.fw-radio').is(':checked')) {
-          value = $(element).find('label').text();
+      $block.find('.fw-choice').each(function(idx, element) {
+        if($(element).find('input').is(':checked')) {
+          if (value != '') {
+            value += ', ';
+          }
+          value += $(element).find('label').text();
         }
       });
       pushToSummary(summaryObj, title, header, value, required);
@@ -409,7 +412,7 @@ jQuery( document ).ready( function ( $ ) {
 
     function validateRadio($element) {
       var valid = false;
-      $element.children('.fw-radio-row').find('.fw-radio').each(function(i, r) {
+      $element.children('.fw-choice').find('input').each(function(i, r) {
         var $r = $(r);
         if($r.is(':checked')) {
           console.log(i);
