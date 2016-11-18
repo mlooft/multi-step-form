@@ -36,9 +36,10 @@ gulp.task('js-backend', function() {
 
 gulp.task('js', ['js-frontend', 'js-backend']);
 
-gulp.task('css', function () {
-  gulp.src(['assets/css/*.css', 'assets/css/*.less', '!assets/css/*.min.css'])
+gulp.task('css-frontend', function () {
+  gulp.src(['assets/css/frontend/*.css', 'assets/css/frontend/*.less'])
     .pipe(less())
+    .pipe(concat('frontend.css'))
     .pipe(uglifycss({
       "maxLineLen": 80,
       "uglyComments": true
@@ -46,9 +47,26 @@ gulp.task('css', function () {
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('assets/css/'))
+    .pipe(gulp.dest('dist'))
     .pipe(livereload());
 });
+
+gulp.task('css-backend', function () {
+  gulp.src(['assets/css/backend/*.css', 'assets/css/backend/*.less'])
+    .pipe(less())
+    .pipe(concat('backend.css'))
+    .pipe(uglifycss({
+      "maxLineLen": 80,
+      "uglyComments": true
+    }))
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('dist'))
+    .pipe(livereload());
+});
+
+gulp.task('css', ['css-frontend', 'css-backend']);
 
 gulp.task('pot', function () {
     return gulp.src('**/*.php')
@@ -69,7 +87,8 @@ gulp.task('watch', function () {
     gulp.watch('assets/js/frontend/*.js', ['js-frontend']);
     gulp.watch('assets/js/backend/*.js', ['js-backend']);
     gulp.watch('assets/css/*.css', ['css']);
-    gulp.watch('assets/css/*.less', ['css']);
+    gulp.watch('assets/css/frontend/*.less', ['css-frontend']);
+    gulp.watch('assets/css/backend/*.less', ['css-backend']);
 });
 
 gulp.task('default', ['js', 'css', 'watch']);
