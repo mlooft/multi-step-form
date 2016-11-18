@@ -86,7 +86,11 @@
         radioHtml += '</div>';
         radioHtml += '<button class="fw-radio-add"><i class="fa fa-plus" aria-hidden="true"></i> Add radio option</button><br/>';
         radioHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(radio) + '/> Required</label>'
-
+        if (radio.multichoice == "true") {
+          radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice" checked/>Multiple Selection</label>'
+        } else {
+          radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice"/>Multiple Selection</label>'
+        }
         return radioHtml;
     }
 
@@ -366,6 +370,7 @@
             elements.push(getRadioElementData($(element)));
         });
         radio['required'] = $radio.find('.fw-required').prop('checked');
+        radio['multichoice'] = $radio.find('.fw-radio-multichoice').prop('checked');
     }
 
     function getSelectData($select, select) {
@@ -665,7 +670,7 @@
             blocks: []
         };
         var n = $('.fw-step').length;
-        if (n < 6) {
+        if (n < 5) {
           var $step = $(renderStep({
               title: '',
               headline: '',
@@ -685,7 +690,7 @@
             }, 500);
           }
         } else {
-          alertMessage('ERROR: only 6 steps are allowed in the free version', false);
+          alertMessage('ERROR: only 5 steps are allowed in the free version', false);
         }
     }
 
@@ -877,8 +882,6 @@
             }
             renderSteps(w.wizard.steps);
             
-            $('.fw-step-part').last().remove();
-
             // get mail settings
             renderMailSettings(w.wizard.mail);
 
