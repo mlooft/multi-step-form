@@ -101,8 +101,8 @@ jQuery( document ).ready( function ( $ ) {
           hideStep($wizard, step++);
           showStep($wizard, step);
           if (step === (getStepCount($wizard) - 1)) {
-              disableNext($wizard);
-          }
+            disableNext($wizard);
+          } 
           enablePrevious($wizard);
           // scroll back to top on next step
           $('html, body').animate({
