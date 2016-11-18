@@ -650,7 +650,7 @@ jQuery( document ).ready( function ( $ ) {
         $('head').append('<style id="fw-colors"></style>')
         if (activeColor) {
           console.log('activeColor: ' + activeColor);
-          $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} ul.fw-progress-bar li.fw-active { color: ' + activeColor +' }</style>');
+          $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} [data-type=fw-checkbox] input[type=checkbox]:checked+label:before, ul.fw-progress-bar li.fw-active { color: ' + activeColor +' !important; } .fw-step-part { border-color: ' + activeColor +' !important; }</style>');
         }
          if (doneColor) {
           console.log('doneColor: ' + doneColor);
@@ -658,7 +658,7 @@ jQuery( document ).ready( function ( $ ) {
         }
         if (nextColor) {
           console.log('nextColor: ' + nextColor);
-          $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ';} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:'+ nextColor +';}</style>');
+          $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ' !important;} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:'+ nextColor +' !important;}</style>');
         }
         if (buttonColor) {
           console.log('buttonColor: ' + buttonColor);
