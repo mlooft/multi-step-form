@@ -650,15 +650,15 @@ jQuery( document ).ready( function ( $ ) {
         $('head').append('<style id="fw-colors"></style>')
         if (activeColor) {
           console.log('activeColor: ' + activeColor);
-          $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} [data-type=fw-checkbox] input[type=checkbox]:checked+label:before, ul.fw-progress-bar li.fw-active { color: ' + activeColor +' !important; } .fw-step-part { border-color: ' + activeColor +' !important; }</style>');
+          $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} [data-type=fw-checkbox] input[type=checkbox]:checked+label:before, ul.fw-progress-bar li.fw-active .txt-ellipsis { color: ' + activeColor +' !important; } .fw-step-part { border-color: ' + activeColor +' !important; }</style>');
         }
-         if (doneColor) {
+        if (doneColor) {
           console.log('doneColor: ' + doneColor);
-          $('head').append('<style>ul.fw-progress-bar .fw-active:last-child:before, .fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited, ul.fw-progress-bar .fw-active:last-child .txt-ellipsis { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after{ background-color:'+ doneColor +'}</style>');
+          $('head').append('<style>ul.fw-progress-bar .fw-active:last-child:before, .fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited, ul.fw-progress-bar .fw-active:last-child .txt-ellipsis, .fw-progress-step.fw-visited .txt-ellipsis { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after{ background-color:'+ doneColor +' !important;}</style>');
         }
         if (nextColor) {
           console.log('nextColor: ' + nextColor);
-          $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ' !important;} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:'+ nextColor +' !important;}</style>');
+          $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ' !important;} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:'+ nextColor +' !important;} .txt-ellipsis { color: ' + nextColor +' !important; } </style>');
         }
         if (buttonColor) {
           console.log('buttonColor: ' + buttonColor);
