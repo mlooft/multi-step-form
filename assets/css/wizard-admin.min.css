@@ -19,13 +19,12 @@ i.fa-caret-up::before,i.fa-caret-right::before,i.fa-remove::before{display:inlin
 .fw-block-heading{font-size:18px;margin-bottom:0}.fw-block-heading>h4{display:inline-block;margin-bottom:0;margin-top:0}
 .fw-block-hndle{cursor:all-scroll}.fw-alert{margin-top:10px;color:green}.fw-alert .fw-alert-fail{color:red}
 #TB_title{background:#ddd none repeat scroll 0 0;border-bottom:none !important}div#TB_ajaxContent>div{display:inline-block;border:1px solid gray;width:26%;text-align:center;padding:15px;margin:5px}
-div#TB_ajaxContent{height:auto !important;padding:20px 15px}div#TB_ajaxContent #fw-thickbox-radio,div#TB_ajaxContent #fw-thickbox-select,div#TB_ajaxContent #fw-thickbox-checkbox,div#TB_ajaxContent #fw-thickbox-text,div#TB_ajaxContent #fw-thickbox-email,div#TB_ajaxContent #fw-thickbox-textarea,div#TB_ajaxContent #fw-thickbox-select,div#TB_ajaxContent #fw-thickbox-submit{border:medium none !important;color:white}
+div#TB_ajaxContent{height:auto !important;padding:20px 15px}div#TB_ajaxContent #fw-thickbox-radio,div#TB_ajaxContent #fw-thickbox-select,div#TB_ajaxContent #fw-thickbox-checkbox,div#TB_ajaxContent #fw-thickbox-text,div#TB_ajaxContent #fw-thickbox-email,div#TB_ajaxContent #fw-thickbox-textarea,div#TB_ajaxContent #fw-thickbox-select{border:medium none !important;color:white}
 div#TB_ajaxContent #fw-thickbox-radio{background:#009989 none repeat scroll 0 0}div#TB_ajaxContent #fw-thickbox-select{background:#757575 none repeat scroll 0 0}
 div#TB_ajaxContent #fw-thickbox-checkbox{background:#4051b7 none repeat scroll 0 0}
 div#TB_ajaxContent #fw-thickbox-text{background:#2196f3 none repeat scroll 0 0}div#TB_ajaxContent #fw-thickbox-email{background:#9c27b0 none repeat scroll 0 0}
 div#TB_ajaxContent #fw-thickbox-textarea{background:#ff5722 none repeat scroll 0 0}
 div#TB_ajaxContent #fw-thickbox-select{background:#757575 none repeat scroll 0 0}
-div#TB_ajaxContent #fw-thickbox-submit{background:#8bc34a none repeat scroll 0 0}
 .ui-tooltip{color:white;background-color:#5c5c5c;border-radius:10px;z-index:430;width:100px;padding:10px;-webkit-box-shadow:1px 1px 30px 0 rgba(0,0,0,0.42);-moz-box-shadow:1px 1px 30px 0 rgba(0,0,0,0.42);box-shadow:1px 1px 30px 0 rgba(0,0,0,0.42)}
 .fw-block-placeholder{display:block;margin:10px;border:4px dashed}.fw-block-placeholder[data-type="email"]{border-color:#9c27b0}
 .fw-block-placeholder[data-type="text"]{border-color:#2196f3}.fw-block-placeholder[data-type="textarea"]{border-color:#ff5722}
