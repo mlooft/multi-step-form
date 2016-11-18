@@ -110,14 +110,6 @@
         return selectHtml;
     }
 
-    function renderSubmit(block) {
-        var nameRequired = block.namerequired && 'checked';
-        var mailRequired = block.mailrequired && 'checked';
-        var submitHtml = '';
-        submitHtml += '<p>This will allow the user to submit the form. <br>You can only have one submit-block.</p>';
-        return submitHtml;
-    }
-
     function renderCheckbox(block) {
         log('checkbox', block);
         var textHtml = '';
@@ -194,14 +186,6 @@
                 break;
             case 'textarea':
                 blockHtml += renderTextArea(block);
-                break;
-            case 'submit':
-                if ($('.fw-step-block[data-type=submit]').length < 1) {
-                  blockHtml += renderSubmit(block);
-                } else {
-                  error = true;
-                  alertMessage('ERROR: Only one submit block allowed', false);
-                }
                 break;
             default:
                 break;
@@ -466,16 +450,6 @@
         var $parts = $step.find('.fw-step-part');
         $parts.each(function(idx, element) {
             parts.push(getPartData($(element)));
-            // add submit to last part of last Step
-            if (isLast && idx == $parts.length - 1) {
-              parts.push({
-                title : 'Submit',
-                blocks : [{
-                    type: 'submit',
-                    value: ''
-                }]
-              })
-            }
         });
 
         return step;
@@ -834,17 +808,6 @@
               tb_remove();
               var block = $(renderBlock({
                   type: 'textarea',
-                  value: ''
-              }));
-              var $part = $(thickEvent.target).parents('.fw-step-part');
-              $part.find('.inside').append(block);
-              setupClickHandlers();
-            });
-            // SUBMIT
-            $("#fw-thickbox-submit").unbind('click').click(function(thickRadioEvent) {
-              tb_remove();
-              var block = $(renderBlock({
-                  type: 'submit',
                   value: ''
               }));
               var $part = $(thickEvent.target).parents('.fw-step-part');
