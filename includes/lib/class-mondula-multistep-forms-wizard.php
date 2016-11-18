@@ -191,7 +191,16 @@ class Mondula_Form_Wizard_Wizard {
                         <div class="fw-wizard-step" data-stepId="<?php echo $i; ?>">
                             <?php
                                 $step->render( $wizardId, $i );
-                            ?>
+                                if ($i == $len - 1) {
+                                  ?>
+                                  <div class="fw-summary-container">
+                                    <button type="button" class="fw-toggle-summary">SHOW SUMMARY</button>
+                                    <div id="wizard-summary" class="fw-wizard-summary" style="display:none;" data-showsummary="on"><div class="fw-summary-alert">Some required Fields are empty<br>Please check the highlighted fields.</div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Family</p><p class="fw-step-summary"> — few</p><p class="fw-step-summary"> — Deutsch</p><p class="fw-step-summary">I have a dog — yes</p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">About you</p><p class="fw-step-summary"> — gew</p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Food</p><p class="fw-step-summary"> — Burgers</p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Information</p><p class="fw-step-summary"></p><p class="fw-step-summary fw-summary-invalid">I would like to recieve the weekly newsletter — </p><p></p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Terms of Service</p><p class="fw-step-summary"></p><p class="fw-step-summary fw-summary-invalid">I agree to the ToS — </p><p></p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Submit your Data</p><p class="fw-step-summary"></p><p class="fw-step-summary fw-summary-invalid"> — </p><p></p></div></div>
+                                  </div>
+                                  <button type="button" class="fw-btn-submit">Submit</button>
+                                <?php
+                                }
+                                ?>
                             <div class="fw-clearfix"></div>
                         </div>
                         <?php
