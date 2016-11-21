@@ -179,6 +179,7 @@ jQuery( document ).ready( function ( $ ) {
               var required = $(element).attr('data-required');
               switch ($(element).attr('data-type')) {
                 case 'fw-email':
+                case 'fw-date':
                 case 'fw-text': textSummary(summaryObj, $(element), title, required);
                   break;
                 case 'fw-textarea': textareaSummary(summaryObj, $(element), title, required);
@@ -446,6 +447,16 @@ jQuery( document ).ready( function ( $ ) {
       }
     }
 
+    function validateDate($element) { 
+      if (!$element.find('.fw-text-input').val()) {
+        $element.addClass('fw-block-invalid');
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+
     function validateText($element) {
       if (!$element.find('.fw-text-input').val()) {
         $element.addClass('fw-block-invalid');
@@ -504,6 +515,8 @@ jQuery( document ).ready( function ( $ ) {
                   break;
                 case 'fw-email': valid = validateEmail($element);
                   emailValid = valid;
+                  break;
+                case 'fw-date': valid = validateDate($element);
                   break;
                 case 'fw-checkbox': valid = validateCheckbox($element);
                   break;

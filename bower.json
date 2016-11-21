@@ -5,7 +5,6 @@
   "authors": [
     "Lewe Ohlsen"
   ],
-  "license": "ISC",
   "homepage": "",
   "private": true,
   "ignore": [
@@ -16,11 +15,26 @@
     "tests"
   ],
   "dependencies": {
-    "select2": "^4.0.3"
+    "select2": "^4.0.3",
+    "air-datepicker": "^2.2.3"
   },
   "overrides": {
     "select2": {
-      "main": ["dist/js/select2.min.js", "dist/css/select2.min.css"]
+      "main": [
+        "dist/js/select2.min.js",
+        "dist/css/select2.min.css"
+      ]
+    },
+    "jquery": {
+      "main": []
+    },
+    "air-datepicker": {
+      "main": [
+        "dist/js/datepicker.js",
+        "dist/js/i18n/datepicker.en.js",
+        "dist/js/i18n/datepicker.de.js",
+        "dist/css/datepicker.min.css"
+      ]
     }
   }
 }

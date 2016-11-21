@@ -89,6 +89,9 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
                     case 'email':
                         $blocks[] = Mondula_Form_Wizard_Block_Email::from_aa( $block );
                         break;
+                    case 'date':
+                        $blocks[] = Mondula_Form_Wizard_Block_Date::from_aa( $block );
+                        break;
                     case 'submit':
                         $blocks[] = Mondula_Form_Wizard_Step_Submit::from_aa( $block );
                         break;
