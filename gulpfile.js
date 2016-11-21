@@ -7,6 +7,7 @@ var debug = require('gulp-debug-streams');
 var less = require('gulp-less');
 var uglifycss = require('gulp-uglifycss');
 var livereload = require('gulp-livereload');
+var mainBowerFiles = require('main-bower-files');
 var wpPot = require('gulp-wp-pot');
 var sort = require('gulp-sort');
 
@@ -23,6 +24,15 @@ gulp.task('js-frontend', function() {
     .pipe(livereload());
 });
 
+gulp.task('js-frontend-vendor', function() {;
+  gulp.src(mainBowerFiles('**/*.js'))
+    .pipe(concat('vendor-frontend.js'))
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('js-backend', function() {
   gulp.src(['assets/js/backend/*.js'])
     .pipe(concat('backend.js'))
@@ -34,12 +44,26 @@ gulp.task('js-backend', function() {
     .pipe(livereload());
 });
 
-gulp.task('js', ['js-frontend', 'js-backend']);
+gulp.task('js', ['js-frontend', 'js-frontend-vendor', 'js-backend']);
 
 gulp.task('css-frontend', function () {
   gulp.src(['assets/css/frontend/*.css', 'assets/css/frontend/*.less'])
     .pipe(less())
     .pipe(concat('frontend.css'))
+    .pipe(uglifycss({
+      "maxLineLen": 80,
+      "uglyComments": true
+    }))
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('dist'))
+    .pipe(livereload());
+});
+
+gulp.task('css-frontend-vendor', function () {
+  gulp.src(mainBowerFiles('**/*.css'))
+    .pipe(concat('vendor-frontend.css'))
     .pipe(uglifycss({
       "maxLineLen": 80,
       "uglyComments": true
@@ -66,7 +90,7 @@ gulp.task('css-backend', function () {
     .pipe(livereload());
 });
 
-gulp.task('css', ['css-frontend', 'css-backend']);
+gulp.task('css', ['css-frontend', 'css-frontend-vendor', 'css-backend']);
 
 gulp.task('pot', function () {
     return gulp.src('**/*.php')
