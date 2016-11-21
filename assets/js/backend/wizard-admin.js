@@ -140,6 +140,14 @@
       return emailHtml;
     }
 
+    function renderDate(block) {
+      var dateHtml = '';
+      dateHtml += '<label>Label</label>';
+      dateHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
+      dateHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>';
+      return dateHtml;
+    }
+
     function renderTextArea(block) {
         log('textArea', block);
         var textAreaHtml = '';
@@ -187,6 +195,9 @@
                 break;
             case 'email':
                 blockHtml += renderEmail(block);
+                break;
+            case 'date':
+                blockHtml += renderDate(block);
                 break;
             case 'textarea':
                 blockHtml += renderTextArea(block);
@@ -399,6 +410,11 @@
         text['required'] = $text.find('.fw-required').prop('checked');
     }
 
+    function getDateData($text, text) {
+        text['label'] = $text.find('.fw-text-label').val();
+        text['required'] = $text.find('.fw-required').prop('checked');
+    }
+
     function getTextareaData($text, text) {
         text['label'] = $text.find('.fw-textarea-label').val();
         text['required'] = $text.find('.fw-required').prop('checked');
@@ -428,6 +444,9 @@
                 break;
             case 'email':
                 getEmailData($block, block)
+                break;
+            case 'date':
+                getDateData($block, block)
                 break;
             case 'textarea':
                 getTextareaData($block, block)
@@ -814,6 +833,16 @@
               var block = $(renderBlock({
                   type: 'textarea',
                   value: ''
+              }));
+              var $part = $(thickEvent.target).parents('.fw-step-part');
+              $part.find('.inside').append(block);
+              setupClickHandlers();
+            });
+            // DATE
+            $("#fw-thickbox-date").unbind('click').click(function(thickRadioEvent) {
+              tb_remove();
+              var block = $(renderBlock({
+                  type: 'date'
               }));
               var $part = $(thickEvent.target).parents('.fw-step-part');
               $part.find('.inside').append(block);
