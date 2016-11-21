@@ -91,8 +91,8 @@ class Mondula_Form_Wizard {
 		// Load plugin environment variables
 		$this->file = $file;
 		$this->dir = dirname( $this->file );
-		$this->assets_dir = trailingslashit( $this->dir ) . 'assets';
-		$this->assets_url = esc_url( trailingslashit( plugins_url( '/assets/', $this->file ) ) );
+		$this->assets_dir = trailingslashit( $this->dir ) . 'dist';
+		$this->assets_url = esc_url( trailingslashit( plugins_url( '/dist/', $this->file ) ) );
 
 		$this->script_suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
@@ -139,10 +139,10 @@ class Mondula_Form_Wizard {
 	 * @return void
 	 */
 	public function enqueue_styles () {
-		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'css/frontend.min.css', array(), $this->_version );
+		wp_register_style( $this->_token . '-vendor-frontend', esc_url( $this->assets_url ) . 'vendor-frontend.min.css', array(), $this->_version );
+		wp_enqueue_style( $this->_token . '-vendor-frontend' );
+		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'frontend.min.css', array(), $this->_version );
 		wp_enqueue_style( $this->_token . '-frontend' );
-		wp_register_style( $this->_token . '-select2', esc_url( $this->assets_url ) . 'css/select2.min.css', array(), $this->_version );
-		wp_enqueue_style( $this->_token . '-select2' );
 		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 	}
 
@@ -153,10 +153,10 @@ class Mondula_Form_Wizard {
 	 * @return  void
 	 */
 	public function enqueue_scripts () {
-		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'js/frontend' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
+		wp_register_script( $this->_token . '-vendor-frontend', esc_url( $this->assets_url ) . 'vendor-frontend' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
+		wp_enqueue_script( $this->_token . '-vendor-frontend' );
+		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'frontend' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
 		wp_enqueue_script( $this->_token . '-frontend' );
-		wp_register_script( $this->_token . '-select2', esc_url( $this->assets_url ) . 'js/select2' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
-		wp_enqueue_script( $this->_token . '-select2' );
 		wp_localize_script( $this->_token . '-frontend', 'ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'nonce' => wp_create_nonce( $this->_token ) ) );
 	}
 
