@@ -96,10 +96,12 @@ i.fa-caret-up, i.fa-caret-right, i.fa-remove {
 	width: 20%;
 	height: 400px;
 }
+.fw-parts-container {
+	position: relative;
+}
 .fw-step-part {
-	float: left;
 	padding: 10px;
-	margin: 10px;
+	margin: 20px 10px;
 	width: 90%;
 	background-color: @color_8;
 	border: 1px solid @color_9;
@@ -281,6 +283,11 @@ div#TB_ajaxContent {
 	&[data-type="submit"] {
 		border-color: @color_submit;
 	}
+}
+.fw-section-placeholder {
+	display: block;
+	margin: 10px;
+	border: 4px dashed @color_9;
 }
 .fw-step-block[data-type="text"] {
 	>.fw-block-action, .fw-block-controls > i {
