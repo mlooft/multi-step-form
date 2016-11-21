@@ -227,6 +227,8 @@
         log('part', part);
         var partHtml = '<div class="' + partClass + '">';
 
+        // handle
+        partHtml += '<div class="fw-section-hndle"><i class="fa fa-arrows"></i></div>';
 
         // title
         partHtml += '<input type="text" class="fw-part-title" value="' + part.title + '" placeholder="' + wizard.i18n.partTitle + '"></input>'
@@ -269,11 +271,13 @@
         partsHtml += '<button type="button" class="fw-button-one-column"><i class="fa fa-align-justify"></i></button>';
         partsHtml += '<button type="button" class="fw-button-two-columns"><i class="fa fa-align-justify"></i> <i class="fa fa-align-justify"></i></button>';
         partsHtml += '</div>';
+        partsHtml += '<div class="fw-parts-container">';
         var i, n;
         for (i = 0, n = parts.length; i < n; i++) {
             var partClass = getPartClass(i, n);
             partsHtml += renderPart(parts[i], partClass);
         }
+        partsHtml += '</div>';
         partsHtml += '<div class="fw-parts-footer">';
         partsHtml += '<a class="fw-add-part"><i class="fa fa-plus"></i> Add Section</a>'
         partsHtml += '</div>'
@@ -596,9 +600,10 @@
           placeholder: 'fw-block-placeholder',
           revert: 100,
           start: function(event, ui) {
-            var height = $(ui.item).height();
-            $('.fw-block-placeholder').height(height);
-            $('.fw-block-placeholder').attr('data-type', ui.item.attr('data-type'));
+            var height = $(ui.item).height(),
+                 $placeholder = $('.fw-block-placholder');
+            $placeholder.height(height);
+            $placeholder.attr('data-type', ui.item.attr('data-type'));
             console.log($('.fw-block-placeholder'));
           },
           update: function(event, ui) {
@@ -615,6 +620,24 @@
               setupClickHandlers();
           }
         });
+
+        $('.fw-parts-container').sortable({
+            opacity: 0.6,
+            cursor: 'move',
+            connectWith: '.fw-parts-container',
+            handle: '.fw-section-hndle',
+            tolerance: 'intersect',
+            placeholder: 'fw-section-placeholder',
+            revert: 100,
+            start: function (event, ui) {
+                var height = $(ui.item).height();
+                $('.fw-section-placeholder').height(height);
+            },
+            update: function(event, ui) {
+                setupDragNDrop();
+                setupClickHandlers();
+            }
+        })
 
         //        make step divs toggleable
         //        console.log(postboxes);
@@ -733,11 +756,11 @@
      */
     function addPart(evt) {
         var target = evt.target;
-        var $part = renderPart({
+        var part = renderPart({
             title: '',
             blocks: []
         }, 'fw-step-part')
-        $(target).closest('.fw-parts-footer').before($part);
+        $(target).closest('.fw-step-parts').find('.fw-parts-container').append(part);
         // setup handler for new part
         $('.fw-remove-part').click(function(event) {
             removePart(event);
