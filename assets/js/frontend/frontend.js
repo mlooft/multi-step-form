@@ -169,8 +169,6 @@ jQuery( document ).ready( function ( $ ) {
       }
       pushToSummary(summaryObj, title, header, value, required);
     }
-    
-    function date
 
     function stepSummary($wizard, stepNum, summaryObj) {
         var summary = '';
