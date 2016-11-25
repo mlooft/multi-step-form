@@ -235,7 +235,7 @@
 
         // removepart button
         partHtml += '<div class="fw-remove-part" title="remove section">'
-        partHtml += '<i class="fa fa-trash"></i>'
+        partHtml += '<i class="fa fa-remove"></i>'
         partHtml += '</div><div class="inside connectedSortable">'
 
         // blocks
@@ -318,16 +318,18 @@
     }
 
     function renderStep(step) {
-        var stepHtml = '<div class="postbox">' +
-            '<div class="fw-movediv hndle ui-sortable-handle"><i class="fa fa-arrows"></i></div>' +
-            '<h1 class="fw-step-h1 hndle ui-sortable-handle"><span>' +
-            step.title + '</span></h1>' +
-            '<div class="fw-trashdiv" title="remove step"><i class="fa fa-trash"></i></div>' +
-            '<div class="fw-collapsediv"><i class="fa fa-caret-down" aria-hidden="true"></i></div>' +
-            '<div class="fw-clearfix"></div>' +
-            renderStepInside(step) +
-            '<div class="fw-clearfix"></div>' +
-            '</div>';
+        var stepHtml = '<div class="postbox">';
+        stepHtml += '<div class="fw-movediv hndle ui-sortable-handle"><i class="fa fa-arrows"></i></div>';
+        stepHtml += '<h1 class="fw-step-h1 hndle ui-sortable-handle"><span>';
+        stepHtml += step.title + '</span></h1>';
+        stepHtml += '<div class="fw-step-controls">';
+        stepHtml += '<i class="fa fa-remove fw-remove-step" title="remove step" aria-hidden="true"></i>';
+        stepHtml += '<i class="fa fa-caret-up fw-toggle-step" aria-hidden="true"></i>';
+        stepHtml += '</div>';
+        stepHtml += '<div class="fw-clearfix"></div>';
+        stepHtml += renderStepInside(step);
+        stepHtml += '<div class="fw-clearfix"></div>';
+        stepHtml += '</div>';
         return stepHtml;
     }
 
@@ -490,7 +492,7 @@
       mailData.header = $('.fw-mail-header').val();
       return mailData;
     }
-    
+
     function validateSteps(steps) {
       var valid = true;
       for (var i = 0; i < steps.length; i++) {
@@ -678,7 +680,7 @@
       // TODO: aufräumen
       $('.fw-step-title').tooltip();
       $('.fw-step-headline').tooltip();
-      $('.fw-trashdiv').tooltip();
+      $('.fw-remove-step').tooltip();
       $('.fw-remove-part').tooltip();
       $('.fw-remove-block').tooltip();
       $('.hndle.ui-sortable-handle').tooltip();
@@ -899,9 +901,9 @@
           setupDragNDrop();
       });
 
-      $('.fw-collapsediv').unbind( "click" ).click(function(event) {
-          $(this).parent().find('.fw-step').slideToggle();
-          $(this).find('.fa').toggleClass('fa-caret-right');
+      $('.fw-toggle-step').unbind( "click" ).click(function(event) {
+          $(this).parent().parent().find('.fw-step').slideToggle();
+          $(this).toggleClass('fw-icon-rotated');
       });
 
       // remove part handler
@@ -938,7 +940,7 @@
             var $container = $(container);
             log(wizard);
             log(w);
-            
+
             if (w.title) {
               // load the wizard title
               $('.fw-wizard-title').val(w.title);
@@ -946,7 +948,7 @@
               $('.fw-wizard-title').val('My Multi Step Form');
             }
             renderSteps(w.wizard.steps);
-            
+
             // get mail settings
             renderMailSettings(w.wizard.mail);
 
@@ -988,7 +990,7 @@
                 updateOptions($container);
             });
 
-            $container.on('click', '.fw-trashdiv', removeStep);
+            $container.on('click', '.fw-remove-step', removeStep);
 
             setupDragNDrop();
             setupTooltips();
