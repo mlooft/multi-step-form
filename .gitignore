@@ -1,2 +1,4 @@
 /node_modules
-*.min.js
+/dist
+/bower_components
+.DS_Store
