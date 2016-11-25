@@ -36,19 +36,25 @@ ul {
 	&[data-type=fw-checkbox] label:before {
 		border-color: @color_invalid-border;
 		background-color: @color_invalid-bg;
-		border-width: 3px;
+		border-width: 2px;
 	}
 	.fw-block-invalid-alert {
-	    font-size:18px;
+	    font-size:16px;
 	    color: @color_invalid-text;
 	    margin-top:5px;
+	    border-left: 2px solid @color_invalid-text;
+	    background: @color_white;
+	    padding:5px 10px 5px 10px;
+	    box-sizing:border-box;
+	    font-weight:normal;
+	    width:100%;
 	}
 }
 .fw-alert-user {
 	position: relative;
 	color: white;
-	font-size: 25px;
-	font-weight: 600;
+	font-size: 20px;
+	font-weight: normal;
 	text-align: center;
 	width: 100%;
 	padding: 15px;
@@ -854,6 +860,11 @@ h2.fw-step-part-title {
             margin:10px 0px 20px 0px;
         }
     }
+    .fw-block-invalid-alert {
+	    background:none !important;
+	    border:none !important;
+	    padding: 0px !important;
+	}
 }
 @media all and (max-width: 480px) {
     ul.fw-progress-bar {

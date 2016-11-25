@@ -1,7 +1,7 @@
 ul{padding:0}.fw-progress-bar-container ul{margin:0 !important}.fw-progress-bar-container{margin-bottom:50px}
-.fw-block-invalid input,.fw-block-invalid textarea,.fw-block-invalid[data-type=fw-radio] label:before,.fw-block-invalid[data-type=fw-checkbox] label:before{border-color:red;background-color:#fff;border-width:3px}
-.fw-block-invalid .fw-block-invalid-alert{font-size:18px;color:red;margin-top:5px}
-.fw-alert-user{position:relative;color:white;font-size:25px;font-weight:600;text-align:center;width:100%;padding:15px;z-index:4}
+.fw-block-invalid input,.fw-block-invalid textarea,.fw-block-invalid[data-type=fw-radio] label:before,.fw-block-invalid[data-type=fw-checkbox] label:before{border-color:red;background-color:#fff;border-width:2px}
+.fw-block-invalid .fw-block-invalid-alert{font-size:16px;color:red;margin-top:5px;border-left:2px solid red;background:#fff;padding:5px 10px 5px 10px;box-sizing:border-box;font-weight:normal;width:100%}
+.fw-alert-user{position:relative;color:white;font-size:20px;font-weight:normal;text-align:center;width:100%;padding:15px;z-index:4}
 .fw-alert-user i{padding-right:10px}.fw-alert-user.fw-alert-user-fail{background-color:#f44336}
 .fw-alert-user.fw-alert-user-success{background-color:#4caf50}.fw-clearfix{clear:both}
 .fw-one_half{width:50% !important;float:left}.fw-one_third{width:33.3333% !important;float:left}
@@ -89,5 +89,6 @@ ul.fw-progress-bar li:last-child:before{font-size:35px;padding-top:5px}span.txt-
 .fw-wizard-step-header h2{font-size:40px;margin:0 0 25px}.fw-text-input{width:50%}
 .fw-textarea{min-height:300px}.select2.select2-container.select2-container--default.select2-container--focus,.select2.select2-container.select2-container--default.select2-container--below,.select2.select2-container.select2-container--default{width:50% !important}
 h2.fw-step-part-title{font-size:30px}.fw-wizard-step-header-container{margin-bottom:100px}
-.fw-wizard-step-container h3{font-size:18px;margin:10px 0 20px 0}}@media all and (max-width:480px){ul.fw-progress-bar li{padding:5px 20px 15px 60px !important}
+.fw-wizard-step-container h3{font-size:18px;margin:10px 0 20px 0}.fw-block-invalid-alert{background:none !important;border:none !important;padding:0 !important}
+}@media all and (max-width:480px){ul.fw-progress-bar li{padding:5px 20px 15px 60px !important}
 }
