@@ -9,7 +9,7 @@
 @color_9: #e0e0e0;
 @color_10: #546e7a;
 @color_11: #455a64;
-@color_tooltip: #a0a0a0;
+@color_tooltip: #757575;
 @color_text: #2196f3;
 @color_textarea: #ff5722;
 @color_checkbox: #4051B7;
@@ -19,8 +19,32 @@
 @color_select: #757575;
 @color_submit: #8bc34a;
 
+
+a:active, a:hover {
+    color: #111;
+}
 .postbox .hndle, .stuffbox .hndle {
     border-bottom: 0px !important;
+}
+.wrap h2.nav-tab-wrapper {
+    border:none !important;
+}
+textarea.fw-mail-header {
+    width:60%;
+}
+.nav-tab {
+    cursor:pointer;
+    border: none !important;
+    border: 1px solid #ccc !important;
+    margin-left: 0em;
+    margin-right: 0.5em;
+    color:#757575;
+    font-size: 14px;
+}
+.nav-tab-active {
+    background:#fff;
+    color:#222;
+    border: 1px solid #e5e5e5 !important;
 }
 .fw-wizard-container {
 	.postbox-container {
@@ -31,6 +55,63 @@
 	}
 	.postbox {
 		z-index: 0;
+		margin-bottom:60px !important;
+		box-shadow: none !important;
+		&:last-child {
+            margin-bottom:30px !important;
+		}
+        &::before {
+            background: #fff none repeat scroll 0 0;
+            color:#757575;
+            border: 1px solid #e5e5e5;
+            box-sizing: border-box;
+            left: 50%;
+            margin-left: -50px;
+            position: absolute;
+            text-align: center;
+            top: -25px;
+            vertical-align: middle;
+            font-size: 18px;
+            padding-top: 10px;
+            font-weight:normal;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            border-radius:100%;
+            width: 40px;
+            height: 40px;
+            font-weight:bold;
+        }
+        &:nth-child(1) {
+			&:before {
+				content: "1";
+			}
+		}
+		&:nth-child(2) {
+			&:before {
+				content: "2";
+			}
+		}
+		&:nth-child(3) {
+			&:before {
+				content: "3";
+			}
+		}
+		&:nth-child(4) {
+			&:before {
+				content: "4";
+			}
+		}
+		&:nth-child(5) {
+			&:before {
+				content: "5";
+			}
+		}
+		/*&:last-child {
+			&:before {
+			    font-family: FontAwesome;
+				content: "\f024";
+			}
+		}*/
 	}
 	width: 75%;
 	margin-left: 24%;
@@ -96,6 +177,9 @@ i.fa-caret-up, i.fa-caret-right, i.fa-remove {
     top: -17px;
     color: @color_tooltip;
 }
+.fa-caret-down::before {
+    cursor: pointer;
+}
 .fw-elements-container {
 	.postbox {
 		z-index: 1;
@@ -118,6 +202,7 @@ i.fa-caret-up, i.fa-caret-right, i.fa-remove {
 	float: left;
 	>span {
 		padding-left: 10px !important;
+		font-size:18px !important;
 	}
 }
 .fw-clearfix {
@@ -441,25 +526,25 @@ input.fw-required {
 	display: none;
 	position: fixed;
 	z-index: 101;
-	top: 50%;
-	width:50%;
+	top: 45%;
+	width:40%;
 	left: 50%;
-	margin-left:-20%;
+	margin-left:-15%;
 	right: 0;
 	color: @color_4;
 	font-weight: 500;
-	font-size:20px;
+	font-size:22px;
 	background: #4caf50;
 	text-align: center;
 	line-height: 2.5;
 	overflow: hidden;
 	letter-spacing: 0.03em;
-	padding:15px 30px 15px 30px !important;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)" !important;
-    filter: alpha(opacity=95) !important;
-    -moz-opacity: 0.95 !important;
-    -khtml-opacity: 0.95 !important;
-    opacity: 0.95 !important;
+	padding:20px 30px 20px 30px !important;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)" !important;
+    filter: alpha(opacity=90) !important;
+    -moz-opacity: 0.9 !important;
+    -khtml-opacity: 0.9 !important;
+    opacity: 0.9 !important;
     -webkit-box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.3);
     -moz-box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.3);
     box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.3);
@@ -502,8 +587,9 @@ input.fw-required {
 	border-left: 6px solid @color_submit;
 }
 .fa.fa-trash {
-    color:@color_6;
+    color:#757575;
     font-size:16px;
+    cursor:pointer;
 }
 .fw-mail-settings-container {
     .fw-button-save {
@@ -525,21 +611,34 @@ input.fw-required {
         line-height:1;
         margin: 5px 0 10px;
 }
-.fw-element-step:hover, .fw-radio-add:hover, .fw-add-part:hover  {
+.fw-element-step {
+    background: #757575 none repeat scroll 0 0;
+    border: none;
+    color:#fff;
+    text-transform: uppercase;
+}
+.fw-element-step:hover {
+    border: none;
+    background: #555 none repeat scroll 0 0;
+    color:#fff;
+}
+.fw-radio-add:hover, .fw-add-part:hover  {
         background: #e7e7e7 none repeat scroll 0 0;
         color: @color_6;
         border: 1px solid @color_7;
 }
 .fw-button-save {
-    background: @color_10 none repeat scroll 0 0;
+    background: #757575 none repeat scroll 0 0;
     color: @color_4;
     padding: 10px 15px !important;
     width:100%;
     border:none !important;
     cursor:pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 .fw-button-save:hover {
-        background: @color_11 none repeat scroll 0 0;
+        background: #555 none repeat scroll 0 0;
 }
 a.fw-add-part{
 	margin-left: 10px;
