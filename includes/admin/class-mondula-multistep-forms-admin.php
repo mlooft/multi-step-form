@@ -64,7 +64,7 @@ class Mondula_Form_Wizard_Admin {
                 'radioHeader' => __( 'Header', $this->_text_domain ),
                 'radioHeading' => __( 'Radio Buttons', $this->_text_domain)
             );
-            wp_register_script( $this->_token . '-wizard-admin', esc_url( $this->_assets_url ) . 'js/wizard-admin' . $this->_script_suffix . '.js', array( 'postbox', 'jquery-ui-dialog', 'jquery-ui-sortable', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-tooltip', 'jquery' ), $this->_version );
+            wp_register_script( $this->_token . '-backend', esc_url( $this->_assets_url ) . 'backend' . $this->_script_suffix . '.js', array( 'postbox', 'jquery-ui-dialog', 'jquery-ui-sortable', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-tooltip', 'jquery' ), $this->_version );
             $ajax = array(
                 'i18n' => $i18n,
                 'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -72,11 +72,11 @@ class Mondula_Form_Wizard_Admin {
                 'nonce' => wp_create_nonce( $this->_token . $id ),
                 'json' => $json
             );
-            wp_localize_script( $this->_token . '-wizard-admin', 'wizard', $ajax ); // array( 'i18n' => $i18n, 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'json' => $json ) );
-            wp_enqueue_script( $this->_token . '-wizard-admin');
+            wp_localize_script( $this->_token . '-backend', 'wizard', $ajax ); // array( 'i18n' => $i18n, 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'json' => $json ) );
+            wp_enqueue_script( $this->_token . '-backend');
 
-            wp_register_style( $this->_token . '-wizard-admin', esc_url( $this->_assets_url ) . 'css/wizard-admin'. $this->_script_suffix. '.css', array(), $this->_version );
-            wp_enqueue_style( $this->_token . '-wizard-admin' );
+            wp_register_style( $this->_token . '-backend', esc_url( $this->_assets_url ) . 'backend'. $this->_script_suffix. '.css', array(), $this->_version );
+            wp_enqueue_style( $this->_token . '-backend' );
         }
     }
 
@@ -200,6 +200,7 @@ class Mondula_Form_Wizard_Admin {
                                     <a class="fw-draggable-block fw-element-text" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
                                     <a class="fw-draggable-block fw-element-textarea" data-type="textarea"><i class="fa fa-arrows"></i> Text Area</a>
                                     <a class="fw-draggable-block fw-element-email" data-type="email"><i class="fa fa-arrows"></i> Email</a>
+                                    <a class="fw-draggable-block fw-element-date" data-type="date"><i class="fa fa-arrows"></i> Date</a>
                                 </div>
                                 <div class="fw-actions">
                                     <button class="fw-button-save"><?php _e( 'Save' ) ?></button>
@@ -220,6 +221,7 @@ class Mondula_Form_Wizard_Admin {
               <div id="fw-thickbox-text">Text Field</div>
               <div id="fw-thickbox-email">Email</div>
               <div id="fw-thickbox-textarea">Text Area</div>
+              <div id="fw-thickbox-date">Date</div>
             </div>
 
         </div>

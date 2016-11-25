@@ -13,6 +13,7 @@
 @color_textarea: #ff5722;
 @color_checkbox: #4051B7;
 @color_email: #9c27b0;
+@color_date: #00bcd4;
 @color_radio: #009989;
 @color_select: #757575;
 @color_submit: #8bc34a;
@@ -95,10 +96,12 @@ i.fa-caret-up, i.fa-caret-right, i.fa-remove {
 	width: 20%;
 	height: 400px;
 }
+.fw-parts-container {
+	position: relative;
+}
 .fw-step-part {
-	float: left;
 	padding: 10px;
-	margin: 10px;
+	margin: 20px 10px;
 	width: 90%;
 	background-color: @color_8;
 	border: 1px solid @color_9;
@@ -211,7 +214,7 @@ div#TB_ajaxContent {
     padding: 20px 15px;
 }
 div#TB_ajaxContent {
-    #fw-thickbox-radio, #fw-thickbox-select, #fw-thickbox-checkbox, #fw-thickbox-text, #fw-thickbox-email, #fw-thickbox-textarea, #fw-thickbox-select {
+    #fw-thickbox-radio, #fw-thickbox-select, #fw-thickbox-checkbox, #fw-thickbox-text, #fw-thickbox-email, #fw-thickbox-date, #fw-thickbox-textarea, #fw-thickbox-select {
         border: medium none !important;
         color: @color_4;
     }
@@ -229,6 +232,9 @@ div#TB_ajaxContent {
     }
     #fw-thickbox-email {
         background: @color_email none repeat scroll 0 0;
+    }
+	#fw-thickbox-date {
+        background: @color_date none repeat scroll 0 0;
     }
     #fw-thickbox-textarea {
         background: @color_textarea none repeat scroll 0 0;
@@ -255,6 +261,9 @@ div#TB_ajaxContent {
 	&[data-type="email"] {
 		border-color: @color_email;
 	}
+	&[data-type="date"] {
+		border-color: @color_date;
+	}
 	&[data-type="text"] {
 		border-color: @color_text;
 	}
@@ -275,6 +284,11 @@ div#TB_ajaxContent {
 		border-color: @color_submit;
 	}
 }
+.fw-section-placeholder {
+	display: block;
+	margin: 10px;
+	border: 4px dashed @color_9;
+}
 .fw-step-block[data-type="text"] {
 	>.fw-block-action, .fw-block-controls > i {
 		background-color: @color_text;
@@ -283,6 +297,11 @@ div#TB_ajaxContent {
 .fw-step-block[data-type="email"] {
 	>.fw-block-action, .fw-block-controls > i {
 		background-color: @color_email;
+	}
+}
+.fw-step-block[data-type="date"] {
+	>.fw-block-action, .fw-block-controls > i {
+		background-color: @color_date;
 	}
 }
 .fw-step-block[data-type="textarea"] {
@@ -448,6 +467,9 @@ input.fw-required {
 }
 .fw-draggable-block[data-type=email] {
 	border-left: 6px solid @color_email;
+}
+.fw-draggable-block[data-type=date] {
+	border-left: 6px solid @color_date;
 }
 .fw-draggable-block[data-type=checkbox] {
 	border-left: 6px solid @color_checkbox;
