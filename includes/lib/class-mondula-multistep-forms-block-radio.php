@@ -33,7 +33,7 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
             if ($element['type'] === 'option') {
                 if ($this->_multichoice == 'true') {
                 ?>
-                <div class="fw-choice fw-input-container">
+                <div class="fw-choice fw-input-container" data-type="fw-checkbox">
                     <input id="<?php echo $group.'-'.$i ?>" type="checkbox" class="fw-checkbox" name="<?php echo $group; ?>" data-id="<?php echo $i; ?>">
                     <label for="<?php echo $group.'-'.$i; ?>" data-labelId="<?php echo $i ?>"><?php echo $element['value']; ?></label>
                 </div>
