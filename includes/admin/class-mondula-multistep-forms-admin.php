@@ -103,10 +103,11 @@ class Mondula_Form_Wizard_Admin {
     public function table ( ) {
         $table = new Mondula_Form_Wizard_List_Table( $this->_wizard_service, $this->_text_domain );
         $table->prepare_items();
+        $edit_url = esc_url( add_query_arg( array( 'edit' => '' )));
         ?>
         <div class="wrap">
             <div id="icon-users" class="icon32"></div>
-            <h2>Multi Step Forms</h2>
+            <h2>Multi Step Forms<a href="<?php echo $edit_url ?>" class="page-title-action"><?php _e( 'Add New', $this->_text_domain ) ?></a></h2>
             <form id="fw-wizard-table" method="get">
                 <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
             <?php $table->display(); ?>
