@@ -115,13 +115,13 @@ jQuery( document ).ready( function ( $ ) {
     }
 
     function textSummary(summaryObj, $block, title, required) {
-      var header = $block.find('label').text();
+      var header = $block.find('h3').text();
       var value = $block.find('.fw-text-input').val();
       pushToSummary(summaryObj, title, header, value, required);
     }
 
     function textareaSummary(summaryObj, $block, title, required) {
-      var header = $block.find('label').text();
+      var header = $block.find('h3').text();
       var value = $block.find('.fw-textarea').val();
       pushToSummary(summaryObj, title, header, value, required);
     }
@@ -153,7 +153,7 @@ jQuery( document ).ready( function ( $ ) {
     }
 
     function selectSummary(summaryObj, $block, title, required) {
-      var header = $block.find('label').text();
+      var header = $block.find('h3').text();
       var value = $block.find('select').select2('data')[0].text;
       pushToSummary(summaryObj, title, header, value, required);
     }
