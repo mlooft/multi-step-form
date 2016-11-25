@@ -12,6 +12,21 @@
         'console' in window && console.warn.apply(console, arguments);
     }
 
+    /**
+     * Return a step with an empty section and no values set.
+     */
+    function emptyStep() {
+        return {
+            title: '',
+            headline: '',
+            copy_text: '',
+            parts: [{
+                title: '',
+                blocks: []
+            }]
+        };
+    }
+
     function alertMessage(message, success){
       var color;
       if (success) {
@@ -357,10 +372,6 @@
         stepsHtml += '<a class="fw-element-step"><i class="fa fa-plus"></i> Add Step</a>';
         stepsHtml += '</div></div>';
         $(container).html(stepsHtml);
-        if (n == 0) {
-          addStep();
-          $(".fw-add-part").trigger("click");
-        }
     }
 
 
@@ -722,18 +733,9 @@
      * addStep - add a step to the wizard
      */
     function addStep() {
-        var part = {
-            title: '',
-            blocks: []
-        };
         var n = $('.fw-step').length;
         if (n < 5) {
-          var $step = $(renderStep({
-              title: '',
-              headline: '',
-              copy_text: '',
-              parts: [part]
-          }));
+          var $step = $(renderStep(emptyStep()));
           $step.appendTo($(container).find('.meta-box-sortables'));
 
           setupClickHandlers();
@@ -947,7 +949,8 @@
             } else {
               $('.fw-wizard-title').val('My Multi Step Form');
             }
-            renderSteps(w.wizard.steps);
+            var steps = w.wizard.steps && w.wizard.steps.length > 0 ? w.wizard.steps : [emptyStep()];
+            renderSteps(steps);
 
             // get mail settings
             renderMailSettings(w.wizard.mail);
