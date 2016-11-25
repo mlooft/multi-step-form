@@ -490,6 +490,25 @@
       mailData.header = $('.fw-mail-header').val();
       return mailData;
     }
+    
+    function validateSteps(steps) {
+      var valid = true;
+      for (var i = 0; i < steps.length; i++) {
+          var step = steps[i];
+          if (!step.title) {
+            valid = false;
+            alertMessage("WARNING: You need to provide a title for each step", false);
+          } else {
+            for (var j = 0; j < steps[i].parts.length; j++) {
+              if (steps[i].parts[j].title == ""){
+                valid = false;
+                alertMessage("WARNING: You need to provide a title for each section", false);
+              }
+            }
+          }
+      }
+      return valid;
+    }
 
     function validate(data) {
       var valid = true;
@@ -497,13 +516,7 @@
         valid = false;
         alertMessage("WARNING: You need to provide title for the form", false);
       } else {
-        for (var i = 0; i < data.wizard.steps.length; i++) {
-            var step = data.wizard.steps[i];
-            if (!step.title) {
-              valid = false;
-              alertMessage("WARNING: You need to provide a title for each step", false);
-            }
-        }
+        valid = validateSteps(data.wizard.steps);
       }
       return valid;
     }
