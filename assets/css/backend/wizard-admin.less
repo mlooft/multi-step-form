@@ -9,6 +9,7 @@
 @color_9: #e0e0e0;
 @color_10: #546e7a;
 @color_11: #455a64;
+@color_tooltip: #a0a0a0;
 @color_text: #2196f3;
 @color_textarea: #ff5722;
 @color_checkbox: #4051B7;
@@ -87,6 +88,13 @@ i.fa-caret-up, i.fa-caret-right, i.fa-remove {
 		transform: rotate(0deg);
 		transition: transform .3s cubic-bezier(0.55, 0.09, 0.68, 0.53);
 	}
+}
+.fa-info-circle::before {
+    font-size: 16px;
+    left: 3px;
+    position: absolute;
+    top: -17px;
+    color: @color_tooltip;
 }
 .fw-elements-container {
 	.postbox {
@@ -245,14 +253,14 @@ div#TB_ajaxContent {
 }
 .ui-tooltip {
 	color: @color_4;
-	background-color: @color_5;
-	border-radius: 10px;
+	background-color: @color_tooltip;
+	border-radius: 0px;
 	z-index: 430;
-	width: 100px;
-	padding: 10px;
-	-webkit-box-shadow: 1px 1px 30px 0px rgba(0,0,0,0.42);
-	-moz-box-shadow: 1px 1px 30px 0px rgba(0,0,0,0.42);
-	box-shadow: 1px 1px 30px 0px rgba(0,0,0,0.42);
+	width: 200px;
+	padding: 10px 20px 10px 20px;
+	-webkit-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.1);
+	-moz-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.1);
+	box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.1);
 }
 .fw-block-placeholder {
 	display: block;
@@ -433,15 +441,28 @@ input.fw-required {
 	display: none;
 	position: fixed;
 	z-index: 101;
-	top: 32px;
-	left: 160px;
+	top: 50%;
+	width:50%;
+	left: 50%;
+	margin-left:-20%;
 	right: 0;
 	color: @color_4;
-	font-weight: 600;
+	font-weight: 500;
+	font-size:20px;
 	background: #4caf50;
 	text-align: center;
 	line-height: 2.5;
 	overflow: hidden;
+	letter-spacing: 0.03em;
+	padding:15px 30px 15px 30px !important;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)" !important;
+    filter: alpha(opacity=95) !important;
+    -moz-opacity: 0.95 !important;
+    -khtml-opacity: 0.95 !important;
+    opacity: 0.95 !important;
+    -webkit-box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.3);
 }
 .fw-draggable-block {
 	display: inline-block;
@@ -505,8 +526,9 @@ input.fw-required {
         margin: 5px 0 10px;
 }
 .fw-element-step:hover, .fw-radio-add:hover, .fw-add-part:hover  {
-        background: @color_6 none repeat scroll 0 0;
-        color: @color_8;
+        background: #e7e7e7 none repeat scroll 0 0;
+        color: @color_6;
+        border: 1px solid @color_7;
 }
 .fw-button-save {
     background: @color_10 none repeat scroll 0 0;
