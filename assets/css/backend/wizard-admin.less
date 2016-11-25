@@ -106,13 +106,13 @@ textarea.fw-mail-header {
 				content: "5";
 			}
 		}
-		/*&:last-child {
-			&:before {
-			    font-family: FontAwesome;
-				content: "\f024";
-			}
-		}*/
 	}
+    .postbox ~ .postbox:last-child {
+        &:before {
+            font-family: FontAwesome;
+            content: "\f024";
+        }
+    }
 	width: 75%;
 	margin-left: 24%;
 }
