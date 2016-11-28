@@ -175,7 +175,7 @@
     function renderParagraph(block) {
         var paragraphHtml = '';
         paragraphHtml += '<label>Text</label>';
-        paragraphHtml += '<textarea class="fw-paragraph-text fw-block-label" placeholder="Paragraph text">' + block.text + '</textarea>';
+        paragraphHtml += '<textarea class="fw-paragraph-text fw-block-label" placeholder="Paragraph text">' + (block.text ? block.text : '') + '</textarea>';
         return paragraphHtml;
     }
 
@@ -855,7 +855,8 @@
             $("#fw-thickbox-select").unbind('click').click(function(thickRadioEvent) {
                 tb_remove();
                 var block = $(renderBlock({
-                    type: 'select'
+                    type: 'select',
+                    label: ''
                 }));
                 var $part = $(thickEvent.target).parents('.fw-step-part');
                 $part.find('.inside').append(block);
@@ -867,6 +868,19 @@
               tb_remove();
               var block = $(renderBlock({
                   type: 'text',
+                  label: '',
+                  value: ''
+              }));
+              var $part = $(thickEvent.target).parents('.fw-step-part');
+              $part.find('.inside').append(block);
+              setupClickHandlers();
+            });
+            // EMAIL
+            $("#fw-thickbox-email").unbind('click').click(function(thickRadioEvent) {
+              tb_remove();
+              var block = $(renderBlock({
+                  type: 'email',
+                  label: '',
                   value: ''
               }));
               var $part = $(thickEvent.target).parents('.fw-step-part');
@@ -878,6 +892,7 @@
               tb_remove();
               var block = $(renderBlock({
                   type: 'textarea',
+                  label: '',
                   value: ''
               }));
               var $part = $(thickEvent.target).parents('.fw-step-part');
@@ -888,7 +903,8 @@
             $("#fw-thickbox-date").unbind('click').click(function(thickRadioEvent) {
               tb_remove();
               var block = $(renderBlock({
-                  type: 'date'
+                  type: 'date',
+                  label: ''
               }));
               var $part = $(thickEvent.target).parents('.fw-step-part');
               $part.find('.inside').append(block);
