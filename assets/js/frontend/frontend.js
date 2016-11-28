@@ -102,7 +102,7 @@ jQuery( document ).ready( function ( $ ) {
           showStep($wizard, step);
           if (step === (getStepCount($wizard) - 1)) {
             disableNext($wizard);
-          } 
+          }
           enablePrevious($wizard);
           // scroll back to top on next step
           $('html, body').animate({
@@ -189,6 +189,8 @@ jQuery( document ).ready( function ( $ ) {
                 case 'fw-select': selectSummary(summaryObj, $(element), title, required);
                   break;
                 case 'fw-checkbox': checkboxSummary(summaryObj, $(element), title, required);
+                  break;
+                default:
                   break;
               }
             });
@@ -447,7 +449,7 @@ jQuery( document ).ready( function ( $ ) {
       }
     }
 
-    function validateDate($element) { 
+    function validateDate($element) {
       if (!$element.find('.fw-text-input').val()) {
         $element.addClass('fw-block-invalid');
         return false;
@@ -521,6 +523,8 @@ jQuery( document ).ready( function ( $ ) {
                 case 'fw-checkbox': valid = validateCheckbox($element);
                   break;
                 case 'fw-submit': valid = validateSubmit($element);
+                  break;
+                default:
                   break;
               }
               if(!valid){

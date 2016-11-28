@@ -45,6 +45,7 @@ require_once( 'includes/lib/class-mondula-multistep-forms-block-checkbox.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-radio.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-email.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-date.php' );
+require_once( 'includes/lib/class-mondula-multistep-forms-block-paragraph.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-select.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-text.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-textarea.php' );

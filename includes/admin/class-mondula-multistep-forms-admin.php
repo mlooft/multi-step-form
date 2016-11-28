@@ -202,6 +202,7 @@ class Mondula_Form_Wizard_Admin {
                                     <a class="fw-draggable-block fw-element-textarea" data-type="textarea"><i class="fa fa-arrows"></i> Text Area</a>
                                     <a class="fw-draggable-block fw-element-email" data-type="email"><i class="fa fa-arrows"></i> Email</a>
                                     <a class="fw-draggable-block fw-element-date" data-type="date"><i class="fa fa-arrows"></i> Date</a>
+                                    <a class="fw-draggable-block fw-element-paragraph" data-type="paragraph"><i class="fa fa-arrows"></i> Paragraph</a>
                                 </div>
                                 <div class="fw-actions">
                                     <button class="fw-button-save"><?php _e( 'Save' ) ?></button>
@@ -223,6 +224,7 @@ class Mondula_Form_Wizard_Admin {
               <div id="fw-thickbox-email">Email</div>
               <div id="fw-thickbox-textarea">Text Area</div>
               <div id="fw-thickbox-date">Date</div>
+              <div id="fw-thickbox-paragraph">Paragraph</div>
             </div>
 
         </div>

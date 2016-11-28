@@ -172,6 +172,13 @@
         return textAreaHtml;
     }
 
+    function renderParagraph(block) {
+        var paragraphHtml = '';
+        paragraphHtml += '<label>Text</label>';
+        paragraphHtml += '<textarea class="fw-paragraph-text fw-block-label" placeholder="Paragraph text">' + block.text + '</textarea>';
+        return paragraphHtml;
+    }
+
     function renderBlock(block) {
         log('block', block);
         var error = false;
@@ -216,6 +223,9 @@
                 break;
             case 'textarea':
                 blockHtml += renderTextArea(block);
+                break;
+            case 'paragraph':
+                blockHtml += renderParagraph(block);
                 break;
             default:
                 break;
@@ -437,6 +447,10 @@
         text['required'] = $text.find('.fw-required').prop('checked');
     }
 
+    function getParagraphData($text, text) {
+        text['text'] = $text.find('.fw-paragraph-text').val();
+    }
+
     /**
      * getBlockData - get the data from backend input fields
      *
@@ -467,6 +481,9 @@
                 break;
             case 'textarea':
                 getTextareaData($block, block)
+                break;
+            case 'paragraph':
+                getParagraphData($block, block);
                 break;
         }
         return block;
@@ -883,6 +900,17 @@
               tb_remove();
               var block = $(renderBlock({
                   type: 'date'
+              }));
+              var $part = $(thickEvent.target).parents('.fw-step-part');
+              $part.find('.inside').append(block);
+              setupClickHandlers();
+            });
+            // PARAGRAPH
+            $("#fw-thickbox-paragraph").unbind('click').click(function(thickRadioEvent) {
+              tb_remove();
+              var block = $(renderBlock({
+                  type: 'paragraph',
+                  text: ''
               }));
               var $part = $(thickEvent.target).parents('.fw-step-part');
               $part.find('.inside').append(block);
