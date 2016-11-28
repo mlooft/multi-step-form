@@ -62,7 +62,7 @@ class Mondula_Form_Wizard_Admin {
                 'copyText' => __( 'Step description', $this->_text_domain  ),
                 'partTitle' => __( 'Section Title', $this->_text_domain ),
                 'radioHeader' => __( 'Header', $this->_text_domain ),
-                'radioHeading' => __( 'Radio Buttons', $this->_text_domain)
+                'radioHeading' => __( 'Radio/Checkbox', $this->_text_domain)
             );
             wp_register_script( $this->_token . '-backend', esc_url( $this->_assets_url ) . 'backend' . $this->_script_suffix . '.js', array( 'postbox', 'jquery-ui-dialog', 'jquery-ui-sortable', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-tooltip', 'jquery' ), $this->_version );
             $ajax = array(
@@ -195,7 +195,7 @@ class Mondula_Form_Wizard_Admin {
                                     <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="Form Title">
                                     <a class="fw-element-step"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ) ?></a>
                                     <h4>Drag &amp; Drop an element from below to a section on the right side</h4>
-                                    <a class="fw-draggable-block fw-element-radio" data-type="radio"><i class="fa fa-arrows"></i> Radio Buttons</a>
+                                    <a class="fw-draggable-block fw-element-radio" data-type="radio"><i class="fa fa-arrows"></i> Radio/Checkbox</a>
                                     <a class="fw-draggable-block fw-element-select" data-type="select"><i class="fa fa-arrows"></i> Select</a>
                                     <a class="fw-draggable-block fw-element-text" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
                                     <a class="fw-draggable-block fw-element-textarea" data-type="textarea"><i class="fa fa-arrows"></i> Text Area</a>
@@ -216,7 +216,7 @@ class Mondula_Form_Wizard_Admin {
                 <p>Content!</p>
             </div>
             <div id="fw-thickbox-content" style="display:none;">
-              <div id="fw-thickbox-radio">Radio Buttons</div>
+              <div id="fw-thickbox-radio">Radio/Checkbox</div>
               <div id="fw-thickbox-select">Select</div>
               <div id="fw-thickbox-text">Text Field</div>
               <div id="fw-thickbox-email">Email</div>
