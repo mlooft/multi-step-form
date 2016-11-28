@@ -1,4 +1,4 @@
-@color_1: crimson;
+@color_1: #555;
 @color_2: green;
 @color_3: red;
 @color_4: white;
@@ -149,7 +149,9 @@ textarea.fw-mail-header {
 	float: right;
 	width: 64px;
 	text-align: center;
-    background: #999;
+	top:5px;
+	right:5px;
+	position:relative;
 	>i {
 		height: 30px;
 		line-height: 30px;
@@ -158,6 +160,8 @@ textarea.fw-mail-header {
 		float: right;
 		width: 30px;
 		margin-left: 2px;
+		color: @color_1;
+		font-size:18px;
 	}
 }
 .fw-add-element {
@@ -265,6 +269,8 @@ a.fw-add-part {
 .fw-remove-part {
 	color: @color_1;
 	float: right;
+	position: relative;
+    top: -15px;
 }
 .fw-remove-radio-option {
 	display: inline-block;
@@ -368,34 +374,35 @@ div#TB_ajaxContent {
 }
 .fw-block-placeholder {
 	display: block;
-	margin: 10px;
- 	border: 4px dashed;
+	margin: 20px 0px 20px 0px;
+ 	border: 4px dashed #aaa;
+ 	min-height: 6em;
 	&[data-type="email"] {
-		border-color: @color_email;
+		border-color: @color_email !important;
 	}
 	&[data-type="date"] {
-		border-color: @color_date;
+		border-color: @color_date !important;
 	}
 	&[data-type="text"] {
-		border-color: @color_text;
+		border-color: @color_text !important;
 	}
 	&[data-type="textarea"] {
-		border-color: @color_textarea;
+		border-color: @color_textarea !important;
 	}
 	&[data-type="checkbox"] {
-		border-color: @color_checkbox;
+		border-color: @color_checkbox !important;
 	}
 	&[data-type="radio"] {
-		border-color: @color_radio;
+		border-color: @color_radio !important;
 	}
 	&[data-type="select"] {
-		border-color: @color_select;
+		border-color: @color_select !important;
 	}
     &[data-type="paragraph"] {
-        border-color: @color_paragraph;
+        border-color: @color_paragraph !important;
     }
 	&[data-type="submit"] {
-		border-color: @color_submit;
+		border-color: @color_submit !important;
 	}
 }
 .fw-section-placeholder {
