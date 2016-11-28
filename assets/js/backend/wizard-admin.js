@@ -99,7 +99,7 @@
 
         }
         radioHtml += '</div>';
-        radioHtml += '<button class="fw-radio-add"><i class="fa fa-plus" aria-hidden="true"></i> Add radio option</button><br/>';
+        radioHtml += '<button class="fw-radio-add"><i class="fa fa-plus" aria-hidden="true"></i> Add option</button><br/>';
         radioHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(radio) + '/> Required</label>'
         if (radio.multichoice == "true") {
           radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice" checked/>Multiple Selection</label>'
