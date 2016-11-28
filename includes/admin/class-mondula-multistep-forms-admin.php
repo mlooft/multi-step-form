@@ -197,7 +197,6 @@ class Mondula_Form_Wizard_Admin {
                                     <h4>Drag &amp; Drop an element from below to a section on the right side</h4>
                                     <a class="fw-draggable-block fw-element-radio" data-type="radio"><i class="fa fa-arrows"></i> Radio Buttons</a>
                                     <a class="fw-draggable-block fw-element-select" data-type="select"><i class="fa fa-arrows"></i> Select</a>
-                                    <a class="fw-draggable-block fw-element-checkbox" data-type="checkbox"><i class="fa fa-arrows"></i> Checkbox</a>
                                     <a class="fw-draggable-block fw-element-text" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
                                     <a class="fw-draggable-block fw-element-textarea" data-type="textarea"><i class="fa fa-arrows"></i> Text Area</a>
                                     <a class="fw-draggable-block fw-element-email" data-type="email"><i class="fa fa-arrows"></i> Email</a>
@@ -219,7 +218,6 @@ class Mondula_Form_Wizard_Admin {
             <div id="fw-thickbox-content" style="display:none;">
               <div id="fw-thickbox-radio">Radio Buttons</div>
               <div id="fw-thickbox-select">Select</div>
-              <div id="fw-thickbox-checkbox">Checkbox</div>
               <div id="fw-thickbox-text">Text Field</div>
               <div id="fw-thickbox-email">Email</div>
               <div id="fw-thickbox-textarea">Text Area</div>
