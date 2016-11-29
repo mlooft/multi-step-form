@@ -383,7 +383,6 @@ ul.fw-progress-bar {
 		&:nth-child(3) {
 			&:before {
 				content: "3";
-				line-height: 48px;
 			}
 		}
 		&:nth-child(4) {
@@ -743,7 +742,7 @@ h2.fw-step-part-title {
     width: 1100px;
   }
   span.txt-ellipsis {
-        width: 170px !important;
+        width: 150px !important;
     } 
 }
 
@@ -786,12 +785,24 @@ h2.fw-step-part-title {
     li.fw-progress-step:last-child::after {
         width: 0;
     }
-    ul.fw-progress-bar li {
-        display: inline-block;
-        margin: 50px 0 0;
-        padding: 0;
-        text-align: left;
-        width: 19%;
+    ul.fw-progress-bar {
+        li {
+            display: inline-block;
+            margin: 50px 0 0;
+            padding: 0;
+            text-align: left;
+            width: 15%;
+            &:nth-child(3) {
+			    &:before {
+				    line-height: 48px;
+			    }
+    		}
+    		&:nth-child(4) {
+			    &:before {
+				    line-height: 48px;
+			    }
+    		}
+        }
     }
     ul.fw-progress-bar li.fw-visited {
         background: none;
@@ -899,6 +910,7 @@ h2.fw-step-part-title {
 	    width:60%;
 	    margin-left:-30%;
 	}
+	
 }
 @media all and (max-width: 480px) {
     ul.fw-progress-bar {
