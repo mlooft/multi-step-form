@@ -751,7 +751,7 @@
      */
     function addStep() {
         var n = $('.fw-step').length;
-        if (n < 4) {
+        if (n < 5) {
           var $step = $(renderStep(emptyStep()));
           $step.appendTo($(container).find('.meta-box-sortables'));
 
