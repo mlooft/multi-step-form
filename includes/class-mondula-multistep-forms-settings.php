@@ -162,7 +162,13 @@ class Mondula_Form_Wizard_Settings {
                     'label' => __( 'Button Color', $this->_text_domain ),
                     'desc' => __( 'Choose a color for the buttons', $this->_text_domain ),
                     'type' => 'color',
-                    'default' => ''
+                ),
+                array(
+                    'name' => 'progressbar',
+                    'label' => __( 'Hund', $this->_text_domain ),
+                    'desc' => __( 'Katze Maus', $this->_text_domain ),
+                    'type' => 'checkbox',
+                    'default' => 'on'
                 )
 
             ),

@@ -156,9 +156,10 @@ class Mondula_Form_Wizard_Wizard {
      *
      */
     public function render ( $wizardId ) {
+        $progressbar = $this->fw_get_option( 'progressbar', 'fw_settings_styling', 'on' ) === 'on';
         ob_start();
         ?>
-        <div id="mondula-multistep-forms" class="fw-wizard" data-stepCount="<?php echo count( $this->_steps )?>" data-wizardid="<?php echo $wizardId ?>">
+        <div id="mondula-multistep-forms" class="fw-wizard<?php echo ( $progressbar ? '' : ' fw-no-progressbar' ); ?>" data-stepCount="<?php echo count( $this->_steps )?>" data-wizardid="<?php echo $wizardId ?>">
             <div class="fw-wizard-step-header-container">
                 <div class="fw-container">
                 <?php
