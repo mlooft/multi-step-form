@@ -39,11 +39,11 @@ class Mondula_Form_Wizard_Settings {
             array(
                 'id' => 'fw_settings_styling',
                 'title' => __( 'Styling', $this->_text_domain )
-            ),
+            )/*,
             array(
                 'id' => 'wedevs_others',
                 'title' => __( 'Other Settings', $this->_text_domain )
-            )
+            )*/
         );
         return $sections;
     }
