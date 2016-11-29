@@ -196,11 +196,11 @@ class Mondula_Form_Wizard_Admin {
                                     <a class="fw-element-step"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ) ?></a>
                                     <h4>Drag &amp; Drop an element from below to a section on the right side</h4>
                                     <a class="fw-draggable-block fw-element-radio" data-type="radio"><i class="fa fa-arrows"></i> Radio/Checkbox</a>
-                                    <a class="fw-draggable-block fw-element-select" data-type="select"><i class="fa fa-arrows"></i> Dropdown</a>
+                                    <a class="fw-draggable-block fw-element-select" data-type="select"><i class="fa fa-arrows"></i> Select/Dropdown</a>
                                     <a class="fw-draggable-block fw-element-text" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
                                     <a class="fw-draggable-block fw-element-textarea" data-type="textarea"><i class="fa fa-arrows"></i> Textarea</a>
                                     <a class="fw-draggable-block fw-element-email" data-type="email"><i class="fa fa-arrows"></i> Email</a>
-                                    <a class="fw-draggable-block fw-element-date" data-type="date"><i class="fa fa-arrows"></i> Date picker</a>
+                                    <a class="fw-draggable-block fw-element-date" data-type="date"><i class="fa fa-arrows"></i> Date</a>
                                     <a class="fw-draggable-block fw-element-paragraph" data-type="paragraph"><i class="fa fa-arrows"></i> Paragraph</a>
                                 </div>
                                 <div class="fw-actions">
@@ -217,11 +217,11 @@ class Mondula_Form_Wizard_Admin {
             </div>
             <div id="fw-thickbox-content" style="display:none;">
               <div id="fw-thickbox-radio">Radio/Checkbox</div>
-              <div id="fw-thickbox-select">Dropdown</div>
+              <div id="fw-thickbox-select">Select/Dropdown</div>
               <div id="fw-thickbox-text">Text field</div>
               <div id="fw-thickbox-email">Email</div>
               <div id="fw-thickbox-textarea">Textarea</div>
-              <div id="fw-thickbox-date">Date picker</div>
+              <div id="fw-thickbox-date">Date</div>
               <div id="fw-thickbox-paragraph">Paragraph</div>
             </div>
 
