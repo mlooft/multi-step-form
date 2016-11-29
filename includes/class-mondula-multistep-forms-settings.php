@@ -137,6 +137,20 @@ class Mondula_Form_Wizard_Settings {
             ),
             'fw_settings_styling' => array(
                 array(
+                    'name' => 'progressbar',
+                    'label' => __( 'Hund', $this->_text_domain ),
+                    'desc' => __( 'Katze Maus', $this->_text_domain ),
+                    'type' => 'checkbox',
+                    'default' => 'on'
+                ),
+                array(
+                    'name' => 'boxlayout',
+                    'label' => __( 'Katze Maus', $this->_text_domain ),
+                    'desc' => __( 'Haus', $this->_text_domain ),
+                    'type' => 'checkbox',
+                    'default' => 'on'
+                ),
+                array(
                     'name'    => 'activecolor',
                     'label'   => __( 'Active Step Color', $this->_text_domain ),
                     'desc'    => __( 'Choose a color for the active step', $this->_text_domain ),
@@ -163,20 +177,6 @@ class Mondula_Form_Wizard_Settings {
                     'desc' => __( 'Choose a color for the buttons', $this->_text_domain ),
                     'type' => 'color',
                     'default' => '#c84c09'
-                ),
-                array(
-                    'name' => 'progressbar',
-                    'label' => __( 'Hund', $this->_text_domain ),
-                    'desc' => __( 'Katze Maus', $this->_text_domain ),
-                    'type' => 'checkbox',
-                    'default' => 'on'
-                ),
-                array(
-                    'name' => 'boxlayout',
-                    'label' => __( 'Katze Maus', $this->_text_domain ),
-                    'desc' => __( 'Haus', $this->_text_domain ),
-                    'type' => 'checkbox',
-                    'default' => 'on'
                 )
             ),
             'wedevs_others' => array(
