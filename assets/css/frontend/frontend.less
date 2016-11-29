@@ -102,6 +102,12 @@ ul {
 		margin-bottom: 2px;
 	}
 }
+.fw-paragraph-container {
+    p {
+        font-size: 20px;
+        line-height: 1.4;
+    }
+}
 .fw-block-header {
 	font-size: 1.1em;
 	color: @color_headline-text;
@@ -223,6 +229,10 @@ p.fw-step-summary {
         margin-bottom: 0px;
     }
 }
+.fw-copytext {
+    font-size: 20px;
+    line-height: 1.4;
+}
 /* CUSTOM INPUTS */
 [data-type=fw-radio], [data-type=fw-checkbox] {
 	label:before {
@@ -265,8 +275,8 @@ input.fw-radio {
     content: "\2022";
     color: @color_text;
 	text-align: center;
-    line-height: 22px;
-    font-size:30px;
+    line-height: 24px;
+    font-size:41px;
 	}
 	input[type=radio]:focus + label:before {
 		border-color: @color_border-checked;
@@ -357,6 +367,8 @@ ul.fw-progress-bar {
             width: 50px;
             padding-top:2px;
 			z-index: 1;
+			box-sizing: border-box;
+			font-weight:bold;
 		}
 		&:nth-child(1) {
 			&:before {
@@ -450,7 +462,7 @@ ul.fw-progress-bar {
 /* ---- Step Content ------------------------------------------------------*/
 /* ------------------------------------------------------------------------*/
 .fw-wizard-step-header-container {
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 .fw-wizard-step {
     position:relative;
@@ -478,7 +490,7 @@ ul.fw-progress-bar {
 	height: 0;
 	overflow: hidden;
 	h2 {
-		font-size: 30px;
+		font-size: 40px;
 		font-family: inherit;
 	}
 	p {
@@ -489,7 +501,7 @@ ul.fw-progress-bar {
 }
 h2.fw-step-part-title {
 	float: left;
-	margin:0px 20px 20px 20px !important;
+	margin:0px 20px 40px 20px !important;
 	font-size:20px;
 	font-weight:normal;
 }
@@ -552,6 +564,9 @@ h2.fw-step-part-title {
 }
 [data-type=fw-checkbox].fw-step-block {
     margin-bottom:10px;
+}
+.fw-choice.fw-input-container {
+    margin-bottom:8px;
 }
 /* ------------------------------------------------------------------------*/
 /* ---- Input/Textarea ----------------------------------------------------*/
@@ -854,7 +869,7 @@ h2.fw-step-part-title {
         font-size: 40px;
         margin: 0 0 25px;
     }
-    .fw-text-input{
+    .fw-text-input, .fw-text-input[type="text"] {
         width: 50%;
     }
     .fw-textarea {
@@ -867,9 +882,6 @@ h2.fw-step-part-title {
     }
     h2.fw-step-part-title {
 	    font-size:30px;
-    }
-    .fw-wizard-step-header-container {
-        margin-bottom: 100px;
     }
     .fw-wizard-step-container {
         h3 {
