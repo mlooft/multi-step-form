@@ -141,27 +141,28 @@ class Mondula_Form_Wizard_Settings {
                     'label'   => __( 'Active Step Color', $this->_text_domain ),
                     'desc'    => __( 'Choose a color for the active step', $this->_text_domain ),
                     'type'    => 'color',
-                    'default' => ''
+                    'default' => '#436436'
                 ),
 				array(
                     'name'    => 'donecolor',
                     'label'   => __( 'Visited Step Color', $this->_text_domain ),
                     'desc'    => __( 'Choose a color for the completed steps', $this->_text_domain ),
                     'type'    => 'color',
-                    'default' => ''
+                    'default' => '#d6f599'
                 ),
                 array(
                     'name'    => 'nextcolor',
                     'label'   => __( 'Next Step Color', $this->_text_domain ),
                     'desc'    => __( 'Choose a color for the steps to follow', $this->_text_domain ),
                     'type'    => 'color',
-                    'default' => ''
+                    'default' => '#d2ff28'
                 ),
                 array(
                     'name' => 'buttoncolor',
                     'label' => __( 'Button Color', $this->_text_domain ),
                     'desc' => __( 'Choose a color for the buttons', $this->_text_domain ),
                     'type' => 'color',
+                    'default' => '#c84c09'
                 ),
                 array(
                     'name' => 'progressbar',
