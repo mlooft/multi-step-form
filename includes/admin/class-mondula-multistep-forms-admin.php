@@ -120,7 +120,7 @@ class Mondula_Form_Wizard_Admin {
         $edit_url = esc_url( add_query_arg( array('edit' => '')) );
         ?>
         <div class="wrap">
-            <h2>Wizard <a class="add-new-h2" href="<?php echo $edit_url; ?>">Add New</a></h2>
+            <h2>Wizard <a class="add-new-h2" href="<?php echo $edit_url; ?>">Add new</a></h2>
             <ul class="subsubsub"></ul>
             <form>
 
@@ -155,13 +155,13 @@ class Mondula_Form_Wizard_Admin {
             <!--<button type="button" class="fw-button-save">Save</button>-->
             <h2 class="nav-tab-wrapper">
                 <a class="nav-tab nav-tab-active" id="fw-nav-steps">Steps</a>
-                <a class="nav-tab" id="fw-nav-mail">Mail Settings</a>
+                <a class="nav-tab" id="fw-nav-mail">Mail settings</a>
             </h2>
             <div class="fw-mail-settings-container" style="display:none;">
               <div class="wrap">
                 <table class="form-table">
                     <tr valign="top">
-                    <th scope="row">Send Mails To:</th>
+                    <th scope="row">Send emails To:</th>
                     <td>
                       <input type="text" class="fw-mail-to"/>
                       <p class="description">Email address to which the mails are sent</p>
@@ -196,9 +196,9 @@ class Mondula_Form_Wizard_Admin {
                                     <a class="fw-element-step"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ) ?></a>
                                     <h4>Drag &amp; Drop an element from below to a section on the right side</h4>
                                     <a class="fw-draggable-block fw-element-radio" data-type="radio"><i class="fa fa-arrows"></i> Radio/Checkbox</a>
-                                    <a class="fw-draggable-block fw-element-select" data-type="select"><i class="fa fa-arrows"></i> Select</a>
+                                    <a class="fw-draggable-block fw-element-select" data-type="select"><i class="fa fa-arrows"></i> Select/Dropdown</a>
                                     <a class="fw-draggable-block fw-element-text" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
-                                    <a class="fw-draggable-block fw-element-textarea" data-type="textarea"><i class="fa fa-arrows"></i> Text Area</a>
+                                    <a class="fw-draggable-block fw-element-textarea" data-type="textarea"><i class="fa fa-arrows"></i> Textarea</a>
                                     <a class="fw-draggable-block fw-element-email" data-type="email"><i class="fa fa-arrows"></i> Email</a>
                                     <a class="fw-draggable-block fw-element-date" data-type="date"><i class="fa fa-arrows"></i> Date</a>
                                     <a class="fw-draggable-block fw-element-paragraph" data-type="paragraph"><i class="fa fa-arrows"></i> Paragraph</a>
@@ -217,10 +217,10 @@ class Mondula_Form_Wizard_Admin {
             </div>
             <div id="fw-thickbox-content" style="display:none;">
               <div id="fw-thickbox-radio">Radio/Checkbox</div>
-              <div id="fw-thickbox-select">Select</div>
-              <div id="fw-thickbox-text">Text Field</div>
+              <div id="fw-thickbox-select">Select/Dropdown</div>
+              <div id="fw-thickbox-text">Text field</div>
               <div id="fw-thickbox-email">Email</div>
-              <div id="fw-thickbox-textarea">Text Area</div>
+              <div id="fw-thickbox-textarea">Textarea</div>
               <div id="fw-thickbox-date">Date</div>
               <div id="fw-thickbox-paragraph">Paragraph</div>
             </div>
