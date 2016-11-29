@@ -170,8 +170,14 @@ class Mondula_Form_Wizard_Settings {
                     'desc' => __( 'Katze Maus', $this->_text_domain ),
                     'type' => 'checkbox',
                     'default' => 'on'
+                ),
+                array(
+                    'name' => 'boxlayout',
+                    'label' => __( 'Katze Maus', $this->_text_domain ),
+                    'desc' => __( 'Haus', $this->_text_domain ),
+                    'type' => 'checkbox',
+                    'default' => 'on'
                 )
-
             ),
             'wedevs_others' => array(
                 array(

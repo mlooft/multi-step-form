@@ -44,7 +44,7 @@ class Mondula_Form_Wizard_Wizard_Step {
     public function render( $wizardId, $stepId ) {
         $cnt = count( $this->_parts );
         $width = $this->_get_class( $cnt );
-
+        $boxlayout = ( Mondula_Form_Wizard_Wizard::fw_get_option( 'boxlayout', 'fw_settings_styling', 'on' ) === 'on' ) ? ' fw-default-layout' : '';
         for ($i = 0; $i < $cnt; $i++) {
             $part = $this->_parts[$i];
             if ($i > 0 && $part->same_title($this->_parts[$i - 1])) {
@@ -53,7 +53,7 @@ class Mondula_Form_Wizard_Wizard_Step {
                 $hidden = '';
             }
             ?>
-<div class="fw-step-part <?php echo $width; ?>" data-partId="<?php echo $i ?>">
+<div class="fw-step-part <?php echo $width; echo $boxlayout; ?>" data-partId="<?php echo $i ?>">
     <h2 class="fw-step-part-title <?php echo $hidden; ?>">
             <?php
               $part->render_title();
