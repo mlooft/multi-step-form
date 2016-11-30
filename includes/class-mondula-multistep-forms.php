@@ -144,6 +144,8 @@ class Mondula_Form_Wizard {
 		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'frontend.min.css', array(), $this->_version );
 		wp_enqueue_style( $this->_token . '-frontend' );
 		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+		wp_register_style('jquery-ui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/flick/jquery-ui.css');
+  		wp_enqueue_style( 'jquery-ui' );
 	}
 
 	/**
@@ -155,7 +157,7 @@ class Mondula_Form_Wizard {
 	public function enqueue_scripts () {
 		wp_register_script( $this->_token . '-vendor-frontend', esc_url( $this->assets_url ) . 'vendor-frontend' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
 		wp_enqueue_script( $this->_token . '-vendor-frontend' );
-		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'frontend' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
+		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'frontend' . $this->script_suffix . '.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->_version );
 		wp_enqueue_script( $this->_token . '-frontend' );
 		wp_localize_script( $this->_token . '-frontend', 'ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'nonce' => wp_create_nonce( $this->_token ) ) );
 	}
