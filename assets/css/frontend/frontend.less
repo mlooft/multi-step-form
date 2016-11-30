@@ -19,9 +19,16 @@
 @color_invalid-bg: #fff;
 @color_invalid-text: red;
 
+/* ---- Google Fonts ------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
+
 /* ------------------------------------------------------------------------*/
 /* ---- Progress bar ------------------------------------------------------*/
 /* ------------------------------------------------------------------------*/
+body {
+    font-size: 100%;
+}
 ul {
     padding:0px;
 }
@@ -29,7 +36,7 @@ ul {
     margin: 0px !important;
 }
 .fw-progress-bar-container {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 .fw-block-invalid {
 	input,
@@ -104,12 +111,12 @@ ul {
 }
 .fw-paragraph-container {
     p {
-        font-size: 20px;
-        line-height: 1.4;
+        font-size: 1.4em;
+        line-height: 1.6;
     }
 }
 .fw-block-header {
-	font-size: 1.1em;
+	font-size: 1.2em;
 	color: @color_headline-text;
 }
 .fw-wizard-step {
@@ -196,7 +203,7 @@ p.fw-step-summary-title {
 	color: @color_headline-text;
 }
 p.fw-step-summary {
-	font-size: 1.1em;
+	font-size: 1.2em;
 	margin-bottom: 10px;
 	margin-left: 0;
 }
@@ -230,7 +237,7 @@ p.fw-step-summary {
     }
 }
 .fw-copytext {
-    font-size: 20px;
+    font-size: 1.4em;
     line-height: 1.4;
 }
 /* CUSTOM INPUTS */
@@ -255,7 +262,7 @@ p.fw-step-summary {
 		position: relative;
 		padding-left: 35px;
 		margin-right: 15px;
-		font-size: 1.1em;
+		font-size: 1.2em;
 		line-height: 28px;
 		font-weight: 400;
 	}
@@ -275,8 +282,8 @@ input.fw-radio {
     content: "\2022";
     color: @color_text;
 	text-align: center;
-    line-height: 24px;
-    font-size:41px;
+    line-height: 22px;
+    font-size:30px;
 	}
 	input[type=radio]:focus + label:before {
 		border-color: @color_border-checked;
@@ -343,14 +350,12 @@ div[data-type="fw-radio"][data-required="true"] {
 	min-height: 55px;
 	position: relative;
 	margin: 0px;
-	margin-bottom: 60px;
 }
 ul.fw-progress-bar {
 	li {
 		color: @color_text;
 		display: block;
-		font-size: 16px;
-		font-weight: 600;
+		font-size: 1.6em;
 		padding: 15px 20px 15px 60px;
 		position: relative;
 		margin-bottom:10px;
@@ -359,7 +364,7 @@ ul.fw-progress-bar {
 			color: @color_white;
 			font-size: 40px;
 			left: 0;
-			line-height: 38px;
+			line-height: 44px;
 			position: absolute;
 			text-align: center;
 			top: 4px;
@@ -368,7 +373,8 @@ ul.fw-progress-bar {
             padding-top:2px;
 			z-index: 1;
 			box-sizing: border-box;
-			font-weight:bold;
+			font-weight:700;
+			font-family: 'Open Sans', sans-serif;
 		}
 		&:nth-child(1) {
 			&:before {
@@ -456,13 +462,14 @@ ul.fw-progress-bar {
         content: "\2713" !important;
         font-size:35px;
         padding:3px 4px 0px 0px;
+        line-height: 46px !important;
     }
 }
 /* ------------------------------------------------------------------------*/
 /* ---- Step Content ------------------------------------------------------*/
 /* ------------------------------------------------------------------------*/
 .fw-wizard-step-header-container {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 .fw-wizard-step {
     position:relative;
@@ -490,25 +497,26 @@ ul.fw-progress-bar {
 	height: 0;
 	overflow: hidden;
 	h2 {
-		font-size: 40px;
+		font-size: 2.5em;
 		font-family: inherit;
+		line-height:1.2;
 	}
 	p {
-	    font-size: 14px;
 	    line-height:1.6;
 	    font-family: inherit;
 	}
 }
 h2.fw-step-part-title {
 	float: left;
-	margin:0px 20px 40px 20px !important;
-	font-size:20px;
+	margin:0px 20px 20px 20px !important;
+	font-size: 1.875em;
 	font-weight:normal;
+	line-height:1.2;
 }
 .fw-wizard-step-container {
     h3 {
         font-weight:normal;
-        font-size:16px;
+        font-size: 1.6em;
         margin:10px 0px 10px 0px;
     }
 }
@@ -600,13 +608,13 @@ h2.fw-step-part-title {
     box-sizing: border-box;
     color: @color_fa-icons;
     float: left;
-    font-size: 20px;
-    height: 25px;
+    font-size: 18px;
+    height: 20px;
     left: 35px;
-    margin-top: 8px;
-    padding: 0 12px 0 0;
+    margin-top: 10px;
+    padding: 0 10px 0 0;
     position: absolute;
-    width:35px;
+    width:30px;
 }
 .fa.t-area {
     margin-top: 13px;
@@ -741,8 +749,32 @@ h2.fw-step-part-title {
     margin-top: 30px;
     width: 1100px;
   }
-  span.txt-ellipsis {
+    span.txt-ellipsis {
         width: 150px !important;
+        cursor: help;
+        font-weight: 500;
+    } 
+    span.txt-ellipsis[data-title] {
+        &:hover {
+            &:after {
+                content: attr(data-title);
+                font-size: 14px;
+                font-weight:500;
+                color: #555;
+                letter-spacing:0.02em;
+                position: absolute;
+                left: -20px;
+                top: 80%;
+                z-index: 20;
+                background:white;
+                white-space: nowrap;
+                padding:15px 20px 15px 20px;
+                box-sizing:border-box;
+                -webkit-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.15);
+                -moz-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.15);
+                box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.15);
+            }
+        }
     } 
 }
 
@@ -794,12 +826,12 @@ h2.fw-step-part-title {
             width: 16%;
             &:nth-child(3) {
 			    &:before {
-				    line-height: 48px;
+				    
 			    }
     		}
     		&:nth-child(4) {
 			    &:before {
-				    line-height: 48px;
+				    
 			    }
     		}
         }
@@ -829,7 +861,7 @@ h2.fw-step-part-title {
     }
     ul.fw-progress-bar li.fw-active:last-child:before {
         content: "\f0e0";
-        padding:2px 0px 0px 0px;
+        padding:5px 0px 0px 0px;
         font-size:32px !important;
     }
     ul.fw-progress-bar {
@@ -837,10 +869,10 @@ h2.fw-step-part-title {
 		    padding: 10px 20px 10px 0px;
 		        &:before {
 			        height: 65px;
-                    line-height: 54px;
+                    line-height: 56px;
                     top: -75px;
                     width: 65px;
-                    font-size: 45px;
+                    font-size: 44px;
                     position: absolute;
                     z-index: 1;
                 }
@@ -878,8 +910,9 @@ h2.fw-step-part-title {
         border-left: 55px solid #546e7a;
     }
     .fw-wizard-step-header h2 {
-        font-size: 40px;
+        font-size: 2.5em;
         margin: 0 0 25px;
+        line-height:1.4;
     }
     .fw-text-input, .fw-text-input[type="text"] {
         width: 50%;
@@ -893,7 +926,8 @@ h2.fw-step-part-title {
         width: 50% !important;
     }
     h2.fw-step-part-title {
-	    font-size:30px;
+	    font-size: 1.875em;
+	    margin:0px 20px 40px 20px !important;
     }
     .fw-wizard-step-container {
         h3 {
@@ -910,12 +944,28 @@ h2.fw-step-part-title {
 	    width:60%;
 	    margin-left:-30%;
 	}
-	
+	.fw-wizard-step-header-container {
+        margin-bottom: 70px;
+    }
+    .fw-paragraph-container {
+        p {
+            font-size: 1.4em;
+            line-height: 1.6;
+        }
+    }
+    .fw-radio-row {
+	    input[type=radio]:checked + label:before {
+            line-height: 24px;
+            font-size:41px;
+	    }
+    }
 }
-@media all and (max-width: 480px) {
+@media (max-width: 480px) {
     ul.fw-progress-bar {
 	    li {
-		    padding: 15px 20px 15px 60px !important;
+		    padding: 10px 20px 0px 60px !important;
+            min-height: 50px;
+            font-size: 16px;
 	    }
     }
 }
