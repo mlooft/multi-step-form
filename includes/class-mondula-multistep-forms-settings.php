@@ -2,7 +2,7 @@
 /**
  * WordPress settings API demo class
  *
- * @author Tareq Hasan
+ * @author Alexander Njemz
  */
 class Mondula_Form_Wizard_Settings {
 
