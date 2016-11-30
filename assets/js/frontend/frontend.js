@@ -659,6 +659,8 @@ jQuery( document ).ready( function ( $ ) {
 
         setupSelect2();
 
+        $('.fw-datepicker-here').datepicker();
+
         $('.fw-btn-submit').click(submit);
 
         // TODO: generate function for setting up
