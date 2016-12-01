@@ -331,9 +331,9 @@ div[data-required="true"] {
 			&:after {
 				content: "*";
 				color: @color_user-fail;
-				font-size: 2em;
+				font-size: 1.5em;
 				position:relative;
-				top:5px;
+				top:0px;
 				left:5px;
 			}
 		}
@@ -434,8 +434,6 @@ ul.fw-progress-bar {
 		font-weight: bold;
 		&:before {
 			z-index: 1;
-		}
-		&:after {
 		}
 	}
 	li.fw-visited {
@@ -628,30 +626,6 @@ h2.fw-step-part-title {
     font-weight:700;
 }
 /* ------------------------------------------------------------------------*/
-/* ---- Date Picker -------------------------------------------------------*/
-/* ------------------------------------------------------------------------*/
-.ui-widget-content {
-    background: #f0f0f0;
-}
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-    background: #eee;
-    border: 1px solid #ccc;
-    color: #ff6e50;
-    font-weight: bold;
-}
-.ui-datepicker-today {
-    .ui-state-highlight {
-        background: #fff !important;
-        color: #555 !important;
-    }
-}
-.ui-datepicker-current-day {
-    .ui-state-active {
-        background: #ff6e50 !important;
-        color: #fff !important;
-    }
-}
-/* ------------------------------------------------------------------------*/
 /* ---- Animations --------------------------------------------------------*/
 /* ------------------------------------------------------------------------*/
 
@@ -820,16 +794,6 @@ h2.fw-step-part-title {
             padding: 0;
             text-align: left;
             width: 16%;
-            &:nth-child(3) {
-			    &:before {
-				    
-			    }
-    		}
-    		&:nth-child(4) {
-			    &:before {
-				    
-			    }
-    		}
         }
     }
     ul.fw-progress-bar li.fw-visited {
@@ -927,7 +891,7 @@ h2.fw-step-part-title {
     }
     .fw-wizard-step-container {
         h3 {
-            font-size:18px;
+            font-size: 1.6em;
             margin:10px 0px 20px 0px;
         }
     }
