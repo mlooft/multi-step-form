@@ -138,15 +138,15 @@ class Mondula_Form_Wizard_Settings {
             'fw_settings_styling' => array(
                 array(
                     'name' => 'progressbar',
-                    'label' => __( 'Hund', $this->_text_domain ),
-                    'desc' => __( 'Katze Maus', $this->_text_domain ),
+                    'label' => __( 'Progressbar', $this->_text_domain ),
+                    'desc' => __( 'activate', $this->_text_domain ),
                     'type' => 'checkbox',
                     'default' => 'on'
                 ),
                 array(
                     'name' => 'boxlayout',
-                    'label' => __( 'Katze Maus', $this->_text_domain ),
-                    'desc' => __( 'Haus', $this->_text_domain ),
+                    'label' => __( 'Boxed Layout', $this->_text_domain ),
+                    'desc' => __( 'activate', $this->_text_domain ),
                     'type' => 'checkbox',
                     'default' => 'on'
                 ),
