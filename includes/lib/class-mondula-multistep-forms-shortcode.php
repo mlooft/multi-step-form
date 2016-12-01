@@ -79,7 +79,7 @@ class Mondula_Form_Wizard_Shortcode {
 
         if ( wp_verify_nonce( $nonce, $this->_token) ) {
             if ( ! empty( $data ) ) {
-                $mailformat = Mondula_Form_Wizard_Wizard::fw_get_option('mailformat' ,'fw_settings_basic', 'true');
+                $mailformat = Mondula_Form_Wizard_Wizard::fw_get_option('mailformat' ,'fw_settings_basic', 'html');
                 $content = $wizard->render_mail( $data, $name, $email, $mailformat);
                 $maildata = $wizard->get_maildata();
 
