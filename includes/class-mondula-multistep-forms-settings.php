@@ -85,7 +85,8 @@ class Mondula_Form_Wizard_Settings {
                     'options' => array(
                         'html' => 'HTML',
                         'text'  => 'Plain Text'
-                    )
+                    ),
+                    'default' => 'html'
                 ),
                 array(
                     'name'  => 'showsummary',
