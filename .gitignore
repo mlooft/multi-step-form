@@ -1,4 +1,5 @@
 /node_modules
 /dist
+/pkg
 /bower_components
 .DS_Store
