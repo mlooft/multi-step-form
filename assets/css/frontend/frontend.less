@@ -67,19 +67,19 @@ ul {
 	text-align: center;
 	padding: 15px;
 	z-index: 4;
-	top: 25%;
+    bottom: 150px;
 	width:80%;
 	left: 50%;
 	margin-left:-45%;
-	line-height: 2.5;
+	line-height: 1.5;
 	overflow: hidden;
 	letter-spacing: 0.03em;
 	padding:20px 30px 20px 30px !important;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)" !important;
-    filter: alpha(opacity=90) !important;
-    -moz-opacity: 0.9 !important;
-    -khtml-opacity: 0.9 !important;
-    opacity: 0.9 !important;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)" !important;
+    filter: alpha(opacity=95) !important;
+    -moz-opacity: 0.95 !important;
+    -khtml-opacity: 0.95 !important;
+    opacity: 0.95 !important;
     -webkit-box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.3);
     box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.3);
@@ -626,6 +626,30 @@ h2.fw-step-part-title {
     font-weight:700;
 }
 /* ------------------------------------------------------------------------*/
+/* ---- Date Picker -------------------------------------------------------*/
+/* ------------------------------------------------------------------------*/
+.ui-widget-content {
+    background: #f0f0f0;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: #eee;
+    border: 1px solid #ccc;
+    color: #ff6e50;
+    font-weight: bold;
+}
+.ui-datepicker-today {
+    .ui-state-highlight {
+        background: #fff !important;
+        color: #555 !important;
+    }
+}
+.ui-datepicker-current-day {
+    .ui-state-active {
+        background: #ff6e50 !important;
+        color: #fff !important;
+    }
+}
+/* ------------------------------------------------------------------------*/
 /* ---- Animations --------------------------------------------------------*/
 /* ------------------------------------------------------------------------*/
 
@@ -913,7 +937,7 @@ h2.fw-step-part-title {
 	.fw-alert-user {
 	    width:60%;
 	    margin-left:-30%;
-	    top: 50%;
+	    bottom: 150px;
 	}
 	.fw-wizard-step-header-container {
         margin-bottom: 70px;
@@ -970,5 +994,8 @@ h2.fw-step-part-title {
             min-height: 50px;
             font-size: 16px;
 	    }
+    }
+    .fw-button-previous, .fw-button-next {
+        width:100%;
     }
 }
