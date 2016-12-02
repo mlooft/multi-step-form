@@ -139,15 +139,15 @@ class Mondula_Form_Wizard_Settings {
             'fw_settings_styling' => array(
                 array(
                     'name' => 'progressbar',
-                    'label' => __( 'Progressbar', $this->_text_domain ),
-                    'desc' => __( 'activate', $this->_text_domain ),
+                    'label' => __( 'Progress Bar', $this->_text_domain ),
+                    'desc' => __( 'Show progress bar', $this->_text_domain ),
                     'type' => 'checkbox',
                     'default' => 'on'
                 ),
                 array(
                     'name' => 'boxlayout',
                     'label' => __( 'Boxed Layout', $this->_text_domain ),
-                    'desc' => __( 'activate', $this->_text_domain ),
+                    'desc' => __( 'Boxed frontend styling. Uncheck this for a simpler layout.', $this->_text_domain ),
                     'type' => 'checkbox',
                     'default' => 'on'
                 ),
