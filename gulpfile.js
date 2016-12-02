@@ -190,7 +190,7 @@ gulp.task('copy:zip', ['clean:zip', 'build:production'], function () {
   return gulp.src(
       [
         'dist/*', 
-        'includes/*', 
+        'includes/**',
         'lang/*', 
         'LICENSE', 
         'index.php',
