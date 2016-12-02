@@ -77,7 +77,6 @@
         return radioOptionHtml;
     }
 
-
     function renderRadio(radio) {
         log('radio', radio);
         var i, n, optCount = 0;
