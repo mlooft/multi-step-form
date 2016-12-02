@@ -1,8 +1,8 @@
-# Copyright (C) 2014 Multi-Step Form Builder
-# This file is distributed under the same license as the Multi-Step Form Builder package.
+# Copyright (C) 2014 Multi Step Form
+# This file is distributed under the same license as the Multi Step Form package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Multi-Step Form Builder 1.0\n"
+"Project-Id-Version: Multi Step Form 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/WordPress-Plugin-Template\n"
 "POT-Creation-Date: 2014-04-07 11:28:06+00:00\n"
 "MIME-Version: 1.0\n"
@@ -391,7 +391,7 @@ msgstr ""
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 #. Plugin Name of the plugin/theme
-msgid "Multi-Step Form Builder"
+msgid "Multi Step Form"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

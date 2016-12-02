@@ -28,7 +28,7 @@ class Mondula_Form_Wizard_Settings {
         $this->settings_api->admin_init();
     }
     function admin_menu() {
-        add_options_page( 'Multi-Step Form Builder', 'Multi-Step Form Builder', 'delete_posts', 'mondula_form_wizard_settings', array($this, 'plugin_page') );
+        add_options_page( 'Multi Step Form', 'Multi Step Form', 'delete_posts', 'mondula_form_wizard_settings', array($this, 'plugin_page') );
     }
     function get_settings_sections() {
         $sections = array(
