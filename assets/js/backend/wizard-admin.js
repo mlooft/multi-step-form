@@ -102,9 +102,9 @@
         radioHtml += '<button class="fw-radio-add"><i class="fa fa-plus" aria-hidden="true"></i> Add option</button><br/>';
         radioHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(radio) + '/> Required</label>'
         if (radio.multichoice == "true") {
-          radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice" checked/>Multiple Selection</label>'
+          radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice" checked/>Multiple Selection <i class="fa fa-info-circle" aria-hidden="true" title="Multi-Select uses checkboxes. Single-Select has radio-buttons."></i></label>';
         } else {
-          radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice"/>Multiple Selection</label>'
+          radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice"/>Multiple Selection <i class="fa fa-info-circle" aria-hidden="true" title="Multi-Select uses checkboxes. Single-Select has radio-buttons."></i></label>'
         }
         return radioHtml;
     }
@@ -174,7 +174,7 @@
 
     function renderParagraph(block) {
         var paragraphHtml = '';
-        paragraphHtml += '<label>Text</label>';
+        paragraphHtml += '<label>Text/HTML <i class="fa fa-info-circle" aria-hidden="true" title="Provide a static text block for explanations or additional info. You can use HTML for formatting."></i></label>';
         paragraphHtml += '<textarea class="fw-paragraph-text fw-block-label" placeholder="Paragraph text">' + (block.text ? block.text : '') + '</textarea>';
         return paragraphHtml;
     }
@@ -319,25 +319,26 @@
         // title
         stepHtml += '<div class="input form-field">';
         stepHtml += '<label for="' + titleId + '"><b>' + wizard.i18n.title + '</b>';
-        stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="the step title is displayed below the progress bar"></i></label>';
+        stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="The step title is displayed below the progress bar"></i></label>';
         stepHtml += '<input type="text" class="fw-step-title" value="' + step.title + '"></input>'
         stepHtml += '</div>';
 
         // headline
         stepHtml += '<div class="input form-field">';
-        stepHtml += '<label for="' + headlineId + '"><b>' + wizard.i18n.headline + '</b></label>';
-        stepHtml += '<input type="text" class="fw-step-headline" title="the step headline is displayed above the progress bar" value="' + step.headline + '"></input>'
+        stepHtml += '<label for="' + headlineId + '"><b>' + wizard.i18n.headline + '</b>';
+        stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="The step headline is displayed above the progress bar"></i></label>';
+        stepHtml += '<input type="text" class="fw-step-headline"' + step.headline + '"></input>'
         stepHtml += '</div>';
 
         // copy text
         stepHtml += '<div class="input form-field">';
-        stepHtml += '<label for="' + copyTextId + '"><b>' + wizard.i18n.copyText + '</b></label>';
+        stepHtml += '<label for="' + copyTextId + '"><b>' + wizard.i18n.copyText + '</b>';
+        stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="The step description is displayed below the step headline"></i></label>';
         stepHtml += '<input type="text" class="fw-step-copy_text" value="' + step.copy_text + '"></input>'
         stepHtml += '</div>';
 
         // parts
         stepHtml += '<div class="fw-step-parts">' + renderParts(step.parts) + '</div>';
-
         stepHtml += '</div><div class="fw-clearfix"></div></div>';
         return stepHtml;
     }
@@ -631,6 +632,7 @@
                 warn('sortables update', event, ui);
                 $(ui.item).removeAttr('style');
                 setupDragNDrop();
+                setupTooltips();
             }
         });
 
@@ -660,6 +662,7 @@
                 );
               }
               setupDragNDrop();
+              setupTooltips();
               setupClickHandlers();
           }
         });
@@ -678,6 +681,7 @@
             },
             update: function(event, ui) {
                 setupDragNDrop();
+                setupTooltips();
                 setupClickHandlers();
             }
         })
@@ -705,9 +709,6 @@
      */
     function setupTooltips() {
       $('.fa-info-circle').tooltip();
-      // TODO: aufräumen
-      $('.fw-step-title').tooltip();
-      $('.fw-step-headline').tooltip();
       $('.fw-remove-step').tooltip();
       $('.fw-remove-part').tooltip();
       $('.fw-remove-block').tooltip();
