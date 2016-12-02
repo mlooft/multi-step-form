@@ -124,7 +124,7 @@ gulp.task('clean:production', function () {
 });
 
 gulp.task('css-frontend:production', ['clean:production'], function () {
-  gulp.src(['assets/css/frontend/*.css', 'assets/css/frontend/*.less'])
+  return gulp.src(['assets/css/frontend/*.css', 'assets/css/frontend/*.less'])
     .pipe(less())
     .pipe(concat('frontend.min.css'))
     .pipe(uglifycss({
@@ -135,7 +135,7 @@ gulp.task('css-frontend:production', ['clean:production'], function () {
 });
 
 gulp.task('css-frontend-vendor:production', ['clean:production'], function () {
-  gulp.src(mainBowerFiles('**/*.css'))
+  return gulp.src(mainBowerFiles('**/*.css'))
     .pipe(concat('vendor-frontend.min.css'))
     .pipe(uglifycss({
       "maxLineLen": 80,
@@ -145,7 +145,7 @@ gulp.task('css-frontend-vendor:production', ['clean:production'], function () {
 });
 
 gulp.task('css-backend:production', ['clean:production'], function () {
-  gulp.src(['assets/css/backend/*.css', 'assets/css/backend/*.less'])
+  return gulp.src(['assets/css/backend/*.css', 'assets/css/backend/*.less'])
     .pipe(less())
     .pipe(concat('backend.min.css'))
     .pipe(uglifycss({
@@ -156,21 +156,21 @@ gulp.task('css-backend:production', ['clean:production'], function () {
 });
 
 gulp.task('js-frontend:production', ['clean:production'], function () {
-  gulp.src(['assets/js/frontend/*.js'])
+  return gulp.src(['assets/js/frontend/*.js'])
     .pipe(concat('frontend.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('js-frontend-vendor:production', ['clean:production'], function () {
-  gulp.src(mainBowerFiles('**/*.js'))
+  return gulp.src(mainBowerFiles('**/*.js'))
     .pipe(concat('vendor-frontend.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('js-backend:production', ['clean:production'], function () {
-  gulp.src(['assets/js/backend/*.js'])
+  return gulp.src(['assets/js/backend/*.js'])
     .pipe(concat('backend.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
