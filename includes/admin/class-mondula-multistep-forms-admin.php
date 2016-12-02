@@ -44,7 +44,7 @@ class Mondula_Form_Wizard_Admin {
     }
 
     public function setup_menu () {
-        $all = add_menu_page( 'Multi-Step Form Builder', 'Multi Step Form', 'manage_options', 'mondula-multistep-forms', array( $this, 'menu' ), 'dashicons-feedback', '35' );
+        $all = add_menu_page( 'Multi Step Form', 'Multi Step Form', 'manage_options', 'mondula-multistep-forms', array( $this, 'menu' ), 'dashicons-feedback', '35' );
         $add = add_submenu_page( 'mondula-multistep-forms', 'Mondula List Table', 'Add New', 'manage_options', 'mondula-multistep-forms&edit', array( $this, 'menu' ));
         add_action( 'admin_print_styles-' . $all, array( $this, 'admin_js' ) );
         add_action( 'admin_print_styles-' . $add, array( $this, 'admin_js' ) );
