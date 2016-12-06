@@ -686,9 +686,6 @@ jQuery( document ).ready( function ( $ ) {
           console.log('buttonColor: ' + buttonColor);
           $('head').append('<style>.fw-button-previous, .fw-button-next { background: ' + buttonColor + ' !important; }</style>');
         }
-        $('#mondula-multistep-forms').append('<p>powered by Multi Step Form</p>');
-        $('#mondula-multistep-forms > p').css({ "font-size" : "1em", "margin-top" : "40px", "color": "#9e9e9e" });
-        $('#mondula-multistep-forms > p').show();
         updateSummary($('.fw-wizard'));
 
     }
