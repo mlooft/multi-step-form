@@ -104,7 +104,8 @@ class Mondula_Form_Wizard {
 
                 // Set up service
                 $this->_wizard_service = new Mondula_Form_Wizard_Wizard_Service(
-                    new Mondula_Form_Wizard_Wizard_Repository( 'mondula_form_wizards' )
+                    new Mondula_Form_Wizard_Wizard_Repository( 'mondula_form_wizards' ),
+					$this->_version
                 );
 
 		// Load admin JS & CSS

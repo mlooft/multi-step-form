@@ -95,7 +95,7 @@ class Mondula_Form_Wizard_Wizard_Step {
         );
     }
 
-    public static function from_aa( $aa ) {
+    public static function from_aa( $aa, $current_version, $serialized_version ) {
         // var_dump( $aa );
         $title = isset( $aa['title'] ) ? $aa['title'] : '';
         $headline = isset( $aa['headline'] ) ? $aa['headline'] : '';
@@ -104,7 +104,7 @@ class Mondula_Form_Wizard_Wizard_Step {
 
         if ( isset( $aa['parts'] )  ) {
             foreach ( $aa['parts'] as $part ) {
-                $parts[] = Mondula_Form_Wizard_Wizard_Step_Part::from_aa( $part );
+                $parts[] = Mondula_Form_Wizard_Wizard_Step_Part::from_aa( $part, $current_version, $serialized_version );
             }
         }
 

@@ -345,5 +345,16 @@ class Mondula_Form_Wizard_Wizard {
         );
     }
 
+    public static function from_aa( $aa, $current_version, $serialized_version ) {
+        $wizard = new Mondula_Form_Wizard_Wizard();
+        $wizard->set_maildata( $aa['mail'] );
+        foreach ( $aa['steps'] as $step ) {
+            $wizard->add_step(
+                Mondula_Form_Wizard_Wizard_Step::from_aa( $step, $current_version, $serialized_version )
+            );
+        }
+        return $wizard;
+    }
+
 
 }

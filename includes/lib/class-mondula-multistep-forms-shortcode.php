@@ -34,15 +34,7 @@ class Mondula_Form_Wizard_Shortcode {
     }
 
     public function get_wizard($id) {
-      global $wpdb;
-
-      $table = "{$wpdb->prefix}mondula_form_wizards";
-      // SQL Query for wizard ID
-      $sql = $wpdb->prepare( "SELECT * FROM $table WHERE id = %d", $id );
-      $row = $wpdb->get_row( $sql );
-      // var_dump( $row->wizard );
-      $wizardser = $row->wizard;
-      return unserialize( $wizardser );
+      return $this->_wizard_service->get_by_id( $id );
     }
 
     /**

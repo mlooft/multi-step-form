@@ -62,7 +62,7 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
         );
     }
 
-    public static function from_aa( $aa ) {
+    public static function from_aa( $aa , $current_version, $serialized_version ) {
         $title = isset( $aa['title'] ) ? $aa['title'] : '';
         $blocks = array();
 
@@ -72,31 +72,31 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
                 // var_dump( $block );
                 switch ( $block['type'] ) {
                     case 'radio':
-                        $blocks[] = Mondula_Form_Wizard_Block_Radio::from_aa( $block );
+                        $blocks[] = Mondula_Form_Wizard_Block_Radio::from_aa( $block, $current_version, $serialized_version );
                         break;
                     case 'select':
-                        $blocks[] = Mondula_Form_Wizard_Block_Select::from_aa( $block );
+                        $blocks[] = Mondula_Form_Wizard_Block_Select::from_aa( $block, $current_version, $serialized_version );
                         break;
                     case 'checkbox':
-                        $blocks[] = Mondula_Form_Wizard_Block_Checkbox::from_aa( $block );
+                        $blocks[] = Mondula_Form_Wizard_Block_Checkbox::from_aa( $block, $current_version, $serialized_version );
                         break;
                     case 'text':
-                        $blocks[] = Mondula_Form_Wizard_Block_Text::from_aa( $block );
+                        $blocks[] = Mondula_Form_Wizard_Block_Text::from_aa( $block, $current_version, $serialized_version );
                         break;
                     case 'textarea':
-                        $blocks[] = Mondula_Form_Wizard_Block_Textarea::from_aa( $block );
+                        $blocks[] = Mondula_Form_Wizard_Block_Textarea::from_aa( $block, $current_version, $serialized_version );
                         break;
                     case 'email':
-                        $blocks[] = Mondula_Form_Wizard_Block_Email::from_aa( $block );
+                        $blocks[] = Mondula_Form_Wizard_Block_Email::from_aa( $block, $current_version, $serialized_version );
                         break;
                     case 'date':
-                        $blocks[] = Mondula_Form_Wizard_Block_Date::from_aa( $block );
+                        $blocks[] = Mondula_Form_Wizard_Block_Date::from_aa( $block, $current_version, $serialized_version );
                         break;
                     case 'paragraph':
-                        $blocks[] = Mondula_Form_Wizard_Block_Paragraph::from_aa( $block );
+                        $blocks[] = Mondula_Form_Wizard_Block_Paragraph::from_aa( $block, $current_version, $serialized_version );
                         break;
                     case 'submit':
-                        $blocks[] = Mondula_Form_Wizard_Step_Submit::from_aa( $block );
+                        $blocks[] = Mondula_Form_Wizard_Step_Submit::from_aa( $block, $current_version, $serialized_version );
                         break;
                     default:
                         break;
