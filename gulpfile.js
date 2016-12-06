@@ -12,6 +12,7 @@ var mainBowerFiles = require('main-bower-files');
 var wpPot = require('gulp-wp-pot');
 var sort = require('gulp-sort');
 var zip = require('gulp-zip');
+var stripDebug = require('gulp-strip-debug');
 
 var base = 'assets/js';
 
@@ -158,6 +159,7 @@ gulp.task('css-backend:production', ['clean:production'], function () {
 gulp.task('js-frontend:production', ['clean:production'], function () {
   return gulp.src(['assets/js/frontend/*.js'])
     .pipe(concat('frontend.min.js'))
+    .pipe(stripDebug())
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
@@ -165,6 +167,7 @@ gulp.task('js-frontend:production', ['clean:production'], function () {
 gulp.task('js-frontend-vendor:production', ['clean:production'], function () {
   return gulp.src(mainBowerFiles('**/*.js'))
     .pipe(concat('vendor-frontend.min.js'))
+    .pipe(stripDebug())
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
@@ -172,6 +175,7 @@ gulp.task('js-frontend-vendor:production', ['clean:production'], function () {
 gulp.task('js-backend:production', ['clean:production'], function () {
   return gulp.src(['assets/js/backend/*.js'])
     .pipe(concat('backend.min.js'))
+    .pipe(stripDebug())
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
