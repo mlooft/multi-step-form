@@ -41,7 +41,7 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
         );
     }
 
-    public static function from_aa( $aa ) {
+    public static function from_aa( $aa , $current_version, $serialized_version ) {
         $label = $aa['label'];
         $required = $aa['required'];
         return new Mondula_Form_Wizard_Block_Date( $label, $required );

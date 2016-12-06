@@ -70,7 +70,7 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
         );
     }
 
-    public static function from_aa( $aa ) {
+    public static function from_aa( $aa , $current_version, $serialized_version ) {
         $elements = isset( $aa['elements'] ) ? $aa['elements'] : array();
         $required = $aa['required'];
         $multichoice = $aa['multichoice'];

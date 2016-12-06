@@ -37,7 +37,7 @@ class Mondula_Form_Wizard_Block_Paragraph extends Mondula_Form_Wizard_Block {
         );
     }
 
-    public static function from_aa( $aa ) {
+    public static function from_aa( $aa , $current_version, $serialized_version ) {
         $text = $aa['text'];
         return new Mondula_Form_Wizard_Block_Paragraph( $text );
     }
