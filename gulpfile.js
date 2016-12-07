@@ -199,8 +199,9 @@ gulp.task('copy:zip', ['clean:zip', 'build:production'], function () {
         'LICENSE', 
         'index.php',
         'mondula-form-wizard.php',
-        'readme.md',
         'readme.txt',
+        'screenshot-1.jpg',
+        'screenshot-2.jpg',
         'uninstall.php' 
       ], {base: '.'})
     .pipe(gulp.dest('pkg/multi-step-form'));
