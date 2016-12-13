@@ -13,10 +13,12 @@ Guide your customers with the animated progress bar. Generate dynamic multi step
 Multi Step Form has a drag & drop enabled form builder for quick and intuitive creation of nice-looking multi step forms. Forms can be embedded on any page or post with shortcodes.
 
 ### Demo
-**[SEE LIVE DEMO](http://multi-step-form.mondula.com/ "Multi Step Form | Live Demo")**
+**[See live demo](http://demo.multi-step-form.mondula.com/ "Multi Step Form | Live Demo")**
 
+### Get more information
+**[Link to landing page](http://multi-step-form.mondula.com/ "Multi Step Form")**
 
-**Key features:**
+**KEY FEATURES:**
 
 = ANIMATED PROGRESS BAR =
 Use our customizable & animated progress bar to guide your users through your forms. Change the colors to match your corporate identity (CI).
