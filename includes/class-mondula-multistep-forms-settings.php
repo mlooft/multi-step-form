@@ -147,7 +147,7 @@ class Mondula_Form_Wizard_Settings {
                 array(
                     'name' => 'boxlayout',
                     'label' => __( 'Boxed Layout', $this->_text_domain ),
-                    'desc' => __( 'Boxed frontend styling. Uncheck this for a simpler layout.', $this->_text_domain ),
+                    'desc' => __( 'Boxed frontend styling. Uncheck the checkbox to get a plain layout.', $this->_text_domain ),
                     'type' => 'checkbox',
                     'default' => 'on'
                 ),
@@ -156,28 +156,28 @@ class Mondula_Form_Wizard_Settings {
                     'label'   => __( 'Active Step Color', $this->_text_domain ),
                     'desc'    => __( 'Choose a color for the active step', $this->_text_domain ),
                     'type'    => 'color',
-                    'default' => '#436436'
+                    'default' => '#1d7071'
                 ),
 				array(
                     'name'    => 'donecolor',
                     'label'   => __( 'Visited Step Color', $this->_text_domain ),
                     'desc'    => __( 'Choose a color for the completed steps', $this->_text_domain ),
                     'type'    => 'color',
-                    'default' => '#d6f599'
+                    'default' => '#43a047'
                 ),
                 array(
                     'name'    => 'nextcolor',
                     'label'   => __( 'Next Step Color', $this->_text_domain ),
                     'desc'    => __( 'Choose a color for the steps to follow', $this->_text_domain ),
                     'type'    => 'color',
-                    'default' => '#d2ff28'
+                    'default' => '#aaa'
                 ),
                 array(
                     'name' => 'buttoncolor',
                     'label' => __( 'Button Color', $this->_text_domain ),
                     'desc' => __( 'Choose a color for the buttons', $this->_text_domain ),
                     'type' => 'color',
-                    'default' => '#c84c09'
+                    'default' => '#1d7071'
                 )
             ),
             'wedevs_others' => array(
