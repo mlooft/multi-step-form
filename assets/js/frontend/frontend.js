@@ -532,6 +532,20 @@ jQuery( document ).ready( function ( $ ) {
               }
           }
       );
+      
+      // validate filled email fields
+      $('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-type="fw-email"]').each(
+        function(i, element) {
+          var $element = $(element);
+          if ($element.find('.fw-text-input').val() != "") {
+              valid = validateEmail($element);
+            if(!valid) {
+              stepValid = false;
+            }
+          }
+        }
+      );
+      
       if (!stepValid) {
         // TODO: custom message
         $('.fw-block-invalid').each(function(idx, element) {
