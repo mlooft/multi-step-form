@@ -57,7 +57,7 @@
      */
     function renderRadioHeader(radioHeader) {
         var radioHeaderHtml = '<div class="fw-radio-option-element" data-type="header"><label>Label</label>';
-        radioHeaderHtml += '<input type="text" class="fw-radio-header fw-block-label" value="' + radioHeader + '"></input>'
+        radioHeaderHtml += '<input type="text" class="fw-radio-header fw-block-label" value="' + radioHeader + '"></input>';
         radioHeaderHtml += '</div>';
         return radioHeaderHtml;
     }
@@ -99,11 +99,11 @@
         }
         radioHtml += '</div>';
         radioHtml += '<button class="fw-radio-add"><i class="fa fa-plus" aria-hidden="true"></i> Add option</button><br/>';
-        radioHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(radio) + '/> Required</label>'
+        radioHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(radio) + '/> Required</label>';
         if (radio.multichoice == "true") {
           radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice" checked/>Multiple Selection <i class="fa fa-info-circle" aria-hidden="true" title="Multi-Select uses checkboxes. Single-Select has radio-buttons."></i></label>';
         } else {
-          radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice"/>Multiple Selection <i class="fa fa-info-circle" aria-hidden="true" title="Multi-Select uses checkboxes. Single-Select has radio-buttons."></i></label>'
+          radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice"/>Multiple Selection <i class="fa fa-info-circle" aria-hidden="true" title="Multi-Select uses checkboxes. Single-Select has radio-buttons."></i></label>';
         }
         return radioHtml;
     }
@@ -123,7 +123,7 @@
         }
         selectHtml += '</textarea>';
         selectHtml += '</div>';
-        selectHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(select) + '/> Required</label>'
+        selectHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(select) + '/> Required</label>';
 
         return selectHtml;
     }
@@ -188,7 +188,7 @@
         blockHtml += '</div>';
         // removepart button
         blockHtml += renderBlockAction(block.type);
-        blockHtml += '<div class="fw-block-fields">'
+        blockHtml += '<div class="fw-block-fields">';
         switch (block.type) {
             case 'radio':
                 if (!block.elements) {
@@ -255,22 +255,22 @@
         partHtml += '<div class="fw-section-hndle"><i class="fa fa-arrows"></i></div>';
 
         // title
-        partHtml += '<input type="text" class="fw-part-title" value="' + part.title + '" placeholder="' + wizard.i18n.partTitle + '"></input>'
+        partHtml += '<input type="text" class="fw-part-title" value="' + part.title + '" placeholder="' + wizard.i18n.partTitle + '"></input>';
 
         // removepart button
-        partHtml += '<div class="fw-remove-part" title="remove section">'
-        partHtml += '<i class="fa fa-remove"></i>'
-        partHtml += '</div><div class="inside connectedSortable">'
+        partHtml += '<div class="fw-remove-part" title="remove section">';
+        partHtml += '<i class="fa fa-remove"></i>';
+        partHtml += '</div><div class="inside connectedSortable">';
 
         // blocks
         partHtml += renderBlocks(part.blocks);
 
         // drag&drop or click here to add elements
-        partHtml += '</div><div class="fw-add-element">'
-        partHtml += '<a href="#TB_inline?width=400&height=200&inlineId=fw-thickbox-content" class="thickbox"><i class="fa fa-plus"></i> Add Element</a>'
-        partHtml += '</div>'
+        partHtml += '</div><div class="fw-add-element">';
+        partHtml += '<a href="#TB_inline?width=400&height=200&inlineId=fw-thickbox-content" class="thickbox"><i class="fa fa-plus"></i> Add Element</a>';
+        partHtml += '</div>';
 
-        partHtml += '</div>'
+        partHtml += '</div>';
 
         return partHtml;
     }
@@ -296,16 +296,15 @@
         partsHtml += '<button type="button" class="fw-button-two-columns"><i class="fa fa-align-justify"></i> <i class="fa fa-align-justify"></i></button>';
         partsHtml += '</div>';
         partsHtml += '<div class="fw-parts-container">';
-        var i, n;
         for (i = 0, n = parts.length; i < n; i++) {
             var partClass = getPartClass(i, n);
             partsHtml += renderPart(parts[i], partClass);
         }
         partsHtml += '</div>';
         partsHtml += '<div class="fw-parts-footer">';
-        partsHtml += '<a class="fw-add-part"><i class="fa fa-plus"></i> Add Section</a>'
-        partsHtml += '</div>'
-        partsHtml += '</div>'
+        partsHtml += '<a class="fw-add-part"><i class="fa fa-plus"></i> Add Section</a>';
+        partsHtml += '</div>';
+        partsHtml += '</div>';
         return partsHtml;
     }
 
@@ -319,21 +318,21 @@
         stepHtml += '<div class="input form-field">';
         stepHtml += '<label for="' + titleId + '"><b>' + wizard.i18n.title + '</b>';
         stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="The step title is displayed below the progress bar"></i></label>';
-        stepHtml += '<input type="text" class="fw-step-title" value="' + step.title + '"></input>'
+        stepHtml += '<input type="text" class="fw-step-title" value="' + step.title + '"></input>';
         stepHtml += '</div>';
 
         // headline
         stepHtml += '<div class="input form-field">';
         stepHtml += '<label for="' + headlineId + '"><b>' + wizard.i18n.headline + '</b>';
         stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="The step headline is displayed above the progress bar"></i></label>';
-        stepHtml += '<input type="text" class="fw-step-headline"' + step.headline + '"></input>'
+        stepHtml += '<input type="text" class="fw-step-headline" value="' + step.headline + '"></input>';
         stepHtml += '</div>';
 
         // copy text
         stepHtml += '<div class="input form-field">';
         stepHtml += '<label for="' + copyTextId + '"><b>' + wizard.i18n.copyText + '</b>';
         stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="The step description is displayed below the step headline"></i></label>';
-        stepHtml += '<input type="text" class="fw-step-copy_text" value="' + step.copy_text + '"></input>'
+        stepHtml += '<input type="text" class="fw-step-copy_text" value="' + step.copy_text + '"></input>';
         stepHtml += '</div>';
 
         // parts
@@ -462,25 +461,25 @@
         var type = block['type'] = $block.attr('data-type');
         switch (type) {
             case 'radio':
-                getRadioData($block, block)
+                getRadioData($block, block);
                 break;
             case 'select':
-                getSelectData($block, block)
+                getSelectData($block, block);
                 break;
             case 'checkbox':
-                getCheckboxData($block, block)
+                getCheckboxData($block, block);
                 break;
             case 'text':
-                getTextData($block, block)
+                getTextData($block, block);
                 break;
             case 'email':
-                getEmailData($block, block)
+                getEmailData($block, block);
                 break;
             case 'date':
-                getDateData($block, block)
+                getDateData($block, block);
                 break;
             case 'textarea':
-                getTextareaData($block, block)
+                getTextareaData($block, block);
                 break;
             case 'paragraph':
                 getParagraphData($block, block);
@@ -530,7 +529,7 @@
             alertMessage("WARNING: You need to provide a title for each step", false);
           } else {
             for (var j = 0; j < steps[i].parts.length; j++) {
-              if (steps[i].parts[j].title == ""){
+              if (steps[i].parts[j].title === ""){
                 valid = false;
                 alertMessage("WARNING: You need to provide a title for each section", false);
               }
@@ -542,7 +541,7 @@
 
     function validate(data) {
       var valid = true;
-      if(data.title == "") {
+      if(data.title === "") {
         valid = false;
         alertMessage("WARNING: You need to provide title for the form", false);
       } else {
@@ -569,7 +568,7 @@
               data.wizard.steps.push(getStepData($(element), last));
             }
         );
-        data.wizard.steps.push()
+        data.wizard.steps.push();
 
         if (validate(data)) {
 
@@ -683,7 +682,7 @@
                 setupTooltips();
                 setupClickHandlers();
             }
-        })
+        });
 
         //        make step divs toggleable
         //        console.log(postboxes);
@@ -742,7 +741,7 @@
                 log('updateOptions', elt);
                 $(elt).html('Option ' + (idx + 1));
             }
-        )
+        );
     }
 
 
@@ -793,7 +792,7 @@
         var part = renderPart({
             title: '',
             blocks: []
-        }, 'fw-step-part')
+        }, 'fw-step-part');
         $(target).closest('.fw-step-parts').find('.fw-parts-container').append(part);
         // setup handler for new part
         $('.fw-remove-part').click(function(event) {
@@ -806,7 +805,7 @@
       var $this = $(this);
       var $step = $this.closest('.postbox');
       var r = confirm("Do you really want to delete this step?");
-      if (r == true) {
+      if (r === true) {
         $step.slideUp(700, function() {
             $step.remove();
         });
@@ -821,7 +820,7 @@
     function removePart(evt) {
         var $part = $(evt.target).closest('.fw-step-part');
         var r = confirm("Do you really want to delete this section?");
-        if (r == true) {
+        if (r === true) {
           $part.slideUp(500, function() {
               $part.remove();
           });
@@ -832,7 +831,7 @@
         var $block = $(evt.target).closest('.fw-step-block');
         var label = $block.find('.fw-block-label').val();
         var r = confirm("Do you really want to delete this block?\n\n" + label);
-        if (r == true) {
+        if (r === true) {
           $block.slideUp(300, function() {
               $block.remove();
           });
@@ -944,12 +943,12 @@
       // remove part handler
       $('.fw-remove-part').unbind( "click" ).click(function(event) {
           removePart(event);
-      })
+      });
 
       // remove block handler
       $('.fw-remove-block').unbind( "click" ).click(function(event) {
           removeBlock(event);
-      })
+      });
 
       $('.fw-toggle-block').unbind( "click" ).click(function(event) {
         var $block = $(this).parent().parent();
@@ -1003,7 +1002,7 @@
                         $(elementsContainer).removeClass('fw-sticky');
                     }
                 };
-            }())
+            });
 
             // toggle postboxes
             $container.on('click', '.postbox .handlediv', function() {
@@ -1048,7 +1047,7 @@
               $('.fw-mail-settings-container').hide();
               $(container).show();
               $(elementsContainer).show();
-            })
+            });
 
             // modal
             $('#fw-elements-modal').dialog({
