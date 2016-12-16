@@ -3,7 +3,7 @@ Contributors: mondula2016
 Tags: multi, step, forms, multi-step, feedback, email, contact form, progress bar, form builder, dynamic, ajax
 Requires at least: 3.9
 Tested up to: 4.7
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,9 @@ A. Yes. Go to WordPress "Settings" > "Multi Step Form". Uncheck the "Boxed Layou
 
 == Changelog ==
 
+= 1.0.3 =
+
+* Step title rendering bugfix
 
 = 1.0.2 =
 
