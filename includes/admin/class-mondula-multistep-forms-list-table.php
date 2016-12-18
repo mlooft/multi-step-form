@@ -61,9 +61,12 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
             case 'shortcode':
                 return '[wizard id="' .  $item['id'] .'"]';
             case 'sendto':
-                $wiz = unserialize( $item['wizard'] );
-                $maildata = call_user_func(array($wiz, 'get_maildata'));
-                return $maildata['to'];
+                $wiz = json_decode( $item['json'], true );
+                if ( isset( $wiz['mail']['to'] ) ) {
+                  return $wiz['mail']['to'];
+                } else {
+                  return '';
+                }
             default:
                 return print_r( $item, true );
         }
