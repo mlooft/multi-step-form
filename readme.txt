@@ -3,7 +3,7 @@ Contributors: mondula2016
 Tags: multi, step, forms, multi-step, feedback, email, contact form, progress bar, form builder, dynamic, ajax
 Requires at least: 3.9
 Tested up to: 4.7
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,6 +39,7 @@ The backend's structure is simple. Even less technical users can quickly underst
 *   **Validated email**- The email field uses a included validation script.
 *   **Calendar item**- Styled datepicker included.
 *   **Show summary**- At the end of each form you can display a short summary.
+*   **Multisite compatibility**- The plugin works on WordPress multisite installs.
 
 
 == Installation ==
