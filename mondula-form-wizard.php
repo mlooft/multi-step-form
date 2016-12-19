@@ -53,12 +53,29 @@ require_once( 'includes/lib/class-mondula-multistep-forms-block-submit.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-conditional.php' );
 
 
-function activate_form_wizard() {
+function activate_form_wizard( $network_wide = false ) {
     require_once plugin_dir_path( __FILE__ ) . 'includes/lib/class-mondula-multistep-forms-activator.php';
-    Mondula_Form_Wizard_Activator::activate();
+    Mondula_Form_Wizard_Activator::activate( $network_wide );
 }
 
 register_activation_hook( __FILE__, 'activate_form_wizard' );
+
+function msf_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
+    if ( is_plugin_active_for_network( 'multi-step-form/mondula-form-wizard.php' ) ) {
+        require_once plugin_dir_path( __FILE__ ) . 'includes/lib/class-mondula-multistep-forms-activator.php';
+        Mondula_Form_Wizard_Activator::activate_for_blog( $blog_id );
+    }
+}
+
+add_action( 'wpmu_new_blog', 'msf_new_blog', 10, 6 );
+
+
+function msf_drop_tables( $tables = array(), $blog_id = null ) {
+  require_once plugin_dir_path( __FILE__ ) . 'includes/lib/class-mondula-multistep-forms-activator.php';
+  return Mondula_Form_Wizard_Activator::drop_table( $tables, $blog_id );
+}
+
+add_filter( 'wpmu_drop_tables', 'msf_drop_tables', 10, 2);
 
 /**
  * Returns the main instance of Mondula_Form_Wizard to prevent the need to use globals.
