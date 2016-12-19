@@ -84,7 +84,7 @@ class Mondula_Form_Wizard {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	public function __construct ( $file = '', $version = '1.0.0' ) {
+	public function __construct ( $file = '', $version = '1.0.4' ) {
 		$this->_version = $version;
 		$this->_token = 'mondula_form_wizard';
 
