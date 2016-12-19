@@ -72,6 +72,10 @@ A. Yes. Go to WordPress "Settings" > "Multi Step Form". Uncheck the "Boxed Layou
 
 == Changelog ==
 
+= 1.0.4 =
+
+* Make plugin multisite compatible
+
 = 1.0.3 =
 
 * Step title rendering bugfix
