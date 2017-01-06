@@ -1023,15 +1023,13 @@
 
             // make elements sticky
             $(window).scroll(function() {
-                var offset = $(container).offset().top;
-                return function() {
-                    var scrollTop = $(this).scrollTop();
-                    if (scrollTop > offset) {
-                        $(elementsContainer).addClass('fw-sticky');
-                    } else {
-                        $(elementsContainer).removeClass('fw-sticky');
-                    }
-                };
+                var offset = $('.nav-tab-wrapper').height() + 19;
+                var scrollTop = $(this).scrollTop();
+                if (scrollTop > offset) {
+                    $(elementsContainer).addClass('fw-sticky');
+                } else {
+                    $(elementsContainer).removeClass('fw-sticky');
+                }
             });
 
             // toggle postboxes
