@@ -3,7 +3,7 @@ Contributors: mondula2016
 Tags: multi, step, forms, multi-step, feedback, email, contact form, progress bar, form builder, dynamic, ajax
 Requires at least: 3.9
 Tested up to: 4.7
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,6 +11,9 @@ Guide your customers with the animated progress bar. Generate dynamic multi step
 
 == Description ==
 Multi Step Form has a drag & drop enabled form builder for quick and intuitive creation of nice-looking multi step forms. Forms can be embedded on any page or post with shortcodes.
+
+### Getting started
+**[Read the tutorial](http://mondula.com/en/2017/01/06/multi-step-form-anleitung/ "Multi Step Form | Beginners Tutorial")**
 
 ### Demo
 **[See live demo](http://demo.multi-step-form.mondula.com/ "Multi Step Form | Live Demo")**
@@ -71,6 +74,12 @@ A. Yes. Go to WordPress "Settings" > "Multi Step Form". Uncheck the "Boxed Layou
 2. Use our customizable and animated progress bar to guide your users through your forms. Change the colors to match your CI.
 
 == Changelog ==
+
+= 1.0.5 =
+
+* redirect to a custom URL after submit (optional)
+* search functionality in select boxes (optional)
+* backend side menu is sticky now
 
 = 1.0.4 =
 
