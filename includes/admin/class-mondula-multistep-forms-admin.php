@@ -155,10 +155,21 @@ class Mondula_Form_Wizard_Admin {
             <!--<button type="button" class="fw-button-save">Save</button>-->
             <h2 class="nav-tab-wrapper">
                 <a class="nav-tab nav-tab-active" id="fw-nav-steps">Steps</a>
-                <a class="nav-tab" id="fw-nav-mail">Mail settings</a>
+                <a class="nav-tab" id="fw-nav-settings">Form settings</a>
             </h2>
             <div class="fw-mail-settings-container" style="display:none;">
               <div class="wrap">
+                <h1>General settings</h1>
+                <table class="form-table">
+                    <tr valign="top">
+                    <th scope="row">"Thank you"-page:</th>
+                    <td>
+                      <input type="text" class="fw-settings-thankyou"/>
+                      <p class="description">Users will be rediredted to this URL after form submit</p>
+                    </td>
+                    </tr>
+                </table>
+                <h1>Mail settings</h1>
                 <table class="form-table">
                     <tr valign="top">
                     <th scope="row">Send emails To:</th>

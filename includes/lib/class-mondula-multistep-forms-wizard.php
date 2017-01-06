@@ -7,17 +7,17 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Mondula_Form_Wizard_Wizard {
 
     private $_steps = array();
-    private $_maildata = array();
+    private $_settings = array();
 
     public function __construct() {
     }
 
-    public function get_maildata(){
-      return $this->_maildata;
+    public function get_settings(){
+      return $this->_settings;
     }
 
-    public function set_maildata ( $maildata ) {
-      $this->_maildata = $maildata;
+    public function set_settings ( $settings ) {
+      $this->_settings = $settings;
     }
 
     /**
@@ -161,7 +161,7 @@ class Mondula_Form_Wizard_Wizard {
         ?>
         <div id="mondula-multistep-forms" class="fw-wizard<?php echo ( $progressbar ? '' : ' fw-no-progressbar' ); ?>" data-stepCount="<?php echo count( $this->_steps )?>" data-wizardid="<?php echo $wizardId ?>">
             <div class="fw-wizard-step-header-container">
-                <div class="fw-container">
+                <div class="fw-container" data-redirect="<?php echo $this->_settings['thankyou']?>">
                 <?php
                 $len = count( $this->_steps );
                 for ($i = 0; $i < $len; $i++) {
@@ -239,13 +239,13 @@ class Mondula_Form_Wizard_Wizard {
                                       <td>
                                           <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                               <tbody><tr>
-                                                  <td align="left" style="font-size: 22px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding-copy"><?php echo $this->_maildata['header']?></td>
+                                                  <td align="left" style="font-size: 22px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding-copy"><?php echo $this->_settings['header']?></td>
                                               </tr>
         <?php
     }
 
     private function render_header () {
-        echo $this->_maildata['header'] . PHP_EOL . PHP_EOL;
+        echo $this->_settings['header'] . PHP_EOL . PHP_EOL;
     }
 
     private function render_body_html( $data, $name, $email ){
@@ -313,8 +313,8 @@ class Mondula_Form_Wizard_Wizard {
             </td>
         </tr>
     </tbody></table>
-       </body></html>
-       <?php
+    </body></html>
+    <?php
     }
 
     public function render_mail ( $data, $name, $email, $mailformat ) {
@@ -341,13 +341,13 @@ class Mondula_Form_Wizard_Wizard {
         }
         return array(
             'steps' => $steps_json,
-            'mail' => $this->_maildata
+            'settings' => $this->_settings
         );
     }
 
     public static function from_aa( $aa, $current_version, $serialized_version ) {
         $wizard = new Mondula_Form_Wizard_Wizard();
-        $wizard->set_maildata( $aa['mail'] );
+        $wizard->set_settings( $aa['settings'] );
         foreach ( $aa['steps'] as $step ) {
             $wizard->add_step(
                 Mondula_Form_Wizard_Wizard_Step::from_aa( $step, $current_version, $serialized_version )

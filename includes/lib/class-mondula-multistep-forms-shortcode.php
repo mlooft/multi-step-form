@@ -73,7 +73,7 @@ class Mondula_Form_Wizard_Shortcode {
             if ( ! empty( $data ) ) {
                 $mailformat = Mondula_Form_Wizard_Wizard::fw_get_option('mailformat' ,'fw_settings_basic', 'html');
                 $content = $wizard->render_mail( $data, $name, $email, $mailformat);
-                $maildata = $wizard->get_maildata();
+                $settings = $wizard->get_settings();
 
                 if($mailformat == "html") {
                   add_filter( 'wp_mail_content_type', array( $this , 'set_html_content_type' ) );
@@ -81,7 +81,7 @@ class Mondula_Form_Wizard_Shortcode {
                 } else {
                   $headers = array('Content-Type: text/plain; charset=UTF-8');
                 }
-                $mail = wp_mail( $maildata['to'], $maildata['subject'], $content , $headers);
+                $mail = wp_mail( $settings['to'], $settings['subject'], $content , $headers);
 
                 remove_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
 

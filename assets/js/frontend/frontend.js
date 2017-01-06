@@ -620,9 +620,16 @@ jQuery( document ).ready( function ( $ ) {
                 nonce: ajax.nonce
             },
             function (resp) {
-                // TODO: customizable success message
-                $('.fw-spinner').hide();
-                alertUser("Success! Your data was submitted.", true);
+                var url = $('.fw-container').attr('data-redirect');
+                if (url) {
+                  // redirect to thankyou page
+                  window.location.href = url;
+                } else {
+                  // TODO: customizable success message
+                  alertUser("Success! Your data was submitted.", true);
+                }
+                
+                
             }
         ).fail(function (resp) {
             warn('response', resp);
@@ -633,7 +640,7 @@ jQuery( document ).ready( function ( $ ) {
     function setupSelect2() {
       $('select').each(function(idx, element) {
         console.log($(element).data('search'));
-        if ($(element).data('search') == false) {
+        if (!$(element).data('search')) {
           $(element).select2({
             minimumResultsForSearch: Infinity
           })
