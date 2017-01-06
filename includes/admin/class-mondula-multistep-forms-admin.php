@@ -165,7 +165,7 @@ class Mondula_Form_Wizard_Admin {
                     <th scope="row">"Thank you"-page:</th>
                     <td>
                       <input type="text" class="fw-settings-thankyou"/>
-                      <p class="description">Users will be rediredted to this URL after form submit</p>
+                      <p class="description">Users will be rediredted to this URL after form submit. Leave blank if you don't need one.</p>
                     </td>
                     </tr>
                 </table>

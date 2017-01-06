@@ -544,6 +544,8 @@
         alertMessage("You need to enter a valid email address", false);
       } else if (!settings.subject) {
         valid = false;
+        $('#fw-nav-settings').trigger('click');
+        alertMessage("You need to provide an email subject", false);
       }
       return valid;
     }
