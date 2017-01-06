@@ -123,6 +123,7 @@
         }
         selectHtml += '</textarea>';
         selectHtml += '</div>';
+        selectHtml += '<label><input type="checkbox" class="fw-select-search"'+ (select.search ? 'checked' : '') + '/>Enable search</label>';
         selectHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(select) + '/> Required</label>';
 
         return selectHtml;
@@ -357,16 +358,19 @@
         return stepHtml;
     }
 
-    function renderMailSettings(mailSettings){
-      if(mailSettings) {
-        if(mailSettings.subject) {
-          $('.fw-mail-subject').val(mailSettings.subject);
+    function renderFormSettings(formSettings){
+      if(formSettings) {
+        if (formSettings.thankyou) {
+          $('.fw-settings-thankyou').val(formSettings.thankyou);
         }
-        if(mailSettings.to) {
-          $('.fw-mail-to').val(mailSettings.to);
+        if (formSettings.subject) {
+          $('.fw-mail-subject').val(formSettings.subject);
         }
-        if(mailSettings.header) {
-          $('.fw-mail-header').val(mailSettings.header);
+        if (formSettings.to) {
+          $('.fw-mail-to').val(formSettings.to);
+        }
+        if (formSettings.header) {
+          $('.fw-mail-header').val(formSettings.header);
         }
       }
     }
@@ -414,6 +418,7 @@
       console.log($select.find(".fw-select-options").val());
       var options = $select.find(".fw-select-options").val().split("\n");
       select['required'] = $select.find('.fw-required').prop('checked');
+      select['search'] = $select.find('.fw-select-search').prop('checked');
       select['label'] = $select.find('.fw-block-label').val();
       select['elements'] = options.filter(function(v){return v !== '' && v !== ' '});
     }
@@ -512,12 +517,35 @@
         return step;
     }
 
-    function getMailData() {
-      var mailData = {};
-      mailData.subject = $('.fw-mail-subject').val();
-      mailData.to = $('.fw-mail-to').val();
-      mailData.header = $('.fw-mail-header').val();
-      return mailData;
+    function getSettings() {
+      var settings = {};
+      // General settings
+      settings.thankyou = $('.fw-settings-thankyou').val();
+      // Mail settings
+      settings.to = $('.fw-mail-to').val();
+      settings.subject = $('.fw-mail-subject').val();
+      settings.header = $('.fw-mail-header').val();
+      return settings;
+    }
+    
+    function isEmail(email) {
+      var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      if (!email) {
+        return false;
+      }
+      return regex.test(email);
+    }
+    
+    function validateSettings(settings) {
+      var valid = true;
+      if (!isEmail(settings.to)) {
+        valid = false;
+        $('#fw-nav-settings').trigger('click');
+        alertMessage("You need to enter a valid email address", false);
+      } else if (!settings.subject) {
+        valid = false;
+      }
+      return valid;
     }
 
     function validateSteps(steps) {
@@ -545,7 +573,7 @@
         valid = false;
         alertMessage("WARNING: You need to provide title for the form", false);
       } else {
-        valid = validateSteps(data.wizard.steps);
+        valid = validateSteps(data.wizard.steps) && validateSettings(data.wizard.settings);
       }
       return valid;
     }
@@ -560,7 +588,7 @@
         };
         // data['title']
         data.wizard.steps = [];
-        data.wizard.mail = getMailData();
+        data.wizard.settings = getSettings();
         var $steps = $container.find('.fw-step');
         $steps.each(
             function(idx, element) {
@@ -985,7 +1013,7 @@
             renderSteps(steps);
 
             // get mail settings
-            renderMailSettings(w.wizard.mail);
+            renderFormSettings(w.wizard.settings);
 
             $('.fw-button-save').click(save);
 
@@ -1033,9 +1061,9 @@
             setupClickHandlers();
 
             // tab menu toggle
-            $('#fw-nav-mail').click(function(e) {
+            $('#fw-nav-settings').click(function(e) {
               $('#fw-nav-steps').toggleClass('nav-tab-active');
-              $('#fw-nav-mail').toggleClass('nav-tab-active');
+              $('#fw-nav-settings').toggleClass('nav-tab-active');
               $(container).hide();
               $(elementsContainer).hide();
               $('.fw-mail-settings-container').show();
@@ -1043,7 +1071,7 @@
 
             $('#fw-nav-steps').click(function(e) {
               $('#fw-nav-steps').toggleClass('nav-tab-active');
-              $('#fw-nav-mail').toggleClass('nav-tab-active');
+              $('#fw-nav-settings').toggleClass('nav-tab-active');
               $('.fw-mail-settings-container').hide();
               $(container).show();
               $(elementsContainer).show();
