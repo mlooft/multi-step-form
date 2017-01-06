@@ -99,7 +99,7 @@
         }
         radioHtml += '</div>';
         radioHtml += '<button class="fw-radio-add"><i class="fa fa-plus" aria-hidden="true"></i> Add option</button><br/>';
-        radioHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(radio) + '/> Required</label>';
+        radioHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(radio.required) + '/> Required</label>';
         if (radio.multichoice == "true") {
           radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice" checked/>Multiple Selection <i class="fa fa-info-circle" aria-hidden="true" title="Multi-Select uses checkboxes. Single-Select has radio-buttons."></i></label>';
         } else {
@@ -123,8 +123,8 @@
         }
         selectHtml += '</textarea>';
         selectHtml += '</div>';
-        selectHtml += '<label><input type="checkbox" class="fw-select-search"'+ (select.search ? 'checked' : '') + '/>Enable search</label>';
-        selectHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(select) + '/> Required</label>';
+        selectHtml += '<label><input type="checkbox" class="fw-select-search"'+ isChecked(select.search) + '/>Enable search</label>';
+        selectHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(select.required) + '/> Required</label>';
 
         return selectHtml;
     }
@@ -134,7 +134,7 @@
         var textHtml = '';
         textHtml += '<label>Label</label>';
         textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>';
+        textHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
         return textHtml;
     }
 
@@ -143,7 +143,7 @@
         var textHtml = '';
         textHtml += '<label>Label</label>';
         textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>';
+        textHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
         return textHtml;
     }
 
@@ -151,7 +151,7 @@
       var emailHtml = '';
       emailHtml += '<label>Label</label>';
       emailHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-      emailHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>';
+      emailHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
       return emailHtml;
     }
 
@@ -159,7 +159,7 @@
       var dateHtml = '';
       dateHtml += '<label>Label</label>';
       dateHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-      dateHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>';
+      dateHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
       return dateHtml;
     }
 
@@ -168,7 +168,7 @@
         var textAreaHtml = '';
         textAreaHtml += '<label>Label</label>';
         textAreaHtml += '<input type="text" class="fw-textarea-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textAreaHtml += '<label><input type="checkbox" class="fw-required"'+ checkRequired(block) + '/>Required</label>';
+        textAreaHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
         return textAreaHtml;
     }
 
@@ -800,16 +800,17 @@
     }
 
     /**
-     * checkRequired - description
+     * isChecked - description
      *
      * @param  block the block to check if it's required
      * @return the checked-attribure for html or nothing at all
      */
-    function checkRequired(block) {
-      if (block.required == 'true') {
-        return 'checked';
+    function isChecked(val) {
+      var attr = '';
+      if (val == 'true') {
+        attr = 'checked';
       }
-      return '';
+      return attr;
     }
 
     /**
