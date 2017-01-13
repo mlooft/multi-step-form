@@ -72,6 +72,7 @@ class Mondula_Form_Wizard_Shortcode {
         if ( wp_verify_nonce( $nonce, $this->_token) ) {
             if ( ! empty( $data ) ) {
                 $mailformat = Mondula_Form_Wizard_Wizard::fw_get_option('mailformat' ,'fw_settings_basic', 'html');
+                $cc = Mondula_Form_Wizard_Wizard::fw_get_option('cc' ,'fw_settings_basic', false);
                 $content = $wizard->render_mail( $data, $name, $email, $mailformat);
                 $settings = $wizard->get_settings();
 
@@ -81,8 +82,12 @@ class Mondula_Form_Wizard_Shortcode {
                 } else {
                   $headers = array('Content-Type: text/plain; charset=UTF-8');
                 }
+                // send email to admin
                 $mail = wp_mail( $settings['to'], $settings['subject'], $content , $headers);
-
+                // send copy to user
+                if (isset($email) && $cc == "on") {
+                  $copy = wp_mail( $email, "CC: ".$settings['subject'], $content, $headers);
+                }
                 remove_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
 
                 if ( ! $mail ) {
