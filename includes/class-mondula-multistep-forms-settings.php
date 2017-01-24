@@ -94,6 +94,13 @@ class Mondula_Form_Wizard_Settings {
                     'desc'  => __( 'Display Summary at the end of each form', $this->_text_domain ),
                     'type'  => 'checkbox',
                     'default' => 'on'
+                ),
+                array(
+                    'name'  => 'cc',
+                    'label' => __( 'CC', $this->_text_domain ),
+                    'desc'  => __( 'Send copy of submitted data to user', $this->_text_domain ),
+                    'type'  => 'checkbox',
+                    'default' => 'off'
                 )
                 // array(
                 //     'name'    => 'multicheck',
