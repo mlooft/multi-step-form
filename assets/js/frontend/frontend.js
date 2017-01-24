@@ -601,13 +601,12 @@ jQuery( document ).ready( function ( $ ) {
           summary = getSummary($wizard);
           console.log("Summary");
           console.log(summary);
-          name = $wizard.find('[data-id="name"]').val();
-          email = $wizard.find('[data-id="email"]').val();
-          post(summary, name, email);
+          email = $wizard.find('[data-id="email"]').first().val();
+          post(summary, email);
         }
     }
 
-    function post(summary, name, email) {
+    function post(summary, email) {
         var id = $('#mondula-multistep-forms').attr('data-wizardid');
         $.post(
             ajax.ajaxurl,
@@ -615,7 +614,6 @@ jQuery( document ).ready( function ( $ ) {
                 action: 'fw_send_email',
                 id : id,
                 fw_data : summary,
-                name: name,
                 email: email,
                 nonce: ajax.nonce
             },
