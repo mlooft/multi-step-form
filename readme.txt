@@ -65,9 +65,15 @@ A. Forms are embedded with shortcodes. The shortcodes can be found at the form l
 
 A. Yes. Go to WordPress "Settings" > "Multi Step Form". There u can customize the look and feel of the progress bar. Switch it on or off.
 
-= Q. Can I use a plain, unstyled layout for my forms =
+= Q. Can I use a plain, unstyled layout for my forms? =
 
 A. Yes. Go to WordPress "Settings" > "Multi Step Form". Uncheck the "Boxed Layout" checkbox to get a plain layout.
+
+= Q. What can I do when no e-mail is sent on form submission? =
+
+A. Check that at least one form field is filled out when you submit the form. When the form is empty the plugin doesn't send an e-mail.
+Also, check that you can send mails from your WordPress installation.
+
 
 == Screenshots ==
 1. The backend's structure is simple. Even less technical users can quickly understand the plugin and start creating forms.
