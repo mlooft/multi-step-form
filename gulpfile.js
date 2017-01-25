@@ -50,7 +50,7 @@ gulp.task('js-backend', function() {
 gulp.task('js', ['js-frontend', 'js-frontend-vendor', 'js-backend']);
 
 gulp.task('css-frontend', function () {
-  gulp.src(['assets/css/frontend/*.css', 'assets/css/frontend/*.less'])
+  gulp.src('assets/css/frontend/frontend.less')
     .pipe(less())
     .pipe(concat('frontend.css'))
     .pipe(uglifycss({
@@ -125,7 +125,7 @@ gulp.task('clean:production', function () {
 });
 
 gulp.task('css-frontend:production', ['clean:production'], function () {
-  return gulp.src(['assets/css/frontend/*.css', 'assets/css/frontend/*.less'])
+  return gulp.src('assets/css/frontend/frontend.less')
     .pipe(less())
     .pipe(concat('frontend.min.css'))
     .pipe(uglifycss({
