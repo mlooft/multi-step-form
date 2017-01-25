@@ -1,25 +1,6 @@
 @import "datepicker";
 
-@color_white: #fff;
-@color_grey: #555;
-@color_border: #ddd;
-@color_border-checked: #999;
-@color_fa-icons: #bbb;
-@color_text: #555;
-@color_activecolor: #546e7a;
-@color_donecolor: #4caf50;
-@color_nextcolor: #aaa;
-@color_buttoncolor: #546e7a;
-@color_headline-text: #111;
-@color_5: #333;
-@color_fw-step-part-bg: #e9e9e9;
-@color_toggle-summary-bg: #e9e9e9;
-@color_submit-bg: #aaa;
-@color_user-success: #4caf50;
-@color_user-fail: #F44336;
-@color_invalid-border: red;
-@color_invalid-bg: #fff;
-@color_invalid-text: red;
+@import "variables";
 
 /* ---- Google Fonts ------------------------------------------------------*/
 
@@ -30,15 +11,6 @@
 /* ------------------------------------------------------------------------*/
 body {
     font-size: 100%;
-}
-ul {
-    padding:0px;
-}
-.fw-progress-bar-container ul {
-    margin: 0px !important;
-}
-.fw-progress-bar-container {
-    margin-bottom: 30px;
 }
 .fw-block-invalid {
 	input,
@@ -341,127 +313,7 @@ div[data-required="true"] {
 			}
 		}
 }
-.fw-progress-wrap {
-	color: @color_text;
-	max-width: 1800px;
-	min-height: 55px;
-	position: relative;
-	margin: 0px;
-}
-ul.fw-progress-bar {
-	li {
-		color: @color_text;
-		display: block;
-		font-size: 1.6em;
-		padding: 15px 20px 15px 60px;
-		position: relative;
-		margin-bottom:10px;
-		&:before {
-			border-radius: 50%;
-			color: @color_white;
-			font-size: 40px;
-			left: 0;
-			line-height: 44px;
-			position: absolute;
-			text-align: center;
-			top: 4px;
-			height: 50px;
-            width: 50px;
-            padding-top:2px;
-			z-index: 1;
-			box-sizing: border-box;
-			font-weight:700;
-			font-family: 'Open Sans', sans-serif;
-		}
-        &:not(.fw-visited) {
-    		&:nth-child(1) {
-    			&:before {
-    				content: "1"!important;
-    			}
-    		}
-    		&:nth-child(2) {
-    			&:before {
-    				content: "2"!important;
-    			}
-    		}
-    		&:nth-child(3) {
-    			&:before {
-    				content: "3"!important;
-    			}
-    		}
-    		&:nth-child(4) {
-    			&:before {
-    				content: "4"!important;
-    			}
-    		}
-    		&:nth-child(5) {
-    			&:before {
-    				content: "5"!important;
-    			}
-    		}
-    		&:nth-child(6) {
-    			&:before {
-    				content: "6"!important;
-    			}
-    		}
-    		&:nth-child(7) {
-    			&:before {
-    				content: "7"!important;
-    			}
-    		}
-    		&:nth-child(8) {
-    			&:before {
-    				content: "8"!important;
-    			}
-    		}
-    		&:nth-child(9) {
-    			&:before {
-    				content: "9"!important;
-    			}
-    		}
-    		&:nth-child(10) {
-    			&:before {
-    				content: "10"!important;
-    			}
-    		}
-    		&:last-child {
-    			&:before {
-    			  font-family: FontAwesome!important;
-    				content: "\f024"!important;
-    				font-size: 28px;
-    				padding-top:5px;
-    			}
-    		}
-        }
-	}
-	li.fw-active {
-		color: @color_text;
-		font-weight: bold;
-		&:before {
-			z-index: 1;
-		}
-	}
-	li.fw-visited {
-		z-index: 1;
-		&:before {
-			z-index: 1;
-		}
-	}
-	a {
-		color: @color_text;
-		font-size: 16px;
-		font-weight: 600;
-		text-decoration: none;
-	}
-}
-.fw-progress-step.fw-visited {
-    &:before {
-        content: "\2713" !important;
-        font-size:35px;
-        padding:2px 4px 0px 0px;
-        line-height: 46px !important;
-    }
-}
+
 /* ------------------------------------------------------------------------*/
 /* ---- Step Content ------------------------------------------------------*/
 /* ------------------------------------------------------------------------*/
@@ -630,36 +482,6 @@ h2.fw-step-part-title {
 .fw-button-previous, .fw-button-next {
     font-weight:700;
 }
-/* ------------------------------------------------------------------------*/
-/* ---- Animations --------------------------------------------------------*/
-/* ------------------------------------------------------------------------*/
-
-
-.keyframes(@name; @arguments) {
-	@-moz-keyframes @name { @arguments(); }
-	@-webkit-keyframes @name { @arguments(); }
-	@keyframes @name { @arguments(); }
-	@-o-keyframes @name { @arguments(); }
-}
-
-.animation(@arguments) {
-	-webkit-animation: @arguments;
-	-moz-animation: @arguments;
-	animation: @arguments;
-	-o-animation: @arguments;
-}
-
- .fw-active {
-    .progress {
-        width:45%;
-        .keyframes(progress-bar-animation;{
-		    0%   {width: 0%;}
-            100% {width: 45%;}
-        });
-       .animation(progress-bar-animation 1.2s ease-out)
-    }
-}
-
 
 /*
 @media screen and (min-width:1023px) {
@@ -742,15 +564,10 @@ h2.fw-step-part-title {
   }
 }
 @media all and (min-width: 1023px) {
-  .fw-wizard-buttons, .fw-progress-bar-container {
+  .fw-wizard-buttons {
     margin-top: 30px;
     width: 1100px;
   }
-    span.txt-ellipsis {
-        width: 150px !important;
-        cursor: pointer;
-        font-weight: 500;
-    }
 }
 
 @-webkit-keyframes myanimation {
@@ -763,113 +580,6 @@ h2.fw-step-part-title {
 }
 
 @media all and (min-width: 769px) {
-    .fw-progress-bar li:last-child.fw-active:after {
-        width: 0;
-    }
-    .checkout-wrap {
-        margin: 80px auto;
-    }
-    ul.fw-progress-bar {
-        border-radius: 15px;
-        height: 15px;
-        margin: 0 auto;
-        padding: 0;
-        position: absolute;
-        width: 100%;
-    }
-    li.fw-progress-step::after {
-        content: "";
-        background-size: 35px 35px;
-        margin: 0 auto;
-        padding: 0;
-        height: 17px;
-        width: 100%;
-        left: 4%;
-        position: absolute;
-        top: -52px;
-        z-index: 0;
-    }
-    li.fw-progress-step:last-child::after {
-        width: 0!important;
-    }
-    ul.fw-progress-bar {
-        li {
-            display: inline-block;
-            margin: 50px 0 0;
-            padding: 0;
-            text-align: left;
-            width: 16%;
-        }
-    }
-    ul.fw-progress-bar li.fw-visited {
-        background: none;
-    }
-    ul.fw-progress-bar li.fw-visited:after {
-        background-size: 35px 35px;
-        content: "";
-        height: 15px;
-        position: absolute;
-        top: -50px;
-        width: 100%;
-        z-index: 0;
-    }
-    .fw-progress-bar-container {
-        margin-bottom: 80px;
-        padding:0px;
-    }
-    .fw-progress-step.fw-visited {
-        &:before {
-            content: "\2713" !important;
-            font-size:40px;
-            padding:9px 4px 0px 0px;
-        }
-    }
-    ul.fw-progress-bar li.fw-active:last-child:before {
-        content: "\f0e0";
-        padding:5px 0px 0px 0px;
-        font-size:32px !important;
-    }
-    ul.fw-progress-bar {
-	    li {
-		    padding: 10px 20px 10px 0px;
-		        &:before {
-			        height: 65px;
-                    line-height: 56px;
-                    top: -75px;
-                    width: 65px;
-                    font-size: 44px;
-                    position: absolute;
-                    z-index: 1;
-                }
-                &:last-child {
-			        &:before {
-			            font-size: 35px;
-				        padding-top:5px;
-				        }
-		            }
-            }
-        }
-    span.txt-ellipsis {
-        width: 120px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: inline-block;
-    }
-    .fw-active {
-        .progress {
-            height: 17px;
-            left: 63px;
-            position: absolute;
-            top: -52px;
-            z-index: 1;
-            }
-        }
-    .fw-active:last-child {
-        .progress {
-        display:none;
-        }
-    }
     .fw-step-part {
         padding: 50px 0px 50px 0px;
         border-left: 55px solid #546e7a;
@@ -925,48 +635,11 @@ h2.fw-step-part-title {
             font-size:41px;
 	    }
     }
-    span.txt-ellipsis[data-title] {
-        &:hover {
-            &:after {
-                content: attr(data-title);
-                font-size: 16px;
-                font-weight:500;
-                color: #fff;
-                letter-spacing:0.02em;
-                position: absolute;
-                left: -20px;
-                top: 100%;
-                z-index: 20;
-                background:#aaa;
-                white-space: nowrap;
-                padding:15px 20px 15px 20px;
-                box-sizing:border-box;
-                -webkit-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.15);
-                -moz-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.15);
-                box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.15);
-            }
-            &:before {
-                content: ' ';
-                position: absolute;
-                border: 10px solid #aaa;
-                border-color: transparent;
-                border-bottom-color: #aaa;
-                border-bottom-width: 13px;
-                top: 28px;
-                left: 15px;
-            }
-        }
-    }
 }
 @media (max-width: 480px) {
-    ul.fw-progress-bar {
-	    li {
-		    padding: 10px 20px 0px 60px !important;
-            min-height: 50px;
-            font-size: 16px;
-	    }
-    }
     .fw-button-previous, .fw-button-next {
         width:100%;
     }
 }
+
+@import "progress-bar";
