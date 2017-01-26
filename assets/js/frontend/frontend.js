@@ -658,7 +658,7 @@ jQuery( document ).ready( function ( $ ) {
             showStep($(element), 0);
         });
 
-        if ($wizard.parent().width() > 769) {
+        if ($wizard.parent().outerWidth() > 769) {
           $wizard.addClass('fw-large-container');
         }
 
