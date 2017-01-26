@@ -652,9 +652,15 @@ jQuery( document ).ready( function ( $ ) {
     }
 
     function setup() {
-        $('.fw-wizard').each(function (idx, element) {
+        var $wizard = $('.fw-wizard');
+        
+        $wizard.each(function (idx, element) {
             showStep($(element), 0);
         });
+
+        if ($wizard.parent().width() > 769) {
+          $wizard.addClass('fw-large-container');
+        }
 
         $('.fw-progress-step[data-id="0"]').addClass('fw-active');
         $('.fw-button-previous').hide(); // prop('disabled', true);
