@@ -145,12 +145,12 @@
 
  .fw-active {
     .progress {
-        width:45%;
+        width: calc(~"85% - 63px");
         .keyframes(progress-bar-animation;{
 		    0%   {width: 0%;}
-            100% {width: 45%;}
+            100% {width: calc(~"85% - 63px");}
         });
-       .animation(progress-bar-animation 1.2s ease-out)
+       .animation(progress-bar-animation 1s ease-out)
     }
 }
 
@@ -164,129 +164,131 @@
     }
 }
 
-.fw-large-container {
-    .fw-progress-bar-container {
-        margin-bottom: 80px;
-        width: 125%;
-        padding:0px;
-    }
-    .fw-progress-bar {
-        border-radius: 15px;
-        height: 15px;
-        margin: 0 auto;
-        padding: 0;
-        position: absolute;
-        width: 100%;
-	    .fw-progress-step {
-            display: inline-block;
-            margin: 50px 0 0;
-            padding: 10px 20px 10px 0px;
-            text-align: left;
-            width: 16%;
-            &:before {
-                height: 65px;
-                line-height: 56px;
-                top: -75px;
-                width: 65px;
-                font-size: 44px;
-                position: absolute;
-                z-index: 1;
-            }
-            &:after {
-                content: "";
-                background-size: 35px 35px;
-                margin: 0 auto;
-                padding: 0;
-                height: 17px;
-                width: 100%;
-                left: 4%;
-                position: absolute;
-                top: -52px;
-                z-index: 0;
-            }
-            &:last-child {
+@media all and (min-width: 769px) {
+    .fw-large-container {
+        .fw-progress-bar-container {
+            margin-bottom: 80px;
+            width: 125%;
+            padding:0px;
+        }
+        .fw-progress-bar {
+            border-radius: 15px;
+            height: 15px;
+            margin: 0 auto;
+            padding: 0;
+            position: absolute;
+            width: 100%;
+            .fw-progress-step {
+                display: inline-block;
+                margin: 50px 0 0;
+                padding: 10px 20px 10px 0px;
+                text-align: left;
+                width: 16%;
                 &:before {
-                    font-size: 35px;
-                    padding-top: 5px;
-                }
-                &:after {
-                    width: 0 !important;
-                }
-            }
-            &.fw-active {
-                &:last-child {
-                    &:before {
-                        content: "\f0e0";
-                        padding:5px 0px 0px 0px;
-                        font-size:32px !important;
-                    }
-                    &:after {
-                        width: 0;
-                    }
-                    .progress {
-                        display: none;
-                    }
-                }
-                .progress {
-                    height: 17px;
-                    left: 63px;
+                    height: 65px;
+                    line-height: 56px;
+                    top: -75px;
+                    width: 65px;
+                    font-size: 44px;
                     position: absolute;
-                    top: -52px;
                     z-index: 1;
                 }
-            }
-            &.fw-visited {
-                background: none;
-                &:before {
-                    font-size:40px;
-                    padding:3px 7px 0px 0px;
-                }
                 &:after {
-                    background-size: 35px 35px;
                     content: "";
-                    height: 15px;
-                    position: absolute;
-                    top: -50px;
+                    background-size: 35px 35px;
+                    margin: 0 auto;
+                    padding: 0;
+                    height: 17px;
                     width: 100%;
+                    left: 6%;
+                    position: absolute;
+                    top: -52px;
                     z-index: 0;
                 }
-            }
-            .txt-ellipsis {
-                width: 120px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                display: inline-block;
-            }
-            .txt-ellipsis[data-title] {
-                &:hover {
-                    &:after {
-                        content: attr(data-title);
-                        font-size: 16px;
-                        font-weight:500;
-                        color: #fff;
-                        letter-spacing:0.02em;
-                        position: absolute;
-                        left: -20px;
-                        top: 100%;
-                        z-index: 20;
-                        background:#aaa;
-                        white-space: nowrap;
-                        padding:15px 20px 15px 20px;
-                        box-sizing:border-box;
-                        -webkit-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.15);
-                        -moz-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.15);
-                        box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.15);
-                    }
+                &:last-child {
                     &:before {
-                        content: ' ';
+                        font-size: 35px;
+                        padding-top: 5px;
+                    }
+                    &:after {
+                        width: 0 !important;
+                    }
+                }
+                &.fw-active {
+                    &:last-child {
+                        &:before {
+                            content: "\f0e0";
+                            padding:5px 0px 0px 0px;
+                            font-size:32px !important;
+                        }
+                        &:after {
+                            width: 0;
+                        }
+                        .progress {
+                            display: none;
+                        }
+                    }
+                    .progress {
+                        height: 17px;
+                        left: 63px;
                         position: absolute;
-                        border: 10px solid #aaa;
-                        border-color: transparent;
-                        border-bottom-color: #aaa;
-                        border-bottom-width: 13px;
-                        top: calc(~"100% - 22px");
-                        left: 15px;
+                        top: -52px;
+                        z-index: 1;
+                    }
+                }
+                &.fw-visited {
+                    background: none;
+                    &:before {
+                        font-size:40px;
+                        padding:3px 7px 0px 0px;
+                    }
+                    &:after {
+                        background-size: 35px 35px;
+                        content: "";
+                        height: 15px;
+                        position: absolute;
+                        top: -50px;
+                        width: 100%;
+                        z-index: 0;
+                    }
+                }
+                .txt-ellipsis {
+                    width: 110%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: inline-block;
+                }
+                .txt-ellipsis[data-title] {
+                    &:hover {
+                        &:after {
+                            content: attr(data-title);
+                            font-size: 16px;
+                            font-weight:500;
+                            color: #fff;
+                            letter-spacing:0.02em;
+                            position: absolute;
+                            left: -20px;
+                            top: 100%;
+                            z-index: 20;
+                            background:#aaa;
+                            white-space: nowrap;
+                            padding:15px 20px 15px 20px;
+                            box-sizing:border-box;
+                            -webkit-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.15);
+                            -moz-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.15);
+                            box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.15);
+                        }
+                        &:before {
+                            content: ' ';
+                            position: absolute;
+                            border: 10px solid #aaa;
+                            border-color: transparent;
+                            border-bottom-color: #aaa;
+                            border-bottom-width: 13px;
+                            top: calc(~"100% - 22px");
+                            left: 15px;
+                        }
                     }
                 }
             }
@@ -297,10 +299,5 @@
 @media all and (min-width: 1023px) {
     .fw-progress-bar-container {
         margin-top: 30px;
-    }
-    .txt-ellipsis {
-        width: 150px !important;
-        cursor: pointer;
-        font-weight: 500;
     }
 }
