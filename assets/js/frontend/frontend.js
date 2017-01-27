@@ -658,7 +658,11 @@ jQuery( document ).ready( function ( $ ) {
             showStep($(element), 0);
         });
 
-        if ($wizard.parent().outerWidth() > 769) {
+        var count = getStepCount($wizard);
+        var parentWidth = $wizard.parent().outerWidth();
+
+        if ((count >= 5 && parentWidth >= 769) || 
+            (parentWidth >= 500)) {
           $wizard.addClass('fw-large-container');
         }
 
