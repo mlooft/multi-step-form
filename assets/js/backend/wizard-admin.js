@@ -154,6 +154,14 @@
       emailHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
       return emailHtml;
     }
+    
+    function renderFile(block) {
+      var fileHtml = '';
+      fileHtml += '<label>Label</label>';
+      fileHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
+      fileHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
+      return fileHtml;
+    }
 
     function renderDate(block) {
       var dateHtml = '';
@@ -217,6 +225,9 @@
                 break;
             case 'email':
                 blockHtml += renderEmail(block);
+                break;
+            case 'file':
+                blockHtml += renderFile(block);
                 break;
             case 'date':
                 blockHtml += renderDate(block);
@@ -440,6 +451,11 @@
         text['label'] = $text.find('.fw-text-label').val();
         text['required'] = $text.find('.fw-required').prop('checked');
     }
+    
+    function getFileData($text, text) {
+        text['label'] = $text.find('.fw-text-label').val();
+        text['required'] = $text.find('.fw-required').prop('checked');
+    }
 
     function getDateData($text, text) {
         text['label'] = $text.find('.fw-text-label').val();
@@ -479,6 +495,9 @@
                 break;
             case 'email':
                 getEmailData($block, block);
+                break;
+            case 'file':
+                getFileData($block, block);
                 break;
             case 'date':
                 getDateData($block, block);

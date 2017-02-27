@@ -1,10 +1,10 @@
-jQuery( document ).ready( function ( $ ) {
+jQuery(document).ready(function($) {
     "use strict";
     var data = {};
     var err = [
-      "Please fill all the required fields!",
-      "This field is required",
-      "Some required Fields are empty<br>Please check the highlighted fields."
+        "Please fill all the required fields!",
+        "This field is required",
+        "Some required Fields are empty<br>Please check the highlighted fields."
     ];
 
     function log() {
@@ -89,113 +89,118 @@ jQuery( document ).ready( function ( $ ) {
         var stepInt = parseInt(step, 10);
         var $circle = $wizard.find('.fwp-progress-bar .fwp-circle[data-id="' + step + '"]');
         var $bar = $wizard.find('.fwp-progress-bar .fwp-bar[data-id="' + step + '"]');
-        if(validateStep(step)) {
-          $wizard.find('.fw-progress-step[data-id="' + step + '"]').addClass('fw-visited');
-          $circle.removeClass('fwp-active').addClass('fwp-done');
-          $circle.find('.fwp-label').html('&#10003;');
-          $bar.addClass('fwp-active');
-          if (stepInt >= 1) {
-              $wizard.find('.fwp-progress-bar .fwp-bar[data-id="' + (stepInt - 1) + '"]')
-                  .removeClass('fwp-active').addClass('fwp-done');
-          }
-          hideStep($wizard, step++);
-          showStep($wizard, step);
-          if (step === (getStepCount($wizard) - 1)) {
-            disableNext($wizard);
-          }
-          enablePrevious($wizard);
-          // scroll back to top on next step
-          $('html, body').animate({
-            scrollTop: $("#mondula-multistep-forms").offset().top - 100
-          }, 500);
+        if (validateStep(step)) {
+            $wizard.find('.fw-progress-step[data-id="' + step + '"]').addClass('fw-visited');
+            $circle.removeClass('fwp-active').addClass('fwp-done');
+            $circle.find('.fwp-label').html('&#10003;');
+            $bar.addClass('fwp-active');
+            if (stepInt >= 1) {
+                $wizard.find('.fwp-progress-bar .fwp-bar[data-id="' + (stepInt - 1) + '"]')
+                    .removeClass('fwp-active').addClass('fwp-done');
+            }
+            hideStep($wizard, step++);
+            showStep($wizard, step);
+            if (step === (getStepCount($wizard) - 1)) {
+                disableNext($wizard);
+            }
+            enablePrevious($wizard);
+            // scroll back to top on next step
+            $('html, body').animate({
+                scrollTop: $("#mondula-multistep-forms").offset().top - 100
+            }, 500);
         } else {
-          // TODO alert
-          console.log("STEP INVALID");
+            // TODO alert
+            console.log("STEP INVALID");
         }
     }
 
     function textSummary(summaryObj, $block, title, required) {
-      var header = $block.find('h3').text();
-      var value = $block.find('.fw-text-input').val();
-      pushToSummary(summaryObj, title, header, value, required);
+        var header = $block.find('h3').text();
+        var value = $block.find('.fw-text-input').val();
+        pushToSummary(summaryObj, title, header, value, required);
     }
 
     function textareaSummary(summaryObj, $block, title, required) {
-      var header = $block.find('h3').text();
-      var value = $block.find('.fw-textarea').val();
-      pushToSummary(summaryObj, title, header, value, required);
+        var header = $block.find('h3').text();
+        var value = $block.find('.fw-textarea').val();
+        pushToSummary(summaryObj, title, header, value, required);
     }
 
     function pushToSummary(summaryObj, title, header, value, required) {
-      var s = {};
-      if (value) {
-        s[header] = value;
-        getArray(summaryObj, title).push(s);
-      } else if (required == 'true') {
-        s['<p class="fw-step-summary fw-summary-invalid">' + header] = '</p>';
-        getArray(summaryObj, title).push(s);
-      }
+        var s = {};
+        if (value) {
+            s[header] = value;
+            getArray(summaryObj, title).push(s);
+        } else if (required == 'true') {
+            s['<p class="fw-step-summary fw-summary-invalid">' + header] = '</p>';
+            getArray(summaryObj, title).push(s);
+        }
 
     }
 
-    function radioSummary(summaryObj, $block, title, required){
-      var header = $block.find('h3').text();
-      var value = '';
-      $block.find('.fw-choice').each(function(idx, element) {
-        if($(element).find('input').is(':checked')) {
-          if (value != '') {
-            value += ', ';
-          }
-          value += $(element).find('label').text();
-        }
-      });
-      pushToSummary(summaryObj, title, header, value, required);
+    function radioSummary(summaryObj, $block, title, required) {
+        var header = $block.find('h3').text();
+        var value = '';
+        $block.find('.fw-choice').each(function(idx, element) {
+            if ($(element).find('input').is(':checked')) {
+                if (value != '') {
+                    value += ', ';
+                }
+                value += $(element).find('label').text();
+            }
+        });
+        pushToSummary(summaryObj, title, header, value, required);
     }
 
     function selectSummary(summaryObj, $block, title, required) {
-      var header = $block.find('h3').text();
-      var value = $block.find('select').select2('data')[0].text;
-      pushToSummary(summaryObj, title, header, value, required);
+        var header = $block.find('h3').text();
+        var value = $block.find('select').select2('data')[0].text;
+        pushToSummary(summaryObj, title, header, value, required);
     }
 
     function checkboxSummary(summaryObj, $block, title, required) {
-      var header = $block.find('label').text();
-      var value;
-      if ($block.find('.fw-checkbox').is(':checked')) {
-        value = 'yes';
-      }
-      if($block.hasClass('fw-block-invalid')) {
-        console.log('INVALID' + $block);
-      }
-      pushToSummary(summaryObj, title, header, value, required);
+        var header = $block.find('label').text();
+        var value;
+        if ($block.find('.fw-checkbox').is(':checked')) {
+            value = 'yes';
+        }
+        if ($block.hasClass('fw-block-invalid')) {
+            console.log('INVALID' + $block);
+        }
+        pushToSummary(summaryObj, title, header, value, required);
     }
 
     function stepSummary($wizard, stepNum, summaryObj) {
         var summary = '';
         var $step = $wizard.find('.fw-wizard-step[data-stepId="' + stepNum + '"]');
-        $step.find('.fw-step-part').each(function (idx, element) {
+        $step.find('.fw-step-part').each(function(idx, element) {
             var title = $(element).find('.fw-step-part-title').text().trim();
-            $(element).find('.fw-step-block').each(function (idx, element) {
-              var required = $(element).attr('data-required');
-              switch ($(element).attr('data-type')) {
-                case 'fw-email':
-                case 'fw-date':
-                case 'fw-text': textSummary(summaryObj, $(element), title, required);
-                  break;
-                case 'fw-textarea': textareaSummary(summaryObj, $(element), title, required);
-                  break;
-                case 'fw-radio': radioSummary(summaryObj, $(element), title, required);
-                  break;
-                case 'fw-select': selectSummary(summaryObj, $(element), title, required);
-                  break;
-                case 'fw-checkbox': checkboxSummary(summaryObj, $(element), title, required);
-                  break;
-                default:
-                  break;
-              }
+            $(element).find('.fw-step-block').each(function(idx, element) {
+                var required = $(element).attr('data-required');
+                switch ($(element).attr('data-type')) {
+                    case 'fw-email':
+                    case 'fw-date':
+                    case 'fw-text':
+                        textSummary(summaryObj, $(element), title, required);
+                        break;
+                    case 'fw-textarea':
+                        textareaSummary(summaryObj, $(element), title, required);
+                        break;
+                    case 'fw-radio':
+                        radioSummary(summaryObj, $(element), title, required);
+                        break;
+                    case 'fw-select':
+                        selectSummary(summaryObj, $(element), title, required);
+                        break;
+                    case 'fw-checkbox':
+                        checkboxSummary(summaryObj, $(element), title, required);
+                        break;
+                    default:
+                        break;
+                }
             });
         });
-      return summary;
+        return summary;
     }
 
     function getSummary($wizard) {
@@ -212,10 +217,10 @@ jQuery( document ).ready( function ( $ ) {
         var summaryHtml = '';
         var summaryObj = getSummary($wizard);
         for (var key in summaryObj) {
-                summaryHtml += '<div class="fw-step-summary-part">';
-                summaryHtml += renderStepSummaryTitle(key);
-                summaryHtml += renderStepSummaries(summaryObj[key]);
-                summaryHtml += '</div>';
+            summaryHtml += '<div class="fw-step-summary-part">';
+            summaryHtml += renderStepSummaryTitle(key);
+            summaryHtml += renderStepSummaries(summaryObj[key]);
+            summaryHtml += '</div>';
         }
         return summaryHtml;
     }
@@ -246,19 +251,19 @@ jQuery( document ).ready( function ( $ ) {
         $summary.empty();
         $summary.append(summary);
         $('.fw-toggle-summary').toggle(
-          function(){
-              $('.fw-wizard-summary').slideDown();
-              $('.fw-toggle-summary').text('hide summary');
-          },
-          function(){
-              $('.fw-wizard-summary').slideUp();
-              $('.fw-toggle-summary').text('show summary');
-          }
+            function() {
+                $('.fw-wizard-summary').slideDown();
+                $('.fw-toggle-summary').text('hide summary');
+            },
+            function() {
+                $('.fw-wizard-summary').slideUp();
+                $('.fw-toggle-summary').text('show summary');
+            }
         );
         if ($('.fw-summary-invalid').length) {
-          $summary.prepend('<div class="fw-summary-alert">' + err[2] + '</div>');
+            $summary.prepend('<div class="fw-summary-alert">' + err[2] + '</div>');
         } else {
-          $('.fw-summary-alert').remove();
+            $('.fw-summary-alert').remove();
         }
     }
 
@@ -288,7 +293,8 @@ jQuery( document ).ready( function ( $ ) {
 
     function get(obj) {
         var args = [].slice.call(arguments, 1);
-        var i = 0, n = args.length;
+        var i = 0,
+            n = args.length;
         log('args', args);
         if (args[0] === "0") {
             throw new TypeError();
@@ -344,7 +350,7 @@ jQuery( document ).ready( function ( $ ) {
         var multi = false;
         var stepId, partId, obj;
         log('radios', $radios);
-        $radios.each(function (idx, element) {
+        $radios.each(function(idx, element) {
             if (blockId !== getBlockId($(element))) {
                 multi = true;
             }
@@ -406,165 +412,185 @@ jQuery( document ).ready( function ( $ ) {
     }
 
     function checkInvalidChange(event) {
-      // remove fw-block-invalid when invalid text field is changed
-      console.log($(this).parents('.fw-step-block'));
-      if($block.hasClass('fw-block-invalid')){
-        $block.removeClass('fw-block-invalid');
-      }
+        // remove fw-block-invalid when invalid text field is changed
+        console.log($(this).parents('.fw-step-block'));
+        if ($block.hasClass('fw-block-invalid')) {
+            $block.removeClass('fw-block-invalid');
+        }
     }
 
     function validateRadio($element) {
-      var valid = false;
-      $element.children('.fw-choice').find('input').each(function(i, r) {
-        var $r = $(r);
-        if($r.is(':checked')) {
-          console.log(i);
-          valid = true;
+        var valid = false;
+        $element.children('.fw-choice').find('input').each(function(i, r) {
+            var $r = $(r);
+            if ($r.is(':checked')) {
+                console.log(i);
+                valid = true;
+            }
+        });
+        if (!valid) {
+            $element.addClass('fw-block-invalid');
         }
-      });
-      if (!valid) {
-        $element.addClass('fw-block-invalid');
-      }
-      return valid;
+        return valid;
     }
 
     function validateSelect($element) {
-      var valid = false;
-      var $select = $element.find("select");
-      if($select.select2("data")[0].selected) {
-        valid = true;
-      }
-      return valid;
+        var valid = false;
+        var $select = $element.find("select");
+        if ($select.select2("data")[0].selected) {
+            valid = true;
+        }
+        return valid;
 
     }
 
     function validateEmail($element) {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      var email = $element.find('.fw-text-input').val();
-      if (!email || !re.test(email)) {
-        $element.addClass('fw-block-invalid');
-        return false;
-      } else {
-        return true;
-      }
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var email = $element.find('.fw-text-input').val();
+        if (!email || !re.test(email)) {
+            $element.addClass('fw-block-invalid');
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function validateFile($element) {
+        if (!$element.find('.fw-file').val()) {
+            $element.addClass('fw-block-invalid');
+            return false;
+        } else {
+            return true;
+        }
     }
 
     function validateDate($element) {
-      if (!$element.find('.fw-text-input').val()) {
-        $element.addClass('fw-block-invalid');
-        return false;
-      } else {
-        return true;
-      }
+        if (!$element.find('.fw-text-input').val()) {
+            $element.addClass('fw-block-invalid');
+            return false;
+        } else {
+            return true;
+        }
     }
 
 
     function validateText($element) {
-      if (!$element.find('.fw-text-input').val()) {
-        $element.addClass('fw-block-invalid');
-        return false;
-      }
-      return true;
+        if (!$element.find('.fw-text-input').val()) {
+            $element.addClass('fw-block-invalid');
+            return false;
+        }
+        return true;
     }
 
     function validateTextArea($element) {
-      if (!$element.find('.fw-textarea').val()) {
-        $element.addClass('fw-block-invalid');
-        return false;
-      }
-      return true;
+        if (!$element.find('.fw-textarea').val()) {
+            $element.addClass('fw-block-invalid');
+            return false;
+        }
+        return true;
     }
 
     function validateCheckbox($element) {
-      if (!$element.find('.fw-checkbox').prop('checked')) {
-        $element.addClass('fw-block-invalid');
-        return false;
-      }
-      return true;
+        if (!$element.find('.fw-checkbox').prop('checked')) {
+            $element.addClass('fw-block-invalid');
+            return false;
+        }
+        return true;
     }
 
     function validateSubmit($element) {
-      var name = $element.find('[data-id=name]').val();
-      var email = $element.find('[data-id=email]').val();
-      var valid = true;
-      if (!name || !email) {
-        if ($element.has('input')) {
-          valid = true;
-        } else {
-          $element.addClass('fw-block-invalid');
-          valid = false;
+        var name = $element.find('[data-id=name]').val();
+        var email = $element.find('[data-id=email]').val();
+        var valid = true;
+        if (!name || !email) {
+            if ($element.has('input')) {
+                valid = true;
+            } else {
+                $element.addClass('fw-block-invalid');
+                valid = false;
+            }
         }
-      }
-      return valid;
+        return valid;
     }
 
-    function validateStep(idx){
-      var valid = true;
-      var emailValid = true;
-      var stepValid = true;
-      $('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-required="true"]').each(
-          function (i, element) {
-              var $element = $(element);
-              var type = $element.attr('data-type');
-              switch (type) {
-                case 'fw-radio': valid = validateRadio($element);
-                  break;
-                case 'fw-select': valid = validateSelect($element);
-                  break;
-                case 'fw-textarea': valid = validateTextArea($element);
-                  break;
-                case 'fw-text': valid = validateText($element);
-                  break;
-                case 'fw-email': valid = validateEmail($element);
-                  emailValid = valid;
-                  break;
-                case 'fw-date': valid = validateDate($element);
-                  break;
-                case 'fw-checkbox': valid = validateCheckbox($element);
-                  break;
-                case 'fw-submit': valid = validateSubmit($element);
-                  break;
-                default:
-                  break;
-              }
-              if(!valid){
-                stepValid = false;
-              }
-          }
-      );
-      
-      // validate filled email fields
-      $('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-type="fw-email"]').each(
-        function(i, element) {
-          var $element = $(element);
-          if ($element.find('.fw-text-input').val() != "") {
-              valid = validateEmail($element);
-            if(!valid) {
-              stepValid = false;
+    function validateStep(idx) {
+        var valid = true;
+        var emailValid = true;
+        var stepValid = true;
+        $('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-required="true"]').each(
+            function(i, element) {
+                var $element = $(element);
+                var type = $element.attr('data-type');
+                switch (type) {
+                    case 'fw-radio':
+                        valid = validateRadio($element);
+                        break;
+                    case 'fw-select':
+                        valid = validateSelect($element);
+                        break;
+                    case 'fw-textarea':
+                        valid = validateTextArea($element);
+                        break;
+                    case 'fw-text':
+                        valid = validateText($element);
+                        break;
+                    case 'fw-email':
+                        valid = validateEmail($element);
+                        emailValid = valid;
+                        break;
+                    case 'fw-file':
+                        valid = validateFile($element);
+                        break;
+                    case 'fw-date':
+                        valid = validateDate($element);
+                        break;
+                    case 'fw-checkbox':
+                        valid = validateCheckbox($element);
+                        break;
+                    case 'fw-submit':
+                        valid = validateSubmit($element);
+                        break;
+                    default:
+                        break;
+                }
+                if (!valid) {
+                    stepValid = false;
+                }
             }
-          }
+        );
+
+        // validate filled email fields
+        $('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-type="fw-email"]').each(
+            function(i, element) {
+                var $element = $(element);
+                if ($element.find('.fw-text-input').val() != "") {
+                    valid = validateEmail($element);
+                    if (!valid) {
+                        stepValid = false;
+                    }
+                }
+            }
+        );
+
+        if (!stepValid) {
+            // TODO: custom message
+            $('.fw-block-invalid').each(function(idx, element) {
+                if ($(element).find('.fw-block-invalid-alert').length < 1) {
+                    $(element).append('<div class="fw-block-invalid-alert">' + err[1] + '</div>');
+                }
+            });
+            alertUser(err[0], false);
         }
-      );
-      
-      if (!stepValid) {
-        // TODO: custom message
-        $('.fw-block-invalid').each(function(idx, element) {
-          if ($(element).find('.fw-block-invalid-alert').length < 1) {
-            $(element).append('<div class="fw-block-invalid-alert">' + err[1] + '</div>');
-          }
-        });
-        alertUser(err[0], false);
-      }
-      return stepValid;
+        return stepValid;
     }
 
     function validate($wizard) {
         var formValid = true;
         $('.fw-wizard-step').each(function(idx, element) {
-          var $step = $(element);
-          if(!validateStep(idx)) {
-            formValid = false;
-          }
+            var $step = $(element);
+            if (!validateStep(idx)) {
+                formValid = false;
+            }
         });
         return formValid;
     }
@@ -576,17 +602,16 @@ jQuery( document ).ready( function ( $ ) {
      * @param  {boolean} success successful submit of fail
      */
     function alertUser(message, success) {
-      $('.fw-alert-user').empty().removeClass('fw-alert-user-fail fw-alert-user-success');
-      if (success) {
-        $('.fw-alert-user').addClass('fw-alert-user-success')
-          .append('<i class="fa fa-check-circle" aria-hidden="true"></i>');
-      }
-      else {
-        $('.fw-alert-user').addClass('fw-alert-user-fail')
-          .append('<i class="fa fa-times-circle" aria-hidden="true"></i>');
-      }
-      $('.fw-alert-user').append(message)
-        .fadeIn().delay(2000).fadeOut();
+        $('.fw-alert-user').empty().removeClass('fw-alert-user-fail fw-alert-user-success');
+        if (success) {
+            $('.fw-alert-user').addClass('fw-alert-user-success')
+                .append('<i class="fa fa-check-circle" aria-hidden="true"></i>');
+        } else {
+            $('.fw-alert-user').addClass('fw-alert-user-fail')
+                .append('<i class="fa fa-times-circle" aria-hidden="true"></i>');
+        }
+        $('.fw-alert-user').append(message)
+            .fadeIn().delay(2000).fadeOut();
     }
 
     function submit(evt) {
@@ -594,64 +619,92 @@ jQuery( document ).ready( function ( $ ) {
         var $wizard = $(this).closest('.fw-wizard');
         // reset fw-block-invalid flags
         $('.fw-block-invalid').each(function(i, element) {
-          $(element).removeClass('fw-block-invalid');
+            $(element).removeClass('fw-block-invalid');
         })
         if (validate($wizard)) {
-          $('.fw-spinner').show();
-          summary = getSummary($wizard);
-          console.log("Summary");
-          console.log(summary);
-          email = $wizard.find('[data-id="email"]').first().val();
-          post(summary, email);
+            $('.fw-spinner').show();
+            summary = getSummary($wizard);
+            console.log("Summary");
+            console.log(summary);
+            email = $wizard.find('[data-id="email"]').first().val();
+            sendEmail(summary, email);
         }
     }
 
-    function post(summary, email) {
+    function sendEmail(summary, email) {
         var id = $('#mondula-multistep-forms').attr('data-wizardid');
         $.post(
-            ajax.ajaxurl,
-            {
+            ajax.ajaxurl, {
                 action: 'fw_send_email',
-                id : id,
-                fw_data : summary,
+                id: id,
+                fw_data: summary,
                 email: email,
                 nonce: ajax.nonce
             },
-            function (resp) {
+            function(resp) {
                 var url = $('.fw-container').attr('data-redirect');
                 if (url) {
-                  // redirect to thankyou page
-                  window.location.href = url;
+                    // redirect to thankyou page
+                    window.location.href = url;
                 } else {
-                  // TODO: customizable success message
-                  alertUser("Success! Your data was submitted.", true);
+                    // TODO: customizable success message
+                    alertUser("Success! Your data was submitted.", true);
                 }
-                
-                
+
+
             }
-        ).fail(function (resp) {
+        ).fail(function(resp) {
             warn('response', resp);
             warn('responseText', resp.responseText);
         });
     }
 
+    function uploadFile(e) {
+        var id = $('#mondula-multistep-forms').attr('data-wizardid');
+        var file = $(e.target).prop('files')[0];
+        console.log(file);
+        var formData = new FormData();
+        
+        formData.append('action', 'fw_upload_file');
+        formData.append('file', file);
+        formData.append('id', id);
+        formData.append('nonce', ajax.nonce);
+        
+        $.ajax({
+            type: 'POST',
+            url: ajax.ajaxurl,
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function(response) {
+              // TODO: upload successful notice
+              console.dir(response);
+            },
+            fail: function(res) {
+              console.warn(res);
+            }
+        });
+    }
+
     function setupSelect2() {
-      $('select').each(function(idx, element) {
-        console.log($(element).data('search'));
-        if (!$(element).data('search')) {
-          $(element).select2({
-            minimumResultsForSearch: Infinity
-          })
-        } else {
-          $('select').select2({
-            // TODO: placeholder not working
-            placeholder: "Select a state"
-          });
-        }
-      });
+        $('select').each(function(idx, element) {
+            console.log($(element).data('search'));
+            if (!$(element).data('search')) {
+                $(element).select2({
+                    minimumResultsForSearch: Infinity
+                })
+            } else {
+                $('select').select2({
+                    // TODO: placeholder not working
+                    placeholder: "Select a state"
+                });
+            }
+        });
     }
 
     function setup() {
+
         var $wizard = $('.fw-wizard');
         
         $wizard.each(function (idx, element) {
@@ -673,7 +726,7 @@ jQuery( document ).ready( function ( $ ) {
 
         var showSummary = $('.fw-wizard-summary').attr('data-showsummary');
         if (showSummary == 'off') {
-          $('.fw-toggle-summary').remove();
+            $('.fw-toggle-summary').remove();
         }
 
         $('.fw-checkbox').change(check);
@@ -682,11 +735,15 @@ jQuery( document ).ready( function ( $ ) {
         $('.fw-text-input').on('change input', textOnChange);
         $('.fw-textarea').on('change input', textOnChange);
         $('.fw-checkbox, .fw-radio').on('change', function() {
-          $(this).parents('.fw-step-block').removeClass('fw-block-invalid');
-          $(this).parents('.fw-step-block').find('.fw-block-invalid-alert').remove();
+            $(this).parents('.fw-step-block').removeClass('fw-block-invalid');
+            $(this).parents('.fw-step-block').find('.fw-block-invalid-alert').remove();
         });
 
         setupSelect2();
+
+        $('.fw-file').change(function(e) {
+            uploadFile(e);
+        });
 
         $('.fw-datepicker-here').datepicker();
 
@@ -700,28 +757,28 @@ jQuery( document ).ready( function ( $ ) {
         var buttonColor = $('.fw-progress-bar').attr('data-buttoncolor');
         $('head').append('<style id="fw-colors"></style>')
         if (activeColor) {
-          console.log('activeColor: ' + activeColor);
-          $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} [data-type=fw-checkbox] input[type=checkbox]:checked+label:before, ul.fw-progress-bar li.fw-active .txt-ellipsis { color: ' + activeColor +' !important; } .fw-step-part { border-color: ' + activeColor +' !important; }</style>');
+            console.log('activeColor: ' + activeColor);
+            $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} [data-type=fw-checkbox] input[type=checkbox]:checked+label:before, ul.fw-progress-bar li.fw-active .txt-ellipsis { color: ' + activeColor + ' !important; } .fw-step-part { border-color: ' + activeColor + ' !important; }</style>');
         }
         if (doneColor) {
-          console.log('doneColor: ' + doneColor);
-          $('head').append('<style>ul.fw-progress-bar .fw-active:last-child:before, .fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited, ul.fw-progress-bar .fw-active:last-child .txt-ellipsis, .fw-progress-step.fw-visited .txt-ellipsis { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after{ background-color:'+ doneColor +' !important;}</style>');
+            console.log('doneColor: ' + doneColor);
+            $('head').append('<style>ul.fw-progress-bar .fw-active:last-child:before, .fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited, ul.fw-progress-bar .fw-active:last-child .txt-ellipsis, .fw-progress-step.fw-visited .txt-ellipsis { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after{ background-color:' + doneColor + ' !important;}</style>');
         }
         if (nextColor) {
-          console.log('nextColor: ' + nextColor);
-          $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ' !important;} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:'+ nextColor +' !important;} .txt-ellipsis { color: ' + nextColor +' !important; } </style>');
+            console.log('nextColor: ' + nextColor);
+            $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ' !important;} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:' + nextColor + ' !important;} .txt-ellipsis { color: ' + nextColor + ' !important; } </style>');
         }
         if (buttonColor) {
-          console.log('buttonColor: ' + buttonColor);
-          $('head').append('<style>.fw-button-previous, .fw-button-next { background: ' + buttonColor + ' !important; }</style>');
+            console.log('buttonColor: ' + buttonColor);
+            $('head').append('<style>.fw-button-previous, .fw-button-next { background: ' + buttonColor + ' !important; }</style>');
         }
         updateSummary($('.fw-wizard'));
 
     }
 
-    function init () {
+    function init() {
         // setInterval(poll, 50);
-        $(document).ready(function (evt) {
+        $(document).ready(function(evt) {
             setup();
         });
 
@@ -730,6 +787,6 @@ jQuery( document ).ready( function ( $ ) {
     init();
 });
 
-(function () {
+(function() {
     "use strict";
 })();
