@@ -27,10 +27,11 @@ class Mondula_Form_Wizard_Shortcode {
 
         add_shortcode( self::CODE, array( $this, 'handler' ) );
 
-        add_action( 'wp_ajax_fw_send_email', array( $this, 'send_email' ) );
-        add_action( 'wp_ajax_nopriv_fw_send_email', array( $this, 'send_email' ) );
+        add_action( 'wp_ajax_fw_send_email', array( $this, 'fw_send_email' ) );
+        add_action( 'wp_ajax_nopriv_fw_send_email', array( $this, 'fw_send_email' ) );
 
-
+        add_action( 'wp_ajax_fw_upload_file', array( $this, 'fw_upload_file' ));
+        add_action( 'wp_ajax_nopriv_fw_upload_file', array( $this, 'fw_upload_file' ));
     }
 
     public function get_wizard($id) {
@@ -57,8 +58,54 @@ class Mondula_Form_Wizard_Shortcode {
 
         $wizard->render( $id );
     }
+    
+    function wpse_141088_upload_dir( $dir ) {
+        return array(
+            'path'   => $dir['basedir'] . '/temp',
+            'url'    => $dir['baseurl'] . '/temp',
+            'subdir' => '/temp',
+        ) + $dir;
+    }
+    
+    public function fw_upload_file() {
+      $nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';
+      $tempdir = wp_upload_dir();
+      $file_to_upload = $_FILES['file'];
+      $upload_overrides = array( 'test_form' => false );
+      if ( wp_verify_nonce( $nonce, $this->_token) ) {
+        add_filter( 'upload_dir', 'wpse_change_upload_dir_temporarily' );
+        
+        /**
+         * Temporarily change the WP upload directory to wp-content/uploads/temp
+         * */
+        function wpse_change_upload_dir_temporarily( $dirs ) {
+           $dirs['subdir'] = '/temp';
+           $dirs['path'] = $dirs['basedir'] . '/temp';
+           $dirs['url'] = $dirs['baseurl'] . '/temp';
+           return $dirs;
+        }
+        
+        $uploaded_file = wp_handle_upload( $file_to_upload, $upload_overrides);
+        
+        $response = array();
+        
+        if ( $uploaded_file && ! isset( $uploaded_file['error'] ) ) {
+          $response['success'] = true;
+          $response['filename'] = basename( $uploaded_file['url'] );
+          $response['url'] = $uploaded_file['url'];
+          $response['type'] = $uploaded_file['type'];
+          
+        } else {
+          $response['success'] = false;
+          $response['error'] = $uploaded_file['error'];
+        }
+        echo json_encode( $response );
+        remove_filter( 'upload_dir', 'wpse_change_upload_dir_temporarily' );
+        wp_die();
+      }
+    }
 
-    public function send_email () {
+    public function fw_send_email () {
         global $phpmailer;
 
         $nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';

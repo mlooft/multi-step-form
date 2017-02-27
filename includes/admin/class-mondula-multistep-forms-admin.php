@@ -211,6 +211,7 @@ class Mondula_Form_Wizard_Admin {
                                     <a class="fw-draggable-block fw-element-text" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
                                     <a class="fw-draggable-block fw-element-textarea" data-type="textarea"><i class="fa fa-arrows"></i> Textarea</a>
                                     <a class="fw-draggable-block fw-element-email" data-type="email"><i class="fa fa-arrows"></i> Email</a>
+                                    <a class="fw-draggable-block fw-element-file" data-type="file"><i class="fa fa-arrows"></i> File Upload</a>
                                     <a class="fw-draggable-block fw-element-date" data-type="date"><i class="fa fa-arrows"></i> Date</a>
                                     <a class="fw-draggable-block fw-element-paragraph" data-type="paragraph"><i class="fa fa-arrows"></i> Paragraph</a>
                                 </div>
