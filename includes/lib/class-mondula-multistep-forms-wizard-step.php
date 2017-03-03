@@ -44,7 +44,7 @@ class Mondula_Form_Wizard_Wizard_Step {
     public function render( $wizardId, $stepId ) {
         $cnt = count( $this->_parts );
         $width = $this->_get_class( $cnt );
-        $boxlayout = ( Mondula_Form_Wizard_Wizard::fw_get_option( 'boxlayout', 'fw_settings_styling', 'on' ) === 'on' ) ? '' : ' fw-default-layout';
+        $boxlayout = ( Mondula_Form_Wizard_Wizard::fw_get_option( 'boxlayout', 'fw_settings_styling', 'on' ) === 'on' ) ? '' : ' fw-plain-layout';
         for ($i = 0; $i < $cnt; $i++) {
             $part = $this->_parts[$i];
             if ($i > 0 && $part->same_title($this->_parts[$i - 1])) {

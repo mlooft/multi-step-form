@@ -50,7 +50,6 @@ require_once( 'includes/lib/class-mondula-multistep-forms-block-paragraph.php' )
 require_once( 'includes/lib/class-mondula-multistep-forms-block-select.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-text.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-textarea.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-block-submit.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-conditional.php' );
 
 

@@ -108,10 +108,7 @@ jQuery(document).ready(function($) {
             $('html, body').animate({
                 scrollTop: $("#mondula-multistep-forms").offset().top - 100
             }, 500);
-        } else {
-            // TODO alert
-            console.log("STEP INVALID");
-        }
+        } 
     }
 
     function textSummary(summaryObj, $block, title, required) {
@@ -621,7 +618,7 @@ jQuery(document).ready(function($) {
         $('.fw-alert-user').append(message)
             .fadeIn().delay(2000).fadeOut();
     }
-
+    
     function submit(evt) {
         var summary, name, email;
         var files = [];
@@ -748,6 +745,30 @@ jQuery(document).ready(function($) {
             }
         });
     }
+    
+    function setupColors(){
+      var activeColor = $('.fw-progress-bar').attr('data-activecolor');
+      var doneColor = $('.fw-progress-bar').attr('data-donecolor');
+      var nextColor = $('.fw-progress-bar').attr('data-nextcolor');
+      var buttonColor = $('.fw-progress-bar').attr('data-buttoncolor');
+      $('head').append('<style id="fw-colors"></style>')
+      if (activeColor) {
+          console.log('activeColor: ' + activeColor);
+          $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} [data-type=fw-checkbox] input[type=checkbox]:checked+label:before, ul.fw-progress-bar li.fw-active .txt-ellipsis { color: ' + activeColor + ' !important; } .fw-step-part { border-color: ' + activeColor + ' !important; }</style>');
+      }
+      if (doneColor) {
+          console.log('doneColor: ' + doneColor);
+          $('head').append('<style>ul.fw-progress-bar .fw-active:last-child:before, .fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited, ul.fw-progress-bar .fw-active:last-child .txt-ellipsis, .fw-progress-step.fw-visited .txt-ellipsis { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after{ background-color:' + doneColor + ' !important;}</style>');
+      }
+      if (nextColor) {
+          console.log('nextColor: ' + nextColor);
+          $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ' !important;} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:' + nextColor + ' !important;} .txt-ellipsis { color: ' + nextColor + ' !important; } </style>');
+      }
+      if (buttonColor) {
+          console.log('buttonColor: ' + buttonColor);
+          $('head').append('<style>.fw-button-previous, .fw-button-next { background: ' + buttonColor + ' !important; }</style>');
+      }
+    }
 
     function setup() {
 
@@ -801,29 +822,8 @@ jQuery(document).ready(function($) {
 
         $('.fw-btn-submit').click(submit);
 
-        // TODO: generate function for setting up
-        //  colors
-        var activeColor = $('.fw-progress-bar').attr('data-activecolor');
-        var doneColor = $('.fw-progress-bar').attr('data-donecolor');
-        var nextColor = $('.fw-progress-bar').attr('data-nextcolor');
-        var buttonColor = $('.fw-progress-bar').attr('data-buttoncolor');
-        $('head').append('<style id="fw-colors"></style>')
-        if (activeColor) {
-            console.log('activeColor: ' + activeColor);
-            $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} [data-type=fw-checkbox] input[type=checkbox]:checked+label:before, ul.fw-progress-bar li.fw-active .txt-ellipsis { color: ' + activeColor + ' !important; } .fw-step-part { border-color: ' + activeColor + ' !important; }</style>');
-        }
-        if (doneColor) {
-            console.log('doneColor: ' + doneColor);
-            $('head').append('<style>ul.fw-progress-bar .fw-active:last-child:before, .fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited, ul.fw-progress-bar .fw-active:last-child .txt-ellipsis, .fw-progress-step.fw-visited .txt-ellipsis { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after{ background-color:' + doneColor + ' !important;}</style>');
-        }
-        if (nextColor) {
-            console.log('nextColor: ' + nextColor);
-            $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ' !important;} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:' + nextColor + ' !important;} .txt-ellipsis { color: ' + nextColor + ' !important; } </style>');
-        }
-        if (buttonColor) {
-            console.log('buttonColor: ' + buttonColor);
-            $('head').append('<style>.fw-button-previous, .fw-button-next { background: ' + buttonColor + ' !important; }</style>');
-        }
+        setupColors();
+        
         updateSummary($('.fw-wizard'));
         
         

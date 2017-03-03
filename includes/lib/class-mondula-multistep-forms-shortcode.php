@@ -62,11 +62,18 @@ class Mondula_Form_Wizard_Shortcode {
         $wizard->render( $id );
     }
     
+    /**
+     * AJAX action called by wp_ajax_fw_delete_files. The files in $filenames
+     * are deleted from the msf-temp directory. This function is called when 
+     * a user has already uploaded files but decides to exit the form.
+     **/
     public function fw_delete_files() {
       $filenames = isset( $_POST['filenames'] ) ? $_POST['filenames'] : array();
       $filepaths = $this->generateAttachmentPaths($filenames);
-      $this->delete_files($filepaths);
-      echo "tempfiles deleted";
+      if (count($filepaths) != 0) {
+        $this->delete_files($filepaths);
+        echo "tempfiles deleted";
+      }
     }
     
     /**
@@ -124,8 +131,10 @@ class Mondula_Form_Wizard_Shortcode {
     
     private function generateAttachmentPaths($files) {
       $attachments = array();
-      for ($i=0; $i < count($files); $i++) { 
-        $attachments[$i] = WP_CONTENT_DIR . '/uploads/msf-temp/' . sanitize_file_name($files[$i]);
+      for ($i=0; $i < count($files); $i++) {
+        if ($files[$i] != "") {
+          $attachments[$i] = WP_CONTENT_DIR . '/uploads/msf-temp/' . sanitize_file_name($files[$i]);
+        }
       }
       return $attachments;
     }
@@ -144,8 +153,8 @@ class Mondula_Form_Wizard_Shortcode {
 
         if ( wp_verify_nonce( $nonce, $this->_token) ) {
             if ( ! empty( $data ) ) {
-                $mailformat = Mondula_Form_Wizard_Wizard::fw_get_option('mailformat' ,'fw_settings_basic', 'html');
-                $cc = Mondula_Form_Wizard_Wizard::fw_get_option('cc' ,'fw_settings_basic', false);
+                $mailformat = Mondula_Form_Wizard_Wizard::fw_get_option('mailformat' ,'fw_settings_email', 'html');
+                $cc = Mondula_Form_Wizard_Wizard::fw_get_option('cc' ,'fw_settings_email', 'off');
                 $content = $wizard->render_mail( $data, $name, $email, $mailformat);
                 $settings = $wizard->get_settings();
                 $attachments = $this->generateAttachmentPaths($files);
