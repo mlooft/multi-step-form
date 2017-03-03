@@ -163,19 +163,22 @@ class Mondula_Form_Wizard_Shortcode {
                   add_filter( 'wp_mail_content_type', array( $this , 'set_html_content_type' ) );
                   // TODO: from
                   $headers = array(
-                    'Content-Type: text/html; charset=UTF-8',
-                    'From: Mondula <info@mondula.com>'. "\r\n"
+                    'Content-Type: text/html; charset=UTF-8'
                   );
                 } else {
                   $headers = array(
-                    'Content-Type: text/plain; charset=UTF-8',
-                    'From: Mondula <info@mondula.com>'. "\r\n"
+                    'Content-Type: text/plain; charset=UTF-8'
                   );
+                }
+                if ($settings['frommail'] || $settings['fromname']) {
+                  $fromname = $settings['fromname'] != '' ? $settings['fromname'] : get_bloginfo( 'name' );
+                  $frommail = $settings['frommail'] != '' ? $settings['frommail'] : get_bloginfo( 'admin-email' );
+                    array_push($headers, 'From: ' . $fromname . ' <' . $frommail . '>'. "\r\n");
                 }
                 // send email to admin
                 $mail = wp_mail( $settings['to'], $settings['subject'], $content , $headers, $attachments);
                 // send copy to user
-                if (isset($email) && $cc == "on") {
+                if (count($email) == 1 && $cc === "on") {
                   $copy = wp_mail( $email, "CC: ".$settings['subject'], $content, $headers);
                 }
                 remove_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
