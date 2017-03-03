@@ -480,6 +480,20 @@ h2.fw-step-part-title {
     padding-top: 0;
 }
 /* ------------------------------------------------------------------------*/
+/* ---- File Upload -------------------------------------------------------*/
+/* ------------------------------------------------------------------------*/
+.fw-file-upload-status-uploading .fa-spinner {
+    -webkit-animation:spin 1s linear infinite;
+    -moz-animation:spin 1s linear infinite;
+    animation:spin 1s linear infinite;
+}
+
+.fw-file-upload-response {
+	margin-top: 10px;
+	font-size: 16px;
+}
+
+/* ------------------------------------------------------------------------*/
 /* ---- Buttons -----------------------------------------------------------*/
 /* ------------------------------------------------------------------------*/
 .fw-button-previous {
@@ -523,6 +537,16 @@ h2.fw-step-part-title {
    }
   }
 }*/
+
+/* ------------------------------------------------------------------------*/
+/* ---- Animations --------------------------------------------------------*/
+/* ------------------------------------------------------------------------*/
+
+@-webkit-keyframes myanimation {from {left: 0%;}to {left: 50%;}}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 /* ------------------------------------------------------------------------*/
 /* ---- Media Queries -----------------------------------------------------*/
 /* ------------------------------------------------------------------------*/
@@ -537,15 +561,6 @@ h2.fw-step-part-title {
 @media all and (min-width: 1023px) {
   .fw-wizard-buttons {
     margin-top: 30px;
-  }
-}
-
-@-webkit-keyframes myanimation {
-  from {
-    left: 0%;
-  }
-  to {
-    left: 50%;
   }
 }
 
