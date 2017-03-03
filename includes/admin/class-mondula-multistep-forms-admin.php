@@ -165,17 +165,30 @@ class Mondula_Form_Wizard_Admin {
                     <th scope="row">"Thank you"-page:</th>
                     <td>
                       <input type="text" class="fw-settings-thankyou"/>
-                      <p class="description">Users will be rediredted to this URL after form submit. Leave blank if you don't need one.</p>
+                      <p class="description">Users will be redirected to this URL after form submit. Leave blank if you don't need one.</p>
                     </td>
                     </tr>
                 </table>
                 <h1>Mail settings</h1>
                 <table class="form-table">
                     <tr valign="top">
-                    <th scope="row">Send emails To:</th>
+                    <th scope="row">Send To:</th>
                     <td>
                       <input type="text" class="fw-mail-to"/>
                       <p class="description">Email address to which the mails are sent</p>
+                    </td>
+                    </tr>
+                    <tr valign="top">
+                    <th scope="row">Send From Email:</th>
+                    <td>
+                      <input type="text" class="fw-mail-from-mail"/>
+                      <p class="description">Email address and name from which the emails are sent. Leave blank for default admin email.</p>
+                    </td>
+                    </tr>
+                    <tr valign="top">
+                    <th scope="row">Send From Name:</th>
+                    <td>
+                      <input type="text" class="fw-mail-from-name"/>
                     </td>
                     </tr>
                     <tr valign="top">

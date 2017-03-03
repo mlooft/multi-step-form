@@ -380,6 +380,12 @@
         if (formSettings.to) {
           $('.fw-mail-to').val(formSettings.to);
         }
+        if (formSettings.frommail) {
+          $('.fw-mail-from-mail').val(formSettings.frommail);
+        }
+        if (formSettings.fromname) {
+          $('.fw-mail-from-name').val(formSettings.fromname);
+        }
         if (formSettings.header) {
           $('.fw-mail-header').val(formSettings.header);
         }
@@ -542,6 +548,8 @@
       settings.thankyou = $('.fw-settings-thankyou').val();
       // Mail settings
       settings.to = $('.fw-mail-to').val();
+      settings.frommail = $('.fw-mail-from-mail').val();
+      settings.fromname = $('.fw-mail-from-name').val();
       settings.subject = $('.fw-mail-subject').val();
       settings.header = $('.fw-mail-header').val();
       return settings;
