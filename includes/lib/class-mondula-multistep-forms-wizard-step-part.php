@@ -98,9 +98,6 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
                     case 'paragraph':
                         $blocks[] = Mondula_Form_Wizard_Block_Paragraph::from_aa( $block, $current_version, $serialized_version );
                         break;
-                    case 'submit':
-                        $blocks[] = Mondula_Form_Wizard_Step_Submit::from_aa( $block, $current_version, $serialized_version );
-                        break;
                     default:
                         break;
                 }

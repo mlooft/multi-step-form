@@ -157,9 +157,10 @@ class Mondula_Form_Wizard_Wizard {
      */
     public function render ( $wizardId ) {
         $progressbar = $this->fw_get_option( 'progressbar', 'fw_settings_styling', 'on' ) === 'on';
+        $showSummary = Mondula_Form_Wizard_Wizard::fw_get_option('showsummary' ,'fw_settings_email', 'true') === 'true';
         ob_start();
         ?>
-        <div id="mondula-multistep-forms" class="fw-wizard<?php echo ( $progressbar ? '' : ' fw-no-progressbar' ); ?>" data-stepCount="<?php echo count( $this->_steps )?>" data-wizardid="<?php echo $wizardId ?>">
+        <div id="mondula-multistep-forms" class="fw-wizard" data-stepCount="<?php echo count( $this->_steps )?>" data-wizardid="<?php echo $wizardId ?>">
             <div class="fw-wizard-step-header-container">
                 <div class="fw-container" data-redirect="<?php echo $this->_settings['thankyou']?>">
                 <?php
@@ -176,7 +177,7 @@ class Mondula_Form_Wizard_Wizard {
                 ?>
                 </div>
             </div>
-            <div class="fw-progress-bar-container">
+            <div class="fw-progress-bar-container <?php echo ( $progressbar ? '' : ' fw-hide-progress-bar' ); ?>">
                 <div class="fw-container">
             <?php
                 $this->render_progress_bar( $this->_steps );
@@ -193,11 +194,15 @@ class Mondula_Form_Wizard_Wizard {
                             <?php
                                 $step->render( $wizardId, $i );
                                 if ($i == $len - 1) {
+                                  if ($showSummary) {
                                   ?>
-                                  <div class="fw-summary-container">
-                                    <button type="button" class="fw-toggle-summary">SHOW SUMMARY</button>
-                                    <div id="wizard-summary" class="fw-wizard-summary" style="display:none;" data-showsummary="on"><div class="fw-summary-alert">Some required Fields are empty<br>Please check the highlighted fields.</div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Family</p><p class="fw-step-summary"> — few</p><p class="fw-step-summary"> — Deutsch</p><p class="fw-step-summary">I have a dog — yes</p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">About you</p><p class="fw-step-summary"> — gew</p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Food</p><p class="fw-step-summary"> — Burgers</p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Information</p><p class="fw-step-summary"></p><p class="fw-step-summary fw-summary-invalid">I would like to recieve the weekly newsletter — </p><p></p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Terms of Service</p><p class="fw-step-summary"></p><p class="fw-step-summary fw-summary-invalid">I agree to the ToS — </p><p></p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Submit your Data</p><p class="fw-step-summary"></p><p class="fw-step-summary fw-summary-invalid"> — </p><p></p></div></div>
-                                  </div>
+                                    <div class="fw-summary-container">
+                                      <button type="button" class="fw-toggle-summary">SHOW SUMMARY</button>
+                                      <div id="wizard-summary" class="fw-wizard-summary" style="display:none;" data-showsummary="on"><div class="fw-summary-alert">Some required Fields are empty<br>Please check the highlighted fields.</div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Family</p><p class="fw-step-summary"> — few</p><p class="fw-step-summary"> — Deutsch</p><p class="fw-step-summary">I have a dog — yes</p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">About you</p><p class="fw-step-summary"> — gew</p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Food</p><p class="fw-step-summary"> — Burgers</p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Information</p><p class="fw-step-summary"></p><p class="fw-step-summary fw-summary-invalid">I would like to recieve the weekly newsletter — </p><p></p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Terms of Service</p><p class="fw-step-summary"></p><p class="fw-step-summary fw-summary-invalid">I agree to the ToS — </p><p></p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Submit your Data</p><p class="fw-step-summary"></p><p class="fw-step-summary fw-summary-invalid"> — </p><p></p></div></div>
+                                    </div>
+                                    <?php
+                                    }
+                                    ?>
                                   <button type="button" class="fw-btn-submit">Submit</button>
                                 <?php
                                 }

@@ -33,8 +33,8 @@ class Mondula_Form_Wizard_Settings {
     function get_settings_sections() {
         $sections = array(
             array(
-                'id' => 'fw_settings_basic',
-                'title' => __( 'Basic Settings', $this->_text_domain )
+                'id' => 'fw_settings_email',
+                'title' => __( 'Email Settings', $this->_text_domain )
             ),
             array(
                 'id' => 'fw_settings_styling',
@@ -54,7 +54,7 @@ class Mondula_Form_Wizard_Settings {
      */
     function get_settings_fields() {
         $settings_fields = array(
-            'fw_settings_basic' => array(
+            'fw_settings_email' => array(
                 // array(
                 //     'name'              => 'text_val',
                 //     'label'             => __( 'Text Input', $this->_text_domain ),
