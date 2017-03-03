@@ -202,6 +202,14 @@ jQuery(document).ready(function($) {
         });
         return summary;
     }
+    
+    function getAttachments() {
+      var files = [];
+      $('.fw-step-block[data-type=fw-file]').each(function(i, e) {
+        files.push($(e).find('input').val());
+      });
+      return files;
+    }
 
     function getSummary($wizard) {
         var i;
@@ -616,6 +624,7 @@ jQuery(document).ready(function($) {
 
     function submit(evt) {
         var summary, name, email;
+        var files = [];
         var $wizard = $(this).closest('.fw-wizard');
         // reset fw-block-invalid flags
         $('.fw-block-invalid').each(function(i, element) {
@@ -624,14 +633,13 @@ jQuery(document).ready(function($) {
         if (validate($wizard)) {
             $('.fw-spinner').show();
             summary = getSummary($wizard);
-            console.log("Summary");
-            console.log(summary);
+            files = getAttachments();
             email = $wizard.find('[data-id="email"]').first().val();
-            sendEmail(summary, email);
+            sendEmail(summary, email, files);
         }
     }
 
-    function sendEmail(summary, email) {
+    function sendEmail(summary, email, files) {
         var id = $('#mondula-multistep-forms').attr('data-wizardid');
         $.post(
             ajax.ajaxurl, {
@@ -639,6 +647,7 @@ jQuery(document).ready(function($) {
                 id: id,
                 fw_data: summary,
                 email: email,
+                attachments: files,
                 nonce: ajax.nonce
             },
             function(resp) {
@@ -660,31 +669,68 @@ jQuery(document).ready(function($) {
     }
 
     function uploadFile(e) {
-        var id = $('#mondula-multistep-forms').attr('data-wizardid');
-        var file = $(e.target).prop('files')[0];
-        console.log(file);
-        var formData = new FormData();
-        
-        formData.append('action', 'fw_upload_file');
-        formData.append('file', file);
-        formData.append('id', id);
-        formData.append('nonce', ajax.nonce);
-        
-        $.ajax({
-            type: 'POST',
-            url: ajax.ajaxurl,
-            data: formData,
-            contentType: false,
-            processData: false,
-            dataType: "json",
-            success: function(response) {
-              // TODO: upload successful notice
-              console.dir(response);
-            },
-            fail: function(res) {
-              console.warn(res);
+      $('.fw-file-upload-response').show();
+      $('.fw-file-upload-status-uploading').show();
+    
+      var id = $('#mondula-multistep-forms').attr('data-wizardid');
+      var file = $(e.target).prop('files')[0];
+      var formData = new FormData();
+      
+      formData.append('action', 'fw_upload_file');
+      formData.append('file', file);
+      formData.append('id', id);
+      formData.append('nonce', ajax.nonce);
+      
+      var $block = $(e.target).parent().parent();
+      
+      $.ajax({
+          type: 'POST',
+          url: ajax.ajaxurl,
+          data: formData,
+          contentType: false,
+          processData: false,
+          dataType: "json",
+          success: function(response) {
+            console.dir(response);
+            $('.fw-file-upload-status-uploading').hide();
+            if (response.success) {
+              $('.fw-file-upload-status-success').show();
+              $('.fw-file-upload-status-error').hide();
+            } else {
+              $('.fw-file-upload-status-success').hide();
+              $('.fw-file-upload-status-error > span').text(response.error);
+              $('.fw-file-upload-status-error').show();
+              warn(response.error);
             }
-        });
+          },
+          fail: function(res) {
+            console.warn(res);
+          }
+      });
+    }
+    
+    function deleteAttachments(){
+      var attachments = getAttachments();
+      $.post(
+          ajax.ajaxurl, {
+              action: 'fw_delete_files',
+              filenames: attachments,
+              nonce: ajax.nonce
+          },
+          function(resp) {
+            if (resp) {
+              $('[data-type=fw-file]').each(function(i,e) {
+                var fileInput = $(e).find('input');
+                var uploadStatus = $(e).find('.fw-file-upload-response');
+                fileInput.replaceWith(fileInput.val('').clone(true));
+                uploadStatus.hide();
+              });
+            }
+          }
+      ).fail(function(resp) {
+          warn('response', resp);
+          warn('responseText', resp.responseText);
+      });
     }
 
     function setupSelect2() {
@@ -744,6 +790,12 @@ jQuery(document).ready(function($) {
         $('.fw-file').change(function(e) {
             uploadFile(e);
         });
+        
+        $('.fw-file-upload-status-uploading').hide();
+        $('.fw-file-upload-status-success').hide();
+        $('.fw-file-upload-status-error').hide();
+
+
 
         $('.fw-datepicker-here').datepicker();
 
@@ -773,6 +825,13 @@ jQuery(document).ready(function($) {
             $('head').append('<style>.fw-button-previous, .fw-button-next { background: ' + buttonColor + ' !important; }</style>');
         }
         updateSummary($('.fw-wizard'));
+        
+        
+        window.onbeforeunload = function(){
+          console.log('leaving page');
+          deleteAttachments();
+          return 'Your uploaded files were deleted from the server for security reasons.'
+        };
 
     }
 
