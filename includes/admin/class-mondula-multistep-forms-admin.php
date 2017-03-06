@@ -245,6 +245,7 @@ class Mondula_Form_Wizard_Admin {
               <div id="fw-thickbox-select">Select/Dropdown</div>
               <div id="fw-thickbox-text">Text field</div>
               <div id="fw-thickbox-email">Email</div>
+              <div id="fw-thickbox-fileupload">File Upload</div>
               <div id="fw-thickbox-textarea">Textarea</div>
               <div id="fw-thickbox-date">Date</div>
               <div id="fw-thickbox-paragraph">Paragraph</div>
