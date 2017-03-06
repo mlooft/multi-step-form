@@ -8,6 +8,7 @@ class Mondula_Form_Wizard_Wizard {
 
     private $_steps = array();
     private $_settings = array();
+    private $_title;
 
     public function __construct() {
     }
@@ -18,6 +19,10 @@ class Mondula_Form_Wizard_Wizard {
 
     public function set_settings ( $settings ) {
       $this->_settings = $settings;
+    }
+    
+    public function set_title ( $title ) {
+      $this->_title = $title;
     }
 
     /**
@@ -345,14 +350,16 @@ class Mondula_Form_Wizard_Wizard {
             $steps_json[] = $step->as_aa();
         }
         return array(
-            'steps' => $steps_json,
-            'settings' => $this->_settings
+          'title' => $this->_title,
+          'steps' => $steps_json,
+          'settings' => $this->_settings
         );
     }
 
     public static function from_aa( $aa, $current_version, $serialized_version ) {
         $wizard = new Mondula_Form_Wizard_Wizard();
         $wizard->set_settings( $aa['settings'] );
+        $wizard->set_title( $aa['title'] );
         foreach ( $aa['steps'] as $step ) {
             $wizard->add_step(
                 Mondula_Form_Wizard_Wizard_Step::from_aa( $step, $current_version, $serialized_version )

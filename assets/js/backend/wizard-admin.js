@@ -612,10 +612,10 @@
         var title  = $('.fw-wizard-title').val();
         var valid;
         var data = {
-            title: title,
             wizard: {}
         };
         // data['title']
+        data.wizard.title = title;
         data.wizard.steps = [];
         data.wizard.settings = getSettings();
         var $steps = $container.find('.fw-step');
@@ -1033,9 +1033,9 @@
             log(wizard);
             log(w);
 
-            if (w.title) {
+            if (w.wizard.title) {
               // load the wizard title
-              $('.fw-wizard-title').val(w.title);
+              $('.fw-wizard-title').val(w.wizard.title);
             } else {
               $('.fw-wizard-title').val('My Multi Step Form');
             }
