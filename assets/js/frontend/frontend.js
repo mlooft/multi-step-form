@@ -717,12 +717,13 @@ jQuery(document).ready(function($) {
             },
             function(resp) {
                 if (resp) {
-                    $('[data-type=fw-file]').each(function(i, e) {
-                        var fileInput = $(e).find('input');
-                        var uploadStatus = $(e).find('.fw-file-upload-response');
-                        fileInput.replaceWith(fileInput.val('').clone(true));
-                        uploadStatus.hide();
-                    });
+                  console.log(resp);
+                  $('[data-type=fw-file]').each(function(i, e) {
+                      var fileInput = $(e).find('input');
+                      var uploadStatus = $(e).find('.fw-file-upload-response');
+                      fileInput.replaceWith(fileInput.val('').clone(true));
+                      uploadStatus.hide();
+                  });
                 }
             }
         ).fail(function(resp) {

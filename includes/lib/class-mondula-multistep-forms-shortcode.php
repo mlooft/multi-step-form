@@ -133,7 +133,7 @@ class Mondula_Form_Wizard_Shortcode {
       $attachments = array();
       for ($i=0; $i < count($files); $i++) {
         if ($files[$i] != "") {
-          $attachments[$i] = WP_CONTENT_DIR . '/uploads/msf-temp/' . sanitize_file_name($filename);
+          $attachments[$i] = WP_CONTENT_DIR . '/uploads/msf-temp/' . sanitize_file_name($files[$i]);
         }
       }
       return $attachments;
