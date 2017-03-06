@@ -218,7 +218,7 @@ class Mondula_Form_Wizard_Admin {
                                 <div class="fw-elements">
                                     <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="Form Title">
                                     <a class="fw-element-step"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ) ?></a>
-                                    <h4>Drag &amp; Drop an element from below to a section on the right side</h4>
+                                    <h4>Drag &amp; Drop an element from below to a section</h4>
                                     <a class="fw-draggable-block fw-element-radio" data-type="radio"><i class="fa fa-arrows"></i> Radio/Checkbox</a>
                                     <a class="fw-draggable-block fw-element-select" data-type="select"><i class="fa fa-arrows"></i> Select/Dropdown</a>
                                     <a class="fw-draggable-block fw-element-text" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
