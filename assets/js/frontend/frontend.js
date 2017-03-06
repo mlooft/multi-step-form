@@ -108,7 +108,7 @@ jQuery(document).ready(function($) {
             $('html, body').animate({
                 scrollTop: $("#mondula-multistep-forms").offset().top - 100
             }, 500);
-        } 
+        }
     }
 
     function textSummary(summaryObj, $block, title, required) {
@@ -200,12 +200,16 @@ jQuery(document).ready(function($) {
         return summary;
     }
     
+    function removeFakePath(path) {
+      return path.replace(/^.*\\/, "");
+    }
+
     function getAttachments() {
-      var files = [];
-      $('.fw-step-block[data-type=fw-file]').each(function(i, e) {
-        files.push($(e).find('input').val());
-      });
-      return files;
+        var files = [];
+        $('.fw-step-block[data-type=fw-file]').each(function(i, e) {
+            files.push(removeFakePath($(e).find('input').val()));
+        });
+        return files;
     }
 
     function getSummary($wizard) {
@@ -461,7 +465,7 @@ jQuery(document).ready(function($) {
     }
 
     function validateFile($element) {
-        if (!$element.find('.fw-file').val()) {
+        if (!$element.find('.fw-file-upload-input').val()) {
             $element.addClass('fw-block-invalid');
             return false;
         } else {
@@ -618,7 +622,7 @@ jQuery(document).ready(function($) {
         $('.fw-alert-user').append(message)
             .fadeIn().delay(2000).fadeOut();
     }
-    
+
     function submit(evt) {
         var summary, name, email;
         var files = [];
@@ -657,8 +661,6 @@ jQuery(document).ready(function($) {
                     // TODO: customizable success message
                     alertUser("Success! Your data was submitted.", true);
                 }
-
-
             }
         ).fail(function(resp) {
             warn('response', resp);
@@ -666,69 +668,96 @@ jQuery(document).ready(function($) {
         });
     }
 
-    function uploadFile(e) {
-      $('.fw-file-upload-response').show();
-      $('.fw-file-upload-status-uploading').show();
-    
-      var id = $('#mondula-multistep-forms').attr('data-wizardid');
-      var file = $(e.target).prop('files')[0];
-      var formData = new FormData();
-      
-      formData.append('action', 'fw_upload_file');
-      formData.append('file', file);
-      formData.append('id', id);
-      formData.append('nonce', ajax.nonce);
-      
-      var $block = $(e.target).parent().parent();
-      
-      $.ajax({
-          type: 'POST',
-          url: ajax.ajaxurl,
-          data: formData,
-          contentType: false,
-          processData: false,
-          dataType: "json",
-          success: function(response) {
-            console.dir(response);
-            $('.fw-file-upload-status-uploading').hide();
-            if (response.success) {
-              $('.fw-file-upload-status-success').show();
-              $('.fw-file-upload-status-error').hide();
-            } else {
-              $('.fw-file-upload-status-success').hide();
-              $('.fw-file-upload-status-error > span').text(response.error);
-              $('.fw-file-upload-status-error').show();
-              warn(response.error);
+    function uploadFile(e, $label) {
+        var id = $('#mondula-multistep-forms').attr('data-wizardid');
+        var file = $(e.target).prop('files')[0];
+        var formData = new FormData();
+
+        formData.append('action', 'fw_upload_file');
+        formData.append('file', file);
+        formData.append('id', id);
+        formData.append('nonce', ajax.nonce);
+        
+        $label.find('i').toggleClass("fa-upload fa-spinner");
+        $label.find('span').text("Uploading file");
+
+
+        var $block = $(e.target).parent().parent();
+
+        $.ajax({
+            type: 'POST',
+            url: ajax.ajaxurl,
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function(response) {
+                console.dir(response);
+                
+                if (response.success) {
+                  $label.find('i').removeClass('fa-times-circle').toggleClass("fa-spinner fa-check-circle");
+                  $label.find('span').html(file.name);
+                } else {
+                  $label.find('i').toggleClass("fa-spinner fa-times-circle");
+                  $label.find('span').html(response.error);
+                  warn(response.error);
+                }
+            },
+            fail: function(res) {
+                console.warn(res);
             }
-          },
-          fail: function(res) {
-            console.warn(res);
-          }
-      });
+        });
     }
-    
-    function deleteAttachments(){
-      var attachments = getAttachments();
-      $.post(
-          ajax.ajaxurl, {
-              action: 'fw_delete_files',
-              filenames: attachments,
-              nonce: ajax.nonce
-          },
-          function(resp) {
-            if (resp) {
-              $('[data-type=fw-file]').each(function(i,e) {
-                var fileInput = $(e).find('input');
-                var uploadStatus = $(e).find('.fw-file-upload-response');
-                fileInput.replaceWith(fileInput.val('').clone(true));
-                uploadStatus.hide();
-              });
+
+    function deleteAttachments() {
+        var attachments = getAttachments();
+        $.post(
+            ajax.ajaxurl, {
+                action: 'fw_delete_files',
+                filenames: attachments,
+                nonce: ajax.nonce
+            },
+            function(resp) {
+                if (resp) {
+                    $('[data-type=fw-file]').each(function(i, e) {
+                        var fileInput = $(e).find('input');
+                        var uploadStatus = $(e).find('.fw-file-upload-response');
+                        fileInput.replaceWith(fileInput.val('').clone(true));
+                        uploadStatus.hide();
+                    });
+                }
             }
-          }
-      ).fail(function(resp) {
-          warn('response', resp);
-          warn('responseText', resp.responseText);
-      });
+        ).fail(function(resp) {
+            warn('response', resp);
+            warn('responseText', resp.responseText);
+        });
+    }
+
+    function setupFileUpload() {
+        $('.fw-file-upload-input').each(function() {
+            var $input = $(this),
+                $label = $input.next('label'),
+                labelVal = $label.html();
+
+            $input.on('change', function(e) {
+                var fileName = '';
+                if (e.target.value)
+                    fileName = e.target.value.split('\\').pop();
+
+                if (fileName) {
+                    uploadFile(e, $label);
+                  }
+                else
+                    $label.html(labelVal);
+            });
+            // Firefox bug fix
+            $input.on('focus', function() {
+                    $input.addClass('has-focus');
+                })
+                .on('blur', function() {
+                    $input.removeClass('has-focus');
+                });
+        });
     }
 
     function setupSelect2() {
@@ -746,45 +775,45 @@ jQuery(document).ready(function($) {
             }
         });
     }
-    
-    function setupColors(){
-      var activeColor = $('.fw-progress-bar').attr('data-activecolor');
-      var doneColor = $('.fw-progress-bar').attr('data-donecolor');
-      var nextColor = $('.fw-progress-bar').attr('data-nextcolor');
-      var buttonColor = $('.fw-progress-bar').attr('data-buttoncolor');
-      $('head').append('<style id="fw-colors"></style>')
-      if (activeColor) {
-          console.log('activeColor: ' + activeColor);
-          $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} [data-type=fw-checkbox] input[type=checkbox]:checked+label:before, ul.fw-progress-bar li.fw-active .txt-ellipsis { color: ' + activeColor + ' !important; } .fw-step-part { border-color: ' + activeColor + ' !important; }</style>');
-      }
-      if (doneColor) {
-          console.log('doneColor: ' + doneColor);
-          $('head').append('<style>ul.fw-progress-bar .fw-active:last-child:before, .fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited, ul.fw-progress-bar .fw-active:last-child .txt-ellipsis, .fw-progress-step.fw-visited .txt-ellipsis { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after{ background-color:' + doneColor + ' !important;}</style>');
-      }
-      if (nextColor) {
-          console.log('nextColor: ' + nextColor);
-          $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ' !important;} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:' + nextColor + ' !important;} .txt-ellipsis { color: ' + nextColor + ' !important; } </style>');
-      }
-      if (buttonColor) {
-          console.log('buttonColor: ' + buttonColor);
-          $('head').append('<style>.fw-button-previous, .fw-button-next { background: ' + buttonColor + ' !important; }</style>');
-      }
+
+    function setupColors() {
+        var activeColor = $('.fw-progress-bar').attr('data-activecolor');
+        var doneColor = $('.fw-progress-bar').attr('data-donecolor');
+        var nextColor = $('.fw-progress-bar').attr('data-nextcolor');
+        var buttonColor = $('.fw-progress-bar').attr('data-buttoncolor');
+        $('head').append('<style id="fw-colors"></style>')
+        if (activeColor) {
+            console.log('activeColor: ' + activeColor);
+            $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} [data-type=fw-checkbox] input[type=checkbox]:checked+label:before, ul.fw-progress-bar li.fw-active .txt-ellipsis { color: ' + activeColor + ' !important; } .fw-step-part { border-color: ' + activeColor + ' !important; }</style>');
+        }
+        if (doneColor) {
+            console.log('doneColor: ' + doneColor);
+            $('head').append('<style>ul.fw-progress-bar .fw-active:last-child:before, .fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited, ul.fw-progress-bar .fw-active:last-child .txt-ellipsis, .fw-progress-step.fw-visited .txt-ellipsis { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after{ background-color:' + doneColor + ' !important;}</style>');
+        }
+        if (nextColor) {
+            console.log('nextColor: ' + nextColor);
+            $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ' !important;} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:' + nextColor + ' !important;} .txt-ellipsis { color: ' + nextColor + ' !important; } </style>');
+        }
+        if (buttonColor) {
+            console.log('buttonColor: ' + buttonColor);
+            $('head').append('<style>.fw-button-previous, .fw-button-next { background: ' + buttonColor + ' !important; }</style>');
+        }
     }
 
     function setup() {
 
         var $wizard = $('.fw-wizard');
-        
-        $wizard.each(function (idx, element) {
+
+        $wizard.each(function(idx, element) {
             showStep($(element), 0);
         });
 
         var count = getStepCount($wizard);
         var parentWidth = $wizard.parent().outerWidth();
 
-        if ((count >= 5 && parentWidth >= 769) || 
+        if ((count >= 5 && parentWidth >= 769) ||
             (parentWidth >= 500)) {
-          $wizard.addClass('fw-large-container');
+            $wizard.addClass('fw-large-container');
         }
 
         $('.fw-progress-step[data-id="0"]').addClass('fw-active');
@@ -808,30 +837,22 @@ jQuery(document).ready(function($) {
         });
 
         setupSelect2();
-
-        $('.fw-file').change(function(e) {
-            uploadFile(e);
-        });
         
-        $('.fw-file-upload-status-uploading').hide();
-        $('.fw-file-upload-status-success').hide();
-        $('.fw-file-upload-status-error').hide();
-
-
-
+        setupFileUpload();
+        
         $('.fw-datepicker-here').datepicker();
 
         $('.fw-btn-submit').click(submit);
 
         setupColors();
-        
+
         updateSummary($('.fw-wizard'));
-        
-        
-        window.onbeforeunload = function(){
-          console.log('leaving page');
-          deleteAttachments();
-          return 'Your uploaded files were deleted from the server for security reasons.'
+
+
+        window.onbeforeunload = function() {
+            console.log('leaving page');
+            deleteAttachments();
+            return 'Your uploaded files were deleted from the server for security reasons.'
         };
     }
 

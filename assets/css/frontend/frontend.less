@@ -482,7 +482,7 @@ h2.fw-step-part-title {
 /* ------------------------------------------------------------------------*/
 /* ---- File Upload -------------------------------------------------------*/
 /* ------------------------------------------------------------------------*/
-.fw-file-upload-status-uploading .fa-spinner {
+[data-type="fw-file"] .fa-spinner {
     -webkit-animation:spin 1s linear infinite;
     -moz-animation:spin 1s linear infinite;
     animation:spin 1s linear infinite;
@@ -491,6 +491,35 @@ h2.fw-step-part-title {
 .fw-file-upload-response {
 	margin-top: 10px;
 	font-size: 16px;
+}
+
+.fw-file-upload-input {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.fw-file-upload-input + label {
+    font-weight: 500;
+    color: white;
+    background-color: @color_buttoncolor;
+    display: inline-block;
+		margin-top: 10px;
+		padding: 0.625rem 1.25rem;
+		.fa {
+			margin-right: 10px;
+		}
+}
+
+.fw-file-upload-input:focus + label,
+.fw-file-upload-input + label:hover {
+    background-color: #333;
+}
+
+.fw-file-upload-input + label {
+	cursor: pointer; 
 }
 
 /* ------------------------------------------------------------------------*/
