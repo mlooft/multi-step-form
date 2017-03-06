@@ -82,6 +82,11 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
           'fw-edit' => '<a href="' . $edit_url . '">' . __( 'Edit', $this->_text_domain ) . '</a>',
           'fw-delete' => '<a href="' . $delete_url . '">' . __( 'Delete', $this->_text_domain ) . '</a>'
       );
+      
+      if (!$wiz['title'] || $wiz['title'] == '') {
+        $wiz['title'] = 'My Multi Step Form';
+      }
+      
       return sprintf('<a href="' . $edit_url . '">' . __( $wiz['title'] , $this->_text_domain ) . '</a>'.'%1$s', $this->row_actions($actions));
     }
 
