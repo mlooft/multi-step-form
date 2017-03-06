@@ -678,7 +678,7 @@ jQuery(document).ready(function($) {
         formData.append('id', id);
         formData.append('nonce', ajax.nonce);
         
-        $label.find('i').toggleClass("fa-upload fa-spinner");
+        $label.find('i').removeClass('fa-upload fa-times-circle fa-check-circle').addClass("fa-spinner");
         $label.find('span').text("Uploading file");
 
 
@@ -692,13 +692,11 @@ jQuery(document).ready(function($) {
             processData: false,
             dataType: "json",
             success: function(response) {
-                console.dir(response);
-                
                 if (response.success) {
-                  $label.find('i').removeClass('fa-times-circle').toggleClass("fa-spinner fa-check-circle");
+                  $label.find('i').removeClass('fa-times-circle fa-spinner').addClass(" fa-check-circle");
                   $label.find('span').html(file.name);
                 } else {
-                  $label.find('i').toggleClass("fa-spinner fa-times-circle");
+                  $label.find('i').removeClass("fa-spinner fa-check-circle").addClass('fa-times-circle');
                   $label.find('span').html(response.error);
                   warn(response.error);
                 }
