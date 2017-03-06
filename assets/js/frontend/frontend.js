@@ -651,6 +651,7 @@ jQuery(document).ready(function($) {
                 var url = $('.fw-container').attr('data-redirect');
                 if (url) {
                     // redirect to thankyou page
+                    window.onbeforeunload = null;
                     window.location.href = url;
                 } else {
                     // TODO: customizable success message
@@ -832,7 +833,6 @@ jQuery(document).ready(function($) {
           deleteAttachments();
           return 'Your uploaded files were deleted from the server for security reasons.'
         };
-
     }
 
     function init() {
