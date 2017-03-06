@@ -944,6 +944,17 @@
               $part.find('.inside').append(block);
               setupClickHandlers();
             });
+            $("#fw-thickbox-fileupload").unbind('click').click(function(thickRadioEvent) {
+              tb_remove();
+              var block = $(renderBlock({
+                  type: 'file',
+                  label: '',
+                  value: ''
+              }));
+              var $part = $(thickEvent.target).parents('.fw-step-part');
+              $part.find('.inside').append(block);
+              setupClickHandlers();
+            });
             // TEXT AREA
             $("#fw-thickbox-textarea").unbind('click').click(function(thickRadioEvent) {
               tb_remove();
