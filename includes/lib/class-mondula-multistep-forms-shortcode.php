@@ -161,7 +161,6 @@ class Mondula_Form_Wizard_Shortcode {
 
                 if($mailformat == "html") {
                   add_filter( 'wp_mail_content_type', array( $this , 'set_html_content_type' ) );
-                  // TODO: from
                   $headers = array(
                     'Content-Type: text/html; charset=UTF-8'
                   );
@@ -172,7 +171,7 @@ class Mondula_Form_Wizard_Shortcode {
                 }
                 if ($settings['frommail'] || $settings['fromname']) {
                   $fromname = $settings['fromname'] != '' ? $settings['fromname'] : get_bloginfo( 'name' );
-                  $frommail = $settings['frommail'] != '' ? $settings['frommail'] : get_bloginfo( 'admin-email' );
+                  $frommail = $settings['frommail'] != '' ? $settings['frommail'] : get_bloginfo( 'admin_email' );
                     array_push($headers, 'From: ' . $fromname . ' <' . $frommail . '>'. "\r\n");
                 }
                 // send email to admin
