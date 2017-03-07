@@ -84,7 +84,7 @@ Also, check that you can send mails from your WordPress installation.
 = 1.1.0 =
 * Dynamic File Upload
 * Extended E-Mail Settings
-* Bugfies
+* Bugfixes
 
 = 1.0.8 =
 * Breakpoint transitions now fluid
