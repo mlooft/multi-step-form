@@ -59,7 +59,6 @@ class Mondula_Form_Wizard_Wizard_Step {
               $part->render_title();
             ?>
     </h2>
-    <div class="fw-clearfix"></div>
     <div class="fw-step-part-body">
             <?php
               $part->render_body( $wizardId, $stepId, $i );
