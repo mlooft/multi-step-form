@@ -230,6 +230,15 @@ p.fw-step-summary {
     font-size: 1.2em;
     line-height: 1.4;
 }
+#mondula-multistep-forms .fw-plain-layout {
+	border-left: 0px;
+	background-color: transparent;
+	padding: 0px;
+	.fw-step-part-title {
+		margin: 0;
+		margin-top: 20px;
+	}
+}
 /* CUSTOM INPUTS */
 [data-type=fw-radio], [data-type=fw-checkbox] {
 	label:before {
@@ -370,7 +379,7 @@ div[data-required="true"] {
 }
 h2.fw-step-part-title {
 	float: left;
-	margin:0px 20px 20px 20px !important;
+	margin:0px 20px 20px 20px;
 	font-size: 1.8em;
 	font-weight:normal;
 	line-height:1.2;
@@ -602,7 +611,7 @@ h2.fw-step-part-title {
 
 @media all and (min-width: 769px) {
     .fw-step-part {
-        padding: 50px 0px 50px 0px;
+        padding: 30px 0px 30px 0px;
         border-left: 55px solid #546e7a;
     }
     .fw-wizard-step-header h2 {
@@ -620,9 +629,9 @@ h2.fw-step-part-title {
     .select2.select2-container.select2-container--default{
         width: 50% !important;
     }
-    h2.fw-step-part-title {
-	    margin:0px 20px 40px 20px !important;
-    }
+  	h2.fw-step-part-title {
+    	margin:0px 20px 20px 20px!important;
+  	}
     .fw-wizard-step-container {
         h3 {
             margin:10px 0px 10px 0px;
