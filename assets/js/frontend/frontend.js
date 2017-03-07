@@ -207,9 +207,13 @@ jQuery(document).ready(function($) {
     function getAttachments() {
         var files = [];
         $('.fw-step-block[data-type=fw-file]').each(function(i, e) {
-            files.push(removeFakePath($(e).find('input').val()));
+            files.push(getAttachment(e));
         });
         return files;
+    }
+    
+    function getAttachment(e) {
+      return removeFakePath($(e).find('input').val());
     }
 
     function getSummary($wizard) {
@@ -693,6 +697,7 @@ jQuery(document).ready(function($) {
             dataType: "json",
             success: function(response) {
                 if (response.success) {
+                  $block.attr('data-uploaded', 'true');
                   $label.find('i').removeClass('fa-times-circle fa-spinner').addClass(" fa-check-circle");
                   $label.find('span').html(file.name);
                 } else {
@@ -707,8 +712,7 @@ jQuery(document).ready(function($) {
         });
     }
 
-    function deleteAttachments() {
-        var attachments = getAttachments();
+    function deleteAttachments(attachments) {
         $.post(
             ajax.ajaxurl, {
                 action: 'fw_delete_files',
@@ -717,12 +721,12 @@ jQuery(document).ready(function($) {
             },
             function(resp) {
                 if (resp) {
-                  console.log(resp);
                   $('[data-type=fw-file]').each(function(i, e) {
                       var fileInput = $(e).find('input');
-                      var uploadStatus = $(e).find('.fw-file-upload-response');
                       fileInput.replaceWith(fileInput.val('').clone(true));
-                      uploadStatus.hide();
+                      $(e).find('label > i').removeClass('fa-check-circle').addClass('fa-upload');
+                      $(e).find('label > span').text('Choose a file');
+                      $(e).attr('data-uploaded', 'false');
                   });
                 }
             }
@@ -736,18 +740,26 @@ jQuery(document).ready(function($) {
         $('.fw-file-upload-input').each(function() {
             var $input = $(this),
                 $label = $input.next('label'),
-                labelVal = $label.html();
+                labelVal = $label.html(),
+                $block = $input.parent().parent();
 
             $input.on('change', function(e) {
                 var fileName = '';
                 if (e.target.value)
                     fileName = e.target.value.split('\\').pop();
-
                 if (fileName) {
                     uploadFile(e, $label);
-                  }
+                }
                 else
                     $label.html(labelVal);
+            });
+            $input.on('click', function(e) {
+              // delete if input already has a file
+              if (e.target.value) {
+                var attachments = [];
+                attachments.push(getAttachment($block));
+                deleteAttachments(attachments);
+              }
             });
             // Firefox bug fix
             $input.on('focus', function() {
@@ -847,10 +859,10 @@ jQuery(document).ready(function($) {
 
         updateSummary($('.fw-wizard'));
 
-
+        // show warning and delete attachments before leaving page
         window.onbeforeunload = function() {
-            console.log('leaving page');
-            deleteAttachments();
+            var attachments = getAttachments();
+            deleteAttachments(attachments);
             return 'Your uploaded files were deleted from the server for security reasons.'
         };
     }
