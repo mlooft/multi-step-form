@@ -3,7 +3,7 @@ Contributors: mondula2016
 Tags: multi, step, forms, multi-step, feedback, email, contact form, progress bar, form builder, dynamic, ajax
 Requires at least: 3.9
 Tested up to: 4.7
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,10 @@ Multi Step Form has a drag & drop enabled form builder for quick and intuitive c
 
 ### Get more information
 **[Link to landing page](http://multi-step-form.mondula.com/ "Multi Step Form")**
+
+### Contribute
+**[The "Multi Step Form" base plugin is OPEN SOURCE](https://github.com/leweohlsen/multi-step-form "Multi Step Form | GitHub Repository")**
+
 
 **KEY FEATURES:**
 
@@ -39,6 +43,7 @@ The backend's structure is simple. Even less technical users can quickly underst
 **Other features:**
 
 *   **Standard form elements**- You can use all standard form elements such as "radio buttons", "checkboxes", "select", "textfield" and so on...
+*   **File Upload**- Include dynamic file-uploads in your multi step form
 *   **Validated email**- The email field uses a included validation script.
 *   **Calendar item**- Styled datepicker included.
 *   **Show summary**- At the end of each form you can display a short summary.
@@ -80,6 +85,9 @@ Also, check that you can send mails from your WordPress installation.
 2. Use our customizable and animated progress bar to guide your users through your forms. Change the colors to match your CI.
 
 == Changelog ==
+
+= 1.1.1 =
+* Minor CSS fixes
 
 = 1.1.0 =
 * Dynamic File Upload
