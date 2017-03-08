@@ -855,12 +855,14 @@ jQuery(document).ready(function($) {
 
         updateSummary($('.fw-wizard'));
 
-        // show warning and delete attachments before leaving page
-        window.onbeforeunload = function() {
-            var attachments = getAttachments();
-            deleteAttachments(attachments);
-            return 'Your uploaded files were deleted from the server for security reasons.'
-        };
+        if ($('#mondula-multistep-forms').length) {
+          // show warning and delete attachments before leaving page
+          window.onbeforeunload = function() {
+              var attachments = getAttachments();
+              deleteAttachments(attachments);
+              return 'Your uploaded files were deleted from the server for security reasons.'
+          };
+      }
     }
 
     function init() {
