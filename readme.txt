@@ -86,6 +86,9 @@ Also, check that you can send mails from your WordPress installation.
 
 == Changelog ==
 
+= 1.1.3 =
+* Critical Bugfix
+
 = 1.1.1 =
 * Minor CSS fixes
 
