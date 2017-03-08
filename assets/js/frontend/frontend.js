@@ -696,15 +696,16 @@ jQuery(document).ready(function($) {
             processData: false,
             dataType: "json",
             success: function(response) {
-                if (response.success) {
-                  $block.attr('data-uploaded', 'true');
-                  $label.find('i').removeClass('fa-times-circle fa-spinner').addClass(" fa-check-circle");
-                  $label.find('span').html(file.name);
-                } else {
-                  $label.find('i').removeClass("fa-spinner fa-check-circle").addClass('fa-times-circle');
-                  $label.find('span').html(response.error);
-                  warn(response.error);
-                }
+              setupLeaveWarning();
+              if (response.success) {
+                $block.attr('data-uploaded', 'true');
+                $label.find('i').removeClass('fa-times-circle fa-spinner').addClass(" fa-check-circle");
+                $label.find('span').html(file.name);
+              } else {
+                $label.find('i').removeClass("fa-spinner fa-check-circle").addClass('fa-times-circle');
+                $label.find('span').html(response.error);
+                warn(response.error);
+              }
             },
             fail: function(res) {
                 console.warn(res);
@@ -806,6 +807,17 @@ jQuery(document).ready(function($) {
           $('head').append('<style>.fw-button-previous, .fw-button-next, .fw-button-fileupload { background: ' + buttonColor + ' !important; }</style>');
         }
     }
+    
+    function setupLeaveWarning() {
+      if ($('#mondula-multistep-forms').length) {
+        // show warning and delete attachments before leaving page
+        window.onbeforeunload = function() {
+            var attachments = getAttachments();
+            deleteAttachments(attachments);
+            return 'Your uploaded files were deleted from the server for security reasons.'
+        };
+      }
+    }
 
     function setup() {
 
@@ -854,15 +866,6 @@ jQuery(document).ready(function($) {
         setupColors();
 
         updateSummary($('.fw-wizard'));
-
-        if ($('#mondula-multistep-forms').length) {
-          // show warning and delete attachments before leaving page
-          window.onbeforeunload = function() {
-              var attachments = getAttachments();
-              deleteAttachments(attachments);
-              return 'Your uploaded files were deleted from the server for security reasons.'
-          };
-      }
     }
 
     function init() {
