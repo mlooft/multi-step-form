@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Multi Step Form
- * Version: 1.0.8
+ * Version: 1.1.4
  * Plugin URI: http://www.mondula.com/
  * Description: Create and embed Multi Step Form.
  * Author: Mondula GmbH
@@ -44,12 +44,12 @@ require_once( 'includes/lib/class-mondula-multistep-forms-block.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-checkbox.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-radio.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-email.php' );
+require_once( 'includes/lib/class-mondula-multistep-forms-block-file.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-date.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-paragraph.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-select.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-text.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-textarea.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-block-submit.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-conditional.php' );
 
 

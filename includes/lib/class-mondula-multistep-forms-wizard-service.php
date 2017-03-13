@@ -29,18 +29,18 @@ class Mondula_Form_Wizard_Wizard_Service {
     }
 
     public function get_as_json( $id ) {
+      $all = $this->get_all();
         if ( ! empty( $id ) ) {
             $wizard = $this->get_by_id( $id );
         } else {
             $title = '';
             $wizard = new Mondula_Form_Wizard_Wizard();
         }
-        return json_encode( array( 'title' =>  $title, 'wizard' => $wizard->as_aa() ) );
+        return json_encode( array('wizard' => $wizard->as_aa() ) );
     }
 
     public function save( $id, $data ) {
         $row = array();
-        $row['title'] = $data['title'];
         $row['date'] = current_time( 'mysql' );
         $row['json'] = json_encode( $data['wizard'] );
         $row['version'] = $this->_plugin_version;
