@@ -50,37 +50,44 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
     }
 
     public function column_default( $item, $column_name ) {
-        switch( $column_name ) {
-            case 'title':
-                $actions = array(
-                    'Edit' => '<a href="#"></a>'
-                );
-                $this->row_actions( $actions );
-            case 'date':
-                return $item[ $column_name ];
-            case 'shortcode':
-                return '[wizard id="' .  $item['id'] .'"]';
-            case 'sendto':
-                $wiz = json_decode( $item['json'], true );
-                if ( isset( $wiz['mail']['to'] ) ) {
-                  return $wiz['mail']['to'];
-                } else {
-                  return '';
-                }
-            default:
-                return print_r( $item, true );
-        }
+      $wiz = json_decode( $item['json'], true );
+      switch( $column_name ) {
+          case 'title':
+              $actions = array(
+                  'Edit' => '<a href="#"></a>'
+              );
+              $this->row_actions( $actions );
+          case 'date':
+              return $item[ $column_name ];
+          case 'shortcode':
+              return '[wizard id="' .  $item['id'] .'"]';
+          case 'sendto':
+              if ( $wiz['settings']['to'] != '' ) {
+                return $wiz['settings']['to'];
+              } else {
+                return '';
+              }
+          default:
+              return print_r( $item, true );
+      }
     }
 
     public function column_title( $item ) {
-        $edit_url = esc_url( add_query_arg( array( 'edit' => $item['id'] ) ) );
-        $delete_url = esc_url( add_query_arg ( array ( 'delete' => $item['id'] ) ) );
+      $wiz = json_decode( $item['json'], true );
 
-        $actions = array(
-            'fw-edit' => '<a href="' . $edit_url . '">' . __( 'Edit', $this->_text_domain ) . '</a>',
-            'fw-delete' => '<a href="' . $delete_url . '">' . __( 'Delete', $this->_text_domain ) . '</a>'
-        );
-        return sprintf('<a href="' . $edit_url . '">' . __( $item['title'] , $this->_text_domain ) . '</a>'.'%1$s', $this->row_actions($actions));
+      $edit_url = esc_url( add_query_arg( array( 'edit' => $item['id'] ) ) );
+      $delete_url = esc_url( add_query_arg ( array ( 'delete' => $item['id'] ) ) );
+
+      $actions = array(
+          'fw-edit' => '<a href="' . $edit_url . '">' . __( 'Edit', $this->_text_domain ) . '</a>',
+          'fw-delete' => '<a href="' . $delete_url . '">' . __( 'Delete', $this->_text_domain ) . '</a>'
+      );
+      
+      if (!$wiz['title'] || $wiz['title'] == '') {
+        $wiz['title'] = 'My Multi Step Form';
+      }
+      
+      return sprintf('<a href="' . $edit_url . '">' . __( $wiz['title'] , $this->_text_domain ) . '</a>'.'%1$s', $this->row_actions($actions));
     }
 
 //    public function handle_row_actions( $item, $column_name, $primary ) {

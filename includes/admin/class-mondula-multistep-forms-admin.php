@@ -165,17 +165,30 @@ class Mondula_Form_Wizard_Admin {
                     <th scope="row">"Thank you"-page:</th>
                     <td>
                       <input type="text" class="fw-settings-thankyou"/>
-                      <p class="description">Users will be rediredted to this URL after form submit. Leave blank if you don't need one.</p>
+                      <p class="description">Users will be redirected to this URL after form submit. Leave blank if you don't need one.</p>
                     </td>
                     </tr>
                 </table>
                 <h1>Mail settings</h1>
                 <table class="form-table">
                     <tr valign="top">
-                    <th scope="row">Send emails To:</th>
+                    <th scope="row">Send To:</th>
                     <td>
                       <input type="text" class="fw-mail-to"/>
                       <p class="description">Email address to which the mails are sent</p>
+                    </td>
+                    </tr>
+                    <tr valign="top">
+                    <th scope="row">Send From Email:</th>
+                    <td>
+                      <input type="text" class="fw-mail-from-mail"/>
+                      <p class="description">Email address and name from which the emails are sent. Leave blank for default admin email.</p>
+                    </td>
+                    </tr>
+                    <tr valign="top">
+                    <th scope="row">Send From Name:</th>
+                    <td>
+                      <input type="text" class="fw-mail-from-name"/>
                     </td>
                     </tr>
                     <tr valign="top">
@@ -205,12 +218,13 @@ class Mondula_Form_Wizard_Admin {
                                 <div class="fw-elements">
                                     <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="Form Title">
                                     <a class="fw-element-step"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ) ?></a>
-                                    <h4>Drag &amp; Drop an element from below to a section on the right side</h4>
+                                    <h4>Drag &amp; Drop an element from below to a section</h4>
                                     <a class="fw-draggable-block fw-element-radio" data-type="radio"><i class="fa fa-arrows"></i> Radio/Checkbox</a>
                                     <a class="fw-draggable-block fw-element-select" data-type="select"><i class="fa fa-arrows"></i> Select/Dropdown</a>
                                     <a class="fw-draggable-block fw-element-text" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
                                     <a class="fw-draggable-block fw-element-textarea" data-type="textarea"><i class="fa fa-arrows"></i> Textarea</a>
                                     <a class="fw-draggable-block fw-element-email" data-type="email"><i class="fa fa-arrows"></i> Email</a>
+                                    <a class="fw-draggable-block fw-element-file" data-type="file"><i class="fa fa-arrows"></i> File Upload</a>
                                     <a class="fw-draggable-block fw-element-date" data-type="date"><i class="fa fa-arrows"></i> Date</a>
                                     <a class="fw-draggable-block fw-element-paragraph" data-type="paragraph"><i class="fa fa-arrows"></i> Paragraph</a>
                                 </div>
@@ -231,6 +245,7 @@ class Mondula_Form_Wizard_Admin {
               <div id="fw-thickbox-select">Select/Dropdown</div>
               <div id="fw-thickbox-text">Text field</div>
               <div id="fw-thickbox-email">Email</div>
+              <div id="fw-thickbox-fileupload">File Upload</div>
               <div id="fw-thickbox-textarea">Textarea</div>
               <div id="fw-thickbox-date">Date</div>
               <div id="fw-thickbox-paragraph">Paragraph</div>

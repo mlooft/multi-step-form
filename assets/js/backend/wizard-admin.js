@@ -154,6 +154,14 @@
       emailHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
       return emailHtml;
     }
+    
+    function renderFile(block) {
+      var fileHtml = '';
+      fileHtml += '<label>Label</label>';
+      fileHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
+      fileHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
+      return fileHtml;
+    }
 
     function renderDate(block) {
       var dateHtml = '';
@@ -217,6 +225,9 @@
                 break;
             case 'email':
                 blockHtml += renderEmail(block);
+                break;
+            case 'file':
+                blockHtml += renderFile(block);
                 break;
             case 'date':
                 blockHtml += renderDate(block);
@@ -369,6 +380,12 @@
         if (formSettings.to) {
           $('.fw-mail-to').val(formSettings.to);
         }
+        if (formSettings.frommail) {
+          $('.fw-mail-from-mail').val(formSettings.frommail);
+        }
+        if (formSettings.fromname) {
+          $('.fw-mail-from-name').val(formSettings.fromname);
+        }
         if (formSettings.header) {
           $('.fw-mail-header').val(formSettings.header);
         }
@@ -440,6 +457,11 @@
         text['label'] = $text.find('.fw-text-label').val();
         text['required'] = $text.find('.fw-required').prop('checked');
     }
+    
+    function getFileData($text, text) {
+        text['label'] = $text.find('.fw-text-label').val();
+        text['required'] = $text.find('.fw-required').prop('checked');
+    }
 
     function getDateData($text, text) {
         text['label'] = $text.find('.fw-text-label').val();
@@ -479,6 +501,9 @@
                 break;
             case 'email':
                 getEmailData($block, block);
+                break;
+            case 'file':
+                getFileData($block, block);
                 break;
             case 'date':
                 getDateData($block, block);
@@ -523,6 +548,8 @@
       settings.thankyou = $('.fw-settings-thankyou').val();
       // Mail settings
       settings.to = $('.fw-mail-to').val();
+      settings.frommail = $('.fw-mail-from-mail').val();
+      settings.fromname = $('.fw-mail-from-name').val();
       settings.subject = $('.fw-mail-subject').val();
       settings.header = $('.fw-mail-header').val();
       return settings;
@@ -585,10 +612,10 @@
         var title  = $('.fw-wizard-title').val();
         var valid;
         var data = {
-            title: title,
             wizard: {}
         };
         // data['title']
+        data.wizard.title = title;
         data.wizard.steps = [];
         data.wizard.settings = getSettings();
         var $steps = $container.find('.fw-step');
@@ -917,6 +944,17 @@
               $part.find('.inside').append(block);
               setupClickHandlers();
             });
+            $("#fw-thickbox-fileupload").unbind('click').click(function(thickRadioEvent) {
+              tb_remove();
+              var block = $(renderBlock({
+                  type: 'file',
+                  label: '',
+                  value: ''
+              }));
+              var $part = $(thickEvent.target).parents('.fw-step-part');
+              $part.find('.inside').append(block);
+              setupClickHandlers();
+            });
             // TEXT AREA
             $("#fw-thickbox-textarea").unbind('click').click(function(thickRadioEvent) {
               tb_remove();
@@ -1006,9 +1044,9 @@
             log(wizard);
             log(w);
 
-            if (w.title) {
+            if (w.wizard.title) {
               // load the wizard title
-              $('.fw-wizard-title').val(w.title);
+              $('.fw-wizard-title').val(w.wizard.title);
             } else {
               $('.fw-wizard-title').val('My Multi Step Form');
             }
