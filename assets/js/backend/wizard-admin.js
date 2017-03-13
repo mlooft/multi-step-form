@@ -359,6 +359,7 @@
         stepHtml += '<h1 class="fw-step-h1 hndle ui-sortable-handle"><span>';
         stepHtml += step.title + '</span></h1>';
         stepHtml += '<div class="fw-step-controls">';
+        stepHtml += '<i class="fa fa-files-o fw-duplicate-step" aria-hidden="true"></i>';
         stepHtml += '<i class="fa fa-remove fw-remove-step" title="remove step" aria-hidden="true"></i>';
         stepHtml += '<i class="fa fa-caret-up fw-toggle-step" aria-hidden="true"></i>';
         stepHtml += '</div>';
