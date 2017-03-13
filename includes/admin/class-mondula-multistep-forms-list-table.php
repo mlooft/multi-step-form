@@ -71,16 +71,23 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
               return print_r( $item, true );
       }
     }
+    
+    private function generate_query_url( $action, $id ) {
+      $query = remove_query_arg( array( 'edit', 'delete', 'duplicate') );
+      return esc_url(add_query_arg( array( $action => $id ), $query ));
+    }
 
     public function column_title( $item ) {
       $wiz = json_decode( $item['json'], true );
 
-      $edit_url = esc_url( add_query_arg( array( 'edit' => $item['id'] ) ) );
-      $delete_url = esc_url( add_query_arg ( array ( 'delete' => $item['id'] ) ) );
+      $edit_url = $this->generate_query_url( 'edit', $item['id'] );
+      $delete_url = $this->generate_query_url( 'delete', $item['id'] );
+      $duplicate_url = $this->generate_query_url( 'duplicate', $item['id'] );
 
       $actions = array(
           'fw-edit' => '<a href="' . $edit_url . '">' . __( 'Edit', $this->_text_domain ) . '</a>',
-          'fw-delete' => '<a href="' . $delete_url . '">' . __( 'Delete', $this->_text_domain ) . '</a>'
+          'fw-delete' => '<a href="' . $delete_url . '">' . __( 'Delete', $this->_text_domain ) . '</a>',
+          'fw-duplicate' => '<a href="' . $duplicate_url . '">' . __( 'Duplicate', $this->_text_domain ) . '</a>'
       );
       
       if (!$wiz['title'] || $wiz['title'] == '') {

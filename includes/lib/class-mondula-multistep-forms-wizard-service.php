@@ -54,7 +54,11 @@ class Mondula_Form_Wizard_Wizard_Service {
     }
 
     public function delete( $id ) {
-        $this->_repository->delete( $id );
+      $this->_repository->delete( $id );
+    }
+    
+    public function duplicate( $id ) {
+      $this->_repository->duplicate( $id );
     }
 
 }
