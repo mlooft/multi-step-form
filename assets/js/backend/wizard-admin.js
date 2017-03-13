@@ -529,7 +529,7 @@
         return part;
     }
 
-    function getStepData($step, isLast) {
+    function getStepData($step) {
         var step = {};
         step['title'] = $step.find('.fw-step-title').val();
         step['headline'] = $step.find('.fw-step-headline').val();
@@ -623,7 +623,7 @@
         $steps.each(
             function(idx, element) {
               var last = idx == $steps.length - 1;
-              data.wizard.steps.push(getStepData($(element), last));
+              data.wizard.steps.push(getStepData($(element)));
             }
         );
         data.wizard.steps.push();
@@ -806,10 +806,10 @@
     /**
      * addStep - add a step to the wizard
      */
-    function addStep() {
+    function addStep(step) {
         var n = $('.fw-step').length;
         if (n < 5) {
-          var $step = $(renderStep(emptyStep()));
+          var $step = $(renderStep(step));
           $step.appendTo($(container).find('.meta-box-sortables'));
 
           setupClickHandlers();
@@ -1001,7 +1001,7 @@
     function setupClickHandlers(){
       // add step handler
       $('.fw-element-step').unbind( "click" ).click(function(event) {
-          addStep();
+          addStep(emptyStep());
       });
 
       // add part handler
