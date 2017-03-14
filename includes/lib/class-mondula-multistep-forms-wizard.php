@@ -232,7 +232,7 @@ class Mondula_Form_Wizard_Wizard {
             <div class="fw-alert-user" style="display:none;"></div>
         </div>
         <?php
-        ob_end_flush();
+        return ob_get_clean();
     }
 
     private function render_header_html () {
