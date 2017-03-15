@@ -10,7 +10,7 @@ class Mondula_Form_Wizard_Settings {
 		private static $_instance = null;
     private $_parent = null;
 
-    private $_text_domain = 'mondula-multistep-forms';
+    private $_text_domain = 'multi-step-form';
 
     function __construct( $parent ) {
         $this->settings_api = new Mondula_Form_Wizard_Settings_API;
