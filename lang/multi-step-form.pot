@@ -1,407 +1,493 @@
-# Copyright (C) 2014 Multi Step Form
+# Copyright (C) 2017 Multi Step Form
 # This file is distributed under the same license as the Multi Step Form package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Multi Step Form 1.0\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/WordPress-Plugin-Template\n"
-"POT-Creation-Date: 2014-04-07 11:28:06+00:00\n"
+"Project-Id-Version: Multi Step Form\n"
+"Report-Msgid-Bugs-To: http://mondula.com/kontakt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Lewe Ohlsen <lewe.ohlsen@mondula.com>\n"
+"Language-Team: Mondula GmbH <wp-plugins@mondula.com>\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:52
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:42
-msgctxt "post type general name"
-msgid "Post Type"
+#: includes/admin/class-mondula-multistep-forms-admin.php:59
+msgid "The step title is displayed below the progress bar"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:53
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:43
-msgctxt "post type singular name"
-msgid "Post Type"
+#: includes/admin/class-mondula-multistep-forms-admin.php:60
+msgid "The step headline is displayed above the progress bar"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:55
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:45
-msgid "Add New %s"
+#: includes/admin/class-mondula-multistep-forms-admin.php:61
+msgid "The step description is displayed below the step headline"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:55
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:56
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:57
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:59
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:45
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:46
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:47
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:49
-msgid "Post"
+#: includes/admin/class-mondula-multistep-forms-admin.php:62
+msgid "remove step"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:56
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:46
-msgid "Edit %s"
+#: includes/admin/class-mondula-multistep-forms-admin.php:63
+msgid "remove section"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:57
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:47
-msgid "New %s"
+#: includes/admin/class-mondula-multistep-forms-admin.php:64
+msgid "remove element"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:58
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:48
-msgid "All %s"
+#: includes/admin/class-mondula-multistep-forms-admin.php:65
+msgid "Multi-Select uses checkboxes. Single-Select has radio-buttons."
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:58
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:60
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:61
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:62
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:48
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:50
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:51
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:52
-msgid "Posts"
+#: includes/admin/class-mondula-multistep-forms-admin.php:66
+msgid "Provide a static text block for explanations or additional info. You can use HTML for formatting."
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:59
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:49
-msgid "View %s"
+#: includes/admin/class-mondula-multistep-forms-admin.php:69
+msgid "You need to enter a valid email address"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:60
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:50
-msgid "Search %a"
+#: includes/admin/class-mondula-multistep-forms-admin.php:70
+msgid "You need to provide an email subject"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:61
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:51
-msgid "No %s Found"
+#: includes/admin/class-mondula-multistep-forms-admin.php:71
+msgid "WARNING: You need to provide a title for each step"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:62
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:52
-msgid "No %s Found In Trash"
+#: includes/admin/class-mondula-multistep-forms-admin.php:72
+msgid "WARNING: You need to provide a title for each section"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:64
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:54
-msgid "*Posts"
+#: includes/admin/class-mondula-multistep-forms-admin.php:73
+msgid "WARNING: You need to provide title for the form"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:95
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:105
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:85
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:95
-msgid "Terms"
+#: includes/admin/class-mondula-multistep-forms-admin.php:74
+msgid "ERROR: only 5 steps are allowed in the free version"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:96
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:86
-msgid "Term"
+#: includes/admin/class-mondula-multistep-forms-admin.php:75
+msgid "Do you really want to delete this step?"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:97
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:87
-msgid "Search Terms"
+#: includes/admin/class-mondula-multistep-forms-admin.php:76
+msgid "Do you really want to delete this section?"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:98
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:88
-msgid "All Terms"
+#: includes/admin/class-mondula-multistep-forms-admin.php:77
+msgid "Do you really want to delete this block?"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:99
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:89
-msgid "Parent Term"
+#: includes/admin/class-mondula-multistep-forms-admin.php:79
+msgid "Step Title"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:100
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:90
-msgid "Parent Term:"
+#: includes/admin/class-mondula-multistep-forms-admin.php:80
+msgid "Step Headline"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:101
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:91
-msgid "Edit Term"
+#: includes/admin/class-mondula-multistep-forms-admin.php:81
+msgid "Step description"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:102
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:92
-msgid "Update Term"
+#: includes/admin/class-mondula-multistep-forms-admin.php:82
+msgid "Section Title"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:103
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:93
-msgid "Add New Term"
+#: includes/admin/class-mondula-multistep-forms-admin.php:83
+msgid "Add Step"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:104
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:94
-msgid "New Term Name"
+#: includes/admin/class-mondula-multistep-forms-admin.php:84
+msgid "Add Section"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:125
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:115
-msgid "Custom Field"
+#: includes/admin/class-mondula-multistep-forms-admin.php:85
+msgid "Add Element"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:180
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:170
-msgid "Post updated. %sView post%s."
+#: includes/admin/class-mondula-multistep-forms-admin.php:86
+msgid "Label"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:181
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:171
-msgid "Custom field updated."
+#: includes/admin/class-mondula-multistep-forms-admin.php:87
+msgid "Required"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:182
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:172
-msgid "Custom field deleted."
+#: includes/admin/class-mondula-multistep-forms-admin.php:89
+msgid "Header"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:183
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:173
-msgid "Post updated."
+#: includes/admin/class-mondula-multistep-forms-admin.php:90
+msgid "Option"
 msgstr ""
 
-#. translators: %s: date and time of the revision
-
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:185
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:175
-msgid "Post restored to revision from %s."
+#: includes/admin/class-mondula-multistep-forms-admin.php:91
+msgid "Options"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:186
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:176
-msgid "Post published. %sView post%s."
+#: includes/admin/class-mondula-multistep-forms-admin.php:92
+msgid "Add option"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:187
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:177
-msgid "Post saved."
+#: includes/admin/class-mondula-multistep-forms-admin.php:93
+msgid "Multiple Selection"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:188
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:178
-msgid "Post submitted. %sPreview post%s."
+#: includes/admin/class-mondula-multistep-forms-admin.php:96
+msgid "Options (one per line)"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:189
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:179
-msgid "Post scheduled for: %1$s. %2$sPreview post%3$s."
+#: includes/admin/class-mondula-multistep-forms-admin.php:97
+msgid "Enable search"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:189
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:179
-msgid "M j, Y @ G:i"
+#: includes/admin/class-mondula-multistep-forms-admin.php:100
+msgid "Text/HTML"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:190
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:180
-msgid "Post draft updated. %sPreview post%s."
+#: includes/admin/class-mondula-multistep-forms-admin.php:101
+msgid "Paragraph text"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:201
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:191
-msgid "Post Details"
+#: includes/admin/class-mondula-multistep-forms-admin.php:148
+msgid "Add New"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:295
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:285
-msgid "Enter the post title here"
+#: includes/admin/class-mondula-multistep-forms-list-table.php:80
+msgid "Edit"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:308
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:298
-msgid "Custom field:"
+#: includes/admin/class-mondula-multistep-forms-list-table.php:81
+msgid "Delete"
 msgstr ""
 
-#: classes/post-types/class-mondula-multistep-forms-post_type.php:309
-#: includes/post-types/class-mondula-multistep-forms-post_type.php:299
-msgid "Description of this custom field."
+#: includes/admin/class-mondula-multistep-forms-list-table.php:88
+msgid "$wiz[title]"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:70
-#: includes/class-mondula-multistep-forms-settings.php:405
-msgid "Plugin Settings"
+#: includes/class-mondula-multistep-forms-settings.php:36
+msgid "Email Settings"
+msgstr ""
+
+#: includes/class-mondula-multistep-forms-settings.php:40
+msgid "Styling"
+msgstr ""
+
+#: includes/class-mondula-multistep-forms-settings.php:44
+msgid "Other Settings"
+msgstr ""
+
+#: includes/class-mondula-multistep-forms-settings.php:59, includes/class-mondula-multistep-forms-settings.php:192
+msgid "Text Input"
+msgstr ""
+
+#: includes/class-mondula-multistep-forms-settings.php:60, includes/class-mondula-multistep-forms-settings.php:193
+msgid "Text input description"
+msgstr ""
+
+#: includes/class-mondula-multistep-forms-settings.php:67
+msgid "Number Input"
+msgstr ""
+
+#: includes/class-mondula-multistep-forms-settings.php:68
+msgid "Number field with validation callback `intval`"
+msgstr ""
+
+#: includes/class-mondula-multistep-forms-settings.php:75, includes/class-mondula-multistep-forms-settings.php:199
+msgid "Textarea Input"
+msgstr ""
+
+#: includes/class-mondula-multistep-forms-settings.php:76, includes/class-mondula-multistep-forms-settings.php:200
+msgid "Textarea description"
+msgstr ""
+
+#: includes/class-mondula-multistep-forms-settings.php:81
+msgid "Mail Format"
+msgstr ""
+
+#: includes/class-mondula-multistep-forms-settings.php:82
+msgid "Choose formatting for form emails"
+msgstr ""
+
+#: includes/class-mondula-multistep-forms-settings.php:92
+msgid "Summary"
+msgstr ""
+
+#: includes/class-mondula-multistep-forms-settings.php:93
+msgid "Display Summary at the end of each form"
 msgstr ""
 
 #: includes/class-mondula-multistep-forms-settings.php:99
-msgid "Settings"
+msgid "CC"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:111
-msgid "Standard"
+#: includes/class-mondula-multistep-forms-settings.php:100
+msgid "Send copy of submitted data to user"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:112
-msgid "These are fairly standard form input fields."
+#: includes/class-mondula-multistep-forms-settings.php:106, includes/class-mondula-multistep-forms-settings.php:221
+msgid "Multile checkbox"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:116
-msgid "Some Text"
+#: includes/class-mondula-multistep-forms-settings.php:107, includes/class-mondula-multistep-forms-settings.php:222
+msgid "Multi checkbox description"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:117
-msgid "This is a standard text field."
+#: includes/class-mondula-multistep-forms-settings.php:118, includes/class-mondula-multistep-forms-settings.php:233
+msgid "A Dropdown"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:120
-#: includes/class-mondula-multistep-forms-settings.php:128
-#: includes/class-mondula-multistep-forms-settings.php:136
-msgid "Placeholder text"
+#: includes/class-mondula-multistep-forms-settings.php:119, includes/class-mondula-multistep-forms-settings.php:234
+msgid "Dropdown description"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:124
-msgid "A Password"
+#: includes/class-mondula-multistep-forms-settings.php:129, includes/class-mondula-multistep-forms-settings.php:243
+msgid "Password"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:125
-msgid "This is a standard password field."
+#: includes/class-mondula-multistep-forms-settings.php:130, includes/class-mondula-multistep-forms-settings.php:244
+msgid "Password description"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:132
-msgid "Some Secret Text"
+#: includes/class-mondula-multistep-forms-settings.php:136, includes/class-mondula-multistep-forms-settings.php:250
+msgid "File"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:133
-msgid "This is a secret text field - any data saved here will not be displayed after the page has reloaded, but it will be saved."
-msgstr ""
-
-#: includes/class-mondula-multistep-forms-settings.php:140
-msgid "A Text Block"
-msgstr ""
-
-#: includes/class-mondula-multistep-forms-settings.php:141
-msgid "This is a standard text area."
-msgstr ""
-
-#: includes/class-mondula-multistep-forms-settings.php:144
-msgid "Placeholder text for this textarea"
+#: includes/class-mondula-multistep-forms-settings.php:137, includes/class-mondula-multistep-forms-settings.php:251
+msgid "File description"
 msgstr ""
 
 #: includes/class-mondula-multistep-forms-settings.php:148
-msgid "An Option"
+msgid "Progress Bar"
 msgstr ""
 
 #: includes/class-mondula-multistep-forms-settings.php:149
-msgid "A standard checkbox - if you save this option as checked then it will store the option as 'on', otherwise it will be an empty string."
+msgid "Show progress bar"
 msgstr ""
 
 #: includes/class-mondula-multistep-forms-settings.php:155
-msgid "A Select Box"
+msgid "Boxed Layout"
 msgstr ""
 
 #: includes/class-mondula-multistep-forms-settings.php:156
-msgid "A standard select box."
+msgid "Boxed frontend styling. Uncheck the checkbox to get a plain layout."
+msgstr ""
+
+#: includes/class-mondula-multistep-forms-settings.php:162
+msgid "Active Step Color"
 msgstr ""
 
 #: includes/class-mondula-multistep-forms-settings.php:163
-msgid "Some Options"
+msgid "Choose a color for the active step"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:164
-msgid "A standard set of radio buttons."
+#: includes/class-mondula-multistep-forms-settings.php:169
+msgid "Visited Step Color"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:171
-msgid "Some Items"
+#: includes/class-mondula-multistep-forms-settings.php:170
+msgid "Choose a color for the completed steps"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:172
-msgid "You can select multiple items and they will be stored as an array."
+#: includes/class-mondula-multistep-forms-settings.php:176
+msgid "Next Step Color"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:181
-msgid "Extra"
+#: includes/class-mondula-multistep-forms-settings.php:177
+msgid "Choose a color for the steps to follow"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:182
-msgid "These are some extra input fields that maybe aren't as common as the others."
+#: includes/class-mondula-multistep-forms-settings.php:183
+msgid "Button Color"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:186
-msgid "A Number"
+#: includes/class-mondula-multistep-forms-settings.php:184
+msgid "Choose a color for the buttons"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:187
-msgid "This is a standard number field - if this field contains anything other than numbers then the form will not be submitted."
+#: includes/class-mondula-multistep-forms-settings.php:205
+msgid "Checkbox"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:190
-msgid "42"
+#: includes/class-mondula-multistep-forms-settings.php:206
+msgid "Checkbox Label"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:194
-msgid "Pick a colour"
+#: includes/class-mondula-multistep-forms-settings.php:211
+msgid "Radio Button"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:195
-msgid "This uses WordPress' built-in colour picker - the option is stored as the colour's hex code."
+#: includes/class-mondula-multistep-forms-settings.php:212
+msgid "A radio button"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:201
-msgid "An Image"
-msgstr ""
-
-#: includes/class-mondula-multistep-forms-settings.php:202
-msgid "This will upload an image to your media library and store the attachment ID in the option field. Once you have uploaded an imge the thumbnail will display above these buttons."
-msgstr ""
-
-#: includes/class-mondula-multistep-forms-settings.php:209
-msgid "A Multi-Select Box"
-msgstr ""
-
-#: includes/class-mondula-multistep-forms-settings.php:210
-msgid "A standard multi-select box - the saved data is stored as an array."
-msgstr ""
-
-#: includes/class-mondula-multistep-forms-settings.php:354
+#: includes/lib/class-mondula-multistep-forms-admin-api.php:159, pkg/multi-step-form/includes/lib/class-multi-step-form-admin-api.php:159
 msgid "Upload an image"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:354
+#: includes/lib/class-mondula-multistep-forms-admin-api.php:159, pkg/multi-step-form/includes/lib/class-multi-step-form-admin-api.php:159
 msgid "Use image"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:354
+#: includes/lib/class-mondula-multistep-forms-admin-api.php:159, pkg/multi-step-form/includes/lib/class-multi-step-form-admin-api.php:159
 msgid "Upload new image"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:355
+#: includes/lib/class-mondula-multistep-forms-admin-api.php:160, pkg/multi-step-form/includes/lib/class-multi-step-form-admin-api.php:160
 msgid "Remove image"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:410
-msgid "All"
+#: includes/lib/class-mondula-multistep-forms-post-type.php:67, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:67
+msgctxt "$this->post_type"
+msgid "Add New"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:427
-msgid "Save Settings"
+#: includes/lib/class-mondula-multistep-forms-post-type.php:68, includes/lib/class-mondula-multistep-forms-taxonomy.php:70, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:68, pkg/multi-step-form/includes/lib/class-multi-step-form-taxonomy.php:70
+msgid "Add New %s"
 msgstr ""
 
-#: includes/class-mondula-multistep-forms-settings.php:458
-#: includes/class-mondula-multistep-forms-settings.php:467
-#: includes/class-mondula-multistep-forms.php:207
-#: includes/class-mondula-multistep-forms.php:216
-msgid "Cheatin&#8217; huh?"
-msgstr ""
-#. Plugin Name of the plugin/theme
-msgid "Multi Step Form"
+#: includes/lib/class-mondula-multistep-forms-post-type.php:69, includes/lib/class-mondula-multistep-forms-taxonomy.php:67, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:69, pkg/multi-step-form/includes/lib/class-multi-step-form-taxonomy.php:67
+msgid "Edit %s"
 msgstr ""
 
-#. Plugin URI of the plugin/theme
-msgid "http://www.hughlashbrooke.com/"
+#: includes/lib/class-mondula-multistep-forms-post-type.php:70, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:70
+msgid "New %s"
 msgstr ""
 
-#. Author of the plugin/theme
-msgid "Hugh Lashbrooke"
+#: includes/lib/class-mondula-multistep-forms-post-type.php:71, includes/lib/class-mondula-multistep-forms-taxonomy.php:66, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:71, pkg/multi-step-form/includes/lib/class-multi-step-form-taxonomy.php:66
+msgid "All %s"
 msgstr ""
 
-#. Author URI of the plugin/theme
-msgid "http://www.hughlashbrooke.com/"
+#: includes/lib/class-mondula-multistep-forms-post-type.php:72, includes/lib/class-mondula-multistep-forms-taxonomy.php:68, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:72, pkg/multi-step-form/includes/lib/class-multi-step-form-taxonomy.php:68
+msgid "View %s"
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:73, includes/lib/class-mondula-multistep-forms-taxonomy.php:74, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:73, pkg/multi-step-form/includes/lib/class-multi-step-form-taxonomy.php:74
+msgid "Search %s"
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:74, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:74
+msgid "No %s Found"
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:75, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:75
+msgid "No %s Found In Trash"
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:113, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:113
+msgid "%1$s updated. %2$sView %3$s%4$s."
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:114, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:114
+msgid "Custom field updated."
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:115, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:115
+msgid "Custom field deleted."
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:116, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:116
+msgid "%1$s updated."
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:117, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:117
+msgid "%1$s restored to revision from %2$s."
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:118, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:118
+msgid "%1$s published. %2$sView %3$s%4s."
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:119, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:119
+msgid "%1$s saved."
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:120, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:120
+msgid "%1$s submitted. %2$sPreview post%3$s%4$s."
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:121, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:121
+msgid "%1$s scheduled for: %2$s. %3$sPreview %4$s%5$s."
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:121, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:121
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:122, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:122
+msgid "%1$s draft updated. %2$sPreview %3$s%4$s."
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:137, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:137
+msgid "%1$s %2$s updated."
+msgid_plural "%1$s %3$s updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:138, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:138
+msgid "%1$s %2$s not updated, somebody is editing it."
+msgid_plural "%1$s %3$s not updated, somebody is editing them."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:139, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:139
+msgid "%1$s %2$s permanently deleted."
+msgid_plural "%1$s %3$s permanently deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:140, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:140
+msgid "%1$s %2$s moved to the Trash."
+msgid_plural "%1$s %3$s moved to the Trash."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-mondula-multistep-forms-post-type.php:141, pkg/multi-step-form/includes/lib/class-multi-step-form-post-type.php:141
+msgid "%1$s %2$s restored from the Trash."
+msgid_plural "%1$s %3$s restored from the Trash."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-mondula-multistep-forms-taxonomy.php:69, pkg/multi-step-form/includes/lib/class-multi-step-form-taxonomy.php:69
+msgid "Update %s"
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-taxonomy.php:71, pkg/multi-step-form/includes/lib/class-multi-step-form-taxonomy.php:71
+msgid "New %s Name"
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-taxonomy.php:72, pkg/multi-step-form/includes/lib/class-multi-step-form-taxonomy.php:72
+msgid "Parent %s"
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-taxonomy.php:73, pkg/multi-step-form/includes/lib/class-multi-step-form-taxonomy.php:73
+msgid "Parent %s:"
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-taxonomy.php:75, pkg/multi-step-form/includes/lib/class-multi-step-form-taxonomy.php:75
+msgid "Popular %s"
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-taxonomy.php:76, pkg/multi-step-form/includes/lib/class-multi-step-form-taxonomy.php:76
+msgid "Separate %s with commas"
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-taxonomy.php:77, pkg/multi-step-form/includes/lib/class-multi-step-form-taxonomy.php:77
+msgid "Add or remove %s"
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-taxonomy.php:78, pkg/multi-step-form/includes/lib/class-multi-step-form-taxonomy.php:78
+msgid "Choose from the most used %s"
+msgstr ""
+
+#: includes/lib/class-mondula-multistep-forms-taxonomy.php:79, pkg/multi-step-form/includes/lib/class-multi-step-form-taxonomy.php:79
+msgid "No %s found"
 msgstr ""
