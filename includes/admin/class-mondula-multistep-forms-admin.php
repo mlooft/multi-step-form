@@ -57,13 +57,53 @@ class Mondula_Form_Wizard_Admin {
             $id = isset( $_GET['edit'] ) ? $_GET['edit'] : '';
             $json = $this->_wizard_service->get_as_json( $id );
             $i18n = array(
-                'title' => __( 'Step Title', $this->_text_domain ),
-                'headline' => __( 'Step Headline', $this->_text_domain ),
-                'copyText' => __( 'Step description', $this->_text_domain  ),
-                'partTitle' => __( 'Section Title', $this->_text_domain ),
-                'radioHeader' => __( 'Header', $this->_text_domain ),
-                'radioHeading' => __( 'Radio/Checkbox', $this->_text_domain)
+              'tooltips' => array(
+                'title' => __( 'The step title is displayed below the progress bar', $this->_text_domain ),
+                'headline' => __( 'The step headline is displayed above the progress bar' , $this->_text_domain ),
+                'copyText' => __( 'The step description is displayed below the step headline' , $this->_text_domain ),
+                'removeStep' => __('remove step', $this->_text_domain),
+                'removeSection' => __('remove section', $this->_text_domain),
+                'removeBlock' => __('remove element', $this->_text_domain),
+                'multiChoice' => __('Multi-Select uses checkboxes. Single-Select has radio-buttons.', $this->_text_domain),
+                'paragraph' => __('Provide a static text block for explanations or additional info. You can use HTML for formatting.', $this->_text_domain)
+              ),
+              'alerts' => array(
+                'invalidEmail' => __('You need to enter a valid email address', $this->_text_domain),
+                'noSubject' => __('You need to provide an email subject', $this->_text_domain),
+                'noStepTitle' => __('WARNING: You need to provide a title for each step', $this->_text_domain),
+                'noSectionTitle' => __('WARNING: You need to provide a title for each section', $this->_text_domain),
+                'noFormTitle' => __('WARNING: You need to provide title for the form', $this->_text_domain),
+                'onlyFive' => __('ERROR: only 5 steps are allowed in the free version', $this->_text_domain),
+                'reallyDeleteStep' => __('Do you really want to delete this step?', $this->_text_domain),
+                'reallyDeleteSection' => __('Do you really want to delete this section?', $this->_text_domain),
+                'reallyDeleteBlock' => __('Do you really want to delete this block?', $this->_text_domain)
+              ),
+              'title' => __( 'Step Title', $this->_text_domain ),
+              'headline' => __( 'Step Headline', $this->_text_domain ),
+              'copyText' => __( 'Step description', $this->_text_domain  ),
+              'partTitle' => __( 'Section Title', $this->_text_domain ),
+              'addStep' => __( 'Add Step', $this->_text_domain ),
+              'addSection' => __( 'Add Section', $this->_text_domain ),
+              'addElement' => __('Add Element', $this->_text_domain ),
+              'label' => __( 'Label', $this->_text_domain ),
+              'required' => __('Required', $this->_text_domain),
+              'radio' => array(
+                'header' => __( 'Header', $this->_text_domain ),
+                'option' => __( 'Option', $this->_text_domain ),
+                'options' => __('Options', $this->_text_domain ),
+                'addOption' => __('Add option', $this->_text_domain ),
+                'multiple' => __('Multiple Selection', $this->_text_domain )
+              ),
+              'select' => array(
+                'options' => __('Options (one per line)', $this->_text_domain),
+                'search' => __('Enable search', $this->_text_domain)
+              ),
+              'paragraph' => array(
+                'textHtml' => __('Text/HTML', $this->_text_domain),
+                'text' => __('Paragraph text', $this->_text_domain)
+              )
             );
+            
             wp_register_script( $this->_token . '-backend', esc_url( $this->_assets_url ) . 'backend' . $this->_script_suffix . '.js', array( 'postbox', 'jquery-ui-dialog', 'jquery-ui-sortable', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-tooltip', 'jquery' ), $this->_version );
             $ajax = array(
                 'i18n' => $i18n,
