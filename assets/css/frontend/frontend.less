@@ -153,6 +153,12 @@
 	margin-top: 15px;
 	text-transform: uppercase;
 	font-weight:normal;
+	&.fw-submit-success {
+		background-color: @color_user-success;
+	}
+	&.fw-submit-fail {
+		background-color: @color_user-fail;
+	}
 	&:hover {
 		color: #666;
 		border-color: #4891ae;
@@ -161,6 +167,9 @@
 	}
 	&:focus {
 		outline-width: 0;
+	}
+	i {
+		margin-right: 5px;
 	}
 }
 .fw-btn-submit {
@@ -498,7 +507,7 @@ h2.fw-step-part-title {
 /* ------------------------------------------------------------------------*/
 /* ---- File Upload -------------------------------------------------------*/
 /* ------------------------------------------------------------------------*/
-[data-type="fw-file"] .fa-spinner {
+.fa-spinner {
     -webkit-animation:spin 1s linear infinite;
     -moz-animation:spin 1s linear infinite;
     animation:spin 1s linear infinite;

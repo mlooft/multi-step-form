@@ -646,6 +646,7 @@ jQuery(document).ready(function($) {
 
     function sendEmail(summary, email, files) {
         var id = $('#mondula-multistep-forms').attr('data-wizardid');
+        $('.fw-btn-submit').html('<i class="fa fa-spinner"></i> sending data');
         $.post(
             ajax.ajaxurl, {
                 action: 'fw_send_email',
@@ -663,12 +664,14 @@ jQuery(document).ready(function($) {
                     window.location.href = url;
                 } else {
                     // TODO: customizable success message
-                    alertUser("Success! Your data was submitted.", true);
+                    $('.fw-btn-submit').addClass('fw-submit-success').html('<i class="fa fa-check-circle"></i> success');
+                    $('.fw-btn-submit').unbind( "click" );
                 }
             }
         ).fail(function(resp) {
-            warn('response', resp);
-            warn('responseText', resp.responseText);
+          $('.fw-btn-submit').addClass('fw-submit-fail').html('<i class="fa fa-times-circle"></i> submit failed');
+          warn('response', resp);
+          warn('responseText', resp.responseText);
         });
     }
 
