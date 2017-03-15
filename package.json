@@ -1,5 +1,5 @@
 {
-  "name": "mondula-multistep-forms",
+  "name": "multi-step-form",
   "title": "Multi Step Form",
   "version": "1.1.4",
   "homepage": "https://github.com/hlashbrooke/WordPress-Plugin-Template",
@@ -23,11 +23,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leweohlsen/mondula-multistep-forms.git"
+    "url": "git+https://github.com/mlooft/multi-step-form.git"
   },
   "author": "Lewe Ohlsen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/leweohlsen/mondula-multistep-forms/issues"
+    "url": "https://github.com/mlooft/multi-step-form/issues"
   }
 }
