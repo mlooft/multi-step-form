@@ -7,7 +7,8 @@ class Mondula_Form_Wizard_Shortcode {
     /**
      *
      */
-    const CODE = 'wizard';
+    const CODE_OLD = 'wizard';
+    const CODE= 'multi-step-form';
 
     private $_parent;
 
@@ -25,6 +26,7 @@ class Mondula_Form_Wizard_Shortcode {
         $this->_token = $token;
         $this->_wizard_service = $wizard_service;
 
+        add_shortcode( self::CODE_OLD, array( $this, 'handler' ) );
         add_shortcode( self::CODE, array( $this, 'handler' ) );
 
         add_action( 'wp_ajax_fw_send_email', array( $this, 'fw_send_email' ) );
@@ -59,7 +61,7 @@ class Mondula_Form_Wizard_Shortcode {
         $data['title'] = 'Generated';
         $data['wizard'] = $wizard;
 
-        $wizard->render( $id );
+        return $wizard->render( $id );
     }
     
     /**

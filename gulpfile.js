@@ -99,9 +99,9 @@ gulp.task('pot', function () {
     return gulp.src('**/*.php')
         .pipe(sort())
         .pipe(wpPot({
-            domain: 'mondula-multistep-forms', // TODO
-            destfile: 'mondula-form-wizard.pot', // TODO
-            package: 'mondula-multistep-forms', // TODO
+            domain: 'multi-step-form', 
+            destfile: 'multi-step-form.pot',
+            package: 'Multi Step Form',
             bugReport: 'http://mondula.com/kontakt', // TODO
             lastTranslator: 'Lewe Ohlsen <lewe.ohlsen@mondula.com>',
             team: 'Mondula GmbH <wp-plugins@mondula.com>'

@@ -56,7 +56,7 @@
      * @param  radioHeader the radio header object
      */
     function renderRadioHeader(radioHeader) {
-        var radioHeaderHtml = '<div class="fw-radio-option-element" data-type="header"><label>Label</label>';
+        var radioHeaderHtml = '<div class="fw-radio-option-element" data-type="header"><label>' + wizard.i18n.label + '</label>';
         radioHeaderHtml += '<input type="text" class="fw-radio-header fw-block-label" value="' + radioHeader + '"></input>';
         radioHeaderHtml += '</div>';
         return radioHeaderHtml;
@@ -72,7 +72,7 @@
      */
     function renderRadioOption(radioOption, idx) {
         var radioOptionHtml = '<div class="fw-radio-option-element" data-type="option">'; //'<label>Option ' + idx + '</label>';
-        radioOptionHtml += '<input type="text" class="fw-radio-option" placeholder="Option ' + idx + '" value="' + radioOption + '"></input>';
+        radioOptionHtml += '<input type="text" class="fw-radio-option" placeholder="'+ wizard.i18n.radio.option + ' ' + idx + '" value="' + radioOption + '"></input>';
         radioOptionHtml += '<div class="fw-remove-radio-option"><i class="fa fa-minus-circle" aria-hidden="true"></i></div></div>';
         return radioOptionHtml;
     }
@@ -89,7 +89,7 @@
             log('element', element);
             if (element.type === 'option') {
                 if (i == 1) {
-                    radioHtml += '<label>Options</label>';
+                    radioHtml += '<label>' + wizard.i18n.radio.options + '</label>';
                 }
                 radioHtml += renderRadioOption(element.value, (1 + optCount++));
             } else {
@@ -98,12 +98,12 @@
 
         }
         radioHtml += '</div>';
-        radioHtml += '<button class="fw-radio-add"><i class="fa fa-plus" aria-hidden="true"></i> Add option</button><br/>';
-        radioHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(radio.required) + '/> Required</label>';
+        radioHtml += '<button class="fw-radio-add"><i class="fa fa-plus" aria-hidden="true"></i> ' + wizard.i18n.radio.addOption + '</button><br/>';
+        radioHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(radio.required) + '/> ' + wizard.i18n.required + '</label>';
         if (radio.multichoice == "true") {
-          radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice" checked/>Multiple Selection <i class="fa fa-info-circle" aria-hidden="true" title="Multi-Select uses checkboxes. Single-Select has radio-buttons."></i></label>';
+          radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice" checked/>' + wizard.i18n.radio.multiple + ' <i class="fa fa-info-circle" aria-hidden="true" title="' + wizard.i18n.tooltips.multiChoice + '"></i></label>';
         } else {
-          radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice"/>Multiple Selection <i class="fa fa-info-circle" aria-hidden="true" title="Multi-Select uses checkboxes. Single-Select has radio-buttons."></i></label>';
+          radioHtml += '<label><input type="checkbox" class="fw-radio-multichoice"/>' + wizard.i18n.radio.multiple + ' <i class="fa fa-info-circle" aria-hidden="true" title="' + wizard.i18n.tooltips.multiChoice + '"></i></label>';
         }
         return radioHtml;
     }
@@ -114,17 +114,17 @@
         var selectHtml = '';
         var element;
         selectHtml += '<div class="fw-select-option-container">';
-        selectHtml += '<label>Label</label>';
+        selectHtml += '<label>' + wizard.i18n.label + '</label>';
         selectHtml += '<input type="text" class="fw-block-label" value="' + select.label + '"></input>';
-        selectHtml += '<label>Options (one per line)</label>';
+        selectHtml += '<label>' + wizard.i18n.select.options + '</label>';
         selectHtml += '<textarea class="fw-select-options" rows="4" cols="50">';
         for (i = 0; i < select.elements.length; i++) {
           selectHtml += select.elements[i] + "\n";
         }
         selectHtml += '</textarea>';
         selectHtml += '</div>';
-        selectHtml += '<label><input type="checkbox" class="fw-select-search"'+ isChecked(select.search) + '/>Enable search</label>';
-        selectHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(select.required) + '/> Required</label>';
+        selectHtml += '<label><input type="checkbox" class="fw-select-search"'+ isChecked(select.search) + '/>' + wizard.i18n.select.search + '</label>';
+        selectHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(select.required) + '/> '+ wizard.i18n.required + '</label>';
 
         return selectHtml;
     }
@@ -132,58 +132,58 @@
     function renderCheckbox(block) {
         log('checkbox', block);
         var textHtml = '';
-        textHtml += '<label>Label</label>';
-        textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
+        textHtml += '<label>' + wizard.i18n.label + '</label>';
+        textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+        textHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
         return textHtml;
     }
 
     function renderTextInput(block) {
         log('textInput', block);
         var textHtml = '';
-        textHtml += '<label>Label</label>';
-        textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
+        textHtml += '<label>' + wizard.i18n.label + '</label>';
+        textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+        textHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
         return textHtml;
     }
 
     function renderEmail(block) {
       var emailHtml = '';
-      emailHtml += '<label>Label</label>';
-      emailHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-      emailHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
+      emailHtml += '<label>' + wizard.i18n.label + '</label>';
+      emailHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+      emailHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
       return emailHtml;
     }
     
     function renderFile(block) {
       var fileHtml = '';
-      fileHtml += '<label>Label</label>';
-      fileHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-      fileHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
+      fileHtml += '<label>' + wizard.i18n.label + '</label>';
+      fileHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+      fileHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
       return fileHtml;
     }
 
     function renderDate(block) {
       var dateHtml = '';
-      dateHtml += '<label>Label</label>';
-      dateHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-      dateHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
+      dateHtml += '<label>' + wizard.i18n.label + '</label>';
+      dateHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+      dateHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
       return dateHtml;
     }
 
     function renderTextArea(block) {
         log('textArea', block);
         var textAreaHtml = '';
-        textAreaHtml += '<label>Label</label>';
-        textAreaHtml += '<input type="text" class="fw-textarea-label fw-block-label" placeholder="Label" value="' + block.label + '"></input><br/>';
-        textAreaHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>Required</label>';
+        textAreaHtml += '<label>' + wizard.i18n.label + '</label>';
+        textAreaHtml += '<input type="text" class="fw-textarea-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+        textAreaHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
         return textAreaHtml;
     }
 
     function renderParagraph(block) {
         var paragraphHtml = '';
-        paragraphHtml += '<label>Text/HTML <i class="fa fa-info-circle" aria-hidden="true" title="Provide a static text block for explanations or additional info. You can use HTML for formatting."></i></label>';
-        paragraphHtml += '<textarea class="fw-paragraph-text fw-block-label" placeholder="Paragraph text">' + (block.text ? block.text : '') + '</textarea>';
+        paragraphHtml += '<label>' + wizard.i18n.paragraph.textHtml + ' <i class="fa fa-info-circle" aria-hidden="true" title="' + wizard.i18n.tooltips.paragraph + '"></i></label>';
+        paragraphHtml += '<textarea class="fw-paragraph-text fw-block-label" placeholder="' + wizard.i18n.paragraph.text + '">' + (block.text ? block.text : '') + '</textarea>';
         return paragraphHtml;
     }
 
@@ -192,7 +192,7 @@
         var error = false;
         var blockHtml = '<div class="fw-step-block" data-type="' + block.type + '" >';
         blockHtml += '<div class="fw-block-controls">';
-        blockHtml += '<i class="fa fa-remove fw-remove-block" title="remove element" aria-hidden="true"></i>';
+        blockHtml += '<i class="fa fa-remove fw-remove-block" title="' + wizard.i18n.tooltips.removeBlock + '" aria-hidden="true"></i>';
         blockHtml += '<i class="fa fa-caret-up fw-toggle-block" aria-hidden="true"></i>';
         blockHtml += '</div>';
         // removepart button
@@ -270,7 +270,7 @@
         partHtml += '<input type="text" class="fw-part-title" value="' + part.title + '" placeholder="' + wizard.i18n.partTitle + '"></input>';
 
         // removepart button
-        partHtml += '<div class="fw-remove-part" title="remove section">';
+        partHtml += '<div class="fw-remove-part" title="' + wizard.i18n.removeSection + '">';
         partHtml += '<i class="fa fa-remove"></i>';
         partHtml += '</div><div class="inside connectedSortable">';
 
@@ -279,7 +279,7 @@
 
         // drag&drop or click here to add elements
         partHtml += '</div><div class="fw-add-element">';
-        partHtml += '<a href="#TB_inline?width=400&height=200&inlineId=fw-thickbox-content" class="thickbox"><i class="fa fa-plus"></i> Add Element</a>';
+        partHtml += '<a href="#TB_inline?width=400&height=200&inlineId=fw-thickbox-content" class="thickbox"><i class="fa fa-plus"></i> ' + wizard.i18n.addElement + '</a>';
         partHtml += '</div>';
 
         partHtml += '</div>';
@@ -314,7 +314,7 @@
         }
         partsHtml += '</div>';
         partsHtml += '<div class="fw-parts-footer">';
-        partsHtml += '<a class="fw-add-part"><i class="fa fa-plus"></i> Add Section</a>';
+        partsHtml += '<a class="fw-add-part"><i class="fa fa-plus"></i> ' + wizard.i18n.addSection + '</a>';
         partsHtml += '</div>';
         partsHtml += '</div>';
         return partsHtml;
@@ -329,21 +329,21 @@
         // title
         stepHtml += '<div class="input form-field">';
         stepHtml += '<label for="' + titleId + '"><b>' + wizard.i18n.title + '</b>';
-        stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="The step title is displayed below the progress bar"></i></label>';
+        stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="'+ wizard.i18n.tooltips.title  +'"></i></label>';
         stepHtml += '<input type="text" class="fw-step-title" value="' + step.title + '"></input>';
         stepHtml += '</div>';
 
         // headline
         stepHtml += '<div class="input form-field">';
         stepHtml += '<label for="' + headlineId + '"><b>' + wizard.i18n.headline + '</b>';
-        stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="The step headline is displayed above the progress bar"></i></label>';
+        stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="'+ wizard.i18n.tooltips.headline +'"></i></label>';
         stepHtml += '<input type="text" class="fw-step-headline" value="' + step.headline + '"></input>';
         stepHtml += '</div>';
 
         // copy text
         stepHtml += '<div class="input form-field">';
         stepHtml += '<label for="' + copyTextId + '"><b>' + wizard.i18n.copyText + '</b>';
-        stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="The step description is displayed below the step headline"></i></label>';
+        stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="'+ wizard.i18n.copyText +'"></i></label>';
         stepHtml += '<input type="text" class="fw-step-copy_text" value="' + step.copy_text + '"></input>';
         stepHtml += '</div>';
 
@@ -359,7 +359,7 @@
         stepHtml += '<h1 class="fw-step-h1 hndle ui-sortable-handle"><span>';
         stepHtml += step.title + '</span></h1>';
         stepHtml += '<div class="fw-step-controls">';
-        stepHtml += '<i class="fa fa-remove fw-remove-step" title="remove step" aria-hidden="true"></i>';
+        stepHtml += '<i class="fa fa-remove fw-remove-step" title="'+ wizard.i18n.tooltips.removeStep +'" aria-hidden="true"></i>';
         stepHtml += '<i class="fa fa-caret-up fw-toggle-step" aria-hidden="true"></i>';
         stepHtml += '</div>';
         stepHtml += '<div class="fw-clearfix"></div>';
@@ -399,7 +399,7 @@
             stepsHtml += renderStep(steps[i], i);
         }
         stepsHtml += '</div>';
-        stepsHtml += '<a class="fw-element-step"><i class="fa fa-plus"></i> Add Step</a>';
+        stepsHtml += '<a class="fw-element-step"><i class="fa fa-plus"></i> '+ wizard.i18n.addStep +'</a>';
         stepsHtml += '</div></div>';
         $(container).html(stepsHtml);
     }
@@ -528,7 +528,7 @@
         return part;
     }
 
-    function getStepData($step, isLast) {
+    function getStepData($step) {
         var step = {};
         step['title'] = $step.find('.fw-step-title').val();
         step['headline'] = $step.find('.fw-step-headline').val();
@@ -568,11 +568,11 @@
       if (!isEmail(settings.to)) {
         valid = false;
         $('#fw-nav-settings').trigger('click');
-        alertMessage("You need to enter a valid email address", false);
+        alertMessage(wizard.i18n.alerts.invalidEmail, false);
       } else if (!settings.subject) {
         valid = false;
         $('#fw-nav-settings').trigger('click');
-        alertMessage("You need to provide an email subject", false);
+        alertMessage(wizard.i18n.alerts.noSubject, false);
       }
       return valid;
     }
@@ -583,12 +583,12 @@
           var step = steps[i];
           if (!step.title) {
             valid = false;
-            alertMessage("WARNING: You need to provide a title for each step", false);
+            alertMessage(wizard.i18n.alerts.noStepTitle, false);
           } else {
             for (var j = 0; j < steps[i].parts.length; j++) {
               if (steps[i].parts[j].title === ""){
                 valid = false;
-                alertMessage("WARNING: You need to provide a title for each section", false);
+                alertMessage(wizard.i18n.alerts.noSectionTitle, false);
               }
             }
           }
@@ -600,7 +600,7 @@
       var valid = true;
       if(data.title === "") {
         valid = false;
-        alertMessage("WARNING: You need to provide title for the form", false);
+        alertMessage(wizard.i18n.alerts.noFormTitle, false);
       } else {
         valid = validateSteps(data.wizard.steps) && validateSettings(data.wizard.settings);
       }
@@ -622,7 +622,7 @@
         $steps.each(
             function(idx, element) {
               var last = idx == $steps.length - 1;
-              data.wizard.steps.push(getStepData($(element), last));
+              data.wizard.steps.push(getStepData($(element)));
             }
         );
         data.wizard.steps.push();
@@ -805,10 +805,10 @@
     /**
      * addStep - add a step to the wizard
      */
-    function addStep() {
+    function addStep(step) {
         var n = $('.fw-step').length;
         if (n < 5) {
-          var $step = $(renderStep(emptyStep()));
+          var $step = $(renderStep(step));
           $step.appendTo($(container).find('.meta-box-sortables'));
 
           setupClickHandlers();
@@ -822,7 +822,7 @@
             }, 500);
           }
         } else {
-          alertMessage('ERROR: only 5 steps are allowed in the free version', false);
+          alertMessage(wizard.i18n.alerts.onlyFive, false);
         }
     }
 
@@ -862,7 +862,7 @@
     function removeStep() {
       var $this = $(this);
       var $step = $this.closest('.postbox');
-      var r = confirm("Do you really want to delete this step?");
+      var r = confirm(wizard.i18n.alerts.reallyDeleteStep);
       if (r === true) {
         $step.slideUp(700, function() {
             $step.remove();
@@ -877,7 +877,7 @@
      */
     function removePart(evt) {
         var $part = $(evt.target).closest('.fw-step-part');
-        var r = confirm("Do you really want to delete this section?");
+        var r = confirm(wizard.i18n.alerts.reallyDeleteSection);
         if (r === true) {
           $part.slideUp(500, function() {
               $part.remove();
@@ -888,7 +888,7 @@
     function removeBlock(evt) {
         var $block = $(evt.target).closest('.fw-step-block');
         var label = $block.find('.fw-block-label').val();
-        var r = confirm("Do you really want to delete this block?\n\n" + label);
+        var r = confirm(wizard.i18n.alerts.reallyDeleteBlock + "\n\n" + label);
         if (r === true) {
           $block.slideUp(300, function() {
               $block.remove();
@@ -995,7 +995,7 @@
     function setupClickHandlers(){
       // add step handler
       $('.fw-element-step').unbind( "click" ).click(function(event) {
-          addStep();
+          addStep(emptyStep());
       });
 
       // add part handler
@@ -1041,9 +1041,7 @@
         try {
             var w = JSON.parse(wizard.json);
             var $container = $(container);
-            log(wizard);
-            log(w);
-
+            
             if (w.wizard.title) {
               // load the wizard title
               $('.fw-wizard-title').val(w.wizard.title);

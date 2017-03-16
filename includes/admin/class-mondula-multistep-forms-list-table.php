@@ -28,14 +28,12 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 
     private $_wizard_service;
 
-    private $_text_domain;
 
-    public function __construct ( Mondula_Form_Wizard_Wizard_Service $wizard_service, $text_domain ) {
+    public function __construct ( Mondula_Form_Wizard_Wizard_Service $wizard_service ) {
         parent::__construct( array(
             'screen' => get_current_screen()
         ) );
         $this->_wizard_service = $wizard_service;
-        $this->_text_domain = $text_domain;
     }
 
     function get_columns ( ) {
@@ -60,7 +58,7 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
           case 'date':
               return $item[ $column_name ];
           case 'shortcode':
-              return '[wizard id="' .  $item['id'] .'"]';
+              return '[multi-step-form id="' .  $item['id'] .'"]';
           case 'sendto':
               if ( $wiz['settings']['to'] != '' ) {
                 return $wiz['settings']['to'];
@@ -79,15 +77,15 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
       $delete_url = esc_url( add_query_arg ( array ( 'delete' => $item['id'] ) ) );
 
       $actions = array(
-          'fw-edit' => '<a href="' . $edit_url . '">' . __( 'Edit', $this->_text_domain ) . '</a>',
-          'fw-delete' => '<a href="' . $delete_url . '">' . __( 'Delete', $this->_text_domain ) . '</a>'
+          'fw-edit' => '<a href="' . $edit_url . '">' . __( 'Edit', 'multi-step-form' ) . '</a>',
+          'fw-delete' => '<a href="' . $delete_url . '">' . __( 'Delete', 'multi-step-form' ) . '</a>'
       );
       
       if (!$wiz['title'] || $wiz['title'] == '') {
         $wiz['title'] = 'My Multi Step Form';
       }
       
-      return sprintf('<a href="' . $edit_url . '">' . __( $wiz['title'] , $this->_text_domain ) . '</a>'.'%1$s', $this->row_actions($actions));
+      return sprintf('<a href="' . $edit_url . '">' . $wiz['title'] . '</a>'.'%1$s', $this->row_actions($actions));
     }
 
 //    public function handle_row_actions( $item, $column_name, $primary ) {

@@ -10,7 +10,6 @@ class Mondula_Form_Wizard_Settings {
 		private static $_instance = null;
     private $_parent = null;
 
-    private $_text_domain = 'mondula-multistep-forms';
 
     function __construct( $parent ) {
         $this->settings_api = new Mondula_Form_Wizard_Settings_API;
@@ -34,16 +33,12 @@ class Mondula_Form_Wizard_Settings {
         $sections = array(
             array(
                 'id' => 'fw_settings_email',
-                'title' => __( 'Email Settings', $this->_text_domain )
+                'title' => __( 'Email Settings', 'multi-step-form' )
             ),
             array(
                 'id' => 'fw_settings_styling',
-                'title' => __( 'Styling', $this->_text_domain )
-            )/*,
-            array(
-                'id' => 'wedevs_others',
-                'title' => __( 'Other Settings', $this->_text_domain )
-            )*/
+                'title' => __( 'Styling', 'multi-step-form' )
+            )
         );
         return $sections;
     }
@@ -55,32 +50,10 @@ class Mondula_Form_Wizard_Settings {
     function get_settings_fields() {
         $settings_fields = array(
             'fw_settings_email' => array(
-                // array(
-                //     'name'              => 'text_val',
-                //     'label'             => __( 'Text Input', $this->_text_domain ),
-                //     'desc'              => __( 'Text input description', $this->_text_domain ),
-                //     'type'              => 'text',
-                //     'default'           => 'Title',
-                //     'sanitize_callback' => 'intval'
-                // ),
-                // array(
-                //     'name'              => 'number_input',
-                //     'label'             => __( 'Number Input', $this->_text_domain ),
-                //     'desc'              => __( 'Number field with validation callback `intval`', $this->_text_domain ),
-                //     'type'              => 'number',
-                //     'default'           => 'Title',
-                //     'sanitize_callback' => 'intval'
-                // ),
-                // array(
-                //     'name'  => 'textarea',
-                //     'label' => __( 'Textarea Input', $this->_text_domain ),
-                //     'desc'  => __( 'Textarea description', $this->_text_domain ),
-                //     'type'  => 'textarea'
-                // ),
                 array(
                     'name'    => 'mailformat',
-                    'label'   => __( 'Mail Format', $this->_text_domain ),
-                    'desc'    => __( 'Choose formatting for form emails', $this->_text_domain ),
+                    'label'   => __( 'Mail Format', 'multi-step-form' ),
+                    'desc'    => __( 'Choose formatting for form emails', 'multi-step-form' ),
                     'type'    => 'radio',
                     'options' => array(
                         'html' => 'HTML',
@@ -90,168 +63,61 @@ class Mondula_Form_Wizard_Settings {
                 ),
                 array(
                     'name'  => 'showsummary',
-                    'label' => __( 'Summary', $this->_text_domain ),
-                    'desc'  => __( 'Display Summary at the end of each form', $this->_text_domain ),
+                    'label' => __( 'Summary', 'multi-step-form' ),
+                    'desc'  => __( 'Display Summary at the end of each form', 'multi-step-form' ),
                     'type'  => 'checkbox',
                     'default' => 'on'
                 ),
                 array(
                     'name'  => 'cc',
-                    'label' => __( 'CC', $this->_text_domain ),
-                    'desc'  => __( 'Send copy of submitted data to user', $this->_text_domain ),
+                    'label' => __( 'CC', 'multi-step-form' ),
+                    'desc'  => __( 'Send copy of submitted data to user', 'multi-step-form' ),
                     'type'  => 'checkbox',
                     'default' => 'off'
                 )
-                // array(
-                //     'name'    => 'multicheck',
-                //     'label'   => __( 'Multile checkbox', $this->_text_domain ),
-                //     'desc'    => __( 'Multi checkbox description', $this->_text_domain ),
-                //     'type'    => 'multicheck',
-                //     'options' => array(
-                //         'one'   => 'One',
-                //         'two'   => 'Two',
-                //         'three' => 'Three',
-                //         'four'  => 'Four'
-                //     )
-                // ),
-                // array(
-                //     'name'    => 'selectbox',
-                //     'label'   => __( 'A Dropdown', $this->_text_domain ),
-                //     'desc'    => __( 'Dropdown description', $this->_text_domain ),
-                //     'type'    => 'select',
-                //     'default' => 'no',
-                //     'options' => array(
-                //         'yes' => 'Yes',
-                //         'no'  => 'No'
-                //     )
-                // ),
-                // array(
-                //     'name'    => 'password',
-                //     'label'   => __( 'Password', $this->_text_domain ),
-                //     'desc'    => __( 'Password description', $this->_text_domain ),
-                //     'type'    => 'password',
-                //     'default' => ''
-                // ),
-                // array(
-                //     'name'    => 'file',
-                //     'label'   => __( 'File', $this->_text_domain ),
-                //     'desc'    => __( 'File description', $this->_text_domain ),
-                //     'type'    => 'file',
-                //     'default' => '',
-                //     'options' => array(
-                //         'button_label' => 'Choose Image'
-                //     )
-                // )
             ),
             'fw_settings_styling' => array(
                 array(
                     'name' => 'progressbar',
-                    'label' => __( 'Progress Bar', $this->_text_domain ),
-                    'desc' => __( 'Show progress bar', $this->_text_domain ),
+                    'label' => __( 'Progress Bar', 'multi-step-form' ),
+                    'desc' => __( 'Show progress bar', 'multi-step-form' ),
                     'type' => 'checkbox',
                     'default' => 'on'
                 ),
                 array(
                     'name' => 'boxlayout',
-                    'label' => __( 'Boxed Layout', $this->_text_domain ),
-                    'desc' => __( 'Boxed frontend styling. Uncheck the checkbox to get a plain layout.', $this->_text_domain ),
+                    'label' => __( 'Boxed Layout', 'multi-step-form' ),
+                    'desc' => __( 'Boxed frontend styling. Uncheck the checkbox to get a plain layout.', 'multi-step-form' ),
                     'type' => 'checkbox',
                     'default' => 'on'
                 ),
                 array(
                     'name'    => 'activecolor',
-                    'label'   => __( 'Active Step Color', $this->_text_domain ),
-                    'desc'    => __( 'Choose a color for the active step', $this->_text_domain ),
+                    'label'   => __( 'Active Step Color', 'multi-step-form' ),
+                    'desc'    => __( 'Choose a color for the active step', 'multi-step-form' ),
                     'type'    => 'color',
                     'default' => '#1d7071'
                 ),
 				array(
                     'name'    => 'donecolor',
-                    'label'   => __( 'Visited Step Color', $this->_text_domain ),
-                    'desc'    => __( 'Choose a color for the completed steps', $this->_text_domain ),
+                    'label'   => __( 'Visited Step Color', 'multi-step-form' ),
+                    'desc'    => __( 'Choose a color for the completed steps', 'multi-step-form' ),
                     'type'    => 'color',
                     'default' => '#43a047'
                 ),
                 array(
                     'name'    => 'nextcolor',
-                    'label'   => __( 'Next Step Color', $this->_text_domain ),
-                    'desc'    => __( 'Choose a color for the steps to follow', $this->_text_domain ),
+                    'label'   => __( 'Next Step Color', 'multi-step-form' ),
+                    'desc'    => __( 'Choose a color for the steps to follow', 'multi-step-form' ),
                     'type'    => 'color',
                     'default' => '#aaa'
                 ),
                 array(
                     'name' => 'buttoncolor',
-                    'label' => __( 'Button Color', $this->_text_domain ),
-                    'desc' => __( 'Choose a color for the buttons', $this->_text_domain ),
+                    'label' => __( 'Button Color', 'multi-step-form' ),
+                    'desc' => __( 'Choose a color for the buttons', 'multi-step-form' ),
                     'type' => 'color',
                     'default' => '#1d7071'
-                )
-            ),
-            'wedevs_others' => array(
-                array(
-                    'name'    => 'text',
-                    'label'   => __( 'Text Input', $this->_text_domain ),
-                    'desc'    => __( 'Text input description', $this->_text_domain ),
-                    'type'    => 'text',
-                    'default' => 'Title'
-                ),
-                array(
-                    'name'  => 'textarea',
-                    'label' => __( 'Textarea Input', $this->_text_domain ),
-                    'desc'  => __( 'Textarea description', $this->_text_domain ),
-                    'type'  => 'textarea'
-                ),
-                array(
-                    'name'  => 'checkbox',
-                    'label' => __( 'Checkbox', $this->_text_domain ),
-                    'desc'  => __( 'Checkbox Label', $this->_text_domain ),
-                    'type'  => 'checkbox'
-                ),
-                array(
-                    'name'    => 'radio',
-                    'label'   => __( 'Radio Button', $this->_text_domain ),
-                    'desc'    => __( 'A radio button', $this->_text_domain ),
-                    'type'    => 'radio',
-                    'options' => array(
-                        'yes' => 'Yes',
-                        'no'  => 'No'
-                    )
-                ),
-                array(
-                    'name'    => 'multicheck',
-                    'label'   => __( 'Multile checkbox', $this->_text_domain ),
-                    'desc'    => __( 'Multi checkbox description', $this->_text_domain ),
-                    'type'    => 'multicheck',
-                    'options' => array(
-                        'one'   => 'One',
-                        'two'   => 'Two',
-                        'three' => 'Three',
-                        'four'  => 'Four'
-                    )
-                ),
-                array(
-                    'name'    => 'selectbox',
-                    'label'   => __( 'A Dropdown', $this->_text_domain ),
-                    'desc'    => __( 'Dropdown description', $this->_text_domain ),
-                    'type'    => 'select',
-                    'options' => array(
-                        'yes' => 'Yes',
-                        'no'  => 'No'
-                    )
-                ),
-                array(
-                    'name'    => 'password',
-                    'label'   => __( 'Password', $this->_text_domain ),
-                    'desc'    => __( 'Password description', $this->_text_domain ),
-                    'type'    => 'password',
-                    'default' => ''
-                ),
-                array(
-                    'name'    => 'file',
-                    'label'   => __( 'File', $this->_text_domain ),
-                    'desc'    => __( 'File description', $this->_text_domain ),
-                    'type'    => 'file',
-                    'default' => ''
                 )
             )
         );

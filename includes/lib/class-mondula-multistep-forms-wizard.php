@@ -162,7 +162,7 @@ class Mondula_Form_Wizard_Wizard {
      */
     public function render ( $wizardId ) {
         $progressbar = $this->fw_get_option( 'progressbar', 'fw_settings_styling', 'on' ) === 'on';
-        $showSummary = Mondula_Form_Wizard_Wizard::fw_get_option('showsummary' ,'fw_settings_email', 'true') === 'true';
+        $showSummary = Mondula_Form_Wizard_Wizard::fw_get_option('showsummary' ,'fw_settings_email', 'on') === 'on';
         ob_start();
         ?>
         <div id="mondula-multistep-forms" class="fw-wizard" data-stepCount="<?php echo count( $this->_steps )?>" data-wizardid="<?php echo $wizardId ?>">
@@ -202,13 +202,15 @@ class Mondula_Form_Wizard_Wizard {
                                   if ($showSummary) {
                                   ?>
                                     <div class="fw-summary-container">
-                                      <button type="button" class="fw-toggle-summary">SHOW SUMMARY</button>
-                                      <div id="wizard-summary" class="fw-wizard-summary" style="display:none;" data-showsummary="on"><div class="fw-summary-alert">Some required Fields are empty<br>Please check the highlighted fields.</div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Family</p><p class="fw-step-summary"> — few</p><p class="fw-step-summary"> — Deutsch</p><p class="fw-step-summary">I have a dog — yes</p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">About you</p><p class="fw-step-summary"> — gew</p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Food</p><p class="fw-step-summary"> — Burgers</p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Information</p><p class="fw-step-summary"></p><p class="fw-step-summary fw-summary-invalid">I would like to recieve the weekly newsletter — </p><p></p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Terms of Service</p><p class="fw-step-summary"></p><p class="fw-step-summary fw-summary-invalid">I agree to the ToS — </p><p></p></div><div class="fw-step-summary-part"><p class="fw-step-summary-title">Submit your Data</p><p class="fw-step-summary"></p><p class="fw-step-summary fw-summary-invalid"> — </p><p></p></div></div>
+                                      <button type="button" class="fw-toggle-summary"><?php _e('SHOW SUMMARY', 'multi-step-form') ?></button>
+                                      <div id="wizard-summary" class="fw-wizard-summary" style="display:none;" data-showsummary="on">
+                                        <div class="fw-summary-alert"><?php _e('Some required Fields are empty', 'multi-step-form') ?><br><?php _e('Please check the highlighted fields.', 'multi-step-form') ?></div>
+                                      </div>
                                     </div>
                                     <?php
                                     }
                                     ?>
-                                  <button type="button" class="fw-btn-submit">Submit</button>
+                                  <button type="button" class="fw-btn-submit"><?php _e('Submit', 'multi-step-form') ?></button>
                                 <?php
                                 }
                                 ?>
@@ -223,8 +225,8 @@ class Mondula_Form_Wizard_Wizard {
             <div class="fw-wizard-button-container">
                 <div class="fw-container">
                     <div class="fw-wizard-buttons">
-                        <button class="fw-button-previous"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> &nbsp;<?php _e( 'Previous Step' ) ?></button>
-                        <button class="fw-button-next"><?php _e( 'Next Step' ) ?> &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                        <button class="fw-button-previous"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> &nbsp;<?php _e( 'Previous Step', 'multi-step-form' ) ?></button>
+                        <button class="fw-button-next"><?php _e( 'Next Step', 'multi-step-form' ) ?> &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>
@@ -232,7 +234,7 @@ class Mondula_Form_Wizard_Wizard {
             <div class="fw-alert-user" style="display:none;"></div>
         </div>
         <?php
-        ob_end_flush();
+        return ob_get_clean();
     }
 
     private function render_header_html () {
@@ -296,7 +298,7 @@ class Mondula_Form_Wizard_Wizard {
     }
 
     private function render_footer () {
-        echo PHP_EOL . "End of form submission" . PHP_EOL;
+        echo PHP_EOL . _e('End of form submission', 'multi-step-form') . PHP_EOL;
         echo "Multi Step Form | powered by Mondula GmbH ";
         echo date("Y");
     }

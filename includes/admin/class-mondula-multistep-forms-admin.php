@@ -24,15 +24,13 @@ class Mondula_Form_Wizard_Admin {
 
     private $_version;
 
-    private $_text_domain;
 
-    public function __construct ( Mondula_Form_Wizard_Wizard_Service $wizard_service, $token, $assets_url, $script_suffix, $version, $text_domain ) {
+    public function __construct ( Mondula_Form_Wizard_Wizard_Service $wizard_service, $token, $assets_url, $script_suffix, $version ) {
         $this->_wizard_service = $wizard_service;
         $this->_token = $token;
         $this->_assets_url = $assets_url;
         $this->_script_suffix = $script_suffix;
         $this->_version = $version;
-        $this->_text_domain = $text_domain;
         $this->init();
     }
 
@@ -57,13 +55,53 @@ class Mondula_Form_Wizard_Admin {
             $id = isset( $_GET['edit'] ) ? $_GET['edit'] : '';
             $json = $this->_wizard_service->get_as_json( $id );
             $i18n = array(
-                'title' => __( 'Step Title', $this->_text_domain ),
-                'headline' => __( 'Step Headline', $this->_text_domain ),
-                'copyText' => __( 'Step description', $this->_text_domain  ),
-                'partTitle' => __( 'Section Title', $this->_text_domain ),
-                'radioHeader' => __( 'Header', $this->_text_domain ),
-                'radioHeading' => __( 'Radio/Checkbox', $this->_text_domain)
+              'tooltips' => array(
+                'title' => __( 'The step title is displayed below the progress bar', 'multi-step-form' ),
+                'headline' => __( 'The step headline is displayed above the progress bar' , 'multi-step-form' ),
+                'copyText' => __( 'The step description is displayed below the step headline' , 'multi-step-form' ),
+                'removeStep' => __('remove step', 'multi-step-form'),
+                'removeSection' => __('remove section', 'multi-step-form'),
+                'removeBlock' => __('remove element', 'multi-step-form'),
+                'multiChoice' => __('Multi-Select uses checkboxes. Single-Select has radio-buttons.', 'multi-step-form'),
+                'paragraph' => __('Provide a static text block for explanations or additional info. You can use HTML for formatting.', 'multi-step-form')
+              ),
+              'alerts' => array(
+                'invalidEmail' => __('You need to enter a valid email address', 'multi-step-form'),
+                'noSubject' => __('You need to provide an email subject', 'multi-step-form'),
+                'noStepTitle' => __('WARNING: You need to provide a title for each step', 'multi-step-form'),
+                'noSectionTitle' => __('WARNING: You need to provide a title for each section', 'multi-step-form'),
+                'noFormTitle' => __('WARNING: You need to provide title for the form', 'multi-step-form'),
+                'onlyFive' => __('ERROR: only 5 steps are allowed in the free version', 'multi-step-form'),
+                'reallyDeleteStep' => __('Do you really want to delete this step?', 'multi-step-form'),
+                'reallyDeleteSection' => __('Do you really want to delete this section?', 'multi-step-form'),
+                'reallyDeleteBlock' => __('Do you really want to delete this block?', 'multi-step-form')
+              ),
+              'title' => __( 'Step Title', 'multi-step-form' ),
+              'headline' => __( 'Step Headline', 'multi-step-form' ),
+              'copyText' => __( 'Step description', 'multi-step-form'  ),
+              'partTitle' => __( 'Section Title', 'multi-step-form' ),
+              'addStep' => __( 'Add Step', 'multi-step-form' ),
+              'addSection' => __( 'Add Section', 'multi-step-form' ),
+              'addElement' => __('Add Element', 'multi-step-form' ),
+              'label' => __( 'Label', 'multi-step-form' ),
+              'required' => __('Required', 'multi-step-form'),
+              'radio' => array(
+                'header' => __( 'Header', 'multi-step-form' ),
+                'option' => __( 'Option', 'multi-step-form' ),
+                'options' => __('Options', 'multi-step-form' ),
+                'addOption' => __('Add option', 'multi-step-form' ),
+                'multiple' => __('Multiple Selection', 'multi-step-form' )
+              ),
+              'select' => array(
+                'options' => __('Options (one per line)', 'multi-step-form'),
+                'search' => __('Enable search', 'multi-step-form')
+              ),
+              'paragraph' => array(
+                'textHtml' => __('Text/HTML', 'multi-step-form'),
+                'text' => __('Paragraph text', 'multi-step-form')
+              )
             );
+            
             wp_register_script( $this->_token . '-backend', esc_url( $this->_assets_url ) . 'backend' . $this->_script_suffix . '.js', array( 'postbox', 'jquery-ui-dialog', 'jquery-ui-sortable', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-tooltip', 'jquery' ), $this->_version );
             $ajax = array(
                 'i18n' => $i18n,
@@ -101,13 +139,13 @@ class Mondula_Form_Wizard_Admin {
     }
 
     public function table ( ) {
-        $table = new Mondula_Form_Wizard_List_Table( $this->_wizard_service, $this->_text_domain );
+        $table = new Mondula_Form_Wizard_List_Table( $this->_wizard_service );
         $table->prepare_items();
         $edit_url = esc_url( add_query_arg( array( 'edit' => '' )));
         ?>
         <div class="wrap">
             <div id="icon-users" class="icon32"></div>
-            <h2>Multi Step Forms<a href="<?php echo $edit_url ?>" class="page-title-action"><?php _e( 'Add New', $this->_text_domain ) ?></a></h2>
+            <h2>Multi Step Forms<a href="<?php echo $edit_url ?>" class="page-title-action"><?php _e( 'Add New', 'multi-step-form' ) ?></a></h2>
             <form id="fw-wizard-table" method="get">
                 <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
             <?php $table->display(); ?>
