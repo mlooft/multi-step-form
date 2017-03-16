@@ -38,11 +38,7 @@ class Mondula_Form_Wizard_Settings {
             array(
                 'id' => 'fw_settings_styling',
                 'title' => __( 'Styling', 'multi-step-form' )
-            )/*,
-            array(
-                'id' => 'wedevs_others',
-                'title' => __( 'Other Settings', 'multi-step-form' )
-            )*/
+            )
         );
         return $sections;
     }
@@ -54,28 +50,6 @@ class Mondula_Form_Wizard_Settings {
     function get_settings_fields() {
         $settings_fields = array(
             'fw_settings_email' => array(
-                // array(
-                //     'name'              => 'text_val',
-                //     'label'             => __( 'Text Input', 'multi-step-form' ),
-                //     'desc'              => __( 'Text input description', 'multi-step-form' ),
-                //     'type'              => 'text',
-                //     'default'           => 'Title',
-                //     'sanitize_callback' => 'intval'
-                // ),
-                // array(
-                //     'name'              => 'number_input',
-                //     'label'             => __( 'Number Input', 'multi-step-form' ),
-                //     'desc'              => __( 'Number field with validation callback `intval`', 'multi-step-form' ),
-                //     'type'              => 'number',
-                //     'default'           => 'Title',
-                //     'sanitize_callback' => 'intval'
-                // ),
-                // array(
-                //     'name'  => 'textarea',
-                //     'label' => __( 'Textarea Input', 'multi-step-form' ),
-                //     'desc'  => __( 'Textarea description', 'multi-step-form' ),
-                //     'type'  => 'textarea'
-                // ),
                 array(
                     'name'    => 'mailformat',
                     'label'   => __( 'Mail Format', 'multi-step-form' ),
@@ -101,46 +75,6 @@ class Mondula_Form_Wizard_Settings {
                     'type'  => 'checkbox',
                     'default' => 'off'
                 )
-                // array(
-                //     'name'    => 'multicheck',
-                //     'label'   => __( 'Multile checkbox', 'multi-step-form' ),
-                //     'desc'    => __( 'Multi checkbox description', 'multi-step-form' ),
-                //     'type'    => 'multicheck',
-                //     'options' => array(
-                //         'one'   => 'One',
-                //         'two'   => 'Two',
-                //         'three' => 'Three',
-                //         'four'  => 'Four'
-                //     )
-                // ),
-                // array(
-                //     'name'    => 'selectbox',
-                //     'label'   => __( 'A Dropdown', 'multi-step-form' ),
-                //     'desc'    => __( 'Dropdown description', 'multi-step-form' ),
-                //     'type'    => 'select',
-                //     'default' => 'no',
-                //     'options' => array(
-                //         'yes' => 'Yes',
-                //         'no'  => 'No'
-                //     )
-                // ),
-                // array(
-                //     'name'    => 'password',
-                //     'label'   => __( 'Password', 'multi-step-form' ),
-                //     'desc'    => __( 'Password description', 'multi-step-form' ),
-                //     'type'    => 'password',
-                //     'default' => ''
-                // ),
-                // array(
-                //     'name'    => 'file',
-                //     'label'   => __( 'File', 'multi-step-form' ),
-                //     'desc'    => __( 'File description', 'multi-step-form' ),
-                //     'type'    => 'file',
-                //     'default' => '',
-                //     'options' => array(
-                //         'button_label' => 'Choose Image'
-                //     )
-                // )
             ),
             'fw_settings_styling' => array(
                 array(
@@ -184,73 +118,6 @@ class Mondula_Form_Wizard_Settings {
                     'desc' => __( 'Choose a color for the buttons', 'multi-step-form' ),
                     'type' => 'color',
                     'default' => '#1d7071'
-                )
-            ),
-            'wedevs_others' => array(
-                array(
-                    'name'    => 'text',
-                    'label'   => __( 'Text Input', 'multi-step-form' ),
-                    'desc'    => __( 'Text input description', 'multi-step-form' ),
-                    'type'    => 'text',
-                    'default' => 'Title'
-                ),
-                array(
-                    'name'  => 'textarea',
-                    'label' => __( 'Textarea Input', 'multi-step-form' ),
-                    'desc'  => __( 'Textarea description', 'multi-step-form' ),
-                    'type'  => 'textarea'
-                ),
-                array(
-                    'name'  => 'checkbox',
-                    'label' => __( 'Checkbox', 'multi-step-form' ),
-                    'desc'  => __( 'Checkbox Label', 'multi-step-form' ),
-                    'type'  => 'checkbox'
-                ),
-                array(
-                    'name'    => 'radio',
-                    'label'   => __( 'Radio Button', 'multi-step-form' ),
-                    'desc'    => __( 'A radio button', 'multi-step-form' ),
-                    'type'    => 'radio',
-                    'options' => array(
-                        'yes' => 'Yes',
-                        'no'  => 'No'
-                    )
-                ),
-                array(
-                    'name'    => 'multicheck',
-                    'label'   => __( 'Multile checkbox', 'multi-step-form' ),
-                    'desc'    => __( 'Multi checkbox description', 'multi-step-form' ),
-                    'type'    => 'multicheck',
-                    'options' => array(
-                        'one'   => 'One',
-                        'two'   => 'Two',
-                        'three' => 'Three',
-                        'four'  => 'Four'
-                    )
-                ),
-                array(
-                    'name'    => 'selectbox',
-                    'label'   => __( 'A Dropdown', 'multi-step-form' ),
-                    'desc'    => __( 'Dropdown description', 'multi-step-form' ),
-                    'type'    => 'select',
-                    'options' => array(
-                        'yes' => 'Yes',
-                        'no'  => 'No'
-                    )
-                ),
-                array(
-                    'name'    => 'password',
-                    'label'   => __( 'Password', 'multi-step-form' ),
-                    'desc'    => __( 'Password description', 'multi-step-form' ),
-                    'type'    => 'password',
-                    'default' => ''
-                ),
-                array(
-                    'name'    => 'file',
-                    'label'   => __( 'File', 'multi-step-form' ),
-                    'desc'    => __( 'File description', 'multi-step-form' ),
-                    'type'    => 'file',
-                    'default' => ''
                 )
             )
         );
