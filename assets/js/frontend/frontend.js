@@ -266,11 +266,11 @@ jQuery(document).ready(function($) {
         $('.fw-toggle-summary').toggle(
             function() {
                 $('.fw-wizard-summary').slideDown();
-                $('.fw-toggle-summary').text('hide summary');
+                $('.fw-toggle-summary').text(ajax.i18n.hideSummary);
             },
             function() {
                 $('.fw-wizard-summary').slideUp();
-                $('.fw-toggle-summary').text('show summary');
+                $('.fw-toggle-summary').text(ajax.i18n.showSummary);
             }
         );
         if ($('.fw-summary-invalid').length) {
