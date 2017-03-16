@@ -162,6 +162,8 @@ class Mondula_Form_Wizard {
 			'submitError' => __('submit failed', 'multi-step-form'),
 			'uploadingFile' => __('Uploading file', 'multi-step-form'),
 			'chooseFile' => __('Choose a file', 'multi-step-form'),
+			'showSummary' => __('show summary', 'multi-step-form'),
+			'hideSummary' => __('hide summary', 'multi-step-form'),
 			'errors' => array(
 				'requiredFields' => __('Please fill all the required fields!', 'multi-step-form'),
 				'requiredField' => __('This field is required', 'multi-step-form'),
