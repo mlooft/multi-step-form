@@ -2,9 +2,9 @@ jQuery(document).ready(function($) {
     "use strict";
     var data = {};
     var err = [
-        "Please fill all the required fields!",
-        "This field is required",
-        "Some required Fields are empty<br>Please check the highlighted fields."
+        ajax.i18n.errors.requiredFields,
+        ajax.i18n.errors.requiredField,
+        ajax.i18n.errors.someRequired + '<br>' + ajax.i18n.errors.checkFields
     ];
 
     function log() {
@@ -646,7 +646,7 @@ jQuery(document).ready(function($) {
 
     function sendEmail(summary, email, files) {
         var id = $('#mondula-multistep-forms').attr('data-wizardid');
-        $('.fw-btn-submit').html('<i class="fa fa-spinner"></i> sending data');
+        $('.fw-btn-submit').html('<i class="fa fa-spinner"></i> ' + ajax.i18n.sending);
         $.post(
             ajax.ajaxurl, {
                 action: 'fw_send_email',
@@ -664,12 +664,12 @@ jQuery(document).ready(function($) {
                     window.location.href = url;
                 } else {
                     // TODO: customizable success message
-                    $('.fw-btn-submit').addClass('fw-submit-success').html('<i class="fa fa-check-circle"></i> success');
+                    $('.fw-btn-submit').addClass('fw-submit-success').html('<i class="fa fa-check-circle"></i> ' + ajax.i18n.submitSuccess);
                     $('.fw-btn-submit').unbind( "click" );
                 }
             }
         ).fail(function(resp) {
-          $('.fw-btn-submit').addClass('fw-submit-fail').html('<i class="fa fa-times-circle"></i> submit failed');
+          $('.fw-btn-submit').addClass('fw-submit-fail').html('<i class="fa fa-times-circle"></i> ' + ajax.i18n.submitError);
           warn('response', resp);
           warn('responseText', resp.responseText);
         });
@@ -686,7 +686,7 @@ jQuery(document).ready(function($) {
         formData.append('nonce', ajax.nonce);
         
         $label.find('i').removeClass('fa-upload fa-times-circle fa-check-circle').addClass("fa-spinner");
-        $label.find('span').text("Uploading file");
+        $label.find('span').text(ajax.i18n.uploadingFile);
 
 
         var $block = $(e.target).parent().parent();
@@ -729,7 +729,7 @@ jQuery(document).ready(function($) {
                       var fileInput = $(e).find('input');
                       fileInput.replaceWith(fileInput.val('').clone(true));
                       $(e).find('label > i').removeClass('fa-check-circle').addClass('fa-upload');
-                      $(e).find('label > span').text('Choose a file');
+                      $(e).find('label > span').text(ajax.i18n.chooseFile);
                       $(e).attr('data-uploaded', 'false');
                   });
                 }

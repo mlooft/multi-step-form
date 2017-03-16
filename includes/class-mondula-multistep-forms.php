@@ -156,11 +156,29 @@ class Mondula_Form_Wizard {
 	 * @return  void
 	 */
 	public function enqueue_scripts () {
+		$i18n = array(
+			'sending' => __('sending data', 'multi-step-form'),
+			'submitSuccess' => __('success', 'multi-step-form'),
+			'submitError' => __('submit failed', 'multi-step-form'),
+			'uploadingFile' => __('Uploading file', 'multi-step-form'),
+			'chooseFile' => __('Choose a file', 'multi-step-form'),
+			'errors' => array(
+				'requiredFields' => __('Please fill all the required fields!', 'multi-step-form'),
+				'requiredField' => __('This field is required', 'multi-step-form'),
+				'someRequired' => __('Some required Fields are empty', 'multi-step-form'),
+				'checkFields' => __('Please check the highlighted fields.', 'multi-step-form')
+			)
+		);
 		wp_register_script( $this->_token . '-vendor-frontend', esc_url( $this->assets_url ) . 'vendor-frontend' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
 		wp_enqueue_script( $this->_token . '-vendor-frontend' );
 		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'frontend' . $this->script_suffix . '.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->_version );
 		wp_enqueue_script( $this->_token . '-frontend' );
-		wp_localize_script( $this->_token . '-frontend', 'ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'nonce' => wp_create_nonce( $this->_token ) ) );
+		$ajax = array(
+				'i18n' => $i18n,
+				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				'nonce' => wp_create_nonce( $this->_token ),
+		);
+		wp_localize_script( $this->_token . '-frontend', 'ajax', $ajax );
 	}
 
 	/**

@@ -33,7 +33,6 @@ require_once( 'includes/lib/class-mondula-multistep-forms-wizard-service.php' );
 require_once( 'includes/admin/class-mondula-multistep-forms-admin.php' );
 require_once( 'includes/admin/class-mondula-multistep-forms-list-table.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-post-type.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-taxonomy.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-shortcode.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-wizard.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-wizard-step.php' );
