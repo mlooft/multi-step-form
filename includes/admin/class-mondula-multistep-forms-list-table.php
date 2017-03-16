@@ -58,7 +58,7 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
           case 'date':
               return $item[ $column_name ];
           case 'shortcode':
-              return '[wizard id="' .  $item['id'] .'"]';
+              return '[multi-step-form id="' .  $item['id'] .'"]';
           case 'sendto':
               if ( $wiz['settings']['to'] != '' ) {
                 return $wiz['settings']['to'];
