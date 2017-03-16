@@ -85,7 +85,7 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
         $wiz['title'] = 'My Multi Step Form';
       }
       
-      return sprintf('<a href="' . $edit_url . '">' . __( $wiz['title'] , 'multi-step-form' ) . '</a>'.'%1$s', $this->row_actions($actions));
+      return sprintf('<a href="' . $edit_url . '">' . $wiz['title'] . '</a>'.'%1$s', $this->row_actions($actions));
     }
 
 //    public function handle_row_actions( $item, $column_name, $primary ) {
