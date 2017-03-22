@@ -165,7 +165,7 @@ class Mondula_Form_Wizard_Wizard {
         $showSummary = Mondula_Form_Wizard_Wizard::fw_get_option('showsummary' ,'fw_settings_email', 'on') === 'on';
         ob_start();
         ?>
-        <div id="mondula-multistep-forms" class="fw-wizard" data-stepCount="<?php echo count( $this->_steps )?>" data-wizardid="<?php echo $wizardId ?>">
+        <div id="multi-step-form" class="fw-wizard" data-stepCount="<?php echo count( $this->_steps )?>" data-wizardid="<?php echo $wizardId ?>">
             <div class="fw-wizard-step-header-container">
                 <div class="fw-container" data-redirect="<?php echo $this->_settings['thankyou']?>">
                 <?php
