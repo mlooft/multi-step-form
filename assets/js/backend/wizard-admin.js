@@ -743,7 +743,7 @@
 
         //        make step divs toggleable
         //        console.log(postboxes);
-        //        postboxes.add_postbox_toggles('mondula-multistep-forms');
+        //        postboxes.add_postbox_toggles('multi-step-form');
 
         var stepScope = 'fw-wizard-elements-scope';
         var blockScope = 'fw-wizard-block-scope';
