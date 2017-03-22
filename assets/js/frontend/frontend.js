@@ -106,7 +106,7 @@ jQuery(document).ready(function($) {
             enablePrevious($wizard);
             // scroll back to top on next step
             $('html, body').animate({
-                scrollTop: $("#mondula-multistep-forms").offset().top - 100
+                scrollTop: $("#multi-step-form").offset().top - 100
             }, 500);
         }
     }
@@ -645,7 +645,7 @@ jQuery(document).ready(function($) {
     }
 
     function sendEmail(summary, email, files) {
-        var id = $('#mondula-multistep-forms').attr('data-wizardid');
+        var id = $('#multi-step-form').attr('data-wizardid');
         $('.fw-btn-submit').html('<i class="fa fa-spinner"></i> ' + ajax.i18n.sending);
         $.post(
             ajax.ajaxurl, {
@@ -676,7 +676,7 @@ jQuery(document).ready(function($) {
     }
 
     function uploadFile(e, $label) {
-        var id = $('#mondula-multistep-forms').attr('data-wizardid');
+        var id = $('#multi-step-form').attr('data-wizardid');
         var file = $(e.target).prop('files')[0];
         var formData = new FormData();
 
@@ -812,7 +812,7 @@ jQuery(document).ready(function($) {
     }
     
     function setupLeaveWarning() {
-      if ($('#mondula-multistep-forms').length) {
+      if ($('#multi-step-form').length) {
         // show warning and delete attachments before leaving page
         window.onbeforeunload = function() {
             var attachments = getAttachments();
