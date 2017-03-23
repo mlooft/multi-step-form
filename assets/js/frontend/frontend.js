@@ -798,13 +798,13 @@ jQuery(document).ready(function($) {
         var buttonColor = $('.fw-progress-bar').attr('data-buttoncolor');
         $('head').append('<style id="fw-colors"></style>')
         if (activeColor) {
-          $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} [data-type=fw-checkbox] input[type=checkbox]:checked+label:before, ul.fw-progress-bar li.fw-active .txt-ellipsis { color: ' + activeColor + ' !important; } .fw-step-part { border-color: ' + activeColor + ' !important; }</style>');
+          $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} [data-type=fw-checkbox] input[type=checkbox]:checked+label:before, ul.fw-progress-bar li.fw-active .fw-txt-ellipsis { color: ' + activeColor + ' !important; } .fw-step-part { border-color: ' + activeColor + ' !important; }</style>');
         }
         if (doneColor) {
-          $('head').append('<style>ul.fw-progress-bar .fw-active:last-child:before, .fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited, ul.fw-progress-bar .fw-active:last-child .txt-ellipsis, .fw-progress-step.fw-visited .txt-ellipsis { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after{ background-color:' + doneColor + ' !important;}</style>');
+          $('head').append('<style>ul.fw-progress-bar .fw-active:last-child:before, .fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited, ul.fw-progress-bar .fw-active:last-child .fw-txt-ellipsis, .fw-progress-step.fw-visited .fw-txt-ellipsis { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after{ background-color:' + doneColor + ' !important;}</style>');
         }
         if (nextColor) {
-          $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ' !important;} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:' + nextColor + ' !important;} .txt-ellipsis { color: ' + nextColor + ' !important; } </style>');
+          $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ' !important;} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:' + nextColor + ' !important;} .fw-txt-ellipsis { color: ' + nextColor + ' !important; } </style>');
         }
         if (buttonColor) {
           $('head').append('<style>.fw-button-previous, .fw-button-next, .fw-button-fileupload { background: ' + buttonColor + ' !important; }</style>');

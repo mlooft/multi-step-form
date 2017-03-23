@@ -150,7 +150,7 @@
 }
 
 #multi-step-form .fw-active {
-    .progress {
+    .fw-progress-bar-bar {
         width: calc(~"85% - 63px");
         .keyframes(progress-bar-animation;{
 		    0%   {width: 0%;}
@@ -233,11 +233,11 @@
                         &:after {
                             width: 0;
                         }
-                        .progress {
+                        .fw-progress-bar-bar {
                             display: none;
                         }
                     }
-                    .progress {
+                    .fw-progress-bar-bar {
                         height: 17px;
                         left: 63px;
                         position: absolute;
@@ -261,14 +261,14 @@
                         z-index: 0;
                     }
                 }
-                .txt-ellipsis {
+                .fw-txt-ellipsis {
                     width: 110%;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     display: inline-block;
                 }
-                .txt-ellipsis[data-title] {
+                .fw-txt-ellipsis[data-title] {
                     &:hover {
                         &:after {
                             content: attr(data-title);

@@ -71,8 +71,8 @@ class Mondula_Form_Wizard_Wizard {
             ?>
         <li class="fw-progress-step"
             data-id="<?php echo $i; ?>">
-            <span class="progress"></span>
-            <span class="txt-ellipsis" data-title="<?php echo $step->render_title(); ?>"><?php echo $step->render_title(); ?></span>
+            <span class="fw-progress-bar-bar"></span>
+            <span class="fw-txt-ellipsis" data-title="<?php echo $step->render_title(); ?>"><?php echo $step->render_title(); ?></span>
         </li>
             <?php
         }
