@@ -361,6 +361,7 @@
         stepHtml += '<div class="fw-step-controls">';
         stepHtml += '<i class="fa fa-remove fw-remove-step" title="'+ wizard.i18n.tooltips.removeStep +'" aria-hidden="true"></i>';
         stepHtml += '<i class="fa fa-caret-up fw-toggle-step" aria-hidden="true"></i>';
+        stepHtml += '<i class="fa fa-files-o fw-duplicate-step" title="duplicate step" aria-hidden="true"></i>';
         stepHtml += '</div>';
         stepHtml += '<div class="fw-clearfix"></div>';
         stepHtml += renderStepInside(step);
@@ -765,6 +766,7 @@
     function setupTooltips() {
       $('.fa-info-circle').tooltip();
       $('.fw-remove-step').tooltip();
+      $('.fw-duplicate-step').tooltip();
       $('.fw-remove-part').tooltip();
       $('.fw-remove-block').tooltip();
       $('.hndle.ui-sortable-handle').tooltip();
@@ -824,6 +826,12 @@
         } else {
           alertMessage(wizard.i18n.alerts.onlyFive, false);
         }
+    }
+    
+    function duplicateStep($step) {
+      var data = getStepData($step);
+      data.title += ' (COPY)';
+      addStep(data);
     }
 
     /**
@@ -998,6 +1006,13 @@
           addStep(emptyStep());
       });
 
+      $('.fw-duplicate-step').unbind( "click" ).click(function(event) {
+        console.log('DUPE');
+        var $step = $(this).parent().parent().find('.fw-step');
+        console.log($step);
+        duplicateStep($step);
+      });
+      
       // add part handler
       $('.fw-add-part').unbind( "click" ).click(function(event) {
           addPart(event);
