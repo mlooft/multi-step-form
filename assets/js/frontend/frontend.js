@@ -874,7 +874,9 @@ jQuery(document).ready(function($) {
     function init() {
         // setInterval(poll, 50);
         $(document).ready(function(evt) {
+          if ($('#multi-step-form').length) {
             setup();
+          }
         });
 
     }
