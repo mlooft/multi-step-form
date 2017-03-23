@@ -55,4 +55,13 @@ class Mondula_Form_Wizard_Wizard_Repository {
 
         $wpdb->delete( $this->_table, array( 'id' => $id ) );
     }
+    
+    public function duplicate( $id ) {
+      $row = $this->find_by_id( $id );
+      $data = array();
+      $data['date'] = current_time( 'mysql' );
+      $data['json'] = $row->json;
+      $data['version'] = $row->version;
+      $this->save($data);
+    }
 }

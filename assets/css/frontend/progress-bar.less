@@ -1,129 +1,131 @@
 @import "variables";
 
-.fw-progress-wrap {
-	color: @color_text;
-	max-width: 1800px;
-	min-height: 55px;
-	position: relative;
-	margin: 0px;
-}
-
-.fw-hide-progress-bar {
-	display: none;
-}
-
-.fw-progress-bar-container {
-    margin-bottom: 30px;
-}
-
-.fw-progress-bar {
-    margin: 0 !important;
-    padding: 0;
-	.fw-progress-step {
+#multi-step-form {
+	.fw-progress-wrap {
 		color: @color_text;
-		display: block;
-		font-size: 1.4em;
-		padding: 15px 20px 15px 60px;
+		max-width: 1800px;
+		min-height: 55px;
 		position: relative;
-		margin-bottom:10px;
-		&:before {
-			border-radius: 50%;
-			color: @color_white;
-			font-size: 40px;
-			left: 0;
-			line-height: 44px;
-			position: absolute;
-			text-align: center;
-			top: 4px;
-			height: 50px;
-            width: 50px;
-            padding-top:2px;
-			z-index: 1;
-			box-sizing: border-box;
-			font-weight:700;
-			font-family: 'Open Sans', sans-serif;
-		}
-        &.fw-active {
-            color: @color_text;
-		    font-weight: bold;
-		    &:before {
-			    z-index: 1;
-		    }
-        }
-        &.fw-visited {
-            z-index: 1;
-		    &:before {
-			    z-index: 1;
-		    }
-        }
-        &:nth-child(1) {
-            &:before {
-                content: "1" !important;
-            }
-        }
-        &:nth-child(2) {
-            &:before {
-                content: "2" !important;
-            }
-        }
-        &:nth-child(3) {
-            &:before {
-                content: "3" !important;
-            }
-        }
-        &:nth-child(4) {
-            &:before {
-                content: "4" !important;
-            }
-        }
-        &:nth-child(5) {
-            &:before {
-                content: "5" !important;
-            }
-        }
-        &:nth-child(6) {
-            &:before {
-                content: "6" !important;
-            }
-        }
-        &:nth-child(7) {
-            &:before {
-                content: "7" !important;
-            }
-        }
-        &:nth-child(8) {
-            &:before {
-                content: "8" !important;
-            }
-        }
-        &:nth-child(9) {
-            &:before {
-                content: "9" !important;
-            }
-        }
-        &:nth-child(10) {
-            &:before {
-                content: "10" !important;
-            }
-        }
-        &:last-child {
-            &:before {
-                font-family: FontAwesome !important;
-                content: "\f024" !important;
-                font-size: 28px;
-                padding-top:5px;
-            }
-        }
-        &.fw-visited:before {
-            content: "\2713" !important;
-            padding-right: 7px;
-        }
+		margin: 0px;
 	}
-	a {
-		color: @color_text;
-		font-size: 16px;
-		font-weight: 600;
-		text-decoration: none;
+
+	.fw-hide-progress-bar {
+		display: none;
+	}
+
+	.fw-progress-bar-container {
+	    margin-bottom: 30px;
+	}
+
+	.fw-progress-bar {
+	    margin: 0 !important;
+	    padding: 0;
+		.fw-progress-step {
+			color: @color_text;
+			display: block;
+			font-size: 1.4em;
+			padding: 15px 20px 15px 60px;
+			position: relative;
+			margin-bottom:10px;
+			&:before {
+				border-radius: 50%;
+				color: @color_white;
+				font-size: 40px;
+				left: 0;
+				line-height: 44px;
+				position: absolute;
+				text-align: center;
+				top: 4px;
+				height: 50px;
+	            width: 50px;
+	            padding-top:2px;
+				z-index: 1;
+				box-sizing: border-box;
+				font-weight:700;
+				font-family: 'Open Sans', sans-serif;
+			}
+	        &.fw-active {
+	            color: @color_text;
+			    font-weight: bold;
+			    &:before {
+				    z-index: 1;
+			    }
+	        }
+	        &.fw-visited {
+	            z-index: 1;
+			    &:before {
+				    z-index: 1;
+			    }
+	        }
+	        &:nth-child(1) {
+	            &:before {
+	                content: "1" !important;
+	            }
+	        }
+	        &:nth-child(2) {
+	            &:before {
+	                content: "2" !important;
+	            }
+	        }
+	        &:nth-child(3) {
+	            &:before {
+	                content: "3" !important;
+	            }
+	        }
+	        &:nth-child(4) {
+	            &:before {
+	                content: "4" !important;
+	            }
+	        }
+	        &:nth-child(5) {
+	            &:before {
+	                content: "5" !important;
+	            }
+	        }
+	        &:nth-child(6) {
+	            &:before {
+	                content: "6" !important;
+	            }
+	        }
+	        &:nth-child(7) {
+	            &:before {
+	                content: "7" !important;
+	            }
+	        }
+	        &:nth-child(8) {
+	            &:before {
+	                content: "8" !important;
+	            }
+	        }
+	        &:nth-child(9) {
+	            &:before {
+	                content: "9" !important;
+	            }
+	        }
+	        &:nth-child(10) {
+	            &:before {
+	                content: "10" !important;
+	            }
+	        }
+	        &:last-child {
+	            &:before {
+	                font-family: FontAwesome !important;
+	                content: "\f024" !important;
+	                font-size: 28px;
+	                padding-top:5px;
+	            }
+	        }
+	        &.fw-visited:before {
+	            content: "\2713" !important;
+	            padding-right: 7px;
+	        }
+		}
+		a {
+			color: @color_text;
+			font-size: 16px;
+			font-weight: 600;
+			text-decoration: none;
+		}
 	}
 }
 
@@ -147,8 +149,8 @@
 	-o-animation: @arguments;
 }
 
- .fw-active {
-    .progress {
+#multi-step-form .fw-active {
+    .fw-progress-bar-bar {
         width: calc(~"85% - 63px");
         .keyframes(progress-bar-animation;{
 		    0%   {width: 0%;}
@@ -159,6 +161,7 @@
 }
 
 @media all and (max-width: 480px) {
+	#multi-step-form {
     .fw-progress-bar {
 	    .fw-progress-step {
 		    padding: 10px 20px 0px 60px !important;
@@ -166,10 +169,12 @@
             font-size: 16px;
 	    }
     }
+	}
 }
 
 @media all and (min-width: 769px) {
-    .fw-large-container {
+	#multi-step-form {
+    &.fw-large-container {
         .fw-progress-bar-container {
             margin-bottom: 80px;
             width: 125%;
@@ -228,11 +233,11 @@
                         &:after {
                             width: 0;
                         }
-                        .progress {
+                        .fw-progress-bar-bar {
                             display: none;
                         }
                     }
-                    .progress {
+                    .fw-progress-bar-bar {
                         height: 17px;
                         left: 63px;
                         position: absolute;
@@ -256,14 +261,14 @@
                         z-index: 0;
                     }
                 }
-                .txt-ellipsis {
+                .fw-txt-ellipsis {
                     width: 110%;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     display: inline-block;
                 }
-                .txt-ellipsis[data-title] {
+                .fw-txt-ellipsis[data-title] {
                     &:hover {
                         &:after {
                             content: attr(data-title);
@@ -298,10 +303,13 @@
             }
         }
     }
+	}
 }
 
 @media all and (min-width: 1023px) {
+	#multi-step-form {
     .fw-progress-bar-container {
         margin-top: 30px;
     }
+	}
 }

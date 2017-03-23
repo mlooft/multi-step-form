@@ -122,11 +122,14 @@ class Mondula_Form_Wizard_Admin {
         $edit_url = esc_url( add_query_arg( array('edit' => '')) );
         $edit = isset($_GET['edit']);
         $delete = isset( $_GET['delete'] );
+        $duplicate = isset( $_GET['duplicate'] );
 
         if ($edit) {
             $this->edit( $_GET['edit'] );
         } else if ($delete) {
             $this->delete( $_GET['delete'] );
+        } else if ($duplicate) {
+            $this->duplicate( $_GET['duplicate'] );  
         } else {
 //            $this->wizard_list();
             $this->table();
@@ -136,6 +139,11 @@ class Mondula_Form_Wizard_Admin {
     public function delete( $id ) {
         $this->_wizard_service->delete( $id );
         $this->table();
+    }
+    
+    public function duplicate( $id ) {
+      $this->_wizard_service->duplicate( $id );
+      $this->table();
     }
 
     public function table ( ) {
