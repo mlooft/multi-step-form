@@ -3,7 +3,7 @@ Contributors: mondula2016
 Tags: multi, step, forms, multi-step, feedback, email, contact form, progress bar, form builder, dynamic, ajax
 Requires at least: 3.9
 Tested up to: 4.7
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,6 +85,10 @@ Also, check that you can send mails from your WordPress installation.
 2. Use our customizable and animated progress bar to guide your users through your forms. Change the colors to match your CI.
 
 == Changelog ==
+
+= 1.1.6 =
+* Duplicating forms and steps feature
+* Compatibility improvements
 
 = 1.1.5 =
 * Prepared the plugin for translation
