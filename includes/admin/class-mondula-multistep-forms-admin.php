@@ -43,7 +43,9 @@ class Mondula_Form_Wizard_Admin {
 
     public function setup_menu () {
         $all = add_menu_page( 'Multi Step Form', 'Multi Step Form', 'manage_options', 'mondula-multistep-forms', array( $this, 'menu' ), 'dashicons-feedback', '35' );
+        add_submenu_page( 'mondula-multistep-forms', 'Multi Step Form List', 'Forms', 'manage_options', 'mondula-multistep-forms', array( $this, 'menu' ));
         $add = add_submenu_page( 'mondula-multistep-forms', 'Mondula List Table', 'Add New', 'manage_options', 'mondula-multistep-forms&edit', array( $this, 'menu' ));
+        do_action('msf_submenus');
         add_action( 'admin_print_styles-' . $all, array( $this, 'admin_js' ) );
         add_action( 'admin_print_styles-' . $add, array( $this, 'admin_js' ) );
     }
@@ -259,7 +261,7 @@ class Mondula_Form_Wizard_Admin {
                 <div class="postbox-container">
                     <div class="metabox-holder">
                         <div class="postbox">
-                            <h3>Multi Step Form <?php do_action('msf_echopro'); ?></h3> 
+                            <h3>Multi Step Form <?php do_action('msf_echopro', $id); ?></h3>
                             <div class="inside">
                                 <div class="fw-elements">
                                     <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="Form Title">
