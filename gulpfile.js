@@ -99,7 +99,7 @@ gulp.task('pot', function () {
     return gulp.src('**/*.php')
         .pipe(sort())
         .pipe(wpPot({
-            domain: 'multi-step-form', 
+            domain: 'multi-step-form',
             destfile: 'multi-step-form.pot',
             package: 'Multi Step Form',
             bugReport: 'http://mondula.com/kontakt', // TODO
@@ -110,7 +110,6 @@ gulp.task('pot', function () {
 });
 
 gulp.task('watch', function () {
-    livereload.listen();
     gulp.watch('assets/js/frontend/*.js', ['js-frontend']);
     gulp.watch('assets/js/backend/*.js', ['js-backend']);
     gulp.watch('assets/css/*.css', ['css']);
@@ -193,19 +192,36 @@ gulp.task('clean:zip', function () {
 gulp.task('copy:zip', ['clean:zip', 'build:production'], function () {
   return gulp.src(
       [
-        'dist/*', 
+        'dist/*',
         'includes/**',
-        'lang/*', 
-        'LICENSE', 
+        'lang/*',
+        'LICENSE',
         'index.php',
         'mondula-form-wizard.php',
         'readme.txt',
         'screenshot-1.jpg',
         'screenshot-2.jpg',
-        'uninstall.php' 
+        'uninstall.php'
       ], {base: '.'})
     .pipe(gulp.dest('pkg/multi-step-form'));
-}); 
+});
+
+gulp.task('copy:docker', ['build:production'], function() {
+  return gulp.src(
+    [
+      'dist/*',
+      'includes/**',
+      'lang/*',
+      'LICENSE',
+      'index.php',
+      'mondula-form-wizard.php',
+      'readme.txt',
+      'screenshot-1.jpg',
+      'screenshot-2.jpg',
+      'uninstall.php'
+    ], {base: '.'})
+  .pipe(gulp.dest('pkg/multi-step-form'));
+});
 
 gulp.task('zip', ['copy:zip'], function () {
   return gulp.src('pkg/**/multi-step-form/**')

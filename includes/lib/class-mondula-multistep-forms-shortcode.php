@@ -34,10 +34,12 @@ class Mondula_Form_Wizard_Shortcode {
 
         add_action( 'wp_ajax_fw_upload_file', array( $this, 'fw_upload_file' ));
         add_action( 'wp_ajax_nopriv_fw_upload_file', array( $this, 'fw_upload_file' ));
-        
+
         add_action( 'wp_ajax_fw_delete_files', array( $this, 'fw_delete_files' ));
         add_action( 'wp_ajax_nopriv_fw_delete_files', array( $this, 'fw_delete_files' ));
     }
+
+
 
     public function get_wizard($id) {
       return $this->_wizard_service->get_by_id( $id );
@@ -63,10 +65,10 @@ class Mondula_Form_Wizard_Shortcode {
 
         return $wizard->render( $id );
     }
-    
+
     /**
      * AJAX action called by wp_ajax_fw_delete_files. The files in $filenames
-     * are deleted from the msf-temp directory. This function is called when 
+     * are deleted from the msf-temp directory. This function is called when
      * a user has already uploaded files but decides to exit the form.
      **/
     public function fw_delete_files() {
@@ -77,9 +79,9 @@ class Mondula_Form_Wizard_Shortcode {
         echo "tempfiles deleted";
       }
     }
-    
+
     /**
-     * Helper for fw_delete_files. Deletes an uploaded file 
+     * Helper for fw_delete_files. Deletes an uploaded file
      * from the msf-temp directory.
      **/
     private function delete_files($filepaths) {
@@ -88,7 +90,7 @@ class Mondula_Form_Wizard_Shortcode {
       }
     }
     /**
-     * AJAX action called by wp_ajax_fw_upload_file. 
+     * AJAX action called by wp_ajax_fw_upload_file.
      * Temporarily upload a file to wp-content/uploads/msf-temp directory.
      * The file remains on the server until the form is submitted by the client.
      **/
@@ -99,7 +101,7 @@ class Mondula_Form_Wizard_Shortcode {
       $upload_overrides = array( 'test_form' => false );
       if ( wp_verify_nonce( $nonce, $this->_token) ) {
         add_filter( 'upload_dir', 'wpse_change_upload_dir_temporarily' );
-        
+
         /**
          * Temporarily change the WP upload directory to wp-content/uploads/temp
          * */
@@ -109,16 +111,16 @@ class Mondula_Form_Wizard_Shortcode {
            $dirs['url'] = $dirs['baseurl'] . '/msf-temp';
            return $dirs;
         }
-        
+
         $uploaded_file = wp_handle_upload( $file_to_upload, $upload_overrides);
-        
+
         $response = array();
-        
+
         if ( $uploaded_file && ! isset( $uploaded_file['error'] ) ) {
           $response['success'] = true;
           $response['filename'] = basename( $uploaded_file['url'] );
           $response['type'] = $uploaded_file['type'];
-          
+
         } else {
           $response['success'] = false;
           $response['error'] = $uploaded_file['error'];
@@ -130,7 +132,7 @@ class Mondula_Form_Wizard_Shortcode {
         wp_send_json_error( "Nonce couldn't be verified." );
       }
     }
-    
+
     private function generateAttachmentPaths($files) {
       $attachments = array();
       for ($i=0; $i < count($files); $i++) {
@@ -155,6 +157,11 @@ class Mondula_Form_Wizard_Shortcode {
 
         if ( wp_verify_nonce( $nonce, $this->_token) ) {
             if ( ! empty( $data ) ) {
+                /* Send data to PRO */
+                if (is_plugin_active( 'multi-step-form-pro/multi-step-form-pro.php' )) {
+                  do_action('msfp_save', $data);
+                }
+
                 $mailformat = Mondula_Form_Wizard_Wizard::fw_get_option('mailformat' ,'fw_settings_email', 'html');
                 $cc = Mondula_Form_Wizard_Wizard::fw_get_option('cc' ,'fw_settings_email', 'off');
                 $content = $wizard->render_mail( $data, $name, $email, $mailformat);

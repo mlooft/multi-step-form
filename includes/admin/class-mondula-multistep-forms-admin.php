@@ -101,7 +101,7 @@ class Mondula_Form_Wizard_Admin {
                 'text' => __('Paragraph text', 'multi-step-form')
               )
             );
-            
+
             wp_register_script( $this->_token . '-backend', esc_url( $this->_assets_url ) . 'backend' . $this->_script_suffix . '.js', array( 'postbox', 'jquery-ui-dialog', 'jquery-ui-sortable', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-tooltip', 'jquery' ), $this->_version );
             $ajax = array(
                 'i18n' => $i18n,
@@ -129,7 +129,7 @@ class Mondula_Form_Wizard_Admin {
         } else if ($delete) {
             $this->delete( $_GET['delete'] );
         } else if ($duplicate) {
-            $this->duplicate( $_GET['duplicate'] );  
+            $this->duplicate( $_GET['duplicate'] );
         } else {
 //            $this->wizard_list();
             $this->table();
@@ -140,7 +140,7 @@ class Mondula_Form_Wizard_Admin {
         $this->_wizard_service->delete( $id );
         $this->table();
     }
-    
+
     public function duplicate( $id ) {
       $this->_wizard_service->duplicate( $id );
       $this->table();
@@ -259,7 +259,7 @@ class Mondula_Form_Wizard_Admin {
                 <div class="postbox-container">
                     <div class="metabox-holder">
                         <div class="postbox">
-                            <h3>Multi Step Form</h3>
+                            <h3>Multi Step Form <?php do_action('msf_echopro'); ?></h3> 
                             <div class="inside">
                                 <div class="fw-elements">
                                     <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="Form Title">
