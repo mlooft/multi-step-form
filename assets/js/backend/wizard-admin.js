@@ -154,7 +154,7 @@
       emailHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
       return emailHtml;
     }
-    
+
     function renderFile(block) {
       var fileHtml = '';
       fileHtml += '<label>' + wizard.i18n.label + '</label>';
@@ -167,6 +167,8 @@
       var dateHtml = '';
       dateHtml += '<label>' + wizard.i18n.label + '</label>';
       dateHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+      dateHtml += '<label>' + wizard.i18n.dateformat +  '<a target="_blank" href="http://t1m0n.name/air-datepicker/docs/#sub-section-9"><i class="fa fa-info-circle" aria-hidden="true" title="' + wizard.i18n.tooltips.dateformat + '"></i></a></label>';
+      dateHtml += '<input type="text" class="fw-date-format fw-block-label" placeholder="' + wizard.i18n.dateformat + '" value="' + block.format + '" ></input><br/>';
       dateHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
       return dateHtml;
     }
@@ -458,7 +460,7 @@
         text['label'] = $text.find('.fw-text-label').val();
         text['required'] = $text.find('.fw-required').prop('checked');
     }
-    
+
     function getFileData($text, text) {
         text['label'] = $text.find('.fw-text-label').val();
         text['required'] = $text.find('.fw-required').prop('checked');
@@ -466,6 +468,7 @@
 
     function getDateData($text, text) {
         text['label'] = $text.find('.fw-text-label').val();
+        text['format'] = $text.find('.fw-date-format').val();
         text['required'] = $text.find('.fw-required').prop('checked');
     }
 
@@ -555,7 +558,7 @@
       settings.header = $('.fw-mail-header').val();
       return settings;
     }
-    
+
     function isEmail(email) {
       var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
       if (!email) {
@@ -563,7 +566,7 @@
       }
       return regex.test(email);
     }
-    
+
     function validateSettings(settings) {
       var valid = true;
       if (!isEmail(settings.to)) {
@@ -827,7 +830,7 @@
           alertMessage(wizard.i18n.alerts.onlyFive, false);
         }
     }
-    
+
     function duplicateStep($step) {
       var data = getStepData($step);
       data.title += ' (COPY)';
@@ -1012,7 +1015,7 @@
         console.log($step);
         duplicateStep($step);
       });
-      
+
       // add part handler
       $('.fw-add-part').unbind( "click" ).click(function(event) {
           addPart(event);
@@ -1056,7 +1059,7 @@
         try {
             var w = JSON.parse(wizard.json);
             var $container = $(container);
-            
+
             if (w.wizard.title) {
               // load the wizard title
               $('.fw-wizard-title').val(w.wizard.title);

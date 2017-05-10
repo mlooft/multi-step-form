@@ -65,7 +65,8 @@ class Mondula_Form_Wizard_Admin {
                 'removeSection' => __('remove section', 'multi-step-form'),
                 'removeBlock' => __('remove element', 'multi-step-form'),
                 'multiChoice' => __('Multi-Select uses checkboxes. Single-Select has radio-buttons.', 'multi-step-form'),
-                'paragraph' => __('Provide a static text block for explanations or additional info. You can use HTML for formatting.', 'multi-step-form')
+                'paragraph' => __('Provide a static text block for explanations or additional info. You can use HTML for formatting.', 'multi-step-form'),
+                'dateformat' => __('click here for date-format specifications', 'multi-step-form')
               ),
               'alerts' => array(
                 'invalidEmail' => __('You need to enter a valid email address', 'multi-step-form'),
@@ -86,6 +87,7 @@ class Mondula_Form_Wizard_Admin {
               'addSection' => __( 'Add Section', 'multi-step-form' ),
               'addElement' => __('Add Element', 'multi-step-form' ),
               'label' => __( 'Label', 'multi-step-form' ),
+              'dateformat' => __( 'Date Format', 'multi-step-form' ),
               'required' => __('Required', 'multi-step-form'),
               'radio' => array(
                 'header' => __( 'Header', 'multi-step-form' ),
@@ -158,7 +160,7 @@ class Mondula_Form_Wizard_Admin {
             <h2>Multi Step Forms<a href="<?php echo $edit_url ?>" class="page-title-action"><?php _e( 'Add New', 'multi-step-form' ) ?></a></h2>
             <form id="fw-wizard-table" method="get">
                 <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
-            <?php $table->display(); ?>
+                <?php $table->display(); ?>
             </form>
         </div>
         <?php

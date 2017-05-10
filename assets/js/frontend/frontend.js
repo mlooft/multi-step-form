@@ -199,7 +199,7 @@ jQuery(document).ready(function($) {
         });
         return summary;
     }
-    
+
     function removeFakePath(path) {
       return path.replace(/^.*\\/, "");
     }
@@ -211,7 +211,7 @@ jQuery(document).ready(function($) {
         });
         return files;
     }
-    
+
     function getAttachment(e) {
       return removeFakePath($(e).find('input').val());
     }
@@ -684,7 +684,7 @@ jQuery(document).ready(function($) {
         formData.append('file', file);
         formData.append('id', id);
         formData.append('nonce', ajax.nonce);
-        
+
         $label.find('i').removeClass('fa-upload fa-times-circle fa-check-circle').addClass("fa-spinner");
         $label.find('span').text(ajax.i18n.uploadingFile);
 
@@ -810,7 +810,7 @@ jQuery(document).ready(function($) {
           $('head').append('<style>.fw-button-previous, .fw-button-next, .fw-button-fileupload { background: ' + buttonColor + ' !important; }</style>');
         }
     }
-    
+
     function setupLeaveWarning() {
       if ($('#multi-step-form').length) {
         // show warning and delete attachments before leaving page
@@ -820,6 +820,13 @@ jQuery(document).ready(function($) {
             return 'Your uploaded files were deleted from the server for security reasons.'
         };
       }
+    }
+
+    function setupDatepicker() {
+      var format = $('.fw-datepicker-here').attr('data-dateformat');
+      $('.fw-datepicker-here').datepicker({
+        dateFormat: format
+      });
     }
 
     function setup() {
@@ -859,10 +866,10 @@ jQuery(document).ready(function($) {
         });
 
         setupSelect2();
-        
+
         setupFileUpload();
-        
-        $('.fw-datepicker-here').datepicker();
+
+        setupDatepicker();
 
         $('.fw-btn-submit').click(submit);
 
