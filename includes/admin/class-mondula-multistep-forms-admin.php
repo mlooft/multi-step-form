@@ -66,7 +66,7 @@ class Mondula_Form_Wizard_Admin {
                 'removeBlock' => __('remove element', 'multi-step-form'),
                 'multiChoice' => __('Multi-Select uses checkboxes. Single-Select has radio-buttons.', 'multi-step-form'),
                 'paragraph' => __('Provide a static text block for explanations or additional info. You can use HTML for formatting.', 'multi-step-form'),
-                'dateformat' => __('click here for date-format specifications', 'multi-step-form')
+                'dateformat' => __('click for date format specifications', 'multi-step-form')
               ),
               'alerts' => array(
                 'invalidEmail' => __('You need to enter a valid email address', 'multi-step-form'),

@@ -168,7 +168,7 @@
       dateHtml += '<label>' + wizard.i18n.label + '</label>';
       dateHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
       dateHtml += '<label>' + wizard.i18n.dateformat +  '<a target="_blank" href="http://t1m0n.name/air-datepicker/docs/#sub-section-9"><i class="fa fa-info-circle" aria-hidden="true" title="' + wizard.i18n.tooltips.dateformat + '"></i></a></label>';
-      dateHtml += '<input type="text" class="fw-date-format fw-block-label" placeholder="' + wizard.i18n.dateformat ? wizard.i18n.dateformat : 'dd/mm/yy' + '" value="' + block.format + '" ></input><br/>';
+      dateHtml += '<input type="text" class="fw-date-format fw-block-label" placeholder="' + wizard.i18n.dateformat + '" value="' + (block.format ? block.format : 'dd/mm/yy') + '" ></input><br/>';
       dateHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
       return dateHtml;
     }
@@ -983,7 +983,8 @@
               tb_remove();
               var block = $(renderBlock({
                   type: 'date',
-                  label: ''
+                  label: '',
+                  format: 'dd/mm/yy'
               }));
               var $part = $(thickEvent.target).parents('.fw-step-part');
               $part.find('.inside').append(block);
