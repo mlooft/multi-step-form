@@ -102,11 +102,11 @@ class Mondula_Form_Wizard {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
 
-                // Set up service
-                $this->_wizard_service = new Mondula_Form_Wizard_Wizard_Service(
-                    new Mondula_Form_Wizard_Wizard_Repository( 'mondula_form_wizards' ),
-					$this->_version
-                );
+    // Set up service
+    $this->_wizard_service = new Mondula_Form_Wizard_Wizard_Service(
+        new Mondula_Form_Wizard_Wizard_Repository( 'mondula_form_wizards' ),
+				$this->_version
+    );
 
 		// Load admin JS & CSS
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10, 1 );
@@ -141,7 +141,7 @@ class Mondula_Form_Wizard {
 	 */
 	public function enqueue_styles () {
 		wp_register_style( $this->_token . 'jquery-ui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/flick/jquery-ui.css');
-  		wp_enqueue_style( $this->_token . 'jquery-ui' );
+		wp_enqueue_style( $this->_token . 'jquery-ui' );
 		wp_register_style( $this->_token . '-vendor-frontend', esc_url( $this->assets_url ) . 'vendor-frontend.min.css', array(), $this->_version );
 		wp_enqueue_style( $this->_token . '-vendor-frontend' );
 		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'frontend.min.css', array(), $this->_version );
@@ -203,7 +203,7 @@ class Mondula_Form_Wizard {
 	 */
 	public function admin_enqueue_scripts ( $hook = '' ) {
 		wp_enqueue_script( $this->_token . '-admin' );
-	} // End admin_enqueue_scripts ()
+	}
 
 	/**
 	 * Load plugin localisation
