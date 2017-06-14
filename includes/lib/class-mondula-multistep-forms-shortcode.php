@@ -158,10 +158,7 @@ class Mondula_Form_Wizard_Shortcode {
         if ( wp_verify_nonce( $nonce, $this->_token) ) {
             if ( ! empty( $data ) ) {
                 /* Send data to PRO */
-                if (is_plugin_active( 'multi-step-form-pro/multi-step-form-pro.php' )) {
-                  do_action('msfp_save', $data);
-                }
-
+                do_action('msfp_save', $data);
                 $mailformat = Mondula_Form_Wizard_Wizard::fw_get_option('mailformat' ,'fw_settings_email', 'html');
                 $cc = Mondula_Form_Wizard_Wizard::fw_get_option('cc' ,'fw_settings_email', 'off');
                 $content = $wizard->render_mail( $data, $name, $email, $mailformat);
