@@ -141,7 +141,7 @@ class Mondula_Form_Wizard {
 	 */
 	public function enqueue_styles () {
 		wp_register_style( $this->_token . 'jquery-ui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/flick/jquery-ui.css');
-  		wp_enqueue_style( $this->_token . 'jquery-ui' );
+		wp_enqueue_style( $this->_token . 'jquery-ui' );
 		wp_register_style( $this->_token . '-vendor-frontend', esc_url( $this->assets_url ) . 'vendor-frontend.min.css', array(), $this->_version );
 		wp_enqueue_style( $this->_token . '-vendor-frontend' );
 		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'frontend.min.css', array(), $this->_version );
@@ -203,7 +203,7 @@ class Mondula_Form_Wizard {
 	 */
 	public function admin_enqueue_scripts ( $hook = '' ) {
 		wp_enqueue_script( $this->_token . '-admin' );
-	} // End admin_enqueue_scripts ()
+	}
 
 	/**
 	 * Load plugin localisation
