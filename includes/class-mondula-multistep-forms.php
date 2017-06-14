@@ -102,11 +102,11 @@ class Mondula_Form_Wizard {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
 
-                // Set up service
-                $this->_wizard_service = new Mondula_Form_Wizard_Wizard_Service(
-                    new Mondula_Form_Wizard_Wizard_Repository( 'mondula_form_wizards' ),
-					$this->_version
-                );
+    // Set up service
+    $this->_wizard_service = new Mondula_Form_Wizard_Wizard_Service(
+        new Mondula_Form_Wizard_Wizard_Repository( 'mondula_form_wizards' ),
+				$this->_version
+    );
 
 		// Load admin JS & CSS
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10, 1 );

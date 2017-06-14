@@ -20,7 +20,7 @@ class Mondula_Form_Wizard_Wizard {
     public function set_settings ( $settings ) {
       $this->_settings = $settings;
     }
-    
+
     public function set_title ( $title ) {
       $this->_title = $title;
     }
@@ -369,6 +369,4 @@ class Mondula_Form_Wizard_Wizard {
         }
         return $wizard;
     }
-
-
 }
