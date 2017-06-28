@@ -113,9 +113,12 @@
         var i = 0;
         var selectHtml = '';
         var element;
+        var placeholder = wizard.i18n.select.placeholder ? wizard.i18n.select.placeholder : '';
         selectHtml += '<div class="fw-select-option-container">';
         selectHtml += '<label>' + wizard.i18n.label + '</label>';
         selectHtml += '<input type="text" class="fw-block-label" value="' + select.label + '"></input>';
+        selectHtml += '<label>' + placeholder + '</label>';
+        selectHtml += '<input type="text" class="fw-select-placeholder" value="' + select.placeholder + '"></input>';
         selectHtml += '<label>' + wizard.i18n.select.options + '</label>';
         selectHtml += '<textarea class="fw-select-options" rows="4" cols="50">';
         for (i = 0; i < select.elements.length; i++) {
@@ -440,6 +443,7 @@
       select['required'] = $select.find('.fw-required').prop('checked');
       select['search'] = $select.find('.fw-select-search').prop('checked');
       select['label'] = $select.find('.fw-block-label').val();
+      select['placeholder'] = $select.find('.fw-select-placeholder').val();
       select['elements'] = options.filter(function(v){return v !== '' && v !== ' '});
     }
 
