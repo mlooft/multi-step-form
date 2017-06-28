@@ -98,7 +98,8 @@ class Mondula_Form_Wizard_Admin {
               ),
               'select' => array(
                 'options' => __('Options (one per line)', 'multi-step-form'),
-                'search' => __('Enable search', 'multi-step-form')
+                'search' => __('Enable search', 'multi-step-form'),
+                'placeholder' => __('Set placeholder', 'multi-step-form')
               ),
               'paragraph' => array(
                 'textHtml' => __('Text/HTML', 'multi-step-form'),

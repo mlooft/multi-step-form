@@ -13,13 +13,15 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
     private $_required;
     private $_search;
     private $_label;
+    private $_placeholder;
 
     protected static $type = "fw-select";
 
-    public function __construct ( $elements, $required, $label, $search ) {
+    public function __construct ( $elements, $required, $label, $placeholder, $search ) {
         $this->_elements = $elements;
         $this->_required = $required;
         $this->_label = $label;
+        $this->_placeholder = $placeholder;
         $this->_search = $search;
     }
 
@@ -32,7 +34,8 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
         $group = $this->generate_id( $ids );
         ?>
           <h3><?php echo $this->_label ?></h3>
-          <select data-search="<?php echo $this->_search?>">
+          <select data-search="<?php echo $this->_search?>" data-placeholder="<?php echo $this->_placeholder?>">
+            <option></option>
             <?php for ( $i = 0; $i < $cnt; $i++ ) {
                 $element = $this->_elements[$i];
             ?>
@@ -55,6 +58,7 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
             'elements' => $this->_elements,
             'required' => $this->_required,
             'label' => $this->_label,
+            'placeholder' => $this->_placeholder,
             'search' => $this->_search
         );
     }
@@ -64,6 +68,7 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
         $required = $aa['required'];
         $label = $aa['label'];
         $search = $aa['search'];
-        return new Mondula_Form_Wizard_Block_Select( $elements, $required, $label, $search);
+        $placeholder = $aa['placeholder'];
+        return new Mondula_Form_Wizard_Block_Select( $elements, $required, $label, $placeholder, $search);
     }
 }
