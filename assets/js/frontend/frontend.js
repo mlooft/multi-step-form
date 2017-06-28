@@ -450,7 +450,7 @@ jQuery(document).ready(function($) {
     function validateSelect($element) {
         var valid = false;
         var $select = $element.find("select");
-        if ($select.select2("data")[0].selected) {
+        if ($select.val()) {
             valid = true;
         }
         return valid;
@@ -777,15 +777,17 @@ jQuery(document).ready(function($) {
 
     function setupSelect2() {
         $('select').each(function(idx, element) {
-            console.log($(element).data('search'));
+            console.log($(element).data('placeholder'));
             if (!$(element).data('search')) {
                 $(element).select2({
-                    minimumResultsForSearch: Infinity
+                    minimumResultsForSearch: Infinity,
+                    allowClear: true,
+                    placeholder: ""
                 })
             } else {
                 $('select').select2({
-                    // TODO: placeholder not working
-                    placeholder: "Select a state"
+                  allowClear: true,
+                  placeholder: ""
                 });
             }
         });
