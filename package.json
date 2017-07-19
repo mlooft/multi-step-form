@@ -1,7 +1,7 @@
 {
   "name": "multi-step-form",
   "title": "Multi Step Form",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "homepage": "https://github.com/hlashbrooke/WordPress-Plugin-Template",
   "main": "gulpfile.js",
   "devDependencies": {
