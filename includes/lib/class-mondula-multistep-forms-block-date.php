@@ -18,7 +18,11 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
     public function __construct ( $label, $required, $format ) {
         $this->_label = $label;
         $this->_required = $required;
-        $this->_format = $format;
+				if (empty($format)) {
+        	$this->_format = $format;
+				} else {
+					$this->_format = 'dd/mm/yy';
+				}
     }
 
     public function get_required( ) {
