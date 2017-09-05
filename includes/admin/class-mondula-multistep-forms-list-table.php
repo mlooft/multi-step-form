@@ -18,14 +18,6 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
  */
 class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 
-	var $example_data = array(
-		array(
-			'title' => 'Wizard 1',
-			'shortcode' => '[wizard id=1]',
-			'date' => '2015-07-13',
-		),
-	);
-
 	private $_wizard_service;
 
 
