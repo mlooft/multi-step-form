@@ -14,7 +14,7 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 /**
  * Description of class-mondula-multistep-forms-list-table
  *
- * @author Lewe Ohlsen <mail@lewe.io>
+ * @author Lewe Ohlsen <lewe.ohlsen@mondula.com>
  */
 class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 
@@ -94,7 +94,7 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 			'fw-delete' => '<a href="' . $delete_url . '">' . __( 'Delete', $this->_text_domain ) . '</a>',
 			'fw-duplicate' => '<a href="' . $duplicate_url . '">' . __( 'Duplicate', $this->_text_domain ) . '</a>',
 		);
-		if ( !$wiz['title'] || $wiz['title'] == '' ) {
+		if ( ! $wiz['title'] || '' == $wiz['title'] ) {
 			$wiz['title'] = 'My Multi Step Form';
 		}
 		return sprintf( '<a href="' . $edit_url . '">' . $wiz['title'] . '</a>' . '%1$s', $this->row_actions( $actions ) );
