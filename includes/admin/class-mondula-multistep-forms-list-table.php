@@ -14,7 +14,7 @@ if( ! class_exists( 'WP_List_Table' ) ) {
 /**
  * Description of class-mondula-multistep-forms-list-table
  *
- * @author alex
+ * @author Lewe Ohlsen <mail@lewe.io>
  */
 class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 
