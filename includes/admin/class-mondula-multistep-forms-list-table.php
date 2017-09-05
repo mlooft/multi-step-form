@@ -95,16 +95,6 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
       return sprintf('<a href="' . $edit_url . '">' . $wiz['title'] . '</a>'.'%1$s', $this->row_actions($actions));
     }
 
-//    public function handle_row_actions( $item, $column_name, $primary ) {
-//        switch ($column_name) {
-//            case 'title':
-//                return 'Title';
-//            default:
-//                return 'default';
-//        }
-//    }
-
-
     function prepare_items ( ) {
         $columns = $this->get_columns();
         $hidden = array();
