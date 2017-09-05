@@ -148,8 +148,15 @@ class Mondula_Form_Wizard_Admin {
 	}
 
 	public function delete( $id ) {
+		$this->_wizard_service->delete( $id );
+		$this->table();
+	}
+
+	public function bulk_delete( $ids ) {
+		foreach ( $ids as $id ) {
 			$this->_wizard_service->delete( $id );
-			$this->table();
+		}
+		$this->table();
 	}
 
 	public function duplicate( $id ) {

@@ -22,21 +22,21 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 
 
 	public function __construct( Mondula_Form_Wizard_Wizard_Service $wizard_service ) {
-			parent::__construct( array(
-				'screen' => get_current_screen(),
-			) );
-			$this->_wizard_service = $wizard_service;
+		parent::__construct( array(
+			'screen' => get_current_screen(),
+		) );
+		$this->_wizard_service = $wizard_service;
 	}
 
 	function get_columns() {
-			$columns = array(
-				'cb' => '<input type="checkbox" />',
-				'title' => 'Title',
-				'shortcode' => 'Shortcode',
-				'sendto' => 'Send mails to',
-				'date' => 'Date',
-			);
-			return $columns;
+		$columns = array(
+			'cb' => '<input type="checkbox" />',
+			'title' => 'Title',
+			'shortcode' => 'Shortcode',
+			'sendto' => 'Send mails to',
+			'date' => 'Date',
+		);
+		return $columns;
 	}
 
 	public function column_default( $item, $column_name ) {
@@ -93,13 +93,13 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 	}
 
 	function prepare_items() {
-			$columns = $this->get_columns();
-			$hidden = array();
-			$sortable = array();
-			$this->_column_headers = array( $columns, $hidden, $sortable );
-			$this->items = $this->_wizard_service->get_all();
+		$columns = $this->get_columns();
+		$hidden = array();
+		$sortable = array();
+		$this->_column_headers = array( $columns, $hidden, $sortable );
+		$this->items = $this->_wizard_service->get_all();
 
-			$this->process_bulk_action();
+		$this->process_bulk_action();
 	}
 
 
@@ -111,9 +111,9 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 	}
 
 	function column_cb( $item ) {
-			return sprintf(
-				'<input type="checkbox" name="wizard[]" value="%s" />', $item['id']
-			);
+		return sprintf(
+			'<input type="checkbox" name="wizard[]" value="%s" />', $item['id']
+		);
 	}
 
 	public function process_bulk_action() {
@@ -136,7 +136,7 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 				// wp_die( 'Delete something' );
 				$wizard_ids = $_GET['wizard'];
 				foreach ( $wizard_ids as $wizard_id ) {
-						$this->_wizard_service->delete( $wizard_id );
+					$this->_wizard_service->delete( $wizard_id );
 				}
 				break;
 
