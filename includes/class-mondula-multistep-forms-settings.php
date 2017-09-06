@@ -42,6 +42,12 @@ class Mondula_Form_Wizard_Settings {
 				'title' => __( 'Styling', 'multi-step-form' ),
 			),
 		);
+		if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
+			array_push( $sections, array(
+				'id' => 'fw_settings_plus',
+				'title' => __( 'PLUS', 'multi-step-form' ),
+			));
+		}
 		return $sections;
 	}
 
@@ -124,6 +130,36 @@ class Mondula_Form_Wizard_Settings {
 				),
 			),
 		);
+		if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
+			$settings_fields['fw_settings_plus'] = array(
+				array(
+					'name' => 'mailformat',
+					'label' => __( 'Mail Format', 'multi-step-form' ),
+					'desc' => __( 'Choose formatting for form emails', 'multi-step-form' ),
+					'type' => 'radio',
+					'options' => array(
+						'html' => 'HTML',
+						'text'  => 'Plain Text',
+					),
+					'default' => 'html',
+				),
+				array(
+					'name'  => 'showsummary',
+					'label' => __( 'Summary', 'multi-step-form' ),
+					'desc'  => __( 'Display Summary at the end of each form', 'multi-step-form' ),
+					'type'  => 'checkbox',
+					'default' => 'on',
+				),
+				array(
+					'name'  => 'cc',
+					'label' => __( 'CC', 'multi-step-form' ),
+					'desc'  => __( 'Send copy of submitted data to user', 'multi-step-form' ),
+					'type'  => 'checkbox',
+					'default' => 'off',
+				),
+			);
+		}
+
 		return $settings_fields;
 	}
 
