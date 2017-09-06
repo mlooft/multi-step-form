@@ -144,29 +144,18 @@ class Mondula_Form_Wizard_Settings {
 		if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
 			$settings_fields['fw_settings_plus'] = array(
 				array(
-					'name' => 'mailformat',
-					'label' => __( 'Mail Format', 'multi-step-form' ),
-					'desc' => __( 'Choose formatting for form emails', 'multi-step-form' ),
-					'type' => 'radio',
-					'options' => array(
-						'html' => 'HTML',
-						'text'  => 'Plain Text',
-					),
-					'default' => 'html',
+					'name' => 'enable_registration',
+					'label' => __( 'User Registration', 'multi-step-form' ),
+					'desc' => __( 'Register user as WordPress-user on form submit', 'multi-step-form' ),
+					'type' => 'checkbox',
+					'default' => 'off',
 				),
 				array(
-					'name'  => 'showsummary',
-					'label' => __( 'Summary', 'multi-step-form' ),
-					'desc'  => __( 'Display Summary at the end of each form', 'multi-step-form' ),
+					'name'  => 'enable_conditional',
+					'label' => __( 'Condutional Fields', 'multi-step-form' ),
+					'desc'  => __( 'Enable conditional fields', 'multi-step-form' ),
 					'type'  => 'checkbox',
 					'default' => 'on',
-				),
-				array(
-					'name'  => 'cc',
-					'label' => __( 'CC', 'multi-step-form' ),
-					'desc'  => __( 'Send copy of submitted data to user', 'multi-step-form' ),
-					'type'  => 'checkbox',
-					'default' => 'off',
 				),
 			);
 		}
