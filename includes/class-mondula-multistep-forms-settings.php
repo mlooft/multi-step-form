@@ -53,9 +53,15 @@ class Mondula_Form_Wizard_Settings {
 		);
 		/* If plus is active, add menu section. */
 		if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
+			/* Form Entries */
 			array_push( $sections, array(
-				'id' => 'fw_settings_plus',
-				'title' => __( 'PLUS', 'multi-step-form' ),
+				'id' => 'fw_settings_entries',
+				'title' => __( 'Form Entries', 'multi-step-form' ),
+			));
+			/* Conditional Fields */
+			array_push( $sections, array(
+				'id' => 'fw_settings_conditional',
+				'title' => __( 'Conditional Fields', 'multi-step-form' ),
 			));
 		}
 		return $sections;
@@ -142,24 +148,30 @@ class Mondula_Form_Wizard_Settings {
 		);
 		/* If plus is active, add menu items. */
 		if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
-			$settings_fields['fw_settings_plus'] = array(
+			$settings_fields['fw_settings_entries'] = array(
 				array(
-					'name' => 'enable_registration',
-					'label' => __( 'User Registration', 'multi-step-form' ),
-					'desc' => __( 'Register user as WordPress-user on form submit', 'multi-step-form' ),
+					'name' => 'entries_enable',
+					'label' => __( 'Enable entry saving', 'multi-step-form' ),
+					'desc' => __( 'Save submitted forms to the database', 'multi-step-form' ),
 					'type' => 'checkbox',
-					'default' => 'off',
+					'default' => 'on',
 				),
 				array(
-					'name'  => 'enable_conditional',
-					'label' => __( 'Condutional Fields', 'multi-step-form' ),
-					'desc'  => __( 'Enable conditional fields', 'multi-step-form' ),
+					'name'  => 'entries_perpage',
+					'label' => __( 'Entries per page', 'multi-step-form' ),
+					'desc'  => __( 'How many entries to show on each page in the backend', 'multi-step-form' ),
+					'type'  => 'number',
+					'default' => '20',
+				),
+				array(
+					'name'  => 'entries_unread',
+					'label' => __( 'Highlight unread', 'multi-step-form' ),
+					'desc'  => __( 'Print new entries in bold', 'multi-step-form' ),
 					'type'  => 'checkbox',
-					'default' => 'on',
+					'default' => 'off',
 				),
 			);
 		}
-
 		return $settings_fields;
 	}
 
