@@ -19,6 +19,9 @@ class Mondula_Form_Wizard_Settings {
 		$this->_parent = $parent;
 	}
 
+	/**
+	 * Initialzie the settings and call the functions for fields and sections..
+	 */
 	function admin_init() {
 		//set the settings
 		$this->settings_api->set_sections( $this->get_settings_sections() );
@@ -27,21 +30,28 @@ class Mondula_Form_Wizard_Settings {
 		$this->settings_api->admin_init();
 	}
 
+	/**
+	 * Register the admin menu.
+	 */
 	function admin_menu() {
 		add_options_page( 'Multi Step Form', 'Multi Step Form', 'delete_posts', 'mondula_form_wizard_settings', array( $this, 'plugin_page' ) );
 	}
 
+	/**
+	 * Get the settings sections that are displayed in horizontal tabs.
+	 */
 	function get_settings_sections() {
 		$sections = array(
 			array(
 				'id' => 'fw_settings_email',
-				'title' => __( 'Email Settings', 'multi-step-form' ),
+				'title' => __( 'Email', 'multi-step-form' ),
 			),
 			array(
 				'id' => 'fw_settings_styling',
 				'title' => __( 'Styling', 'multi-step-form' ),
 			),
 		);
+		/* If plus is active, add menu section. */
 		if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
 			array_push( $sections, array(
 				'id' => 'fw_settings_plus',
@@ -130,6 +140,7 @@ class Mondula_Form_Wizard_Settings {
 				),
 			),
 		);
+		/* If plus is active, add menu items. */
 		if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
 			$settings_fields['fw_settings_plus'] = array(
 				array(
@@ -163,6 +174,9 @@ class Mondula_Form_Wizard_Settings {
 		return $settings_fields;
 	}
 
+	/**
+	 * Define the plugin page markup.
+	 */
 	function plugin_page() {
 		echo '<div class="wrap">';
 		$this->settings_api->show_navigation();
@@ -172,7 +186,6 @@ class Mondula_Form_Wizard_Settings {
 
 	/**
 	 * Get all the pages
-	 *
 	 * @return array page names with key value pairs
 	 */
 	function get_pages() {
@@ -188,36 +201,26 @@ class Mondula_Form_Wizard_Settings {
 
 	/**
 	 * Main Mondula_Form_Wizard_Settings Instance
-	 *
 	 * Ensures only one instance of Mondula_Form_Wizard_Settings is loaded or can be loaded.
-	 *
-	 * @since 1.0.0
-	 * @static
-	 * @see Mondula_Form_Wizard()
-	 * @return Main Mondula_Form_Wizard_Settings instance
 	 */
 	public static function instance( $parent ) {
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance = new self( $parent );
 		}
 		return self::$_instance;
-	} // End instance()
+	}
 
 	/**
 	 * Cloning is forbidden.
-	 *
-	 * @since 1.0.0
 	 */
 	public function __clone() {
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), $this->parent->_version );
-	} // End __clone()
+	}
 
 	/**
 	 * Unserializing instances of this class is forbidden.
-	 *
-	 * @since 1.0.0
 	 */
 	public function __wakeup() {
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), $this->parent->_version );
-	} // End __wakeup()
+	}
 }
