@@ -21,6 +21,10 @@ class Mondula_Form_Wizard_Wizard {
       $this->_settings = $settings;
     }
 
+	public function get_title() {
+		return $this->_title;
+	}
+
     public function set_title ( $title ) {
       $this->_title = $title;
     }
