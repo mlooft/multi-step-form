@@ -63,6 +63,11 @@ class Mondula_Form_Wizard_Settings {
 				'id' => 'fw_settings_conditional',
 				'title' => __( 'Conditional Fields', 'multi-step-form' ),
 			));
+			/* User Registration */
+			array_push( $sections, array(
+				'id' => 'fw_settings_registration',
+				'title' => __( 'User Registration', 'multi-step-form' ),
+			));
 		}
 		return $sections;
 	}
@@ -171,6 +176,26 @@ class Mondula_Form_Wizard_Settings {
 				// 	'type'  => 'checkbox',
 				// 	'default' => 'off',
 				// ),
+			);
+			/* Conditional fields Settings */
+			$settings_fields['fw_settings_conditional'] = array(
+				array(
+					'name' => 'conditional_enable',
+					'label' => __( 'Enable conditional blocks', 'multi-step-form' ),
+					'desc' => __( 'Display some form elements only when others are filled.', 'multi-step-form' ),
+					'type' => 'checkbox',
+					'default' => 'on',
+				),
+			);
+			/* Conditional fields Settings */
+			$settings_fields['fw_settings_registration'] = array(
+				array(
+					'name' => 'registration_enable',
+					'label' => __( 'Enable user registration', 'multi-step-form' ),
+					'desc' => __( 'Enable the registration block. You need to add it to each form.', 'multi-step-form' ),
+					'type' => 'checkbox',
+					'default' => 'off',
+				),
 			);
 		}
 		return $settings_fields;
