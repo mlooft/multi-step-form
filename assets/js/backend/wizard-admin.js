@@ -194,6 +194,7 @@
 	
 	function renderRegistration(block) {
 		var registrationHtml = '';
+        registrationHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		registrationHtml += '<p class="msfp-registration-info">' + wizard.i18n.registration.info + '</p>';
 		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-email" checked disabled="disabled"/>' + wizard.i18n.registration.email + '</label>';		
 		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-username"' + isChecked(block.username) + '/>' + wizard.i18n.registration.username + '</label>';
@@ -502,6 +503,7 @@
 	}
 	
 	function getRegistrationData($text, text) {
+		text['required'] = $text.find('.fw-required').prop('checked')				
 		text['username'] = $text.find('.msfp-registration-username').prop('checked')		
 		text['password'] = $text.find('.msfp-registration-password').prop('checked')
 		text['firstname'] = $text.find('.msfp-registration-firstname').prop('checked')
