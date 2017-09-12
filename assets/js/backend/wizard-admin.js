@@ -190,7 +190,22 @@
         paragraphHtml += '<label>' + wizard.i18n.paragraph.textHtml + ' <i class="fa fa-info-circle" aria-hidden="true" title="' + wizard.i18n.tooltips.paragraph + '"></i></label>';
         paragraphHtml += '<textarea class="fw-paragraph-text fw-block-label" placeholder="' + wizard.i18n.paragraph.text + '">' + (block.text ? block.text : '') + '</textarea>';
         return paragraphHtml;
-    }
+	}
+	
+	function renderRegistration(block) {
+		var registrationHtml = '';
+		registrationHtml += '<label>' + wizard.i18n.label + '</label>';
+		registrationHtml += '<input type="text" class="fw-registration-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+		registrationHtml += '<p class="msfp-registration-info">' + wizard.i18n.registration.info + '</p>';
+		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-username" checked disabled="disabled"/>' + wizard.i18n.registration.username + '</label>';
+		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-email" checked disabled="disabled"/>' + wizard.i18n.registration.email + '</label>';
+		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-password"'+ isChecked(block.password) + '/>' + wizard.i18n.registration.password + '</label>';		
+		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-firstname"'+ isChecked(block.firstname) + '/>' + wizard.i18n.registration.firstname + '</label>';
+		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-lastname"'+ isChecked(block.lastname) + '/>' + wizard.i18n.registration.lastname + '</label>';
+		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-website"'+ isChecked(block.website) + '/>' + wizard.i18n.registration.website + '</label>';
+		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-bio"'+ isChecked(block.bio) + '/>' + wizard.i18n.registration.bio + '</label>';
+		return registrationHtml;
+	}
 
     function renderBlock(block) {
         log('block', block);
@@ -242,7 +257,10 @@
                 break;
             case 'paragraph':
                 blockHtml += renderParagraph(block);
-                break;
+				break;
+			case 'registration':
+				blockHtml += renderRegistration(block);
+				break;
             default:
                 break;
         }
@@ -483,7 +501,16 @@
 
     function getParagraphData($text, text) {
         text['text'] = $text.find('.fw-paragraph-text').val();
-    }
+	}
+	
+	function getRegistrationData($text, text) {
+		text['label'] = $text.find('.fw-registration-label').val();
+		text['password'] = $text.find('.msfp-registration-password').prop('checked')
+		text['firstname'] = $text.find('.msfp-registration-firstname').prop('checked')
+		text['lastname'] = $text.find('.msfp-registration-lastname').prop('checked')
+		text['website'] = $text.find('.msfp-registration-website').prop('checked')
+		text['bio'] = $text.find('.msfp-registration-bio').prop('checked')
+	}
 
     /**
      * getBlockData - get the data from backend input fields
@@ -521,7 +548,10 @@
                 break;
             case 'paragraph':
                 getParagraphData($block, block);
-                break;
+				break;
+			case 'registration':
+				getRegistrationData($block, block);
+				break;
         }
         return block;
     }
@@ -1004,7 +1034,19 @@
               var $part = $(thickEvent.target).parents('.fw-step-part');
               $part.find('.inside').append(block);
               setupClickHandlers();
-            });
+			});
+			// REGISTRATION
+            $("#fw-thickbox-registration").unbind('click').click(function(thickRadioEvent) {
+				tb_remove();
+				var block = $(renderBlock({
+					type: 'registration',
+					label: '',
+					value: ''
+				}));
+				var $part = $(thickEvent.target).parents('.fw-step-part');
+				$part.find('.inside').append(block);
+				setupClickHandlers();
+			  });
         });
     }
 
