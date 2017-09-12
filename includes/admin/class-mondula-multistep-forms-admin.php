@@ -301,6 +301,13 @@ class Mondula_Form_Wizard_Admin {
 									<a class="fw-draggable-block fw-element-file" data-type="file"><i class="fa fa-arrows"></i> File Upload</a>
 									<a class="fw-draggable-block fw-element-date" data-type="date"><i class="fa fa-arrows"></i> Date</a>
 									<a class="fw-draggable-block fw-element-paragraph" data-type="paragraph"><i class="fa fa-arrows"></i> Paragraph</a>
+									<?php
+									if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
+										?>
+										<a class="fw-draggable-block fw-element-registration" data-type="registration"><i class="fa fa-arrows"></i> Registration</a>
+										<?php
+									}
+									?>
 								</div>
 								<div class="fw-actions">
 									<button class="fw-button-save"><?php _e( 'Save' ); ?></button>
@@ -323,6 +330,14 @@ class Mondula_Form_Wizard_Admin {
 				<div id="fw-thickbox-textarea">Textarea</div>
 				<div id="fw-thickbox-date">Date</div>
 				<div id="fw-thickbox-paragraph">Paragraph</div>
+				<?php
+				if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
+					?>
+					<div id="fw-thickbox-registration">Registration</div>
+				<?php
+				}
+				?>
+
 			</div>
 
 		</div>
