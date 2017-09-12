@@ -50,72 +50,76 @@ class Mondula_Form_Wizard_Admin {
 			add_action( 'admin_print_styles-' . $add, array( $this, 'admin_js' ) );
 	}
 
+	public static function get_translation() {
+		return array(
+			'tooltips' => array(
+				'title' => __( 'The step title is displayed below the progress bar', 'multi-step-form' ),
+				'headline' => __( 'The step headline is displayed above the progress bar' , 'multi-step-form' ),
+				'copyText' => __( 'The step description is displayed below the step headline' , 'multi-step-form' ),
+				'removeStep' => __( 'remove step', 'multi-step-form' ),
+				'removeSection' => __( 'remove section', 'multi-step-form' ),
+				'removeBlock' => __( 'remove element', 'multi-step-form' ),
+				'multiChoice' => __( 'Multi-Select uses checkboxes. Single-Select has radio-buttons.', 'multi-step-form' ),
+				'paragraph' => __( 'Provide a static text block for explanations or additional info. You can use HTML for formatting.', 'multi-step-form' ),
+				'dateformat' => __( 'click for date format specifications', 'multi-step-form' ),
+			),
+			'alerts' => array(
+				'invalidEmail' => __( 'You need to enter a valid email address', 'multi-step-form' ),
+				'noSubject' => __( 'You need to provide an email subject', 'multi-step-form' ),
+				'noStepTitle' => __( 'WARNING: You need to provide a title for each step', 'multi-step-form' ),
+				'noSectionTitle' => __( 'WARNING: You need to provide a title for each section', 'multi-step-form' ),
+				'noFormTitle' => __( 'WARNING: You need to provide title for the form', 'multi-step-form' ),
+				'onlyFive' => __( 'ERROR: only 5 steps are allowed in the free version', 'multi-step-form' ),
+				'reallyDeleteStep' => __( 'Do you really want to delete this step?', 'multi-step-form' ),
+				'reallyDeleteSection' => __( 'Do you really want to delete this section?', 'multi-step-form' ),
+				'reallyDeleteBlock' => __( 'Do you really want to delete this block?', 'multi-step-form' ),
+			),
+			'title' => __( 'Step Title', 'multi-step-form' ),
+			'headline' => __( 'Step Headline', 'multi-step-form' ),
+			'copyText' => __( 'Step description', 'multi-step-form' ),
+			'partTitle' => __( 'Section Title', 'multi-step-form' ),
+			'addStep' => __( 'Add Step', 'multi-step-form' ),
+			'addSection' => __( 'Add Section', 'multi-step-form' ),
+			'addElement' => __( 'Add Element', 'multi-step-form' ),
+			'label' => __( 'Label', 'multi-step-form' ),
+			'dateformat' => __( 'Date Format', 'multi-step-form' ),
+			'required' => __( 'Required', 'multi-step-form' ),
+			'radio' => array(
+				'header' => __( 'Header', 'multi-step-form' ),
+				'option' => __( 'Option', 'multi-step-form' ),
+				'options' => __( 'Options', 'multi-step-form' ),
+				'addOption' => __( 'Add option', 'multi-step-form' ),
+				'multiple' => __( 'Multiple Selection', 'multi-step-form' ),
+			),
+			'select' => array(
+				'options' => __( 'Options (one per line)', 'multi-step-form' ),
+				'search' => __( 'Enable search', 'multi-step-form' ),
+				'placeholder' => __( 'Set placeholder', 'multi-step-form' ),
+			),
+			'paragraph' => array(
+				'textHtml' => __( 'Text/HTML', 'multi-step-form' ),
+				'text' => __( 'Paragraph text', 'multi-step-form' ),
+			),
+			'registration' => array(
+				'info' => __( "Please select the registration fields to be displayed to the user. Email is always required. If the user does not specify a username or password, WordPress is auto-generating these and sending them to the user via email.", 'multi-step-form' ),
+				'username' => __( 'Username', 'multi-step-form' ),
+				'email' => __( 'Email', 'multi-step-form' ),
+				'password' => __( 'Password', 'multi-step-form' ),
+				'firstname' => __( 'First Name', 'multi-step-form' ),
+				'lastname' => __( 'Last Name', 'multi-step-form' ),
+				'website' => __( 'Website', 'multi-step-form' ),
+				'bio' => __( 'Biographical Info', 'multi-step-form' ),
+			),
+		);
+	}
+
 	public function admin_js() {
 		$edit = isset( $_GET['edit'] );
 
 		if ( $edit ) {
 			$id = isset( $_GET['edit'] ) ? $_GET['edit'] : '';
 			$json = $this->_wizard_service->get_as_json( $id );
-			$i18n = array(
-				'tooltips' => array(
-					'title' => __( 'The step title is displayed below the progress bar', 'multi-step-form' ),
-					'headline' => __( 'The step headline is displayed above the progress bar' , 'multi-step-form' ),
-					'copyText' => __( 'The step description is displayed below the step headline' , 'multi-step-form' ),
-					'removeStep' => __( 'remove step', 'multi-step-form' ),
-					'removeSection' => __( 'remove section', 'multi-step-form' ),
-					'removeBlock' => __( 'remove element', 'multi-step-form' ),
-					'multiChoice' => __( 'Multi-Select uses checkboxes. Single-Select has radio-buttons.', 'multi-step-form' ),
-					'paragraph' => __( 'Provide a static text block for explanations or additional info. You can use HTML for formatting.', 'multi-step-form' ),
-					'dateformat' => __( 'click for date format specifications', 'multi-step-form' ),
-				),
-				'alerts' => array(
-					'invalidEmail' => __( 'You need to enter a valid email address', 'multi-step-form' ),
-					'noSubject' => __( 'You need to provide an email subject', 'multi-step-form' ),
-					'noStepTitle' => __( 'WARNING: You need to provide a title for each step', 'multi-step-form' ),
-					'noSectionTitle' => __( 'WARNING: You need to provide a title for each section', 'multi-step-form' ),
-					'noFormTitle' => __( 'WARNING: You need to provide title for the form', 'multi-step-form' ),
-					'onlyFive' => __( 'ERROR: only 5 steps are allowed in the free version', 'multi-step-form' ),
-					'reallyDeleteStep' => __( 'Do you really want to delete this step?', 'multi-step-form' ),
-					'reallyDeleteSection' => __( 'Do you really want to delete this section?', 'multi-step-form' ),
-					'reallyDeleteBlock' => __( 'Do you really want to delete this block?', 'multi-step-form' ),
-				),
-				'title' => __( 'Step Title', 'multi-step-form' ),
-				'headline' => __( 'Step Headline', 'multi-step-form' ),
-				'copyText' => __( 'Step description', 'multi-step-form' ),
-				'partTitle' => __( 'Section Title', 'multi-step-form' ),
-				'addStep' => __( 'Add Step', 'multi-step-form' ),
-				'addSection' => __( 'Add Section', 'multi-step-form' ),
-				'addElement' => __( 'Add Element', 'multi-step-form' ),
-				'label' => __( 'Label', 'multi-step-form' ),
-				'dateformat' => __( 'Date Format', 'multi-step-form' ),
-				'required' => __( 'Required', 'multi-step-form' ),
-				'radio' => array(
-					'header' => __( 'Header', 'multi-step-form' ),
-					'option' => __( 'Option', 'multi-step-form' ),
-					'options' => __( 'Options', 'multi-step-form' ),
-					'addOption' => __( 'Add option', 'multi-step-form' ),
-					'multiple' => __( 'Multiple Selection', 'multi-step-form' ),
-				),
-				'select' => array(
-					'options' => __( 'Options (one per line)', 'multi-step-form' ),
-					'search' => __( 'Enable search', 'multi-step-form' ),
-					'placeholder' => __( 'Set placeholder', 'multi-step-form' ),
-				),
-				'paragraph' => array(
-					'textHtml' => __( 'Text/HTML', 'multi-step-form' ),
-					'text' => __( 'Paragraph text', 'multi-step-form' ),
-				),
-				'registration' => array(
-					'info' => __( "Please select the registration fields to be displayed to the user. Email is always required. If the user does not specify a username or password, WordPress is auto-generating these and sending them to the user via email.", 'multi-step-form' ),
-					'username' => __( 'Username', 'multi-step-form' ),
-					'email' => __( 'Email', 'multi-step-form' ),
-					'password' => __( 'Password', 'multi-step-form' ),
-					'firstname' => __( 'First Name', 'multi-step-form' ),
-					'lastname' => __( 'Last Name', 'multi-step-form' ),
-					'website' => __( 'Website', 'multi-step-form' ),
-					'bio' => __( 'Biographical Info', 'multi-step-form' ),
-				),
-			);
+			$i18n = $this->get_translation();
 
 			wp_register_script( $this->_token . '-backend', esc_url( $this->_assets_url ) . 'backend' . $this->_script_suffix . '.js', array( 'postbox', 'jquery-ui-dialog', 'jquery-ui-sortable', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-tooltip', 'jquery' ), $this->_version );
 			$ajax = array(
