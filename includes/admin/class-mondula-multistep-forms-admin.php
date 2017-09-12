@@ -105,6 +105,16 @@ class Mondula_Form_Wizard_Admin {
 					'textHtml' => __( 'Text/HTML', 'multi-step-form' ),
 					'text' => __( 'Paragraph text', 'multi-step-form' ),
 				),
+				'registration' => array(
+					'info' => __( "Please select the registration fields to be displayed to the user. Username and Email are always required. If the user does not specify a password, WordPress is generating one and sending it to the user via email.", 'multi-step-form' ),
+					'username' => __( 'Username', 'multi-step-form' ),
+					'email' => __( 'Email', 'multi-step-form' ),
+					'password' => __( 'Password', 'multi-step-form' ),
+					'firstname' => __( 'First Name', 'multi-step-form' ),
+					'lastname' => __( 'Last Name', 'multi-step-form' ),
+					'website' => __( 'Website', 'multi-step-form' ),
+					'bio' => __( 'Biographical Info', 'multi-step-form' ),
+				),
 			);
 
 			wp_register_script( $this->_token . '-backend', esc_url( $this->_assets_url ) . 'backend' . $this->_script_suffix . '.js', array( 'postbox', 'jquery-ui-dialog', 'jquery-ui-sortable', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-tooltip', 'jquery' ), $this->_version );
