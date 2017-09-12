@@ -106,7 +106,7 @@ class Mondula_Form_Wizard_Admin {
 					'text' => __( 'Paragraph text', 'multi-step-form' ),
 				),
 				'registration' => array(
-					'info' => __( "Please select the registration fields to be displayed to the user. Username and Email are always required. If the user does not specify a password, WordPress is generating one and sending it to the user via email.", 'multi-step-form' ),
+					'info' => __( "Please select the registration fields to be displayed to the user. Email is always required. If the user does not specify a username or password, WordPress is auto-generating these and sending them to the user via email.", 'multi-step-form' ),
 					'username' => __( 'Username', 'multi-step-form' ),
 					'email' => __( 'Email', 'multi-step-form' ),
 					'password' => __( 'Password', 'multi-step-form' ),
