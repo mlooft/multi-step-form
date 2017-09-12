@@ -129,8 +129,10 @@ class Mondula_Form_Wizard {
 		$this->load_plugin_textdomain();
 		add_action( 'init', array( $this, 'load_localisation' ), 0 );
 
-                // Setup shortcode
-                $this->shortcode = new Mondula_Form_Wizard_Shortcode( $this, $this->_token, $this->_wizard_service );
+		// Setup shortcode
+		$this->shortcode = new Mondula_Form_Wizard_Shortcode( $this, $this->_token, $this->_wizard_service );
+		/* Notify other plugins that Multi Step Form has loaded */
+		do_action( 'msf_loaded' );
 	} // End __construct ()
 
 	/**
