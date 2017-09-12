@@ -19,7 +19,7 @@
 @color_radio: #009989;
 @color_select: #757575;
 @color_paragraph: #ffc107;
-@color_submit: #8bc34a;
+@color_registration: #8bc34a;
 
 
 a:active, a:hover {
@@ -414,8 +414,8 @@ div#TB_ajaxContent {
     &[data-type="paragraph"] {
         border-color: @color_paragraph !important;
     }
-	&[data-type="submit"] {
-		border-color: @color_submit !important;
+	&[data-type="registration"] {
+		border-color: @color_registration !important;
 	}
 }
 [data-type="paragraph"] {
@@ -474,9 +474,9 @@ div#TB_ajaxContent {
 		background-color: @color_paragraph;
 	}
 }
-.fw-step-block[data-type="submit"] {
+.fw-step-block[data-type="registration"] {
 	>.fw-block-action, .fw-block-controls > i {
-		background-color: @color_submit;
+		background-color: @color_registration;
 	}
 }
 .fw-step {
@@ -650,8 +650,8 @@ input.fw-invalid {
 .fw-draggable-block[data-type=paragraph] {
 	border-left: 6px solid @color_paragraph;
 }
-.fw-draggable-block[data-type=submit] {
-	border-left: 6px solid @color_submit;
+.fw-draggable-block[data-type=registration] {
+	border-left: 6px solid @color_registration;
 }
 .fa.fa-trash {
     color:#757575;
