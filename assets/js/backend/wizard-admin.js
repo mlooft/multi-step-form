@@ -194,11 +194,9 @@
 	
 	function renderRegistration(block) {
 		var registrationHtml = '';
-		registrationHtml += '<label>' + wizard.i18n.label + '</label>';
-		registrationHtml += '<input type="text" class="fw-registration-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
 		registrationHtml += '<p class="msfp-registration-info">' + wizard.i18n.registration.info + '</p>';
-		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-username" checked disabled="disabled"/>' + wizard.i18n.registration.username + '</label>';
-		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-email" checked disabled="disabled"/>' + wizard.i18n.registration.email + '</label>';
+		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-email" checked disabled="disabled"/>' + wizard.i18n.registration.email + '</label>';		
+		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-username"' + isChecked(block.username) + '/>' + wizard.i18n.registration.username + '</label>';
 		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-password"'+ isChecked(block.password) + '/>' + wizard.i18n.registration.password + '</label>';		
 		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-firstname"'+ isChecked(block.firstname) + '/>' + wizard.i18n.registration.firstname + '</label>';
 		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-lastname"'+ isChecked(block.lastname) + '/>' + wizard.i18n.registration.lastname + '</label>';
@@ -504,7 +502,7 @@
 	}
 	
 	function getRegistrationData($text, text) {
-		text['label'] = $text.find('.fw-registration-label').val();
+		text['username'] = $text.find('.msfp-registration-username').prop('checked')		
 		text['password'] = $text.find('.msfp-registration-password').prop('checked')
 		text['firstname'] = $text.find('.msfp-registration-firstname').prop('checked')
 		text['lastname'] = $text.find('.msfp-registration-lastname').prop('checked')
