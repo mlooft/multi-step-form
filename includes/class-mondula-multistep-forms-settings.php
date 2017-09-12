@@ -163,13 +163,14 @@ class Mondula_Form_Wizard_Settings {
 					'type'  => 'number',
 					'default' => '20',
 				),
-				array(
-					'name'  => 'entries_unread',
-					'label' => __( 'Highlight unread', 'multi-step-form' ),
-					'desc'  => __( 'Print new entries in bold', 'multi-step-form' ),
-					'type'  => 'checkbox',
-					'default' => 'off',
-				),
+				// TODO: Plus feature on next update
+				// array(
+				// 	'name'  => 'entries_unread',
+				// 	'label' => __( 'Highlight unread', 'multi-step-form' ),
+				// 	'desc'  => __( 'Print new entries in bold', 'multi-step-form' ),
+				// 	'type'  => 'checkbox',
+				// 	'default' => 'off',
+				// ),
 			);
 		}
 		return $settings_fields;
