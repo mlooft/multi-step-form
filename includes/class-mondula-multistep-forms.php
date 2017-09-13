@@ -168,6 +168,12 @@ class Mondula_Form_Wizard {
 				'requiredField' => __( 'This field is required', 'multi-step-form' ),
 				'someRequired' => __( 'Some required Fields are empty', 'multi-step-form' ),
 				'checkFields' => __( 'Please check the highlighted fields.', 'multi-step-form' ),
+				'noEmail' => __( 'No email address provided', 'multi-step-form' ),
+				'invalidEmail' => __( 'Invalid email address', 'multi-step-form' ),
+				'takenEmail' => __( 'Email is already registered', 'multi-step-form' ),
+				'noUsername' => __( 'No username provided', 'multi-step-form' ),
+				'invalidUsername' => __( 'Invalid username', 'multi-step-form' ),
+				'takenUsername' => __( 'Username is already registered', 'multi-step-form' ),
 			),
 		);
 	}
