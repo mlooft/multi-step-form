@@ -748,11 +748,16 @@
               warn('block sortables update', event, ui);
               var blockType = $(ui.item).attr('data-type');
               if ($(ui.item).is('.fw-draggable-block')) {
-                $(ui.item).replaceWith($(renderBlock({
-                    type: blockType,
-                    label: ''
-                  }))
-                );
+				if (blockType === 'registration' && hasRegistration()) {
+					alertMessage("Only one registration block allowed!", false);
+					$(ui.item).remove();
+				} else {
+					// add element
+					$(ui.item).replaceWith($(renderBlock({
+						type: blockType,
+						label: ''
+					})));
+				}
               }
               setupDragNDrop();
               setupTooltips();
@@ -883,7 +888,17 @@
         attr = 'checked';
       }
       return attr;
-    }
+	}
+	
+	function hasRegistration() {
+		var result = false;
+		$('.fw-step-block').each(function(i, element) {
+			if ($(element).attr('data-type') == 'registration') {
+				result = true;
+			}
+		});
+		return result;
+	}
 
     /**
      * addPart - adds a part to a step
@@ -1044,9 +1059,13 @@
 					value: ''
 				}));
 				var $part = $(thickEvent.target).parents('.fw-step-part');
-				$part.find('.inside').append(block);
+				if (hasRegistration()) {
+					alertMessage("Only one registration block allowed!", false);
+				} else {
+					$part.find('.inside').append(block);
+				}
 				setupClickHandlers();
-			  });
+			  }); 
         });
     }
 
