@@ -537,6 +537,27 @@ jQuery(document).ready(function($) {
         return valid;
 	}
 
+	function validateRegistration($block) {
+		var valid = true;
+		var $username = $block.find('[data-id=username]');
+		var $email = $block.find('[data-id=email]');
+		var hasValidUsername = $username.hasClass('msfp-reg-username-valid');
+		var hasValidEmail = $email.hasClass('msfp-reg-email-valid');
+		if (!hasValidUsername) {
+			$block.addClass('fw-block-invalid');
+			$username.removeClass("msfp-reg-username-valid");										
+			$username.addClass('msfp-registration-invalid');
+			valid = false;
+		}
+		if (!hasValidEmail) {
+			$block.addClass('fw-block-invalid');
+			$email.removeClass("msfp-reg-email-valid");										
+			$email.addClass('msfp-registration-invalid');
+			valid = false;
+		}
+		return valid;
+	}
+
     function validateStep(idx) {
         var valid = true;
         var emailValid = true;
@@ -574,6 +595,9 @@ jQuery(document).ready(function($) {
                     case 'fw-submit':
                         valid = validateSubmit($element);
 						break;
+					case 'fw-registration':
+						valid = validateRegistration($element);
+						break;
                     default:
                         break;
                 }
@@ -599,25 +623,16 @@ jQuery(document).ready(function($) {
         if (!stepValid) {
             $('.fw-block-invalid').each(function(idx, element) {
                 if ($(element).find('.fw-block-invalid-alert').length < 1) {
-                    $(element).append('<div class="fw-block-invalid-alert">' + err[1] + '</div>');
+					if ($(element).attr('data-type') == 'fw-registration') {
+						$(element).append('<div class="fw-block-invalid-alert">' + ajax.i18n.errors.checkFields + '</div>');						
+					} else {
+						$(element).append('<div class="fw-block-invalid-alert">' + err[1] + '</div>');
+					}
                 }
             });
             alertUser(err[0], false);
 		}
-		
-		// validate registration
-		var $registration = $('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-type=fw-registration]');
-		if ($registration) {
-			// validate registration if required or email/username field filled
-			if ($registration.attr('data-required') == 'true' 
-			|| $registration.find('[data-id=username]').val()
-			|| $registration.find('[data-id=email]').val()) {
-				if (validateRegistration($registration) === false) {
-					stepValid = false;
-				}
-			}
-			
-		}
+
         return stepValid;
 	}
 
@@ -637,52 +652,70 @@ jQuery(document).ready(function($) {
             success: function(r) {
 				console.log(r);
 				if (r.success) {
+					$element.removeClass('msfp-registration-invalid');					
 					$element.addClass("msfp-reg-email-valid");
+					$element.next().next().remove('.fw-block-invalid-alert');
+					// remove block-invalid if username is also valid
+					if ($block.find('.msfp-reg-username-valid').length > 0) {
+						$block.removeClass('fw-block-invalid');
+					}
+
 				} else {
 					$block.addClass('fw-block-invalid');
-					$element.next().after('<div class="fw-block-invalid-alert">' + r.error + '</div>');
+					$element.addClass('msfp-registration-invalid');
+					$element.removeClass("msfp-reg-email-valid");					
+					if (!$element.next().next().hasClass('fw-block-invalid-alert')){
+						$element.next().after('<div class="fw-block-invalid-alert">' + r.error + '</div>');
+					}
 				}
             },
             fail: function(resp) {
 				valid = false;				
 				warn('response', resp);
-				warn('responseText', resp.responseText);            }
+				warn('responseText', resp.responseText);
+			}
 		});
-
 	}
-	
-	function validateRegistration($element) {
-		var email = $element.find('[data-id=email]').val();
-		var username = $element.find('[data-id=username]').val();
-		var valid = true;
 
+	function validateRegUsername($element) {
+		var $block = $element.closest('.fw-step-block');		
+		var username = $element.val();
 		var data = {
-			action: 'msfp_pre_validate_registration',
-			email: email,
-			username : username,
+			action: 'msfp_pre_validate_reg_username',
+			username: username,
 			nonce: ajax.nonce
 		};
-
 		$.ajax({
             type: 'POST',
             url: ajax.ajaxurl,
             data: data,
-            // contentType: false,
-            // processData: false,
 			dataType: "json",
-			async: false,
             success: function(r) {
-				if (r.success == false) {
-					valid = false;
-					alertUser(r.error, false);
+				console.log(r);
+				if (r.success) {
+					$element.removeClass('msfp-registration-invalid');					
+					$element.addClass("msfp-reg-username-valid");
+					$element.next().next().remove('.fw-block-invalid-alert');
+					// remove block-invalid if email is also valid
+					if ($block.find('.msfp-reg-email-valid').length > 0) {
+						$block.removeClass('fw-block-invalid');
+					}
+
+				} else {
+					$block.addClass('fw-block-invalid');
+					$element.removeClass("msfp-reg-username-valid");										
+					$element.addClass('msfp-registration-invalid');
+					if (!$element.next().next().hasClass('fw-block-invalid-alert')){
+						$element.next().after('<div class="fw-block-invalid-alert">' + r.error + '</div>');
+					}
 				}
             },
             fail: function(resp) {
 				valid = false;				
 				warn('response', resp);
-				warn('responseText', resp.responseText);            }
+				warn('responseText', resp.responseText);
+			}
 		});
-		return valid;
 	}
 
     function validate($wizard) {
@@ -836,14 +869,14 @@ jQuery(document).ready(function($) {
 	function setupRegistration() {
 		var $emailInput = $('.msfp-registration-input[data-id=email]');
 		var $usernameInput = $('.msfp-registration-input[data-id=username]');
-		
+		var $block = $emailInput.closest('.fw-step-block');
 		$emailInput.on("focusout", function(event) {
 			validateRegEmail($emailInput);
 		});
 		$usernameInput.on("focusout", function(event) {
-			console.log("FOCUSOUT USERNAME");
+			validateRegUsername($usernameInput);
 		});
-	}
+}
 
     function setupFileUpload() {
         $('.fw-file-upload-input').each(function() {
