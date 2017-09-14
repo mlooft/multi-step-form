@@ -23,7 +23,8 @@
 
 	.fw-block-invalid {
 		.fw-text-input[type="text"],
-		textarea,
+		[data-id=textarea],
+		.msfp-registration-invalid,
 		&[data-type=fw-radio] label:before,
 		&[data-type=fw-checkbox] label:before {
 			border-color: @color_invalid-border;
