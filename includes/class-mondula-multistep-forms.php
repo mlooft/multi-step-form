@@ -163,6 +163,9 @@ class Mondula_Form_Wizard {
 			'chooseFile' => __( 'Choose a file', 'multi-step-form' ),
 			'showSummary' => __( 'show summary', 'multi-step-form' ),
 			'hideSummary' => __( 'hide summary', 'multi-step-form' ),
+			'registration' => __( 'Registration', 'multi-step-form' ),	
+			'registrationAs' => __( 'You are registering as', 'multi-step-form' ),
+			'registrationFailed' => __( 'You will not be registered', 'multi-step-form' ),									
 			'errors' => array(
 				'requiredFields' => __( 'Please fill all the required fields!', 'multi-step-form' ),
 				'requiredField' => __( 'This field is required', 'multi-step-form' ),
