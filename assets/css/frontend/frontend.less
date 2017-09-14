@@ -22,7 +22,7 @@
 	}
 
 	.fw-block-invalid {
-		input,
+		.fw-text-input[type="text"],
 		textarea,
 		&[data-type=fw-radio] label:before,
 		&[data-type=fw-checkbox] label:before {
@@ -463,7 +463,7 @@
 	/* ---- Input/Textarea ----------------------------------------------------*/
 	/* ------------------------------------------------------------------------*/
 
-	.fw-text-input, .fw-text-input[type="text"], .fw-textarea {
+	.fw-text-input, .fw-text-input[type="text"], .fw-textarea, input.msfp-registration-input {
 		width: 100%;
 		border: 1px solid @color_border;
 		outline: 0;
@@ -479,7 +479,7 @@
 			box-sizing:border-box;
 		}
 	}
-	.fw-text-input {
+	.fw-text-input, input.msfp-registration-input {
 	    height:40px;
 	}
 	.fw-textarea {
@@ -636,7 +636,7 @@
         margin: 0 0 25px;
         line-height:1.4;
     }
-    .fw-text-input, .fw-text-input[type="text"] {
+    .fw-text-input, .fw-text-input[type="text"], input.msfp-registration-input {
         width: 50%;
     }
     .fw-textarea {
