@@ -165,6 +165,16 @@ jQuery(document).ready(function($) {
             console.log('INVALID' + $block);
         }
         pushToSummary(summaryObj, title, header, value, required);
+	}
+	
+	function registrationSummary(summaryObj, $block, title, required) {
+        var header = ajax.i18n.registration;
+        var value = {};
+        $block.find('.msfp-registration-input').each(function(idx, element) {
+			var field = $(element).attr('data-id');
+			value[field] = $(element).val();
+		});
+        pushToSummary(summaryObj, title, header, value, required);
     }
 
     function stepSummary($wizard, stepNum, summaryObj) {
@@ -192,17 +202,8 @@ jQuery(document).ready(function($) {
                     case 'fw-checkbox':
                         checkboxSummary(summaryObj, $(element), title, required);
 						break;
-						
-
-
-
-
-
-
-
-
-
-
+					case 'fw-registration':
+						registrationSummary(summaryObj, $(element), title, required);
                     default:
                         break;
                 }
@@ -254,10 +255,21 @@ jQuery(document).ready(function($) {
     }
 
     function renderStepSummary(summary) {
-        var key;
+		var key;
+		var html = '';
         for (key in summary) {
-            return '<p class="fw-step-summary">' + key + ' \u2014 ' + summary[key] + '</p>';
-        }
+			if (typeof summary[key] === 'object' && key === ajax.i18n.registration) {
+				if (summary[key]['username'] != "" && summary[key]['email'] != "") {					
+					html = '<p class="fw-step-summary">' + key + ' \u2014 ';
+					html += ajax.i18n.registrationAs + ' ' + summary[key]['username'] + ' (' + summary[key]['email'] + ')' + '</p>';
+				} else {
+					html = '<em class="fw-step-summary">' + ajax.i18n.registrationFailed + '</em>';
+				}
+			} else {
+				html = '<p class="fw-step-summary">' + key + ' \u2014 ' + summary[key] + '</p>';
+			}
+		}
+		return html;
     }
 
     function renderStepSummaries(summaries) {
@@ -967,7 +979,20 @@ jQuery(document).ready(function($) {
       $('.fw-datepicker-here').datepicker({
         dateFormat: format
       });
-    }
+	}
+	
+	function setupChangeListeners(){
+		$('.fw-checkbox').change(check);
+        $('.fw-radio').change(checkRadio);
+        $('.fw-radio-conditional').change(checkConditional);
+        $('.fw-text-input').on('change input', textOnChange);
+        $('.fw-textarea').on('change input', textOnChange);
+        $('.fw-checkbox, .fw-radio').on('change', function() {
+            $(this).parents('.fw-step-block').removeClass('fw-block-invalid');
+            $(this).parents('.fw-step-block').find('.fw-block-invalid-alert').remove();
+		});
+		$('.msfp-registration-input').change(textOnChange);
+	}
 
     function setup() {
 
@@ -995,15 +1020,7 @@ jQuery(document).ready(function($) {
             $('.fw-toggle-summary').remove();
         }
 
-        $('.fw-checkbox').change(check);
-        $('.fw-radio').change(checkRadio);
-        $('.fw-radio-conditional').change(checkConditional);
-        $('.fw-text-input').on('change input', textOnChange);
-        $('.fw-textarea').on('change input', textOnChange);
-        $('.fw-checkbox, .fw-radio').on('change', function() {
-            $(this).parents('.fw-step-block').removeClass('fw-block-invalid');
-            $(this).parents('.fw-step-block').find('.fw-block-invalid-alert').remove();
-        });
+		setupChangeListeners();
 
         setupSelect2();
 
