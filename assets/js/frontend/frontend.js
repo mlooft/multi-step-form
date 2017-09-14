@@ -620,6 +620,36 @@ jQuery(document).ready(function($) {
 		}
         return stepValid;
 	}
+
+	function validateRegEmail($element) {
+		var $block = $element.closest('.fw-step-block');		
+		var email = $element.val();
+		var data = {
+			action: 'msfp_pre_validate_reg_email',
+			email: email,
+			nonce: ajax.nonce
+		};
+		$.ajax({
+            type: 'POST',
+            url: ajax.ajaxurl,
+            data: data,
+			dataType: "json",
+            success: function(r) {
+				console.log(r);
+				if (r.success) {
+					$element.addClass("msfp-reg-email-valid");
+				} else {
+					$block.addClass('fw-block-invalid');
+					$element.next().after('<div class="fw-block-invalid-alert">' + r.error + '</div>');
+				}
+            },
+            fail: function(resp) {
+				valid = false;				
+				warn('response', resp);
+				warn('responseText', resp.responseText);            }
+		});
+
+	}
 	
 	function validateRegistration($element) {
 		var email = $element.find('[data-id=email]').val();
@@ -801,7 +831,19 @@ jQuery(document).ready(function($) {
             warn('response', resp);
             warn('responseText', resp.responseText);
         });
-    }
+	}
+	
+	function setupRegistration() {
+		var $emailInput = $('.msfp-registration-input[data-id=email]');
+		var $usernameInput = $('.msfp-registration-input[data-id=username]');
+		
+		$emailInput.on("focusout", function(event) {
+			validateRegEmail($emailInput);
+		});
+		$usernameInput.on("focusout", function(event) {
+			console.log("FOCUSOUT USERNAME");
+		});
+	}
 
     function setupFileUpload() {
         $('.fw-file-upload-input').each(function() {
@@ -938,7 +980,9 @@ jQuery(document).ready(function($) {
 
         $('.fw-btn-submit').click(submit);
 
-        setupColors();
+		setupColors();
+		
+		setupRegistration();
 
         updateSummary($('.fw-wizard'));
     }
