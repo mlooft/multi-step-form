@@ -156,6 +156,7 @@ class Mondula_Form_Wizard_Shortcode {
 		$data = isset( $_POST['fw_data'] ) ? $_POST['fw_data'] : array();
 		$name = isset( $_POST['name'] ) ? $_POST['name'] : array();
 		$email = isset( $_POST['email'] ) ? $_POST['email'] : array();
+		$reg = isset( $_POST['reg'] ) ? $_POST['reg'] : null;
 		$files = isset( $_POST['attachments'] ) ? $_POST['attachments'] : array();
 
 		$wizard = $this->get_wizard( $id );
@@ -164,13 +165,19 @@ class Mondula_Form_Wizard_Shortcode {
 			if ( ! empty( $data ) ) {
 				/* Send data to PRO */
 				do_action( 'msfp_save', $id, $data );
+				/* Register user */
+				if ( $reg ) {
+					do_action( 'msfp_register', $reg );
+				}
+
+				/* Send email */
 				$mailformat = Mondula_Form_Wizard_Wizard::fw_get_option( 'mailformat' ,'fw_settings_email', 'html' );
 				$cc = Mondula_Form_Wizard_Wizard::fw_get_option( 'cc' ,'fw_settings_email', 'off' );
 				$content = $wizard->render_mail( $data, $name, $email, $mailformat );
 				$settings = $wizard->get_settings();
 				$attachments = $this->generate_attachment_paths( $files );
 
-				if ( $mailformat == "html" ) {
+				if ( $mailformat == 'html' ) {
 					add_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
 					$headers = array( 'Content-Type: text/html; charset=UTF-8' );
 				} else {
