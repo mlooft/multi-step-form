@@ -101,7 +101,7 @@ class Mondula_Form_Wizard_Admin {
 				'text' => __( 'Paragraph text', 'multi-step-form' ),
 			),
 			'registration' => array(
-				'info' => __( "Please select the registration fields to be displayed to the user. Email is always required. If the user does not specify a username or password, WordPress is auto-generating these and sending them to the user via email.", 'multi-step-form' ),
+				'info' => __( 'Please select the registration fields to be displayed to the user. Email is always required. If the user does not specify a username or password, WordPress is auto-generating these and sending them to the user via email.', 'multi-step-form' ),
 				'username' => __( 'Username', 'multi-step-form' ),
 				'email' => __( 'Email', 'multi-step-form' ),
 				'password' => __( 'Password', 'multi-step-form' ),
@@ -317,7 +317,8 @@ class Mondula_Form_Wizard_Admin {
 									<a class="fw-draggable-block fw-element-date" data-type="date"><i class="fa fa-arrows"></i> Date</a>
 									<a class="fw-draggable-block fw-element-paragraph" data-type="paragraph"><i class="fa fa-arrows"></i> Paragraph</a>
 									<?php
-									if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
+									if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' )
+									&& Mondula_Form_Wizard_Wizard::fw_get_option( 'registration_enable' ,'fw_settings_registration' ) === 'on' ) {
 										?>
 										<a class="fw-draggable-block fw-element-registration" data-type="registration"><i class="fa fa-arrows"></i> Registration</a>
 										<?php
