@@ -194,7 +194,7 @@ class Mondula_Form_Wizard_Settings {
 					'label' => __( 'Enable user registration', 'multi-step-form' ),
 					'desc' => __( 'Enable the registration block. You need to add it to each form.', 'multi-step-form' ),
 					'type' => 'checkbox',
-					'default' => 'off',
+					'default' => 'on',
 				),
 				array(
 					'name' => 'registration_notification',
