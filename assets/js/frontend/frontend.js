@@ -169,11 +169,14 @@ jQuery(document).ready(function($) {
 	
 	function registrationSummary(summaryObj, $block, title, required) {
         var header = ajax.i18n.registration;
-        var value = {};
-        $block.find('.msfp-registration-input').each(function(idx, element) {
-			var field = $(element).attr('data-id');
-			value[field] = $(element).val();
-		});
+		var username = $block.find('.msfp-registration-input[data-id=username]').val();	
+		var email = $block.find('.msfp-registration-input[data-id=email]').val();
+		var value = '';
+		if (username && email) {
+			value = username + ' (' + email + ')';
+		} else {
+			value = ajax.i18n.registrationFailed;
+		}
         pushToSummary(summaryObj, title, header, value, required);
     }
 
@@ -222,7 +225,16 @@ jQuery(document).ready(function($) {
             files.push(getAttachment(e));
         });
         return files;
-    }
+	}
+	
+	function getRegistration() {
+		var res = {};
+		$('.msfp-registration-input').each(function(index, element) {
+			var field = $(element).attr('data-id');
+			res[field] = $(element).val();
+		});
+		return res;
+	}
 
     function getAttachment(e) {
       return removeFakePath($(e).find('input').val());
@@ -258,16 +270,7 @@ jQuery(document).ready(function($) {
 		var key;
 		var html = '';
         for (key in summary) {
-			if (typeof summary[key] === 'object' && key === ajax.i18n.registration) {
-				if (summary[key]['username'] != "" && summary[key]['email'] != "") {					
-					html = '<p class="fw-step-summary">' + key + ' \u2014 ';
-					html += ajax.i18n.registrationAs + ' ' + summary[key]['username'] + ' (' + summary[key]['email'] + ')' + '</p>';
-				} else {
-					html = '<em class="fw-step-summary">' + ajax.i18n.registrationFailed + '</em>';
-				}
-			} else {
-				html = '<p class="fw-step-summary">' + key + ' \u2014 ' + summary[key] + '</p>';
-			}
+			html = '<p class="fw-step-summary">' + key + ' \u2014 ' + summary[key] + '</p>';
 		}
 		return html;
     }
@@ -761,7 +764,7 @@ jQuery(document).ready(function($) {
     }
 
     function submit(evt) {
-        var summary, name, email;
+        var summary, name, email, reg;
         var files = [];
         var $wizard = $(this).closest('.fw-wizard');
         // reset fw-block-invalid flags
@@ -773,16 +776,15 @@ jQuery(document).ready(function($) {
             summary = getSummary($wizard);
             files = getAttachments();
 			email = $wizard.find('[data-id="email"]').first().val();
-			
+			if ($wizard.find('[data-type=fw-registration]')) {
+				reg = getRegistration();
+			}
 
-
-
-
-            sendEmail(summary, email, files);
+            sendEmail(summary, email, files, reg);
         }
     }
 
-    function sendEmail(summary, email, files) {
+    function sendEmail(summary, email, files, reg) {
         var id = $('#multi-step-form').attr('data-wizardid');
         $('.fw-btn-submit').html('<i class="fa fa-spinner"></i> ' + ajax.i18n.sending);
         $.post(
@@ -790,7 +792,8 @@ jQuery(document).ready(function($) {
                 action: 'fw_send_email',
                 id: id,
                 fw_data: summary,
-                email: email,
+				email: email,
+				reg: reg,
                 attachments: files,
                 nonce: ajax.nonce
             },
@@ -801,7 +804,6 @@ jQuery(document).ready(function($) {
                     window.onbeforeunload = null;
                     window.location.href = url;
                 } else {
-                    // TODO: customizable success message
                     $('.fw-btn-submit').addClass('fw-submit-success').html('<i class="fa fa-check-circle"></i> ' + ajax.i18n.submitSuccess);
                     $('.fw-btn-submit').unbind( "click" );
                 }
