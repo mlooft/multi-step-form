@@ -105,6 +105,7 @@ class Mondula_Form_Wizard_Admin {
 				'username' => __( 'Username', 'multi-step-form' ),
 				'email' => __( 'Email', 'multi-step-form' ),
 				'password' => __( 'Password', 'multi-step-form' ),
+				'password-confirm' => __( 'Confirm Password', 'multi-step-form' ),
 				'firstname' => __( 'First Name', 'multi-step-form' ),
 				'lastname' => __( 'Last Name', 'multi-step-form' ),
 				'website' => __( 'Website', 'multi-step-form' ),
