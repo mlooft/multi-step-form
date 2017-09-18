@@ -890,7 +890,7 @@ jQuery(document).ready(function($) {
 		$usernameInput.on("focusout", function(event) {
 			validateRegUsername($usernameInput);
 		});
-}
+	}
 
     function setupFileUpload() {
         $('.fw-file-upload-input').each(function() {
