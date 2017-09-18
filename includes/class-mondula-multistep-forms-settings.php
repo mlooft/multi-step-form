@@ -196,6 +196,13 @@ class Mondula_Form_Wizard_Settings {
 					'type' => 'checkbox',
 					'default' => 'off',
 				),
+				array(
+					'name' => 'registration_notification',
+					'label' => __( 'Notify new users', 'multi-step-form' ),
+					'desc' => __( 'Send email with credentials to a registering user', 'multi-step-form' ),
+					'type' => 'checkbox',
+					'default' => 'off',
+				),
 			);
 		}
 		return $settings_fields;
