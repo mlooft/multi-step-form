@@ -159,7 +159,7 @@ class Mondula_Form_Wizard_Settings {
 					'label' => __( 'Enable entry saving', 'multi-step-form' ),
 					'desc' => __( 'Save submitted forms to the database', 'multi-step-form' ),
 					'type' => 'checkbox',
-					'default' => 'on',
+					'default' => 'off',
 				),
 				array(
 					'name'  => 'entries_perpage',
@@ -184,7 +184,7 @@ class Mondula_Form_Wizard_Settings {
 					'label' => __( 'Enable conditional blocks', 'multi-step-form' ),
 					'desc' => __( 'Display some form elements only when others are filled.', 'multi-step-form' ),
 					'type' => 'checkbox',
-					'default' => 'on',
+					'default' => 'off',
 				),
 			);
 			/* Conditional fields Settings */
@@ -194,7 +194,7 @@ class Mondula_Form_Wizard_Settings {
 					'label' => __( 'Enable user registration', 'multi-step-form' ),
 					'desc' => __( 'Enable the registration block. You need to add it to each form.', 'multi-step-form' ),
 					'type' => 'checkbox',
-					'default' => 'on',
+					'default' => 'off',
 				),
 				array(
 					'name' => 'registration_notification',
