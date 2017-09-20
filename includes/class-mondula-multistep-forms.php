@@ -148,7 +148,7 @@ class Mondula_Form_Wizard {
 		wp_enqueue_style( $this->_token . '-vendor-frontend' );
 		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'frontend.min.css', array(), $this->_version );
 		wp_enqueue_style( $this->_token . '-frontend' );
-		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+		wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
 	}
 
 	/**
@@ -179,6 +179,20 @@ class Mondula_Form_Wizard {
 				'takenUsername' => __( 'Username is already registered', 'multi-step-form' ),
 			),
 		);
+	}
+
+	/**
+	 * Logs MSF-Specific Errors.
+	 */
+	public static function log( $message, $data ) {
+		$pre = 'Multi Step Form: ';
+		if ( WP_DEBUG === true ) {
+			if ( is_array( $data ) || is_object( $data ) ) {
+				error_log( $pre . $message . ' Data: ' . print_r( $data, true ) );
+			} else {
+				error_log( $pre . $message . ' Data: ' . $data );
+			}
+		}
 	}
 
 	/**
