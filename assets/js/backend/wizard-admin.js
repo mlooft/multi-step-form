@@ -850,20 +850,24 @@
      */
     function addStep(step) {
         var n = $('.fw-step').length;
-        if (n < 5) {
-          var $step = $(renderStep(step));
-          $step.appendTo($(container).find('.meta-box-sortables'));
+        if (n < 5 || $('.fw-elements-container #msfp-active').val()) {
+			if (n < 10) {
+				var $step = $(renderStep(step));
+				$step.appendTo($(container).find('.meta-box-sortables'));
 
-          setupClickHandlers();
-          setupDragNDrop();
-          setupThickbox();
+				setupClickHandlers();
+				setupDragNDrop();
+				setupThickbox();
 
-          if (n > 0) {
-            // scroll down to new step
-            $("html, body").animate({
-                scrollTop: $(document).height() - $step.height() - 180
-            }, 500);
-          }
+				if (n > 0) {
+					// scroll down to new step
+					$("html, body").animate({
+						scrollTop: $(document).height() - $step.height() - 180
+					}, 500);
+				}
+          } else {
+			alertMessage(wizard.i18n.alerts.onlyTen, false);			
+		  }
         } else {
           alertMessage(wizard.i18n.alerts.onlyFive, false);
         }
