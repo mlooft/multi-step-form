@@ -65,7 +65,10 @@ jQuery(document).ready(function($) {
         var $progress = $wizard.find('.fw-progress-step[data-id="' + (stepInt - 1) + '"]');
         $progress.removeClass('fw-visited');
         $wizard.find('.fw-progress-step[data-id="' + step + '"]').removeClass('fw-visited');
-        $circle.removeClass('fwp-done');
+		$circle.removeClass('fwp-done');
+		if (stepInt == 5) {
+			$wizard.find('.fw-progress-bar').removeClass('fw-step-after-fifth')
+		}
         $circle.find('.fwp-label').html(parseInt(step, 10) + 1);
         $bar.removeClass('fwp-active');
         if (stepInt >= 2) {
@@ -91,7 +94,10 @@ jQuery(document).ready(function($) {
         var $bar = $wizard.find('.fwp-progress-bar .fwp-bar[data-id="' + step + '"]');
         if (validateStep(step)) {
             $wizard.find('.fw-progress-step[data-id="' + step + '"]').addClass('fw-visited');
-            $circle.removeClass('fwp-active').addClass('fwp-done');
+			if (stepInt == 4) {
+				$wizard.find('.fw-progress-bar').addClass('fw-step-after-fifth');
+			}
+			$circle.removeClass('fwp-active').addClass('fwp-done');
             $circle.find('.fwp-label').html('&#10003;');
             $bar.addClass('fwp-active');
             if (stepInt >= 1) {
@@ -955,10 +961,10 @@ jQuery(document).ready(function($) {
           $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} [data-type=fw-checkbox] input[type=checkbox]:checked+label:before, ul.fw-progress-bar li.fw-active .fw-txt-ellipsis { color: ' + activeColor + ' !important; } .fw-step-part { border-color: ' + activeColor + ' !important; }</style>');
         }
         if (doneColor) {
-          $('head').append('<style>ul.fw-progress-bar .fw-active:last-child:before, .fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited, ul.fw-progress-bar .fw-active:last-child .fw-txt-ellipsis, .fw-progress-step.fw-visited .fw-txt-ellipsis { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after{ background-color:' + doneColor + ' !important;}</style>');
+          $('head').append('<style>ul.fw-progress-bar .fw-active:last-child:before, .fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited, ul.fw-progress-bar .fw-active:last-child .fw-txt-ellipsis, .fw-progress-step.fw-visited .fw-txt-ellipsis { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after, .fw-progress-step.fw-visited .fw-circle, .fw-progress-step.fw-visited .fw-circle-1, .fw-progress-step.fw-visited .fw-circle-2{ background-color:' + doneColor + ' !important;}</style>');
         }
         if (nextColor) {
-          $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ' !important;} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after{ background-color:' + nextColor + ' !important;} .fw-txt-ellipsis { color: ' + nextColor + ' !important; } </style>');
+          $('head').append('<style>ul.fw-progress-bar li:before{background:' + nextColor + ' !important;} .fw-progress-bar li.fw-active:after, li.fw-progress-step::after, .fw-circle, .fw-circle-1, .fw-circle-2{ background-color:' + nextColor + ' !important;} .fw-txt-ellipsis { color: ' + nextColor + ' !important; } </style>');
         }
         if (buttonColor) {
           $('head').append('<style>.fw-button-previous, .fw-button-next, .fw-button-fileupload { background: ' + buttonColor + ' !important; }</style>');
