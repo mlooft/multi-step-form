@@ -34,7 +34,8 @@ class Mondula_Form_Wizard_Settings {
 	 * Register the admin menu.
 	 */
 	function admin_menu() {
-		add_options_page( 'Multi Step Form', 'Multi Step Form', 'delete_posts', 'mondula_form_wizard_settings', array( $this, 'plugin_page' ) );
+		add_submenu_page( 'mondula-multistep-forms', 'Settings', 'Settings', 'manage_options', 'mondula_form_wizard_settings', array( $this, 'plugin_page' ) );
+		// old location: add_options_page( 'Multi Step Form', 'Multi Step Form', 'delete_posts', 'mondula_form_wizard_settings', array( $this, 'plugin_page' ) );
 	}
 
 	/**
