@@ -167,7 +167,7 @@ class Mondula_Form_Wizard_Shortcode {
 				do_action( 'msfp_save', $id, $data );
 				/* Register user */
 				if ( $reg ) {
-					do_action( 'msfp_register', $reg );
+					do_action( 'msfp_register', $reg, $data, $id );
 				}
 
 				/* Send email */
