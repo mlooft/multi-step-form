@@ -207,7 +207,7 @@ class Mondula_Form_Wizard_Settings {
 				array(
 					'name' => 'registration_meta',
 					'label' => __( 'Save Metadata', 'multi-step-form' ),
-					'desc' => __( 'Save the filled form as metadata along with the registered user.', 'multi-step-form' ),
+					'desc' => __( 'Save the filled form as metadata along with registered/registering users.', 'multi-step-form' ),
 					'type' => 'checkbox',
 					'default' => 'off',
 				),
