@@ -56,7 +56,9 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
 	public function as_aa() {
 		$blocks_aa = array();
 		foreach ( $this->_blocks as $block ) {
-			$blocks_aa[] = $block->as_aa();
+			if ( $block ) {
+				$blocks_aa[] = $block->as_aa();
+			}
 		}
 		return array(
 			'title' => $this->_title,
@@ -70,44 +72,7 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
 
 		if ( isset( $aa['blocks'] ) ) {
 			foreach ( $aa['blocks'] as $block ) {
-				// echo 'block' . PHP_EOL;
-				// var_dump( $block );
-				switch ( $block['type'] ) {
-					case 'radio':
-						$blocks[] = Mondula_Form_Wizard_Block_Radio::from_aa( $block, $current_version, $serialized_version );
-						break;
-					case 'select':
-						$blocks[] = Mondula_Form_Wizard_Block_Select::from_aa( $block, $current_version, $serialized_version );
-						break;
-					case 'checkbox':
-						$blocks[] = Mondula_Form_Wizard_Block_Checkbox::from_aa( $block, $current_version, $serialized_version );
-						break;
-					case 'text':
-						$blocks[] = Mondula_Form_Wizard_Block_Text::from_aa( $block, $current_version, $serialized_version );
-						break;
-					case 'textarea':
-						$blocks[] = Mondula_Form_Wizard_Block_Textarea::from_aa( $block, $current_version, $serialized_version );
-						break;
-					case 'email':
-						$blocks[] = Mondula_Form_Wizard_Block_Email::from_aa( $block, $current_version, $serialized_version );
-						break;
-					case 'file':
-						$blocks[] = Mondula_Form_Wizard_Block_File::from_aa( $block, $current_version, $serialized_version );
-						break;
-					case 'date':
-						$blocks[] = Mondula_Form_Wizard_Block_Date::from_aa( $block, $current_version, $serialized_version );
-						break;
-					case 'paragraph':
-						$blocks[] = Mondula_Form_Wizard_Block_Paragraph::from_aa( $block, $current_version, $serialized_version );
-						break;
-					case 'registration':
-						if ( class_exists( 'Multi_Step_Form_Plus' ) ) {
-							$blocks[] = Multi_Step_Form_Plus_Block_Registration::from_aa( $block, $current_version, $serialized_version );
-						}
-						break;
-					default:
-						break;
-				}
+				$blocks[] = Mondula_Form_Wizard_Block::from_aa( $block, $current_version, $serialized_version );
 			}
 		}
 
