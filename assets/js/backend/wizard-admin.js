@@ -263,7 +263,7 @@
             default:
                 break;
         }
-        blockHtml += '</div>';
+		blockHtml += '</div>';
         blockHtml += '<div class="fw-clearfix"></div>';
         blockHtml += '</div>';
         if (error) {
@@ -276,7 +276,20 @@
         var blocksHtml = '';
         var i, n;
         for (i = 0, n = blocks.length; i < n; i++) {
-            blocksHtml += renderBlock(blocks[i]);
+			if (blocks[i].type == 'conditional') {
+				// unwrap conditional block
+				blocksHtml += renderBlock(blocks[i].block);
+				// add conditional settings as block metadata
+				var conditionalSettings = {
+					prec_block_id : blocks[i].prec_block_id,
+					prec_operator : blocks[i].prec_operator,
+					prec_value : blocks[i].prec_value,
+					visible : blocks[i].visible
+				};
+				blocksHtml += '<input class="msf-block-meta" name="msf-block-meta-' + i + '" type="hidden" value="' + encodeURI(JSON.stringify(conditionalSettings)) + '">';
+			} else {
+				blocksHtml += renderBlock(blocks[i]);
+			}
         }
         return blocksHtml;
     }
@@ -511,6 +524,17 @@
 		text['bio'] = $text.find('.msfp-registration-bio').prop('checked')
 	}
 
+	function getConditionalData($block) {
+		var block = {};
+		block['type'] = 'conditional';
+		block['visible'] = $block.find('.msfp-conditional-visible').val();
+		block['prec_block_id'] = $block.find('.msfp-conditional-prec-block-id').val();
+		block['prec_operator'] = $block.find('.msfp-conditional-prec-op').val();
+		block['prec_value'] = $block.find('.msfp-conditional-prec-value').val();
+		block['block'] = getBlockData($block);
+		return block;
+	}
+
     /**
      * getBlockData - get the data from backend input fields
      *
@@ -519,7 +543,7 @@
      */
     function getBlockData($block) {
         var block = {};
-        var type = block['type'] = $block.attr('data-type');
+		var type = block['type'] = $block.attr('data-type');
         switch (type) {
             case 'radio':
                 getRadioData($block, block);
@@ -551,7 +575,7 @@
 			case 'registration':
 				getRegistrationData($block, block);
 				break;
-        }
+		}
         return block;
     }
 
@@ -560,7 +584,13 @@
         part['title'] = $part.find('.fw-part-title').val();
         var blocks = part['blocks'] = [];
         $part.find('.fw-step-block').each(function(idx, element) {
-            blocks.push(getBlockData($(element)));
+			var $block = $(element);
+			// PLUS: mark as conitional if settings are set
+			if ($block.find('.msfp-conditional').prop("checked")) {
+				blocks.push(getConditionalData($block));
+			} else {
+				blocks.push(getBlockData($block));
+			}
         });
         return part;
     }
@@ -615,22 +645,26 @@
     }
 
     function validateSteps(steps) {
-      var valid = true;
-      for (var i = 0; i < steps.length; i++) {
-          var step = steps[i];
-          if (!step.title) {
-            valid = false;
-            alertMessage(wizard.i18n.alerts.noStepTitle, false);
-          } else {
-            for (var j = 0; j < steps[i].parts.length; j++) {
-              if (steps[i].parts[j].title === ""){
-                valid = false;
-                alertMessage(wizard.i18n.alerts.noSectionTitle, false);
-              }
-            }
-          }
-      }
-      return valid;
+		var valid = true;
+		for (var i = 0; i < steps.length; i++) {
+			var step = steps[i];
+			if (!step.title) {
+				valid = false;
+				alertMessage(wizard.i18n.alerts.noStepTitle, false);
+			} else {
+				for (var j = 0; j < steps[i].parts.length; j++) {
+					if (steps[i].parts[j].title === ""){
+					valid = false;
+					alertMessage(wizard.i18n.alerts.noSectionTitle, false);
+					}
+					for (var k = 0; k < steps[i].parts[j].blocks.length; k++) {
+						var block = steps[i].parts[j].blocks[k];
+						// TODO: validate conditional if checkbox is checked
+					}
+				}
+			}
+		}
+      	return valid;
     }
 
     function validate(data) {
@@ -659,36 +693,36 @@
         $steps.each(
             function(idx, element) {
               var last = idx == $steps.length - 1;
-              data.wizard.steps.push(getStepData($(element)));
+			  data.wizard.steps.push(getStepData($(element)));
             }
         );
         data.wizard.steps.push();
 
         if (validate(data)) {
 
-          log('save', data);
-          log('ajaxurl', wizard.ajaxurl);
-          log('nonce', wizard.nonce);
+			log('save', data);
+			//log('ajaxurl', wizard.ajaxurl);
+			//log('nonce', wizard.nonce);
 
-          $.ajax({
-              type: 'POST',
-              url: wizard.ajaxurl,
-              dataType: 'json',
-              data: {
-                  action: 'fw_wizard_save',
-                  data: data,
-                  nonce: wizard.nonce,
-                  id: wizard.id
-              },
-              success: function(response) {
-                  log('response', response);
-                  alertMessage(response.data.msg, response.success);
-              },
-              error: function(response) {
-                  log('fail', arguments);
-                  log('response', response);
-              }
-          });
+			$.ajax({
+				type: 'POST',
+				url: wizard.ajaxurl,
+				dataType: 'json',
+				data: {
+					action: 'fw_wizard_save',
+					data: data,
+					nonce: wizard.nonce,
+					id: wizard.id
+				},
+				success: function(response) {
+					//log('response', response);
+					alertMessage(response.data.msg, response.success);
+				},
+				error: function(response) {
+					log('fail', arguments);
+					log('response', response);
+				}
+			});
         }
     }
 
