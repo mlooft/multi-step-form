@@ -200,11 +200,19 @@ class Mondula_Form_Wizard_Admin {
 	}
 
 	private function import_json( $json ) {
-		$obj = json_decode( $json, true );
-		if ( ! $obj ) {
+		$aa = json_decode( $json, true );
+		if ( ! $aa ) {
 			$this->notice( 'error', __( 'Invalid JSON-File. Check your syntax.', 'multi-step-form' ) );
 		} else {
-			$this->_wizard_service->save( 0, $obj );
+			if ( ! class_exists( 'Multi_Step_Form_Plus' ) ) {
+				$step_count = count( $aa['wizard']['steps'] );
+				for ( $i = 0; $i < $step_count; $i++ ) {
+					if ( $i > 4 ) {
+						unset( $aa['wizard']['steps'][ $i ] );
+					}
+				}
+			}
+			$this->_wizard_service->save( 0, $aa );
 		}
 	}
 
@@ -231,7 +239,7 @@ class Mondula_Form_Wizard_Admin {
 
 	public function table() {
 		$table = new Mondula_Form_Wizard_List_Table( $this->_wizard_service );
-		$this->handle_json_upload();		
+		$this->handle_json_upload();
 		$table->prepare_items();
 		$edit_url = esc_url(
 			add_query_arg(
