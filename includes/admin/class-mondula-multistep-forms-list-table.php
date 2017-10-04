@@ -80,11 +80,13 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 		$edit_url = $this->generate_query_url( 'edit', $item['id'] );
 		$delete_url = $this->generate_query_url( 'delete', $item['id'] );
 		$duplicate_url = $this->generate_query_url( 'duplicate', $item['id'] );
+		$export_url = $this->generate_query_url( 'export', $item['id'] );
 
 		$actions = array(
 			'fw-edit' => '<a href="' . $edit_url . '">' . __( 'Edit', $this->_text_domain ) . '</a>',
 			'fw-delete' => '<a href="' . $delete_url . '">' . __( 'Delete', $this->_text_domain ) . '</a>',
 			'fw-duplicate' => '<a href="' . $duplicate_url . '">' . __( 'Duplicate', $this->_text_domain ) . '</a>',
+			'fw-export' => '<a href="' . $export_url . '">' . __( 'Export', $this->_text_domain ) . '</a>',
 		);
 		if ( ! $wiz['title'] || '' == $wiz['title'] ) {
 			$wiz['title'] = 'My Multi Step Form';
