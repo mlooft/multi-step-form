@@ -36,6 +36,7 @@ class Mondula_Form_Wizard_Admin {
 
 	private function init() {
 			add_action( 'admin_menu', array( $this, 'setup_menu' ) );
+			add_action( 'admin_init', array( $this, 'download_form_json' ) );
 
 			add_action( 'wp_ajax_fw_wizard_save', array( $this, 'save' ) );
 			add_action( 'wp_ajax_nopriv_fw_wizard_save', array( $this, 'save' ) );
@@ -181,8 +182,56 @@ class Mondula_Form_Wizard_Admin {
 		$this->table();
 	}
 
+	/**
+	 * Render a notice on the current page.
+	 * $type error, warning, success, info
+	 */
+	private function notice( $type, $message ) {
+		?>
+		<div class="notice notice-<?php echo $type; ?> is-dismissible">
+			<p><?php echo $message; ?></p>
+		</div>
+		<?php
+	}
+
+	function add_json_mime( $mime_types ) {
+		$mime_types['json'] = 'application/json'; //Adding svg extension
+		return $mime_types;
+	}
+
+	private function import_json( $json ) {
+		$obj = json_decode( $json, true );
+		if ( ! $obj ) {
+			$this->notice( 'error', __( 'Invalid JSON-File. Check your syntax.', 'multi-step-form' ) );
+		} else {
+			$this->_wizard_service->save( 0, $obj );
+		}
+	}
+
+	private function handle_json_upload() {
+		if ( isset( $_FILES['json-import'] ) ) {
+			$overrides = array(
+				'test_form' => false,
+			);
+			// enable JSON upload
+			add_filter( 'upload_mimes', array( $this, 'add_json_mime') , 1, 1 );
+			$uploaded = wp_handle_upload( $_FILES['json-import'], $overrides );
+			// disable JSON upload
+			remove_filter( 'upload_mimes', array( $this, 'add_json_mime') , 1, 1 );
+			// Error checking using WP functions
+			if ( isset( $uploaded['error'] ) ) {
+				$this->notice( 'error', $uploaded['error'] );
+			} elseif ( isset( $uploaded['type'] ) && $uploaded['type'] != 'application/json' ) {
+				$this->notice( 'error', __( 'Forms must be imported as JSON files', 'multi-step-form' ) );
+			} elseif ( isset( $uploaded['file'] ) && isset( $uploaded['url'] ) ) {
+				$this->import_json( file_get_contents( $uploaded['file'] ) );
+			}
+		}
+	}
+
 	public function table() {
 		$table = new Mondula_Form_Wizard_List_Table( $this->_wizard_service );
+		$this->handle_json_upload();		
 		$table->prepare_items();
 		$edit_url = esc_url(
 			add_query_arg(
@@ -202,6 +251,11 @@ class Mondula_Form_Wizard_Admin {
 			<form id="fw-wizard-table" method="get">
 				<input type="hidden" name="page" value="<?php echo $_REQUEST['page']; ?>" />
 				<?php $table->display(); ?>
+			</form>
+			<h2><?php echo __( 'Import a Form', 'multi-step-form' ); ?></h2>
+			<form id="msf-import" method="post" enctype="multipart/form-data">
+				<input type='file' id='json-import' name='json-import'></input>
+				<input name="submit" id="submit" class="button button-primary" value="<?php echo __( 'Upload & Import', 'multi-step-form' ); ?>" type="submit">
 			</form>
 		</div>
 		<?php
@@ -394,5 +448,38 @@ class Mondula_Form_Wizard_Admin {
 				'errorMsg' => 'error',
 			)
 		);
+	}
+
+	/**
+	 * Make a JSON string real pretty.
+	 * @param $json JSON string
+	 * @return pretty JSON string
+	 */
+	private function prettify_json( $json ) {
+		$obj = json_decode( $json );
+		return json_encode( $obj, JSON_PRETTY_PRINT );
+	}
+
+	/**
+	 * Export a form as a JSON-Document, send headers and start download.
+	 */
+	public function download_form_json() {
+		if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
+			if ( isset( $_GET['page'] ) && $_GET['page'] === 'mondula-multistep-forms'
+			&& isset( $_GET['export'] ) ) {
+				/* Get JSON for form */
+				$json = $this->prettify_json( $this->_wizard_service->get_as_json( $_GET['export'] ) );
+				$filename = sanitize_file_name( 'msf-' . $_GET['export'] . '_' . date( 'Y-m-d H:i:s' ) );
+				header( 'Pragma: public' );
+				header( 'Expires: 0' );
+				header( 'Cache-Control: must-revalidate, post-check=0, pre-check=0' );
+				header( 'Cache-Control: private', false );
+				header( 'Content-Type: application/json' );
+				header( 'Content-Disposition: attachment; filename=' . $filename . '.json;' );
+				header( 'Content-Transfer-Encoding: binary' );
+				echo $json;
+				exit;
+			}
+		}
 	}
 }
