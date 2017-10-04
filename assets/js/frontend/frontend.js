@@ -184,7 +184,34 @@ jQuery(document).ready(function($) {
 			value = ajax.i18n.registrationFailed;
 		}
         pushToSummary(summaryObj, title, header, value, required);
-    }
+	}
+	
+	function blockSummary(summaryObj, $block, title) {
+		var required = $block.attr('data-required');
+		switch ($block.attr('data-type')) {
+			case 'fw-email':
+			case 'fw-date':
+			case 'fw-text':
+				textSummary(summaryObj, $block, title, required);
+				break;
+			case 'fw-textarea':
+				textareaSummary(summaryObj, $block, title, required);
+				break;
+			case 'fw-radio':
+				radioSummary(summaryObj, $block, title, required);
+				break;
+			case 'fw-select':
+				selectSummary(summaryObj, $block, title, required);
+				break;
+			case 'fw-checkbox':
+				checkboxSummary(summaryObj, $block, title, required);
+				break;
+			case 'fw-registration':
+				registrationSummary(summaryObj, $block, title, required);
+			default:
+				break;
+		}
+	}
 
     function stepSummary($wizard, stepNum, summaryObj) {
         var summary = '';
@@ -192,30 +219,7 @@ jQuery(document).ready(function($) {
         $step.find('.fw-step-part').each(function(idx, element) {
             var title = $(element).find('.fw-step-part-title').text().trim();
             $(element).find('.fw-step-block').each(function(idx, element) {
-                var required = $(element).attr('data-required');
-                switch ($(element).attr('data-type')) {
-                    case 'fw-email':
-                    case 'fw-date':
-                    case 'fw-text':
-                        textSummary(summaryObj, $(element), title, required);
-                        break;
-                    case 'fw-textarea':
-                        textareaSummary(summaryObj, $(element), title, required);
-                        break;
-                    case 'fw-radio':
-                        radioSummary(summaryObj, $(element), title, required);
-                        break;
-                    case 'fw-select':
-                        selectSummary(summaryObj, $(element), title, required);
-                        break;
-                    case 'fw-checkbox':
-                        checkboxSummary(summaryObj, $(element), title, required);
-						break;
-					case 'fw-registration':
-						registrationSummary(summaryObj, $(element), title, required);
-                    default:
-                        break;
-                }
+               blockSummary(summaryObj, $(element), title);
             });
         });
         return summary;
@@ -583,7 +587,7 @@ jQuery(document).ready(function($) {
         var valid = true;
         var emailValid = true;
         var stepValid = true;
-        $('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-required="true"]').each(
+        $('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-required="true"]:visible').each(
             function(i, element) {
                 var $element = $(element);
                 var type = $element.attr('data-type');
