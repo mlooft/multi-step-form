@@ -26,32 +26,38 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
     }
 
     public function render( $ids ) {
-        $cnt = count( $this->_elements );
-        $group = $this->generate_id( $ids );
-        for ( $i = 0; $i < $cnt; $i++ ) {
-            $element = $this->_elements[$i];
-            if ($element['type'] === 'option') {
-                if ($this->_multichoice == 'true') {
-                ?>
-                <div class="fw-choice fw-input-container" data-type="fw-checkbox">
-                    <input id="<?php echo $group.'-'.$i ?>" type="checkbox" class="fw-checkbox" name="<?php echo $group; ?>" data-id="<?php echo $i; ?>">
-                    <label for="<?php echo $group.'-'.$i; ?>" data-labelId="<?php echo $i ?>"><?php echo $element['value']; ?></label>
-                </div>
-                <?php
-              } else {
-                ?>
-                <span class="fw-choice fw-radio-row">
-                    <input id="<?php echo $group.'-'.$i ?>" type="radio" name="<?php echo $group; ?>" class="fw-radio" data-id="<?php echo $i; ?>">
-                    <label for="<?php echo $group.'-'.$i; ?>" data-labelId="<?php echo $i ?>"><?php echo $element['value']; ?></label>
-                </span>
-                <?php
-              }
-            } else if ($element['type'] === 'header') {
-                ?>
-                <h3><?php echo $element['value']; ?></h3>
-                <?php
-            }
-        }
+		?>
+		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-radio" data-required="<?php echo $this->_required; ?>">
+			<?php
+			$cnt = count( $this->_elements );
+			$group = $this->generate_id( $ids );
+			for ( $i = 0; $i < $cnt; $i++ ) {
+				$element = $this->_elements[$i];
+				if ($element['type'] === 'option') {
+					if ($this->_multichoice == 'true') {
+					?>
+					<div class="fw-choice fw-input-container" data-type="fw-checkbox">
+						<input id="<?php echo $group.'-'.$i ?>" type="checkbox" class="fw-checkbox" name="<?php echo $group; ?>" data-id="<?php echo $i; ?>">
+						<label for="<?php echo $group.'-'.$i; ?>" data-labelId="<?php echo $i ?>"><?php echo $element['value']; ?></label>
+					</div>
+					<?php
+				} else {
+					?>
+					<span class="fw-choice fw-radio-row">
+						<input id="<?php echo $group.'-'.$i ?>" type="radio" name="<?php echo $group; ?>" class="fw-radio" data-id="<?php echo $i; ?>">
+						<label for="<?php echo $group.'-'.$i; ?>" data-labelId="<?php echo $i ?>"><?php echo $element['value']; ?></label>
+					</span>
+					<?php
+				}
+				} else if ($element['type'] === 'header') {
+					?>
+					<h3><?php echo $element['value']; ?></h3>
+					<?php
+				}
+			}
+		?>
+		</div>
+		<?php
     }
 
     public function render_mail ( $data ) {

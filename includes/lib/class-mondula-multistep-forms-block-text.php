@@ -26,10 +26,12 @@ class Mondula_Form_Wizard_Block_Text extends Mondula_Form_Wizard_Block {
     // TODO: add text field label variable and ids
     public function render( $ids ) {
         ?>
-    <div class="fw-input-container">
-        <h3><?php echo $this->_label ?></h3><input type="text" class="fw-text-input" data-id="text"><span class="fa fa-pencil form-control-feedback" aria-hidden="true"></span>
-    </div>
-    <div class="fw-clearfix"></div>
+		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-text" data-required="<?php echo $this->_required; ?>">
+			<div class="fw-input-container">
+				<h3><?php echo $this->_label ?></h3><input type="text" class="fw-text-input" data-id="text"><span class="fa fa-pencil form-control-feedback" aria-hidden="true"></span>
+			</div>
+			<div class="fw-clearfix"></div>
+		</div>
         <?php
     }
 

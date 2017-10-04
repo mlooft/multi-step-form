@@ -23,10 +23,12 @@ class Mondula_Form_Wizard_Block_Paragraph extends Mondula_Form_Wizard_Block {
 
     public function render( $ids ) {
         ?>
-        <div class="fw-paragraph-container">
-            <p><?php echo $this->_text; ?></p>
-        </div>
-        <div class="fw-clearfix"></div>
+		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-paragraph">
+			<div class="fw-paragraph-container">
+				<p><?php echo $this->_text; ?></p>
+			</div>
+			<div class="fw-clearfix"></div>
+		</div>
         <?php
     }
 
