@@ -21,7 +21,7 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 				if (empty($format)) {
         	$this->_format = $format;
 				} else {
-					$this->_format = 'dd/mm/yy';
+					$this->_format = 'yy-mm-dd';
 				}
     }
 
