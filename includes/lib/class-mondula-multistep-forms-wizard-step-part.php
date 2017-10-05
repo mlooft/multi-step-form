@@ -36,9 +36,11 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
 			$block = $this->_blocks[ $i ];
 			?>
 				<?php
-				array_push( $ids, $i );
-				$block->render( $ids );
-				array_pop( $ids );
+				if ( isset( $block ) ) {
+					array_push( $ids, $i );
+					$block->render( $ids );
+					array_pop( $ids );
+				}
 				?>
 			<?php
 		}
