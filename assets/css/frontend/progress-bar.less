@@ -160,24 +160,6 @@
     }
 }
 
-.fw-more-than-five {
-    .fw-active {
-        .progress {
-            width: 40%;
-            .keyframes(progress-bar-animation;{
-                0%   {width: 0%;}
-                100% {width: 40%;}
-            });
-        .animation(progress-bar-animation 1s ease-out)
-        }
-    }
-    .fw-progress-step:nth-child(5) {
-        .progress {
-            display: none;
-        }
-    }
-}
-
 @media all and (max-width: 480px) {
 	#multi-step-form {
     .fw-progress-bar {
@@ -340,52 +322,6 @@
 					display: inline-block;
 				}
             }
-		}
-		&.fw-more-than-five {
-			.fw-progress-bar {
-				.fw-progress-step {
-					width: 14%;
-					font-size: 1.275em;
-					&:nth-child(5) {
-						width: 112px;
-						padding-right: 0;
-						&:after {
-							display: none;
-						}
-					}
-					.txt-ellipsis {
-						width: 100px;
-					}
-					&:last-child {
-						.txt-ellipsis {
-							visibility: hidden;
-						}
-					}
-					&:after {
-						left: 5%;
-					}
-				}
-			}
-		}
-		.fw-progress-bar.fw-step-after-fifth {
-			.fw-progress-step {
-				&:nth-child(-n+4) {
-					display: none;
-				}
-				&:nth-child(n+6) {
-					display: inline-block;
-				}
-				&:nth-child(5) {
-					.txt-ellipsis {
-						width: 60px;
-					}
-				}
-				&:last-child {
-					.txt-ellipsis {
-						visibility: visible;
-					}
-				}
-			}
 		}
     }
 	}
