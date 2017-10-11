@@ -1,6 +1,6 @@
 === Multi Step Form ===
 Contributors: mondula2016
-Tags: multi, step, forms, multi-step, feedback, email, contact form, progress bar, form builder, dynamic, ajax
+Tags: multi, step, forms, multi-step, steps, feedback, email, contact form, progress bar, form builder, dynamic, ajax, formular
 Requires at least: 3.9
 Tested up to: 4.8
 Stable tag: 1.2.0
@@ -87,8 +87,11 @@ Also, check that you can send mails from your WordPress installation.
 == Changelog ==
 
 = 1.2.0 =
-* CSS fixes
-* Getting ready for PLUS
+* Import & Export Forms as JSON
+* CSS fix: input icons
+* preparing for PLUS
+* settings menu has moved to MSF-menu
+* ISO date format by default
 
 = 1.1.8 =
 * Datepicker Hotfix
