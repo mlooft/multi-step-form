@@ -69,7 +69,18 @@ class Mondula_Form_Wizard_Settings {
 				'id' => 'fw_settings_registration',
 				'title' => __( 'User Registration', 'multi-step-form' ),
 			));
+			/* PLUS: License Key */
+			array_push( $sections, array(
+				'id' => 'fw_settings_plus',
+				'title' => __( 'PLUS', 'multi-step-form' ),
+			));
+		} else {
+			array_push( $sections, array(
+				'id' => 'fw_settings_plus',
+				'title' => __( 'GET PLUS', 'multi-step-form' ),
+			));
 		}
+
 		return $sections;
 	}
 
@@ -152,6 +163,18 @@ class Mondula_Form_Wizard_Settings {
 				),
 			),
 		);
+
+		/* License Key */
+		if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
+			$settings_fields['fw_settings_plus']['license_key'] = array(
+				'name' => 'license_key',
+				'label' => __( 'License Key', 'multi-step-form' ),
+				'desc' => __( 'Enter your MSF-Plus license key.<br> Having trouble? <a href="mailto:info@mondula.com">Leave us a message</a>.', 'multi-step-form' ),
+				'type' => 'text',
+				'default' => '',
+			);
+		}
+
 		/* If plus is active, add menu items. */
 		if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
 			$settings_fields['fw_settings_entries'] = array(
