@@ -792,9 +792,12 @@
 					})));
 				}
               }
-              setupDragNDrop();
-              setupTooltips();
-              setupClickHandlers();
+			setupDragNDrop();
+			setupTooltips();
+			setupClickHandlers();
+			if (msfp) {
+				setupConditionals();
+			}
           }
         });
 
@@ -892,7 +895,7 @@
 				setupClickHandlers();
 				setupDragNDrop();
 				setupThickbox();
-
+				
 				if (n > 0) {
 					// scroll down to new step
 					$("html, body").animate({
