@@ -169,7 +169,7 @@ class Mondula_Form_Wizard_Settings {
 			$settings_fields['fw_settings_plus']['license_key'] = array(
 				'name' => 'license_key',
 				'label' => __( 'License Key', 'multi-step-form' ),
-				'desc' => __( 'Enter your MSF-Plus license key.<br> Having trouble? <a href="mailto:info@mondula.com">Leave us a message</a>.', 'multi-step-form' ),
+				'desc' => __( 'Please enter your MSF-Plus license key.<br> Having trouble? <a href="mailto:info@mondula.com">Leave us a message</a>.', 'multi-step-form' ),
 				'type' => 'text',
 				'default' => '',
 			);
