@@ -887,7 +887,7 @@
      */
     function addStep(step) {
         var n = $('.fw-step').length;
-        if (n < 5 || $('.fw-elements-container #msfp-active').val()) {
+        if (n < 5 || msfp) {
 			if (n < 10) {
 				var $step = $(renderStep(step));
 				$step.appendTo($(container).find('.meta-box-sortables'));
