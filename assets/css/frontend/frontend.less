@@ -483,6 +483,19 @@
 	.fw-text-input, input.msfp-registration-input {
 	    height:40px;
 	}
+
+	.fw-step-block[data-type="fw-registration"] {
+		.msfp-input-container-password, 
+		.msfp-input-container-firstname, 
+		.msfp-input-container-lastname, 
+		.msfp-input-container-website, 
+		.msfp-input-container-bio {
+			h3::after {
+				content: " ";
+			}
+		}
+	}
+
 	.fw-textarea {
 	    padding:10px 20px 10px 60px;
 	    min-height:200px;
