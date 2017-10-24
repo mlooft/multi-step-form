@@ -894,10 +894,10 @@ jQuery(document).ready(function($) {
 		var $emailInput = $('.msfp-registration-input[data-id=email]');
 		var $usernameInput = $('.msfp-registration-input[data-id=username]');
 		var $block = $emailInput.closest('.fw-step-block');
-		$emailInput.on("focusout", function(event) {
+		$emailInput.on("input", function(event) {
 			validateRegEmail($emailInput);
 		});
-		$usernameInput.on("focusout", function(event) {
+		$usernameInput.on("input", function(event) {
 			validateRegUsername($usernameInput);
 		});
 	}
