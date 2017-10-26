@@ -217,8 +217,10 @@ jQuery(document).ready(function($) {
         var summary = '';
         var $step = $wizard.find('.fw-wizard-step[data-stepId="' + stepNum + '"]');
         $step.find('.fw-step-part').each(function(idx, element) {
-            var title = $(element).find('.fw-step-part-title').text().trim();
-            $(element).find('.fw-step-block').each(function(idx, element) {
+			var title = $(element).find('.fw-step-part-title').text().trim();
+			// here comes the ugliest jQ selector
+			var $visibleBlocks = $(element).find('.fw-step-block:not(.fw-step-block[style="display: none;"] > .fw-step-block):not(.msfp-block-conditional)');
+            $visibleBlocks.each(function(idx, element) {
                blockSummary(summaryObj, $(element), title);
             });
         });
@@ -369,7 +371,7 @@ jQuery(document).ready(function($) {
     }
 
     function getArray(obj, prop) {
-        log('obj', obj, 'prop', prop);
+        //log('obj', obj, 'prop', prop);
         if (!obj[prop]) {
             obj[prop] = [];
         }
