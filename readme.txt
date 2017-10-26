@@ -13,13 +13,13 @@ Guide your customers with the animated progress bar. Generate dynamic multi step
 Multi Step Form has a drag & drop enabled form builder for quick and intuitive creation of nice-looking multi step forms. Forms can be embedded on any page or post with shortcodes.
 
 ### Getting started
-**[Read the tutorial](http://mondula.com/en/2017/01/06/multi-step-form-anleitung/ "Multi Step Form | Beginners Tutorial")**
+**[Read our documentation](https://mondula.com/multi-step-form-documentation/ "Multi Step Form | Beginners Tutorial")**
 
 ### Demo
-**[See live demo](http://demo.multi-step-form.mondula.com/ "Multi Step Form | Live Demo")**
+**[Check out our live demo](http://demo.multi-step-form.mondula.com/ "Multi Step Form | Live Demo")**
 
 ### Get more information
-**[Link to landing page](http://multi-step-form.mondula.com/ "Multi Step Form")**
+**[Visit our landing page](http://multi-step-form.mondula.com/ "Multi Step Form")**
 
 ### Contribute
 **[The "Multi Step Form" base plugin is OPEN SOURCE](https://github.com/leweohlsen/multi-step-form "Multi Step Form | GitHub Repository")**
@@ -49,6 +49,20 @@ The backend's structure is simple. Even less technical users can quickly underst
 *   **Show summary**- At the end of each form you can display a short summary.
 *   **Multisite compatibility**- The plugin works on WordPress multisite installs.
 
+### Watch the video
+[youtube http://www.youtube.com/watch?v=2hyF1SDewok]
+
+
+=== MULTI STEP FORM PLUS ===
+
+**Plus features:**
+
+*   **Up to 10 steps**- You can now divide your formular in up to 10 Steps
+*   **Save form data**- The Forms will now be saved in the backend. Easily make some evaluations
+*   **Conditional fields**- You want to bring more variety to your forms. You conditional fields.
+*   **Export as CSV-List**- You want to use ther form data in e.g. Excell. Export your forms as CSV.
+
+**[UPGRADE NOW ](https://mondula.com/en/shop/ "Multi Step Form Plus")**
 
 == Installation ==
 Installing the plugin can be done either by searching for "Multi Step Form" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
@@ -58,27 +72,8 @@ Installing the plugin can be done either by searching for "Multi Step Form" via 
 3. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Frequently Asked Questions ==
-= Q. Where's the settings page? =
-
-A. The global settings can be found in your WordPress "Settings" > "Multi Step Form". These settings include styling options and general options.
-
-= Q. How can I add a form to my page or post? =
-
-A. Forms are embedded with shortcodes. The shortcodes can be found at the form list view when clicking "Multi Step Forms" in your WordPress menu on the left. The shortcode for your first form with the id 1 is [wizard id="1"].
-
-= Q. Can I customize the colors used with the progress bar? =
-
-A. Yes. Go to WordPress "Settings" > "Multi Step Form". There u can customize the look and feel of the progress bar. Switch it on or off.
-
-= Q. Can I use a plain, unstyled layout for my forms? =
-
-A. Yes. Go to WordPress "Settings" > "Multi Step Form". Uncheck the "Boxed Layout" checkbox to get a plain layout.
-
-= Q. What can I do when no e-mail is sent on form submission? =
-
-A. Check that at least one form field is filled out when you submit the form. When the form is empty the plugin doesn't send an e-mail.
-Also, check that you can send mails from your WordPress installation.
-
+= Q. Looking for FAQs?
+A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step Form | FAQs")** 
 
 == Screenshots ==
 1. The backend's structure is simple. Even less technical users can quickly understand the plugin and start creating forms.
