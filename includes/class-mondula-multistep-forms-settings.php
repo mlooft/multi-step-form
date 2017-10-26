@@ -77,7 +77,7 @@ class Mondula_Form_Wizard_Settings {
 		} else {
 			array_push( $sections, array(
 				'id' => 'fw_settings_plus',
-				'title' => __( 'GET PLUS', 'multi-step-form' ),
+				'title' => __( 'GET MSF-PLUS', 'multi-step-form' ),
 			));
 		}
 
@@ -245,6 +245,18 @@ class Mondula_Form_Wizard_Settings {
 	function plugin_page() {
 		echo '<div class="wrap">';
 		$this->settings_api->show_navigation();
+		if (! is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
+			echo '<div class="notice notice-info msf-notice" style="border-left-color: #ff6d00;	margin: 20px 0;	border-width: 8px; padding: 15px 10px;">
+				<h2>Multi Step Form Plus</h2> 
+				<p>
+					Our first extension for Multi Step Form is now available. <br>
+					Get new feautres, such as "conditional fields", "up to 10 steps", "save form data" and more... 
+				</p>
+				<p>
+					<a class="button" href="https://mondula.com/multi-step-form-plus/" title="More about MSF Plus" target="_blank">Get your upgrade now</a> 
+				</p>
+			</div>';
+		}
 		$this->settings_api->show_forms();
 		echo '</div>';
 	}
