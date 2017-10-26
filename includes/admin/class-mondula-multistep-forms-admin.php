@@ -336,7 +336,7 @@ class Mondula_Form_Wizard_Admin {
 							<a href="https://mondula.com/multi-step-form-plus/" target="_blank"><img src="https://mondula.com/wp-content/uploads/2017/09/msf_plus_extension.png" alt="MSF Plus"></a> 
 						</p>
 						<p>
-							<a id="wpseo-premium-button" class="button button-primary" href="https://yoa.st/jj?utm_content=5.4" target="_blank">Get Multi Step Form Plus</a> 
+							<a class="button button-primary" href="https://mondula.com/multi-step-form-plus/" target="_blank">Get Multi Step Form Plus</a> 
 						</p>
 					</div>
 				</div>
