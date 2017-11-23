@@ -84,6 +84,7 @@ class Mondula_Form_Wizard_Admin {
 			'addSection' => __( 'Add Section', 'multi-step-form' ),
 			'addElement' => __( 'Add Element', 'multi-step-form' ),
 			'label' => __( 'Label', 'multi-step-form' ),
+			'multifile' => __( 'Multiple Files', 'multi-step-form' ),			
 			'dateformat' => __( 'Date Format', 'multi-step-form' ),
 			'required' => __( 'Required', 'multi-step-form' ),
 			'radio' => array(

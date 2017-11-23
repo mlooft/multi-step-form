@@ -162,8 +162,9 @@
       var fileHtml = '';
       fileHtml += '<label>' + wizard.i18n.label + '</label>';
       fileHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
-      fileHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
-      return fileHtml;
+      fileHtml += '<label><input type="checkbox" class="fw-file-multi"'+ isChecked(block.multi) + '/>' + wizard.i18n.multifile + '</label>';
+	  fileHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';	  
+	  return fileHtml;
     }
 
     function renderDate(block) {
@@ -497,7 +498,8 @@
 
     function getFileData($text, text) {
         text['label'] = $text.find('.fw-text-label').val();
-        text['required'] = $text.find('.fw-required').prop('checked');
+		text['required'] = $text.find('.fw-required').prop('checked');
+		text['multi'] = $text.find('.fw-file-multi').prop('checked');
     }
 
     function getDateData($text, text) {

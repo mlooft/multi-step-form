@@ -234,7 +234,7 @@ jQuery(document).ready(function($) {
     function getAttachments() {
         var files = [];
         $('.fw-step-block[data-type=fw-file]').each(function(i, e) {
-            files.push(getAttachment(e));
+            getAttachment(e, files);
         });
         return files;
 	}
@@ -248,8 +248,11 @@ jQuery(document).ready(function($) {
 		return res;
 	}
 
-    function getAttachment(e) {
-      return removeFakePath($(e).find('input').val());
+    function getAttachment(e, files) {
+		var attachments = $(e).find("input")[0].files;
+		for (var i = 0; i < attachments.length; i++) {
+			files.push(attachments[i].name);
+		}
     }
 
     function getSummary($wizard) {
@@ -827,16 +830,18 @@ jQuery(document).ready(function($) {
         });
     }
 
-    function uploadFile(e, $label) {
+    function uploadFiles(e, $label) {
         var id = $('#multi-step-form').attr('data-wizardid');
-        var file = $(e.target).prop('files')[0];
+        var files = $(e.target).prop('files');
         var formData = new FormData();
 
-        formData.append('action', 'fw_upload_file');
-        formData.append('file', file);
+		formData.append('action', 'fw_upload_file');
+		for (var i = 0; i < files.length; i++) {
+			formData.append('file' + i, files[i]);
+		}
         formData.append('id', id);
-        formData.append('nonce', ajax.nonce);
-
+		formData.append('nonce', ajax.nonce);
+		
         $label.find('i').removeClass('fa-upload fa-times-circle fa-check-circle').addClass("fa-spinner");
         $label.find('span').text(ajax.i18n.uploadingFile);
 
@@ -854,8 +859,15 @@ jQuery(document).ready(function($) {
               setupLeaveWarning();
               if (response.success) {
                 $block.attr('data-uploaded', 'true');
-                $label.find('i').removeClass('fa-times-circle fa-spinner').addClass(" fa-check-circle");
-                $label.find('span').html(file.name);
+				$label.find('i').removeClass('fa-times-circle fa-spinner').addClass(" fa-check-circle");
+				var fileNames = '';
+				for(var i = 0; i < files.length; i++) {
+					if (i > 0) {
+						fileNames += ', ';
+					}
+					fileNames += files[i].name;
+				}
+                $label.find('span').html(fileNames);
               } else {
                 $label.find('i').removeClass("fa-spinner fa-check-circle").addClass('fa-times-circle');
                 $label.find('span').html(response.error);
@@ -916,7 +928,7 @@ jQuery(document).ready(function($) {
                 if (e.target.value)
                     fileName = e.target.value.split('\\').pop();
                 if (fileName) {
-                    uploadFile(e, $label);
+                    uploadFiles(e, $label);
                 }
                 else
                     $label.html(labelVal);
@@ -925,7 +937,7 @@ jQuery(document).ready(function($) {
               // delete if input already has a file
               if (e.target.value) {
                 var attachments = [];
-                attachments.push(getAttachment($block));
+                getAttachment($block, attachments);
                 deleteAttachments(attachments);
               }
             });

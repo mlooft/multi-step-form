@@ -96,10 +96,9 @@ class Mondula_Form_Wizard_Shortcode {
 	 * Temporarily upload a file to wp-content/uploads/msf-temp directory.
 	 * The file remains on the server until the form is submitted by the client.
 	 **/
-	public function fw_upload_file() {
+	 public function fw_upload_file() {
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';
 		$tempdir = wp_upload_dir();
-		$file_to_upload = $_FILES['file'];
 		$upload_overrides = array(
 			'test_form' => false,
 		);
@@ -117,18 +116,26 @@ class Mondula_Form_Wizard_Shortcode {
 				return $dirs;
 			}
 
-			$uploaded_file = wp_handle_upload( $file_to_upload, $upload_overrides );
-
+			$uploaded_files = array();
 			$response = array();
+			$response['filenames'] = array();
 
-			if ( $uploaded_file && ! isset( $uploaded_file['error'] ) ) {
+			foreach ( $_FILES as $file ) {
+				$uploaded_file = wp_handle_upload( $file, $upload_overrides );
+				if ( ! isset( $uploaded_file['error'] ) ) {
+					array_push( $uploaded_files,  $uploaded_file );
+				} else {
+					$response['error'] = $uploaded_file['error'];
+				}
+			}
+
+			if ( ! isset( $response['error'] ) && count( $uploaded_files ) === count( $_FILES ) ) {
 				$response['success'] = true;
-				$response['filename'] = basename( $uploaded_file['url'] );
-				$response['type'] = $uploaded_file['type'];
-
+				foreach ( $uploaded_files as $file ) {
+					array_push( $response['filenames'], basename( $file['url'] ) );
+				}
 			} else {
 				$response['success'] = false;
-				$response['error'] = $uploaded_file['error'];
 			}
 			echo json_encode( $response );
 			remove_filter( 'upload_dir', 'wpse_change_upload_dir_temporarily' );
