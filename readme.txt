@@ -81,6 +81,9 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 
 == Changelog ==
 
+= 1.2.3 =
+* Upload multiple files with a single form element
+
 = 1.2.2 =
 * Conditional Field fix
 
