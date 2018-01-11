@@ -2,7 +2,7 @@
 Contributors: mondula2016
 Tags: multi, step, forms, multi-step, steps, feedback, email, contact form, progress bar, form builder, dynamic, ajax, formular
 Requires at least: 3.9
-Tested up to: 4.8
+Tested up to: 4.9.1
 Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
