@@ -24,10 +24,6 @@ abstract class Mondula_Form_Wizard_Block {
 
 	abstract function render( $ids );
 
-	public function get_type() {
-		return static::$type;
-	}
-
 	public static function from_aa( $block, $current_version, $serialized_version ) {
 		switch ( $block['type'] ) {
 			case 'radio':

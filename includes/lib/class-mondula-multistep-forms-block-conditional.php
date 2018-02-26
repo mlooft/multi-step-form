@@ -25,10 +25,6 @@ class Mondula_Form_Wizard_Block_Conditional extends Mondula_Form_Wizard_Block {
         $this->_elements = $elements;
     }
 
-    public function get_type( ) {
-        return self::$_type;
-    }
-
     public function render( $ids ) {
         $cnt = count( $this->_options );
         $group = $this->generate_id( $ids );

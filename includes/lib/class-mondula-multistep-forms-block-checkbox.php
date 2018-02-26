@@ -23,10 +23,6 @@ class Mondula_Form_Wizard_Block_Checkbox extends Mondula_Form_Wizard_Block {
       return $this->_required;
     }
 
-    public function get_type( ) {
-        return self::$_type;
-    }
-
     public function set_label ( $label ) {
         $this->_label = $label;
     }
