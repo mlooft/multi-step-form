@@ -286,9 +286,12 @@
 					prec_operator : blocks[i].prec_operator,
 					prec_value : blocks[i].prec_value,
 					visible : blocks[i].visible
-				};
+                };
+                // remove last closing div tag to add conditional meta information
+                blocksHtml = blocksHtml.slice(0, -6)
 				blocksHtml += '<input class="msf-block-meta" name="msf-block-meta-' + i + '" type="hidden" value="' + encodeURI(JSON.stringify(conditionalSettings)) + '">';
-			} else {
+                blocksHtml += '</div>';
+            } else {
 				blocksHtml += renderBlock(blocks[i]);
 			}
         }
@@ -782,23 +785,28 @@
           update: function(event, ui) {
               warn('block sortables update', event, ui);
               var blockType = $(ui.item).attr('data-type');
+              var newBlockIdx = -1;
               if ($(ui.item).is('.fw-draggable-block')) {
 				if (blockType === 'registration' && hasRegistration()) {
 					alertMessage("Only one registration block allowed!", false);
 					$(ui.item).remove();
 				} else {
-					// add element
-					$(ui.item).replaceWith($(renderBlock({
+                    // add element
+                    var $newBlock = $(renderBlock({
 						type: blockType,
 						label: ''
-					})));
+                    }));
+                    $(ui.item).replaceWith($newBlock);
+                    // get new Block index for keeping conditionals working
+                    newBlockIdx = $('.fw-step-block').index($newBlock);
+                    console.log($newBlock + " " + newBlockIdx);
 				}
               }
 			setupDragNDrop();
 			setupTooltips();
 			setupClickHandlers();
 			if (msfp) {
-				setupConditionals();
+				setupConditionals(newBlockIdx);
 			}
           }
         });
