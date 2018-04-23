@@ -192,6 +192,13 @@ class Mondula_Form_Wizard_Settings {
 					'type'  => 'number',
 					'default' => '20',
 				),
+				array(
+					'name' => 'entries_csvseparator',
+					'label' => __( 'CSV Export: Separator', 'multi-step-form' ),
+					'desc' => __( 'To avoid early column breaks, you should set your own column separator', 'multi-step-form' ),
+					'type' => 'text',
+					'default' => ',',
+				),
 				// TODO: Plus feature on next update
 				// array(
 				// 	'name'  => 'entries_unread',
