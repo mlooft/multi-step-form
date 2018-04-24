@@ -426,6 +426,17 @@ class Mondula_Form_Wizard_Admin {
 							</td>
 						</tr>
 						<tr valign="top">
+							<th scope="row"><?php echo __( 'Additional Email Headers:', 'multi-step-form' ); ?></th>
+							<td>
+								<textarea rows="4" cols="55" class="fw-mail-headers"></textarea>
+								<p class="description"><?php echo __( 'You can add additional email headers for CC/BCC, Reply-To. One per line e.g.:', 'multi-step-form' ); ?></p>
+								<p class="description">Reply-To: John Doe &lt;doe@example.com&gt;</p>
+								<p class="description">CC: Jane Doe &lt;doe@example.com&gt;</p>
+								<p class="description msf-warn">WARNING: only enter custom email headers if you know what you're doing - it can break your form.</p>					
+				
+							</td>
+						</tr>
+						<tr valign="top">
 							<th scope="row"><?php echo __( 'Email Headline:', 'multi-step-form' ); ?></th>
 							<td>
 								<textarea rows="5" cols="55" class="fw-mail-header"></textarea>

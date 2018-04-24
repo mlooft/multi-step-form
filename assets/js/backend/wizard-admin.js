@@ -429,7 +429,10 @@
         }
         if (formSettings.header) {
           $('.fw-mail-header').val(formSettings.header);
-        }
+		}
+		if (formSettings.headers) {
+			$('.fw-mail-headers').val(formSettings.headers);			
+		}
       }
     }
 
@@ -624,7 +627,8 @@
       settings.frommail = $('.fw-mail-from-mail').val();
       settings.fromname = $('.fw-mail-from-name').val();
       settings.subject = $('.fw-mail-subject').val();
-      settings.header = $('.fw-mail-header').val();
+	  settings.header = $('.fw-mail-header').val();
+	  settings.headers = $('.fw-mail-headers').val();
       return settings;
     }
 

@@ -195,6 +195,10 @@ class Mondula_Form_Wizard_Shortcode {
 					$frommail = $settings['frommail'] != '' ? $settings['frommail'] : get_bloginfo( 'admin_email' );
 					array_push( $headers, 'From: ' . $fromname . ' <' . $frommail . '>' . "\r\n" );
 				}
+				if ( isset( $settings['headers'] ) && $settings['headers'] ) {
+					$additional_headers = explode("\n", $settings['headers'] );
+					$headers = array_merge( $headers, $additional_headers );
+				}
 				// send email to admin
 				$mail = wp_mail( $settings['to'], $settings['subject'], $content , $headers, $attachments );
 				// send copy to user
