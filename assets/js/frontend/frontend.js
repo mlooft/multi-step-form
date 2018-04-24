@@ -4,7 +4,7 @@ jQuery(document).ready(function($) {
     var err = [
         ajax.i18n.errors.requiredFields,
         ajax.i18n.errors.requiredField,
-        ajax.i18n.errors.someRequired + '<br>' + ajax.i18n.errors.checkFields
+		ajax.i18n.errors.someRequired + '<br>' + ajax.i18n.errors.checkFields
     ];
 
     function log() {
@@ -655,7 +655,9 @@ jQuery(document).ready(function($) {
                 if ($(element).find('.fw-block-invalid-alert').length < 1) {
 					if ($(element).attr('data-type') == 'fw-registration') {
 						$(element).append('<div class="fw-block-invalid-alert">' + ajax.i18n.errors.checkFields + '</div>');						
-					} else {
+					} else if ($(element).attr('data-type') == 'fw-email') {
+						$(element).append('<div class="fw-block-invalid-alert">' + ajax.i18n.errors.invalidEmail + '</div>');						
+				    } else {
 						$(element).append('<div class="fw-block-invalid-alert">' + err[1] + '</div>');
 					}
                 }
