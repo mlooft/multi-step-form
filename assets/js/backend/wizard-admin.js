@@ -190,7 +190,8 @@
         var paragraphHtml = '';
         paragraphHtml += '<label>' + wizard.i18n.paragraph.textHtml + ' <i class="fa fa-info-circle" aria-hidden="true" title="' + wizard.i18n.tooltips.paragraph + '"></i></label>';
         paragraphHtml += '<textarea class="fw-paragraph-text fw-block-label" placeholder="' + wizard.i18n.paragraph.text + '">' + (block.text ? block.text : '') + '</textarea>';
-        return paragraphHtml;
+		paragraphHtml += '<label style="display:none;"><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
+		return paragraphHtml;
 	}
 	
 	function renderRegistration(block) {
