@@ -400,37 +400,36 @@ class Mondula_Form_Wizard_Admin {
 					<h1>Mail settings</h1>
 					<table class="form-table">
 						<tr valign="top">
-							<th scope="row">Send To:</th>
+							<th scope="row"><?php echo __( 'Send To:', 'multi-step-form' ); ?></th>
 							<td>
 								<input type="text" class="fw-mail-to" />
-								<p class="description">Email address to which the mails are sent</p>
+								<p class="description"><?php echo __( 'Email address to which the mails are sent', 'multi-step-form' ); ?></p>
 							</td>
 						</tr>
 						<tr valign="top">
-							<th scope="row">Send From Email:</th>
+							<th scope="row"><?php echo __( 'Send From Email:', 'multi-step-form' ); ?></th>
 							<td>
 								<input type="text" class="fw-mail-from-mail" />
-								<p class="description">Email address and name from which the emails are sent. Leave blank for default admin email.</p>
+								<p class="description"><?php echo __( 'Email address and name from which the emails are sent. Leave blank for default admin email.', 'multi-step-form' ); ?></p>
 							</td>
 						</tr>
 						<tr valign="top">
-							<th scope="row">Send From Name:</th>
+							<th scope="row"><?php echo __( 'Send From Name:', 'multi-step-form' ); ?></th>
 							<td>
 								<input type="text" class="fw-mail-from-name" />
 							</td>
 						</tr>
 						<tr valign="top">
-							<th scope="row">Subject:</th>
+							<th scope="row"><?php echo __( 'Subject:', 'multi-step-form' ); ?></th>
 							<td>
 								<input type="text" class="fw-mail-subject" />
 							</td>
 						</tr>
-
 						<tr valign="top">
-							<th scope="row">Email Header:</th>
+							<th scope="row"><?php echo __( 'Email Headline:', 'multi-step-form' ); ?></th>
 							<td>
 								<textarea rows="5" cols="55" class="fw-mail-header"></textarea>
-								<p class="description">Introductory text for email</p>
+								<p class="description"><?php echo __( 'Introductory text for email', 'multi-step-form' ); ?></p>
 							</td>
 						</tr>
 					</table>
@@ -448,7 +447,7 @@ class Mondula_Form_Wizard_Admin {
 								<div class="fw-elements">
 									<input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="Form Title">
 									<a class="fw-element-step"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ); ?></a>
-									<h4>Drag &amp; Drop an element from below to a section</h4>
+									<h4><?php echo __( 'Drag &amp; Drop an element from below to a section', 'multi-step-form' ); ?></h4>
 									<a class="fw-draggable-block fw-element-radio" data-type="radio"><i class="fa fa-arrows"></i> Radio/Checkbox</a>
 									<a class="fw-draggable-block fw-element-select" data-type="select"><i class="fa fa-arrows"></i> Select/Dropdown</a>
 									<a class="fw-draggable-block fw-element-text" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
