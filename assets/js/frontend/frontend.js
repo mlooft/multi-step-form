@@ -1005,7 +1005,9 @@ jQuery(document).ready(function($) {
     function setupDatepicker() {
       var format = $('.fw-datepicker-here').attr('data-dateformat');
       $('.fw-datepicker-here').datepicker({
-        dateFormat: format
+		dateFormat: format,
+		changeMonth: true,
+		changeYear: true,
       });
 	}
 	

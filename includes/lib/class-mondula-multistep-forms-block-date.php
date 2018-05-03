@@ -15,15 +15,15 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 
     protected static $type = "fw-date";
 
-    public function __construct ( $label, $required, $format ) {
-        $this->_label = $label;
-        $this->_required = $required;
-				if (empty($format)) {
-        	$this->_format = $format;
-				} else {
-					$this->_format = 'yy-mm-dd';
-				}
-    }
+	public function __construct ( $label, $required, $format ) {
+		$this->_label = $label;
+		$this->_required = $required;
+		if ( ! empty( $format ) ) {
+			$this->_format = $format;
+		} else {
+			$this->_format = 'yy-mm-dd';
+		}
+	}
 
     public function get_required( ) {
         return $this->_required;
