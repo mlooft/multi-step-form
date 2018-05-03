@@ -15,8 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "select2": "^4.0.3",
-    "air-datepicker": "^2.2.3"
+    "select2": "^4.0.3"
   },
   "overrides": {
     "select2": {

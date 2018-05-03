@@ -1002,35 +1002,13 @@ jQuery(document).ready(function($) {
       }
     }
 
-    function setupDatepickerLocale() {
-        $.fn.datepicker.language['en'] = {
-            days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-            daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-            months: ['January','February','March','April','May','June', 'July','August','September','October','November','December'],
-            monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            today: 'Today',
-            clear: 'Clear',
-        };
-    }
-
     function setupDatepicker() {
-        setupDatepickerLocale();
-        var dateFormat = $('.fw-datepicker-here').attr('data-dateformat');
-        //var timeFormat = $('.fw-datepicker-here').attr('data-timeformat');
-        //var timepickerOn = $('.fw-datepicker-here').attr('data-timepicker') == "on";
-        console.log('SETUP DATEPICKER');
-        var settings = {  
-            //timepicker: timepickerOn,
-            language: 'en',
-            dateFormat: dateFormat
-            //timeFormat: timeFormat
-        };
-        console.log(settings);
-        $('.fw-datepicker-here').datepicker(settings);
-        console.log('SETUP DATEPICKER');
+      var format = $('.fw-datepicker-here').attr('data-dateformat');
+      $('.fw-datepicker-here').datepicker({
+        dateFormat: format
+      });
 	}
-
+	
 	function setupChangeListeners(){
 		$('.fw-checkbox').change(check);
         $('.fw-radio').change(checkRadio);
