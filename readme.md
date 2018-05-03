@@ -1,6 +1,6 @@
 # Multi Step Form 
-![Multi Step Form Backend](https://github.com/mlooft/multi-step-form/blob/master/screenshot-1.jpg)
-![Multi Step Form Frontend](https://github.com/mlooft/multi-step-form/blob/master/screenshot-2.jpg)
+<!-- ![Multi Step Form Backend](https://github.com/mlooft/multi-step-form/blob/master/screenshot-1.jpg)
+![Multi Step Form Frontend](https://github.com/mlooft/multi-step-form/blob/master/screenshot-2.jpg) -->
 
 ## Description 
 Multi Step Form has a drag & drop enabled form builder for quick and intuitive creation of nice-looking multi step forms. Forms can be embedded on any page or post with shortcodes.
