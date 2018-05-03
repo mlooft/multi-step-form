@@ -11,7 +11,7 @@ We would really appreciate pull requests for features or bugfixes. Here's what y
 * a local WordPress instance (preferably with XDebug)
 * `npm`, `gulp` and `bower`
 
-To get started with developing, please clone this repository directly to you wp-content/plugins directory and follow these steps:
+To get started with developing, please clone this repository directly to your `wp-content/plugins` directory and do the following:
 
 ```
 cd multi-step-form
