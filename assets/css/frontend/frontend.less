@@ -240,15 +240,22 @@
 	    font-size: 1.2em;
 	    line-height: 1.4;
 	}
+	
 	.fw-plain-layout {
-		border-left: 0px;
-		background-color: transparent;
-		padding: 0px;
+		border-left: 0px!important;
+		background-color: transparent!important;
+		padding: 0px!important;
 		.fw-step-part-title {
-			margin: 0;
-			margin-top: 20px;
+			margin: 20px 0px 20px 0 !important;
+		}
+		.fw-step-part-body {
+			margin-left: 0!important;
+		}
+		.fa.form-control-feedback {
+			left: 16px;
 		}
 	}
+
 	/* CUSTOM INPUTS */
 	[data-type=fw-radio], [data-type=fw-checkbox] {
 		label:before {
