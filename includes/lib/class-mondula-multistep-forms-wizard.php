@@ -281,7 +281,7 @@ class Mondula_Form_Wizard_Wizard {
 												  echo '<tr><td align="left" style="padding: 30px 0 10px 0; font-size: 20px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy"><strong>' . $key . '</strong> </td></tr>';
 												  foreach ( $value as $value2 ) {
 													  foreach ( $value2 as $key2 => $value3 ) {
-														  echo '<tr><td align="left" style="border:solid 1px #dadada; border-width:0 0 1px 0; padding: 10px 0 10px 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">'. $key2 .'</td><td align="left" style=" border:solid 1px #dadada; border-width:0 0 1px 0; 10px 0 10px 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">'. $value3 .'</td></tr>';
+														  echo '<tr><td align="left" style="border:solid 1px #dadada; border-width:0 0 1px 0; padding: 10px 0 10px 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">'. $key2 .'</td><td align="left" style=" border:solid 1px #dadada; border-width:0 0 1px 0; padding: 10px 0 10px 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">'. $value3 .'</td></tr>';
 													  }
 												  }
 											  } ?>
