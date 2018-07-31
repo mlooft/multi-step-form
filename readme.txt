@@ -73,7 +73,7 @@ Installing the plugin can be done either by searching for "Multi Step Form" via 
 
 == Frequently Asked Questions ==
 = Q. Looking for FAQs?
-A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step Form | FAQs")** 
+A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step Form | FAQs")**
 
 == Screenshots ==
 1. The backend's structure is simple. Even less technical users can quickly understand the plugin and start creating forms.
@@ -81,12 +81,12 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 
 == Changelog ==
 
-= 1.2.5 =
+= 1.2.6 =
 * Fix a security issue
 
 = 1.2.5 =
 * Fix date format not saving as specified
-* Choose month/year with dropdown menus in datepicker  
+* Choose month/year with dropdown menus in datepicker
 
 = 1.2.4 =
 * Custom Email Headers (Reply-To, BCC...)
