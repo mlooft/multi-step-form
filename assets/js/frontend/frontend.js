@@ -231,6 +231,17 @@ jQuery(document).ready(function($) {
       return path.replace(/^.*\\/, "");
     }
 
+    function stripScripts(s){
+        var div = document.createElement('div');
+        div.innerHTML = s;
+        var scripts = div.getElementsByTagName('script');
+        var i = scripts.length;
+        while (i--) {
+            scripts[i].parentNode.removeChild(scripts[i]);
+        }
+        return div.innerHTML;
+    }
+
     function getAttachments() {
         var files = [];
         $('.fw-step-block[data-type=fw-file]').each(function(i, e) {
@@ -285,7 +296,7 @@ jQuery(document).ready(function($) {
 		var key;
 		var html = '';
         for (key in summary) {
-			html = '<p class="fw-step-summary">' + key + ' \u2014 ' + summary[key] + '</p>';
+			html = '<p class="fw-step-summary">' + key + ' \u2014 ' + stripScripts(summary[key]) + '</p>';
 		}
 		return html;
     }

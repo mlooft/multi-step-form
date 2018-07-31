@@ -155,6 +155,17 @@ class Mondula_Form_Wizard_Shortcode {
 		return $attachments;
 	}
 
+	private function sanitize_data( &$data, &$email ) {
+		$email = sanitize_email($email);
+		foreach ( $data as &$fields ) {
+			foreach ( $fields as &$field) {
+				foreach ($field as $key => &$value) {
+					$value = sanitize_textarea_field($value);
+				}
+			}
+		}
+	}
+
 	public function fw_send_email() {
 		global $phpmailer;
 
@@ -170,6 +181,8 @@ class Mondula_Form_Wizard_Shortcode {
 
 		if ( wp_verify_nonce( $nonce, $this->_token ) ) {
 			if ( ! empty( $data ) ) {
+				/* Sanitize data */
+				$this->sanitize_data( $data, $email );
 				/* Send data to PRO */
 				do_action( 'msfp_save', $id, $data );
 				/* Register user */
