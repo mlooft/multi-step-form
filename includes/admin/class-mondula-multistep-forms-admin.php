@@ -119,10 +119,8 @@ class Mondula_Form_Wizard_Admin {
 	}
 
 	public function admin_js() {
-		$edit = isset( $_GET['edit'] );
-
-		if ( $edit ) {
-			$id = isset( $_GET['edit'] ) ? $_GET['edit'] : '';
+		if ( isset( $_GET['edit'] ) ) {
+			$id = intval( $_GET['edit'] );
 			$json = $this->_wizard_service->get_as_json( $id );
 			$i18n = $this->get_translation();
 
@@ -511,13 +509,82 @@ class Mondula_Form_Wizard_Admin {
 		<?php
 	}
 
+	private function sanitize_form_data( &$data ) {
+		$data['wizard']['title'] = sanitize_text_field( $data['wizard']['title'] );
+		/* Sanitize form Steps */
+		foreach ( $data['wizard']['steps'] as &$step) {
+			$step['title'] = sanitize_text_field( $step['title'] );
+			$step['headline'] = sanitize_text_field( $step['headline'] );
+			$step['copy_text'] = sanitize_text_field( $step['copy_text'] );
+			foreach ( $step['parts'] as &$part ) {
+				$part['title'] = sanitize_text_field( $part['title'] );
+				foreach ( $part['blocks'] as &$block ) {
+					switch ( $block['type'] ) {
+						case 'radio':
+							foreach ( $block['elements'] as &$element ) {
+								$element['type'] = sanitize_text_field( $element['type'] );
+								$element['value'] = sanitize_text_field( $element['value'] );
+							}
+							$block['required'] = sanitize_text_field( $block['required'] );
+							$block['multichoice'] = sanitize_text_field( $block['multichoice'] );							
+							break;
+						case 'select':
+							$block['required'] = sanitize_text_field( $block['required'] );
+							$block['search'] = sanitize_text_field( $block['search'] );
+							$block['label'] = sanitize_text_field( $block['label'] );
+							$block['placeholder'] = sanitize_text_field( $block['placeholder'] );
+							foreach ($block['elements'] as &$element) {
+								$element = sanitize_text_field( $element );
+							}
+							break;
+						case 'email':
+						case 'textarea':
+						case 'file':
+						case 'date':
+							foreach ($block as &$value) {
+								$value = sanitize_text_field($value);
+							}
+							break;
+						case 'paragraph':
+							$block['text'] = sanitize_textarea_field( $block['text'] );
+							break;
+						default:
+							break;
+					}
+				}
+			}
+		}
+		/* Sanitize Form Settings */
+		foreach ( $data['wizard']['settings'] as $key => &$setting ) {
+			switch ( $key ) {
+				case 'thankyou':
+					$setting = esc_url( $setting );
+					break;
+				case 'to':
+				case 'frommail':
+					$setting = sanitize_email( $setting );
+					break;
+				case 'header':
+					$setting = sanitize_textarea_field( $setting );
+					break;
+				case 'fromname':
+				case 'subject':
+					$setting = sanitize_text_field( $setting );
+					break;
+			}
+		}
+	}
+
+	/**
+	 * Saves a Form after editing in the admin form builder.
+	 */
 	public function save() {
-		// var_dump( $_POST );
-		// wp_die('success');
 		$_POST = stripslashes_deep( $_POST );
-		$id = isset( $_POST['id'] ) ? $_POST['id'] : '';
+		$id = isset( $_POST['id'] ) ? intval($_POST['id']) : '';
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';
 		$data = isset( $_POST['data'] ) ? $_POST['data'] : array();
+
+		$this->sanitize_form_data( $data );
 
 		if ( wp_verify_nonce( $nonce, $this->_token . $id ) ) {
 			if ( ! empty( $data ) ) {

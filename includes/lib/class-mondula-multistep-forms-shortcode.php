@@ -75,6 +75,10 @@ class Mondula_Form_Wizard_Shortcode {
 	 **/
 	public function fw_delete_files() {
 		$filenames = isset( $_POST['filenames'] ) ? $_POST['filenames'] : array();
+		/* Sanitize File names */
+		foreach ( $filenames as &$fn ) {
+			$fn = sanitize_file_name( $fn );
+		}
 		$filepaths = $this->generate_attachment_paths( $filenames );
 		if ( count( $filepaths ) != 0 ) {
 			$this->delete_files( $filepaths );
@@ -155,38 +159,71 @@ class Mondula_Form_Wizard_Shortcode {
 		return $attachments;
 	}
 
-	private function sanitize_data( &$data, &$email ) {
-		$email = sanitize_email($email);
+	private function sanitize_attachments( &$attachments ) {
+		foreach ( $attachments as &$fn ) {
+			$fn = sanitize_file_name( $fn );
+		}
+	}
+
+	private function sanitize_user_reg( &$reg ) {
+		foreach ($reg as $key => &$value) {
+			switch ($key) {
+				case 'username':
+					$value = sanitize_user( $value );
+					break;
+				case 'email':
+					$value = sanitize_email( $value );
+					break;
+				case 'password':
+				case 'firstname':
+				case 'lastname':
+					$value = sanitize_text_field( $value );
+					break;
+				case 'website':
+					$value = esc_url( $value );
+					break;
+				case 'bio':
+					$value = sanitize_textarea_field( $value );
+					break;
+			}
+		}
+		return $reg;
+	}
+
+	private function sanitize_data( &$data ) {
 		foreach ( $data as &$fields ) {
 			foreach ( $fields as &$field) {
 				foreach ($field as $key => &$value) {
-					$value = sanitize_textarea_field($value);
+					if ( is_email( $value ) ) {
+						$value = sanitize_email($value);
+					} else {
+						$value = sanitize_textarea_field($value);
+					}
 				}
 			}
 		}
+		return $data;
 	}
 
 	public function fw_send_email() {
 		global $phpmailer;
 
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';
-		$id = isset( $_POST['id'] ) ? $_POST['id'] : '';
-		$data = isset( $_POST['fw_data'] ) ? $_POST['fw_data'] : array();
-		$name = isset( $_POST['name'] ) ? $_POST['name'] : array();
-		$email = isset( $_POST['email'] ) ? $_POST['email'] : array();
-		$reg = isset( $_POST['reg'] ) ? $_POST['reg'] : null;
-		$files = isset( $_POST['attachments'] ) ? $_POST['attachments'] : array();
+		$id = isset( $_POST['id'] ) && intval($_POST['id']) ? intval($_POST['id']) : '';
+		$data = isset( $_POST['fw_data'] ) ? $this->sanitize_data( $_POST['fw_data'] ) : array();
+		$name = isset( $_POST['name'] ) ? sanitize_text_field( $_POST['name'] ) : array();
+		$email = isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : array();
+		$reg = isset( $_POST['reg'] ) ? $this->sanitize_user_reg( $_POST['reg'] ) : array();
+		$files = isset( $_POST['attachments'] ) ? $this->sanitize_attachments( $_POST['attachments'] ) : array();
 
 		$wizard = $this->get_wizard( $id );
 
 		if ( wp_verify_nonce( $nonce, $this->_token ) ) {
 			if ( ! empty( $data ) ) {
-				/* Sanitize data */
-				$this->sanitize_data( $data, $email );
 				/* Send data to PRO */
 				do_action( 'msfp_save', $id, $data );
 				/* Register user */
-				if ( $reg ) {
+				if ( ! empty( $reg ) ) {
 					do_action( 'msfp_register', $reg, $data, $id );
 				}
 
