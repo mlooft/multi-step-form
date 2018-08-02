@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Multi Step Form
- * Version: 1.2.6
+ * Version: 1.2.7
  * Plugin URI: http://www.mondula.com/
  * Description: Create and embed Multi Step Form.
  * Author: Mondula GmbH
@@ -83,7 +83,7 @@ add_filter( 'wpmu_drop_tables', 'msf_drop_tables', 10, 2);
  * @return object Mondula_Form_Wizard
  */
 function Mondula_Form_Wizard () {
-	$instance = Mondula_Form_Wizard::instance( __FILE__, '1.0.6' );
+	$instance = Mondula_Form_Wizard::instance( __FILE__, '1.2.7' );
 
 	if ( is_null( $instance->settings ) ) {
 		$instance->settings = Mondula_Form_Wizard_Settings::instance( $instance );
