@@ -84,7 +84,7 @@ class Mondula_Form_Wizard_Admin {
 			'addSection' => __( 'Add Section', 'multi-step-form' ),
 			'addElement' => __( 'Add Element', 'multi-step-form' ),
 			'label' => __( 'Label', 'multi-step-form' ),
-			'multifile' => __( 'Multiple Files', 'multi-step-form' ),			
+			'multifile' => __( 'Multiple Files', 'multi-step-form' ),
 			'dateformat' => __( 'Date Format', 'multi-step-form' ),
 			'required' => __( 'Required', 'multi-step-form' ),
 			'radio' => array(
@@ -270,7 +270,7 @@ class Mondula_Form_Wizard_Admin {
 			?>
 			<style>
 				.wrap {
-					width: 75%; 
+					width: 75%;
 					float: left;
 					margin-right: 0px;
 				}
@@ -295,21 +295,21 @@ class Mondula_Form_Wizard_Admin {
 					font-weight: 400;
 					margin: 10px 0px 20px 0px;
 					color:#00b0a4;
-				
+
 				}
-			
+
 				#sidebar h4 {
 					margin: 20px 0px 0px 0px;
 					color:#ff6d00;
-				
+
 				}
-				
+
 				#sidebar p {
 					color:#777;
 					margin: 0px 0px 20px 0px;
 				}
-				
-				
+
+
 				img {
 					width: 100%;
 					height: auto;
@@ -318,24 +318,26 @@ class Mondula_Form_Wizard_Admin {
 			<div class="msf_content_cell" id="msf-sidebar-container">
 				<div id="sidebar">
 					<div>
-						<h2>Multi Step Form Plus</h2> 
-						<h4>Up to 10 steps</h4> 
+						<h2>Multi Step Form Plus</h2>
+						<h4>Up to 10 steps</h4>
 						<p>
 							You can now divide your form in up to 10 Steps.
 						</p>
-						<h4>Save and export Form Data</h4> 
+						<h4>Save and export Form Data</h4>
 						<p>
 							With PLUS, you can save filled forms in the database and export them as CSV
 						</p>
-						<h4>Conditional fields</h4> 
+						<h4>Conditional fields</h4>
 						<p>
 							You want to bring more flexibility into your forms? Use conditional fields.
 						</p>
 						<p>
-							<a href="https://mondula.com/multi-step-form-plus/" target="_blank"><img src="https://mondula.com/wp-content/uploads/2017/09/msf_plus_extension.png" alt="MSF Plus"></a> 
+							<a href="https://mondula.com/multi-step-form-plus/" target="_blank">
+								<img src="<?php echo plugins_url( 'assets/images/msf_plus_extension.png', __FILE__ ) ?>" alt="MSF Plus">
+							</a>
 						</p>
 						<p>
-							<a class="button button-primary" href="https://mondula.com/multi-step-form-plus/" target="_blank">Get Multi Step Form Plus</a> 
+							<a class="button button-primary" href="https://mondula.com/multi-step-form-plus/" target="_blank">Get Multi Step Form Plus</a>
 						</p>
 					</div>
 				</div>
@@ -430,8 +432,8 @@ class Mondula_Form_Wizard_Admin {
 								<p class="description"><?php echo __( 'You can add additional email headers for CC/BCC, Reply-To. One per line e.g.:', 'multi-step-form' ); ?></p>
 								<p class="description">Reply-To: John Doe &lt;doe@example.com&gt;</p>
 								<p class="description">CC: Jane Doe &lt;doe@example.com&gt;</p>
-								<p class="description msf-warn">WARNING: only enter custom email headers if you know what you're doing - it can break your form.</p>					
-				
+								<p class="description msf-warn">WARNING: only enter custom email headers if you know what you're doing - it can break your form.</p>
+
 							</td>
 						</tr>
 						<tr valign="top">
@@ -526,7 +528,7 @@ class Mondula_Form_Wizard_Admin {
 								$element['value'] = sanitize_text_field( $element['value'] );
 							}
 							$block['required'] = sanitize_text_field( $block['required'] );
-							$block['multichoice'] = sanitize_text_field( $block['multichoice'] );							
+							$block['multichoice'] = sanitize_text_field( $block['multichoice'] );
 							break;
 						case 'select':
 							$block['required'] = sanitize_text_field( $block['required'] );
