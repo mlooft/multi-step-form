@@ -152,7 +152,7 @@ gulp.task('css-frontend-vendor:production', ['clean:production'], function () {
 });
 
 gulp.task('css-backend:production', ['clean:production'], function () {
-  return gulp.src(['assets/css/backend/*.css', 'assets/css/backend/*.less'])
+  return gulp.src(['bower_components/font-awesome/css/font-awesome.css', 'assets/css/backend/*.css', 'assets/css/backend/*.less'])
     .pipe(less())
     .pipe(concat('backend.min.css'))
     .pipe(uglifycss({
