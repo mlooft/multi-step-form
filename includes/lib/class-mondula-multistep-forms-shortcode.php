@@ -161,8 +161,9 @@ class Mondula_Form_Wizard_Shortcode {
 
 	private function sanitize_attachments( &$attachments ) {
 		foreach ( $attachments as &$fn ) {
-			$fn = sanitize_file_name( $fn );
+		 	$fn = sanitize_file_name( $fn );
 		}
+		return $attachments;
 	}
 
 	private function sanitize_user_reg( &$reg ) {
