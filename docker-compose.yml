@@ -2,9 +2,9 @@ version: "3"
 
 services:
   wordpress:
-    image: "wordpress:${WP_VERSION:-4.9.6}-php${PHP_VERSION:-7.2}-apache"
+    build: "."
     environment:
-      VIRTUAL_HOST: "${DOCKER_DEV_DOMAIN:-project.test}"
+      VIRTUAL_HOST: "${DOCKER_DEV_DOMAIN:-localhost}"
       WORDPRESS_DB_HOST: "mysql"
       WORDPRESS_DB_NAME: "wordpress"
       WORDPRESS_DB_PASSWORD: ""
@@ -16,7 +16,7 @@ services:
       - "back"
     volumes:
       - "wp:/var/www/html:rw"
-      - ".:/var/www/html/wp-content/plugins/my-plugin:ro"
+      - ".:/var/www/html/wp-content/plugins/multi-step-form:ro"
   wp-cli:
     image: "wordpress:cli-php${PHP_VERSION:-7.2}"
     environment:
@@ -29,7 +29,7 @@ services:
     volumes:
       - "wp:/var/www/html:rw"
       - "./bin/install-wp.sh:/usr/local/bin/install-wp:ro"
-      - ".:/var/www/html/wp-content/plugins/my-plugin:ro"
+      - ".:/var/www/html/wp-content/plugins/multi-step-form:ro"
   mysql:
     image: "mariadb:10.2"
     environment:
@@ -45,9 +45,11 @@ services:
     networks:
       front:
         aliases:
-          - "${DOCKER_DEV_DOMAIN:-project.test}"
+          - "${DOCKER_DEV_DOMAIN:-localhost}"
     volumes:
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
+    expose:
+      - "9000"
 
 networks:
   front: {}
