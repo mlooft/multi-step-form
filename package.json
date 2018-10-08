@@ -6,7 +6,7 @@
   "main": "gulpfile.js",
   "devDependencies": {
     "del": "^2.2.2",
-    "gulp": "*",
+    "gulp": "^3.9.1",
     "gulp-concat": "*",
     "gulp-debug-streams": "*",
     "gulp-less": "^3.5.0",
