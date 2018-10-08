@@ -44,6 +44,9 @@ abstract class Mondula_Form_Wizard_Block {
 			case 'email':
 				return Mondula_Form_Wizard_Block_Email::from_aa( $block, $current_version, $serialized_version );
 				break;
+			case 'numeric':
+				return Mondula_Form_Wizard_Block_Numeric::from_aa( $block, $current_version, $serialized_version );
+				break;
 			case 'file':
 				return Mondula_Form_Wizard_Block_File::from_aa( $block, $current_version, $serialized_version );
 				break;

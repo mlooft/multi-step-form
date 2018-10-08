@@ -14,6 +14,7 @@
 @color_textarea: #ff5722;
 @color_checkbox: #4051B7;
 @color_email: #9c27b0;
+@color_numeric: #40E020;
 @color_file: #E91E63;
 @color_date: #00bcd4;
 @color_radio: #009989;
@@ -355,6 +356,9 @@ div#TB_ajaxContent {
     }
     #fw-thickbox-email {
         background: @color_email none repeat scroll 0 0;
+	}
+	#fw-thickbox-email {
+        background: @color_numeric none repeat scroll 0 0;
     }
     #fw-thickbox-fileupload {
       background: @color_file;
@@ -391,9 +395,12 @@ div#TB_ajaxContent {
 	&[data-type="email"] {
 		border-color: @color_email !important;
 	}
-  &[data-type="file"] {
-    border-color: @color_file !important;
-  }
+	&[data-type="numeric"] {
+		border-color: @color_numeric !important;
+	}
+  	&[data-type="file"] {
+    	border-color: @color_file !important;
+  	}
 	&[data-type="date"] {
 		border-color: @color_date !important;
 	}
@@ -438,6 +445,11 @@ div#TB_ajaxContent {
 .fw-step-block[data-type="email"] {
 	>.fw-block-action, .fw-block-controls > i {
 		background-color: @color_email;
+	}
+}
+.fw-step-block[data-type="numeric"] {
+	>.fw-block-action, .fw-block-controls > i {
+		background-color: @color_numeric;
 	}
 }
 .fw-step-block[data-type="file"] {
@@ -497,7 +509,7 @@ div#TB_ajaxContent {
   input[type=text] {
     padding: 5px 20px 5px 20px;
   }
-  input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="url"], textarea {
+  input[type="text"], input[type="password"], input[type="email"], input[type="numeric"], input[type="number"], input[type="search"], input[type="tel"], input[type="url"], textarea {
       padding-left: 10px;
   }
 }
@@ -635,6 +647,9 @@ input.fw-invalid {
 }
 .fw-draggable-block[data-type=email] {
 	border-left: 6px solid @color_email;
+}
+.fw-draggable-block[data-type=numeric] {
+	border-left: 6px solid @color_numeric;
 }
 .fw-draggable-block[data-type=file] {
 	border-left: 6px solid @color_file;

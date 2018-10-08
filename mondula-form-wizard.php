@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Multi Step Form
- * Version: 1.2.9
+ * Version: 1.3.0
  * Plugin URI: http://www.mondula.com/
  * Description: Create and embed Multi Step Form.
  * Author: Mondula GmbH
@@ -43,6 +43,7 @@ require_once( 'includes/lib/class-mondula-multistep-forms-block.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-checkbox.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-radio.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-email.php' );
+require_once( 'includes/lib/class-mondula-multistep-forms-block-numeric.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-file.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-date.php' );
 require_once( 'includes/lib/class-mondula-multistep-forms-block-paragraph.php' );
@@ -83,13 +84,13 @@ add_filter( 'wpmu_drop_tables', 'msf_drop_tables', 10, 2);
  * @return object Mondula_Form_Wizard
  */
 function Mondula_Form_Wizard () {
-	$instance = Mondula_Form_Wizard::instance( __FILE__, '1.2.9' );
+    $instance = Mondula_Form_Wizard::instance( __FILE__, '1.3.0' );
 
-	if ( is_null( $instance->settings ) ) {
-		$instance->settings = Mondula_Form_Wizard_Settings::instance( $instance );
-	}
+    if ( is_null( $instance->settings ) ) {
+        $instance->settings = Mondula_Form_Wizard_Settings::instance( $instance );
+    }
 
-	return $instance;
+    return $instance;
 }
 
 Mondula_Form_Wizard();

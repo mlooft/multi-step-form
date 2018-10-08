@@ -464,6 +464,7 @@ class Mondula_Form_Wizard_Admin {
 									<a class="fw-draggable-block fw-element-text" data-type="text"><i class="fa fa-arrows"></i> Text field</a>
 									<a class="fw-draggable-block fw-element-textarea" data-type="textarea"><i class="fa fa-arrows"></i> Textarea</a>
 									<a class="fw-draggable-block fw-element-email" data-type="email"><i class="fa fa-arrows"></i> Email</a>
+									<a class="fw-draggable-block fw-element-numeric" data-type="numeric"><i class="fa fa-arrows"></i> Numeric</a>
 									<a class="fw-draggable-block fw-element-file" data-type="file"><i class="fa fa-arrows"></i> File Upload</a>
 									<a class="fw-draggable-block fw-element-date" data-type="date"><i class="fa fa-arrows"></i> Date</a>
 									<a class="fw-draggable-block fw-element-paragraph" data-type="paragraph"><i class="fa fa-arrows"></i> Paragraph</a>
@@ -493,6 +494,7 @@ class Mondula_Form_Wizard_Admin {
 				<div id="fw-thickbox-select">Select/Dropdown</div>
 				<div id="fw-thickbox-text">Text field</div>
 				<div id="fw-thickbox-email">Email</div>
+				<div id="fw-thickbox-numeric">Numeric</div>
 				<div id="fw-thickbox-fileupload">File Upload</div>
 				<div id="fw-thickbox-textarea">Textarea</div>
 				<div id="fw-thickbox-date">Date</div>
@@ -540,6 +542,7 @@ class Mondula_Form_Wizard_Admin {
 							}
 							break;
 						case 'email':
+						case 'numeric':
 						case 'textarea':
 						case 'file':
 						case 'date':
