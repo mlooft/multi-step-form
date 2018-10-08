@@ -27,7 +27,7 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
       ?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-numeric" data-required="<?php echo $this->_required; ?>">
 			<div class="fw-input-container">
-				<h3><?php echo $this->_label ?></h3><input type="text" class="fw-text-input" data-id="numeric"><span class="fa fa-envelope form-control-feedback" aria-hidden="true"></span>
+				<h3><?php echo $this->_label ?></h3><input type="text" class="fw-text-input" data-id="numeric"><span class="fa fa-asterisk form-control-feedback" aria-hidden="true"></span>
 			</div>
 			<div class="fw-clearfix"></div>
 		</div>

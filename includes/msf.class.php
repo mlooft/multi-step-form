@@ -174,6 +174,7 @@ class Mondula_Form_Wizard {
 				'noUsername' => __( 'No username provided', 'multi-step-form' ),
 				'invalidUsername' => __( 'Invalid username', 'multi-step-form' ),
 				'takenUsername' => __( 'Username is already registered', 'multi-step-form' ),
+				'invalidNumeric' => __( 'Invalid number', 'multi-step-form' ),
 			),
 		);
 	}

@@ -9,6 +9,7 @@ class Mondula_Form_Wizard_Admin_API {
 	 */
 	public function __construct () {
 		add_action( 'save_post', array( $this, 'save_meta_boxes' ), 10, 1 );
+		// TODO Wird wohl nicht mehr benutzt?
 	}
 
 	/**

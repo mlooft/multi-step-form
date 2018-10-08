@@ -522,7 +522,7 @@ jQuery(document).ready(function($) {
     }
 
     function validateNumeric($element) {
-        var re = /^[0-9]+$/;
+        var re = /^\d+$/;
         var numeric = $element.find('.fw-text-input').val();
         if (!numeric || !re.test(numeric)) {
             $element.addClass('fw-block-invalid');
@@ -613,7 +613,6 @@ jQuery(document).ready(function($) {
 
     function validateStep(idx) {
         var valid = true;
-        var emailValid = true;
         var stepValid = true;
         $('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-required="true"]:visible').each(
             function(i, element) {
@@ -634,7 +633,6 @@ jQuery(document).ready(function($) {
                         break;
                     case 'fw-email':
                         valid = validateEmail($element);
-                        emailValid = valid;
                         break;
                     case 'fw-numeric':
                         valid = validateNumeric($element);
@@ -674,6 +672,19 @@ jQuery(document).ready(function($) {
                     }
                 }
             }
+        );
+        
+        // validate filled numeric fields
+        $('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-type="fw-numeric"]').each(
+            function(i, element) {
+                var $element = $(element);
+                if ($element.find('.fw-text-input').val() != "") {
+                    valid = validateNumeric($element);
+                    if (!valid) {
+                        stepValid = false;
+                    }
+                }
+            }
 		);
 
         if (!stepValid) {
@@ -683,6 +694,8 @@ jQuery(document).ready(function($) {
 						$(element).append('<div class="fw-block-invalid-alert">' + ajax.i18n.errors.checkFields + '</div>');						
 					} else if ($(element).attr('data-type') == 'fw-email') {
 						$(element).append('<div class="fw-block-invalid-alert">' + ajax.i18n.errors.invalidEmail + '</div>');						
+				    } else if ($(element).attr('data-type') == 'fw-numeric') {
+						$(element).append('<div class="fw-block-invalid-alert">' + ajax.i18n.errors.invalidNumeric + '</div>');						
 				    } else {
 						$(element).append('<div class="fw-block-invalid-alert">' + err[1] + '</div>');
 					}
