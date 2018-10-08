@@ -189,7 +189,8 @@ jQuery(document).ready(function($) {
 	function blockSummary(summaryObj, $block, title) {
 		var required = $block.attr('data-required');
 		switch ($block.attr('data-type')) {
-			case 'fw-email':
+            case 'fw-email':
+            case 'fw-numeric':
 			case 'fw-date':
 			case 'fw-text':
 				textSummary(summaryObj, $block, title, required);
@@ -520,6 +521,17 @@ jQuery(document).ready(function($) {
         }
     }
 
+    function validateNumeric($element) {
+        var re = /^[0-9]+$/;
+        var numeric = $element.find('.fw-text-input').val();
+        if (!numeric || !re.test(numeric)) {
+            $element.addClass('fw-block-invalid');
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     function validateFile($element) {
         if (!$element.find('.fw-file-upload-input').val()) {
             $element.addClass('fw-block-invalid');
@@ -623,6 +635,9 @@ jQuery(document).ready(function($) {
                     case 'fw-email':
                         valid = validateEmail($element);
                         emailValid = valid;
+                        break;
+                    case 'fw-numeric':
+                        valid = validateNumeric($element);
                         break;
                     case 'fw-file':
                         valid = validateFile($element);

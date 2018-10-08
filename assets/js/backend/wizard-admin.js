@@ -158,6 +158,14 @@
       return emailHtml;
     }
 
+    function renderNumeric(block) {
+        var numericHtml = '';
+        numericHtml += '<label>' + wizard.i18n.label + '</label>';
+        numericHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+        numericHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
+        return numericHtml;
+      }
+
     function renderFile(block) {
       var fileHtml = '';
       fileHtml += '<label>' + wizard.i18n.label + '</label>';
@@ -246,6 +254,9 @@
                 break;
             case 'email':
                 blockHtml += renderEmail(block);
+                break;
+            case 'numeric':
+                blockHtml += renderNumeric(block);
                 break;
             case 'file':
                 blockHtml += renderFile(block);
@@ -503,6 +514,11 @@
         text['required'] = $text.find('.fw-required').prop('checked');
     }
 
+    function getNumericData($text, text) {
+        text['label'] = $text.find('.fw-text-label').val();
+        text['required'] = $text.find('.fw-required').prop('checked');
+    }
+
     function getFileData($text, text) {
         text['label'] = $text.find('.fw-text-label').val();
 		text['required'] = $text.find('.fw-required').prop('checked');
@@ -568,6 +584,9 @@
                 break;
             case 'email':
                 getEmailData($block, block);
+                break;
+            case 'numeric':
+                getNumericData($block, block);
                 break;
             case 'file':
                 getFileData($block, block);
@@ -1059,6 +1078,18 @@
               $part.find('.inside').append(block);
               setupClickHandlers();
             });
+            // NUMERIC
+            $("#fw-thickbox-numeric").unbind('click').click(function(thickRadioEvent) {
+                tb_remove();
+                var block = $(renderBlock({
+                    type: 'numeric',
+                    label: '',
+                    value: ''
+                }));
+                var $part = $(thickEvent.target).parents('.fw-step-part');
+                $part.find('.inside').append(block);
+                setupClickHandlers();
+              });
             $("#fw-thickbox-fileupload").unbind('click').click(function(thickRadioEvent) {
               tb_remove();
               var block = $(renderBlock({
