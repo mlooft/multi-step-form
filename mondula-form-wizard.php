@@ -20,41 +20,41 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // Load plugin class files
-require_once( 'includes/class-mondula-multistep-forms.php' );
-require_once( 'includes/class-mondula-multistep-forms-settings.php' );
-require_once( 'includes/class-mondula-multistep-forms-settings-api.php' );
+require_once( 'includes/msf.class.php' );
+require_once( 'includes/msf-settings.class.php' );
+require_once( 'includes/msf-settings-api.class.php' );
 
 // Load plugin libraries
-require_once( 'includes/lib/class-mondula-multistep-forms-admin-api.php' );
+require_once( 'includes/lib/msf-admin-api.class.php' );
 
-require_once( 'includes/lib/class-mondula-multistep-forms-wizard-repository.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-wizard-service.php' );
+require_once( 'includes/lib/msf-wizard-repository.class.php' );
+require_once( 'includes/lib/msf-wizard-service.class.php' );
 
-require_once( 'includes/admin/class-mondula-multistep-forms-admin.php' );
-require_once( 'includes/admin/class-mondula-multistep-forms-list-table.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-post-type.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-shortcode.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-wizard.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-wizard-step.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-wizard-step-part.php' );
+require_once( 'includes/admin/msf-admin.class.php' );
+require_once( 'includes/admin/msf-list-table.class.php' );
+require_once( 'includes/lib/msf-post-type.class.php' );
+require_once( 'includes/lib/msf-shortcode.class.php' );
+require_once( 'includes/lib/msf-wizard.class.php' );
+require_once( 'includes/lib/msf-wizard-step.class.php' );
+require_once( 'includes/lib/msf-wizard-step-part.class.php' );
 
 // Blocks
-require_once( 'includes/lib/class-mondula-multistep-forms-block.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-block-checkbox.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-block-radio.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-block-email.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-block-numeric.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-block-file.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-block-date.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-block-paragraph.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-block-select.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-block-text.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-block-textarea.php' );
-require_once( 'includes/lib/class-mondula-multistep-forms-block-conditional.php' );
+require_once( 'includes/lib/msf-block.class.php' );
+require_once( 'includes/lib/msf-block-checkbox.class.php' );
+require_once( 'includes/lib/msf-block-radio.class.php' );
+require_once( 'includes/lib/msf-block-email.class.php' );
+require_once( 'includes/lib/msf-block-numeric.class.php' );
+require_once( 'includes/lib/msf-block-file.class.php' );
+require_once( 'includes/lib/msf-block-date.class.php' );
+require_once( 'includes/lib/msf-block-paragraph.class.php' );
+require_once( 'includes/lib/msf-block-select.class.php' );
+require_once( 'includes/lib/msf-block-text.class.php' );
+require_once( 'includes/lib/msf-block-textarea.class.php' );
+require_once( 'includes/lib/msf-block-conditional.class.php' );
 
 
 function activate_form_wizard( $network_wide = false ) {
-    require_once plugin_dir_path( __FILE__ ) . 'includes/lib/class-mondula-multistep-forms-activator.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/lib/msf-activator.class.php';
     Mondula_Form_Wizard_Activator::activate( $network_wide );
 }
 
@@ -62,7 +62,7 @@ register_activation_hook( __FILE__, 'activate_form_wizard' );
 
 function msf_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
     if ( is_plugin_active_for_network( 'multi-step-form/mondula-form-wizard.php' ) ) {
-        require_once plugin_dir_path( __FILE__ ) . 'includes/lib/class-mondula-multistep-forms-activator.php';
+        require_once plugin_dir_path( __FILE__ ) . 'includes/lib/msf-activator.class.php';
         Mondula_Form_Wizard_Activator::activate_for_blog( $blog_id );
     }
 }
@@ -71,7 +71,7 @@ add_action( 'wpmu_new_blog', 'msf_new_blog', 10, 6 );
 
 
 function msf_drop_tables( $tables = array(), $blog_id = null ) {
-  require_once plugin_dir_path( __FILE__ ) . 'includes/lib/class-mondula-multistep-forms-activator.php';
+  require_once plugin_dir_path( __FILE__ ) . 'includes/lib/msf-activator.class.php';
   return Mondula_Form_Wizard_Activator::drop_table( $tables, $blog_id );
 }
 
