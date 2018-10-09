@@ -30,7 +30,6 @@ require_once( 'includes/lib/msf-wizard-service.class.php' );
 
 require_once( 'includes/admin/msf-admin.class.php' );
 require_once( 'includes/admin/msf-list-table.class.php' );
-require_once( 'includes/lib/msf-post-type.class.php' );
 require_once( 'includes/lib/msf-shortcode.class.php' );
 require_once( 'includes/lib/msf-wizard.class.php' );
 require_once( 'includes/lib/msf-wizard-step.class.php' );
