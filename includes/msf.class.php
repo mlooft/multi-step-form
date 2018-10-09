@@ -76,7 +76,7 @@ class Mondula_Form_Wizard {
 	 */
 	public $script_suffix;
 
-        private $_wizard_service;
+		private $_wizard_service;
 
 	/**
 	 * Constructor function.
@@ -102,11 +102,11 @@ class Mondula_Form_Wizard {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
 
-    // Set up service
-    $this->_wizard_service = new Mondula_Form_Wizard_Wizard_Service(
-        new Mondula_Form_Wizard_Wizard_Repository( 'mondula_form_wizards' ),
+	// Set up service
+	$this->_wizard_service = new Mondula_Form_Wizard_Wizard_Service(
+		new Mondula_Form_Wizard_Wizard_Repository( 'mondula_form_wizards' ),
 				$this->_version
-    );
+	);
 
 		// Load admin JS & CSS
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10, 1 );
@@ -114,14 +114,14 @@ class Mondula_Form_Wizard {
 
 		// Load API for generic admin functions
 		if ( is_admin() ) {
-            $this->admin = new Mondula_Form_Wizard_Admin(
-                $this->_wizard_service,
-                $this->_token,
-                $this->assets_url,
-                $this->script_suffix,
-                $this->_version,
-                'multi-step-form' // text domain
-            );
+			$this->admin = new Mondula_Form_Wizard_Admin(
+				$this->_wizard_service,
+				$this->_token,
+				$this->assets_url,
+				$this->script_suffix,
+				$this->_version,
+				'multi-step-form' // text domain
+			);
 		}
 
 		// Handle localisation
@@ -249,12 +249,12 @@ class Mondula_Form_Wizard {
 	 * @return  void
 	 */
 	public function load_plugin_textdomain () {
-	    $domain = 'multi-step-form';
+		$domain = 'multi-step-form';
 
-	    $locale = apply_filters( 'plugin_locale', get_locale(), $domain );
+		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 
-	    load_textdomain( $domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo' );
-	    load_plugin_textdomain( $domain, false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
+		load_textdomain( $domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo' );
+		load_plugin_textdomain( $domain, false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
 	}
 
 	/**

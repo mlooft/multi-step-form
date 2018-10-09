@@ -9,23 +9,23 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
 
-    private $_elements;
-    private $_required;
-    private $_multichoice;
+	private $_elements;
+	private $_required;
+	private $_multichoice;
 
-    protected static $type = "fw-radio";
+	protected static $type = "fw-radio";
 
-    public function __construct ( $elements, $required, $multichoice ) {
-        $this->_elements = $elements;
-        $this->_required = $required;
-        $this->_multichoice = $multichoice;
-    }
+	public function __construct ( $elements, $required, $multichoice ) {
+		$this->_elements = $elements;
+		$this->_required = $required;
+		$this->_multichoice = $multichoice;
+	}
 
-    public function get_required( ) {
-      return $this->_required;
-    }
+	public function get_required( ) {
+	  return $this->_required;
+	}
 
-    public function render( $ids ) {
+	public function render( $ids ) {
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-radio" data-required="<?php echo $this->_required; ?>">
 			<?php
@@ -58,28 +58,28 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
 		?>
 		</div>
 		<?php
-    }
+	}
 
-    public function render_mail ( $data ) {
-        echo "render_mail (radio)" . PHP_EOL;
-        foreach ( $data as $key => $value ) {
-            echo $this->_header  . " : " . $this->_opts[$key] . PHP_EOL;
-        }
-    }
+	public function render_mail ( $data ) {
+		echo "render_mail (radio)" . PHP_EOL;
+		foreach ( $data as $key => $value ) {
+			echo $this->_header  . " : " . $this->_opts[$key] . PHP_EOL;
+		}
+	}
 
-    public function as_aa() {
-        return array(
-            'type' => 'radio',
-            'elements' => $this->_elements,
-            'required' => $this->_required,
-            'multichoice' => $this->_multichoice
-        );
-    }
+	public function as_aa() {
+		return array(
+			'type' => 'radio',
+			'elements' => $this->_elements,
+			'required' => $this->_required,
+			'multichoice' => $this->_multichoice
+		);
+	}
 
-    public static function from_aa( $aa , $current_version, $serialized_version ) {
-        $elements = isset( $aa['elements'] ) ? $aa['elements'] : array();
-        $required = $aa['required'];
-        $multichoice = $aa['multichoice'];
-        return new Mondula_Form_Wizard_Block_Radio( $elements, $required, $multichoice );
-    }
+	public static function from_aa( $aa , $current_version, $serialized_version ) {
+		$elements = isset( $aa['elements'] ) ? $aa['elements'] : array();
+		$required = $aa['required'];
+		$multichoice = $aa['multichoice'];
+		return new Mondula_Form_Wizard_Block_Radio( $elements, $required, $multichoice );
+	}
 }

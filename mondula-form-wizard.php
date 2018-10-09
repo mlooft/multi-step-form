@@ -52,17 +52,17 @@ require_once( 'includes/lib/msf-block-conditional.class.php' );
 
 
 function activate_form_wizard( $network_wide = false ) {
-    require_once plugin_dir_path( __FILE__ ) . 'includes/lib/msf-activator.class.php';
-    Mondula_Form_Wizard_Activator::activate( $network_wide );
+	require_once plugin_dir_path( __FILE__ ) . 'includes/lib/msf-activator.class.php';
+	Mondula_Form_Wizard_Activator::activate( $network_wide );
 }
 
 register_activation_hook( __FILE__, 'activate_form_wizard' );
 
 function msf_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
-    if ( is_plugin_active_for_network( 'multi-step-form/mondula-form-wizard.php' ) ) {
-        require_once plugin_dir_path( __FILE__ ) . 'includes/lib/msf-activator.class.php';
-        Mondula_Form_Wizard_Activator::activate_for_blog( $blog_id );
-    }
+	if ( is_plugin_active_for_network( 'multi-step-form/mondula-form-wizard.php' ) ) {
+		require_once plugin_dir_path( __FILE__ ) . 'includes/lib/msf-activator.class.php';
+		Mondula_Form_Wizard_Activator::activate_for_blog( $blog_id );
+	}
 }
 
 add_action( 'wpmu_new_blog', 'msf_new_blog', 10, 6 );
@@ -82,13 +82,13 @@ add_filter( 'wpmu_drop_tables', 'msf_drop_tables', 10, 2);
  * @return object Mondula_Form_Wizard
  */
 function Mondula_Form_Wizard () {
-    $instance = Mondula_Form_Wizard::instance( __FILE__, '1.3.0' );
+	$instance = Mondula_Form_Wizard::instance( __FILE__, '1.3.0' );
 
-    if ( is_null( $instance->settings ) ) {
-        $instance->settings = Mondula_Form_Wizard_Settings::instance( $instance );
-    }
+	if ( is_null( $instance->settings ) ) {
+		$instance->settings = Mondula_Form_Wizard_Settings::instance( $instance );
+	}
 
-    return $instance;
+	return $instance;
 }
 
 Mondula_Form_Wizard();

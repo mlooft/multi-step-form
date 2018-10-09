@@ -109,17 +109,17 @@ class Mondula_Form_Wizard_Post_Type {
 	  global $post, $post_ID;
 
 	  $messages[ $this->post_type ] = array(
-	    0 => '',
-	    1 => sprintf( __( '%1$s updated. %2$sView %3$s%4$s.' , 'multi-step-form' ), $this->single, '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
-	    2 => __( 'Custom field updated.' , 'multi-step-form' ),
-	    3 => __( 'Custom field deleted.' , 'multi-step-form' ),
-	    4 => sprintf( __( '%1$s updated.' , 'multi-step-form' ), $this->single ),
-	    5 => isset( $_GET['revision'] ) ? sprintf( __( '%1$s restored to revision from %2$s.' , 'multi-step-form' ), $this->single, wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-	    6 => sprintf( __( '%1$s published. %2$sView %3$s%4s.' , 'multi-step-form' ), $this->single, '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
-	    7 => sprintf( __( '%1$s saved.' , 'multi-step-form' ), $this->single ),
-	    8 => sprintf( __( '%1$s submitted. %2$sPreview post%3$s%4$s.' , 'multi-step-form' ), $this->single, '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', $this->single, '</a>' ),
-	    9 => sprintf( __( '%1$s scheduled for: %2$s. %3$sPreview %4$s%5$s.' , 'multi-step-form' ), $this->single, '<strong>' . date_i18n( __( 'M j, Y @ G:i' , 'multi-step-form' ), strtotime( $post->post_date ) ) . '</strong>', '<a target="_blank" href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
-	    10 => sprintf( __( '%1$s draft updated. %2$sPreview %3$s%4$s.' , 'multi-step-form' ), $this->single, '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', $this->single, '</a>' ),
+		0 => '',
+		1 => sprintf( __( '%1$s updated. %2$sView %3$s%4$s.' , 'multi-step-form' ), $this->single, '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
+		2 => __( 'Custom field updated.' , 'multi-step-form' ),
+		3 => __( 'Custom field deleted.' , 'multi-step-form' ),
+		4 => sprintf( __( '%1$s updated.' , 'multi-step-form' ), $this->single ),
+		5 => isset( $_GET['revision'] ) ? sprintf( __( '%1$s restored to revision from %2$s.' , 'multi-step-form' ), $this->single, wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+		6 => sprintf( __( '%1$s published. %2$sView %3$s%4s.' , 'multi-step-form' ), $this->single, '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
+		7 => sprintf( __( '%1$s saved.' , 'multi-step-form' ), $this->single ),
+		8 => sprintf( __( '%1$s submitted. %2$sPreview post%3$s%4$s.' , 'multi-step-form' ), $this->single, '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', $this->single, '</a>' ),
+		9 => sprintf( __( '%1$s scheduled for: %2$s. %3$sPreview %4$s%5$s.' , 'multi-step-form' ), $this->single, '<strong>' . date_i18n( __( 'M j, Y @ G:i' , 'multi-step-form' ), strtotime( $post->post_date ) ) . '</strong>', '<a target="_blank" href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
+		10 => sprintf( __( '%1$s draft updated. %2$sPreview %3$s%4$s.' , 'multi-step-form' ), $this->single, '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', $this->single, '</a>' ),
 	  );
 
 	  return $messages;
@@ -134,14 +134,14 @@ class Mondula_Form_Wizard_Post_Type {
 	public function bulk_updated_messages ( $bulk_messages = array(), $bulk_counts = array() ) {
 
 		$bulk_messages[ $this->post_type ] = array(
-	        'updated'   => sprintf( _n( '%1$s %2$s updated.', '%1$s %3$s updated.', $bulk_counts['updated'], 'multi-step-form' ), $bulk_counts['updated'], $this->single, $this->plural ),
-	        'locked'    => sprintf( _n( '%1$s %2$s not updated, somebody is editing it.', '%1$s %3$s not updated, somebody is editing them.', $bulk_counts['locked'], 'multi-step-form' ), $bulk_counts['locked'], $this->single, $this->plural ),
-	        'deleted'   => sprintf( _n( '%1$s %2$s permanently deleted.', '%1$s %3$s permanently deleted.', $bulk_counts['deleted'], 'multi-step-form' ), $bulk_counts['deleted'], $this->single, $this->plural ),
-	        'trashed'   => sprintf( _n( '%1$s %2$s moved to the Trash.', '%1$s %3$s moved to the Trash.', $bulk_counts['trashed'], 'multi-step-form' ), $bulk_counts['trashed'], $this->single, $this->plural ),
-	        'untrashed' => sprintf( _n( '%1$s %2$s restored from the Trash.', '%1$s %3$s restored from the Trash.', $bulk_counts['untrashed'], 'multi-step-form' ), $bulk_counts['untrashed'], $this->single, $this->plural ),
-	    );
+			'updated'   => sprintf( _n( '%1$s %2$s updated.', '%1$s %3$s updated.', $bulk_counts['updated'], 'multi-step-form' ), $bulk_counts['updated'], $this->single, $this->plural ),
+			'locked'    => sprintf( _n( '%1$s %2$s not updated, somebody is editing it.', '%1$s %3$s not updated, somebody is editing them.', $bulk_counts['locked'], 'multi-step-form' ), $bulk_counts['locked'], $this->single, $this->plural ),
+			'deleted'   => sprintf( _n( '%1$s %2$s permanently deleted.', '%1$s %3$s permanently deleted.', $bulk_counts['deleted'], 'multi-step-form' ), $bulk_counts['deleted'], $this->single, $this->plural ),
+			'trashed'   => sprintf( _n( '%1$s %2$s moved to the Trash.', '%1$s %3$s moved to the Trash.', $bulk_counts['trashed'], 'multi-step-form' ), $bulk_counts['trashed'], $this->single, $this->plural ),
+			'untrashed' => sprintf( _n( '%1$s %2$s restored from the Trash.', '%1$s %3$s restored from the Trash.', $bulk_counts['untrashed'], 'multi-step-form' ), $bulk_counts['untrashed'], $this->single, $this->plural ),
+		);
 
-	    return $bulk_messages;
+		return $bulk_messages;
 	}
 
 }
