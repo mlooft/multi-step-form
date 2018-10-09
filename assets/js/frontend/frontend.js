@@ -522,7 +522,7 @@ jQuery(document).ready(function($) {
     }
 
     function validateNumeric($element) {
-        var re = /^\d+$/;
+        var re = /^-?\d+$/;
         var numeric = $element.find('.fw-text-input').val();
         if (!numeric || !re.test(numeric)) {
             $element.addClass('fw-block-invalid');

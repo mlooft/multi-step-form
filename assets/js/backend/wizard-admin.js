@@ -163,6 +163,10 @@
         numericHtml += '<label>' + wizard.i18n.label + '</label>';
         numericHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
         numericHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
+        numericHtml += '<label>' + wizard.i18n.numeric.minimum + '</label>';
+        numericHtml += '<input type="number" class="fw-numeric-minimum fw-block-label" placeholder="' + wizard.i18n.numeric.minimum + '" value="' + block.minimum + '"></input><br/><br/>';
+        numericHtml += '<label>' + wizard.i18n.numeric.maximum + '</label>';
+        numericHtml += '<input type="number" class="fw-numeric-maximum fw-block-label" placeholder="' + wizard.i18n.numeric.maximum + '" value="' + block.maximum + '"></input><br/>';
         return numericHtml;
       }
 
@@ -517,6 +521,8 @@
     function getNumericData($text, text) {
         text['label'] = $text.find('.fw-text-label').val();
         text['required'] = $text.find('.fw-required').prop('checked');
+        text['minimum'] = $text.find('.fw-numeric-minimum').val();
+        text['maximum'] = $text.find('.fw-numeric-maximum').val();
     }
 
     function getFileData($text, text) {
