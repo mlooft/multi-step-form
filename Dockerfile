@@ -1,4 +1,4 @@
-FROM wordpress:${WP_VERSION:-4.9.6}-php${PHP_VERSION:-7.2}-apache
+FROM wordpress:${WP_VERSION:-4.9.8}-php${PHP_VERSION:-7.2}-apache
 
 ENV XDEBUG_PORT 9000 
 
