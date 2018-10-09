@@ -25,8 +25,6 @@ require_once( 'includes/msf-settings.class.php' );
 require_once( 'includes/msf-settings-api.class.php' );
 
 // Load plugin libraries
-require_once( 'includes/lib/msf-admin-api.class.php' );
-
 require_once( 'includes/lib/msf-wizard-repository.class.php' );
 require_once( 'includes/lib/msf-wizard-service.class.php' );
 

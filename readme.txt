@@ -22,7 +22,7 @@ Multi Step Form has a drag & drop enabled form builder for quick and intuitive c
 **[Visit our landing page](http://multi-step-form.mondula.com/ "Multi Step Form")**
 
 ### Contribute
-**[The "Multi Step Form" base plugin is OPEN SOURCE](https://github.com/leweohlsen/multi-step-form "Multi Step Form | GitHub Repository")**
+**[The "Multi Step Form" base plugin is OPEN SOURCE](https://github.com/mlooft/multi-step-form "Multi Step Form | GitHub Repository")**
 
 
 **KEY FEATURES:**
@@ -82,7 +82,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 == Changelog ==
 
 = 1.3.0 =
-* 
+* Added numeric input field
 
 = 1.2.9 =
 * Small fixes

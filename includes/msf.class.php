@@ -114,15 +114,14 @@ class Mondula_Form_Wizard {
 
 		// Load API for generic admin functions
 		if ( is_admin() ) {
-			$this->admin_api = new Mondula_Form_Wizard_Admin_API();
-                        $this->admin = new Mondula_Form_Wizard_Admin(
-                            $this->_wizard_service,
-                            $this->_token,
-                            $this->assets_url,
-                            $this->script_suffix,
-                            $this->_version,
-                            'multi-step-form' // text domain
-                        );
+            $this->admin = new Mondula_Form_Wizard_Admin(
+                $this->_wizard_service,
+                $this->_token,
+                $this->assets_url,
+                $this->script_suffix,
+                $this->_version,
+                'multi-step-form' // text domain
+            );
 		}
 
 		// Handle localisation
