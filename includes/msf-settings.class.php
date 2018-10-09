@@ -1,6 +1,6 @@
 <?php
 /**
- * WordPress settings API demo class
+ * WordPress settings API class
  *
  * @author Alexander Njemz
  */
