@@ -524,10 +524,30 @@ jQuery(document).ready(function($) {
     function validateNumeric($element) {
         var re = /^-?\d+$/;
         var numeric = $element.find('.fw-text-input').val();
+        var minimum = $element.data("min");
+        var maximum =  $element.data("max");
+        
         if (!numeric || !re.test(numeric)) {
             $element.addClass('fw-block-invalid');
             return false;
         } else {
+            var numericValue = parseInt(numeric, 10);
+            if (numericValue === NaN) {
+                $element.addClass('fw-block-invalid');
+                return false;
+            }
+            if (minimum !== undefined && parseInt(minimum, 10) !== NaN) {
+                if (parseInt(minimum, 10) > numericValue) {
+                    $element.addClass('fw-block-invalid');
+                    return false;
+                }
+            }
+            if (maximum !== undefined && parseInt(maximum, 10) !== NaN) {
+                if (parseInt(maximum, 10) < numericValue) {
+                    $element.addClass('fw-block-invalid');
+                    return false;
+                }
+            }
             return true;
         }
     }

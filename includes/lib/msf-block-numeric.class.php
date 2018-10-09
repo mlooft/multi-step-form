@@ -34,8 +34,9 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 			data-blockId="<?php echo $ids[0]; ?>" 
 			data-type="fw-numeric" 
 			data-required="<?php echo $this->_required; ?>" 
-			data-minimum="<?php echo $this->_minimum; ?>"
-			data-maximum="<?php echo $this->_maximum; ?>" >
+			<?php if (strlen($this->_minimum) > 0) { echo 'data-min="' . $this->_minimum . '"'; } ?>
+			<?php if (strlen($this->_maximum) > 0) { echo 'data-max="' . $this->_maximum . '"'; } ?>
+		>
 
 			<div class="fw-input-container">
 				<h3><?php echo $this->_label ?></h3>
@@ -43,8 +44,9 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 					type="number" 
 					class="fw-text-input" 
 					data-id="numeric" 
-					min="<?php echo $this->_minimum; ?>" 
-					max="<?php echo $this->_maximum; ?>">
+					<?php if (strlen($this->_minimum) > 0) { echo 'min="' . $this->_minimum . '"'; } ?>
+					<?php if (strlen($this->_maximum) > 0) { echo 'max="' . $this->_maximum . '"'; } ?>
+				>
 				<span class="fa fa-asterisk form-control-feedback" aria-hidden="true"></span>
 			</div>
 			<div class="fw-clearfix"></div>
@@ -67,6 +69,21 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 		$required = $aa['required'];
 		$minimum = $aa['minimum'];
 		$maximum = $aa['maximum'];
+
+		if (!ctype_digit(ltrim($minimum, '-'))) {
+			$minimum = '';
+		}
+
+		if (!ctype_digit(ltrim($maximum, '-'))) {
+			$maximum = '';
+		}
+
+		if (strlen($minimum) > 0 && strlen($maximum) > 0) {
+			if (intval($minimum) >= intval($maximum)) {
+				$maximum = strval(intval($minimum) + 1);
+			}
+		}
+
 		return new Mondula_Form_Wizard_Block_Numeric($label, $required, $minimum, $maximum);
 	}
 }

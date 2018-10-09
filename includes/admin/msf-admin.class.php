@@ -106,6 +106,8 @@ class Mondula_Form_Wizard_Admin {
 			'numeric' => array(
 				'minimum' => __( 'Minimum', 'multi-step-form' ),
 				'maximum' => __( 'Maximum', 'multi-step-form' ),
+				'no_minimum' => __( 'No Minimum', 'multi-step-form' ),
+				'no_maximum' => __( 'No Maximum', 'multi-step-form' ),
 			),
 			'registration' => array(
 				'info' => __( 'Please select the registration fields to be displayed to the user. Email is always required. If the user does not specify a username or password, WordPress is auto-generating these and sending them to the user via email.', 'multi-step-form' ),
