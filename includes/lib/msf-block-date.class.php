@@ -15,6 +15,12 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 
 	protected static $type = "fw-date";
 
+	/**
+	 * Creates an Object of this Class.
+	 * @param string $label The Label the Object is being created with.
+	 * @param boolean $required The If true, Input for this field is required.
+	 * @param string $format The Format the Date will be shown in.
+	 */
 	public function __construct ( $label, $required, $format ) {
 		$this->_label = $label;
 		$this->_required = $required;
@@ -24,7 +30,10 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 			$this->_format = 'yy-mm-dd';
 		}
 	}
-
+	/**
+	 * Returns the '_required'-Status of the Object.
+	 * @return boolean $_required If true, Input for this field is required.
+	 */
 	public function get_required( ) {
 		return $this->_required;
 	}

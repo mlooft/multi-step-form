@@ -20,6 +20,11 @@ class Mondula_Form_Wizard_Block_Conditional extends Mondula_Form_Wizard_Block {
 
 	private static $_type = "fw-conditional";
 
+	/**
+	 * Creates an Object of this Class.
+	 * @param $options
+	 * @param $elements
+	 */
 	public function __construct ( $options, $elements ) {
 		$this->_options = $options;
 		$this->_elements = $elements;

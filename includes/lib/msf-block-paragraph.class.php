@@ -13,10 +13,18 @@ class Mondula_Form_Wizard_Block_Paragraph extends Mondula_Form_Wizard_Block {
 
 	protected static $type = "fw-paragraph";
 
+	/**
+	 * Creates an Object of this Class.
+	 * @param string $text Content of the Paragraph.
+	 */
 	public function __construct ( $text ) {
 		$this->_text = $text;
 	}
 
+	/**
+	 * Returns the '_required'-Status of the Object.
+	 * @return boolean $_required If true, Input for this field is required.
+	 */
 	public function get_required( ) {
 		return false;
 	}

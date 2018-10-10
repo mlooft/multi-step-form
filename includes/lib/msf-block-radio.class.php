@@ -15,12 +15,22 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
 
 	protected static $type = "fw-radio";
 
+	/**
+	 * Creates an Object of this Class.
+	 * @param array $elements Array of the Input-Options.
+	 * @param boolean $required $required If true, Input for this field is required. 
+	 * @param boolean $multichoice If true, turn Radio into Checkbox.
+	 */
 	public function __construct ( $elements, $required, $multichoice ) {
 		$this->_elements = $elements;
 		$this->_required = $required;
 		$this->_multichoice = $multichoice;
 	}
 
+	/**
+	 * Returns the '_required'-Status of the Object.
+	 * @return boolean $_required If true, Input for this field is required.
+	 */
 	public function get_required( ) {
 	  return $this->_required;
 	}

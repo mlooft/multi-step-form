@@ -24,16 +24,16 @@ class Mondula_Form_Wizard_Activator {
 	 * else create a Table for the Blog of the Site.  
 	 */
 	private static function setup_db( $network_wide ) {
-	  global $wpdb;
+		global $wpdb;
 
-	  if ( is_multisite() && $network_wide ) {
+		if ( is_multisite() && $network_wide ) {
 			$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
 			foreach ( $blog_ids as $blog_id ) {
 				self::activate_for_blog( $blog_id );
 			}
-	  } else {
+		} else {
 			self::create_table();
-	  }
+		}
 	}
 
 	/**
@@ -41,46 +41,47 @@ class Mondula_Form_Wizard_Activator {
 	 * @param integer $blog_id Identifies a Blog.
 	 */
 	public static function activate_for_blog( $blog_id ) {
-	  switch_to_blog( $blog_id );
-	  self::create_table();
-	  restore_current_blog();
+		switch_to_blog( $blog_id );
+		self::create_table();
+		restore_current_blog();
 	}
 
 	/**
-	 * Builds a SQL-Request to create a table.
+	 * Builds a SQL-Request to create a table and executes the Request with dbDelta().
 	 */
 	private static function create_table( ) {
-	  global $wpdb, $charset_collate;
+		global $wpdb, $charset_collate;
 
-	  $table_name = $wpdb->prefix . self::$name;
+		$table_name = $wpdb->prefix . self::$name;
 
-	  $sql = "CREATE TABLE $table_name (
-		  id mediumint(9) NOT NULL AUTO_INCREMENT,
-		  title TEXT NOT NULL,
-		  json TEXT NOT NULL,
-		  version VARCHAR(11) NOT NULL,
-		  date DATETIME DEFAULT '0000-00-00 00:00:00' NOT NULL,
-		  PRIMARY KEY  (id)
-	  ) $charset_collate;";
+		$sql = "CREATE TABLE $table_name (
+			id mediumint(9) NOT NULL AUTO_INCREMENT,
+			title TEXT NOT NULL,
+			json TEXT NOT NULL,
+			version VARCHAR(11) NOT NULL,
+			date DATETIME DEFAULT '0000-00-00 00:00:00' NOT NULL,
+			PRIMARY KEY  (id)
+		) $charset_collate;";
 
-	  require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
-	  dbDelta( $sql );
+		dbDelta( $sql );
 	}
 
 	/**
 	 * ???
+	 * @return array $tables Updated Table-Array.
 	 */
 	public static function drop_table( $tables, $blog_id ) {
-	  if ( empty( $blog_id ) || 1 == $blog_id || $blog_id != $GLOBALS['blog_id'] ) {
+		if ( empty( $blog_id ) || 1 == $blog_id || $blog_id != $GLOBALS['blog_id'] ) {
 			return $tables;
-	  }
+		}
 
-	  global $wpdb;
-	  $blog_prefix = $wpdb->get_blog_prefix( $blog_id );
-	  $table = $blog_prefix . self::$name;
-	  $tables[] = $table;
+		global $wpdb;
+		$blog_prefix = $wpdb->get_blog_prefix( $blog_id );
+		$table = $blog_prefix . self::$name;
+		$tables[] = $table;
 
-	  return $tables;
+		return $tables;
 	}
 }

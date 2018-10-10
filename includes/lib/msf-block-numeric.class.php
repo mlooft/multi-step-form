@@ -16,6 +16,13 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 
 	protected static $type = "fw-numeric";
 
+	/**
+	 * Creates an Object of this Class.
+	 * @param string $label The Label the Object is being created with.
+	 * @param boolean $required If true, Input for this field is required.
+	 * @param integer $minimum Lower Threshold of Numeric Input.
+	 * @param integer $maximum Upper Threshold of Numeric Input.
+	 */
 	public function __construct ($label, $required, $minimum, $maximum) {
 		$this->_label = $label;
 		$this->_required = $required;
@@ -23,6 +30,10 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 		$this->_maximum = $maximum;
 	}
 
+	/**
+	 * Returns the '_required'-Status of the Object.
+	 * @return boolean $_required If true, Input for this field is required.
+	 */
 	public function get_required() {
 	  return $this->_required;
 	}

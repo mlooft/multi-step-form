@@ -13,12 +13,20 @@ class Mondula_Form_Wizard_Block_Text extends Mondula_Form_Wizard_Block {
 	private $_required;
 
 	protected static $type = "fw-text";
-
+	/**
+	 * Creates an Object of this Class.
+	 * @param string $label The Label the Object is being created with.
+	 * @param boolean $required If true, Input for this field is required.
+	 */
 	public function __construct ( $label, $required ) {
 		$this->_label = $label;
 		$this->_required = $required;
 	}
 
+	/**
+	 * Returns the '_required'-Status of the Object.
+	 * @return boolean $_required If true, Input for this field is required.
+	 */
 	public function get_required( ) {
 	  return $this->_required;
 	}
