@@ -37,7 +37,6 @@ require_once( 'includes/lib/msf-wizard-step-part.class.php' );
 
 // Blocks
 require_once( 'includes/lib/msf-block.class.php' );
-require_once( 'includes/lib/msf-block-checkbox.class.php' );
 require_once( 'includes/lib/msf-block-radio.class.php' );
 require_once( 'includes/lib/msf-block-email.class.php' );
 require_once( 'includes/lib/msf-block-numeric.class.php' );

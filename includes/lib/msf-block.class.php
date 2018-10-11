@@ -32,9 +32,6 @@ abstract class Mondula_Form_Wizard_Block {
 			case 'select':
 				return Mondula_Form_Wizard_Block_Select::from_aa( $block, $current_version, $serialized_version );
 				break;
-			case 'checkbox':
-				return Mondula_Form_Wizard_Block_Checkbox::from_aa( $block, $current_version, $serialized_version );
-				break;
 			case 'text':
 				return Mondula_Form_Wizard_Block_Text::from_aa( $block, $current_version, $serialized_version );
 				break;
