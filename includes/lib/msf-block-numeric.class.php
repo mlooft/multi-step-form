@@ -39,14 +39,16 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 	}
 
 	public function render( $ids ) {
-	  ?>
+		$minimumDefined = strlen($this->_minimum) > 0;
+		$maximumDefined = strlen($this->_maximum) > 0;
+	?>
 		<div 
 			class="fw-step-block" 
 			data-blockId="<?php echo $ids[0]; ?>" 
 			data-type="fw-numeric" 
 			data-required="<?php echo $this->_required; ?>" 
-			<?php if (strlen($this->_minimum) > 0) { echo 'data-min="' . $this->_minimum . '"'; } ?>
-			<?php if (strlen($this->_maximum) > 0) { echo 'data-max="' . $this->_maximum . '"'; } ?>
+			<?php if ($minimumDefined) { echo 'data-min="' . $this->_minimum . '"'; } ?>
+			<?php if ($maximumDefined) { echo 'data-max="' . $this->_maximum . '"'; } ?>
 		>
 
 			<div class="fw-input-container">
@@ -54,9 +56,20 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 				<input 
 					type="text" 
 					class="fw-text-input" 
-					data-id="numeric" 
-					<?php if (strlen($this->_minimum) > 0) { echo 'min="' . $this->_minimum . '"'; } ?>
-					<?php if (strlen($this->_maximum) > 0) { echo 'max="' . $this->_maximum . '"'; } ?>
+					data-id="numeric"
+					placeholder="<?php 
+						if ($minimumDefined && $maximumDefined) { 
+							echo $this->_minimum . ' - ' . $this->_maximum;
+						} else if ($minimumDefined) {
+							echo __("min. ", 'multi-step-form') . $this->_minimum;
+						} else if ($maximumDefined) {
+							echo __("max. ", 'multi-step-form') . $this->_maximum;
+						} else {
+							echo "";
+						}
+					?>"
+					<?php if ($minimumDefined) { echo 'min="' . $this->_minimum . '"'; } ?>
+					<?php if ($maximumDefined) { echo 'max="' . $this->_maximum . '"'; } ?>
 				>
 				<span class="fa fa-asterisk form-control-feedback" aria-hidden="true"></span>
 			</div>
