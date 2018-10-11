@@ -115,17 +115,23 @@ jQuery(document).ready(function($) {
                 scrollTop: $("#multi-step-form").offset().top - 100
             }, 500);
         }
-    }
+	}
+	
+	function escapeHtml(str) {
+		return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+	}
 
     function textSummary(summaryObj, $block, title, required) {
         var header = $block.find('h3').text();
-        var value = $block.find('.fw-text-input').val();
+		var value = $block.find('.fw-text-input').val();
+		value = escapeHtml(value);
         pushToSummary(summaryObj, title, header, value, required);
     }
 
     function textareaSummary(summaryObj, $block, title, required) {
         var header = $block.find('h3').text();
-        var value = $block.find('.fw-textarea').val();
+		var value = $block.find('.fw-textarea').val();
+		value = escapeHtml(value);
         pushToSummary(summaryObj, title, header, value, required);
     }
 
