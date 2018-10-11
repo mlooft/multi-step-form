@@ -1280,8 +1280,6 @@
 			
 			$container.on('keydown', '.fw-numeric-minimum', maskNumericInput);
 			$container.on('keydown', '.fw-numeric-maximum', maskNumericInput);
-			$container.on('keyup', '.fw-numeric-minimum', maskNumericInputMinus);
-			$container.on('keyup', '.fw-numeric-maximum', maskNumericInputMinus);
 
             $container.on('click', '.fw-remove-step', removeStep);
 
