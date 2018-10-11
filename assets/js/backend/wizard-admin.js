@@ -164,9 +164,9 @@
         numericHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
         numericHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
         numericHtml += '<label>' + wizard.i18n.numeric.minimum + '</label>';
-        numericHtml += '<input type="number" class="fw-numeric-minimum fw-block-label" placeholder="' + wizard.i18n.numeric.no_minimum + '" value="' + block.minimum + '"></input><br/><br/>';
+        numericHtml += '<input type="text" class="fw-numeric-minimum fw-block-label" placeholder="' + wizard.i18n.numeric.no_minimum + '" value="' + block.minimum + '" pattern="-?\\d*"></input><br/><br/>';
         numericHtml += '<label>' + wizard.i18n.numeric.maximum + '</label>';
-        numericHtml += '<input type="number" class="fw-numeric-maximum fw-block-label" placeholder="' + wizard.i18n.numeric.no_maximum + '" value="' + block.maximum + '"></input><br/>';
+        numericHtml += '<input type="text" class="fw-numeric-maximum fw-block-label" placeholder="' + wizard.i18n.numeric.no_maximum + '" value="' + block.maximum + '" pattern="-?\\d*"></input><br/>';
         return numericHtml;
       }
 
@@ -1162,7 +1162,7 @@
 	}
 	
 	function maskNumericInput(e) {
-		if($('input[type=number]').index($(e.target)) != -1) {
+		if($('input[type=text]').index($(e.target)) != -1) {
 			if(
 			  ($.inArray(e.keyCode, [37, 38, 39, 40, 48,49,50,51,52,53,54,55,56,57,58,96,97,98,99,100,101,102,103,104,105,8,13,189]) == -1) // digits, digits in num pad, 'back', 'enter',  '-'
 			  || (e.keyCode == 189 && $(e.target).val().indexOf("-") != -1) // not allow double '-'

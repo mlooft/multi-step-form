@@ -52,7 +52,7 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 			<div class="fw-input-container">
 				<h3><?php echo $this->_label ?></h3>
 				<input 
-					type="number" 
+					type="text" 
 					class="fw-text-input" 
 					data-id="numeric" 
 					<?php if (strlen($this->_minimum) > 0) { echo 'min="' . $this->_minimum . '"'; } ?>
