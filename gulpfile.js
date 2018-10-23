@@ -106,7 +106,7 @@ gulp.task('pot', function () {
         .pipe(sort())
         .pipe(wpPot({
             domain: 'multi-step-form',
-            destfile: 'multi-step-form.pot',
+            destfile: 'mondula-form-wizard.pot',
             package: 'Multi Step Form',
             bugReport: 'http://mondula.com/kontakt', // TODO
             lastTranslator: 'Lewe Ohlsen <lewe.ohlsen@mondula.com>',
