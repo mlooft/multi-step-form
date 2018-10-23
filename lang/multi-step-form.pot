@@ -1,0 +1,610 @@
+# Copyright (C) 2018 Multi Step Form
+# This file is distributed under the same license as the Multi Step Form package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Multi Step Form\n"
+"Report-Msgid-Bugs-To: http://mondula.com/kontakt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Lewe Ohlsen <lewe.ohlsen@mondula.com>\n"
+"Language-Team: Mondula GmbH <wp-plugins@mondula.com>\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: includes/admin/msf-admin.class.php:57
+msgid "The step title is displayed below the progress bar"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:58
+msgid "The step headline is displayed above the progress bar"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:59
+msgid "The step description is displayed below the step headline"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:60
+msgid "remove step"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:61
+msgid "remove section"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:62
+msgid "remove element"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:63
+msgid "Multi-Select uses checkboxes. Single-Select has radio-buttons."
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:64
+msgid "Provide a static text block for explanations or additional info. You can use HTML for formatting."
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:65
+msgid "click for date format specifications"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:68
+msgid "You need to enter a valid email address"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:69
+msgid "You need to provide an email subject"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:70
+msgid "WARNING: You need to provide a title for each step"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:71
+msgid "WARNING: You need to provide a title for each section"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:72
+msgid "WARNING: You need to provide title for the form"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:73
+msgid "ERROR: only 5 steps are allowed in the free version"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:74
+msgid "ERROR: only 10 steps are possible"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:75
+msgid "Do you really want to delete this step?"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:76
+msgid "Do you really want to delete this section?"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:77
+msgid "Do you really want to delete this block?"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:79
+msgid "Step Title"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:80
+msgid "Step Headline"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:81
+msgid "Step description"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:82
+msgid "Section Title"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:83
+msgid "Add Step"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:84
+msgid "Add Section"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:85
+msgid "Add Element"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:86
+msgid "Label"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:87
+msgid "Multiple Files"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:88
+msgid "Date Format"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:89
+msgid "Required"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:91
+msgid "Header"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:92
+msgid "Option"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:93
+msgid "Options"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:94
+msgid "Add option"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:95
+msgid "Multiple Selection"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:98
+msgid "Options (one per line)"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:99
+msgid "Enable search"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:100
+msgid "Set placeholder"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:103
+msgid "Text/HTML"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:104
+msgid "Paragraph text"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:107
+msgid "Minimum"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:108
+msgid "Maximum"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:109
+msgid "No Minimum"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:110
+msgid "No Maximum"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:113
+msgid "Please select the registration fields to be displayed to the user. Email is always required. If the user does not specify a username or password, WordPress is auto-generating these and sending them to the user via email."
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:114
+msgid "You are already registered and logged in."
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:115
+msgid "Username"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:116, includes/admin/msf-admin.class.php:472, includes/admin/msf-admin.class.php:502, includes/msf-settings.class.php:48
+msgid "Email"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:117
+msgid "Password"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:118
+msgid "Confirm Password"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:119
+msgid "First Name"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:120
+msgid "Last Name"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:121
+msgid "Website"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:122
+msgid "Biographical Info"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:210
+msgid "Invalid JSON-File. Check your syntax."
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:238
+msgid "Forms must be imported as JSON files"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:261
+msgid "Add New"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:268
+msgid "Import a Form"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:271
+msgid "Upload & Import"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:409
+msgid "Send To:"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:412
+msgid "Email address to which the mails are sent"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:416
+msgid "Send From Email:"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:419
+msgid "Email address and name from which the emails are sent. Leave blank for default admin email."
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:423
+msgid "Send From Name:"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:429
+msgid "Subject:"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:435
+msgid "Additional Email Headers:"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:438
+msgid "You can add additional email headers for CC/BCC, Reply-To. One per line e.g.:"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:446
+msgid "Email Headline:"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:449
+msgid "Introductory text for email"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:467
+msgid "Drag &amp; Drop an element from below to a section"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:468, includes/admin/msf-admin.class.php:499
+msgid "Radio/Checkbox"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:469, includes/admin/msf-admin.class.php:500
+msgid "Select/Dropdown"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:470, includes/admin/msf-admin.class.php:501
+msgid "Text field"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:471, includes/admin/msf-admin.class.php:505
+msgid "Textarea"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:473, includes/admin/msf-admin.class.php:503
+msgid "Numeric"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:474, includes/admin/msf-admin.class.php:504
+msgid "File Upload"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:475, includes/admin/msf-admin.class.php:506
+msgid "Date"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:476, includes/admin/msf-admin.class.php:507
+msgid "Paragraph"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:481, includes/admin/msf-admin.class.php:512, includes/msf.class.php:162
+msgid "Registration"
+msgstr ""
+
+#: includes/lib/msf-block-file.class.php:45, includes/msf.class.php:159
+msgid "Choose a file"
+msgstr ""
+
+#: includes/lib/msf-block-numeric.class.php:64
+msgid "min. "
+msgstr ""
+
+#: includes/lib/msf-block-numeric.class.php:66
+msgid "max. "
+msgstr ""
+
+#: includes/lib/msf-wizard.class.php:221
+msgid "SHOW SUMMARY"
+msgstr ""
+
+#: includes/lib/msf-wizard.class.php:223, includes/msf.class.php:168
+msgid "Some required Fields are empty"
+msgstr ""
+
+#: includes/lib/msf-wizard.class.php:223, includes/msf.class.php:169
+msgid "Please check the highlighted fields."
+msgstr ""
+
+#: includes/lib/msf-wizard.class.php:229
+msgid "Submit"
+msgstr ""
+
+#: includes/lib/msf-wizard.class.php:244
+msgid "Previous Step"
+msgstr ""
+
+#: includes/lib/msf-wizard.class.php:245
+msgid "Next Step"
+msgstr ""
+
+#: includes/lib/msf-wizard.class.php:317
+msgid "End of form submission"
+msgstr ""
+
+#: includes/msf-settings.class.php:52
+msgid "Styling"
+msgstr ""
+
+#: includes/msf-settings.class.php:60
+msgid "Form Entries"
+msgstr ""
+
+#: includes/msf-settings.class.php:65
+msgid "Conditional Fields"
+msgstr ""
+
+#: includes/msf-settings.class.php:70
+msgid "User Registration"
+msgstr ""
+
+#: includes/msf-settings.class.php:75
+msgid "PLUS"
+msgstr ""
+
+#: includes/msf-settings.class.php:80
+msgid "GET MSF-PLUS"
+msgstr ""
+
+#: includes/msf-settings.class.php:97
+msgid "Mail Format"
+msgstr ""
+
+#: includes/msf-settings.class.php:98
+msgid "Choose formatting for form emails"
+msgstr ""
+
+#: includes/msf-settings.class.php:108
+msgid "Summary"
+msgstr ""
+
+#: includes/msf-settings.class.php:109
+msgid "Display Summary at the end of each form"
+msgstr ""
+
+#: includes/msf-settings.class.php:115
+msgid "CC"
+msgstr ""
+
+#: includes/msf-settings.class.php:116
+msgid "Send copy of submitted data to user"
+msgstr ""
+
+#: includes/msf-settings.class.php:124
+msgid "Progress Bar"
+msgstr ""
+
+#: includes/msf-settings.class.php:125
+msgid "Show progress bar"
+msgstr ""
+
+#: includes/msf-settings.class.php:131
+msgid "Boxed Layout"
+msgstr ""
+
+#: includes/msf-settings.class.php:132
+msgid "Boxed frontend styling. Uncheck the checkbox to get a plain layout."
+msgstr ""
+
+#: includes/msf-settings.class.php:138
+msgid "Active Step Color"
+msgstr ""
+
+#: includes/msf-settings.class.php:139
+msgid "Choose a color for the active step"
+msgstr ""
+
+#: includes/msf-settings.class.php:145
+msgid "Visited Step Color"
+msgstr ""
+
+#: includes/msf-settings.class.php:146
+msgid "Choose a color for the completed steps"
+msgstr ""
+
+#: includes/msf-settings.class.php:152
+msgid "Next Step Color"
+msgstr ""
+
+#: includes/msf-settings.class.php:153
+msgid "Choose a color for the steps to follow"
+msgstr ""
+
+#: includes/msf-settings.class.php:159
+msgid "Button Color"
+msgstr ""
+
+#: includes/msf-settings.class.php:160
+msgid "Choose a color for the buttons"
+msgstr ""
+
+#: includes/msf-settings.class.php:171
+msgid "License Key"
+msgstr ""
+
+#: includes/msf-settings.class.php:172
+msgid "Please enter your MSF-Plus license key.<br> Having trouble? <a href=\"mailto:info@mondula.com\">Leave us a message</a>."
+msgstr ""
+
+#: includes/msf-settings.class.php:183
+msgid "Enable entry saving"
+msgstr ""
+
+#: includes/msf-settings.class.php:184
+msgid "Save submitted forms to the database"
+msgstr ""
+
+#: includes/msf-settings.class.php:190
+msgid "Entries per page"
+msgstr ""
+
+#: includes/msf-settings.class.php:191
+msgid "How many entries to show on each page in the backend"
+msgstr ""
+
+#: includes/msf-settings.class.php:197
+msgid "CSV Export: Separator"
+msgstr ""
+
+#: includes/msf-settings.class.php:198
+msgid "To avoid early column breaks, you should set your own column separator"
+msgstr ""
+
+#: includes/msf-settings.class.php:205
+msgid "Highlight unread"
+msgstr ""
+
+#: includes/msf-settings.class.php:206
+msgid "Print new entries in bold"
+msgstr ""
+
+#: includes/msf-settings.class.php:215
+msgid "Enable conditional blocks"
+msgstr ""
+
+#: includes/msf-settings.class.php:216
+msgid "Display some form elements only when others are filled."
+msgstr ""
+
+#: includes/msf-settings.class.php:225
+msgid "Enable user registration"
+msgstr ""
+
+#: includes/msf-settings.class.php:226
+msgid "Enable the registration block. You need to add it to each form."
+msgstr ""
+
+#: includes/msf-settings.class.php:232
+msgid "Notify new users"
+msgstr ""
+
+#: includes/msf-settings.class.php:233
+msgid "Email login credentials to a newly-registered user."
+msgstr ""
+
+#: includes/msf-settings.class.php:239
+msgid "Save Metadata"
+msgstr ""
+
+#: includes/msf-settings.class.php:240
+msgid "Save the filled forms as metadata along with registered/registering users."
+msgstr ""
+
+#: includes/msf.class.php:155
+msgid "sending data"
+msgstr ""
+
+#: includes/msf.class.php:156
+msgid "success"
+msgstr ""
+
+#: includes/msf.class.php:157
+msgid "submit failed"
+msgstr ""
+
+#: includes/msf.class.php:158
+msgid "Uploading file"
+msgstr ""
+
+#: includes/msf.class.php:160
+msgid "show summary"
+msgstr ""
+
+#: includes/msf.class.php:161
+msgid "hide summary"
+msgstr ""
+
+#: includes/msf.class.php:163
+msgid "You are registering as"
+msgstr ""
+
+#: includes/msf.class.php:164
+msgid "You will not be registered"
+msgstr ""
+
+#: includes/msf.class.php:166
+msgid "Please fill all the required fields!"
+msgstr ""
+
+#: includes/msf.class.php:167
+msgid "This field is required"
+msgstr ""
+
+#: includes/msf.class.php:170
+msgid "No email address provided"
+msgstr ""
+
+#: includes/msf.class.php:171
+msgid "Invalid email address"
+msgstr ""
+
+#: includes/msf.class.php:172
+msgid "Email is already registered"
+msgstr ""
+
+#: includes/msf.class.php:173
+msgid "No username provided"
+msgstr ""
+
+#: includes/msf.class.php:174
+msgid "Invalid username"
+msgstr ""
+
+#: includes/msf.class.php:175
+msgid "Username is already registered"
+msgstr ""
+
+#: includes/msf.class.php:176
+msgid "Invalid number"
+msgstr ""

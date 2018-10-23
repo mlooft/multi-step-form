@@ -27,7 +27,8 @@
   },
   "scripts": {
 	"gulp": "gulp default",
-	"zip": "gulp zip"
+	"zip": "gulp zip",
+	"lang": "gulp pot"
   },
   "author": "Lewe Ohlsen",
   "license": "GPL-2.0",
