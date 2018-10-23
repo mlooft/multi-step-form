@@ -58,11 +58,11 @@ The backend's structure is simple. Even less technical users can quickly underst
 **Plus features:**
 
 *   **Up to 10 steps**- You can now divide your formular in up to 10 Steps
-*   **Save form data**- The Forms will now be saved in the backend. Easily make some evaluations
-*   **Conditional fields**- You want to bring more variety to your forms. You conditional fields.
-*   **Export as CSV-List**- You want to use ther form data in e.g. Excell. Export your forms as CSV.
+*   **Save form data**- The forms will now be saved in the backend. Easily make some evaluations.
+*   **Conditional fields**- You want to bring more variety to your forms. Use conditional fields.
+*   **Export as CSV-List**- You want to use the form data in e.g. Excel. Export your forms as CSV.
 
-**[UPGRADE NOW ](https://mondula.com/en/shop/ "Multi Step Form Plus")**
+**[UPGRADE NOW](https://mondula.com/en/shop/ "Multi Step Form Plus")**
 
 == Installation ==
 Installing the plugin can be done either by searching for "Multi Step Form" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
@@ -166,34 +166,27 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 * Display progress bar differently when there is less space
 
 = 1.0.6 =
-
 * fixed progress-bar style importance
 * you can now choose to send a cc mail to the user (optional)
 
 = 1.0.5 =
-
 * redirect to a custom URL after submit (optional)
 * search functionality in select boxes (optional)
 * backend side menu is sticky now
 
 = 1.0.4 =
-
 * Make plugin multisite compatible
 
 = 1.0.3 =
-
 * Step title rendering bugfix
 
 = 1.0.2 =
-
 * WordPress 4.7 compatibility
 * E-mail validation bugfix
 
 = 1.0.1 =
-
 * Modify default colors
 * Change wording in settings
 
 = 1.0.0 =
-
 * Initial release
