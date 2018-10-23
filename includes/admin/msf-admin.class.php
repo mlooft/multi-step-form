@@ -267,7 +267,7 @@ class Mondula_Form_Wizard_Admin {
 			</form>
 			<h2><?php echo __( 'Import a Form', 'multi-step-form' ); ?></h2>
 			<form id="msf-import" method="post" enctype="multipart/form-data">
-				<input type='file' id='json-import' name='json-import'></input>
+				<input type='file' id='json-import' name='json-import'>
 				<input name="submit" id="submit" class="button button-primary" value="<?php echo __( 'Upload & Import', 'multi-step-form' ); ?>" type="submit">
 			</form>
 		</div>
@@ -506,7 +506,8 @@ class Mondula_Form_Wizard_Admin {
 				<div id="fw-thickbox-date"><?php echo __('Date', 'multi-step-form'); ?></div>
 				<div id="fw-thickbox-paragraph"><?php echo __('Paragraph', 'multi-step-form'); ?></div>
 				<?php
-				if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
+				if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) 
+				&& Mondula_Form_Wizard_Wizard::fw_get_option( 'registration_enable' ,'fw_settings_registration' ) === 'on' ) {
 					?>
 					<div id="fw-thickbox-registration"><?php echo __('Registration', 'multi-step-form'); ?></div>
 				<?php
