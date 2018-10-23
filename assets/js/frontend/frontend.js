@@ -1020,16 +1020,15 @@ jQuery(document).ready(function($) {
 
     function setupSelect2() {
         $('select').each(function(idx, element) {
-            console.log($(element).data('placeholder'));
             if (!$(element).data('search')) {
                 $(element).select2({
                     minimumResultsForSearch: Infinity,
-                    allowClear: true,
+                    allowClear: $(element).data('required') !== true,
                     placeholder: ""
                 })
             } else {
                 $('select').select2({
-                  allowClear: true,
+                  allowClear: $(element).data('required') !== true,
                   placeholder: ""
                 });
             }
