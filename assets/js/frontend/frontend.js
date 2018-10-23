@@ -130,8 +130,9 @@ jQuery(document).ready(function($) {
 
     function textareaSummary(summaryObj, $block, title, required) {
         var header = $block.find('h3').text();
-		var value = $block.find('.fw-textarea').val();
+		var value = $block.find('.fw-textarea').val().trim();
 		value = escapeHtml(value);
+		value = value.replace(/\n/g, '<br/>');
         pushToSummary(summaryObj, title, header, value, required);
     }
 
@@ -285,7 +286,8 @@ jQuery(document).ready(function($) {
 
     function getSummaryHtml($wizard) {
         var summaryHtml = '';
-        var summaryObj = getSummary($wizard);
+		var summaryObj = getSummary($wizard);
+		console.log(summaryObj);
         for (var key in summaryObj) {
             summaryHtml += '<div class="fw-step-summary-part">';
             summaryHtml += renderStepSummaryTitle(key);
@@ -303,7 +305,8 @@ jQuery(document).ready(function($) {
 		var key;
 		var html = '';
         for (key in summary) {
-			html = '<p class="fw-step-summary">' + key + ' \u2014 ' + stripScripts(summary[key]) + '</p>';
+			html += '<div class="fw-step-summary-field"><div class="fw-step-summary-field-title">' + key + '</div>';
+			html += '<div class="fw-step-summary">' + stripScripts(summary[key]) + '</div></div>';
 		}
 		return html;
     }
@@ -1056,7 +1059,7 @@ jQuery(document).ready(function($) {
         var buttonColor = $('.fw-progress-bar').attr('data-buttoncolor');
         $('head').append('<style id="fw-colors"></style>')
         if (activeColor) {
-          $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} [data-type=fw-checkbox] input[type=checkbox]:checked+label:before, ul.fw-progress-bar li.fw-active .fw-txt-ellipsis { color: ' + activeColor + ' !important; } .fw-step-part { border-color: ' + activeColor + ' !important; }</style>');
+          $('head').append('<style>.fw-active .progress, ul.fw-progress-bar li.fw-active:before{background:' + activeColor + '!important;} [data-type=fw-checkbox] input[type=checkbox]:checked+label:before, ul.fw-progress-bar li.fw-active .fw-txt-ellipsis { color: ' + activeColor + ' !important; } .fw-step-part { border-color: ' + activeColor + ' !important; } .fw-step-summary-field { border-color: ' + activeColor + ' !important; } </style>');
         }
         if (doneColor) {
           $('head').append('<style>ul.fw-progress-bar .fw-active:last-child:before, .fw-progress-step.fw-visited:before{ background:' + doneColor + ' !important; } .fw-progress-step.fw-visited, ul.fw-progress-bar .fw-active:last-child .fw-txt-ellipsis, .fw-progress-step.fw-visited .fw-txt-ellipsis { color:' + doneColor + ' !important;} ul.fw-progress-bar li.fw-visited:after, .fw-progress-step.fw-visited .fw-circle, .fw-progress-step.fw-visited .fw-circle-1, .fw-progress-step.fw-visited .fw-circle-2{ background-color:' + doneColor + ' !important;}</style>');

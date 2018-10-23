@@ -199,10 +199,28 @@
 		font-weight: bold;
 		color: @color_headline-text;
 	}
-	p.fw-step-summary {
-		font-size: 1.2em;
+
+	div.fw-step-summary-field {
 		margin-bottom: 10px;
 		margin-left: 0;
+		border: 0;
+		border-left: 8px solid gray;
+		background-color: @color_fw-step-part-bg;
+		padding: 4px;
+	}
+
+	div.fw-step-summary-field-title {
+		font-size: 1em;
+		margin: 0;
+		padding: 3px;
+		font-weight: bold;
+		border-bottom: 1px solid @color_border;
+	}
+
+	div.fw-step-summary {
+		font-size: 1em;
+		margin: 0;
+		padding: 3px;
 	}
 	.fw-summary-alert {
 		background-color: @color_user-fail;
