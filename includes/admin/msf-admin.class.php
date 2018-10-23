@@ -600,26 +600,31 @@ class Mondula_Form_Wizard_Admin {
 
 		if ( wp_verify_nonce( $nonce, $this->_token . $id ) ) {
 			if ( ! empty( $data ) ) {
-				$this->_wizard_service->save( $id, $data );
+				$new_id = $this->_wizard_service->save( $id, $data );
+				if ($new_id != $id) {
+					$id = $new_id;
+					$response['nonce'] = wp_create_nonce( $this->_token . $id );
+				}
 				$response['msg'] = 'Success! Wizard saved.';
+				$response['id'] = $id;
 				wp_send_json_success( $response );
 			} else {
 				wp_send_json_error(
 					array(
-						'errorMsg' => 'Data is empty.',
+						'msg' => 'Data is empty.',
 					)
 				);
 			}
 		} else {
 			wp_send_json_error(
 				array(
-					'errorMsg' => 'Nonce failed to verify.',
+					'msg' => 'Nonce failed to verify.',
 				)
 			);
 		}
 		wp_send_json_error(
 			array(
-				'errorMsg' => 'error',
+				'msg' => 'error',
 			)
 		);
 	}

@@ -732,13 +732,13 @@
             }
         );
         data.wizard.steps.push();
-
+		
         if (validate(data)) {
 
 			log('save', data);
 			//log('ajaxurl', wizard.ajaxurl);
 			//log('nonce', wizard.nonce);
-
+			
 			$.ajax({
 				type: 'POST',
 				url: wizard.ajaxurl,
@@ -750,7 +750,11 @@
 					id: wizard.id
 				},
 				success: function(response) {
-					//log('response', response);
+					if (response.data.nonce !== undefined) {
+						wizard.nonce = response.data.nonce;
+					}
+
+					wizard.id = response.data.id;
 					alertMessage(response.data.msg, response.success);
 				},
 				error: function(response) {
