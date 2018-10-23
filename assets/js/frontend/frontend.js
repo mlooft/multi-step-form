@@ -466,7 +466,20 @@ jQuery(document).ready(function($) {
         var $target = $(this);
         var $wizard = getWizard($target);
         var value = $target.val();
-        log(value);
+        
+        var id = $target.attr('data-id');
+        var obj = getObj($wizard, $target);
+        obj[id] = value;
+        $target.parents('.fw-step-block').removeClass('fw-block-invalid');
+        $target.parents('.fw-step-block').find('.fw-block-invalid-alert').remove();
+        updateSummary($wizard);
+	}
+	
+	function selectOnChange() {
+        var $target = $(this);
+        var $wizard = getWizard($target);
+        var value = $target.val();
+        
         var id = $target.attr('data-id');
         var obj = getObj($wizard, $target);
         obj[id] = value;
@@ -496,7 +509,6 @@ jQuery(document).ready(function($) {
         $element.children('.fw-choice').find('input').each(function(i, r) {
             var $r = $(r);
             if ($r.is(':checked')) {
-                console.log(i);
                 valid = true;
             }
         });
@@ -511,7 +523,9 @@ jQuery(document).ready(function($) {
         var $select = $element.find("select");
         if ($select.val()) {
             valid = true;
-        }
+        } else {
+			$element.addClass('fw-block-invalid');
+		}
         return valid;
 
     }
@@ -747,7 +761,6 @@ jQuery(document).ready(function($) {
             data: data,
 			dataType: "json",
             success: function(r) {
-				console.log(r);
 				if (r.success) {
 					$element.removeClass('msfp-registration-invalid');					
 					$element.addClass("msfp-reg-email-valid");
@@ -788,7 +801,6 @@ jQuery(document).ready(function($) {
             data: data,
 			dataType: "json",
             success: function(r) {
-				console.log(r);
 				if (r.success) {
 					$element.removeClass('msfp-registration-invalid');					
 					$element.addClass("msfp-reg-username-valid");
@@ -816,6 +828,11 @@ jQuery(document).ready(function($) {
 	}
 
     function validate($wizard) {
+		// reset fw-block-invalid flags
+        $('.fw-block-invalid').each(function(i, element) {
+            $(element).removeClass('fw-block-invalid');
+        })
+
         var formValid = true;
         $('.fw-wizard-step').each(function(idx, element) {
             var $step = $(element);
@@ -849,10 +866,7 @@ jQuery(document).ready(function($) {
         var summary, name, email, reg;
         var files = [];
         var $wizard = $(this).closest('.fw-wizard');
-        // reset fw-block-invalid flags
-        $('.fw-block-invalid').each(function(i, element) {
-            $(element).removeClass('fw-block-invalid');
-        })
+        
         if (validate($wizard)) {
             $('.fw-spinner').show();
             summary = getSummary($wizard);
@@ -1019,7 +1033,7 @@ jQuery(document).ready(function($) {
     }
 
     function setupSelect2() {
-        $('select').each(function(idx, element) {
+        $('.fw-select').each(function(idx, element) {
             if (!$(element).data('search')) {
                 $(element).select2({
                     minimumResultsForSearch: Infinity,
@@ -1027,7 +1041,7 @@ jQuery(document).ready(function($) {
                     placeholder: ""
                 })
             } else {
-                $('select').select2({
+                $(element).select2({
                   allowClear: $(element).data('required') !== true,
                   placeholder: ""
                 });
@@ -1086,6 +1100,7 @@ jQuery(document).ready(function($) {
             $(this).parents('.fw-step-block').find('.fw-block-invalid-alert').remove();
 		});
 		$('.msfp-registration-input').change(textOnChange);
+		$('.fw-select').on('change', selectOnChange);
 	}
 
     function setup() {
@@ -1114,9 +1129,9 @@ jQuery(document).ready(function($) {
             $('.fw-toggle-summary').remove();
         }
 
-		setupChangeListeners();
+		setupSelect2();
 
-        setupSelect2();
+		setupChangeListeners();
 
         setupFileUpload();
 

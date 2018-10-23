@@ -47,7 +47,7 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-select" data-required="<?php echo $this->_required; ?>">	
 			<h3><?php echo $this->_label ?></h3>
-			<select data-search="<?php echo $this->_search?>" data-placeholder="<?php echo $this->_placeholder?>" data-required="<?php echo $this->_required; ?>">
+			<select class="fw-select" data-search="<?php echo $this->_search?>" data-placeholder="<?php echo $this->_placeholder?>" data-required="<?php echo $this->_required; ?>">
 				<option></option>
 				<?php for ( $i = 0; $i < $cnt; $i++ ) {
 					$element = $this->_elements[$i];
