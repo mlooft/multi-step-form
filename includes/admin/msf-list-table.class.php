@@ -91,7 +91,7 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 		if ( ! $wiz['title'] || '' == $wiz['title'] ) {
 			$wiz['title'] = 'My Multi Step Form';
 		}
-		return sprintf( '<a href="' . $edit_url . '">' . $wiz['title'] . '</a>' . '%1$s', $this->row_actions( $actions ) );
+		return '<a href="' . $edit_url . '">' . $wiz['title'] . '</a>' . $this->row_actions( $actions );
 	}
 
 	function prepare_items() {
@@ -139,6 +139,16 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 				$wizard_ids = $_GET['wizard'];
 				foreach ( $wizard_ids as $wizard_id ) {
 					$this->_wizard_service->delete( $wizard_id );
+					$array_id = -1;
+					foreach ($this->items as $id => $item) {
+						if ($item['id'] == $wizard_id) {
+							$array_id = $id;
+							break;
+						}
+					}
+					if ($array_id >= 0) {
+						unset($this->items[$array_id]);
+					}
 				}
 				break;
 
