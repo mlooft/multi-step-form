@@ -7,7 +7,7 @@
  * Author: Mondula GmbH
  * Author URI: http://www.mondula.com/
  * Requires at least: 3.9
- * Tested up to: 4.7
+ * Tested up to: 5.0
  *
  * Text Domain: multi-step-form
  * Domain Path: /lang/
