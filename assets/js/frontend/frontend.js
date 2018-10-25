@@ -536,7 +536,7 @@ jQuery(document).ready(function($) {
     function validateEmail($element) {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         var email = $element.find('.fw-text-input').val();
-        if (!email || !re.test(email)) {
+        if (!email || !re.test(email.trim())) {
             $element.addClass('fw-block-invalid');
             return false;
         } else {
@@ -550,7 +550,7 @@ jQuery(document).ready(function($) {
         var minimum = $element.data("min");
         var maximum =  $element.data("max");
         
-        if (!numeric || !re.test(numeric)) {
+        if (!numeric || !re.test(numeric.trim())) {
             $element.addClass('fw-block-invalid');
             return false;
         } else {
