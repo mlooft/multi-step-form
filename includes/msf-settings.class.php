@@ -62,7 +62,7 @@ class Mondula_Form_Wizard_Settings {
 			/* Conditional Fields */
 			array_push( $sections, array(
 				'id' => 'fw_settings_conditional',
-				'title' => __( 'Conditional Fields', 'multi-step-form' ),
+				'title' => __( 'Special Fields', 'multi-step-form' ),
 			));
 			/* User Registration */
 			array_push( $sections, array(
@@ -214,6 +214,13 @@ class Mondula_Form_Wizard_Settings {
 					'name' => 'conditional_enable',
 					'label' => __( 'Enable conditional blocks', 'multi-step-form' ),
 					'desc' => __( 'Display some form elements only when others are filled.', 'multi-step-form' ),
+					'type' => 'checkbox',
+					'default' => 'off',
+				),
+				array(
+					'name' => 'regex_enable',
+					'label' => __( 'Enable regex blocks', 'multi-step-form' ),
+					'desc' => __( 'Enter your custom regex for validation.', 'multi-step-form' ),
 					'type' => 'checkbox',
 					'default' => 'off',
 				),
