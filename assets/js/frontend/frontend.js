@@ -123,7 +123,7 @@ jQuery(document).ready(function($) {
 
     function textSummary(summaryObj, $block, title, required) {
         var header = $block.find('h3').text();
-		var value = $block.find('.fw-text-input').val();
+		var value = $block.find('.fw-text-input').val().trim();
 		value = escapeHtml(value);
         pushToSummary(summaryObj, title, header, value, required);
     }
