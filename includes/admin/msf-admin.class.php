@@ -109,6 +109,7 @@ class Mondula_Form_Wizard_Admin {
 				'no_minimum' => __( 'No Minimum', 'multi-step-form' ),
 				'no_maximum' => __( 'No Maximum', 'multi-step-form' ),
 			),
+			'filter' => __('RegEx Filter', 'multi-step-form'),
 			'registration' => array(
 				'info' => __( 'Please select the registration fields to be displayed to the user. Email is always required. If the user does not specify a username or password, WordPress is auto-generating these and sending them to the user via email.', 'multi-step-form' ),
 				'loggedin' => __( 'You are already registered and logged in.', 'multi-step-form' ),
@@ -475,11 +476,18 @@ class Mondula_Form_Wizard_Admin {
 									<a class="fw-draggable-block fw-element-date" data-type="date"><i class="fa fa-arrows"></i> <?php echo __('Date', 'multi-step-form'); ?></a>
 									<a class="fw-draggable-block fw-element-paragraph" data-type="paragraph"><i class="fa fa-arrows"></i> <?php echo __('Paragraph', 'multi-step-form'); ?></a>
 									<?php
-									if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' )
-									&& Mondula_Form_Wizard_Wizard::fw_get_option( 'registration_enable' ,'fw_settings_registration' ) === 'on' ) {
+									if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' )) {
+										if (Mondula_Form_Wizard_Wizard::fw_get_option( 'regex_enable' ,'fw_settings_conditional' ) === 'on' ) {
 										?>
-										<a class="fw-draggable-block fw-element-registration" data-type="registration"><i class="fa fa-arrows"></i> <?php echo __('Registration', 'multi-step-form'); ?></a>
+											<a class="fw-draggable-block fw-element-regex" data-type="regex"><i class="fa fa-arrows"></i> <?php echo __('Regex', 'multi-step-form'); ?></a>
 										<?php
+										}
+
+										if (Mondula_Form_Wizard_Wizard::fw_get_option( 'registration_enable' ,'fw_settings_registration' ) === 'on' ) {
+										?>
+											<a class="fw-draggable-block fw-element-registration" data-type="registration"><i class="fa fa-arrows"></i> <?php echo __('Registration', 'multi-step-form'); ?></a>
+										<?php
+										}
 									}
 									?>
 								</div>
@@ -506,12 +514,18 @@ class Mondula_Form_Wizard_Admin {
 				<div id="fw-thickbox-date"><?php echo __('Date', 'multi-step-form'); ?></div>
 				<div id="fw-thickbox-paragraph"><?php echo __('Paragraph', 'multi-step-form'); ?></div>
 				<?php
-				if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) 
-				&& Mondula_Form_Wizard_Wizard::fw_get_option( 'registration_enable' ,'fw_settings_registration' ) === 'on' ) {
-					?>
-					<div id="fw-thickbox-registration"><?php echo __('Registration', 'multi-step-form'); ?></div>
-				<?php
-				}
+					if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
+						if (Mondula_Form_Wizard_Wizard::fw_get_option( 'regex_enable' ,'fw_settings_conditional' ) === 'on' ) {
+						?>
+						<div id="fw-thickbox-regex"><?php echo __('Regex', 'multi-step-form'); ?></div>
+						<?php
+						}
+						if (Mondula_Form_Wizard_Wizard::fw_get_option( 'registration_enable' ,'fw_settings_registration' ) === 'on' ) {
+						?>
+						<div id="fw-thickbox-registration"><?php echo __('Registration', 'multi-step-form'); ?></div>
+						<?php
+						}
+					}
 				?>
 
 			</div>

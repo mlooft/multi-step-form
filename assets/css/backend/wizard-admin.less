@@ -21,6 +21,7 @@
 @color_select: #757575;
 @color_paragraph: #ffc107;
 @color_registration: #8bc34a;
+@color_regex: #863c00;
 @color_plus: #ff6d00;
 
 
@@ -338,7 +339,11 @@ div#TB_ajaxContent {
     padding: 20px 15px;
 }
 div#TB_ajaxContent {
-    #fw-thickbox-radio, #fw-thickbox-select, #fw-thickbox-checkbox, #fw-thickbox-text, #fw-thickbox-email, #fw-thickbox-numeric, #fw-thickbox-fileupload, #fw-thickbox-date, #fw-thickbox-textarea, #fw-thickbox-select, #fw-thickbox-paragraph, #fw-thickbox-registration {
+	#fw-thickbox-radio, #fw-thickbox-select, #fw-thickbox-checkbox, 
+	#fw-thickbox-text, #fw-thickbox-email, #fw-thickbox-numeric, 
+	#fw-thickbox-fileupload, #fw-thickbox-date, #fw-thickbox-textarea, 
+	#fw-thickbox-select, #fw-thickbox-paragraph, #fw-thickbox-registration, 
+	#fw-thickbox-regex {
         border: medium none !important;
 		color: @color_4;
 		cursor: pointer;
@@ -376,6 +381,9 @@ div#TB_ajaxContent {
     #fw-thickbox-paragraph {
         background: @color_paragraph none repeat scroll 0 0;
 	}
+	#fw-thickbox-regex {
+        background: @color_regex none repeat scroll 0 0;
+    }
 	#fw-thickbox-registration {
         background: @color_registration none repeat scroll 0 0;
     }
@@ -429,6 +437,9 @@ div#TB_ajaxContent {
 	&[data-type="registration"] {
 		border-color: @color_registration !important;
 	}
+	&[data-type="regex"] {
+    	border-color: @color_regex !important;
+  	}
 }
 [data-type="paragraph"] {
     textarea {
@@ -494,6 +505,11 @@ div#TB_ajaxContent {
 .fw-step-block[data-type="registration"] {
 	>.fw-block-action, .fw-block-controls > i {
 		background-color: @color_registration;
+	}
+}
+.fw-step-block[data-type="regex"] {
+	>.fw-block-action, .fw-block-controls > i {
+		background-color: @color_regex;
 	}
 }
 .fw-step {
@@ -672,6 +688,9 @@ input.fw-invalid {
 }
 .fw-draggable-block[data-type=registration] {
 	border-left: 6px solid @color_registration;
+}
+.fw-draggable-block[data-type=regex] {
+	border-left: 6px solid @color_regex;
 }
 .fa.fa-trash {
     color:#757575;

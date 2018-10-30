@@ -205,6 +205,16 @@
 		paragraphHtml += '<label style="display:none;"><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		return paragraphHtml;
 	}
+
+	function renderRegex(block) {
+		var regexHtml = '';
+		regexHtml += '<label>' + wizard.i18n.label + '</label>';
+		regexHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+		regexHtml += '<label>' + wizard.i18n.filter + '</label>';
+		regexHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.filter + '" value="' + (block.filter ? block.filter : '') + '"></input><br/>';
+		regexHtml += '<label><input type="checkbox" class="fw-required"'+ isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
+      	return regexHtml;
+	  }
 	
 	function renderRegistration(block) {
 		var registrationHtml = '';
@@ -273,6 +283,9 @@
                 break;
             case 'paragraph':
                 blockHtml += renderParagraph(block);
+				break;
+			case 'regex':
+				blockHtml += renderRegex(block);
 				break;
 			case 'registration':
 				blockHtml += renderRegistration(block);
@@ -545,6 +558,12 @@
     function getParagraphData($text, text) {
         text['text'] = $text.find('.fw-paragraph-text').val();
 	}
+
+	function getRegexData($text, text) {
+        text['label'] = $text.find('.fw-text-label').val();
+        text['filter'] = $text.find('.fw-regex-filter').val();
+        text['required'] = $text.find('.fw-required').prop('checked');
+    }
 	
 	function getRegistrationData($text, text) {
 		text['required'] = $text.find('.fw-required').prop('checked')				
@@ -605,6 +624,9 @@
                 break;
             case 'paragraph':
                 getParagraphData($block, block);
+				break;
+			case 'regex':
+				getRegexData($block, block);
 				break;
 			case 'registration':
 				getRegistrationData($block, block);
@@ -817,7 +839,7 @@
             console.log($('.fw-block-placeholder'));
           },
           update: function(event, ui) {
-              warn('block sortables update', event, ui);
+			  
               var blockType = $(ui.item).attr('data-type');
               var newBlockIdx = -1;
               if ($(ui.item).is('.fw-draggable-block')) {
@@ -1050,7 +1072,10 @@
                 }));
                 var $part = $(thickEvent.target).parents('.fw-step-part');
                 $part.find('.inside').append(block);
-                setupClickHandlers();
+				setupClickHandlers();
+				if (msfp) {
+					setupConditionals(block);
+				}
             });
             // SELECT
             $("#fw-thickbox-select").unbind('click').click(function(thickRadioEvent) {
@@ -1061,12 +1086,15 @@
                 }));
                 var $part = $(thickEvent.target).parents('.fw-step-part');
                 $part.find('.inside').append(block);
-                setupClickHandlers();
+				setupClickHandlers();
+				if (msfp) {
+					setupConditionals(block);
+				}
             });
 
             // TEXT FIELD
             $("#fw-thickbox-text").unbind('click').click(function(thickRadioEvent) {
-              tb_remove();
+              	tb_remove();
               var block = $(renderBlock({
                   type: 'text',
                   label: '',
@@ -1074,7 +1102,10 @@
               }));
               var $part = $(thickEvent.target).parents('.fw-step-part');
               $part.find('.inside').append(block);
-              setupClickHandlers();
+			  setupClickHandlers();
+			  if (msfp) {
+				setupConditionals(block);
+			}
             });
             // EMAIL
             $("#fw-thickbox-email").unbind('click').click(function(thickRadioEvent) {
@@ -1086,7 +1117,10 @@
               }));
               var $part = $(thickEvent.target).parents('.fw-step-part');
               $part.find('.inside').append(block);
-              setupClickHandlers();
+			  setupClickHandlers();
+			  if (msfp) {
+				setupConditionals(block);
+			}
             });
             // NUMERIC
             $("#fw-thickbox-numeric").unbind('click').click(function(thickRadioEvent) {
@@ -1100,8 +1134,12 @@
                 }));
                 var $part = $(thickEvent.target).parents('.fw-step-part');
                 $part.find('.inside').append(block);
-                setupClickHandlers();
-              });
+				setupClickHandlers();
+				if (msfp) {
+					setupConditionals(block);
+				}
+			});
+			// FILE UPLOAD
             $("#fw-thickbox-fileupload").unbind('click').click(function(thickRadioEvent) {
               tb_remove();
               var block = $(renderBlock({
@@ -1111,7 +1149,7 @@
               }));
               var $part = $(thickEvent.target).parents('.fw-step-part');
               $part.find('.inside').append(block);
-              setupClickHandlers();
+			  setupClickHandlers();
             });
             // TEXT AREA
             $("#fw-thickbox-textarea").unbind('click').click(function(thickRadioEvent) {
@@ -1123,7 +1161,10 @@
               }));
               var $part = $(thickEvent.target).parents('.fw-step-part');
               $part.find('.inside').append(block);
-              setupClickHandlers();
+			  setupClickHandlers();
+			  if (msfp) {
+				setupConditionals(block);
+			}
             });
             // DATE
             $("#fw-thickbox-date").unbind('click').click(function(thickRadioEvent) {
@@ -1135,7 +1176,10 @@
               }));
               var $part = $(thickEvent.target).parents('.fw-step-part');
               $part.find('.inside').append(block);
-              setupClickHandlers();
+			  setupClickHandlers();
+			  if (msfp) {
+				setupConditionals(block);
+			}
             });
             // PARAGRAPH
             $("#fw-thickbox-paragraph").unbind('click').click(function(thickRadioEvent) {
@@ -1146,8 +1190,26 @@
               }));
               var $part = $(thickEvent.target).parents('.fw-step-part');
               $part.find('.inside').append(block);
-              setupClickHandlers();
+			  setupClickHandlers();
+			  if (msfp) {
+				setupConditionals(block);
+			}
 			});
+			// REGEX
+            $("#fw-thickbox-regex").unbind('click').click(function(thickRadioEvent) {
+				tb_remove();
+				var block = $(renderBlock({
+					type: 'regex',
+					label: '',
+					filter: ''
+				}));
+				var $part = $(thickEvent.target).parents('.fw-step-part');
+				$part.find('.inside').append(block);
+				setupClickHandlers();
+				if (msfp) {
+					setupConditionals(block);
+				}
+			}); 
 			// REGISTRATION
             $("#fw-thickbox-registration").unbind('click').click(function(thickRadioEvent) {
 				tb_remove();
@@ -1163,7 +1225,7 @@
 					$part.find('.inside').append(block);
 				}
 				setupClickHandlers();
-			  }); 
+			}); 
         });
 	}
 	
