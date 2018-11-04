@@ -40,6 +40,16 @@ services:
       - "back"
     volumes:
       - "wp_db:/var/lib/mysql:rw"
+#  phpmyadmin:
+#    image: "phpmyadmin/phpmyadmin"
+#    ports:
+#      - 9001:80
+#    networks:
+#      - "back"
+#    environment:
+#      PMA_HOST: "mysql"
+#      PMA_USER: "root"
+#      PMA_PASSWORD: ""
   proxy:
     image: "jwilder/nginx-proxy:alpine"
     ports:
@@ -52,6 +62,7 @@ services:
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
     expose:
       - "9000"
+#      - "9001"
 
 networks:
   front: {}

@@ -211,7 +211,7 @@
 		regexHtml += '<label>' + wizard.i18n.label + '</label>';
 		regexHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
 		regexHtml += '<label>' + wizard.i18n.filter + '</label>';
-		regexHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.filter + '" value="' + (block.filter ? block.filter : '') + '"></input><br/>';
+		regexHtml += '<input type="text" class="fw-regex-filter fw-block-label" placeholder="' + wizard.i18n.filter + '" value="' + (block.filter ? block.filter : '') + '"></input><br/>';
 		regexHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		return regexHtml;
 	}
@@ -504,7 +504,6 @@
 	}
 
 	function getSelectData($select, select) {
-		console.log($select.find(".fw-select-options").val());
 		var options = $select.find(".fw-select-options").val().split("\n");
 		select['required'] = $select.find('.fw-required').prop('checked');
 		select['search'] = $select.find('.fw-select-search').prop('checked');
@@ -836,7 +835,6 @@
 					$placeholder = $('.fw-block-placholder');
 				$placeholder.height(height);
 				$placeholder.attr('data-type', ui.item.attr('data-type'));
-				console.log($('.fw-block-placeholder'));
 			},
 			update: function (event, ui) {
 
@@ -1248,9 +1246,7 @@
 		});
 
 		$('.fw-duplicate-step').unbind("click").click(function (event) {
-			console.log('DUPE');
 			var $step = $(this).parent().parent().find('.fw-step');
-			console.log($step);
 			duplicateStep($step);
 		});
 

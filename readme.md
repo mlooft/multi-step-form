@@ -37,7 +37,7 @@ npm install
 bower install
 
 docker-compose build
-npm run gulp
+npm start
 ```
 
 The last command compiles the required CSS and packs the JavaScript code. It will watch the source files for changes and recompiles them on a change. Stop it with Ctrl+C.
@@ -54,7 +54,7 @@ If you now open http://localhost/ you should see an installed WordPress instance
 
 If you want to change JS or LESS Code, start `gulp` with:
 ```
-npm run gulp
+npm start
 ```
 and let it run while you work.
 

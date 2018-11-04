@@ -1,12 +1,4 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 /**
  * Description of class-mondula-multistep-forms-block
  *
@@ -52,6 +44,11 @@ abstract class Mondula_Form_Wizard_Block {
 				break;
 			case 'paragraph':
 				return Mondula_Form_Wizard_Block_Paragraph::from_aa( $block, $current_version, $serialized_version );
+				break;
+			case 'regex':
+				if ( class_exists( 'Multi_Step_Form_Plus' ) ) {
+					return Multi_Step_Form_Plus_Block_Regex::from_aa( $block, $current_version, $serialized_version );
+				}
 				break;
 			case 'registration':
 				if ( class_exists( 'Multi_Step_Form_Plus' ) ) {

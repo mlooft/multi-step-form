@@ -564,6 +564,7 @@ class Mondula_Form_Wizard_Admin {
 							break;
 						case 'email':
 						case 'numeric':
+						case 'regex':
 						case 'textarea':
 						case 'file':
 						case 'date':
