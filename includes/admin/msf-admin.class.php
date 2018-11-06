@@ -110,6 +110,7 @@ class Mondula_Form_Wizard_Admin {
 				'no_maximum' => __( 'No Maximum', 'multi-step-form' ),
 			),
 			'filter' => __('RegEx Filter', 'multi-step-form'),
+			'filterError' => __('Custom RegEx Error Message', 'multi-step-form'),
 			'registration' => array(
 				'info' => __( 'Please select the registration fields to be displayed to the user. Email is always required. If the user does not specify a username or password, WordPress is auto-generating these and sending them to the user via email.', 'multi-step-form' ),
 				'loggedin' => __( 'You are already registered and logged in.', 'multi-step-form' ),

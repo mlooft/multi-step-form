@@ -212,6 +212,8 @@
 		regexHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
 		regexHtml += '<label>' + wizard.i18n.filter + '</label>';
 		regexHtml += '<input type="text" class="fw-regex-filter fw-block-label" placeholder="' + wizard.i18n.filter + '" value="' + (block.filter ? block.filter : '') + '"></input><br/>';
+		regexHtml += '<label>' + wizard.i18n.filterError + '</label>';
+		regexHtml += '<input type="text" class="fw-regex-error fw-block-label" placeholder="' + wizard.i18n.filterError + '" value="' + (block.customError ? block.customError : '') + '"></input><br/>';
 		regexHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		return regexHtml;
 	}
@@ -561,6 +563,7 @@
 	function getRegexData($text, text) {
 		text['label'] = $text.find('.fw-text-label').val();
 		text['filter'] = $text.find('.fw-regex-filter').val();
+		text['customError'] = $text.find('.fw-regex-error').val();
 		text['required'] = $text.find('.fw-required').prop('checked');
 	}
 
@@ -1199,7 +1202,8 @@
 				var block = $(renderBlock({
 					type: 'regex',
 					label: '',
-					filter: ''
+					filter: '',
+					customError: ''
 				}));
 				var $part = $(thickEvent.target).parents('.fw-step-part');
 				$part.find('.inside').append(block);

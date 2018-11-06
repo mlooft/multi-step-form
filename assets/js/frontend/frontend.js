@@ -200,6 +200,7 @@ jQuery(document).ready(function ($) {
 			case 'fw-numeric':
 			case 'fw-date':
 			case 'fw-text':
+			case 'fw-regex':
 				textSummary(summaryObj, $block, title, required);
 				break;
 			case 'fw-textarea':
@@ -544,6 +545,17 @@ jQuery(document).ready(function ($) {
 		}
 	}
 
+	function validateRegex($element) {
+		var re = new RegExp($element.data("filter"));
+		var regexInput = $element.find('.fw-text-input').val();
+		if (!regexInput || !re.test(regexInput.trim())) {
+			$element.addClass('fw-block-invalid');
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 	function validateNumeric($element) {
 		var re = /^-?\d+$/;
 		var numeric = $element.find('.fw-text-input').val();
@@ -695,6 +707,9 @@ jQuery(document).ready(function ($) {
 					case 'fw-registration':
 						valid = validateRegistration($element);
 						break;
+					case 'fw-regex':
+						valid = validateRegex($element);
+						break;
 					default:
 						break;
 				}
@@ -730,6 +745,19 @@ jQuery(document).ready(function ($) {
 			}
 		);
 
+		// validate filled regex fields
+		$('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-type="fw-regex"]').each(
+			function (i, element) {
+				var $element = $(element);
+				if ($element.find('.fw-text-input').val() != "") {
+					valid = validateRegex($element);
+					if (!valid) {
+						stepValid = false;
+					}
+				}
+			}
+		);
+
 		if (!stepValid) {
 			$('.fw-block-invalid').each(function (idx, element) {
 				if ($(element).find('.fw-block-invalid-alert').length < 1) {
@@ -739,6 +767,9 @@ jQuery(document).ready(function ($) {
 						$(element).append('<div class="fw-block-invalid-alert">' + ajax.i18n.errors.invalidEmail + '</div>');
 					} else if ($(element).attr('data-type') == 'fw-numeric') {
 						$(element).append('<div class="fw-block-invalid-alert">' + ajax.i18n.errors.invalidNumeric + '</div>');
+					} else if ($(element).attr('data-type') == 'fw-regex') {
+						var errorMsg = $(element).data("error-msg") || ajax.i18n.errors.invalidRegex;
+						$(element).append('<div class="fw-block-invalid-alert">' + errorMsg + '</div>');
 					} else {
 						$(element).append('<div class="fw-block-invalid-alert">' + err[1] + '</div>');
 					}
