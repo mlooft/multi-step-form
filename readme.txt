@@ -82,7 +82,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 == Changelog ==
 
 = 1.3.1 =
-* Small bugfix
+* Bugfix: email validation on android
 
 = 1.3.0 =
 * Added numeric input field
