@@ -26,9 +26,9 @@
     "url": "git+https://github.com/mlooft/multi-step-form.git"
   },
   "scripts": {
-	"start": "gulp default",
-	"zip": "gulp zip",
-	"lang": "gulp pot"
+    "start": "gulp default",
+    "zip": "gulp zip",
+    "lang": "gulp pot"
   },
   "author": "Lewe Ohlsen",
   "license": "GPL-2.0",
