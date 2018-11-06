@@ -281,7 +281,8 @@ class Mondula_Form_Wizard_Wizard {
 												  echo '<tr><td align="left" style="padding: 30px 0 10px 0; font-size: 20px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy"><strong>' . $key . '</strong> </td></tr>';
 												  foreach ( $value as $value2 ) {
 													  foreach ( $value2 as $key2 => $value3 ) {
-														  echo '<tr><td align="left" style="border:solid 1px #dadada; border-width:0 0 1px 0; padding: 10px 0 10px 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">'. $key2 .'</td><td align="left" style=" border:solid 1px #dadada; border-width:0 0 1px 0; padding: 10px 0 10px 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">'. $value3 .'</td></tr>';
+															$value3 = str_replace("\n", "<br/>", $value3);
+														 	echo '<tr><td align="left" style="border:solid 1px #dadada; border-width:0 0 1px 0; padding: 10px 0 10px 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">'. $key2 .'</td><td align="left" style=" border:solid 1px #dadada; border-width:0 0 1px 0; padding: 10px 0 10px 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">'. $value3 .'</td></tr>';
 													  }
 												  }
 											  } ?>
@@ -303,6 +304,7 @@ class Mondula_Form_Wizard_Wizard {
 			echo PHP_EOL .  $key . PHP_EOL . PHP_EOL;
 			foreach ( $value as $value2 ) {
 				foreach ( $value2 as $key2 => $value3 ) {
+					$value3 = str_replace("\n", "\n\t\t", $value3);
 					echo "\t" . $key2 . " - " . $value3 . PHP_EOL;
 				}
 			}
@@ -346,13 +348,12 @@ class Mondula_Form_Wizard_Wizard {
 	}
 
 	public function render_mail ( $data, $name, $email, $mailformat ) {
+		ob_start();
 		if ($mailformat == 'text') {
-		  ob_start();
 		  $this->render_header();
 		  $this->render_body( $data, $name, $email );
 		  $this->render_footer();
 		} else {
-		  ob_start();
 		  $this->render_header_html();
 		  $this->render_body_html( $data, $name, $email );
 		  $this->render_footer_html();

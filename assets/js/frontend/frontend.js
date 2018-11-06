@@ -132,7 +132,7 @@ jQuery(document).ready(function ($) {
 		var header = $block.find('h3').text();
 		var value = $block.find('.fw-textarea').val().trim();
 		value = escapeHtml(value);
-		value = value.replace(/\n/g, '<br/>');
+		value = value.replace(/\n/g, "<br/>\n");
 		pushToSummary(summaryObj, title, header, value, required);
 	}
 
