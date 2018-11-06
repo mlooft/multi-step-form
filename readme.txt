@@ -83,6 +83,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 
 = 1.3.1 =
 * Bugfix: email validation on android
+* Bugfix: linebreaks in emails
 * Other small changes
 
 = 1.3.0 =
