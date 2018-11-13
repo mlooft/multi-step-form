@@ -542,7 +542,7 @@ class Mondula_Form_Wizard_Admin {
 						case 'radio':
 							foreach ( $block['elements'] as &$element ) {
 								$element['type'] = sanitize_text_field( $element['type'] );
-								$element['value'] = sanitize_text_field( $element['value'] );
+								$element['value'] = wp_kses_post( $element['value'] );
 							}
 							$block['required'] = sanitize_text_field( $block['required'] );
 							$block['multichoice'] = sanitize_text_field( $block['multichoice'] );
@@ -567,7 +567,7 @@ class Mondula_Form_Wizard_Admin {
 							}
 							break;
 						case 'paragraph':
-							$block['text'] = sanitize_textarea_field( $block['text'] );
+							$block['text'] = wp_kses_post($block['text']);
 							break;
 						default:
 							break;
