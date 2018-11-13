@@ -96,16 +96,23 @@ class Mondula_Form_Wizard {
 
 		$this->script_suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-		register_activation_hook( $this->file, array( $this, 'install' ) );
+		register_activation_hook($this->file, array($this, 'install'));
+		register_deactivation_hook($this->file, array($this, 'uninstall'));
 
 		// Load frontend JS & CSS
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
 
-	// Set up service
-	$this->_wizard_service = new Mondula_Form_Wizard_Wizard_Service(
-		new Mondula_Form_Wizard_Wizard_Repository( 'mondula_form_wizards' ),
+		// Setup cronjob
+		add_action('msf_cron_upload_clean', array($this, 'cleanup_upload_dir'));
+		if (!wp_next_scheduled('msf_cron_upload_clean') ) {
+			wp_schedule_event(time(), 'daily', 'msf_cron_upload_clean');
+		}
+
+		// Set up service
+		$this->_wizard_service = new Mondula_Form_Wizard_Wizard_Service(
+			new Mondula_Form_Wizard_Wizard_Repository( 'mondula_form_wizards' ),
 				$this->_version
-	);
+		);
 
 		// Load admin JS & CSS
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10, 1 );
@@ -214,6 +221,26 @@ class Mondula_Form_Wizard {
 	}
 
 	/**
+	 * Deletes old files in the upload directory.
+	 */
+	public function cleanup_upload_dir() {
+		if ( !function_exists('getlist_files_plugins') ){
+			require_once(ABSPATH . '/wp-admin/includes/file.php');
+		}
+
+		$files = list_files(WP_CONTENT_DIR . '/uploads/msf-temp/', 1);
+		
+		if (is_array($files)) {
+			foreach ($files as $file) {
+				/* File is older than 4 hours: */
+				if (time() - filemtime($file) > (60 * 60 * 4)) {
+					wp_delete_file_from_directory($file, WP_CONTENT_DIR . '/uploads/msf-temp/');
+				}
+			}
+		}
+	}
+
+	/**
 	 * Load plugin localisation
 	 * @access  public
 	 * @since   1.0.0
@@ -248,7 +275,7 @@ class Mondula_Form_Wizard {
 	 * @see Mondula_Form_Wizard()
 	 * @return Main Mondula_Form_Wizard instance
 	 */
-	public static function instance ( $file = '', $version = '1.0.0' ) {
+	public static function instance( $file = '', $version = '1.0.0' ) {
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance = new self( $file, $version );
 		}
@@ -269,7 +296,7 @@ class Mondula_Form_Wizard {
 	 *
 	 * @since 1.0.0
 	 */
-	public function __wakeup () {
+	public function __wakeup() {
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), $this->_version );
 	}
 
@@ -279,8 +306,19 @@ class Mondula_Form_Wizard {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	public function install () {
+	public function install() {
 		$this->_log_version_number();
+	}
+
+	/**
+	 * Uninstallation. Runs on deactivation.
+	 * @access  public
+	 * @since   1.3.2
+	 * @return  void
+	 */
+	public function uninstall() {
+		$timestamp = wp_next_scheduled('msf_cron_upload_clean');
+		wp_unschedule_event($timestamp, 'msf_cron_upload_clean');
 	}
 
 	/**

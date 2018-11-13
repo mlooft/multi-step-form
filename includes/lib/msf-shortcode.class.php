@@ -31,14 +31,14 @@ class Mondula_Form_Wizard_Shortcode {
 		add_shortcode( self::CODE_OLD, array( $this, 'handler' ) );
 		add_shortcode( self::CODE, array( $this, 'handler' ) );
 
-		add_action( 'wp_ajax_fw_send_email', array( $this, 'fw_send_email' ) );
-		add_action( 'wp_ajax_nopriv_fw_send_email', array( $this, 'fw_send_email' ) );
+		add_action('wp_ajax_fw_send_email', array( $this, 'fw_send_email' ) );
+		add_action('wp_ajax_nopriv_fw_send_email', array( $this, 'fw_send_email' ) );
 
-		add_action( 'wp_ajax_fw_upload_file', array( $this, 'fw_upload_file' ) );
-		add_action( 'wp_ajax_nopriv_fw_upload_file', array( $this, 'fw_upload_file' ) );
+		add_action('wp_ajax_fw_upload_file', array( $this, 'fw_upload_file' ) );
+		add_action('wp_ajax_nopriv_fw_upload_file', array( $this, 'fw_upload_file' ) );
 
-		add_action( 'wp_ajax_fw_delete_files', array( $this, 'fw_delete_files' ) );
-		add_action( 'wp_ajax_nopriv_fw_delete_files', array( $this, 'fw_delete_files' ) );
+		add_action('wp_ajax_fw_delete_files', array( $this, 'fw_delete_files' ) );
+		add_action('wp_ajax_nopriv_fw_delete_files', array( $this, 'fw_delete_files' ) );
 	}
 
 
@@ -98,7 +98,7 @@ class Mondula_Form_Wizard_Shortcode {
 	 **/
 	private function delete_files( $filepaths ) {
 		foreach ( $filepaths as $filepath ) {
-			wp_delete_file( $filepath );
+			wp_delete_file($filepath);
 		}
 	}
 	/**
