@@ -42,6 +42,10 @@
 			.slideUp();
 	}
 
+	function escapeAttribute(s) {
+		return ('' + s).replace(/\\/g, '\\\\').replace(/"/g, '&quot;');
+	}
+
 	function renderBlockAction(type) {
 		var blockAction = '<div class="fw-block-action fw-block-hndle">';
 		blockAction += '<i class="fa fa-arrows fw-move-block fw-block-hndle" aria-hidden="true"></i>';
@@ -72,7 +76,7 @@
      */
 	function renderRadioOption(radioOption, idx) {
 		var radioOptionHtml = '<div class="fw-radio-option-element" data-type="option">'; //'<label>Option ' + idx + '</label>';
-		radioOptionHtml += '<input type="text" class="fw-radio-option" placeholder="' + wizard.i18n.radio.option + ' ' + idx + '" value="' + radioOption + '"></input>';
+		radioOptionHtml += '<input type="text" class="fw-radio-option" placeholder="' + wizard.i18n.radio.option + ' ' + idx + '" value="' + escapeAttribute(radioOption) + '"></input>';
 		radioOptionHtml += '<div class="fw-remove-radio-option"><i class="fa fa-minus-circle" aria-hidden="true"></i></div></div>';
 		return radioOptionHtml;
 	}

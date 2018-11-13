@@ -82,6 +82,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 == Changelog ==
 
 = 1.3.2 =
+* Sanitazation changed: Restricted HTML in paragraphs and radio buttons
 * JavaScript gets only loaded on pages using the form
 
 = 1.3.1 =
@@ -113,7 +114,6 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 * Custom Email Headers (Reply-To, BCC...)
 * Relevant error message for invalid Email
 * Small Bugfixes
-
 
 = 1.2.3 =
 * Upload multiple files with a single form element

@@ -528,6 +528,49 @@ class Mondula_Form_Wizard_Admin {
 		<?php
 	}
 
+	private function sanitize_form_block( &$block ) {
+		$allowedTags = wp_kses_allowed_html('post');
+		unset($allowedTags['textarea']);
+
+		switch ( $block['type'] ) {
+			case 'radio':
+				foreach ( $block['elements'] as &$element ) {
+					$element['type'] = sanitize_text_field( $element['type'] );
+					$element['value'] = wp_kses( $element['value'], $allowedTags);
+				}
+				$block['required'] = sanitize_text_field( $block['required'] );
+				$block['multichoice'] = sanitize_text_field( $block['multichoice'] );
+				break;
+			case 'select':
+				$block['required'] = sanitize_text_field( $block['required'] );
+				$block['search'] = sanitize_text_field( $block['search'] );
+				$block['label'] = sanitize_text_field( $block['label'] );
+				$block['placeholder'] = sanitize_text_field( $block['placeholder'] );
+				foreach ($block['elements'] as &$element) {
+					$element = sanitize_text_field( $element );
+				}
+				break;
+			case 'email':
+			case 'numeric':
+			case 'regex':
+			case 'textarea':
+			case 'file':
+			case 'date':
+				foreach ($block as &$value) {
+					$value = sanitize_text_field($value);
+				}
+				break;
+			case 'paragraph':
+				$block['text'] = wp_kses($block['text'], $allowedTags);
+				break;
+			case 'conditional':
+				$this->sanitize_form_block($block['block']);
+				break;
+			default:
+				break;
+		}
+	}
+
 	private function sanitize_form_data( &$data ) {
 		$data['wizard']['title'] = sanitize_text_field( $data['wizard']['title'] );
 		/* Sanitize form Steps */
@@ -538,40 +581,7 @@ class Mondula_Form_Wizard_Admin {
 			foreach ( $step['parts'] as &$part ) {
 				$part['title'] = sanitize_text_field( $part['title'] );
 				foreach ( $part['blocks'] as &$block ) {
-					switch ( $block['type'] ) {
-						case 'radio':
-							foreach ( $block['elements'] as &$element ) {
-								$element['type'] = sanitize_text_field( $element['type'] );
-								$element['value'] = wp_kses_post( $element['value'] );
-							}
-							$block['required'] = sanitize_text_field( $block['required'] );
-							$block['multichoice'] = sanitize_text_field( $block['multichoice'] );
-							break;
-						case 'select':
-							$block['required'] = sanitize_text_field( $block['required'] );
-							$block['search'] = sanitize_text_field( $block['search'] );
-							$block['label'] = sanitize_text_field( $block['label'] );
-							$block['placeholder'] = sanitize_text_field( $block['placeholder'] );
-							foreach ($block['elements'] as &$element) {
-								$element = sanitize_text_field( $element );
-							}
-							break;
-						case 'email':
-						case 'numeric':
-						case 'regex':
-						case 'textarea':
-						case 'file':
-						case 'date':
-							foreach ($block as &$value) {
-								$value = sanitize_text_field($value);
-							}
-							break;
-						case 'paragraph':
-							$block['text'] = wp_kses_post($block['text']);
-							break;
-						default:
-							break;
-					}
+					$this->sanitize_form_block($block);
 				}
 			}
 		}
