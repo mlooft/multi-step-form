@@ -188,9 +188,7 @@ class Mondula_Form_Wizard {
 	public function enqueue_scripts() {
 		// CSS
 		wp_register_style( $this->_token . '-vendor-frontend', esc_url( $this->assets_url ) . 'styles/vendor-frontend.min.css', array(), $this->_version);
-		wp_enqueue_style( $this->_token . '-vendor-frontend' );
 		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'styles/frontend.min.css', array(), $this->_version);
-		wp_enqueue_style( $this->_token . '-frontend' );
 
 		// JavaScript
 		$i18n = $this->get_translation();
