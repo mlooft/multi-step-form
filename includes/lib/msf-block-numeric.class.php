@@ -57,6 +57,7 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 					type="text" 
 					class="fw-text-input" 
 					data-id="numeric"
+					id="msf-numeric-<?php echo str_replace(' ', '-', strtolower($this->_label)); ?>"
 					placeholder="<?php 
 						if ($minimumDefined && $maximumDefined) { 
 							echo $this->_minimum . ' - ' . $this->_maximum;
