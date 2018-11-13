@@ -1,18 +1,12 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 // WP_List_Table is not loaded automatically so we need to load it in our application
 if ( ! class_exists( 'WP_List_Table' ) ) {
 	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
 /**
- * Description of class-mondula-multistep-forms-list-table
+ * Table UI for Forms.
  *
  * @author Lewe Ohlsen <lewe.ohlsen@mondula.com>
  */

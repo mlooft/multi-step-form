@@ -1,6 +1,6 @@
 <?php
 /**
- * Description of class-mondula-multistep-forms-block
+ * Base class for all input blocks.
  *
  * @author alex
  */

@@ -3,7 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Description of class-mondula-multistep-forms-activator
+ * Handles the activation of this plugin.
  *
  * @author alex
  */

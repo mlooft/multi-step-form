@@ -3,7 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Description of class-mondula-multistep-forms-block-submit
+ * Representation of a file upload field.
  *
  * @author alex
  */

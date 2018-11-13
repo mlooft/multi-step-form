@@ -3,7 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Description of class-mondula-multistep-forms-block-date
+ * Representation of a date input field.
  *
  * @author alex
  */

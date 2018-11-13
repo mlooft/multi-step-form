@@ -3,7 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Description of class-mondula-multistep-forms-block-radio
+ * Representation of a select input field.
  *
  * @author alex
  */

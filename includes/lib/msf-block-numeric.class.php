@@ -3,7 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Description of class-mondula-multistep-forms-block-numeric
+ * Representation of a numeric input field.
  *
  * @author nico, marten
  */
