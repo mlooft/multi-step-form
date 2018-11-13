@@ -99,7 +99,6 @@ class Mondula_Form_Wizard {
 		register_activation_hook( $this->file, array( $this, 'install' ) );
 
 		// Load frontend JS & CSS
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
 
 	// Set up service
@@ -110,7 +109,6 @@ class Mondula_Form_Wizard {
 
 		// Load admin JS & CSS
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10, 1 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ), 10, 1 );
 
 		// Load API for generic admin functions
 		if ( is_admin() ) {
@@ -134,18 +132,6 @@ class Mondula_Form_Wizard {
 		do_action( 'msf_loaded' );
 	} // End __construct ()
 
-	/**
-	 * Load frontend CSS.
-	 * @access  public
-	 * @since   1.0.0
-	 * @return void
-	 */
-	public function enqueue_styles () {
-		wp_register_style( $this->_token . '-vendor-frontend', esc_url( $this->assets_url ) . 'styles/vendor-frontend.min.css', array(), $this->_version );
-		wp_enqueue_style( $this->_token . '-vendor-frontend' );
-		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'styles/frontend.min.css', array(), $this->_version );
-		wp_enqueue_style( $this->_token . '-frontend' );
-	}
 
 	/**
 	 * Allows other plugins to get translations
@@ -194,42 +180,38 @@ class Mondula_Form_Wizard {
 	}
 
 	/**
-	 * Load frontend Javascript.
+	 * Load frontend JavaScript and CSS.
 	 * @access  public
 	 * @since   1.0.0
 	 * @return  void
 	 */
 	public function enqueue_scripts() {
+		// CSS
+		wp_register_style( $this->_token . '-vendor-frontend', esc_url( $this->assets_url ) . 'styles/vendor-frontend.min.css', array(), $this->_version);
+		wp_enqueue_style( $this->_token . '-vendor-frontend' );
+		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'styles/frontend.min.css', array(), $this->_version);
+		wp_enqueue_style( $this->_token . '-frontend' );
+
+		// JavaScript
 		$i18n = $this->get_translation();
-		wp_register_script( $this->_token . '-vendor-frontend', esc_url( $this->assets_url ) . 'scripts/vendor-frontend' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
-		wp_enqueue_script( $this->_token . '-vendor-frontend' );
-		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'scripts/frontend' . $this->script_suffix . '.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->_version );
-		wp_enqueue_script( $this->_token . '-frontend' );
+		wp_register_script( $this->_token . '-vendor-frontend', esc_url( $this->assets_url ) . 'scripts/vendor-frontend' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version, true);
+		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'scripts/frontend' . $this->script_suffix . '.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->_version, true);
 		$ajax = array(
 			'i18n' => $i18n,
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 			'nonce' => wp_create_nonce( $this->_token ),
 		);
-		wp_localize_script( $this->_token . '-frontend', 'ajax', $ajax );
+		wp_localize_script( $this->_token . '-frontend', 'ajax', $ajax);
 	}
 
 	/**
-	 * Load admin CSS.
-	 * @access  public
-	 * @since   1.0.0
-	 * @return  void
-	 */
-	public function admin_enqueue_styles ( $hook = '' ) {
-		wp_enqueue_style( $this->_token . '-admin' );
-	}
-
-	/**
-	 * Load admin Javascript.
+	 * Load admin JavaScript and CSS.
 	 * @access  public
 	 * @since   1.0.0
 	 * @return  void
 	 */
 	public function admin_enqueue_scripts ( $hook = '' ) {
+		wp_enqueue_style( $this->_token . '-admin' );
 		wp_enqueue_script( $this->_token . '-admin' );
 	}
 

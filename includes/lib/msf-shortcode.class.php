@@ -52,6 +52,9 @@ class Mondula_Form_Wizard_Shortcode {
 	**/
 	public function handler( $atts ) {
 
+		wp_enqueue_script($this->_token . '-vendor-frontend');
+		wp_enqueue_script( $this->_token . '-frontend');
+
 		$id = $atts['id'];
 
 		if ( ! isset( $atts['id'] ) ) {
