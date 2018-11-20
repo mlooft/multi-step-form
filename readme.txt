@@ -84,6 +84,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 = 1.3.2 =
 * Sanitazation changed: Restricted HTML in paragraphs and radio buttons
 * JavaScript gets only loaded on pages using the form
+* Custom HTML ids for the most input fields
 
 = 1.3.1 =
 * Bugfix: email validation on android
