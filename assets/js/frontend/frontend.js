@@ -1120,6 +1120,7 @@ jQuery(document).ready(function ($) {
 			dateFormat: format,
 			changeMonth: true,
 			changeYear: true,
+			yearRange: '-100:+20',
 		});
 	}
 
