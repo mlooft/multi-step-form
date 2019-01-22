@@ -83,7 +83,10 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 
 = 1.3.3 =
 * HTML email header span changed
-* Bugifx: Backend i-icons were misplaced
+* Bugfix: Backend i-icons were misplaced
+* CSS Chrome icon fix
+* Datepicker year range resized
+* Removed need for Google Fonts
 
 = 1.3.2 =
 * Sanitazation changed: Restricted HTML in paragraphs and radio buttons
