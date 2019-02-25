@@ -10,7 +10,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Guide your customers with the animated progress bar. Generate dynamic multi step forms. Divide longer forms into small steps for better usability.
 
 == Description ==
-Multi Step Form has a drag & drop enabled form builder for quick and intuitive creation of nice-looking multi step forms. Forms can be embedded on any page or post with shortcodes.
+Multi Step Form has a drag & drop enabled form builder for quick and intuitive creation of nice-looking multi step forms. Forms can be embedded on any page or post with shortcodes or with Gutenberg blocks.
 
 ### Getting started
 **[Read our documentation](https://mondula.com/multi-step-form-documentation/ "Multi Step Form | Beginners Tutorial")**
@@ -48,6 +48,7 @@ The backend's structure is simple. Even less technical users can quickly underst
 *   **Calendar item**- Styled datepicker included.
 *   **Show summary**- At the end of each form you can display a short summary.
 *   **Multisite compatibility**- The plugin works on WordPress multisite installs.
+*   **reCAPTCHA v3**- You can enable reCAPTCHA v3 validation for your forms. 
 
 ### Watch the video
 [youtube http://www.youtube.com/watch?v=2hyF1SDewok]
@@ -83,6 +84,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 
 = 1.4.0 =
 * Gutenberg support
+* reCAPTCHA v3 support
 * JavaScript Bugfixes
 * Code cleanup
 

@@ -178,7 +178,18 @@ class Mondula_Form_Wizard_Wizard {
 		if ( $count > 5 ) {
 			$classes .= ' fw-more-than-five';
 		}
-		$show_summary = Mondula_Form_Wizard_Wizard::fw_get_option( 'showsummary' ,'fw_settings_email', 'on' ) === 'on';
+		$show_summary = Mondula_Form_Wizard_Wizard::fw_get_option('showsummary' ,'fw_settings_email', 'on') === 'on';
+		$use_captcha = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_enable' ,'fw_settings_captcha', 'on') === 'on';
+		$captcha_key = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_sitekey' ,'fw_settings_captcha', '');
+
+		if ($use_captcha) {
+			$recaptcha_url = add_query_arg(
+				array('render' => $captcha_key),
+				'https://www.google.com/recaptcha/api.js'
+			);
+			wp_enqueue_script('google-recaptcha', $recaptcha_url, array(), '3.0', true);
+		}
+
 		ob_start();
 		?>
 		<div id="multi-step-form" class="<?php echo $classes; ?>" data-stepCount="<?php echo count( $this->_steps ); ?>" data-wizardid="<?php echo $wizard_id; ?>">
@@ -224,6 +235,15 @@ class Mondula_Form_Wizard_Wizard {
 								</div>
 							</div>
 							<?php
+							}
+
+							if ($use_captcha) {
+							?>
+								<input 
+									type="hidden"
+									class="msf-recaptcha-token"
+									data-sitekey="<?php echo $captcha_key; ?>">
+							<?php 
 							}
 							?>
 							<button type="button" class="fw-btn-submit"><?php _e( 'Submit', 'multi-step-form' ); ?></button>

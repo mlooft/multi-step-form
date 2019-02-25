@@ -916,6 +916,7 @@ jQuery(document).ready(function ($) {
 
 	function sendEmail(summary, email, files, reg) {
 		var id = $('#multi-step-form').attr('data-wizardid');
+		var token = $('.msf-recaptcha-token').val();
 		$('.fw-btn-submit').html('<i class="fa fa-spinner"></i> ' + ajax.i18n.sending);
 		$.post(
 			ajax.ajaxurl, {
@@ -925,7 +926,8 @@ jQuery(document).ready(function ($) {
 				email: email,
 				reg: reg,
 				attachments: files,
-				nonce: ajax.nonce
+				nonce: ajax.nonce,
+				recaptchaToken: token,
 			},
 			function (resp) {
 				var url = $('.fw-container').attr('data-redirect');
@@ -1181,14 +1183,27 @@ jQuery(document).ready(function ($) {
 		updateSummary($('.fw-wizard'));
 	}
 
+	function validateReCaptcha() {
+		var tokenFields = $('.msf-recaptcha-token');
+
+		if (tokenFields.size() > 0) {
+			var siteKey = tokenFields.data('sitekey');
+			window.grecaptcha.ready(function () {
+				window.grecaptcha.execute(siteKey, {action: 'homepage'}).then(function(token) {
+					tokenFields.val(token);
+				});
+			});
+		}
+	}
+
 	function init() {
 		// setInterval(poll, 50);
 		$(document).ready(function (evt) {
 			if ($('#multi-step-form').length) {
 				setup();
+				validateReCaptcha();
 			}
 		});
-
 	}
 
 	init();

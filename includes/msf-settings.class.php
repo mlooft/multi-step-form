@@ -51,6 +51,10 @@ class Mondula_Form_Wizard_Settings {
 				'id' => 'fw_settings_styling',
 				'title' => __( 'Styling', 'multi-step-form' ),
 			),
+			array(
+				'id' => 'fw_settings_captcha',
+				'title' => __( 'Captcha', 'multi-step-form' ),
+			),
 		);
 		/* If plus is active, add menu section. */
 		if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
@@ -160,6 +164,29 @@ class Mondula_Form_Wizard_Settings {
 					'desc' => __( 'Choose a color for the buttons', 'multi-step-form' ),
 					'type' => 'color',
 					'default' => '#1d7071',
+				),
+			),
+			'fw_settings_captcha' => array(
+				array(
+					'name' => 'recaptcha_enable',
+					'label' => __( 'reCAPTCHA', 'multi-step-form' ),
+					'desc' => __( 'Enable reCAPTCHA v3', 'multi-step-form' ),
+					'type' => 'checkbox',
+					'default' => 'off',
+				),
+				array(
+					'name' => 'recaptcha_sitekey',
+					'label' => __( 'reCAPTCHA site key', 'multi-step-form' ),
+					'desc' => __( 'Public reCAPTCHA site key', 'multi-step-form' ),
+					'type' => 'text',
+					'default' => '',
+				),
+				array(
+					'name' => 'recaptcha_secretkey',
+					'label' => __( 'reCAPTCHA secret key', 'multi-step-form' ),
+					'desc' => __( 'Private reCAPTCHA validation key', 'multi-step-form' ),
+					'type' => 'text',
+					'default' => '',
 				),
 			),
 		);

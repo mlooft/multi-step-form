@@ -206,6 +206,36 @@ class Mondula_Form_Wizard_Shortcode {
 		return $data;
 	}
 
+	private function verifyCaptcha() {
+		$token = isset($_POST['recaptchaToken']) ? trim($_POST['recaptchaToken']) : '';
+
+		if (empty($token)) {
+			return false;
+		}
+
+		$secret = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_secretkey' ,'fw_settings_captcha', '');
+
+		$remote = wp_remote_post(
+			esc_url_raw('https://www.google.com/recaptcha/api/siteverify'), 
+			array(
+				'body' => array(
+					'secret' => $secret,
+					'response' => $token,
+				)
+			)
+		);
+
+		if (wp_remote_retrieve_response_code($remote) != 200) {
+			return false;
+		}
+
+		$remote_data = json_decode(wp_remote_retrieve_body($remote), true);
+
+		$score = isset($remote_data['score']) ? $remote_data['score'] : 0;
+
+		return $score > 0.5;
+	}
+
 	public function fw_send_email() {
 		global $phpmailer;
 
@@ -221,11 +251,20 @@ class Mondula_Form_Wizard_Shortcode {
 
 		if ( wp_verify_nonce( $nonce, $this->_token ) ) {
 			if ( ! empty( $data ) ) {
+				$use_captcha = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_enable' ,'fw_settings_captcha', 'on') === 'on';
+
+				if ($use_captcha) {
+					if (!$this->verifyCaptcha()) {
+						wp_send_json_error('Captcha not verified.');
+						return;
+					}
+				}
+
 				/* Send data to PRO */
-				do_action( 'msfp_save', $id, $data );
+				do_action('msfp_save', $id, $data);
 				/* Register user */
-				if ( ! empty( $reg ) ) {
-					do_action( 'msfp_register', $reg, $data, $id );
+				if (!empty($reg)) {
+					do_action('msfp_register', $reg, $data, $id);
 				}
 
 				/* Send email */
@@ -261,7 +300,7 @@ class Mondula_Form_Wizard_Shortcode {
 				// delete temporary files from webserver after mail is sent
 				$this->delete_files( $attachments );
 
-				wp_die( $content );
+				wp_send_json_success();
 			} else {
 				wp_send_json_error( 'Data is empty.' );
 			}
