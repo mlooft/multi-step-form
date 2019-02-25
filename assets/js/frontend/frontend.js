@@ -92,7 +92,7 @@ jQuery(document).ready(function ($) {
 		var stepInt = parseInt(step, 10);
 		var $circle = $wizard.find('.fwp-progress-bar .fwp-circle[data-id="' + step + '"]');
 		var $bar = $wizard.find('.fwp-progress-bar .fwp-bar[data-id="' + step + '"]');
-		if (validateStep(step)) {
+		if (validateStep($wizard.find('.fw-current'))) {
 			$wizard.find('.fw-progress-step[data-id="' + step + '"]').addClass('fw-visited');
 			if (stepInt == 4) {
 				$wizard.find('.fw-progress-bar').addClass('fw-step-after-fifth');
@@ -666,10 +666,10 @@ jQuery(document).ready(function ($) {
 		return valid;
 	}
 
-	function validateStep(idx) {
+	function validateStep($step) {
 		var valid = true;
 		var stepValid = true;
-		$('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-required="true"]:visible').each(
+		$step.find('.fw-step-block[data-required="true"]:visible').each(
 			function (i, element) {
 				var $element = $(element);
 				var type = $element.attr('data-type');
@@ -720,7 +720,7 @@ jQuery(document).ready(function ($) {
 		);
 
 		// validate filled email fields
-		$('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-type="fw-email"]').each(
+		$step.find('.fw-step-block[data-type="fw-email"]').each(
 			function (i, element) {
 				var $element = $(element);
 				if ($element.find('.fw-text-input').val() != "") {
@@ -733,7 +733,7 @@ jQuery(document).ready(function ($) {
 		);
 
 		// validate filled numeric fields
-		$('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-type="fw-numeric"]').each(
+		$step.find('.fw-step-block[data-type="fw-numeric"]').each(
 			function (i, element) {
 				var $element = $(element);
 				if ($element.find('.fw-text-input').val() != "") {
@@ -746,7 +746,7 @@ jQuery(document).ready(function ($) {
 		);
 
 		// validate filled regex fields
-		$('.fw-wizard-step[data-stepid="' + idx + '"] .fw-step-block[data-type="fw-regex"]').each(
+		$step.find('.fw-step-block[data-type="fw-regex"]').each(
 			function (i, element) {
 				var $element = $(element);
 				if ($element.find('.fw-text-input').val() != "") {
@@ -863,14 +863,14 @@ jQuery(document).ready(function ($) {
 
 	function validate($wizard) {
 		// reset fw-block-invalid flags
-		$('.fw-block-invalid').each(function (i, element) {
+		$wizard.find('.fw-block-invalid').each(function (i, element) {
 			$(element).removeClass('fw-block-invalid');
 		})
 
 		var formValid = true;
-		$('.fw-wizard-step').each(function (idx, element) {
+		$wizard.find('.fw-wizard-step').each(function (idx, element) {
 			var $step = $(element);
-			if (!validateStep(idx)) {
+			if (!validateStep($step)) {
 				formValid = false;
 			}
 		});
