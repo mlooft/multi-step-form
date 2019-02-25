@@ -58,21 +58,13 @@ class Mondula_Form_Wizard_Shortcode {
 		wp_enqueue_script($this->_token . '-vendor-frontend');
 		wp_enqueue_script( $this->_token . '-frontend');
 
-		$id = $atts['id'];
-
-		if ( ! isset( $atts['id'] ) ) {
+		if (!isset($atts['id'])) {
 			return;
 		}
 
-		$wizard = $this->get_wizard( $id );
+		$id = $atts['id'];
 
-		// TODO: Brauchen wir das?
-		$data = array();
-		$data['date'] = current_time( 'mysql' );
-		$data['title'] = 'Generated';
-		$data['wizard'] = $wizard;
-
-		return $wizard->render( $id );
+		return $this->get_wizard($id)->render($id);
 	}
 
 	/**
