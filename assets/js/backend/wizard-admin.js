@@ -1320,7 +1320,8 @@
 
 			// make elements sticky
 			$(window).scroll(function () {
-				var offset = $('.nav-tab-wrapper').height() + 19;
+				var offset = $('.nav-tab-wrapper').position().top + $('.nav-tab-wrapper').height() + 9;
+				
 				var scrollTop = $(this).scrollTop();
 				if (scrollTop > offset) {
 					$(elementsContainer).addClass('fw-sticky');
