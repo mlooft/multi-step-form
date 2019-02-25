@@ -30,6 +30,7 @@ class Mondula_Form_Wizard_Shortcode {
 
 		add_shortcode( self::CODE_OLD, array( $this, 'handler' ) );
 		add_shortcode( self::CODE, array( $this, 'handler' ) );
+		multi_step_form_block_init(array( $this, 'handler' ));
 
 		add_action('wp_ajax_fw_send_email', array( $this, 'fw_send_email' ) );
 		add_action('wp_ajax_nopriv_fw_send_email', array( $this, 'fw_send_email' ) );

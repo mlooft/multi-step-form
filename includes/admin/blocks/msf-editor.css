@@ -1,0 +1,16 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.msf-block {
+    background-color: #1d7071;
+    color: #FFF;
+    font-family: Verdana, Arial, Helvetica,  sans-serif;
+    padding: 10px;
+}
+
+.msf-block > p, .msf-block > h4 {
+    margin: 2px;
+}
