@@ -930,14 +930,19 @@ jQuery(document).ready(function ($) {
 				recaptchaToken: token,
 			},
 			function (resp) {
-				var url = $('.fw-container').attr('data-redirect');
-				if (url) {
-					// redirect to thankyou page
-					window.onbeforeunload = null;
-					window.location.href = url;
+				if (resp.success) {
+					var url = $('.fw-container').attr('data-redirect');
+					if (url) {
+						// redirect to thankyou page
+						window.onbeforeunload = null;
+						window.location.href = url;
+					} else {
+						$('.fw-btn-submit').addClass('fw-submit-success').html('<i class="fa fa-check-circle"></i> ' + ajax.i18n.submitSuccess);
+						$('.fw-btn-submit').unbind("click");
+					}
 				} else {
-					$('.fw-btn-submit').addClass('fw-submit-success').html('<i class="fa fa-check-circle"></i> ' + ajax.i18n.submitSuccess);
-					$('.fw-btn-submit').unbind("click");
+					$('.fw-btn-submit').addClass('fw-submit-fail').html('<i class="fa fa-times-circle"></i> ' + ajax.i18n.submitError);
+					warn('response', resp);
 				}
 			}
 		).fail(function (resp) {

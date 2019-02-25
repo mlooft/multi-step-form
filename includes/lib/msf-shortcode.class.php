@@ -233,7 +233,7 @@ class Mondula_Form_Wizard_Shortcode {
 
 		$score = isset($remote_data['score']) ? $remote_data['score'] : 0;
 
-		return $score > 0.5;
+		return $score > 0.4;
 	}
 
 	public function fw_send_email() {
