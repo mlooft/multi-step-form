@@ -357,31 +357,31 @@ msgstr ""
 msgid "max. "
 msgstr ""
 
-#: includes/lib/msf-wizard.class.php:221
+#: includes/lib/msf-wizard.class.php:232
 msgid "SHOW SUMMARY"
 msgstr ""
 
-#: includes/lib/msf-wizard.class.php:223, includes/msf.class.php:161
+#: includes/lib/msf-wizard.class.php:234, includes/msf.class.php:161
 msgid "Some required Fields are empty"
 msgstr ""
 
-#: includes/lib/msf-wizard.class.php:223, includes/msf.class.php:162
+#: includes/lib/msf-wizard.class.php:234, includes/msf.class.php:162
 msgid "Please check the highlighted fields."
 msgstr ""
 
-#: includes/lib/msf-wizard.class.php:229
+#: includes/lib/msf-wizard.class.php:249
 msgid "Submit"
 msgstr ""
 
-#: includes/lib/msf-wizard.class.php:244
+#: includes/lib/msf-wizard.class.php:264
 msgid "Previous Step"
 msgstr ""
 
-#: includes/lib/msf-wizard.class.php:245
+#: includes/lib/msf-wizard.class.php:265
 msgid "Next Step"
 msgstr ""
 
-#: includes/lib/msf-wizard.class.php:319
+#: includes/lib/msf-wizard.class.php:339
 msgid "End of form submission"
 msgstr ""
 
@@ -389,175 +389,203 @@ msgstr ""
 msgid "Styling"
 msgstr ""
 
-#: includes/msf-settings.class.php:60
+#: includes/msf-settings.class.php:56
+msgid "Captcha"
+msgstr ""
+
+#: includes/msf-settings.class.php:64
 msgid "Form Entries"
 msgstr ""
 
-#: includes/msf-settings.class.php:65
+#: includes/msf-settings.class.php:69
 msgid "Special Fields"
 msgstr ""
 
-#: includes/msf-settings.class.php:70
+#: includes/msf-settings.class.php:74
 msgid "User Registration"
 msgstr ""
 
-#: includes/msf-settings.class.php:75
+#: includes/msf-settings.class.php:79
 msgid "PLUS"
 msgstr ""
 
-#: includes/msf-settings.class.php:80
+#: includes/msf-settings.class.php:84
 msgid "GET MSF-PLUS"
 msgstr ""
 
-#: includes/msf-settings.class.php:97
+#: includes/msf-settings.class.php:101
 msgid "Mail Format"
 msgstr ""
 
-#: includes/msf-settings.class.php:98
+#: includes/msf-settings.class.php:102
 msgid "Choose formatting for form emails"
 msgstr ""
 
-#: includes/msf-settings.class.php:108
+#: includes/msf-settings.class.php:112
 msgid "Summary"
 msgstr ""
 
-#: includes/msf-settings.class.php:109
+#: includes/msf-settings.class.php:113
 msgid "Display Summary at the end of each form"
 msgstr ""
 
-#: includes/msf-settings.class.php:115
+#: includes/msf-settings.class.php:119
 msgid "CC"
 msgstr ""
 
-#: includes/msf-settings.class.php:116
+#: includes/msf-settings.class.php:120
 msgid "Send copy of submitted data to user"
 msgstr ""
 
-#: includes/msf-settings.class.php:124
+#: includes/msf-settings.class.php:128
 msgid "Progress Bar"
 msgstr ""
 
-#: includes/msf-settings.class.php:125
+#: includes/msf-settings.class.php:129
 msgid "Show progress bar"
 msgstr ""
 
-#: includes/msf-settings.class.php:131
+#: includes/msf-settings.class.php:135
 msgid "Boxed Layout"
 msgstr ""
 
-#: includes/msf-settings.class.php:132
+#: includes/msf-settings.class.php:136
 msgid "Boxed frontend styling. Uncheck the checkbox to get a plain layout."
 msgstr ""
 
-#: includes/msf-settings.class.php:138
+#: includes/msf-settings.class.php:142
 msgid "Active Step Color"
 msgstr ""
 
-#: includes/msf-settings.class.php:139
+#: includes/msf-settings.class.php:143
 msgid "Choose a color for the active step"
 msgstr ""
 
-#: includes/msf-settings.class.php:145
+#: includes/msf-settings.class.php:149
 msgid "Visited Step Color"
 msgstr ""
 
-#: includes/msf-settings.class.php:146
+#: includes/msf-settings.class.php:150
 msgid "Choose a color for the completed steps"
 msgstr ""
 
-#: includes/msf-settings.class.php:152
+#: includes/msf-settings.class.php:156
 msgid "Next Step Color"
 msgstr ""
 
-#: includes/msf-settings.class.php:153
+#: includes/msf-settings.class.php:157
 msgid "Choose a color for the steps to follow"
 msgstr ""
 
-#: includes/msf-settings.class.php:159
+#: includes/msf-settings.class.php:163
 msgid "Button Color"
 msgstr ""
 
-#: includes/msf-settings.class.php:160
+#: includes/msf-settings.class.php:164
 msgid "Choose a color for the buttons"
 msgstr ""
 
-#: includes/msf-settings.class.php:171
-msgid "License Key"
-msgstr ""
-
 #: includes/msf-settings.class.php:172
-msgid "Please enter your MSF-Plus license key.<br> Having trouble? <a href=\"mailto:info@mondula.com\">Leave us a message</a>."
+msgid "reCAPTCHA"
 msgstr ""
 
-#: includes/msf-settings.class.php:183
-msgid "Enable entry saving"
+#: includes/msf-settings.class.php:173
+msgid "Enable reCAPTCHA v3"
 msgstr ""
 
-#: includes/msf-settings.class.php:184
-msgid "Save submitted forms to the database"
+#: includes/msf-settings.class.php:179
+msgid "reCAPTCHA site key"
 msgstr ""
 
-#: includes/msf-settings.class.php:190
-msgid "Entries per page"
+#: includes/msf-settings.class.php:180
+msgid "Public reCAPTCHA site key"
 msgstr ""
 
-#: includes/msf-settings.class.php:191
-msgid "How many entries to show on each page in the backend"
+#: includes/msf-settings.class.php:186
+msgid "reCAPTCHA secret key"
 msgstr ""
 
-#: includes/msf-settings.class.php:197
-msgid "CSV Export: Separator"
+#: includes/msf-settings.class.php:187
+msgid "Private reCAPTCHA validation key"
 msgstr ""
 
 #: includes/msf-settings.class.php:198
+msgid "License Key"
+msgstr ""
+
+#: includes/msf-settings.class.php:199
+msgid "Please enter your MSF-Plus license key.<br> Having trouble? <a href=\"mailto:info@mondula.com\">Leave us a message</a>."
+msgstr ""
+
+#: includes/msf-settings.class.php:210
+msgid "Enable entry saving"
+msgstr ""
+
+#: includes/msf-settings.class.php:211
+msgid "Save submitted forms to the database"
+msgstr ""
+
+#: includes/msf-settings.class.php:217
+msgid "Entries per page"
+msgstr ""
+
+#: includes/msf-settings.class.php:218
+msgid "How many entries to show on each page in the backend"
+msgstr ""
+
+#: includes/msf-settings.class.php:224
+msgid "CSV Export: Separator"
+msgstr ""
+
+#: includes/msf-settings.class.php:225
 msgid "To avoid early column breaks, you should set your own column separator"
 msgstr ""
 
-#: includes/msf-settings.class.php:205
+#: includes/msf-settings.class.php:232
 msgid "Highlight unread"
 msgstr ""
 
-#: includes/msf-settings.class.php:206
+#: includes/msf-settings.class.php:233
 msgid "Print new entries in bold"
 msgstr ""
 
-#: includes/msf-settings.class.php:215
+#: includes/msf-settings.class.php:242
 msgid "Enable conditional blocks"
 msgstr ""
 
-#: includes/msf-settings.class.php:216
+#: includes/msf-settings.class.php:243
 msgid "Display some form elements only when others are filled."
 msgstr ""
 
-#: includes/msf-settings.class.php:222
+#: includes/msf-settings.class.php:249
 msgid "Enable regex blocks"
 msgstr ""
 
-#: includes/msf-settings.class.php:223
+#: includes/msf-settings.class.php:250
 msgid "Enter your custom regex for validation."
 msgstr ""
 
-#: includes/msf-settings.class.php:232
+#: includes/msf-settings.class.php:259
 msgid "Enable user registration"
 msgstr ""
 
-#: includes/msf-settings.class.php:233
+#: includes/msf-settings.class.php:260
 msgid "Enable the registration block. You need to add it to each form."
 msgstr ""
 
-#: includes/msf-settings.class.php:239
+#: includes/msf-settings.class.php:266
 msgid "Notify new users"
 msgstr ""
 
-#: includes/msf-settings.class.php:240
+#: includes/msf-settings.class.php:267
 msgid "Email login credentials to a newly-registered user."
 msgstr ""
 
-#: includes/msf-settings.class.php:246
+#: includes/msf-settings.class.php:273
 msgid "Save Metadata"
 msgstr ""
 
-#: includes/msf-settings.class.php:247
+#: includes/msf-settings.class.php:274
 msgid "Save the filled forms as metadata along with registered/registering users."
 msgstr ""
 

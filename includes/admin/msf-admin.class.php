@@ -125,7 +125,7 @@ class Mondula_Form_Wizard_Admin {
 			$json = $this->_wizard_service->get_as_json( $id );
 			$i18n = $this->get_translation();
 
-			wp_register_script( $this->_token . '-backend', esc_url( $this->_assets_url ) . 'scripts/backend' . $this->_script_suffix . '.js', array( 'postbox', 'jquery-ui-dialog', 'jquery-ui-sortable', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-tooltip', 'jquery' ), $this->_version );
+			wp_register_script( $this->_token . '-backend', esc_url( $this->_assets_url ) . 'scripts/msf-backend' . $this->_script_suffix . '.js', array( 'postbox', 'jquery-ui-dialog', 'jquery-ui-sortable', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-tooltip', 'jquery' ), $this->_version );
 			$ajax = array(
 				'i18n' => $i18n,
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -136,7 +136,7 @@ class Mondula_Form_Wizard_Admin {
 			wp_localize_script( $this->_token . '-backend', 'wizard', $ajax ); // array( 'i18n' => $i18n, 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'json' => $json ) );
 			wp_enqueue_script( $this->_token . '-backend' );
 
-			wp_register_style( $this->_token . '-backend', esc_url( $this->_assets_url ) . 'styles/backend' . $this->_script_suffix . '.css', array(), $this->_version );
+			wp_register_style( $this->_token . '-backend', esc_url( $this->_assets_url ) . 'styles/msf-backend' . $this->_script_suffix . '.css', array(), $this->_version );
 			wp_enqueue_style( $this->_token . '-backend' );
 		}
 	}
