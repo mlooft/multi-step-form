@@ -121,11 +121,11 @@ function watch() {
 
 gulp.task('default', gulp.series(gulp.parallel('js', 'css', 'fonts', 'pot'), watch));
 
-gulp.task('clean:production', function () {
-  return del.sync('dist/**/*');
-});
+gulp.task('clean:production', gulp.series(function cleanProd() {
+  return del('dist/**/*');
+}));
 
-gulp.task('css-frontend:production', gulp.series('clean:production', function () {
+gulp.task('css-frontend:production', gulp.series(function cssFrontendProd() {
   return gulp.src('assets/css/frontend/frontend.less')
     .pipe(less())
     .pipe(concat('msf-frontend.min.css'))
@@ -136,7 +136,7 @@ gulp.task('css-frontend:production', gulp.series('clean:production', function ()
     .pipe(gulp.dest('dist/styles'));
 }));
 
-gulp.task('css-frontend-vendor:production', gulp.series('clean:production', function () {
+gulp.task('css-frontend-vendor:production', gulp.series(function cssFrontendVendorProd() {
   var bowerFiles = mainBowerFiles('**/*.css');
   return gulp.src(['assets/vendor/css/*.css'].concat(bowerFiles)) // , mainBowerFiles('**/*.css')])
     .pipe(concat('msf-vendor-frontend.min.css'))
@@ -147,7 +147,7 @@ gulp.task('css-frontend-vendor:production', gulp.series('clean:production', func
     .pipe(gulp.dest('dist/styles'));
 }));
 
-gulp.task('css-backend:production', gulp.series('clean:production', function () {
+gulp.task('css-backend:production', gulp.series(function cssBackendProd() {
   return gulp.src(['bower_components/font-awesome/css/font-awesome.css', 'assets/css/backend/*.css', 'assets/css/backend/*.less'])
     .pipe(less())
     .pipe(concat('msf-backend.min.css'))
@@ -158,7 +158,7 @@ gulp.task('css-backend:production', gulp.series('clean:production', function () 
     .pipe(gulp.dest('dist/styles'));
 }));
 
-gulp.task('js-frontend:production', gulp.series('clean:production', function () {
+gulp.task('js-frontend:production', gulp.series( function jsFrontendProd() {
   return gulp.src(['assets/js/frontend/*.js'])
     .pipe(concat('msf-frontend.min.js'))
     .pipe(stripDebug())
@@ -166,7 +166,7 @@ gulp.task('js-frontend:production', gulp.series('clean:production', function () 
     .pipe(gulp.dest('dist/scripts'));
 }));
 
-gulp.task('js-frontend-vendor:production', gulp.series('clean:production', function () {
+gulp.task('js-frontend-vendor:production', gulp.series(function jsFrontendVendorProd() {
   return gulp.src(mainBowerFiles('**/*.js'))
     .pipe(concat('msf-vendor-frontend.min.js'))
     .pipe(stripDebug())
@@ -174,7 +174,7 @@ gulp.task('js-frontend-vendor:production', gulp.series('clean:production', funct
     .pipe(gulp.dest('dist/scripts'));
 }));
 
-gulp.task('js-backend:production', gulp.series('clean:production', function () {
+gulp.task('js-backend:production', gulp.series(function jsBackendProd() {
   return gulp.src(['assets/js/backend/*.js'])
     .pipe(concat('msf-backend.min.js'))
     .pipe(stripDebug())
@@ -186,13 +186,13 @@ gulp.task('styles:production', gulp.parallel('css-frontend:production', 'css-fro
 
 gulp.task('scripts:production', gulp.parallel('js-frontend:production', 'js-frontend-vendor:production', 'js-backend:production'));
 
-gulp.task('build:production', gulp.parallel('scripts:production', 'styles:production', 'fonts', 'pot'));
+gulp.task('build:production', gulp.series('clean:production', gulp.parallel('scripts:production', 'styles:production', 'fonts', 'pot')));
 
-gulp.task('clean:zip', function () {
-  return del.sync('pkg/**/*');
-})
+gulp.task('clean:zip', function cleanZip() {
+  return del(['pkg/**/*']);
+});
 
-gulp.task('copy:zip', gulp.series('clean:zip', 'build:production', function () {
+gulp.task('copy:zip', gulp.series('clean:zip', 'build:production', function copyZip() {
   return gulp.src(
       [
         'dist/**',

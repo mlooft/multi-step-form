@@ -5,7 +5,7 @@
   "homepage": "https://github.com/mlooft/multi-step-form",
   "main": "gulpfile.js",
   "devDependencies": {
-    "del": "^2.2.2",
+    "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-concat": "*",
     "gulp-debug-streams": "*",
