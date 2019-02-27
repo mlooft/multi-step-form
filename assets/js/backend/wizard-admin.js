@@ -90,7 +90,7 @@
 		radioHtml += '<div class="fw-radio-option-container">';
 		for (i = 0, n = radio.elements.length; i < n; i++) {
 			element = radio.elements[i];
-			log('element', element);
+			// log('element', element);
 			if (element.type === 'option') {
 				if (i == 1) {
 					radioHtml += '<label>' + wizard.i18n.radio.options + '</label>';
@@ -1079,7 +1079,7 @@
 				$part.find('.inside').append(block);
 				setupClickHandlers();
 				if (msfp) {
-					setupConditionals(block);
+					setupConditionals($('.fw-step-block').index(block));
 				}
 			});
 			// SELECT
@@ -1093,7 +1093,7 @@
 				$part.find('.inside').append(block);
 				setupClickHandlers();
 				if (msfp) {
-					setupConditionals(block);
+					setupConditionals($('.fw-step-block').index(block));
 				}
 			});
 
@@ -1109,7 +1109,7 @@
 				$part.find('.inside').append(block);
 				setupClickHandlers();
 				if (msfp) {
-					setupConditionals(block);
+					setupConditionals($('.fw-step-block').index(block));
 				}
 			});
 			// EMAIL
@@ -1124,7 +1124,7 @@
 				$part.find('.inside').append(block);
 				setupClickHandlers();
 				if (msfp) {
-					setupConditionals(block);
+					setupConditionals($('.fw-step-block').index(block));
 				}
 			});
 			// NUMERIC
@@ -1141,7 +1141,7 @@
 				$part.find('.inside').append(block);
 				setupClickHandlers();
 				if (msfp) {
-					setupConditionals(block);
+					setupConditionals($('.fw-step-block').index(block));
 				}
 			});
 			// FILE UPLOAD
@@ -1168,7 +1168,7 @@
 				$part.find('.inside').append(block);
 				setupClickHandlers();
 				if (msfp) {
-					setupConditionals(block);
+					setupConditionals($('.fw-step-block').index(block));
 				}
 			});
 			// DATE
@@ -1183,7 +1183,7 @@
 				$part.find('.inside').append(block);
 				setupClickHandlers();
 				if (msfp) {
-					setupConditionals(block);
+					setupConditionals($('.fw-step-block').index(block));
 				}
 			});
 			// PARAGRAPH
@@ -1197,7 +1197,7 @@
 				$part.find('.inside').append(block);
 				setupClickHandlers();
 				if (msfp) {
-					setupConditionals(block);
+					setupConditionals($('.fw-step-block').index(block));
 				}
 			});
 			// REGEX
@@ -1213,7 +1213,7 @@
 				$part.find('.inside').append(block);
 				setupClickHandlers();
 				if (msfp) {
-					setupConditionals(block);
+					setupConditionals($('.fw-step-block').index(block));
 				}
 			});
 			// REGISTRATION
