@@ -13,6 +13,10 @@
 function multi_step_form_block_init($handler) {
     $dir = dirname( __FILE__ );
 
+    if (!function_exists("register_block_type")) {
+        return;
+    }
+
     $block_js = 'msf-block.js';
     wp_register_script(
         'msf-block-editor',
