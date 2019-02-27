@@ -251,7 +251,7 @@ class Mondula_Form_Wizard_Shortcode {
 
 		if ( wp_verify_nonce( $nonce, $this->_token ) ) {
 			if ( ! empty( $data ) ) {
-				$use_captcha = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_enable' ,'fw_settings_captcha', 'on') === 'on';
+				$use_captcha = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_enable' ,'fw_settings_captcha') === 'on';
 
 				if ($use_captcha) {
 					if (!$this->verifyCaptcha()) {
