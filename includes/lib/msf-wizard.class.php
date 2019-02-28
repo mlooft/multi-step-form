@@ -179,7 +179,7 @@ class Mondula_Form_Wizard_Wizard {
 			$classes .= ' fw-more-than-five';
 		}
 		$show_summary = Mondula_Form_Wizard_Wizard::fw_get_option('showsummary' ,'fw_settings_email', 'on') === 'on';
-		$use_captcha = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_enable' ,'fw_settings_captcha', 'on') === 'on';
+		$use_captcha = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_enable' ,'fw_settings_captcha') === 'on';
 		$captcha_key = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_sitekey' ,'fw_settings_captcha', '');
 
 		if ($use_captcha) {
