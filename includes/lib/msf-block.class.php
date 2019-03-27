@@ -16,53 +16,34 @@ abstract class Mondula_Form_Wizard_Block {
 
 	abstract function render( $ids );
 
-	public static function from_aa( $block, $current_version, $serialized_version ) {
-		switch ( $block['type'] ) {
-			case 'radio':
-				return Mondula_Form_Wizard_Block_Radio::from_aa( $block, $current_version, $serialized_version );
-				break;
-			case 'select':
-				return Mondula_Form_Wizard_Block_Select::from_aa( $block, $current_version, $serialized_version );
-				break;
-			case 'text':
-				return Mondula_Form_Wizard_Block_Text::from_aa( $block, $current_version, $serialized_version );
-				break;
-			case 'textarea':
-				return Mondula_Form_Wizard_Block_Textarea::from_aa( $block, $current_version, $serialized_version );
-				break;
-			case 'email':
-				return Mondula_Form_Wizard_Block_Email::from_aa( $block, $current_version, $serialized_version );
-				break;
-			case 'numeric':
-				return Mondula_Form_Wizard_Block_Numeric::from_aa( $block, $current_version, $serialized_version );
-				break;
-			case 'file':
-				return Mondula_Form_Wizard_Block_File::from_aa( $block, $current_version, $serialized_version );
-				break;
-			case 'date':
-				return Mondula_Form_Wizard_Block_Date::from_aa( $block, $current_version, $serialized_version );
-				break;
-			case 'paragraph':
-				return Mondula_Form_Wizard_Block_Paragraph::from_aa( $block, $current_version, $serialized_version );
-				break;
-			case 'regex':
-				if ( class_exists( 'Multi_Step_Form_Plus' ) ) {
-					return Multi_Step_Form_Plus_Block_Regex::from_aa( $block, $current_version, $serialized_version );
-				}
-				break;
-			case 'registration':
-				if ( class_exists( 'Multi_Step_Form_Plus' ) ) {
-					return Multi_Step_Form_Plus_Block_Registration::from_aa( $block, $current_version, $serialized_version );
-				}
-				break;
-			case 'conditional':
-				if ( class_exists( 'Multi_Step_Form_Plus' ) ) {
-					return Multi_Step_Form_Plus_Block_Conditional::from_aa( $block, $current_version, $serialized_version );
-				}
-				break;
-			default:
-				break;
+	private static $block_types = null;
+
+	public static function get_block_types() {
+		if (self::$block_types === null) {
+			self::$block_types = array(
+				'radio' => 'Mondula_Form_Wizard_Block_Radio::from_aa',
+				'select' => 'Mondula_Form_Wizard_Block_Select::from_aa',
+				'text' => 'Mondula_Form_Wizard_Block_Text::from_aa',
+				'textarea' => 'Mondula_Form_Wizard_Block_Textarea::from_aa',
+				'email' => 'Mondula_Form_Wizard_Block_Email::from_aa',
+				'numeric' => 'Mondula_Form_Wizard_Block_Numeric::from_aa',
+				'file' => 'Mondula_Form_Wizard_Block_File::from_aa',
+				'date' => 'Mondula_Form_Wizard_Block_Date::from_aa',
+				'paragraph' => 'Mondula_Form_Wizard_Block_Paragraph::from_aa',
+			);
+			self::$block_types = apply_filters('multi-step-form/block-types', self::$block_types);
 		}
+
+		return self::$block_types;
+	}
+
+	public static function from_aa( $block, $current_version, $serialized_version ) {
+		$block_type_arr = self::get_block_types();
+
+		if (array_key_exists($block['type'], $block_type_arr)) {
+			return call_user_func($block_type_arr[$block['type']], $block, $current_version, $serialized_version);
+		}
+
 		return null;
 	}
 }
