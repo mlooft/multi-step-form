@@ -84,6 +84,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 
 = 1.5.0 =
 * New, more stable core
+* More translations
 
 = 1.4.1 =
 * Captcha Bugfix
