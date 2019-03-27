@@ -260,11 +260,12 @@ class Mondula_Form_Wizard_Shortcode {
 					}
 				}
 
-				/* Send data to PRO */
-				do_action('msfp_save', $id, $data);
+				/* Save hook */
+				do_action('multi-step-form/save', $id, $data);
+
 				/* Register user */
 				if (!empty($reg)) {
-					do_action('msfp_register', $reg, $data, $id);
+					do_action('multi-step-form/register', $reg, $data, $id);
 				}
 
 				/* Send email */

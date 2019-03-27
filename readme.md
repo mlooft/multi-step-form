@@ -63,6 +63,10 @@ To stop the server, just run:
 docker-compose down
 ```
 
+### Actions / Filters
+
+Visit the wiki at [GitHub](https://github.com/mlooft/multi-step-form/wiki/Hooks) for a list of Wordpress actions / filters multi-step-form creates.
+
 ## Links
 * **[Beginners Tutorial](http://mondula.com/en/2017/01/06/multi-step-form-anleitung/ "Multi Step Form | Beginners Tutorial")**
 
