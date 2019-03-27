@@ -9,6 +9,7 @@ var livereload = require('gulp-livereload');
 var wpPot = require('gulp-wp-pot');
 var sort = require('gulp-sort');
 var zip = require('gulp-zip');
+var ts = require("gulp-typescript");
 var stripDebug = require('gulp-strip-debug');
 
 var vendorJs = [
@@ -21,8 +22,8 @@ var vendorCss = [
 ];
 
 gulp.task('js-frontend', function jsFrontend() {
-  return gulp.src(['assets/js/frontend/*.js'])
-    .pipe(concat('msf-frontend.js'))
+  return gulp.src(['assets/js/frontend/*.ts'])
+    .pipe(ts({outFile: 'msf-frontend.js'}))
     .pipe(uglify({mangle:false}))
     .pipe(rename({
       suffix: '.min'
@@ -41,8 +42,8 @@ gulp.task('js-frontend-vendor', function jsFrontendVendor() {
 });
 
 gulp.task('js-backend', function jsBackend() {
-  return gulp.src(['assets/js/backend/*.js'])
-    .pipe(concat('msf-backend.js'))
+  return gulp.src(['assets/js/backend/*.ts'])
+    .pipe(ts({outFile: 'msf-backend.js'}))
     .pipe(uglify({mangle:false}))
     .pipe(rename({
       suffix: '.min'
@@ -119,8 +120,8 @@ gulp.task('pot', function pot() {
 });
 
 function watch() {
-  gulp.watch('assets/js/frontend/*.js', gulp.series('js-frontend'));
-  gulp.watch('assets/js/backend/*.js', gulp.series('js-backend'));
+  gulp.watch('assets/js/frontend/*.ts', gulp.series('js-frontend'));
+  gulp.watch('assets/js/backend/*.ts', gulp.series('js-backend'));
   gulp.watch('assets/css/*.css', gulp.series('css'));
   gulp.watch('assets/css/frontend/*.less', gulp.series('css-frontend'));
   gulp.watch('assets/css/backend/*.less', gulp.series('css-backend'));
@@ -165,8 +166,8 @@ gulp.task('css-backend:production', gulp.series(function cssBackendProd() {
 }));
 
 gulp.task('js-frontend:production', gulp.series( function jsFrontendProd() {
-  return gulp.src(['assets/js/frontend/*.js'])
-    .pipe(concat('msf-frontend.min.js'))
+  return gulp.src(['assets/js/frontend/*.ts'])
+    .pipe(ts({outFile: 'msf-frontend.min.js'}))
     .pipe(stripDebug())
     .pipe(uglify())
     .pipe(gulp.dest('dist/scripts'));
@@ -181,8 +182,8 @@ gulp.task('js-frontend-vendor:production', gulp.series(function jsFrontendVendor
 }));
 
 gulp.task('js-backend:production', gulp.series(function jsBackendProd() {
-  return gulp.src(['assets/js/backend/*.js'])
-    .pipe(concat('msf-backend.min.js'))
+  return gulp.src(['assets/js/backend/*.ts'])
+    .pipe(ts({outFile: 'msf-backend.min.js'}))
     .pipe(stripDebug())
     .pipe(uglify())
     .pipe(gulp.dest('dist/scripts'));

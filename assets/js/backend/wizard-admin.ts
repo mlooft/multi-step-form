@@ -1,15 +1,22 @@
+/// <reference path="../../../node_modules/@types/jqueryui/index.d.ts" />
+
+declare var wizard : any;
+declare var msfp : boolean | undefined;
+declare var setupConditionals : Function | undefined;
+declare var tb_remove : Function;
+
 (function ($) {
 	'use strict';
 
 	var container = '#fw-wizard-container';
 	var elementsContainer = '#fw-elements-container';
 
-	function log() {
-		'console' in window && console.log.apply(console, arguments);
+	function log(...args : any[]) {
+		if (window.console) console.log.apply(console, args);
 	}
 
-	function warn() {
-		'console' in window && console.warn.apply(console, arguments);
+	function warn(...args : any[]) {
+		if (window.console) console.warn.apply(console, args);
 	}
 
     /**
@@ -427,7 +434,7 @@
 		return stepHtml;
 	}
 
-	function renderStep(step) {
+	function renderStep(step, idx) {
 		var stepHtml = '<div class="postbox">';
 		stepHtml += '<div class="fw-movediv hndle ui-sortable-handle"><i class="fa fa-arrows"></i></div>';
 		stepHtml += '<h1 class="fw-step-h1 hndle ui-sortable-handle"><span>';
@@ -438,7 +445,7 @@
 		stepHtml += '<i class="fa fa-files-o fw-duplicate-step" title="duplicate step" aria-hidden="true"></i>';
 		stepHtml += '</div>';
 		stepHtml += '<div class="fw-clearfix"></div>';
-		stepHtml += renderStepInside(step);
+		stepHtml += renderStepInside(step, idx);
 		stepHtml += '<div class="fw-clearfix"></div>';
 		stepHtml += '</div>';
 		return stepHtml;
@@ -490,11 +497,14 @@
      * @return an object with the radio header and options
      */
 	function getRadioElementData($element) {
-		var data = {};
-		var type = data.type = $element.attr('data-type');
-		if (type === 'option') {
+		let data = {
+			type: $element.attr('data-type'),
+			value: null
+		};
+		
+		if (data.type === 'option') {
 			data.value = $element.find('.fw-radio-option').val();
-		} else if (type === 'header') {
+		} else if (data.type === 'header') {
 			data.value = $element.find('.fw-radio-header').val();
 		}
 		return data;
@@ -658,30 +668,35 @@
 	}
 
 	function getStepData($step) {
-		var step = {};
-		step['title'] = $step.find('.fw-step-title').val();
-		step['headline'] = $step.find('.fw-step-headline').val();
-		step['copy_text'] = $step.find('.fw-step-copy_text').val();
-		var parts = step['parts'] = [];
-		var $parts = $step.find('.fw-step-part');
+		let step = {
+			title: $step.find('.fw-step-title').val(),
+			headline: $step.find('.fw-step-headline').val(),
+			copy_text: $step.find('.fw-step-copy_text').val(),
+			parts: []
+		};
+
+		const $parts = $step.find('.fw-step-part');
 		$parts.each(function (idx, element) {
-			parts.push(getPartData($(element)));
+			step.parts.push(getPartData($(element)));
 		});
 
 		return step;
 	}
 
 	function getSettings() {
-		var settings = {};
-		// General settings
-		settings.thankyou = $('.fw-settings-thankyou').val();
-		// Mail settings
-		settings.to = $('.fw-mail-to').val();
-		settings.frommail = $('.fw-mail-from-mail').val();
-		settings.fromname = $('.fw-mail-from-name').val();
-		settings.subject = $('.fw-mail-subject').val();
-		settings.header = $('.fw-mail-header').val();
-		settings.headers = $('.fw-mail-headers').val();
+		var settings = {
+			// General settings
+			thankyou: $('.fw-settings-thankyou').val(),
+
+			// Mail settings
+			to: $('.fw-mail-to').val(),
+			frommail: $('.fw-mail-from-mail').val(),
+			fromname: $('.fw-mail-from-name').val(),
+			subject: $('.fw-mail-subject').val(),
+			header: $('.fw-mail-header').val(),
+			headers: $('.fw-mail-headers').val(),
+		};
+		
 		return settings;
 	}
 
@@ -746,12 +761,12 @@
 		var title = $('.fw-wizard-title').val();
 		var valid;
 		var data = {
-			wizard: {}
+			wizard: {
+				title: title,
+				steps: [],
+				settings: getSettings()
+			}
 		};
-		// data['title']
-		data.wizard.title = title;
-		data.wizard.steps = [];
-		data.wizard.settings = getSettings();
 		var $steps = $container.find('.fw-step');
 		$steps.each(
 			function (idx, element) {
@@ -934,7 +949,7 @@
 
 		log('titleOnChangeU', $this.val());
 
-		$this.closest('.postbox').find('h1 > span').html($this.val());
+		$this.closest('.postbox').find('h1 > span').html($this.val().toString());
 	}
 
 
@@ -960,7 +975,7 @@
 		var n = $('.fw-step').length;
 		if (n < 5 || msfp) {
 			if (n < 10) {
-				var $step = $(renderStep(step));
+				var $step = $(renderStep(step, n));
 				$step.appendTo($(container).find('.meta-box-sortables'));
 
 				setupClickHandlers();
@@ -1237,10 +1252,15 @@
 
 	function maskNumericInput(e) {
 		if ($('input[type=text]').index($(e.target)) != -1) {
+			let val = $(e.target).val();
+			if (Array.isArray(val)) {
+				val = val.join(' ');
+			}
+			val = val.toString();
 			if (
 				($.inArray(e.keyCode, [37, 38, 39, 40, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 8, 13, 189]) == -1) // digits, digits in num pad, 'back', 'enter',  '-'
-				|| (e.keyCode == 189 && $(e.target).val().indexOf("-") != -1) // not allow double '-'
-				|| (e.keyCode == 198 && $(e.target).val().length != 0) // only allow '-' at the begining
+				|| (e.keyCode == 189 && val.indexOf("-") != -1) // not allow double '-'
+				|| (e.keyCode == 198 && val.length != 0) // only allow '-' at the begining
 			) {
 				e.preventDefault();
 			}
@@ -1283,7 +1303,10 @@
 			var $block = $(this).parent().parent();
 			$block.toggleClass('fw-block-collapsed');
 			if ($block.hasClass('fw-block-collapsed')) {
-				var label = $block.find('.fw-block-label').val();
+				let label = $block.find('.fw-block-label').val();
+				if (Array.isArray(label)) {
+					label = label.join(" ");
+				}
 				$block.find('h4').text(label);
 				$(this).addClass('fw-icon-rotated');
 			} else {

@@ -5,6 +5,9 @@
   "homepage": "https://github.com/mlooft/multi-step-form",
   "main": "gulpfile.js",
   "devDependencies": {
+    "@types/jquery": "^3.3.29",
+    "@types/jqueryui": "^1.12.7",
+    "@types/select2": "^4.0.48",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-concat": "*",
@@ -36,6 +39,8 @@
   },
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "select2": "^4.0.6-rc.1"
+    "gulp-typescript": "^5.0.1",
+    "select2": "^4.0.6-rc.1",
+    "typescript": "^3.3.4000"
   }
 }

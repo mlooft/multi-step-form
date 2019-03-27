@@ -1,3 +1,8 @@
+/// <reference path="../../../node_modules/@types/jqueryui/index.d.ts" />
+
+declare var ajax : any;
+declare interface Window { grecaptcha : any };
+
 jQuery(document).ready(function ($) {
 	"use strict";
 	var data = {};
@@ -7,12 +12,12 @@ jQuery(document).ready(function ($) {
 		ajax.i18n.errors.someRequired + '<br>' + ajax.i18n.errors.checkFields
 	];
 
-	function log() {
-		if (window.console) console.log.apply(console, arguments);
+	function log(...args : any[]) {
+		if (window.console) console.log.apply(console, args);
 	}
 
-	function warn() {
-		if (window.console) console.warn.apply(console, arguments);
+	function warn(...args : any[]) {
+		if (window.console) console.warn.apply(console, args);
 	}
 
 	function hideStep($wizard, stepId) {
@@ -175,7 +180,7 @@ jQuery(document).ready(function ($) {
 			value = 'yes';
 		}
 		if ($block.hasClass('fw-block-invalid')) {
-			console.log('INVALID' + $block);
+			log('INVALID' + $block);
 		}
 		pushToSummary(summaryObj, title, header, value, required);
 	}
@@ -288,7 +293,7 @@ jQuery(document).ready(function ($) {
 	function getSummaryHtml($wizard) {
 		var summaryHtml = '';
 		var summaryObj = getSummary($wizard);
-		console.log(summaryObj);
+		
 		for (var key in summaryObj) {
 			summaryHtml += '<div class="fw-step-summary-part">';
 			summaryHtml += renderStepSummaryTitle(key);
@@ -326,14 +331,20 @@ jQuery(document).ready(function ($) {
 		var $summary = $wizard.find('.fw-wizard-summary');
 		$summary.empty();
 		$summary.append(summary);
-		$('.fw-toggle-summary').toggle(
+		$('.fw-toggle-summary').data("msf-toggle-active", 0);
+		$('.fw-toggle-summary').unbind().click(
 			function () {
-				$('.fw-wizard-summary').slideDown();
-				$('.fw-toggle-summary').text(ajax.i18n.hideSummary);
-			},
-			function () {
-				$('.fw-wizard-summary').slideUp();
+				let active = $(this).data("msf-toggle-active");
+
+				if (active == 0) {
+					$('.fw-wizard-summary').slideDown();
+					$('.fw-toggle-summary').text(ajax.i18n.hideSummary);
+				} else {
+					$('.fw-wizard-summary').slideUp();
 				$('.fw-toggle-summary').text(ajax.i18n.showSummary);
+				}
+
+				$(this).data("msf-toggle-active", (active + 1) % 2);
 			}
 		);
 		if ($('.fw-summary-invalid').length) {
@@ -367,8 +378,7 @@ jQuery(document).ready(function ($) {
 		return $elt.closest('.fw-step-block').attr('data-blockId');
 	}
 
-	function get(obj) {
-		var args = [].slice.call(arguments, 1);
+	function get(obj, ...args : any) {
 		var i = 0,
 			n = args.length;
 		log('args', args);
@@ -498,14 +508,6 @@ jQuery(document).ready(function ($) {
 		log('stepCount', getStepCount($wizard));
 		log('data', data);
 		log('summary', getSummary($wizard));
-	}
-
-	function checkInvalidChange(event) {
-		// remove fw-block-invalid when invalid text field is changed
-		console.log($(this).parents('.fw-step-block'));
-		if ($block.hasClass('fw-block-invalid')) {
-			$block.removeClass('fw-block-invalid');
-		}
 	}
 
 	function validateRadio($element) {
@@ -813,8 +815,7 @@ jQuery(document).ready(function ($) {
 					}
 				}
 			},
-			fail: function (resp) {
-				valid = false;
+			error: function (resp) {
 				warn('response', resp);
 				warn('responseText', resp.responseText);
 			}
@@ -853,8 +854,7 @@ jQuery(document).ready(function ($) {
 					}
 				}
 			},
-			fail: function (resp) {
-				valid = false;
+			error: function (resp) {
 				warn('response', resp);
 				warn('responseText', resp.responseText);
 			}
@@ -996,8 +996,8 @@ jQuery(document).ready(function ($) {
 					warn(response.error);
 				}
 			},
-			fail: function (res) {
-				console.warn(res);
+			error: function (res) {
+				warn(res);
 			}
 		});
 	}
@@ -1045,7 +1045,7 @@ jQuery(document).ready(function ($) {
 				labelVal = $label.html(),
 				$block = $input.parent().parent();
 
-			$input.on('change', function (e) {
+			$input.on('change', function (e : JQuery.ChangeEvent<HTMLInputElement>) {
 				var fileName = '';
 				if (e.target.value)
 					fileName = e.target.value.split('\\').pop();
@@ -1055,7 +1055,7 @@ jQuery(document).ready(function ($) {
 				else
 					$label.html(labelVal);
 			});
-			$input.on('click', function (e) {
+			$input.on('click', function (e : JQuery.ClickEvent<HTMLInputElement>) {
 				// delete if input already has a file
 				if (e.target.value) {
 					var attachments = [];
@@ -1190,8 +1190,8 @@ jQuery(document).ready(function ($) {
 
 	function validateReCaptcha() {
 		var tokenFields = $('.msf-recaptcha-token');
-
-		if (tokenFields.size() > 0) {
+		
+		if (tokenFields.length > 0) {
 			var siteKey = tokenFields.data('sitekey');
 			window.grecaptcha.ready(function () {
 				window.grecaptcha.execute(siteKey, {action: 'homepage'}).then(function(token) {

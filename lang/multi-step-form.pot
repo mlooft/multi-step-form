@@ -345,15 +345,15 @@ msgstr ""
 msgid "Registration"
 msgstr ""
 
-#: includes/lib/msf-block-file.class.php:45, includes/msf.class.php:152
+#: includes/lib/msf-blocks/file/msf-block-file.class.php:45, includes/msf.class.php:152
 msgid "Choose a file"
 msgstr ""
 
-#: includes/lib/msf-block-numeric.class.php:65
+#: includes/lib/msf-blocks/numeric/msf-block-numeric.class.php:65
 msgid "min. "
 msgstr ""
 
-#: includes/lib/msf-block-numeric.class.php:67
+#: includes/lib/msf-blocks/numeric/msf-block-numeric.class.php:67
 msgid "max. "
 msgstr ""
 

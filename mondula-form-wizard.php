@@ -38,15 +38,15 @@ require_once( 'includes/lib/msf-wizard-step-part.class.php' );
 
 // Blocks
 require_once( 'includes/lib/msf-block.class.php' );
-require_once( 'includes/lib/msf-block-radio.class.php' );
-require_once( 'includes/lib/msf-block-email.class.php' );
-require_once( 'includes/lib/msf-block-numeric.class.php' );
-require_once( 'includes/lib/msf-block-file.class.php' );
-require_once( 'includes/lib/msf-block-date.class.php' );
-require_once( 'includes/lib/msf-block-paragraph.class.php' );
-require_once( 'includes/lib/msf-block-select.class.php' );
-require_once( 'includes/lib/msf-block-text.class.php' );
-require_once( 'includes/lib/msf-block-textarea.class.php' );
+require_once( 'includes/lib/msf-blocks/radio/msf-block-radio.class.php' );
+require_once( 'includes/lib/msf-blocks/email/msf-block-email.class.php' );
+require_once( 'includes/lib/msf-blocks/numeric/msf-block-numeric.class.php' );
+require_once( 'includes/lib/msf-blocks/file/msf-block-file.class.php' );
+require_once( 'includes/lib/msf-blocks/date/msf-block-date.class.php' );
+require_once( 'includes/lib/msf-blocks/paragraph/msf-block-paragraph.class.php' );
+require_once( 'includes/lib/msf-blocks/select/msf-block-select.class.php' );
+require_once( 'includes/lib/msf-blocks/text/msf-block-text.class.php' );
+require_once( 'includes/lib/msf-blocks/textarea/msf-block-textarea.class.php' );
 
 
 function activate_form_wizard( $network_wide = false ) {
