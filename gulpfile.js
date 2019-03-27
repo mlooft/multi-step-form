@@ -6,11 +6,19 @@ var rename = require("gulp-rename");
 var less = require('gulp-less');
 var uglifycss = require('gulp-uglifycss');
 var livereload = require('gulp-livereload');
-var mainBowerFiles = require('main-bower-files');
 var wpPot = require('gulp-wp-pot');
 var sort = require('gulp-sort');
 var zip = require('gulp-zip');
 var stripDebug = require('gulp-strip-debug');
+
+var vendorJs = [
+  "./node_modules/select2/dist/js/select2.min.js"
+];
+
+var vendorCss = [
+  "./node_modules/font-awesome/css/font-awesome.min.css",
+  "./node_modules/select2/dist/css/select2.min.css",
+];
 
 gulp.task('js-frontend', function jsFrontend() {
   return gulp.src(['assets/js/frontend/*.js'])
@@ -24,7 +32,7 @@ gulp.task('js-frontend', function jsFrontend() {
 });
 
 gulp.task('js-frontend-vendor', function jsFrontendVendor() {
-  return gulp.src(mainBowerFiles('**/*.js'))
+  return gulp.src(vendorJs)
     .pipe(concat('msf-vendor-frontend.js'))
     .pipe(rename({
       suffix: '.min'
@@ -61,8 +69,7 @@ gulp.task('css-frontend', function cssFrontend() {
 });
 
 gulp.task('css-frontend-vendor', function cssFrontendVendor() {
-  var bowerFiles = mainBowerFiles('**/*.css');
-  return gulp.src(['assets/vendor/css/*.css'].concat(bowerFiles))
+  return gulp.src(['assets/vendor/css/*.css'].concat(vendorCss))
     .pipe(concat('msf-vendor-frontend.css'))
     .pipe(uglifycss({
       "maxLineLen": 80,
@@ -76,7 +83,7 @@ gulp.task('css-frontend-vendor', function cssFrontendVendor() {
 });
 
 gulp.task('css-backend', function cssBackend() {
-  return gulp.src(['bower_components/font-awesome/css/font-awesome.css', 'assets/css/backend/*.css', 'assets/css/backend/*.less'])
+  return gulp.src(['node_modules/font-awesome/css/font-awesome.css', 'assets/css/backend/*.css', 'assets/css/backend/*.less'])
     .pipe(less())
     .pipe(concat('msf-backend.css'))
     .pipe(uglifycss({
@@ -91,7 +98,7 @@ gulp.task('css-backend', function cssBackend() {
 });
 
 gulp.task('fonts', function fonts() {
-    return gulp.src('bower_components/font-awesome/fonts/*')
+    return gulp.src('node_modules/font-awesome/fonts/*')
         .pipe(gulp.dest('dist/fonts'))
 });
 
@@ -137,8 +144,7 @@ gulp.task('css-frontend:production', gulp.series(function cssFrontendProd() {
 }));
 
 gulp.task('css-frontend-vendor:production', gulp.series(function cssFrontendVendorProd() {
-  var bowerFiles = mainBowerFiles('**/*.css');
-  return gulp.src(['assets/vendor/css/*.css'].concat(bowerFiles)) // , mainBowerFiles('**/*.css')])
+  return gulp.src(['assets/vendor/css/*.css'].concat(vendorCss))
     .pipe(concat('msf-vendor-frontend.min.css'))
     .pipe(uglifycss({
       "maxLineLen": 80,
@@ -148,7 +154,7 @@ gulp.task('css-frontend-vendor:production', gulp.series(function cssFrontendVend
 }));
 
 gulp.task('css-backend:production', gulp.series(function cssBackendProd() {
-  return gulp.src(['bower_components/font-awesome/css/font-awesome.css', 'assets/css/backend/*.css', 'assets/css/backend/*.less'])
+  return gulp.src(['node_modules/font-awesome/css/font-awesome.css', 'assets/css/backend/*.css', 'assets/css/backend/*.less'])
     .pipe(less())
     .pipe(concat('msf-backend.min.css'))
     .pipe(uglifycss({
@@ -167,7 +173,7 @@ gulp.task('js-frontend:production', gulp.series( function jsFrontendProd() {
 }));
 
 gulp.task('js-frontend-vendor:production', gulp.series(function jsFrontendVendorProd() {
-  return gulp.src(mainBowerFiles('**/*.js'))
+  return gulp.src(vendorJs)
     .pipe(concat('msf-vendor-frontend.min.js'))
     .pipe(stripDebug())
     .pipe(uglify())

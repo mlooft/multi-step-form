@@ -1,6 +1,7 @@
 # Multi Step Form 
-<!-- ![Multi Step Form Backend](https://github.com/mlooft/multi-step-form/blob/master/screenshot-1.jpg)
-![Multi Step Form Frontend](https://github.com/mlooft/multi-step-form/blob/master/screenshot-2.jpg) -->
+Backend                                      |  Frontend
+:-------------------------------------------:|:---------------------------------------------:
+![Multi Step Form Backend](screenshot-1.jpg) | ![Multi Step Form Frontend](screenshot-2.jpg)
 
 ## Description 
 Multi Step Form has a drag & drop enabled form builder for quick and intuitive creation of nice-looking multi step forms. Forms can be embedded on any page or post with shortcodes.
@@ -23,18 +24,17 @@ The backend's structure is simple. Even less technical users can quickly underst
 ## Contributing
 We would really appreciate pull requests for features or bugfixes.
 
-### Using `docker-compose` (recommended)
+### Using `docker-compose`
 
 Here's what you need:
 * a running Docker engine
-* `npm` and `bower`
+* `npm`
 
 To get started, clone this repository to your local drive and run the following commands:
 
 ```
 cd multi-step-form
 npm install
-bower install
 
 docker-compose build
 npm start
@@ -62,24 +62,6 @@ To stop the server, just run:
 ```
 docker-compose down
 ```
-
-### Using own server
-
-Here's what you need:
-
-* a local WordPress instance (preferably with XDebug)
-* `npm`, `gulp` and `bower`
-
-To get started with developing, please clone this repository directly to your `wp-content/plugins` directory and do the following:
-
-```
-cd multi-step-form
-npm install
-bower install
-gulp
-```
-
-`gulp` will run in the background, watch for changes in the source files and update the distribution accordingly.
 
 ## Links
 * **[Beginners Tutorial](http://mondula.com/en/2017/01/06/multi-step-form-anleitung/ "Multi Step Form | Beginners Tutorial")**
