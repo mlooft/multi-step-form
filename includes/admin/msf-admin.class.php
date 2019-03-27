@@ -160,7 +160,6 @@ class Mondula_Form_Wizard_Admin {
 		} elseif ( $duplicate ) {
 			$this->duplicate( $_GET['duplicate'] );
 		} else {
-			//$this->wizard_list();
 			$this->table();
 		}
 	}
@@ -345,34 +344,6 @@ class Mondula_Form_Wizard_Admin {
 			</div>
 		<?php
 		}
-	}
-
-	public function wizard_list() {
-		$edit_url = esc_url(
-			add_query_arg(
-				array(
-					'edit' => '',
-				)
-			)
-		);
-		?>
-		<div class="wrap">
-			<h2>Wizard <a class="add-new-h2" href="<?php echo $edit_url; ?>">Add new</a></h2>
-			<ul class="subsubsub"></ul>
-			<form>
-				<div class="tablenav top"></div>
-				<table class="wp-list-table widefat fixed striped posts">
-					<thead>
-						<tr>
-							<th scope="col">Titel</th>
-							<th scope="col">Shortcode</th>
-							<th scope="col">Datum</th>
-						</tr>
-					</thead>
-				</table>
-			</form>
-		</div>
-		<?php
 	}
 
 	public function edit( $id ) {
