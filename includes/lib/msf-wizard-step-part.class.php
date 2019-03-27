@@ -46,13 +46,6 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
 		}
 	}
 
-	public function render_mail( $data ) {
-		echo $this->_title . PHP_EOL;
-		foreach ( $data as $key => $value ) {
-			$this->_blocks[ $key ]->render_mail( $value );
-		}
-	}
-
 	public function as_aa() {
 		$blocks_aa = array();
 		foreach ( $this->_blocks as $block ) {

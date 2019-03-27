@@ -70,13 +70,6 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
 		<?php
 	}
 
-	public function render_mail ( $data ) {
-		echo "render_mail (radio)" . PHP_EOL;
-		foreach ( $data as $key => $value ) {
-			echo $this->_header  . " : " . $this->_opts[$key] . PHP_EOL;
-		}
-	}
-
 	public function as_aa() {
 		return array(
 			'type' => 'radio',

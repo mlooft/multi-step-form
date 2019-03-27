@@ -49,12 +49,6 @@ class Mondula_Form_Wizard_Block_Text extends Mondula_Form_Wizard_Block {
 		<?php
 	}
 
-	// TODO fw-text render_mail
-	public function render_mail ( $data ) {
-		echo "Name: $data[name]" . PHP_EOL;
-		echo "Email: $data[email]" . PHP_EOL;
-	}
-
 	public function as_aa() {
 		return array(
 			'type' => 'text',
