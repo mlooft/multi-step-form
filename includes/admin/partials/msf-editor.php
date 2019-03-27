@@ -76,12 +76,12 @@
         <div class="postbox-container">
             <div class="metabox-holder">
                 <div class="postbox">
-                    <h3><?php _e('Multi Step Form', 'multi-step-form'); ?>
-                        <?php do_action( 'msf_echopro', $id ); ?>
+                    <h3>
+                        <?php echo apply_filters('multi-step-form/title-filter', __('Multi Step Form', 'multi-step-form')); ?>
                     </h3>
                     <div class="inside">
                         <div class="fw-elements">
-                            <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="Form Title">
+                            <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="<?php _e('Form Title', 'multi-step-form'); ?>">
                             <a class="fw-element-step"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ); ?></a>
                             <h4><?php _e( 'Drag &amp; Drop an element from below to a section', 'multi-step-form' ); ?></h4>
                             <a class="fw-draggable-block fw-element-radio" data-type="radio"><i class="fa fa-arrows"></i> <?php _e('Radio/Checkbox', 'multi-step-form'); ?></a>
