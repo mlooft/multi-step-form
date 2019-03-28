@@ -177,7 +177,7 @@ msgstr ""
 msgid "Paragraph text"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:100, includes/lib/msf-blocks/media/msf-block-media.class.php:59
+#: includes/admin/msf-admin.class.php:100, includes/lib/msf-blocks/media/msf-block-media.class.php:67
 msgid "Media"
 msgstr ""
 
@@ -193,75 +193,87 @@ msgstr ""
 msgid "Select a media element"
 msgstr ""
 
+#: includes/admin/msf-admin.class.php:104
+msgid "Titel"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:105
+msgid "Dateiname"
+msgstr ""
+
 #: includes/admin/msf-admin.class.php:106
-msgid "Minimum"
-msgstr ""
-
-#: includes/admin/msf-admin.class.php:107
-msgid "Maximum"
-msgstr ""
-
-#: includes/admin/msf-admin.class.php:108
-msgid "No Minimum"
+msgid "Vorschau"
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:109
-msgid "No Maximum"
+msgid "Minimum"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:110
+msgid "Maximum"
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:111
-msgid "RegEx Filter"
+msgid "No Minimum"
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:112
-msgid "Custom RegEx Error Message"
+msgid "No Maximum"
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:114
-msgid "Please select the registration fields to be displayed to the user. Email is always required. If the user does not specify a username or password, WordPress is auto-generating these and sending them to the user via email."
+msgid "RegEx Filter"
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:115
-msgid "You are already registered and logged in."
+msgid "Custom RegEx Error Message"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:116
-msgid "Username"
-msgstr ""
-
-#: includes/admin/msf-admin.class.php:117, includes/lib/msf-blocks/email/msf-block-email.class.php:63, includes/msf-settings.class.php:48
-msgid "Email"
+#: includes/admin/msf-admin.class.php:117
+msgid "Please select the registration fields to be displayed to the user. Email is always required. If the user does not specify a username or password, WordPress is auto-generating these and sending them to the user via email."
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:118
-msgid "Password"
+msgid "You are already registered and logged in."
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:119
-msgid "Confirm Password"
+msgid "Username"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:120
-msgid "First Name"
+#: includes/admin/msf-admin.class.php:120, includes/lib/msf-blocks/email/msf-block-email.class.php:63, includes/msf-settings.class.php:48
+msgid "Email"
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:121
-msgid "Last Name"
+msgid "Password"
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:122
-msgid "Website"
+msgid "Confirm Password"
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:123
+msgid "First Name"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:124
+msgid "Last Name"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:125
+msgid "Website"
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:126
 msgid "Biographical Info"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:212
+#: includes/admin/msf-admin.class.php:215
 msgid "Invalid JSON-File. Check your syntax."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:240
+#: includes/admin/msf-admin.class.php:243
 msgid "Forms must be imported as JSON files"
 msgstr ""
 
