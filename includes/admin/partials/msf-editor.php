@@ -1,5 +1,7 @@
 <?php
     if ( ! defined( 'ABSPATH' ) ) exit;
+
+    $block_types = Mondula_Form_Wizard_Block::get_block_types();
 ?>
 
 <div id="fw-alert">
@@ -84,27 +86,13 @@
                             <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="<?php _e('Form Title', 'multi-step-form'); ?>">
                             <a class="fw-element-step"><i class="fa fa-plus"></i> <?php _e( 'Add Step' ); ?></a>
                             <h4><?php _e( 'Drag &amp; Drop an element from below to a section', 'multi-step-form' ); ?></h4>
-                            <a class="fw-draggable-block fw-element-radio" data-type="radio"><i class="fa fa-arrows"></i> <?php _e('Radio/Checkbox', 'multi-step-form'); ?></a>
-                            <a class="fw-draggable-block fw-element-select" data-type="select"><i class="fa fa-arrows"></i> <?php _e('Select/Dropdown', 'multi-step-form'); ?></a>
-                            <a class="fw-draggable-block fw-element-text" data-type="text"><i class="fa fa-arrows"></i> <?php _e('Text field', 'multi-step-form'); ?></a>
-                            <a class="fw-draggable-block fw-element-textarea" data-type="textarea"><i class="fa fa-arrows"></i> <?php _e('Textarea', 'multi-step-form'); ?></a>
-                            <a class="fw-draggable-block fw-element-email" data-type="email"><i class="fa fa-arrows"></i> <?php _e('Email', 'multi-step-form'); ?></a>
-                            <a class="fw-draggable-block fw-element-numeric" data-type="numeric"><i class="fa fa-arrows"></i> <?php _e('Numeric', 'multi-step-form'); ?></a>
-                            <a class="fw-draggable-block fw-element-file" data-type="file"><i class="fa fa-arrows"></i> <?php _e('File Upload', 'multi-step-form'); ?></a>
-                            <a class="fw-draggable-block fw-element-date" data-type="date"><i class="fa fa-arrows"></i> <?php _e('Date', 'multi-step-form'); ?></a>
-                            <a class="fw-draggable-block fw-element-paragraph" data-type="paragraph"><i class="fa fa-arrows"></i> <?php _e('Paragraph', 'multi-step-form'); ?></a>
-                            <?php
-                            if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' )) {
-                                if (Mondula_Form_Wizard_Wizard::fw_get_option( 'regex_enable' ,'fw_settings_conditional' ) === 'on' ) {
-                                ?>
-                                    <a class="fw-draggable-block fw-element-regex" data-type="regex"><i class="fa fa-arrows"></i> <?php _e('Regex', 'multi-step-form'); ?></a>
-                                <?php
-                                }
 
-                                if (Mondula_Form_Wizard_Wizard::fw_get_option( 'registration_enable' ,'fw_settings_registration' ) === 'on' ) {
-                                ?>
-                                    <a class="fw-draggable-block fw-element-registration" data-type="registration"><i class="fa fa-arrows"></i> <?php _e('Registration', 'multi-step-form'); ?></a>
-                                <?php
+                            <?php 
+                            foreach ($block_types as $type => $type_data) {
+                                if ($type_data['show_admin']) {
+                                    ?>
+                                    <a class="fw-draggable-block fw-element-<?php echo $type; ?>" data-type="<?php echo $type; ?>"><i class="fa fa-arrows"></i> <?php echo $type_data['title'] ?></a>
+                                    <?php
                                 }
                             }
                             ?>
@@ -122,28 +110,14 @@
         <p>Content!</p>
     </div>
     <div id="fw-thickbox-content" style="display:none;">
-        <div id="fw-thickbox-radio"><?php _e('Radio/Checkbox', 'multi-step-form'); ?></div>
-        <div id="fw-thickbox-select"><?php _e('Select/Dropdown', 'multi-step-form'); ?></div>
-        <div id="fw-thickbox-text"><?php _e('Text field', 'multi-step-form'); ?></div>
-        <div id="fw-thickbox-email"><?php _e('Email', 'multi-step-form'); ?></div>
-        <div id="fw-thickbox-numeric"><?php _e('Numeric', 'multi-step-form'); ?></div>
-        <div id="fw-thickbox-fileupload"><?php _e('File Upload', 'multi-step-form'); ?></div>
-        <div id="fw-thickbox-textarea"><?php _e('Textarea', 'multi-step-form'); ?></div>
-        <div id="fw-thickbox-date"><?php _e('Date', 'multi-step-form'); ?></div>
-        <div id="fw-thickbox-paragraph"><?php _e('Paragraph', 'multi-step-form'); ?></div>
-        <?php
-            if ( is_plugin_active( 'multi-step-form-plus/multi-step-form-plus.php' ) ) {
-                if (Mondula_Form_Wizard_Wizard::fw_get_option( 'regex_enable' ,'fw_settings_conditional' ) === 'on' ) {
+        <?php 
+        foreach ($block_types as $type => $type_data) {
+            if ($type_data['show_admin']) {
                 ?>
-                <div id="fw-thickbox-regex"><?php _e('Regex', 'multi-step-form'); ?></div>
+                <div id="fw-thickbox-<?php echo $type; ?>"><?php echo $type_data['title'] ?></div>
                 <?php
-                }
-                if (Mondula_Form_Wizard_Wizard::fw_get_option( 'registration_enable' ,'fw_settings_registration' ) === 'on' ) {
-                ?>
-                <div id="fw-thickbox-registration"><?php _e('Registration', 'multi-step-form'); ?></div>
-                <?php
-                }
             }
+        }
         ?>
     </div>
 </div>

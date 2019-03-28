@@ -51,4 +51,17 @@ class Mondula_Form_Wizard_Block_Paragraph extends Mondula_Form_Wizard_Block {
 		$text = $aa['text'];
 		return new Mondula_Form_Wizard_Block_Paragraph( $text );
 	}
+
+	public static function addType($types) {
+
+		$types['paragraph'] = array(
+			'builder' => 'Mondula_Form_Wizard_Block_Paragraph::from_aa',
+			'title' => __('Paragraph', 'multi-step-form'),
+			'show_admin' => true,
+		);
+
+		return $types;
+	}
 }
+
+add_filter('multi-step-form/block-types', 'Mondula_Form_Wizard_Block_Paragraph::addType', 8);

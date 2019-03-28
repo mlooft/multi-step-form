@@ -65,4 +65,17 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 		$format = $aa['format'];
 		return new Mondula_Form_Wizard_Block_Date( $label, $required, $format );
 	}
+
+	public static function addType($types) {
+
+		$types['date'] = array(
+			'builder' => 'Mondula_Form_Wizard_Block_Date::from_aa',
+			'title' => __('Date', 'multi-step-form'),
+			'show_admin' => true,
+		);
+
+		return $types;
+	}
 }
+
+add_filter('multi-step-form/block-types', 'Mondula_Form_Wizard_Block_Date::addType', 7);

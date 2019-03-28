@@ -213,7 +213,7 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:111, includes/admin/msf-admin.class.php:467, includes/admin/msf-admin.class.php:504, includes/msf-settings.class.php:48
+#: includes/admin/msf-admin.class.php:111, includes/lib/msf-blocks/email/msf-block-email.class.php:63, includes/msf-settings.class.php:48
 msgid "Email"
 msgstr ""
 
@@ -241,112 +241,128 @@ msgstr ""
 msgid "Biographical Info"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:205
+#: includes/admin/msf-admin.class.php:204
 msgid "Invalid JSON-File. Check your syntax."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:233
+#: includes/admin/msf-admin.class.php:232
 msgid "Forms must be imported as JSON files"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:256
-msgid "Add New"
+#: includes/admin/partials/msf-editor.php:8
+msgid "Success. Form saved."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:263
-msgid "Import a Form"
+#: includes/admin/partials/msf-editor.php:12
+msgid "Steps"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:266
-msgid "Upload & Import"
+#: includes/admin/partials/msf-editor.php:13
+msgid "Form settings"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:404
+#: includes/admin/partials/msf-editor.php:17
+msgid "General settings"
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:20
+msgid "\"Thank you\"-page:"
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:23
+msgid "Users will be redirected to this URL after form submit. Leave blank if you don't need one."
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:27
+msgid "Mail settings"
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:30
 msgid "Send To:"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:407
+#: includes/admin/partials/msf-editor.php:33
 msgid "Email address to which the mails are sent"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:411
+#: includes/admin/partials/msf-editor.php:37
 msgid "Send From Email:"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:414
+#: includes/admin/partials/msf-editor.php:40
 msgid "Email address and name from which the emails are sent. Leave blank for default admin email."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:418
+#: includes/admin/partials/msf-editor.php:44
 msgid "Send From Name:"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:424
+#: includes/admin/partials/msf-editor.php:50
 msgid "Subject:"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:430
+#: includes/admin/partials/msf-editor.php:56
 msgid "Additional Email Headers:"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:433
+#: includes/admin/partials/msf-editor.php:59
 msgid "You can add additional email headers for CC/BCC, Reply-To. One per line e.g.:"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:441
+#: includes/admin/partials/msf-editor.php:60
+msgid "Reply-To: John Doe &lt;doe@example.com&gt;"
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:61
+msgid "CC: Jane Doe &lt;doe@example.com&gt;"
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:62
+msgid "WARNING: only enter custom email headers if you know what you're doing - it can break your form."
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:67
 msgid "Email Headline:"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:444
+#: includes/admin/partials/msf-editor.php:70
 msgid "Introductory text for email"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:462
+#: includes/admin/partials/msf-editor.php:82
+msgid "Multi Step Form"
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:86
+msgid "Form Title"
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:88
 msgid "Drag &amp; Drop an element from below to a section"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:463, includes/admin/msf-admin.class.php:501
-msgid "Radio/Checkbox"
+#: includes/admin/partials/msf-table.php:8
+msgid "Add New"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:464, includes/admin/msf-admin.class.php:502
-msgid "Select/Dropdown"
+#: includes/admin/partials/msf-table.php:15
+msgid "Import a Form"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:465, includes/admin/msf-admin.class.php:503
-msgid "Text field"
+#: includes/admin/partials/msf-table.php:18
+msgid "Upload & Import"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:466, includes/admin/msf-admin.class.php:507
-msgid "Textarea"
-msgstr ""
-
-#: includes/admin/msf-admin.class.php:468, includes/admin/msf-admin.class.php:505
-msgid "Numeric"
-msgstr ""
-
-#: includes/admin/msf-admin.class.php:469, includes/admin/msf-admin.class.php:506
-msgid "File Upload"
-msgstr ""
-
-#: includes/admin/msf-admin.class.php:470, includes/admin/msf-admin.class.php:508
+#: includes/lib/msf-blocks/date/msf-block-date.class.php:73
 msgid "Date"
-msgstr ""
-
-#: includes/admin/msf-admin.class.php:471, includes/admin/msf-admin.class.php:509
-msgid "Paragraph"
-msgstr ""
-
-#: includes/admin/msf-admin.class.php:476, includes/admin/msf-admin.class.php:514
-msgid "Regex"
-msgstr ""
-
-#: includes/admin/msf-admin.class.php:482, includes/admin/msf-admin.class.php:519, includes/msf.class.php:155
-msgid "Registration"
 msgstr ""
 
 #: includes/lib/msf-blocks/file/msf-block-file.class.php:45, includes/msf.class.php:152
 msgid "Choose a file"
+msgstr ""
+
+#: includes/lib/msf-blocks/file/msf-block-file.class.php:72
+msgid "File Upload"
 msgstr ""
 
 #: includes/lib/msf-blocks/numeric/msf-block-numeric.class.php:65
@@ -355,6 +371,30 @@ msgstr ""
 
 #: includes/lib/msf-blocks/numeric/msf-block-numeric.class.php:67
 msgid "max. "
+msgstr ""
+
+#: includes/lib/msf-blocks/numeric/msf-block-numeric.class.php:119
+msgid "Numeric"
+msgstr ""
+
+#: includes/lib/msf-blocks/paragraph/msf-block-paragraph.class.php:59
+msgid "Paragraph"
+msgstr ""
+
+#: includes/lib/msf-blocks/radio/msf-block-radio.class.php:93
+msgid "Radio/Checkbox"
+msgstr ""
+
+#: includes/lib/msf-blocks/select/msf-block-select.class.php:90
+msgid "Select/Dropdown"
+msgstr ""
+
+#: includes/lib/msf-blocks/text/msf-block-text.class.php:70
+msgid "Text field"
+msgstr ""
+
+#: includes/lib/msf-blocks/textarea/msf-block-textarea.class.php:70
+msgid "Textarea"
 msgstr ""
 
 #: includes/lib/msf-wizard.class.php:232
@@ -611,6 +651,10 @@ msgstr ""
 
 #: includes/msf.class.php:154
 msgid "hide summary"
+msgstr ""
+
+#: includes/msf.class.php:155
+msgid "Registration"
 msgstr ""
 
 #: includes/msf.class.php:156

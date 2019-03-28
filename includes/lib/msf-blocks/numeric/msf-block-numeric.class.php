@@ -111,4 +111,17 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 
 		return new Mondula_Form_Wizard_Block_Numeric($label, $required, $minimum, $maximum);
 	}
+
+	public static function addType($types) {
+
+		$types['numeric'] = array(
+			'builder' => 'Mondula_Form_Wizard_Block_Numeric::from_aa',
+			'title' => __('Numeric', 'multi-step-form'),
+			'show_admin' => true,
+		);
+
+		return $types;
+	}
 }
+
+add_filter('multi-step-form/block-types', 'Mondula_Form_Wizard_Block_Numeric::addType', 5);

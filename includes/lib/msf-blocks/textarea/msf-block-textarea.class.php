@@ -62,4 +62,17 @@ class Mondula_Form_Wizard_Block_Textarea extends Mondula_Form_Wizard_Block {
 		$required = $aa['required'];
 		return new Mondula_Form_Wizard_Block_Textarea( $label, $required );
 	}
+
+	public static function addType($types) {
+
+		$types['textarea'] = array(
+			'builder' => 'Mondula_Form_Wizard_Block_Textarea::from_aa',
+			'title' => __('Textarea', 'multi-step-form'),
+			'show_admin' => true,
+		);
+
+		return $types;
+	}
 }
+
+add_filter('multi-step-form/block-types', 'Mondula_Form_Wizard_Block_Textarea::addType', 3);

@@ -62,4 +62,17 @@ class Mondula_Form_Wizard_Block_Text extends Mondula_Form_Wizard_Block {
 		$required = $aa['required'];
 		return new Mondula_Form_Wizard_Block_Text( $label, $required );
 	}
+
+	public static function addType($types) {
+
+		$types['text'] = array(
+			'builder' => 'Mondula_Form_Wizard_Block_Text::from_aa',
+			'title' => __('Text field', 'multi-step-form'),
+			'show_admin' => true,
+		);
+
+		return $types;
+	}
 }
+
+add_filter('multi-step-form/block-types', 'Mondula_Form_Wizard_Block_Text::addType', 2);

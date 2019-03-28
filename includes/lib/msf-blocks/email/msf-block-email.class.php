@@ -55,4 +55,17 @@ class Mondula_Form_Wizard_Block_Email extends Mondula_Form_Wizard_Block {
 		$required = $aa['required'];
 		return new Mondula_Form_Wizard_Block_Email( $label, $required );
 	}
+
+	public static function addType($types) {
+
+		$types['email'] = array(
+			'builder' => 'Mondula_Form_Wizard_Block_Email::from_aa',
+			'title' => __('Email', 'multi-step-form'),
+			'show_admin' => true,
+		);
+
+		return $types;
+	}
 }
+
+add_filter('multi-step-form/block-types', 'Mondula_Form_Wizard_Block_Email::addType', 4);

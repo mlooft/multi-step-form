@@ -82,4 +82,17 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
 		$placeholder = $aa['placeholder'];
 		return new Mondula_Form_Wizard_Block_Select( $elements, $required, $label, $placeholder, $search);
 	}
+
+	public static function addType($types) {
+
+		$types['select'] = array(
+			'builder' => 'Mondula_Form_Wizard_Block_Select::from_aa',
+			'title' => __('Select/Dropdown', 'multi-step-form'),
+			'show_admin' => true,
+		);
+
+		return $types;
+	}
 }
+
+add_filter('multi-step-form/block-types', 'Mondula_Form_Wizard_Block_Select::addType', 1);

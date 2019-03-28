@@ -64,4 +64,17 @@ class Mondula_Form_Wizard_Block_File extends Mondula_Form_Wizard_Block {
 		$multi = isset( $aa['multi'] ) ? $aa['multi'] : false;
 		return new Mondula_Form_Wizard_Block_File( $label, $required, $multi );
 	}
+
+	public static function addType($types) {
+
+		$types['file'] = array(
+			'builder' => 'Mondula_Form_Wizard_Block_File::from_aa',
+			'title' => __('File Upload', 'multi-step-form'),
+			'show_admin' => true,
+		);
+
+		return $types;
+	}
 }
+
+add_filter('multi-step-form/block-types', 'Mondula_Form_Wizard_Block_File::addType', 6);

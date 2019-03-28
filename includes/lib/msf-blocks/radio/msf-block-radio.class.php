@@ -85,4 +85,17 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
 		$multichoice = $aa['multichoice'];
 		return new Mondula_Form_Wizard_Block_Radio( $elements, $required, $multichoice );
 	}
+
+	public static function addType($types) {
+
+		$types['radio'] = array(
+			'builder' => 'Mondula_Form_Wizard_Block_Radio::from_aa',
+			'title' => __('Radio/Checkbox', 'multi-step-form'),
+			'show_admin' => true,
+		);
+
+		return $types;
+	}
 }
+
+add_filter('multi-step-form/block-types', 'Mondula_Form_Wizard_Block_Radio::addType', 0);
