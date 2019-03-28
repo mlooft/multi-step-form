@@ -1,9 +1,10 @@
 /// <reference path="../../../node_modules/@types/jqueryui/index.d.ts" />
 
-declare var wizard : any;
-declare var msfp : boolean | undefined;
-declare var setupConditionals : Function | undefined;
-declare var tb_remove : Function;
+declare var wizard: any;
+declare var msfp: boolean | undefined;
+declare var setupConditionals: Function | undefined;
+declare var tb_remove: Function;
+declare var wp: any;
 
 (function ($) {
 	'use strict';
@@ -11,11 +12,11 @@ declare var tb_remove : Function;
 	var container = '#fw-wizard-container';
 	var elementsContainer = '#fw-elements-container';
 
-	function log(...args : any[]) {
+	function log(...args: any[]) {
 		if (window.console) console.log.apply(console, args);
 	}
 
-	function warn(...args : any[]) {
+	function warn(...args: any[]) {
 		if (window.console) console.warn.apply(console, args);
 	}
 
@@ -89,7 +90,6 @@ declare var tb_remove : Function;
 	}
 
 	function renderRadio(radio) {
-		log('radio', radio);
 		var i, n, optCount = 0;
 		var radioHtml = '';
 		var element;
@@ -217,6 +217,25 @@ declare var tb_remove : Function;
 		return paragraphHtml;
 	}
 
+	function renderMedia(block) {
+		var mediaHtml = '';
+		mediaHtml += '<label>' + wizard.i18n.media.title + ' <i class="fa fa-info-circle" aria-hidden="true" title="' + wizard.i18n.media.tooltip + '"></i></label>';
+
+		mediaHtml += '<div style="float:left; width: 49%;"><label>' + wizard.i18n.media.file_title + '</label>';
+		mediaHtml += '<input style="width: 90%" type="text" disabled class="fw-media-element-title fw-block-label" value=""></input><br/></div>';
+		mediaHtml += '<div style="float: left; width: 49%;"><label>' + wizard.i18n.media.file_name + '</label>';
+		mediaHtml += '<input style="width: 90%" type="text" disabled class="fw-media-element-filename fw-block-label" value=""></input><br/></div>';
+		mediaHtml += '<br style="clear: both;" />';
+
+		mediaHtml += '<label>' + wizard.i18n.media.preview + '</label>';
+		mediaHtml += '<div class="fw-media-preview-wrapper"><img class="fw-media-preview" src="" height="100" style="height: 100px; width: auto; max-width: 100%;"></div>';
+		mediaHtml += '<input type="hidden" name="fw-media-element" class="fw-media-element" value="' + (block.attachmentId ? block.attachmentId : 0) + '" class="regular-text" />';
+		mediaHtml += '<input type="button" class="button-primary fw-media-select" value="' + wizard.i18n.media.select + '"/><br /><br />';
+
+		mediaHtml += '<label style="display:none;"><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
+		return mediaHtml;
+	}
+
 	function renderRegex(block) {
 		var regexHtml = '';
 		regexHtml += '<label>' + wizard.i18n.label + '</label>';
@@ -296,6 +315,9 @@ declare var tb_remove : Function;
 				break;
 			case 'paragraph':
 				blockHtml += renderParagraph(block);
+				break;
+			case 'media':
+				blockHtml += renderMedia(block);
 				break;
 			case 'regex':
 				blockHtml += renderRegex(block);
@@ -501,7 +523,7 @@ declare var tb_remove : Function;
 			type: $element.attr('data-type'),
 			value: null
 		};
-		
+
 		if (data.type === 'option') {
 			data.value = $element.find('.fw-radio-option').val();
 		} else if (data.type === 'header') {
@@ -574,6 +596,11 @@ declare var tb_remove : Function;
 		text['text'] = $text.find('.fw-paragraph-text').val();
 	}
 
+	function getMediaData($text, text) {
+		text['attachmentId'] = $text.find('.fw-media-element').val();
+		// TODO
+	}
+
 	function getRegexData($text, text) {
 		text['label'] = $text.find('.fw-text-label').val();
 		text['filter'] = $text.find('.fw-regex-filter').val();
@@ -641,6 +668,9 @@ declare var tb_remove : Function;
 			case 'paragraph':
 				getParagraphData($block, block);
 				break;
+			case 'media':
+				getMediaData($block, block);
+				break;
 			case 'regex':
 				getRegexData($block, block);
 				break;
@@ -696,7 +726,7 @@ declare var tb_remove : Function;
 			header: $('.fw-mail-header').val(),
 			headers: $('.fw-mail-headers').val(),
 		};
-		
+
 		return settings;
 	}
 
@@ -809,17 +839,6 @@ declare var tb_remove : Function;
 	}
 
     /**
-     * blockOut - description
-     *
-     * @param  event the event
-     * @param  ui the ui element
-     */
-	function blockOut(event, ui) {
-		log('blockOut', event, ui);
-		$(event.target).removeClass('fw-over');
-	}
-
-    /**
      * setupDragNDrop - prepare the draggables, sortables and droppables
      *
      * @return {helper}  some helpers for draggables
@@ -875,7 +894,7 @@ declare var tb_remove : Function;
 						$(ui.item).replaceWith($newBlock);
 						// get new Block index for keeping conditionals working
 						newBlockIdx = $('.fw-step-block').index($newBlock);
-						console.log($newBlock + " " + newBlockIdx);
+						log('New block: ', $newBlock + " " + newBlockIdx);
 					}
 				}
 				setupDragNDrop();
@@ -905,13 +924,6 @@ declare var tb_remove : Function;
 				setupClickHandlers();
 			}
 		});
-
-		//        make step divs toggleable
-		//        console.log(postboxes);
-		//        postboxes.add_postbox_toggles('multi-step-form');
-
-		var stepScope = 'fw-wizard-elements-scope';
-		var blockScope = 'fw-wizard-block-scope';
 
 		$(elementsContainer + ' .fw-draggable-block').draggable({
 			connectToSortable: '.fw-step-part .inside',
@@ -1197,6 +1209,7 @@ declare var tb_remove : Function;
 				var $part = $(thickEvent.target).parents('.fw-step-part');
 				$part.find('.inside').append(block);
 				setupClickHandlers();
+				setupTooltips();
 				if (msfp) {
 					setupConditionals($('.fw-step-block').index(block));
 				}
@@ -1211,6 +1224,22 @@ declare var tb_remove : Function;
 				var $part = $(thickEvent.target).parents('.fw-step-part');
 				$part.find('.inside').append(block);
 				setupClickHandlers();
+				setupTooltips();
+				if (msfp) {
+					setupConditionals($('.fw-step-block').index(block));
+				}
+			});
+			// MEDIA
+			$("#fw-thickbox-media").unbind('click').click(function () {
+				tb_remove();
+				var block = $(renderBlock({
+					type: 'media',
+					attachmentId: 0
+				}));
+				var $part = $(thickEvent.target).parents('.fw-step-part');
+				$part.find('.inside').append(block);
+				setupClickHandlers();
+				setupTooltips();
 				if (msfp) {
 					setupConditionals($('.fw-step-block').index(block));
 				}
@@ -1267,6 +1296,78 @@ declare var tb_remove : Function;
 		}
 	}
 
+	function fillMedia($block, data) {
+		let src = data.url;
+		const { title, filename } = data;
+
+		switch (data.type) {
+			case "image":
+				if (data.sizes.thumbnail.url) {
+					src = data.sizes.thumbnail.url;
+				}
+				break;
+			case "video":
+				if (data.thumb.src) {
+					src = data.thumb.src;
+				} else if (data.icon) {
+					src = data.icon;
+				}
+				break;
+		}
+
+		$block.find('.fw-media-preview').attr('src', src);
+		$block.find('.fw-media-element').val(data.id);
+		$block.find('.fw-media-element-title').val(title);
+		$block.find('.fw-media-element-filename').val(filename);
+	}
+
+	function setupMedia($container) {
+		const mediaBlocks = $container.find('.fw-media-element');
+		
+		mediaBlocks.each(function () {
+			if ($(this).val().toString() !== '0') {
+				const $block = $(this).parent();
+				const attachment = wp.media.attachment($(this).val());
+
+				attachment.fetch({
+					success : function(result) {
+						fillMedia($block, result.attributes);
+					}
+				});
+			}
+		});
+	}
+
+	let media_frame = null;
+	function selectMedia(e) {
+		e.preventDefault();
+
+		const $block = $(e.target).parent();
+
+		if (!media_frame) {
+			media_frame = wp.media({
+				title: wizard.i18n.media.frame_title,
+				multiple: false
+			});
+		}
+
+		media_frame.unbind('close').on('close', function () {
+			const selection = media_frame.state().get('selection').first().toJSON();
+
+			fillMedia($block, selection);
+		});
+
+		media_frame.unbind('open').on('open', function () {
+			let selection = media_frame.state().get('selection');
+			const id = $block.find('.fw-media-element').val();
+			const attachment = wp.media.attachment(id);
+			attachment.fetch();
+			selection.add(attachment ? [attachment] : []);
+		});
+
+		media_frame.open();
+	}
+
 	function setupClickHandlers() {
 		// add step handler
 		$('.fw-element-step').unbind("click").click(function (event) {
@@ -1274,7 +1375,7 @@ declare var tb_remove : Function;
 		});
 
 		$('.fw-duplicate-step').unbind("click").click(function (event) {
-			var $step = $(this).parent().parent().find('.fw-step');
+			const $step = $(this).parent().parent().find('.fw-step');
 			duplicateStep($step);
 		});
 
@@ -1344,7 +1445,7 @@ declare var tb_remove : Function;
 			// make elements sticky
 			$(window).scroll(function () {
 				var offset = $('.nav-tab-wrapper').position().top + $('.nav-tab-wrapper').height() + 9;
-				
+
 				var scrollTop = $(this).scrollTop();
 				if (scrollTop > offset) {
 					$(elementsContainer).addClass('fw-sticky');
@@ -1377,12 +1478,15 @@ declare var tb_remove : Function;
 			$container.on('keydown', '.fw-numeric-minimum', maskNumericInput);
 			$container.on('keydown', '.fw-numeric-maximum', maskNumericInput);
 
+			$container.on('click', '.fw-media-select', selectMedia);
+
 			$container.on('click', '.fw-remove-step', removeStep);
 
 			setupDragNDrop();
 			setupTooltips();
 			setupThickbox();
 			setupClickHandlers();
+			setupMedia($container);
 
 			// tab menu toggle
 			$('#fw-nav-settings').click(function (e) {

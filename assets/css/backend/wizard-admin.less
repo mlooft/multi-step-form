@@ -20,6 +20,7 @@
 @color_radio: #009989;
 @color_select: #757575;
 @color_paragraph: #ffc107;
+@color_media: #bf61fd;
 @color_registration: #8bc34a;
 @color_regex: #805dff;
 @color_plus: #ff6d00;
@@ -237,6 +238,10 @@ i.fa-caret-up, i.fa-caret-right, i.fa-remove, i.fa-files-o {
 }
 .fw-elements {
 	margin-bottom: 15px;
+	padding-right: 10px;
+	overflow-y: auto;
+	height: 72vh;
+	min-height: 72vh;
 }
 .fw-elements-container.fw-sticky {
 	position: fixed;
@@ -339,8 +344,8 @@ div#TB_ajaxContent {
 	#fw-thickbox-radio, #fw-thickbox-select, #fw-thickbox-checkbox, 
 	#fw-thickbox-text, #fw-thickbox-email, #fw-thickbox-numeric, 
 	#fw-thickbox-file, #fw-thickbox-date, #fw-thickbox-textarea, 
-	#fw-thickbox-select, #fw-thickbox-paragraph, #fw-thickbox-registration, 
-	#fw-thickbox-regex {
+	#fw-thickbox-select, #fw-thickbox-paragraph, #fw-thickbox-media,
+	#fw-thickbox-registration, #fw-thickbox-regex {
         border: medium none !important;
 		color: @color_4;
 		cursor: pointer;
@@ -377,6 +382,9 @@ div#TB_ajaxContent {
     }
     #fw-thickbox-paragraph {
         background: @color_paragraph none repeat scroll 0 0;
+	}
+	#fw-thickbox-media {
+        background: @color_media none repeat scroll 0 0;
 	}
 	#fw-thickbox-regex {
         background: @color_regex none repeat scroll 0 0;
@@ -430,6 +438,9 @@ div#TB_ajaxContent {
 	}
     &[data-type="paragraph"] {
         border-color: @color_paragraph !important;
+	}
+	&[data-type="media"] {
+        border-color: @color_media !important;
     }
 	&[data-type="registration"] {
 		border-color: @color_registration !important;
@@ -499,6 +510,11 @@ div#TB_ajaxContent {
 		background-color: @color_paragraph;
 	}
 }
+.fw-step-block[data-type="media"] {
+	>.fw-block-action, .fw-block-controls > i {
+		background-color: @color_media;
+	}
+}
 .fw-step-block[data-type="registration"] {
 	>.fw-block-action, .fw-block-controls > i {
 		background-color: @color_registration;
@@ -566,7 +582,7 @@ input.fw-required {
 	>i {
 		height: 30px;
 		line-height: 30px;
-		display: inline-block;
+		display: block;
 		color: white;
 		float: right;
 		width: 30px;
@@ -682,6 +698,9 @@ input.fw-invalid {
 }
 .fw-draggable-block[data-type=paragraph] {
 	border-left: 6px solid @color_paragraph;
+}
+.fw-draggable-block[data-type=media] {
+	border-left: 6px solid @color_media;
 }
 .fw-draggable-block[data-type=registration] {
 	border-left: 6px solid @color_registration;

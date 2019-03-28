@@ -44,6 +44,7 @@ require_once( 'includes/lib/msf-blocks/numeric/msf-block-numeric.class.php' );
 require_once( 'includes/lib/msf-blocks/file/msf-block-file.class.php' );
 require_once( 'includes/lib/msf-blocks/date/msf-block-date.class.php' );
 require_once( 'includes/lib/msf-blocks/paragraph/msf-block-paragraph.class.php' );
+require_once( 'includes/lib/msf-blocks/media/msf-block-media.class.php' );
 require_once( 'includes/lib/msf-blocks/select/msf-block-select.class.php' );
 require_once( 'includes/lib/msf-blocks/text/msf-block-text.class.php' );
 require_once( 'includes/lib/msf-blocks/textarea/msf-block-textarea.class.php' );

@@ -51,11 +51,11 @@ class Mondula_Form_Wizard_Admin {
 				'headline' => __( 'The step headline is displayed above the progress bar' , 'multi-step-form' ),
 				'copyText' => __( 'The step description is displayed below the step headline' , 'multi-step-form' ),
 				'removeStep' => __( 'remove step', 'multi-step-form' ),
-				'removeSection' => __( 'remove section', 'multi-step-form' ),
-				'removeBlock' => __( 'remove element', 'multi-step-form' ),
+				'removeSection' => __( 'Remove section', 'multi-step-form' ),
+				'removeBlock' => __( 'Remove element', 'multi-step-form' ),
 				'multiChoice' => __( 'Multi-Select uses checkboxes. Single-Select has radio-buttons.', 'multi-step-form' ),
 				'paragraph' => __( 'Provide a static text block for explanations or additional info. You can use HTML for formatting.', 'multi-step-form' ),
-				'dateformat' => __( 'click for date format specifications', 'multi-step-form' ),
+				'dateformat' => __( 'Click for date format specifications', 'multi-step-form' ),
 			),
 			'alerts' => array(
 				'invalidEmail' => __( 'You need to enter a valid email address', 'multi-step-form' ),
@@ -95,6 +95,15 @@ class Mondula_Form_Wizard_Admin {
 			'paragraph' => array(
 				'textHtml' => __( 'Text/HTML', 'multi-step-form' ),
 				'text' => __( 'Paragraph text', 'multi-step-form' ),
+			),
+			'media' => array(
+				'title' => __( 'Media', 'multi-step-form' ),
+				'frame_title' => __( 'Select Media', 'multi-step-form' ),
+				'tooltip' => __( 'Place an image or video in your form.', 'multi-step-form' ),
+				'select' => __( 'Select a media element', 'multi-step-form' ),
+				'file_title' => __( 'Titel', 'multi-step-form' ),
+				'file_name' => __( 'Dateiname', 'multi-step-form' ),
+				'preview' => __( 'Vorschau', 'multi-step-form' ),
 			),
 			'numeric' => array(
 				'minimum' => __( 'Minimum', 'multi-step-form' ),
@@ -138,6 +147,8 @@ class Mondula_Form_Wizard_Admin {
 
 			wp_register_style( $this->_token . '-backend', esc_url( $this->_assets_url ) . 'styles/msf-backend' . $this->_script_suffix . '.css', array(), $this->_version );
 			wp_enqueue_style( $this->_token . '-backend' );
+
+			wp_enqueue_media();
 		}
 	}
 
