@@ -300,6 +300,7 @@ class Mondula_Form_Wizard_Admin {
 			case 'textarea':
 			case 'file':
 			case 'date':
+			case 'media':
 				foreach ($block as &$value) {
 					$value = sanitize_text_field($value);
 				}

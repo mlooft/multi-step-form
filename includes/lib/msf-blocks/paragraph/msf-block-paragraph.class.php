@@ -33,7 +33,7 @@ class Mondula_Form_Wizard_Block_Paragraph extends Mondula_Form_Wizard_Block {
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-paragraph">
 			<div class="fw-paragraph-container">
-				<p><?php echo $this->_text; ?></p>
+				<p><?php echo $GLOBALS['wp_embed']->run_shortcode($this->_text); ?></p>
 			</div>
 			<div class="fw-clearfix"></div>
 		</div>
