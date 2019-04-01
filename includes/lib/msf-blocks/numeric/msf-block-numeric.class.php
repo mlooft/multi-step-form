@@ -115,7 +115,7 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 	public static function addType($types) {
 
 		$types['numeric'] = array(
-			'builder' => 'Mondula_Form_Wizard_Block_Numeric::from_aa',
+			'class' => 'Mondula_Form_Wizard_Block_Numeric',
 			'title' => __('Numeric', 'multi-step-form'),
 			'show_admin' => true,
 		);

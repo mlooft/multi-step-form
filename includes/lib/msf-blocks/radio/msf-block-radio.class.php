@@ -86,10 +86,24 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
 		return new Mondula_Form_Wizard_Block_Radio( $elements, $required, $multichoice );
 	}
 
+	public static function sanitize_admin( $block ) {
+		$allowedTags = wp_kses_allowed_html('post');
+		unset($allowedTags['textarea']);
+		
+		foreach ( $block['elements'] as &$element ) {
+			$element['type'] = sanitize_text_field( $element['type'] );
+			$element['value'] = wp_kses( $element['value'], $allowedTags);
+		}
+		$block['required'] = sanitize_text_field( $block['required'] );
+		$block['multichoice'] = sanitize_text_field( $block['multichoice'] );
+
+		return $block;
+	}
+
 	public static function addType($types) {
 
 		$types['radio'] = array(
-			'builder' => 'Mondula_Form_Wizard_Block_Radio::from_aa',
+			'class' => 'Mondula_Form_Wizard_Block_Radio',
 			'title' => __('Radio/Checkbox', 'multi-step-form'),
 			'show_admin' => true,
 		);

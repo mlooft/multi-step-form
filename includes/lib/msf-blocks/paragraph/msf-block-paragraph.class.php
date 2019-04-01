@@ -52,10 +52,19 @@ class Mondula_Form_Wizard_Block_Paragraph extends Mondula_Form_Wizard_Block {
 		return new Mondula_Form_Wizard_Block_Paragraph( $text );
 	}
 
+	public static function sanitize_admin( $block ) {
+		$allowedTags = wp_kses_allowed_html('post');
+		unset($allowedTags['textarea']);
+
+		$block['text'] = wp_kses($block['text'], $allowedTags);
+
+		return $block;
+	}
+
 	public static function addType($types) {
 
 		$types['paragraph'] = array(
-			'builder' => 'Mondula_Form_Wizard_Block_Paragraph::from_aa',
+			'class' => 'Mondula_Form_Wizard_Block_Paragraph',
 			'title' => __('Paragraph', 'multi-step-form'),
 			'show_admin' => true,
 		);

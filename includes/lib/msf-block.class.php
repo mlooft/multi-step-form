@@ -30,9 +30,17 @@ abstract class Mondula_Form_Wizard_Block {
 		$block_type_arr = self::get_block_types();
 
 		if (array_key_exists($block['type'], $block_type_arr)) {
-			return call_user_func($block_type_arr[$block['type']]['builder'], $block, $current_version, $serialized_version);
+			return call_user_func($block_type_arr[$block['type']]['class'] . '::from_aa', $block, $current_version, $serialized_version);
 		}
 
 		return null;
+	}
+
+	public static function sanitize_admin( $block ) {
+		foreach ($block as &$value) {
+			$value = sanitize_text_field($value);
+		}
+
+		return $block;
 	}
 }

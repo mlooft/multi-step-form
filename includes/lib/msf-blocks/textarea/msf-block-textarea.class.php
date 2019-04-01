@@ -66,7 +66,7 @@ class Mondula_Form_Wizard_Block_Textarea extends Mondula_Form_Wizard_Block {
 	public static function addType($types) {
 
 		$types['textarea'] = array(
-			'builder' => 'Mondula_Form_Wizard_Block_Textarea::from_aa',
+			'class' => 'Mondula_Form_Wizard_Block_Textarea',
 			'title' => __('Textarea', 'multi-step-form'),
 			'show_admin' => true,
 		);

@@ -69,7 +69,7 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 	public static function addType($types) {
 
 		$types['date'] = array(
-			'builder' => 'Mondula_Form_Wizard_Block_Date::from_aa',
+			'class' => 'Mondula_Form_Wizard_Block_Date',
 			'title' => __('Date', 'multi-step-form'),
 			'show_admin' => true,
 		);

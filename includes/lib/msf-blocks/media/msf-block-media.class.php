@@ -63,7 +63,7 @@ class Mondula_Form_Wizard_Block_Media extends Mondula_Form_Wizard_Block {
 	public static function addType($types) {
 
 		$types['media'] = array(
-			'builder' => 'Mondula_Form_Wizard_Block_Media::from_aa',
+			'class' => 'Mondula_Form_Wizard_Block_Media',
 			'title' => __('Media', 'multi-step-form'),
 			'show_admin' => true,
 		);

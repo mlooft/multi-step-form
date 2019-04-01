@@ -66,7 +66,7 @@ class Mondula_Form_Wizard_Block_Text extends Mondula_Form_Wizard_Block {
 	public static function addType($types) {
 
 		$types['text'] = array(
-			'builder' => 'Mondula_Form_Wizard_Block_Text::from_aa',
+			'class' => 'Mondula_Form_Wizard_Block_Text',
 			'title' => __('Text field', 'multi-step-form'),
 			'show_admin' => true,
 		);

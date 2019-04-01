@@ -59,7 +59,7 @@ class Mondula_Form_Wizard_Block_Email extends Mondula_Form_Wizard_Block {
 	public static function addType($types) {
 
 		$types['email'] = array(
-			'builder' => 'Mondula_Form_Wizard_Block_Email::from_aa',
+			'class' => 'Mondula_Form_Wizard_Block_Email',
 			'title' => __('Email', 'multi-step-form'),
 			'show_admin' => true,
 		);

@@ -68,7 +68,7 @@ class Mondula_Form_Wizard_Block_File extends Mondula_Form_Wizard_Block {
 	public static function addType($types) {
 
 		$types['file'] = array(
-			'builder' => 'Mondula_Form_Wizard_Block_File::from_aa',
+			'class' => 'Mondula_Form_Wizard_Block_File',
 			'title' => __('File Upload', 'multi-step-form'),
 			'show_admin' => true,
 		);

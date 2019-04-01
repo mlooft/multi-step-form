@@ -83,10 +83,22 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
 		return new Mondula_Form_Wizard_Block_Select( $elements, $required, $label, $placeholder, $search);
 	}
 
+	public static function sanitize_admin( $block ) {
+		$block['required'] = sanitize_text_field( $block['required'] );
+		$block['search'] = sanitize_text_field( $block['search'] );
+		$block['label'] = sanitize_text_field( $block['label'] );
+		$block['placeholder'] = sanitize_text_field( $block['placeholder'] );
+		foreach ($block['elements'] as &$element) {
+			$element = sanitize_text_field( $element );
+		}
+
+		return $block;
+	}
+
 	public static function addType($types) {
 
 		$types['select'] = array(
-			'builder' => 'Mondula_Form_Wizard_Block_Select::from_aa',
+			'class' => 'Mondula_Form_Wizard_Block_Select',
 			'title' => __('Select/Dropdown', 'multi-step-form'),
 			'show_admin' => true,
 		);
