@@ -6,9 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Mondula_Form_Wizard_Shortcode {
 
-	/**
-	 *
-	 */
 	const CODE_OLD = 'wizard';
 	const CODE = 'multi-step-form';
 
@@ -41,8 +38,6 @@ class Mondula_Form_Wizard_Shortcode {
 		add_action('wp_ajax_fw_delete_files', array( $this, 'fw_delete_files' ) );
 		add_action('wp_ajax_nopriv_fw_delete_files', array( $this, 'fw_delete_files' ) );
 	}
-
-
 
 	public function get_wizard( $id ) {
 		return $this->_wizard_service->get_by_id( $id );
@@ -206,6 +201,10 @@ class Mondula_Form_Wizard_Shortcode {
 		return $data;
 	}
 
+	/**
+	 * Verifies that the user is a human.
+	 * Makes a request to Google Recaptcha API v3.
+	 */
 	private function verifyCaptcha() {
 		$token = isset($_POST['recaptchaToken']) ? trim($_POST['recaptchaToken']) : '';
 
@@ -246,6 +245,7 @@ class Mondula_Form_Wizard_Shortcode {
 		$reg = isset( $_POST['reg'] ) ? $this->sanitize_user_reg( $_POST['reg'] ) : array();
 		$files = isset( $_POST['attachments'] ) ? $this->sanitize_attachments( $_POST['attachments'] ) : array();
 
+		// TODO: This can return empty, nonexistent wizards.
 		$wizard = $this->get_wizard( $id );
 
 		if ( wp_verify_nonce( $nonce, $this->_token ) ) {
@@ -293,6 +293,7 @@ class Mondula_Form_Wizard_Shortcode {
 				$mail = wp_mail( $settings['to'], $settings['subject'], $content , $headers, $attachments );
 				// send copy to user
 				if ( count( $email ) == 1 && $cc === 'on' ) {
+					// TODO: Is this really right?
 					$copy = wp_mail( $email, 'CC: ' . $settings['subject'], $content, $headers );
 				}
 				remove_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
