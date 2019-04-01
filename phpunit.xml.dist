@@ -1,0 +1,14 @@
+<phpunit
+	bootstrap="tests/bootstrap.php"
+	backupGlobals="false"
+	colors="always"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	>
+	<testsuites>
+		<testsuite>
+			<directory prefix="msf-test-" suffix=".php">./tests/</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>

@@ -11,32 +11,37 @@
  * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/tutorials/block-tutorial/writing-your-first-block-type/
  */
 function multi_step_form_block_init($handler) {
-    $dir = dirname( __FILE__ );
-
+    
     if (!function_exists("register_block_type")) {
         return;
     }
 
-    $block_js = 'msf-block.js';
-    wp_register_script(
-        'msf-block-editor',
-        plugins_url( $block_js, __FILE__ ),
-        array(
-            'wp-blocks',
-            'wp-i18n',
-            'wp-element',
-            'wp-editor',
-        ),
-        filemtime( "$dir/$block_js" )
-    );
+    add_action('admin_enqueue_scripts', function() {
 
-    $editor_css = 'msf-editor.css';
-    wp_register_style(
-        'msf-block-editor',
-        plugins_url( $editor_css, __FILE__ ),
-        array(),
-        filemtime( "$dir/$editor_css" )
-    );
+        $dir = dirname( __FILE__ );
+
+        $block_js = 'msf-block.js';
+        wp_register_script(
+            'msf-block-editor',
+            plugins_url( $block_js, __FILE__ ),
+            array(
+                'wp-blocks',
+                'wp-i18n',
+                'wp-element',
+                'wp-editor',
+            ),
+            filemtime( "$dir/$block_js" )
+        );
+
+        $editor_css = 'msf-editor.css';
+        wp_register_style(
+            'msf-block-editor',
+            plugins_url( $editor_css, __FILE__ ),
+            array(),
+            filemtime( "$dir/$editor_css" )
+        );
+
+    });
 
     register_block_type( 'multi-step-form/msf', array(
         'editor_script' => 'msf-block-editor',
