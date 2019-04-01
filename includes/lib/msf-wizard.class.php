@@ -10,9 +10,6 @@ class Mondula_Form_Wizard_Wizard {
 	private $_settings = array();
 	private $_title;
 
-	public function __construct() {
-	}
-
 	public function get_settings(){
 	  return $this->_settings;
 	}
@@ -38,19 +35,6 @@ class Mondula_Form_Wizard_Wizard {
 		$this->_steps[] = $steps;
 	}
 
-	private function _get_class ( $len ) {
-		// PRO FEATURE
-		// switch ( $len ) {
-		//	 case 3:
-		//		 return 'fw-one_third';
-		//	 case 2:
-		//		 return 'fw-one_half';
-		//	 default:
-		//		 return '';
-		// }
-		return '';
-	}
-
 	public static function fw_get_option($option, $section, $default = '') {
 	  $options = get_option($section);
 	  if ( isset( $options[$option] ) )
@@ -61,112 +45,12 @@ class Mondula_Form_Wizard_Wizard {
 
 	private function render_progress_bar () {
 		$cnt = count( $this->_steps );
-		?>
-		<div class="fw-progress-wrap">
-			<ul class="fw-progress-bar"
-				data-activecolor="<?php echo $this->fw_get_option('activecolor' ,'fw_settings_styling', '#546e7a');?>"
-				data-donecolor="<?php echo $this->fw_get_option('donecolor' ,'fw_settings_styling', '#4caf50');?>"
-				data-nextcolor="<?php echo $this->fw_get_option('nextcolor' ,'fw_settings_styling', '#aaa');?>"
-				data-buttoncolor="<?php echo $this->fw_get_option('buttoncolor', 'fw_settings_styling', '#546e7a');?>">
-				<?php
-				for ($i = 0; $i < $cnt; $i++) {
-					$step = $this->_steps[$i];
-					?>
-				<li class="fw-progress-step"
-					data-id="<?php echo $i; ?>">
-					<span class="fw-progress-bar-bar"></span>
-					<span class="fw-txt-ellipsis" data-title="<?php echo $step->render_title(); ?>"><?php echo $step->render_title(); ?></span>
-					<?php if ( $i == 4 && ( $i < ( $cnt - 1 ) ) ): ?>
-						<span class="fw-circle"></span>
-						<span class="fw-circle-1"></span>
-						<span class="fw-circle-2"></span>
-					<?php endif; ?>
-				</li>
-					<?php
-				}
-				?>
-			</ul>
-		</div>
-		<?php
-	}
-
-	private function render_step_title ( $parts ) {
-		$width = $this->_get_class( count($parts) );
-?>
-<div class="fw-step-title">
-	<?php
-		$len = count($parts);
-		for ($i = 0; $i < $len; $i++) {
-			$part = $parts[$i];
-			if ($i > 0 && $part->same_title($parts[$i - 1])) {
-				$class = $width . ' fw-title-hidden';
-			} else {
-				$class = $width;
-			}
-			?>
-	<div class="fw-step-part-title <?php echo $class; ?>">
-			<?php
-				$part->render_title();
-			?>
-	</div>
-			<?php
-		}
-	?>
-</div>
-<?php
-	}
-
-	private function render_step_body ( $parts ) {
-		$class = $this->_get_class( count($parts) );
-		?>
-		<div class="fw-step-body">
-			<?php
-				$cnt = count( $parts );
-				for ( $i = 0; $i < $cnt; $i++ ) {
-					?>
-			<div class="fw-step-part <?php echo $class; ?>" data-partId="<?php echo $i; ?>">
-					<?php
-						$part = $parts[$i];
-						$part->render_body( $i );
-					?>
-			</div>
-					<?php
-				}
-			?>
-		</div>
-		<?php
-	}
-
-	private function render_step_parts ( $parts ) {
-		$cnt = count( $parts );
-		$width = $this->_get_class( $cnt );
-
-		for ($i = 0; $i < $cnt; $i++) {
-			$part = $parts[$i];
-			if ($i > 0 && $part->same_title($parts[$i - 1])) {
-				$hidden = ' fw-title-hidden';
-			} else {
-				$hidden = '';
-			}
-			?>
-			<div class="fw-step-part <?php echo $width; ?>" data-partId="<?php echo $i ?>">
-				<div class="fw-step-part-title <?php echo $hidden; ?>">
-						<?php
-							$part->render_title();
-						?>
-				</div>	
-				<div class="fw-step-part-body">
-						<?php
-							$part->render_body( $i );
-						?>
-				</div>
-			</div>
-			<?php
-		}
+		
+		require 'partials/progress-bar.php';
 	}
 
 	/**
-	 *
+	 * Renders the form to the client.
 	 */
 	public function render( $wizard_id ) {
 		$progressbar = $this->fw_get_option( 'progressbar', 'fw_settings_styling', 'on' ) === 'on';
@@ -191,193 +75,21 @@ class Mondula_Form_Wizard_Wizard {
 		}
 
 		ob_start();
-		?>
-		<div id="multi-step-form" class="<?php echo $classes; ?>" data-stepCount="<?php echo count( $this->_steps ); ?>" data-wizardid="<?php echo $wizard_id; ?>">
-			<div class="fw-wizard-step-header-container">
-				<div class="fw-container" data-redirect="<?php echo $this->_settings['thankyou']; ?>">
-				<?php
-				$len = count( $this->_steps );
-				for ( $i = 0; $i < $len; $i++ ) {
-					$step = $this->_steps[ $i ];
-					?>
-				<div class="fw-wizard-step-header" data-stepId="<?php echo $i; ?>">
-					<h2><?php echo $step->render_headline(); ?></h2>
-					<p class="fw-copytext"><?php $step->render_copy_text(); ?></p>
-				</div>
-				<?php
-				}
-				?>
-				</div>
-			</div>
-			<div class="fw-progress-bar-container <?php echo ( $progressbar ? '' : ' fw-hide-progress-bar' ); ?>">
-				<div class="fw-container">
-			<?php
-				$this->render_progress_bar( $this->_steps );
-			?>
-				</div>
-			</div>
-			<div class="fw-wizard-step-container">
-				<div class="fw-container">
-				<?php
-				for ( $i = 0; $i < $len; $i++ ) {
-					$step = $this->_steps[ $i ];
-					?>
-					<div class="fw-wizard-step" data-stepId="<?php echo $i; ?>">
-						<?php
-						$step->render( $wizard_id, $i );
-						if ( $i == $len - 1 ) {
-							if ( $show_summary ) {
-							?>
-							<div class="fw-summary-container">
-								<button type="button" class="fw-toggle-summary"><?php _e( 'SHOW SUMMARY', 'multi-step-form' ) ?></button>
-								<div id="wizard-summary" class="fw-wizard-summary" style="display:none;" data-showsummary="on">
-								<div class="fw-summary-alert"><?php _e( 'Some required Fields are empty', 'multi-step-form' ); ?><br><?php _e('Please check the highlighted fields.', 'multi-step-form') ?></div>
-								</div>
-							</div>
-							<?php
-							}
 
-							if ($use_captcha) {
-							?>
-								<input 
-									type="hidden"
-									class="msf-recaptcha-token"
-									data-sitekey="<?php echo $captcha_key; ?>">
-							<?php 
-							}
-							?>
-							<button type="button" class="fw-btn-submit"><?php _e( 'Submit', 'multi-step-form' ); ?></button>
-						<?php
-						}
-						?>
-						<div class="fw-clearfix"></div>
-					</div>
-					<?php
-					}
-				?>
-				</div>
-			</div>
-			<?php if (count($this->_steps) > 1) { ?>
-			<div class="fw-wizard-button-container">
-				<div class="fw-container">
-					<div class="fw-wizard-buttons">
-						<button class="fw-button-previous"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> &nbsp;<?php _e( 'Previous Step', 'multi-step-form' ) ?></button>
-						<button class="fw-button-next"><?php _e( 'Next Step', 'multi-step-form' ) ?> &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-					</div>
-				</div>
-			</div>
-			<?php } ?>
-			<div class="fw-alert-user" style="display:none;"></div>
-		</div>
-		<?php
+		require 'partials/form.php';
+
 		return ob_get_clean();
 	}
 
-	private function render_header_html () {
-		?>
-		<html><body>
-		<table border="0" cellpadding="0" cellspacing="0" width="100%">
-		  <tbody><tr>
-			  <td bgcolor="#ffffff" align="center" style="padding: 20px 15px 70px;" class="section-padding">
-				  <table border="0" cellpadding="0" cellspacing="0" width="500" class="responsive-table">
-					  <tbody><tr>
-						  <td>
-							  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-								  <tbody><tr>
-									  <td>
-										  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-											  <tbody><tr>
-												  <td align="left" style="font-size: 22px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" colspan="2" class="padding-copy"><?php echo $this->_settings['header']?></td>
-											  </tr>
-		<?php
-	}
-
-	private function render_header () {
-		echo $this->_settings['header'] . PHP_EOL . PHP_EOL;
-	}
-
-	private function render_body_html( $data, $name, $email ){
-											  foreach ( $data as $key => $value ) {
-												  echo '<tr><td align="left" style="padding: 30px 0 10px 0; font-size: 20px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" colspan="2" class="padding-copy"><strong>' . $key . '</strong> </td></tr>';
-												  foreach ( $value as $value2 ) {
-													  foreach ( $value2 as $key2 => $value3 ) {
-															$value3 = str_replace("\n", "<br/>", $value3);
-														 	echo '<tr><td align="left" style="border:solid 1px #dadada; border-width:0 0 1px 0; padding: 10px 0 10px 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">'. $key2 .'</td><td align="left" style=" border:solid 1px #dadada; border-width:0 0 1px 0; padding: 10px 0 10px 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">'. $value3 .'</td></tr>';
-													  }
-												  }
-											  } ?>
-										  </tbody></table>
-									  </td>
-								  </tr>
-							  </tbody></table>
-						  </td>
-					  </tr>
-				  </tbody></table>
-			  </td>
-		  </tr>
-	  </tbody></table>
-	  <?php
-	}
-
-	private function render_body ( $data, $name, $email ) {
-		foreach ( $data as $key => $value ) {
-			echo PHP_EOL .  $key . PHP_EOL . PHP_EOL;
-			foreach ( $value as $value2 ) {
-				foreach ( $value2 as $key2 => $value3 ) {
-					$value3 = str_replace("\n", "\n\t\t", $value3);
-					echo "\t" . $key2 . " - " . $value3 . PHP_EOL;
-				}
-			}
-			echo PHP_EOL;
-		}
-
-		echo PHP_EOL . "Name: " . $name . PHP_EOL;
-		echo "Email: " . $email . PHP_EOL;
-	}
-
-	private function render_footer () {
-		echo PHP_EOL . _e('End of form submission', 'multi-step-form') . PHP_EOL;
-		echo "Multi Step Form | powered by Mondula GmbH ";
-		echo date("Y");
-	}
-
-	private function render_footer_html() {
-	   ?>
-	   <table border="0" cellpadding="0" cellspacing="0" width="100%">
-		<tbody><tr>
-			<td bgcolor="#f5f5f5" align="center">
-				<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
-					<tbody><tr>
-						<td style="padding: 40px 0px 40px 0px;">
-							<!-- UNSUBSCRIBE COPY -->
-							<table width="500" border="0" cellspacing="0" cellpadding="0" align="center" class="responsive-table">
-								<tbody><tr>
-									<td align="center" valign="middle" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-										<span class="appleFooter" style="color:#666666;">Multi Step Form | powered by <a href="http://mondula.com">Mondula GmbH</a> <?php echo date("Y"); ?></span>
-									</td>
-								</tr>
-							</tbody></table>
-						</td>
-					</tr>
-				</tbody></table>
-			</td>
-		</tr>
-	</tbody></table>
-	</body></html>
-	<?php
-	}
-
-	public function render_mail ( $data, $name, $email, $mailformat ) {
+	public function render_mail ( $data, $email, $mailformat ) {
 		ob_start();
+		
 		if ($mailformat == 'text') {
-		  $this->render_header();
-		  $this->render_body( $data, $name, $email );
-		  $this->render_footer();
+		  	require 'partials/mail-plain.php';
 		} else {
-		  $this->render_header_html();
-		  $this->render_body_html( $data, $name, $email );
-		  $this->render_footer_html();
+			require 'partials/mail-html.php';
 		}
+
 		$result = ob_get_contents();
 		ob_end_clean();
 		return $result;
@@ -389,9 +101,9 @@ class Mondula_Form_Wizard_Wizard {
 			$steps_json[] = $step->as_aa();
 		}
 		return array(
-		  'title' => $this->_title,
-		  'steps' => $steps_json,
-		  'settings' => $this->_settings
+			'title' => $this->_title,
+			'steps' => $steps_json,
+			'settings' => $this->_settings
 		);
 	}
 

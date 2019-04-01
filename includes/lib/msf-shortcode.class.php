@@ -242,7 +242,6 @@ class Mondula_Form_Wizard_Shortcode {
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';
 		$id = isset( $_POST['id'] ) && intval($_POST['id']) ? intval($_POST['id']) : '';
 		$data = isset( $_POST['fw_data'] ) ? $this->sanitize_data( $_POST['fw_data'] ) : array();
-		$name = isset( $_POST['name'] ) ? sanitize_text_field( $_POST['name'] ) : array();
 		$email = isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : array();
 		$reg = isset( $_POST['reg'] ) ? $this->sanitize_user_reg( $_POST['reg'] ) : array();
 		$files = isset( $_POST['attachments'] ) ? $this->sanitize_attachments( $_POST['attachments'] ) : array();
@@ -271,7 +270,7 @@ class Mondula_Form_Wizard_Shortcode {
 				/* Send email */
 				$mailformat = Mondula_Form_Wizard_Wizard::fw_get_option( 'mailformat' ,'fw_settings_email', 'html' );
 				$cc = Mondula_Form_Wizard_Wizard::fw_get_option( 'cc' ,'fw_settings_email', 'off' );
-				$content = $wizard->render_mail( $data, $name, $email, $mailformat );
+				$content = $wizard->render_mail( $data, $email, $mailformat );
 				$settings = $wizard->get_settings();
 				$attachments = $this->generate_attachment_paths( $files );
 
