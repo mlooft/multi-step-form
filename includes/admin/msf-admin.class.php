@@ -204,11 +204,6 @@ class Mondula_Form_Wizard_Admin {
 		<?php
 	}
 
-	function add_json_mime( $mime_types ) {
-		$mime_types['json'] = 'application/json'; //Adding svg extension
-		return $mime_types;
-	}
-
 	private function import_json( $json ) {
 		$aa = json_decode( $json, true );
 		if ( ! $aa ) {
@@ -230,19 +225,20 @@ class Mondula_Form_Wizard_Admin {
 		if ( isset( $_FILES['json-import'] ) ) {
 			$overrides = array(
 				'test_form' => false,
+				'test_type' => false // WordPress is too restricted to easily allow json upload
 			);
-			// enable JSON upload
-			add_filter( 'upload_mimes', array( $this, 'add_json_mime') , 1, 1 );
 			$uploaded = wp_handle_upload( $_FILES['json-import'], $overrides );
-			// disable JSON upload
-			remove_filter( 'upload_mimes', array( $this, 'add_json_mime') , 1, 1 );
+	
 			// Error checking using WP functions
 			if ( isset( $uploaded['error'] ) ) {
 				$this->notice( 'error', $uploaded['error'] );
-			} elseif ( isset( $uploaded['type'] ) && $uploaded['type'] != 'application/json' ) {
-				$this->notice( 'error', __( 'Forms must be imported as JSON files', 'multi-step-form' ) );
-			} elseif ( isset( $uploaded['file'] ) && isset( $uploaded['url'] ) ) {
-				$this->import_json( file_get_contents( $uploaded['file'] ) );
+			} else  {
+				$file_type = wp_check_filetype($uploaded['file'], array('json' => 'application/json'));
+				if ($file_type['type'] !== 'application/json') {
+					$this->notice( 'error', __( 'Forms must be imported as JSON files', 'multi-step-form' ) );
+				} else {
+					$this->import_json( file_get_contents( $uploaded['file'] ) );
+				}
 			}
 		}
 	}
