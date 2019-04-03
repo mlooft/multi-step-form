@@ -405,15 +405,15 @@ msgstr ""
 msgid "Numeric"
 msgstr ""
 
-#: includes/lib/msf-blocks/paragraph/msf-block-paragraph.class.php:59
+#: includes/lib/msf-blocks/paragraph/msf-block-paragraph.class.php:68
 msgid "Paragraph"
 msgstr ""
 
-#: includes/lib/msf-blocks/radio/msf-block-radio.class.php:93
+#: includes/lib/msf-blocks/radio/msf-block-radio.class.php:107
 msgid "Radio/Checkbox"
 msgstr ""
 
-#: includes/lib/msf-blocks/select/msf-block-select.class.php:90
+#: includes/lib/msf-blocks/select/msf-block-select.class.php:102
 msgid "Select/Dropdown"
 msgstr ""
 
@@ -425,31 +425,31 @@ msgstr ""
 msgid "Textarea"
 msgstr ""
 
-#: includes/lib/msf-wizard.class.php:232
+#: includes/lib/partials/form.php:38
 msgid "SHOW SUMMARY"
 msgstr ""
 
-#: includes/lib/msf-wizard.class.php:234, includes/msf.class.php:161
+#: includes/lib/partials/form.php:40, includes/msf.class.php:161
 msgid "Some required Fields are empty"
 msgstr ""
 
-#: includes/lib/msf-wizard.class.php:234, includes/msf.class.php:162
+#: includes/lib/partials/form.php:40, includes/msf.class.php:162
 msgid "Please check the highlighted fields."
 msgstr ""
 
-#: includes/lib/msf-wizard.class.php:249
+#: includes/lib/partials/form.php:54
 msgid "Submit"
 msgstr ""
 
-#: includes/lib/msf-wizard.class.php:264
+#: includes/lib/partials/form.php:69
 msgid "Previous Step"
 msgstr ""
 
-#: includes/lib/msf-wizard.class.php:265
+#: includes/lib/partials/form.php:70
 msgid "Next Step"
 msgstr ""
 
-#: includes/lib/msf-wizard.class.php:339
+#: includes/lib/partials/mail-plain.php:17
 msgid "End of form submission"
 msgstr ""
 
