@@ -87,6 +87,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 * More translations
 * Media block
 * Embed shotcode in paragraph
+* Form upload bugfix
 
 = 1.4.1 =
 * Captcha Bugfix
