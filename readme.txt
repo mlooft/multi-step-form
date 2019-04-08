@@ -86,7 +86,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 * New, more stable core
 * More translations
 * Media block
-* Embed shotcode in paragraph
+* Embed shortcode in paragraph
 * Form upload bugfix
 
 = 1.4.1 =

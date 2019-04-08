@@ -263,7 +263,7 @@ declare var wp: any;
 	}
 
 	function renderBlock(block) {
-		log('block', block);
+		// log('block', block);
 		var error = false;
 		var blockHtml = '<div class="fw-step-block" data-type="' + block.type + '" >';
 		blockHtml += '<div class="fw-block-controls">';
@@ -405,7 +405,7 @@ declare var wp: any;
 
 	function renderParts(parts) {
 		var i, n = parts.length,
-			partsHtml = '<div><div class="fw-parts-header"><h3>Sections</h3></div>';
+			partsHtml = '<div><div class="fw-parts-header"><h3>' + wizard.i18n.sections + '</h3></div>';
 		partsHtml += '<div class="fw-column-buttons">';
 		partsHtml += '<button type="button" class="fw-button-one-column"><i class="fa fa-align-justify"></i></button>';
 		partsHtml += '<button type="button" class="fw-button-two-columns"><i class="fa fa-align-justify"></i> <i class="fa fa-align-justify"></i></button>';
@@ -883,7 +883,7 @@ declare var wp: any;
 				var newBlockIdx = -1;
 				if ($(ui.item).is('.fw-draggable-block')) {
 					if (blockType === 'registration' && hasRegistration()) {
-						alertMessage("Only one registration block allowed!", false);
+						alertMessage(wizard.i18n.alerts.onlyOneRegistration, false);
 						$(ui.item).remove();
 					} else {
 						// add element
@@ -1270,7 +1270,7 @@ declare var wp: any;
 				}));
 				var $part = $(thickEvent.target).parents('.fw-step-part');
 				if (hasRegistration()) {
-					alertMessage("Only one registration block allowed!", false);
+					alertMessage(wizard.i18n.alerts.onlyOneRegistration, false);
 				} else {
 					$part.find('.inside').append(block);
 				}
