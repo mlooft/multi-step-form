@@ -269,16 +269,16 @@ msgstr ""
 msgid "Biographical Info"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:215
+#: includes/admin/msf-admin.class.php:210
 msgid "Invalid JSON-File. Check your syntax."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:243
+#: includes/admin/msf-admin.class.php:238
 msgid "Forms must be imported as JSON files"
 msgstr ""
 
-#: includes/admin/partials/msf-editor.php:8
-msgid "Success. Form saved."
+#: includes/admin/msf-admin.class.php:333, includes/admin/partials/msf-editor.php:8
+msgid "Success. Wizard saved."
 msgstr ""
 
 #: includes/admin/partials/msf-editor.php:12

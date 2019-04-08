@@ -330,7 +330,7 @@ class Mondula_Form_Wizard_Admin {
 					$id = $new_id;
 					$response['nonce'] = wp_create_nonce( $this->_token . $id );
 				}
-				$response['msg'] = 'Success! Wizard saved.';
+				$response['msg'] = __('Success. Wizard saved.', 'multi-step-form');
 				$response['id'] = $id;
 				wp_send_json_success( $response );
 			} else {

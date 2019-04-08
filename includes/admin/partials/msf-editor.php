@@ -5,7 +5,7 @@
 ?>
 
 <div id="fw-alert">
-    <?php _e('Success. Form saved.', 'multi-step-form'); ?>
+    <?php _e('Success. Wizard saved.', 'multi-step-form'); ?>
 </div>
 <div class="wrap">
     <h2 class="nav-tab-wrapper">

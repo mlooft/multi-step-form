@@ -1,4 +1,5 @@
 /// <reference path="../../../node_modules/@types/jqueryui/index.d.ts" />
+/// <reference path="../../../node_modules/@types/select2/index.d.ts" />
 
 declare var ajax : any;
 declare interface Window { grecaptcha : any };
@@ -406,7 +407,6 @@ jQuery(document).ready(function ($) {
 	}
 
 	function getArray(obj, prop) {
-		//log('obj', obj, 'prop', prop);
 		if (!obj[prop]) {
 			obj[prop] = [];
 		}
@@ -897,7 +897,7 @@ jQuery(document).ready(function ($) {
 	}
 
 	function submit(evt) {
-		var summary, name, email, reg;
+		var summary, email, reg;
 		var files = [];
 		var $wizard = $(this).closest('.fw-wizard');
 
