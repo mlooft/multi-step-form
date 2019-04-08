@@ -1172,7 +1172,7 @@ declare var wp: any;
 				}
 			});
 			// FILE UPLOAD
-			$("#fw-thickbox-fileupload").unbind('click').click(function (thickRadioEvent) {
+			$("#fw-thickbox-file").unbind('click').click(function (thickRadioEvent) {
 				tb_remove();
 				var block = $(renderBlock({
 					type: 'file',
