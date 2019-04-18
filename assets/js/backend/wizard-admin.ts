@@ -12,12 +12,14 @@ declare var wp: any;
 	var container = '#fw-wizard-container';
 	var elementsContainer = '#fw-elements-container';
 
-	function log(...args: any[]) {
-		if (window.console) console.log.apply(console, args);
+	const logStyle = "color: white; background-color: purple; padding: 3px; display: block; line-height: 25px; border-radius: 2px;";
+
+	function log(...args : any[]) {
+		if (window.console) console.log.apply(console, ["%cMSF", logStyle, ...args]);
 	}
 
-	function warn(...args: any[]) {
-		if (window.console) console.warn.apply(console, args);
+	function warn(...args : any[]) {
+		if (window.console) console.warn.apply(console, ["%cMSF", logStyle, ...args]);
 	}
 
     /**

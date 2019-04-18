@@ -13,12 +13,14 @@ jQuery(document).ready(function ($) {
 		ajax.i18n.errors.someRequired + '<br>' + ajax.i18n.errors.checkFields
 	];
 
+	const logStyle = "color: white; background-color: purple; padding: 3px; display: block; line-height: 25px; border-radius: 2px;";
+
 	function log(...args : any[]) {
-		if (window.console) console.log.apply(console, args);
+		if (window.console) console.log.apply(console, ["%cMSF", logStyle, ...args]);
 	}
 
 	function warn(...args : any[]) {
-		if (window.console) console.warn.apply(console, args);
+		if (window.console) console.warn.apply(console, ["%cMSF", logStyle, ...args]);
 	}
 
 	function hideStep($wizard, stepId) {
@@ -1209,6 +1211,8 @@ jQuery(document).ready(function ($) {
 				validateReCaptcha();
 			}
 		});
+
+		log("Multi Step Form loaded.");
 	}
 
 	init();
