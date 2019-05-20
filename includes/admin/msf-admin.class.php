@@ -103,9 +103,9 @@ class Mondula_Form_Wizard_Admin {
 				'frame_title' => __( 'Select Media', 'multi-step-form' ),
 				'tooltip' => __( 'Place an image or video in your form.', 'multi-step-form' ),
 				'select' => __( 'Select a media element', 'multi-step-form' ),
-				'file_title' => __( 'Titel', 'multi-step-form' ),
-				'file_name' => __( 'Dateiname', 'multi-step-form' ),
-				'preview' => __( 'Vorschau', 'multi-step-form' ),
+				'file_title' => __( 'Title', 'multi-step-form' ),
+				'file_name' => __( 'Filename', 'multi-step-form' ),
+				'preview' => __( 'Preview', 'multi-step-form' ),
 			),
 			'numeric' => array(
 				'minimum' => __( 'Minimum', 'multi-step-form' ),
