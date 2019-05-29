@@ -1346,20 +1346,27 @@ declare var wp: any;
 
 		const $block = $(e.target).parent();
 
-		if (!media_frame) {
-			media_frame = wp.media({
-				title: wizard.i18n.media.frame_title,
-				multiple: false
-			});
+		if (media_frame) {
+			media_frame.msf_block = $block;
+			media_frame.open();
+			return;
 		}
 
-		media_frame.unbind('close').on('close', function () {
-			const selection = media_frame.state().get('selection').first().toJSON();
+		media_frame = wp.media({
+			title: wizard.i18n.media.frame_title,
+			multiple: false
+		});
 
+		media_frame.msf_block = $block;
+
+		media_frame.on('close', function () {
+			const $block = media_frame.msf_block;
+			const selection = media_frame.state().get('selection').first().toJSON();
 			fillMedia($block, selection);
 		});
 
-		media_frame.unbind('open').on('open', function () {
+		media_frame.on('open', function () {
+			const $block = media_frame.msf_block;
 			let selection = media_frame.state().get('selection');
 			const id = $block.find('.fw-media-element').val();
 			const attachment = wp.media.attachment(id);

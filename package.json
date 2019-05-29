@@ -1,7 +1,7 @@
 {
   "name": "multi-step-form",
   "title": "Multi Step Form",
-  "version": "1.5.0",
+  "version": "1.5.2",
   "homepage": "https://github.com/mlooft/multi-step-form",
   "main": "gulpfile.js",
   "devDependencies": {

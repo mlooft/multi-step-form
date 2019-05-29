@@ -202,15 +202,15 @@ msgid "Select a media element"
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:106
-msgid "Titel"
+msgid "Title"
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:107
-msgid "Dateiname"
+msgid "Filename"
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:108
-msgid "Vorschau"
+msgid "Preview"
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:111
