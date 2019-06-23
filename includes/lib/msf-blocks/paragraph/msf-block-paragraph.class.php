@@ -43,7 +43,7 @@ class Mondula_Form_Wizard_Block_Paragraph extends Mondula_Form_Wizard_Block {
 	public function as_aa() {
 		return array(
 			'type' => 'paragraph',
-			'text' => $this->_text
+			'text' => str_replace('&quot;', '"', $this->_text)
 		);
 	}
 
