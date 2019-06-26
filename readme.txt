@@ -84,6 +84,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 
 = 1.5.3 =
 * JSON Quote Bugfix
+* Better code quality
 
 = 1.5.2 =
 * JS Media Bugfix

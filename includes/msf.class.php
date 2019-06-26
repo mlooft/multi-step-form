@@ -203,10 +203,11 @@ class Mondula_Form_Wizard {
 		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'scripts/msf-frontend' . $this->script_suffix . '.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->_version, true);
 		$ajax = array(
 			'i18n' => $i18n,
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			'nonce' => wp_create_nonce( $this->_token ),
+			'version' => apply_filters('multi-step-form/version-filter', $this->_version),
+			'ajaxurl' => admin_url('admin-ajax.php'),
+			'nonce' => wp_create_nonce($this->_token),
 		);
-		wp_localize_script( $this->_token . '-frontend', 'ajax', $ajax);
+		wp_localize_script( $this->_token . '-frontend', 'msfAjax', $ajax);
 	}
 
 	/**

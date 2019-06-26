@@ -9,15 +9,25 @@ declare var wp: any;
 (function ($) {
 	'use strict';
 
-	var container = '#fw-wizard-container';
-	var elementsContainer = '#fw-elements-container';
+	const container = '#fw-wizard-container';
+	const elementsContainer = '#fw-elements-container';
 
 	const logStyle = "color: white; background-color: purple; padding: 3px; display: block; line-height: 25px; border-radius: 2px;";
 
+	/**
+	 * Shows a log message if the console is available.
+	 * 
+	 * @param args data to display
+	 */
 	function log(...args : any[]) {
 		if (window.console) console.log.apply(console, ["%cMSF", logStyle, ...args]);
 	}
 
+	/**
+	 * Shows a warn message if the console is available.
+	 * 
+	 * @param args data to display
+	 */
 	function warn(...args : any[]) {
 		if (window.console) console.warn.apply(console, ["%cMSF", logStyle, ...args]);
 	}
@@ -37,8 +47,15 @@ declare var wp: any;
 		};
 	}
 
-	function alertMessage(message, success) {
-		var color;
+	/**
+	 * Displays a message to the user. The message can be colored based on
+	 * success or failure of the operation.
+	 * 
+	 * @param message the message
+	 * @param success true for success and false for an error message
+	 */
+	function alertMessage(message : string, success : boolean) {
+		let color : string;
 		if (success) {
 			color = '#4caf50';
 		} else {
@@ -52,12 +69,24 @@ declare var wp: any;
 			.slideUp();
 	}
 
-	function escapeAttribute(s) {
+	/**
+	 * Converts the parameter to a safe, escaped string.
+	 * 
+	 * @param s the data to escape
+	 * @returns the escaped, stringified data
+	 */
+	function escapeAttribute(s : any) : string {
 		return ('' + s).replace(/\\/g, '\\\\').replace(/"/g, '&quot;');
 	}
 
-	function renderBlockAction(type) {
-		var blockAction = '<div class="fw-block-action fw-block-hndle">';
+	/**
+	 * Creates a HTML string to dusplay the type of a block.
+	 * 
+	 * @param type the name of the block type
+	 * @returns HTML Code
+	 */
+	function renderBlockAction(type : string) : string {
+		let blockAction = '<div class="fw-block-action fw-block-hndle">';
 		blockAction += '<i class="fa fa-arrows fw-move-block fw-block-hndle" aria-hidden="true"></i>';
 		blockAction += '<h4>' + type + '</h4>';
 		blockAction += '</div>';
@@ -65,12 +94,13 @@ declare var wp: any;
 	}
 
     /**
-     * renderRadioHeader - renders the header for radio
+     * renderRadioHeader - renders the header for radio block
      *
-     * @param  radioHeader the radio header object
+     * @param radioHeader the radio header object
+	 * @returns HTML Code
      */
-	function renderRadioHeader(radioHeader) {
-		var radioHeaderHtml = '<div class="fw-radio-option-element" data-type="header"><label>' + wizard.i18n.label + '</label>';
+	function renderRadioHeader(radioHeader : string) : string {
+		let radioHeaderHtml = '<div class="fw-radio-option-element" data-type="header"><label>' + wizard.i18n.label + '</label>';
 		radioHeaderHtml += '<input type="text" class="fw-radio-header fw-block-label" value="' + radioHeader + '"></input>';
 		radioHeaderHtml += '</div>';
 		return radioHeaderHtml;
@@ -78,14 +108,14 @@ declare var wp: any;
 
 
     /**
-     * renderRadioOption - description
+     * renderRadioOption - renders a single option for a radio
      *
      * @param  radioOption the radio option
      * @param  idx this options index
      * @return the html for the radio option
      */
-	function renderRadioOption(radioOption, idx) {
-		var radioOptionHtml = '<div class="fw-radio-option-element" data-type="option">'; //'<label>Option ' + idx + '</label>';
+	function renderRadioOption(radioOption : any, idx : number) : string {
+		let radioOptionHtml = '<div class="fw-radio-option-element" data-type="option">'; //'<label>Option ' + idx + '</label>';
 		radioOptionHtml += '<input type="text" class="fw-radio-option" placeholder="' + wizard.i18n.radio.option + ' ' + idx + '" value="' + escapeAttribute(radioOption) + '"></input>';
 		radioOptionHtml += '<div class="fw-remove-radio-option"><i class="fa fa-minus-circle" aria-hidden="true"></i></div></div>';
 		return radioOptionHtml;
@@ -392,19 +422,6 @@ declare var wp: any;
 		return partHtml;
 	}
 
-	function getPartClass(i, n) {
-		var partClass = 'fw-step-part';
-		// if (n > 1) {
-		//     if (i == 0) {
-		//         partClass += ' fw-left';
-		//     } else {
-		//         partClass += ' fw-right';
-		//     }
-		// }
-		return partClass;
-	}
-
-
 	function renderParts(parts) {
 		var i, n = parts.length,
 			partsHtml = '<div><div class="fw-parts-header"><h3>' + wizard.i18n.sections + '</h3></div>';
@@ -413,10 +430,11 @@ declare var wp: any;
 		partsHtml += '<button type="button" class="fw-button-two-columns"><i class="fa fa-align-justify"></i> <i class="fa fa-align-justify"></i></button>';
 		partsHtml += '</div>';
 		partsHtml += '<div class="fw-parts-container">';
+
 		for (i = 0, n = parts.length; i < n; i++) {
-			var partClass = getPartClass(i, n);
-			partsHtml += renderPart(parts[i], partClass);
+			partsHtml += renderPart(parts[i], 'fw-step-part');
 		}
+
 		partsHtml += '</div>';
 		partsHtml += '<div class="fw-parts-footer">';
 		partsHtml += '<a class="fw-add-part"><i class="fa fa-plus"></i> ' + wizard.i18n.addSection + '</a>';
@@ -809,10 +827,7 @@ declare var wp: any;
 		data.wizard.steps.push();
 
 		if (validate(data)) {
-
-			log('save', data);
-			//log('ajaxurl', wizard.ajaxurl);
-			//log('nonce', wizard.nonce);
+			log('Save', data);
 
 			$.ajax({
 				type: 'POST',
@@ -833,8 +848,9 @@ declare var wp: any;
 					alertMessage(response.data.msg, response.success);
 				},
 				error: function (response) {
-					log('fail', arguments);
-					log('response', response);
+					warn('Fail', arguments);
+					warn('Response', response);
+					alertMessage(wizard.i18n.alerts.ajaxSendError, false);
 				}
 			});
 		}

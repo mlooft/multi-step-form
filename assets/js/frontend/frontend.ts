@@ -1,25 +1,31 @@
 /// <reference path="../../../node_modules/@types/jqueryui/index.d.ts" />
 /// <reference path="../../../node_modules/@types/select2/index.d.ts" />
 
-declare var ajax : any;
-declare interface Window { grecaptcha : any };
+declare var msfAjax: any;
+declare interface Window { grecaptcha: any };
 
 jQuery(document).ready(function ($) {
 	"use strict";
-	var data = {};
-	var err = [
-		ajax.i18n.errors.requiredFields,
-		ajax.i18n.errors.requiredField,
-		ajax.i18n.errors.someRequired + '<br>' + ajax.i18n.errors.checkFields
-	];
+
+	let data = {};
 
 	const logStyle = "color: white; background-color: purple; padding: 3px; display: block; line-height: 25px; border-radius: 2px;";
 
-	function log(...args : any[]) {
+	/**
+	 * Shows a log message if the console is available.
+	 * 
+	 * @param args data to display
+	 */
+	function log(...args: any[]) {
 		if (window.console) console.log.apply(console, ["%cMSF", logStyle, ...args]);
 	}
 
-	function warn(...args : any[]) {
+	/**
+	 * Shows a warn message if the console is available.
+	 * 
+	 * @param args data to display
+	 */
+	function warn(...args: any[]) {
 		if (window.console) console.warn.apply(console, ["%cMSF", logStyle, ...args]);
 	}
 
@@ -45,22 +51,18 @@ jQuery(document).ready(function ($) {
 	}
 
 	function disablePrevious($wizard) {
-		// $wizard.find('.fw-button-previous').prop('disabled', true);
 		$wizard.find('.fw-button-previous').hide();
 	}
 
 	function disableNext($wizard) {
-		// $wizard.find('.fw-button-next').prop('disabled', true);
 		$wizard.find('.fw-button-next').hide();
 	}
 
 	function enablePrevious($wizard) {
-		// $wizard.find('.fw-button-previous').prop('disabled', false);
 		$wizard.find('.fw-button-previous').show();
 	}
 
 	function enableNext($wizard) {
-		// $wizard.find('.fw-button-next').prop('disabled', false);
 		$wizard.find('.fw-button-next').show();
 	}
 
@@ -125,7 +127,7 @@ jQuery(document).ready(function ($) {
 		}
 	}
 
-	function escapeHtml(str) {
+	function escapeHtml(str : any) : string {
 		return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 	}
 
@@ -189,14 +191,14 @@ jQuery(document).ready(function ($) {
 	}
 
 	function registrationSummary(summaryObj, $block, title, required) {
-		var header = ajax.i18n.registration;
+		var header = msfAjax.i18n.registration;
 		var username = $block.find('.msfp-registration-input[data-id=username]').val();
 		var email = $block.find('.msfp-registration-input[data-id=email]').val();
 		var value = '';
 		if (username && email) {
 			value = username + ' (' + email + ')';
 		} else {
-			value = ajax.i18n.registrationFailed;
+			value = msfAjax.i18n.registrationFailed;
 		}
 		pushToSummary(summaryObj, title, header, value, required);
 	}
@@ -244,11 +246,7 @@ jQuery(document).ready(function ($) {
 		return summary;
 	}
 
-	function removeFakePath(path) {
-		return path.replace(/^.*\\/, "");
-	}
-
-	function stripScripts(s) {
+	function stripScripts(s : string) : string {
 		var div = document.createElement('div');
 		div.innerHTML = s;
 		var scripts = div.getElementsByTagName('script');
@@ -296,7 +294,7 @@ jQuery(document).ready(function ($) {
 	function getSummaryHtml($wizard) {
 		var summaryHtml = '';
 		var summaryObj = getSummary($wizard);
-		
+
 		for (var key in summaryObj) {
 			summaryHtml += '<div class="fw-step-summary-part">';
 			summaryHtml += renderStepSummaryTitle(key);
@@ -341,17 +339,17 @@ jQuery(document).ready(function ($) {
 
 				if (active == 0) {
 					$('.fw-wizard-summary').slideDown();
-					$('.fw-toggle-summary').text(ajax.i18n.hideSummary);
+					$('.fw-toggle-summary').text(msfAjax.i18n.hideSummary);
 				} else {
 					$('.fw-wizard-summary').slideUp();
-				$('.fw-toggle-summary').text(ajax.i18n.showSummary);
+					$('.fw-toggle-summary').text(msfAjax.i18n.showSummary);
 				}
 
 				$(this).data("msf-toggle-active", (active + 1) % 2);
 			}
 		);
 		if ($('.fw-summary-invalid').length) {
-			$summary.prepend('<div class="fw-summary-alert">' + err[2] + '</div>');
+			$summary.prepend('<div class="fw-summary-alert">' + msfAjax.i18n.errors.someRequired + '<br>' + msfAjax.i18n.errors.checkFields + '</div>');
 		} else {
 			$('.fw-summary-alert').remove();
 		}
@@ -381,7 +379,7 @@ jQuery(document).ready(function ($) {
 		return $elt.closest('.fw-step-block').attr('data-blockId');
 	}
 
-	function get(obj, ...args : any) {
+	function get(obj, ...args: any) {
 		var i = 0,
 			n = args.length;
 		log('args', args);
@@ -504,12 +502,10 @@ jQuery(document).ready(function ($) {
 		updateSummary($wizard);
 	}
 
-	function dump() {
-		var $wizard = getWizard($(this));
-		log('step', getStep($wizard));
-		log('stepCount', getStepCount($wizard));
-		log('data', data);
-		log('summary', getSummary($wizard));
+	function info() {
+		log('Name', 'Multi-Step-Form by Mondula');
+		log('Version', msfAjax.version);
+		log('Data', data);
 	}
 
 	function validateRadio($element) {
@@ -766,20 +762,20 @@ jQuery(document).ready(function ($) {
 			$('.fw-block-invalid').each(function (idx, element) {
 				if ($(element).find('.fw-block-invalid-alert').length < 1) {
 					if ($(element).attr('data-type') == 'fw-registration') {
-						$(element).append('<div class="fw-block-invalid-alert">' + ajax.i18n.errors.checkFields + '</div>');
+						$(element).append('<div class="fw-block-invalid-alert">' + msfAjax.i18n.errors.checkFields + '</div>');
 					} else if ($(element).attr('data-type') == 'fw-email') {
-						$(element).append('<div class="fw-block-invalid-alert">' + ajax.i18n.errors.invalidEmail + '</div>');
+						$(element).append('<div class="fw-block-invalid-alert">' + msfAjax.i18n.errors.invalidEmail + '</div>');
 					} else if ($(element).attr('data-type') == 'fw-numeric') {
-						$(element).append('<div class="fw-block-invalid-alert">' + ajax.i18n.errors.invalidNumeric + '</div>');
+						$(element).append('<div class="fw-block-invalid-alert">' + msfAjax.i18n.errors.invalidNumeric + '</div>');
 					} else if ($(element).attr('data-type') == 'fw-regex') {
-						var errorMsg = $(element).data("error-msg") || ajax.i18n.errors.invalidRegex;
+						var errorMsg = $(element).data("error-msg") || msfAjax.i18n.errors.invalidRegex;
 						$(element).append('<div class="fw-block-invalid-alert">' + errorMsg + '</div>');
 					} else {
-						$(element).append('<div class="fw-block-invalid-alert">' + err[1] + '</div>');
+						$(element).append('<div class="fw-block-invalid-alert">' + msfAjax.i18n.errors.requiredField + '</div>');
 					}
 				}
 			});
-			alertUser(err[0], false);
+			alertUser(msfAjax.i18n.errors.requiredFields, false);
 		}
 
 		return stepValid;
@@ -791,11 +787,11 @@ jQuery(document).ready(function ($) {
 		var data = {
 			action: 'msfp_pre_validate_reg_email',
 			email: email,
-			nonce: ajax.nonce
+			nonce: msfAjax.nonce
 		};
 		$.ajax({
 			type: 'POST',
-			url: ajax.ajaxurl,
+			url: msfAjax.ajaxurl,
 			data: data,
 			dataType: "json",
 			success: function (r) {
@@ -830,11 +826,11 @@ jQuery(document).ready(function ($) {
 		var data = {
 			action: 'msfp_pre_validate_reg_username',
 			username: username,
-			nonce: ajax.nonce
+			nonce: msfAjax.nonce
 		};
 		$.ajax({
 			type: 'POST',
-			url: ajax.ajaxurl,
+			url: msfAjax.ajaxurl,
 			data: data,
 			dataType: "json",
 			success: function (r) {
@@ -919,16 +915,16 @@ jQuery(document).ready(function ($) {
 	function sendEmail(summary, email, files, reg) {
 		var id = $('#multi-step-form').attr('data-wizardid');
 		var token = $('.msf-recaptcha-token').val();
-		$('.fw-btn-submit').html('<i class="fa fa-spinner"></i> ' + ajax.i18n.sending);
+		$('.fw-btn-submit').html('<i class="fa fa-spinner"></i> ' + msfAjax.i18n.sending);
 		$.post(
-			ajax.ajaxurl, {
+			msfAjax.ajaxurl, {
 				action: 'fw_send_email',
 				id: id,
 				fw_data: summary,
 				email: email,
 				reg: reg,
 				attachments: files,
-				nonce: ajax.nonce,
+				nonce: msfAjax.nonce,
 				recaptchaToken: token,
 			},
 			function (resp) {
@@ -939,16 +935,16 @@ jQuery(document).ready(function ($) {
 						window.onbeforeunload = null;
 						window.location.href = url;
 					} else {
-						$('.fw-btn-submit').addClass('fw-submit-success').html('<i class="fa fa-check-circle"></i> ' + ajax.i18n.submitSuccess);
+						$('.fw-btn-submit').addClass('fw-submit-success').html('<i class="fa fa-check-circle"></i> ' + msfAjax.i18n.submitSuccess);
 						$('.fw-btn-submit').unbind("click");
 					}
 				} else {
-					$('.fw-btn-submit').addClass('fw-submit-fail').html('<i class="fa fa-times-circle"></i> ' + ajax.i18n.submitError);
+					$('.fw-btn-submit').addClass('fw-submit-fail').html('<i class="fa fa-times-circle"></i> ' + msfAjax.i18n.submitError);
 					warn('response', resp);
 				}
 			}
 		).fail(function (resp) {
-			$('.fw-btn-submit').addClass('fw-submit-fail').html('<i class="fa fa-times-circle"></i> ' + ajax.i18n.submitError);
+			$('.fw-btn-submit').addClass('fw-submit-fail').html('<i class="fa fa-times-circle"></i> ' + msfAjax.i18n.submitError);
 			warn('response', resp);
 			warn('responseText', resp.responseText);
 		});
@@ -964,17 +960,17 @@ jQuery(document).ready(function ($) {
 			formData.append('file' + i, files[i]);
 		}
 		formData.append('id', id);
-		formData.append('nonce', ajax.nonce);
+		formData.append('nonce', msfAjax.nonce);
 
 		$label.find('i').removeClass('fa-upload fa-times-circle fa-check-circle').addClass("fa-spinner");
-		$label.find('span').text(ajax.i18n.uploadingFile);
+		$label.find('span').text(msfAjax.i18n.uploadingFile);
 
 
 		var $block = $(e.target).parent().parent();
 
 		$.ajax({
 			type: 'POST',
-			url: ajax.ajaxurl,
+			url: msfAjax.ajaxurl,
 			data: formData,
 			contentType: false,
 			processData: false,
@@ -1006,10 +1002,10 @@ jQuery(document).ready(function ($) {
 
 	function deleteAttachments(attachments) {
 		$.post(
-			ajax.ajaxurl, {
+			msfAjax.ajaxurl, {
 				action: 'fw_delete_files',
 				filenames: attachments,
-				nonce: ajax.nonce
+				nonce: msfAjax.nonce
 			},
 			function (resp) {
 				if (resp) {
@@ -1017,7 +1013,7 @@ jQuery(document).ready(function ($) {
 						var fileInput = $(e).find('input');
 						fileInput.replaceWith(fileInput.val('').clone(true));
 						$(e).find('label > i').removeClass('fa-check-circle').addClass('fa-upload');
-						$(e).find('label > span').text(ajax.i18n.chooseFile);
+						$(e).find('label > span').text(msfAjax.i18n.chooseFile);
 						$(e).attr('data-uploaded', 'false');
 					});
 				}
@@ -1047,7 +1043,7 @@ jQuery(document).ready(function ($) {
 				labelVal = $label.html(),
 				$block = $input.parent().parent();
 
-			$input.on('change', function (e : JQuery.ChangeEvent<HTMLInputElement>) {
+			$input.on('change', function (e: JQuery.ChangeEvent<HTMLInputElement>) {
 				var fileName = '';
 				if (e.target.value)
 					fileName = e.target.value.split('\\').pop();
@@ -1057,7 +1053,7 @@ jQuery(document).ready(function ($) {
 				else
 					$label.html(labelVal);
 			});
-			$input.on('click', function (e : JQuery.ClickEvent<HTMLInputElement>) {
+			$input.on('click', function (e: JQuery.ClickEvent<HTMLInputElement>) {
 				// delete if input already has a file
 				if (e.target.value) {
 					var attachments = [];
@@ -1192,11 +1188,11 @@ jQuery(document).ready(function ($) {
 
 	function validateReCaptcha() {
 		var tokenFields = $('.msf-recaptcha-token');
-		
+
 		if (tokenFields.length > 0) {
 			var siteKey = tokenFields.data('sitekey');
 			window.grecaptcha.ready(function () {
-				window.grecaptcha.execute(siteKey, {action: 'homepage'}).then(function(token) {
+				window.grecaptcha.execute(siteKey, { action: 'homepage' }).then(function (token) {
 					tokenFields.val(token);
 				});
 			});
@@ -1204,11 +1200,13 @@ jQuery(document).ready(function ($) {
 	}
 
 	function init() {
-		// setInterval(poll, 50);
+		
 		$(document).ready(function (evt) {
 			if ($('#multi-step-form').length) {
 				setup();
 				validateReCaptcha();
+				(window as any).msf = {};
+				(window as any).msf.info = info;
 			}
 		});
 
@@ -1217,7 +1215,3 @@ jQuery(document).ready(function ($) {
 
 	init();
 });
-
-(function () {
-	"use strict";
-})();

@@ -69,6 +69,7 @@ class Mondula_Form_Wizard_Admin {
 				'reallyDeleteSection' => __( 'Do you really want to delete this section?', 'multi-step-form' ),
 				'reallyDeleteBlock' => __( 'Do you really want to delete this block?', 'multi-step-form' ),
 				'onlyOneRegistration' => __( 'Only one registration block allowed!', 'multi-step-form' ),
+				'ajaxSendError' => __( 'Form couldn\'t be saved. Check your internet connection.', 'multi-step-form' ),
 			),
 			'title' => __( 'Step Title', 'multi-step-form' ),
 			'headline' => __( 'Step Headline', 'multi-step-form' ),
@@ -323,24 +324,26 @@ class Mondula_Form_Wizard_Admin {
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';
 		$data = isset( $_POST['data'] ) ? $_POST['data'] : array();
 
-		$this->sanitize_form_data( $data );
+		$this->sanitize_form_data($data);
 
-		if ( wp_verify_nonce( $nonce, $this->_token . $id ) ) {
-			if ( ! empty( $data ) ) {
-				$new_id = $this->_wizard_service->save( $id, $data );
+		if (wp_verify_nonce($nonce, $this->_token . $id)) {
+			if (!empty($data)) {
+				$new_id = $this->_wizard_service->save($id, $data);
 				if ($new_id != $id) {
 					$id = $new_id;
-					$response['nonce'] = wp_create_nonce( $this->_token . $id );
+					$response['nonce'] = wp_create_nonce($this->_token . $id);
 				}
-				$response['msg'] = __('Success. Wizard saved.', 'multi-step-form');
+				$response['msg'] = __('Success. Form saved.', 'multi-step-form');
 				$response['id'] = $id;
 				wp_send_json_success( $response );
+				return;
 			} else {
 				wp_send_json_error(
 					array(
 						'msg' => 'Data is empty.',
 					)
 				);
+				return;
 			}
 		} else {
 			wp_send_json_error(
@@ -348,7 +351,9 @@ class Mondula_Form_Wizard_Admin {
 					'msg' => 'Nonce failed to verify.',
 				)
 			);
+			return;
 		}
+
 		wp_send_json_error(
 			array(
 				'msg' => 'error',
