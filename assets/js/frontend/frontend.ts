@@ -787,7 +787,6 @@ jQuery(document).ready(function ($) {
 		var data = {
 			action: 'msfp_pre_validate_reg_email',
 			email: email,
-			nonce: msfAjax.nonce
 		};
 		$.ajax({
 			type: 'POST',
@@ -826,7 +825,6 @@ jQuery(document).ready(function ($) {
 		var data = {
 			action: 'msfp_pre_validate_reg_username',
 			username: username,
-			nonce: msfAjax.nonce
 		};
 		$.ajax({
 			type: 'POST',
@@ -924,7 +922,6 @@ jQuery(document).ready(function ($) {
 				email: email,
 				reg: reg,
 				attachments: files,
-				nonce: msfAjax.nonce,
 				recaptchaToken: token,
 			},
 			function (resp) {
@@ -960,7 +957,6 @@ jQuery(document).ready(function ($) {
 			formData.append('file' + i, files[i]);
 		}
 		formData.append('id', id);
-		formData.append('nonce', msfAjax.nonce);
 
 		$label.find('i').removeClass('fa-upload fa-times-circle fa-check-circle').addClass("fa-spinner");
 		$label.find('span').text(msfAjax.i18n.uploadingFile);
@@ -1005,7 +1001,6 @@ jQuery(document).ready(function ($) {
 			msfAjax.ajaxurl, {
 				action: 'fw_delete_files',
 				filenames: attachments,
-				nonce: msfAjax.nonce
 			},
 			function (resp) {
 				if (resp) {

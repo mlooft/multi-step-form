@@ -96,52 +96,48 @@ class Mondula_Form_Wizard_Shortcode {
 	 * The file remains on the server until the form is submitted by the client.
 	 **/
 	 public function fw_upload_file() {
-		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';
 		$tempdir = wp_upload_dir();
 		$upload_overrides = array(
 			'test_form' => false,
 		);
-		if ( wp_verify_nonce( $nonce, $this->_token ) ) {
-			add_filter( 'upload_dir', 'wpse_change_upload_dir_temporarily' );
 
-			/**
-			* Temporarily change the WP upload directory to wp-content/uploads/temp
-			*
-			*/
-			function wpse_change_upload_dir_temporarily( $dirs ) {
-				$dirs['subdir'] = '/msf-temp';
-				$dirs['path'] = $dirs['basedir'] . '/msf-temp';
-				$dirs['url'] = $dirs['baseurl'] . '/msf-temp';
-				return $dirs;
-			}
+		add_filter( 'upload_dir', 'wpse_change_upload_dir_temporarily' );
 
-			$uploaded_files = array();
-			$response = array();
-			$response['filenames'] = array();
-
-			foreach ( $_FILES as $file ) {
-				$uploaded_file = wp_handle_upload( $file, $upload_overrides );
-				if ( ! isset( $uploaded_file['error'] ) ) {
-					array_push( $uploaded_files,  $uploaded_file );
-				} else {
-					$response['error'] = $uploaded_file['error'];
-				}
-			}
-
-			if ( ! isset( $response['error'] ) && count( $uploaded_files ) === count( $_FILES ) ) {
-				$response['success'] = true;
-				foreach ( $uploaded_files as $file ) {
-					array_push( $response['filenames'], basename( $file['url'] ) );
-				}
-			} else {
-				$response['success'] = false;
-			}
-			echo json_encode( $response );
-			remove_filter( 'upload_dir', 'wpse_change_upload_dir_temporarily' );
-			wp_die();
-		} else {
-			wp_send_json_error( "Nonce couldn't be verified." );
+		/**
+		* Temporarily change the WP upload directory to wp-content/uploads/temp
+		*
+		*/
+		function wpse_change_upload_dir_temporarily( $dirs ) {
+			$dirs['subdir'] = '/msf-temp';
+			$dirs['path'] = $dirs['basedir'] . '/msf-temp';
+			$dirs['url'] = $dirs['baseurl'] . '/msf-temp';
+			return $dirs;
 		}
+
+		$uploaded_files = array();
+		$response = array();
+		$response['filenames'] = array();
+
+		foreach ( $_FILES as $file ) {
+			$uploaded_file = wp_handle_upload( $file, $upload_overrides );
+			if ( ! isset( $uploaded_file['error'] ) ) {
+				array_push( $uploaded_files,  $uploaded_file );
+			} else {
+				$response['error'] = $uploaded_file['error'];
+			}
+		}
+
+		if ( ! isset( $response['error'] ) && count( $uploaded_files ) === count( $_FILES ) ) {
+			$response['success'] = true;
+			foreach ( $uploaded_files as $file ) {
+				array_push( $response['filenames'], basename( $file['url'] ) );
+			}
+		} else {
+			$response['success'] = false;
+		}
+		echo json_encode( $response );
+		remove_filter( 'upload_dir', 'wpse_change_upload_dir_temporarily' );
+		wp_die();
 	}
 
 	private function generate_attachment_paths( $files ) {
@@ -238,7 +234,6 @@ class Mondula_Form_Wizard_Shortcode {
 	public function fw_send_email() {
 		global $phpmailer;
 
-		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';
 		$id = isset( $_POST['id'] ) && intval($_POST['id']) ? intval($_POST['id']) : '';
 		$data = isset( $_POST['fw_data'] ) ? $this->sanitize_data( $_POST['fw_data'] ) : array();
 		$email = isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : array();
@@ -248,65 +243,61 @@ class Mondula_Form_Wizard_Shortcode {
 		// TODO: This can return empty, nonexistent wizards.
 		$wizard = $this->get_wizard( $id );
 
-		if ( wp_verify_nonce( $nonce, $this->_token ) ) {
-			if ( ! empty( $data ) ) {
-				$use_captcha = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_enable' ,'fw_settings_captcha') === 'on';
+		if ( ! empty( $data ) ) {
+			$use_captcha = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_enable' ,'fw_settings_captcha') === 'on';
 
-				if ($use_captcha) {
-					if (!$this->verifyCaptcha()) {
-						wp_send_json_error('Captcha not verified.');
-						return;
-					}
+			if ($use_captcha) {
+				if (!$this->verifyCaptcha()) {
+					wp_send_json_error('Captcha not verified.');
+					return;
 				}
-
-				/* Save hook */
-				do_action('multi-step-form/save', $id, $data);
-
-				/* Register user */
-				if (!empty($reg)) {
-					do_action('multi-step-form/register', $reg, $data, $id);
-				}
-
-				/* Send email */
-				$mailformat = Mondula_Form_Wizard_Wizard::fw_get_option( 'mailformat' ,'fw_settings_email', 'html' );
-				$cc = Mondula_Form_Wizard_Wizard::fw_get_option( 'cc' ,'fw_settings_email', 'off' );
-				$content = $wizard->render_mail( $data, $email, $mailformat );
-				$settings = $wizard->get_settings();
-				$attachments = $this->generate_attachment_paths( $files );
-
-				if ( $mailformat == 'html' ) {
-					add_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
-					$headers = array( 'Content-Type: text/html; charset=UTF-8' );
-				} else {
-					$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
-				}
-				if ( $settings['frommail'] || $settings['fromname'] ) {
-					$fromname = $settings['fromname'] != '' ? $settings['fromname'] : get_bloginfo( 'name' );
-					$frommail = $settings['frommail'] != '' ? $settings['frommail'] : get_bloginfo( 'admin_email' );
-					array_push( $headers, 'From: ' . $fromname . ' <' . $frommail . '>' . "\r\n" );
-				}
-				if ( isset( $settings['headers'] ) && $settings['headers'] ) {
-					$additional_headers = explode("\n", $settings['headers'] );
-					$headers = array_merge( $headers, $additional_headers );
-				}
-				// send email to admin
-				$mail = wp_mail( $settings['to'], $settings['subject'], $content , $headers, $attachments );
-				// send copy to user
-				if ( count( $email ) == 1 && $cc === 'on' ) {
-					// TODO: Is this really right?
-					$copy = wp_mail( $email, 'CC: ' . $settings['subject'], $content, $headers );
-				}
-				remove_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
-
-				// delete temporary files from webserver after mail is sent
-				$this->delete_files( $attachments );
-
-				wp_send_json_success();
-			} else {
-				wp_send_json_error( 'Data is empty.' );
 			}
+
+			/* Save hook */
+			do_action('multi-step-form/save', $id, $data);
+
+			/* Register user */
+			if (!empty($reg)) {
+				do_action('multi-step-form/register', $reg, $data, $id);
+			}
+
+			/* Send email */
+			$mailformat = Mondula_Form_Wizard_Wizard::fw_get_option( 'mailformat' ,'fw_settings_email', 'html' );
+			$cc = Mondula_Form_Wizard_Wizard::fw_get_option( 'cc' ,'fw_settings_email', 'off' );
+			$content = $wizard->render_mail( $data, $email, $mailformat );
+			$settings = $wizard->get_settings();
+			$attachments = $this->generate_attachment_paths( $files );
+
+			if ( $mailformat == 'html' ) {
+				add_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
+				$headers = array( 'Content-Type: text/html; charset=UTF-8' );
+			} else {
+				$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
+			}
+			if ( $settings['frommail'] || $settings['fromname'] ) {
+				$fromname = $settings['fromname'] != '' ? $settings['fromname'] : get_bloginfo( 'name' );
+				$frommail = $settings['frommail'] != '' ? $settings['frommail'] : get_bloginfo( 'admin_email' );
+				array_push( $headers, 'From: ' . $fromname . ' <' . $frommail . '>' . "\r\n" );
+			}
+			if ( isset( $settings['headers'] ) && $settings['headers'] ) {
+				$additional_headers = explode("\n", $settings['headers'] );
+				$headers = array_merge( $headers, $additional_headers );
+			}
+			// send email to admin
+			$mail = wp_mail( $settings['to'], $settings['subject'], $content , $headers, $attachments );
+			// send copy to user
+			if ( count( $email ) == 1 && $cc === 'on' ) {
+				// TODO: Is this really right?
+				$copy = wp_mail( $email, 'CC: ' . $settings['subject'], $content, $headers );
+			}
+			remove_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
+
+			// delete temporary files from webserver after mail is sent
+			$this->delete_files( $attachments );
+
+			wp_send_json_success();
 		} else {
-			wp_send_json_error( "Nonce couldn't be verified." );
+			wp_send_json_error( 'Data is empty.' );
 		}
 	}
 
