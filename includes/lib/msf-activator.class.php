@@ -56,10 +56,9 @@ class Mondula_Form_Wizard_Activator {
 
 		$sql = "CREATE TABLE $table_name (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
-			title TEXT NOT NULL,
-			json TEXT NOT NULL,
-			version VARCHAR(11) NOT NULL,
-			date DATETIME DEFAULT '0000-00-00 00:00:00' NOT NULL,
+			json mediumtext NOT NULL,
+			version varchar(11) NOT NULL,
+			date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 			PRIMARY KEY  (id)
 		) $charset_collate;";
 

@@ -48,10 +48,10 @@ class Mondula_Form_Wizard_Shortcode {
 	**/
 	public function handler( $atts ) {
 
-		wp_enqueue_style( $this->_token . '-vendor-frontend' );
+		wp_enqueue_style( $this->_token . '-vendor' );
 		wp_enqueue_style( $this->_token . '-frontend' );
 		
-		wp_enqueue_script($this->_token . '-vendor-frontend');
+		wp_enqueue_script($this->_token . '-vendor');
 		wp_enqueue_script( $this->_token . '-frontend');
 
 		if (!isset($atts['id'])) {
@@ -60,7 +60,12 @@ class Mondula_Form_Wizard_Shortcode {
 
 		$id = $atts['id'];
 
-		return $this->get_wizard($id)->render($id);
+		$wizard = $this->get_wizard($id);
+		if ($wizard) {
+			return $wizard->render($id);
+		} else {
+			return "<b>Form ID not found!</b>";
+		}
 	}
 
 	/**
@@ -182,14 +187,34 @@ class Mondula_Form_Wizard_Shortcode {
 		return $reg;
 	}
 
-	private function sanitize_data( &$data ) {
+	private function find_field($data, $name) {
+		foreach ($data as $fields ) {
+			foreach ( $fields as $field) {
+				foreach ($field as $key => $value) {
+					if ($key === $name) {
+						return $value;
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+
+	private function sanitize_data(&$data) {
 		foreach ( $data as &$fields ) {
 			foreach ( $fields as &$field) {
 				foreach ($field as $key => &$value) {
-					if ( is_email( $value ) ) {
+					if (is_email($value)) {
 						$value = sanitize_email($value);
 					} else {
 						$value = sanitize_textarea_field($value);
+					}
+
+					$sanitizedKey = sanitize_text_field($key);
+					if ($sanitizedKey !== $key) {
+						$field[$sanitizedKey] = $value;
+						unset($field[$key]);
 					}
 				}
 			}
@@ -240,8 +265,11 @@ class Mondula_Form_Wizard_Shortcode {
 		$reg = isset( $_POST['reg'] ) ? $this->sanitize_user_reg( $_POST['reg'] ) : array();
 		$files = isset( $_POST['attachments'] ) ? $this->sanitize_attachments( $_POST['attachments'] ) : array();
 
-		// TODO: This can return empty, nonexistent wizards.
-		$wizard = $this->get_wizard( $id );
+		$wizard = $this->get_wizard($id);
+		if ($wizard === null) {
+			wp_send_json_error('Nonexistent wizard!');
+			return;
+		}
 
 		if ( ! empty( $data ) ) {
 			$use_captcha = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_enable' ,'fw_settings_captcha') === 'on';
@@ -264,7 +292,7 @@ class Mondula_Form_Wizard_Shortcode {
 			/* Send email */
 			$mailformat = Mondula_Form_Wizard_Wizard::fw_get_option( 'mailformat' ,'fw_settings_email', 'html' );
 			$cc = Mondula_Form_Wizard_Wizard::fw_get_option( 'cc' ,'fw_settings_email', 'off' );
-			$content = $wizard->render_mail( $data, $email, $mailformat );
+			$content = $wizard->render_mail($data, $mailformat);
 			$settings = $wizard->get_settings();
 			$attachments = $this->generate_attachment_paths( $files );
 
@@ -274,12 +302,22 @@ class Mondula_Form_Wizard_Shortcode {
 			} else {
 				$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
 			}
-			if ( $settings['frommail'] || $settings['fromname'] ) {
+
+			if ($settings['frommail'] || $settings['fromname']) {
 				$fromname = $settings['fromname'] != '' ? $settings['fromname'] : get_bloginfo( 'name' );
 				$frommail = $settings['frommail'] != '' ? $settings['frommail'] : get_bloginfo( 'admin_email' );
 				array_push( $headers, 'From: ' . $fromname . ' <' . $frommail . '>' . "\r\n" );
 			}
-			if ( isset( $settings['headers'] ) && $settings['headers'] ) {
+
+			if ($settings['replyto'] && $settings['replyto'] !== 'no-reply') {
+				$replyMail = $this->find_field($data, $settings['replyto']);
+				if ($replyMail) {
+					$replyMail = sanitize_email($replyMail);
+					array_push($headers, 'Reply-To: ' . $replyMail . "\r\n" );
+				}
+			}
+
+			if (isset( $settings['headers'] ) && $settings['headers']) {
 				$additional_headers = explode("\n", $settings['headers'] );
 				$headers = array_merge( $headers, $additional_headers );
 			}
@@ -297,7 +335,7 @@ class Mondula_Form_Wizard_Shortcode {
 
 			wp_send_json_success();
 		} else {
-			wp_send_json_error( 'Data is empty.' );
+			wp_send_json_error('Data is empty.');
 		}
 	}
 

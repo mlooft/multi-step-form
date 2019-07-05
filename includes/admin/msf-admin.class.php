@@ -151,6 +151,9 @@ class Mondula_Form_Wizard_Admin {
 			wp_register_style( $this->_token . '-backend', esc_url( $this->_assets_url ) . 'styles/msf-backend' . $this->_script_suffix . '.css', array(), $this->_version );
 			wp_enqueue_style( $this->_token . '-backend' );
 
+			wp_enqueue_style( $this->_token . '-vendor' );
+			wp_enqueue_script($this->_token . '-vendor');
+
 			wp_enqueue_media();
 		}
 	}
@@ -298,18 +301,18 @@ class Mondula_Form_Wizard_Admin {
 		foreach ( $data['wizard']['settings'] as $key => &$setting ) {
 			switch ( $key ) {
 				case 'thankyou':
-					$setting = esc_url( $setting );
+					$setting = esc_url($setting);
 					break;
 				case 'to':
 				case 'frommail':
-					$setting = sanitize_email( $setting );
+					$setting = sanitize_email($setting);
 					break;
 				case 'header':
-					$setting = sanitize_textarea_field( $setting );
+					$setting = sanitize_textarea_field($setting);
 					break;
 				case 'fromname':
 				case 'subject':
-					$setting = sanitize_text_field( $setting );
+					$setting = sanitize_text_field($setting);
 					break;
 			}
 		}
@@ -322,7 +325,8 @@ class Mondula_Form_Wizard_Admin {
 		$_POST = stripslashes_deep( $_POST );
 		$id = isset( $_POST['id'] ) ? intval($_POST['id']) : '';
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';
-		$data = isset( $_POST['data'] ) ? $_POST['data'] : array();
+		$data = isset( $_POST['data'] ) ? $_POST['data'] : '{}';
+		$data = json_decode($data, true);
 
 		$this->sanitize_form_data($data);
 

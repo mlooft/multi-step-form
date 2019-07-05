@@ -5,7 +5,7 @@
 ?>
 
 <div id="fw-alert">
-    <?php _e('Success. Wizard saved.', 'multi-step-form'); ?>
+    <?php _e('Success. Form saved.', 'multi-step-form'); ?>
 </div>
 <div class="wrap">
     <h2 class="nav-tab-wrapper">
@@ -27,38 +27,46 @@
             <h1><?php _e('Mail settings', 'multi-step-form'); ?></h1>
             <table class="form-table">
                 <tr valign="top">
-                    <th scope="row"><?php _e( 'Send To:', 'multi-step-form' ); ?></th>
+                    <th scope="row"><?php _e('Send To:', 'multi-step-form' ); ?></th>
                     <td>
                         <input type="text" class="fw-mail-to" />
-                        <p class="description"><?php _e( 'Email address to which the mails are sent', 'multi-step-form' ); ?></p>
+                        <p class="description"><?php _e('Email address to which the mails are sent', 'multi-step-form' ); ?></p>
                     </td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row"><?php _e( 'Send From Email:', 'multi-step-form' ); ?></th>
+                    <th scope="row"><?php _e('Send From Email:', 'multi-step-form' ); ?></th>
                     <td>
                         <input type="text" class="fw-mail-from-mail" />
-                        <p class="description"><?php _e( 'Email address and name from which the emails are sent. Leave blank for default admin email.', 'multi-step-form' ); ?></p>
+                        <p class="description"><?php _e('Email address and name from which the emails are sent. Leave blank for default admin email.', 'multi-step-form' ); ?></p>
                     </td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row"><?php _e( 'Send From Name:', 'multi-step-form' ); ?></th>
+                    <th scope="row"><?php _e('Send From Name:', 'multi-step-form' ); ?></th>
                     <td>
                         <input type="text" class="fw-mail-from-name" />
                     </td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row"><?php _e( 'Subject:', 'multi-step-form' ); ?></th>
+                    <th scope="row"><?php _e('Subject:', 'multi-step-form' ); ?></th>
                     <td>
                         <input type="text" class="fw-mail-subject" />
                     </td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row"><?php _e( 'Additional Email Headers:', 'multi-step-form' ); ?></th>
+                    <th scope="row"><?php _e('Reply-To:', 'multi-step-form' ); ?></th>
+                    <td>
+                        <select class="fw-mail-replyto">
+                            <option value="no-reply" selected>No Reply-To</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row"><?php _e('Additional Email Headers:', 'multi-step-form' ); ?></th>
                     <td>
                         <textarea rows="4" cols="55" class="fw-mail-headers"></textarea>
-                        <p class="description"><?php _e( 'You can add additional email headers for CC/BCC, Reply-To. One per line e.g.:', 'multi-step-form' ); ?></p>
-                        <p class="description"><?php _e('Reply-To: John Doe &lt;doe@example.com&gt;', 'multi-step-form'); ?></p>
-                        <p class="description"><?php _e('CC: Jane Doe &lt;doe@example.com&gt;', 'multi-step-form'); ?></p>
+                        <p class="description"><?php _e('You can add additional email headers for CC/BCC or others. One per line e.g.:', 'multi-step-form' ); ?></p>
+                        <p class="description"><?php _e('CC: John Doe &lt;doe@example.com&gt;', 'multi-step-form'); ?></p>
+                        <p class="description"><?php _e('BCC: Jane Doe &lt;doe@example.com&gt;', 'multi-step-form'); ?></p>
                         <p class="description msf-warn"><?php _e('WARNING: only enter custom email headers if you know what you\'re doing - it can break your form.', 'multi-step-form'); ?></p>
 
                     </td>

@@ -81,7 +81,7 @@ class Mondula_Form_Wizard_Wizard {
 		return ob_get_clean();
 	}
 
-	public function render_mail ( $data, $email, $mailformat ) {
+	public function render_mail($data, $mailformat) {
 		ob_start();
 		
 		if ($mailformat == 'text') {

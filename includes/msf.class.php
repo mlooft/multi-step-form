@@ -99,6 +99,9 @@ class Mondula_Form_Wizard {
 		register_activation_hook($this->file, array($this, 'install'));
 		register_deactivation_hook($this->file, array($this, 'uninstall'));
 
+		wp_register_style( $this->_token . '-vendor', esc_url( $this->assets_url ) . 'styles/msf-vendor.min.css', array(), $this->_version);
+		wp_register_script( $this->_token . '-vendor', esc_url( $this->assets_url ) . 'scripts/msf-vendor' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version, true);
+
 		// Load frontend JS & CSS
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
 
@@ -194,12 +197,10 @@ class Mondula_Form_Wizard {
 	 */
 	public function enqueue_scripts() {
 		// CSS
-		wp_register_style( $this->_token . '-vendor-frontend', esc_url( $this->assets_url ) . 'styles/msf-vendor-frontend.min.css', array(), $this->_version);
 		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'styles/msf-frontend.min.css', array(), $this->_version);
 
 		// JavaScript
 		$i18n = $this->get_translation();
-		wp_register_script( $this->_token . '-vendor-frontend', esc_url( $this->assets_url ) . 'scripts/msf-vendor-frontend' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version, true);
 		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'scripts/msf-frontend' . $this->script_suffix . '.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->_version, true);
 		$ajax = array(
 			'i18n' => $i18n,

@@ -83,7 +83,9 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 == Changelog ==
 
 = 1.5.3 =
+* Custom Reply-To email from input
 * JSON Quote Bugfix
+* Removed limitation on element count
 * Better code quality
 * Higher compatibility with caching plugins
 

@@ -1,4 +1,5 @@
 /// <reference path="../../../node_modules/@types/jqueryui/index.d.ts" />
+/// <reference path="../../../node_modules/@types/select2/index.d.ts" />
 
 declare var wizard: any;
 declare var msfp: boolean | undefined;
@@ -76,7 +77,7 @@ declare var wp: any;
 	 * @returns the escaped, stringified data
 	 */
 	function escapeAttribute(s : any) : string {
-		return ('' + s).replace(/\\/g, '\\\\').replace(/"/g, '&quot;');
+		return ('' + s).replace(/\\/g, '\\\\').replace(/"/g, '&quot;').replace(/'/g, '\\\'');
 	}
 
 	/**
@@ -152,11 +153,9 @@ declare var wp: any;
 	}
 
 	function renderSelect(select) {
-		log('select', select);
-		var i = 0;
-		var selectHtml = '';
-		var element;
-		var placeholder = wizard.i18n.select.placeholder ? wizard.i18n.select.placeholder : '';
+		let i = 0;
+		let selectHtml = '';
+		const placeholder = wizard.i18n.select.placeholder ? wizard.i18n.select.placeholder : '';
 		selectHtml += '<div class="fw-select-option-container">';
 		selectHtml += '<label>' + wizard.i18n.label + '</label>';
 		selectHtml += '<input type="text" class="fw-block-label" value="' + select.label + '"></input>';
@@ -176,7 +175,6 @@ declare var wp: any;
 	}
 
 	function renderCheckbox(block) {
-		log('checkbox', block);
 		var textHtml = '';
 		textHtml += '<label>' + wizard.i18n.label + '</label>';
 		textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
@@ -185,7 +183,6 @@ declare var wp: any;
 	}
 
 	function renderTextInput(block) {
-		log('textInput', block);
 		var textHtml = '';
 		textHtml += '<label>' + wizard.i18n.label + '</label>';
 		textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
@@ -233,7 +230,6 @@ declare var wp: any;
 	}
 
 	function renderTextArea(block) {
-		log('textArea', block);
 		var textAreaHtml = '';
 		textAreaHtml += '<label>' + wizard.i18n.label + '</label>';
 		textAreaHtml += '<input type="text" class="fw-textarea-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
@@ -295,9 +291,8 @@ declare var wp: any;
 	}
 
 	function renderBlock(block) {
-		// log('block', block);
-		var error = false;
-		var blockHtml = '<div class="fw-step-block" data-type="' + block.type + '" >';
+		let error = false;
+		let blockHtml = '<div class="fw-step-block" data-type="' + block.type + '" >';
 		blockHtml += '<div class="fw-block-controls">';
 		blockHtml += '<i class="fa fa-remove fw-remove-block" title="' + wizard.i18n.tooltips.removeBlock + '" aria-hidden="true"></i>';
 		blockHtml += '<i class="fa fa-caret-up fw-toggle-block" aria-hidden="true"></i>';
@@ -371,8 +366,9 @@ declare var wp: any;
 
 	function renderBlocks(blocks) {
 		var blocksHtml = '';
-		var i, n;
-		for (i = 0, n = blocks.length; i < n; i++) {
+		const blockCount = blocks.length;
+
+		for (let i = 0; i < blockCount; i++) {
 			if (blocks[i].type == 'conditional') {
 				// unwrap conditional block
 				blocksHtml += renderBlock(blocks[i].block);
@@ -423,15 +419,15 @@ declare var wp: any;
 	}
 
 	function renderParts(parts) {
-		var i, n = parts.length,
-			partsHtml = '<div><div class="fw-parts-header"><h3>' + wizard.i18n.sections + '</h3></div>';
+		const partCount = parts.length;
+		let partsHtml = '<div><div class="fw-parts-header"><h3>' + wizard.i18n.sections + '</h3></div>';
 		partsHtml += '<div class="fw-column-buttons">';
 		partsHtml += '<button type="button" class="fw-button-one-column"><i class="fa fa-align-justify"></i></button>';
 		partsHtml += '<button type="button" class="fw-button-two-columns"><i class="fa fa-align-justify"></i> <i class="fa fa-align-justify"></i></button>';
 		partsHtml += '</div>';
 		partsHtml += '<div class="fw-parts-container">';
 
-		for (i = 0, n = parts.length; i < n; i++) {
+		for (let i = 0; i < partCount; i++) {
 			partsHtml += renderPart(parts[i], 'fw-step-part');
 		}
 
@@ -515,6 +511,10 @@ declare var wp: any;
 			}
 			if (formSettings.headers) {
 				$('.fw-mail-headers').val(formSettings.headers);
+			}
+			if (formSettings.replyto) {
+				$('.fw-mail-replyto').val(formSettings.replyto);
+				$('.fw-mail-replyto').trigger('change');
 			}
 		}
 	}
@@ -745,6 +745,7 @@ declare var wp: any;
 			subject: $('.fw-mail-subject').val(),
 			header: $('.fw-mail-header').val(),
 			headers: $('.fw-mail-headers').val(),
+			replyto: $('.fw-mail-replyto').val(),
 		};
 
 		return settings;
@@ -809,7 +810,6 @@ declare var wp: any;
 	function save() {
 		var $container = $(container);
 		var title = $('.fw-wizard-title').val();
-		var valid;
 		var data = {
 			wizard: {
 				title: title,
@@ -835,7 +835,7 @@ declare var wp: any;
 				dataType: 'json',
 				data: {
 					action: 'fw_wizard_save',
-					data: data,
+					data: JSON.stringify(data),
 					nonce: wizard.nonce,
 					id: wizard.id
 				},
@@ -1002,17 +1002,17 @@ declare var wp: any;
      * addStep - add a step to the wizard
      */
 	function addStep(step) {
-		var n = $('.fw-step').length;
-		if (n < 5 || msfp) {
-			if (n < 10) {
-				var $step = $(renderStep(step, n));
+		const stepCount = $('.fw-step').length;
+		if (stepCount < 5 || msfp) {
+			if (stepCount < 10) {
+				var $step = $(renderStep(step, stepCount));
 				$step.appendTo($(container).find('.meta-box-sortables'));
 
 				setupClickHandlers();
 				setupDragNDrop();
 				setupThickbox();
 
-				if (n > 0) {
+				if (stepCount > 0) {
 					// scroll down to new step
 					$("html, body").animate({
 						scrollTop: $(document).height() - $step.height() - 180
@@ -1047,7 +1047,7 @@ declare var wp: any;
 	}
 
 	function hasRegistration() {
-		var result = false;
+		let result = false;
 		$('.fw-step-block').each(function (i, element) {
 			if ($(element).attr('data-type') == 'registration') {
 				result = true;
@@ -1443,6 +1443,49 @@ declare var wp: any;
 		});
 	}
 
+	function updateReplyTo() {
+		const $replyTo = $('.fw-mail-replyto');
+		const oldSelection = $replyTo.val();
+		let foundOldSelection = false;
+
+		$replyTo.find("option").each((_, oldOption) => {
+			if ($(oldOption).val() !== "no-reply") {
+				oldOption.remove();
+			}
+		});
+
+		$('.fw-step-block').each(function (_, element) {
+			const blockType = $(element).attr('data-type');
+
+			if (blockType === 'email') {
+				const selection = String($(element).find('.fw-block-label').val());
+				const escapedSelection = escapeAttribute(selection);
+
+				if (!$replyTo.find("option[value='" + escapedSelection + "']").length) {
+					if (oldSelection === escapedSelection) {
+						foundOldSelection = true;
+					}
+					var newOption = new Option(selection, escapedSelection, false, false);
+					$replyTo.append(newOption);
+				} 
+			}
+		});
+		if (foundOldSelection) {
+			$replyTo.val(oldSelection);
+		} else {
+			$replyTo.val('no-reply');
+		}
+		$replyTo.trigger('change');
+	}
+
+	function setupReplyTo() {
+		$('.fw-mail-replyto').select2({
+			width: '60%'
+		});
+
+		updateReplyTo();
+	}
+
     /**
      * run - this function sets everything up
      */
@@ -1460,6 +1503,7 @@ declare var wp: any;
 			var steps = w.wizard.steps && w.wizard.steps.length > 0 ? w.wizard.steps : [emptyStep()];
 			renderSteps(steps);
 
+			setupReplyTo();
 			// get mail settings
 			renderFormSettings(w.wizard.settings);
 
@@ -1519,6 +1563,7 @@ declare var wp: any;
 				$('#fw-nav-settings').toggleClass('nav-tab-active');
 				$(container).hide();
 				$(elementsContainer).hide();
+				updateReplyTo();
 				$('.fw-mail-settings-container').show();
 			});
 

@@ -32,9 +32,9 @@ gulp.task('js-frontend', function jsFrontend() {
     .pipe(livereload());
 });
 
-gulp.task('js-frontend-vendor', function jsFrontendVendor() {
+gulp.task('js-vendor', function jsVendor() {
   return gulp.src(vendorJs)
-    .pipe(concat('msf-vendor-frontend.js'))
+    .pipe(concat('msf-vendor.js'))
     .pipe(rename({
       suffix: '.min'
     }))
@@ -52,7 +52,7 @@ gulp.task('js-backend', function jsBackend() {
     .pipe(livereload());
 });
 
-gulp.task('js', gulp.parallel('js-frontend', 'js-frontend-vendor', 'js-backend'));
+gulp.task('js', gulp.parallel('js-frontend', 'js-vendor', 'js-backend'));
 
 gulp.task('css-frontend', function cssFrontend() {
   return gulp.src('assets/css/frontend/frontend.less')
@@ -69,9 +69,9 @@ gulp.task('css-frontend', function cssFrontend() {
     .pipe(livereload());
 });
 
-gulp.task('css-frontend-vendor', function cssFrontendVendor() {
+gulp.task('css-vendor', function cssVendor() {
   return gulp.src(['assets/vendor/css/*.css'].concat(vendorCss))
-    .pipe(concat('msf-vendor-frontend.css'))
+    .pipe(concat('msf-vendor.css'))
     .pipe(uglifycss({
       "maxLineLen": 80,
       "uglyComments": true
@@ -103,7 +103,7 @@ gulp.task('fonts', function fonts() {
         .pipe(gulp.dest('dist/fonts'))
 });
 
-gulp.task('css', gulp.parallel('css-frontend', 'css-frontend-vendor', 'css-backend', 'fonts'));
+gulp.task('css', gulp.parallel('css-frontend', 'css-vendor', 'css-backend', 'fonts'));
 
 gulp.task('pot', function pot() {
     return gulp.src('includes/**/*.php')
@@ -144,9 +144,9 @@ gulp.task('css-frontend:production', gulp.series(function cssFrontendProd() {
     .pipe(gulp.dest('dist/styles'));
 }));
 
-gulp.task('css-frontend-vendor:production', gulp.series(function cssFrontendVendorProd() {
+gulp.task('css-vendor:production', gulp.series(function cssVendorProd() {
   return gulp.src(['assets/vendor/css/*.css'].concat(vendorCss))
-    .pipe(concat('msf-vendor-frontend.min.css'))
+    .pipe(concat('msf-vendor.min.css'))
     .pipe(uglifycss({
       "maxLineLen": 80,
       "uglyComments": true
@@ -173,9 +173,9 @@ gulp.task('js-frontend:production', gulp.series( function jsFrontendProd() {
     .pipe(gulp.dest('dist/scripts'));
 }));
 
-gulp.task('js-frontend-vendor:production', gulp.series(function jsFrontendVendorProd() {
+gulp.task('js-vendor:production', gulp.series(function jsVendorProd() {
   return gulp.src(vendorJs)
-    .pipe(concat('msf-vendor-frontend.min.js'))
+    .pipe(concat('msf-vendor.min.js'))
     .pipe(stripDebug())
     .pipe(uglify())
     .pipe(gulp.dest('dist/scripts'));
@@ -189,9 +189,9 @@ gulp.task('js-backend:production', gulp.series(function jsBackendProd() {
     .pipe(gulp.dest('dist/scripts'));
 }));
 
-gulp.task('styles:production', gulp.parallel('css-frontend:production', 'css-frontend-vendor:production', 'css-backend:production'));
+gulp.task('styles:production', gulp.parallel('css-frontend:production', 'css-vendor:production', 'css-backend:production'));
 
-gulp.task('scripts:production', gulp.parallel('js-frontend:production', 'js-frontend-vendor:production', 'js-backend:production'));
+gulp.task('scripts:production', gulp.parallel('js-frontend:production', 'js-vendor:production', 'js-backend:production'));
 
 gulp.task('build:production', gulp.series('clean:production', gulp.parallel('scripts:production', 'styles:production', 'fonts', 'pot')));
 

@@ -23,7 +23,12 @@ class Mondula_Form_Wizard_Wizard_Service {
 
 	public function get_by_id( $id ) {
 		$row = $this->_repository->find_by_id( $id );
-		return Mondula_Form_Wizard_Wizard::from_aa( json_decode( $row->json, true ), $this->_plugin_version, $row->version );
+		if ($row)
+		{
+			return Mondula_Form_Wizard_Wizard::from_aa( json_decode( $row->json, true ), $this->_plugin_version, $row->version );
+		} else {
+			return null;
+		}
 	}
 
 	public function get_all() {
@@ -34,6 +39,9 @@ class Mondula_Form_Wizard_Wizard_Service {
 		$all = $this->get_all();
 		if ( ! empty( $id ) ) {
 			$wizard = $this->get_by_id( $id );
+			if ($wizard === null) {
+				$wizard = new Mondula_Form_Wizard_Wizard();
+			}
 		} else {
 			$title = '';
 			$wizard = new Mondula_Form_Wizard_Wizard();
