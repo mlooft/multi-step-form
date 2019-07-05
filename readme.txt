@@ -58,7 +58,7 @@ The backend's structure is simple. Even less technical users can quickly underst
 
 **Plus features:**
 
-*   **Up to 10 steps**- You can now divide your formular in up to 10 Steps
+*   **Up to 10 steps**- You can now divide your form in up to 10 Steps
 *   **Save form data**- The forms will now be saved in the backend. Easily make some evaluations.
 *   **Conditional fields**- You want to bring more variety to your forms. Use conditional fields.
 *   **Export as CSV-List**- You want to use the form data in e.g. Excel. Export your forms as CSV.
