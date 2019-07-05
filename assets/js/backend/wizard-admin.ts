@@ -77,7 +77,7 @@ declare var wp: any;
 	 * @returns the escaped, stringified data
 	 */
 	function escapeAttribute(s : any) : string {
-		return ('' + s).replace(/\\/g, '\\\\').replace(/"/g, '&quot;').replace(/'/g, '\\\'');
+		return ('' + s).replace(/\\/g, '\\\\').replace(/"/g, '\\\"').replace(/'/g, '\\\'');
 	}
 
 	/**
