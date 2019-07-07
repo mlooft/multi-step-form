@@ -202,7 +202,7 @@ class Mondula_Form_Wizard_Shortcode {
 	}
 
 	private function sanitize_data(&$data) {
-		foreach ( $data as &$fields ) {
+		foreach ( $data as $section => &$fields ) {
 			foreach ( $fields as &$field) {
 				foreach ($field as $key => &$value) {
 					if (is_email($value)) {
@@ -217,6 +217,12 @@ class Mondula_Form_Wizard_Shortcode {
 						unset($field[$key]);
 					}
 				}
+			}
+
+			$sanitizedSection = sanitize_text_field($section);
+			if ($sanitizedSection !== $section) {
+				$data[$sanitizedSection] = $fields;
+				unset($data[$section]);
 			}
 		}
 		return $data;
