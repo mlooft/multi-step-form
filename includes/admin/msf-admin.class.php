@@ -28,11 +28,10 @@ class Mondula_Form_Wizard_Admin {
 	}
 
 	private function init() {
-			add_action( 'admin_menu', array( $this, 'setup_menu' ) );
-			add_action( 'admin_init', array( $this, 'download_form_json' ) );
+			add_action('admin_menu', array($this, 'setup_menu'));
+			add_action('admin_init', array($this, 'download_form_json'));
 
-			add_action( 'wp_ajax_fw_wizard_save', array( $this, 'save' ) );
-			add_action( 'wp_ajax_nopriv_fw_wizard_save', array( $this, 'save' ) );
+			add_action('wp_ajax_fw_wizard_save', array($this, 'save'));
 	}
 
 	public function setup_menu() {
