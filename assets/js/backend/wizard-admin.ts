@@ -833,6 +833,13 @@ declare var wp: any;
 		data.wizard.steps.push();
 
 		if (validate(data)) {
+			const dataStringify = (_ : any, value : any) => {
+				if (typeof value === "boolean") {
+					return String(value);
+				}
+
+				return value;
+			};
 			log('Save', data);
 
 			$.ajax({
@@ -841,7 +848,7 @@ declare var wp: any;
 				dataType: 'json',
 				data: {
 					action: 'fw_wizard_save',
-					data: JSON.stringify(data),
+					data: JSON.stringify(data, dataStringify),
 					nonce: wizard.nonce,
 					id: wizard.id
 				},
@@ -1046,7 +1053,7 @@ declare var wp: any;
      */
 	function isChecked(val) {
 		var attr = '';
-		if (val === 'true' || val === '1') {
+		if (val === 'true') {
 			attr = 'checked';
 		}
 		return attr;
