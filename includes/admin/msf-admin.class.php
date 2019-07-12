@@ -62,6 +62,7 @@ class Mondula_Form_Wizard_Admin {
 				'noStepTitle' => __( 'WARNING: You need to provide a title for each step', 'multi-step-form' ),
 				'noSectionTitle' => __( 'WARNING: You need to provide a title for each section', 'multi-step-form' ),
 				'noFormTitle' => __( 'WARNING: You need to provide title for the form', 'multi-step-form' ),
+				'noBlockTitle' => __( 'WARNING: Every block needs a label/title.', 'multi-step-form' ),
 				'onlyFive' => __( 'ERROR: only 5 steps are allowed in the free version', 'multi-step-form' ),
 				'onlyTen' => __( 'ERROR: only 10 steps are possible', 'multi-step-form' ),
 				'reallyDeleteStep' => __( 'Do you really want to delete this step?', 'multi-step-form' ),

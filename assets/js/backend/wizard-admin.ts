@@ -788,6 +788,11 @@ declare var wp: any;
 					}
 					for (var k = 0; k < steps[i].parts[j].blocks.length; k++) {
 						var block = steps[i].parts[j].blocks[k];
+						console.log(block);
+						if (block.label !== undefined && block.label === "") {
+							valid = false;
+							alertMessage(wizard.i18n.alerts.noBlockTitle, false);
+						}
 						// TODO: validate conditional if checkbox is checked
 					}
 				}
