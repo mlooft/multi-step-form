@@ -277,6 +277,7 @@ declare var wp: any;
 	}
 
 	function renderRegistration(block) {
+		log("REG", block);
 		var registrationHtml = '';
 		registrationHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		registrationHtml += '<p class="msfp-registration-info">' + wizard.i18n.registration.info + '</p>';
@@ -629,12 +630,12 @@ declare var wp: any;
 	}
 
 	function getRegistrationData($text, text) {
-		text['required'] = $text.find('.fw-required').prop('checked')
-		text['password'] = $text.find('.msfp-registration-password').prop('checked')
-		text['firstname'] = $text.find('.msfp-registration-firstname').prop('checked')
-		text['lastname'] = $text.find('.msfp-registration-lastname').prop('checked')
-		text['website'] = $text.find('.msfp-registration-website').prop('checked')
-		text['bio'] = $text.find('.msfp-registration-bio').prop('checked')
+		text['required'] = $text.find('.fw-required').prop('checked');
+		text['password'] = $text.find('.msfp-registration-password').prop('checked');
+		text['firstname'] = $text.find('.msfp-registration-firstname').prop('checked');
+		text['lastname'] = $text.find('.msfp-registration-lastname').prop('checked');
+		text['website'] = $text.find('.msfp-registration-website').prop('checked');
+		text['bio'] = $text.find('.msfp-registration-bio').prop('checked');
 	}
 
 	function getConditionalData($block) {
@@ -788,7 +789,7 @@ declare var wp: any;
 					}
 					for (var k = 0; k < steps[i].parts[j].blocks.length; k++) {
 						var block = steps[i].parts[j].blocks[k];
-						console.log(block);
+						
 						if (block.label !== undefined && block.label === "") {
 							valid = false;
 							alertMessage(wizard.i18n.alerts.noBlockTitle, false);
@@ -1045,7 +1046,7 @@ declare var wp: any;
      */
 	function isChecked(val) {
 		var attr = '';
-		if (val == 'true') {
+		if (val === 'true' || val === '1') {
 			attr = 'checked';
 		}
 		return attr;
