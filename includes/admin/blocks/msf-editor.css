@@ -12,5 +12,6 @@
 }
 
 .msf-block > p, .msf-block > h4 {
-    margin: 2px;
+    color: #FFF !important;
+    margin: 2px !important;
 }

@@ -16,7 +16,7 @@ function multi_step_form_block_init($handler) {
         return;
     }
 
-    add_action('admin_enqueue_scripts', function() {
+    add_action('enqueue_block_editor_assets', function() {
 
         $dir = dirname( __FILE__ );
 
