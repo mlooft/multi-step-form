@@ -88,6 +88,9 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 * Removed limitation on element count
 * Better code quality
 * Higher compatibility with caching plugins
+* Gutenberg Bugfix
+* Select Bugfix
+* Upgraded vendor scripts
 
 = 1.5.2 =
 * JS Media Bugfix

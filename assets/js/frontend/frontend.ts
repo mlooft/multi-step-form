@@ -1073,7 +1073,7 @@ jQuery(document).ready(function ($) {
 					minimumResultsForSearch: Infinity,
 					allowClear: $(element).data('required') !== true,
 					placeholder: ""
-				})
+				});
 			} else {
 				$(element).select2({
 					allowClear: $(element).data('required') !== true,
