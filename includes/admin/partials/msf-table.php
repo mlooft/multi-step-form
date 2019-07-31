@@ -9,7 +9,7 @@
         </a>
     </h2>
     <form id="fw-wizard-table" method="get">
-        <input type="hidden" name="page" value="<?php echo $_REQUEST['page']; ?>" />
+        <input type="hidden" name="page" value="mondula-multistep-forms" />
         <?php $table->display(); ?>
     </form>
     <h2><?php echo __( 'Import a Form', 'multi-step-form' ); ?></h2>

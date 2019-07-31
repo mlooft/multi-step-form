@@ -182,6 +182,9 @@ class Mondula_Form_Wizard_Shortcode {
 				case 'bio':
 					$value = sanitize_textarea_field( $value );
 					break;
+				default:
+					unset($reg[$ke]); // Avoid injected fields
+					break;
 			}
 		}
 		return $reg;

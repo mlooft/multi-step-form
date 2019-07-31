@@ -314,6 +314,10 @@ class Mondula_Form_Wizard_Admin {
 				case 'subject':
 					$setting = sanitize_text_field($setting);
 					break;
+				default:
+					// TODO Review, this should actually call unset but I think some fields are missing
+					$setting = sanitize_text_field($setting);
+					break;
 			}
 		}
 	}
