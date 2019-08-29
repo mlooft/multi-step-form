@@ -99,9 +99,6 @@ class Mondula_Form_Wizard {
 		register_activation_hook($this->file, array($this, 'install'));
 		register_deactivation_hook($this->file, array($this, 'uninstall'));
 
-		wp_register_style( $this->_token . '-vendor', esc_url( $this->assets_url ) . 'styles/msf-vendor.min.css', array(), $this->_version);
-		wp_register_script( $this->_token . '-vendor', esc_url( $this->assets_url ) . 'scripts/msf-vendor' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version, true);
-
 		// Load frontend JS & CSS
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
 
@@ -196,6 +193,10 @@ class Mondula_Form_Wizard {
 	 * @return  void
 	 */
 	public function enqueue_scripts() {
+		// Vendor
+		wp_register_style( $this->_token . '-vendor', esc_url( $this->assets_url ) . 'styles/msf-vendor.min.css', array(), $this->_version);
+		wp_register_script( $this->_token . '-vendor', esc_url( $this->assets_url ) . 'scripts/msf-vendor' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version, true);
+
 		// CSS
 		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'styles/msf-frontend.min.css', array(), $this->_version);
 
@@ -217,6 +218,10 @@ class Mondula_Form_Wizard {
 	 * @return  void
 	 */
 	public function admin_enqueue_scripts ( $hook = '' ) {
+		// Vendor
+		wp_register_style( $this->_token . '-vendor', esc_url( $this->assets_url ) . 'styles/msf-vendor.min.css', array(), $this->_version);
+		wp_register_script( $this->_token . '-vendor', esc_url( $this->assets_url ) . 'scripts/msf-vendor' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version, true);
+		
 		wp_enqueue_style( $this->_token . '-admin' );
 		wp_enqueue_script( $this->_token . '-admin' );
 	}
