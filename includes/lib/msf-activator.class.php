@@ -26,10 +26,24 @@ class Mondula_Form_Wizard_Activator {
 	private static function setup_db( $network_wide ) {
 		global $wpdb;
 
-		if ( is_multisite() && $network_wide ) {
-			$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
-			foreach ( $blog_ids as $blog_id ) {
-				self::activate_for_blog( $blog_id );
+		if (is_multisite() && $network_wide) {
+			if (function_exists('get_sites') && class_exists('WP_Site_Query'))
+			{
+				$sites = get_sites();
+				foreach ($sites as $site) {
+					self::activate_for_blog($site->blog_id);
+				}
+			}
+			else if (function_exists('wp_get_sites'))
+			{
+				$sites = wp_get_sites();
+				foreach ($sites as $site) {
+					self::activate_for_blog($site['blog_id']);
+				}
+			}
+			else
+			{
+				self::create_table();
 			}
 		} else {
 			self::create_table();
