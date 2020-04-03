@@ -82,7 +82,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 
 == Changelog ==
 
-= 1.5.4 =
+= 1.5.5 =
 * Small changes
 * Wordpress 5.4 compatibility tested
 
