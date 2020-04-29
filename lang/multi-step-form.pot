@@ -518,11 +518,11 @@ msgid "Display Summary at the end of each form"
 msgstr ""
 
 #: includes/msf-settings.class.php:119
-msgid "CC"
+msgid "Send confirmation"
 msgstr ""
 
 #: includes/msf-settings.class.php:120
-msgid "Send copy of submitted data to user"
+msgid "Send a copy of submitted data to the user"
 msgstr ""
 
 #: includes/msf-settings.class.php:128

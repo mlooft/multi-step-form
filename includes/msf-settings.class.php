@@ -116,8 +116,8 @@ class Mondula_Form_Wizard_Settings {
 				),
 				array(
 					'name'  => 'cc',
-					'label' => __( 'CC', 'multi-step-form' ),
-					'desc'  => __( 'Send copy of submitted data to user', 'multi-step-form' ),
+					'label' => __( 'Send confirmation', 'multi-step-form' ),
+					'desc'  => __( 'Send a copy of submitted data to the user', 'multi-step-form' ),
 					'type'  => 'checkbox',
 					'default' => 'off',
 				),

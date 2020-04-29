@@ -270,7 +270,7 @@ class Mondula_Form_Wizard_Shortcode {
 
 		$id = isset( $_POST['id'] ) && intval($_POST['id']) ? intval($_POST['id']) : '';
 		$data = isset( $_POST['fw_data'] ) ? $this->sanitize_data( $_POST['fw_data'] ) : array();
-		$email = isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : array();
+		$email = isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : "";
 		$reg = isset( $_POST['reg'] ) ? $this->sanitize_user_reg( $_POST['reg'] ) : array();
 		$files = isset( $_POST['attachments'] ) ? $this->sanitize_attachments( $_POST['attachments'] ) : array();
 
@@ -331,18 +331,26 @@ class Mondula_Form_Wizard_Shortcode {
 				$headers = array_merge( $headers, $additional_headers );
 			}
 			// send email to admin
-			$mail = wp_mail( $settings['to'], $settings['subject'], $content , $headers, $attachments );
+			$mail_success = wp_mail($settings['to'], $settings['subject'], $content, $headers, $attachments);
+
 			// send copy to user
-			if ( count( $email ) == 1 && $cc === 'on' ) {
-				// TODO: Is this really right?
-				$copy = wp_mail( $email, 'CC: ' . $settings['subject'], $content, $headers );
+			if ($mail_success && $cc === 'on' && !empty($email)) {
+				$mail_copy_success = wp_mail($email, $settings['subject'], $content, $headers);
+			} else {
+				$mail_copy_success = true;
 			}
 			remove_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
 
 			// delete temporary files from webserver after mail is sent
 			$this->delete_files( $attachments );
-
-			wp_send_json_success();
+			
+			if ($mail_success && $mail_copy_success) {
+				wp_send_json_success();
+			} else if ($mail_copy_success) {
+				wp_send_json_error('Could not send the mail with the data to anybody.');
+			} else {
+				wp_send_json_error('Could not send the mail copy to the user.');
+			}
 		} else {
 			wp_send_json_error('Data is empty.');
 		}
