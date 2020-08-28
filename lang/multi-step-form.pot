@@ -461,7 +461,11 @@ msgstr ""
 msgid "Choose a file"
 msgstr ""
 
-#: includes/lib/msf-blocks/file/msf-block-file.class.php:72
+#: includes/lib/msf-blocks/file/msf-block-file.class.php:46
+msgid "Max. size: %s"
+msgstr ""
+
+#: includes/lib/msf-blocks/file/msf-block-file.class.php:73
 msgid "File Upload"
 msgstr ""
 
