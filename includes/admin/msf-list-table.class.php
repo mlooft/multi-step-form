@@ -76,9 +76,11 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 		$duplicate_url = $this->generate_query_url( 'duplicate', $item['id'] );
 		$export_url = $this->generate_query_url( 'export', $item['id'] );
 
+		$delete_confirm = 'onclick="return confirm(\'' . __('Are you sure you want to delete this form?', 'multi-step-form') . '\')"';
+
 		$actions = array(
 			'fw-edit' => '<a href="' . $edit_url . '">' . __( 'Edit', $this->_text_domain ) . '</a>',
-			'fw-delete' => '<a href="' . $delete_url . '" onclick="return confirm(\'Are you sure?\')" >' . __( 'Delete', $this->_text_domain ) . '</a>',
+			'fw-delete' => '<a href="' . $delete_url . '" ' . $delete_confirm . '>' . __( 'Delete', $this->_text_domain ) . '</a>',
 			'fw-duplicate' => '<a href="' . $duplicate_url . '">' . __( 'Duplicate', $this->_text_domain ) . '</a>',
 			'fw-export' => '<a href="' . $export_url . '">' . __( 'Export', $this->_text_domain ) . '</a>',
 		);

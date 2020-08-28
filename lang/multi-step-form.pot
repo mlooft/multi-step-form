@@ -297,6 +297,10 @@ msgstr ""
 msgid "Success. Form saved."
 msgstr ""
 
+#: includes/admin/msf-list-table.class.php:79
+msgid "Are you sure you want to delete this form?"
+msgstr ""
+
 #: includes/admin/partials/msf-editor.php:12
 msgid "Steps"
 msgstr ""
