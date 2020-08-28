@@ -307,6 +307,11 @@ class Mondula_Form_Wizard_Admin {
 				case 'frommail':
 					$setting = sanitize_email($setting);
 					break;
+				case 'headers':
+					// The additional E-Mail headers are only set by wordpress admins and are safe.
+					// We can't sanitize them the normal way, as they can contain E-Mail Adresses like Name <mail>.
+					$setting = $setting;
+					break;
 				case 'header':
 					$setting = sanitize_textarea_field($setting);
 					break;

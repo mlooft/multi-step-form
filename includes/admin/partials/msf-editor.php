@@ -68,7 +68,7 @@
                         <p class="description"><?php _e('CC: John Doe &lt;doe@example.com&gt;', 'multi-step-form'); ?></p>
                         <p class="description"><?php _e('BCC: Jane Doe &lt;doe@example.com&gt;', 'multi-step-form'); ?></p>
                         <p class="description msf-warn"><?php _e('WARNING: only enter custom email headers if you know what you\'re doing - it can break your form.', 'multi-step-form'); ?></p>
-
+                        <p class="description msf-warn"><?php _e('These settings may cause more problems on Windows Servers.', 'multi-step-form'); ?></p>
                     </td>
                 </tr>
                 <tr valign="top">
