@@ -75,7 +75,7 @@
     <b>Wordpress:</b> <?php echo $wp_version; ?><br/>
     <b>Multi Step Form:</b> <?php echo $msfVersion; ?><br/>
     <b>Multi Step Form Plus:</b> <?php echo $msfpVersion; ?><br/>
-    <b>Wordpress Max Upload Size:</b> <?php echo wp_max_upload_size() / 1024.0 / 1024.0; ?>M<br/>
+    <b>Wordpress Max Upload Size:</b> <?php echo size_format(wp_max_upload_size(), 1); ?><br/>
     <b>PHP Memory Limit:</b> <?php echo ini_get('memory_limit'); ?><br/>
     <b>PHP Post Max Size:</b> <?php echo ini_get('post_max_size'); ?><br/>
     <b>PHP Upload Max Filesize:</b> <?php echo ini_get('upload_max_filesize'); ?><br/>

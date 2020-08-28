@@ -86,6 +86,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 * New Troubleshooting page allows faster debugging and better support
 * Confirmation dialog before form deletion
 * Fixed bug with additional email headers
+* Display max. filesize for upload fields
 
 = 1.5.6 =
 * User copy bugfix
