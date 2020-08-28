@@ -216,8 +216,15 @@ gulp.task('copy:zip', gulp.series('clean:zip', 'build:production', function copy
     .pipe(gulp.dest('pkg/multi-step-form'));
 }));
 
-gulp.task('zip', gulp.series('copy:zip', function zipPackage() {
-  return gulp.src('pkg/**/multi-step-form/**')
+gulp.task('copy:lang', gulp.series('copy:zip', function copyLang() {
+  return gulp.src(
+    'pkg/multi-step-form/lang/multi-step-form.pot')
+    .pipe(rename('mondula-form-wizard.pot'))
+    .pipe(gulp.dest('pkg/multi-step-form/lang/'));
+}));
+
+gulp.task('zip', gulp.series('copy:lang', function zipPackage() {
+  return gulp.src('pkg/multi-step-form/**')
     .pipe(zip('multi-step-form.zip'))
     .pipe(gulp.dest('pkg'));
 }));
