@@ -78,7 +78,7 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 
 		$actions = array(
 			'fw-edit' => '<a href="' . $edit_url . '">' . __( 'Edit', $this->_text_domain ) . '</a>',
-			'fw-delete' => '<a href="' . $delete_url . '">' . __( 'Delete', $this->_text_domain ) . '</a>',
+			'fw-delete' => '<a href="' . $delete_url . '" onclick="return confirm(\'Are you sure?\')" >' . __( 'Delete', $this->_text_domain ) . '</a>',
 			'fw-duplicate' => '<a href="' . $duplicate_url . '">' . __( 'Duplicate', $this->_text_domain ) . '</a>',
 			'fw-export' => '<a href="' . $export_url . '">' . __( 'Export', $this->_text_domain ) . '</a>',
 		);
