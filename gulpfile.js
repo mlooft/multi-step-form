@@ -113,7 +113,7 @@ gulp.task('pot', function pot() {
             destfile: 'mondula-form-wizard.pot',
             package: 'Multi Step Form',
             bugReport: 'http://mondula.com/kontakt', // TODO
-            lastTranslator: 'Lewe Ohlsen <lewe.ohlsen@mondula.com>',
+            lastTranslator: 'Mondula <info@mondula.com>',
             team: 'Mondula GmbH <wp-plugins@mondula.com>'
         }))
         .pipe(gulp.dest('lang'));

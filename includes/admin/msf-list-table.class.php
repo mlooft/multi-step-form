@@ -7,8 +7,6 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 
 /**
  * Table UI for Forms.
- *
- * @author Lewe Ohlsen <lewe.ohlsen@mondula.com>
  */
 class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 

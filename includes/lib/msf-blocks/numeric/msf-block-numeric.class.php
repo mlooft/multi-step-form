@@ -4,8 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Representation of a numeric input field.
- *
- * @author nico, marten
  */
 class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 

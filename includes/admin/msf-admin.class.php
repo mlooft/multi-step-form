@@ -35,10 +35,11 @@ class Mondula_Form_Wizard_Admin {
 	}
 
 	public function setup_menu() {
-			$all = add_menu_page( 'Multi Step Form', 'Multi Step Form', 'manage_options', 'mondula-multistep-forms', array( $this, 'menu' ), 'dashicons-feedback', '35' );
-			add_submenu_page( 'mondula-multistep-forms', 'Multi Step Form List', 'Forms', 'manage_options', 'mondula-multistep-forms', array( $this, 'menu' ) );
-			$add = add_submenu_page( 'mondula-multistep-forms', 'Mondula List Table', 'Add New', 'manage_options', 'mondula-multistep-forms&edit', array( $this, 'menu' ) );
+			$all = add_menu_page( 'Multi Step Form', 'Multi Step Form', 'manage_options', 'mondula-multistep-forms', array( $this, 'menu' ), 'dashicons-feedback', '35');
+			add_submenu_page( 'mondula-multistep-forms', 'Multi Step Form List', 'Forms', 'manage_options', 'mondula-multistep-forms', array( $this, 'menu' ), 0);
+			$add = add_submenu_page( 'mondula-multistep-forms', 'Multi Step Form Edit', 'Add New', 'manage_options', 'mondula-multistep-forms&edit', array( $this, 'menu'), 1);
 			do_action( 'multi-step-form/submenus' );
+			add_submenu_page( 'mondula-multistep-forms', 'Multi Step Form Troubleshooting', 'Troubleshooting', 'manage_options', 'mondula-multistep-forms-ts', array( $this, 'troubleshooting' ));
 			add_action( 'admin_print_styles-' . $all, array( $this, 'admin_js' ) );
 			add_action( 'admin_print_styles-' . $add, array( $this, 'admin_js' ) );
 	}
@@ -156,6 +157,42 @@ class Mondula_Form_Wizard_Admin {
 
 			wp_enqueue_media();
 		}
+	}
+
+	public function troubleshooting() {
+		global $wpdb;
+		global $wp_version;
+
+		if (!function_exists('get_plugin_data')) {
+			require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+		}
+		
+		$mysqlVersion = empty($wpdb->use_mysqli) ? mysql_get_server_info() : mysqli_get_server_info($wpdb->dbh);
+		$msfVersion = $this->_version;
+
+		$msfp_base = 'multi-step-form-plus/multi-step-form-plus.php';
+		if (is_plugin_active($msfp_base)) {
+			$msfpVersion = get_plugin_data(WP_PLUGIN_DIR . '/' . $msfp_base)['Version'];
+		} else {
+			$msfpVersion = __('Not installed/active', 'multi-step-form');
+		}
+
+		$testmail = false;
+		$dest_email = '';
+		$email_result = false;
+		if (isset($_POST['testmail-submit']) && isset($_POST['testmail-receiver']))
+		{
+			$testmail = true;
+			$dest_email = sanitize_email($_POST['testmail-receiver']);
+			$subject = "Multi Step Form Testmail";
+			$message = ("This Testmail was send by the Multi Step" .
+						" Plugin to test if wp_mail works.\n\n" .
+						"If you did not request this email you can " .
+						"ignore it or contact the sender of this mail.");
+			$email_result = wp_mail($dest_email, $subject, $message);
+		}
+
+		require 'partials/msf-troubleshooting.php';
 	}
 
 	public function menu() {
