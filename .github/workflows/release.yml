@@ -29,8 +29,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        body: Version ${{ github.ref }} release.
+        release_name: Release ${{ steps.deploy.outputs.version }}
+        body: Release of plugin version ${{ steps.deploy.outputs.version }}.
         draft: false
         prerelease: false
     - name: Upload release asset

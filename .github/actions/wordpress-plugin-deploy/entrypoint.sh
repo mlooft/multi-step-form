@@ -32,6 +32,7 @@ if [[ -z "$VERSION" ]]; then
 	VERSION="${VERSION#v}"
 fi
 echo "ℹ︎ VERSION is $VERSION"
+echo ::set-output name=version="$VERSION"
 
 if [[ -z "$ASSETS_DIR" ]]; then
 	ASSETS_DIR=".wordpress-org"

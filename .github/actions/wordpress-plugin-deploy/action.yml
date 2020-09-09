@@ -4,6 +4,9 @@ author: '10up'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+outputs:
+  version:
+    description: 'Version number of plugin'
 branding:
   icon: 'upload-cloud'
   color: 'blue'
