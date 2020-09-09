@@ -21,6 +21,7 @@ jobs:
       env:
         SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
         SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        BUILD_DIR: pkg/multi-step-form
     - name: Create release on GitHub
       id: create_release
       uses: actions/create-release@v1

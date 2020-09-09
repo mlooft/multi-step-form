@@ -38,6 +38,13 @@ if [[ -z "$ASSETS_DIR" ]]; then
 fi
 echo "ℹ︎ ASSETS_DIR is $ASSETS_DIR"
 
+if [[ -z "$BUILD_DIR" ]]; then
+ 	BUILD_DIR=$GITHUB_WORKSPACE
+else
+	BUILD_DIR="$GITHUB_WORKSPACE/$BUILD_DIR"
+fi
+echo "ℹ︎ BUILD_DIR is $BUILD_DIR"
+
 SVN_URL="https://plugins.svn.wordpress.org/${SLUG}/"
 SVN_DIR="/github/svn-${SLUG}"
 
@@ -49,51 +56,10 @@ cd "$SVN_DIR"
 svn update --set-depth infinity assets
 svn update --set-depth infinity trunk
 
-echo "Done"
-exit 0
-
 echo "➤ Copying files..."
-if [[ -e "$GITHUB_WORKSPACE/.distignore" ]]; then
-	echo "ℹ︎ Using .distignore"
-	# Copy from current branch to /trunk, excluding dotorg assets
-	# The --delete flag will delete anything in destination that no longer exists in source
-	rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" "$GITHUB_WORKSPACE/" trunk/ --delete --delete-excluded
-else
-	echo "ℹ︎ Using .gitattributes"
-
-	cd "$GITHUB_WORKSPACE"
-
-	# "Export" a cleaned copy to a temp directory
-	TMP_DIR="/github/archivetmp"
-	mkdir "$TMP_DIR"
-
-	git config --global user.email "10upbot+github@10up.com"
-	git config --global user.name "10upbot on GitHub"
-
-	# If there's no .gitattributes file, write a default one into place
-	if [[ ! -e "$GITHUB_WORKSPACE/.gitattributes" ]]; then
-		cat > "$GITHUB_WORKSPACE/.gitattributes" <<-EOL
-		/$ASSETS_DIR export-ignore
-		/.gitattributes export-ignore
-		/.gitignore export-ignore
-		/.github export-ignore
-		EOL
-
-		# Ensure we are in the $GITHUB_WORKSPACE directory, just in case
-		# The .gitattributes file has to be committed to be used
-		# Just don't push it to the origin repo :)
-		git add .gitattributes && git commit -m "Add .gitattributes file"
-	fi
-
-	# This will exclude everything in the .gitattributes file with the export-ignore flag
-	git archive HEAD | tar x --directory="$TMP_DIR"
-
-	cd "$SVN_DIR"
-
-	# Copy from clean copy to /trunk, excluding dotorg assets
-	# The --delete flag will delete anything in destination that no longer exists in source
-	rsync -rc "$TMP_DIR/" trunk/ --delete --delete-excluded
-fi
+# Copy from build to /trunk
+# The --delete flag will delete anything in destination that no longer exists in source
+rsync -rc "$BUILD_DIR/" trunk/ --delete --delete-excluded
 
 # Copy dotorg assets to /assets
 if [[ -d "$GITHUB_WORKSPACE/$ASSETS_DIR/" ]]; then
@@ -106,11 +72,11 @@ fi
 # The force flag ensures we recurse into subdirectories even if they are already added
 # Suppress stdout in favor of svn status later for readability
 echo "➤ Preparing files..."
-svn add . --force > /dev/null
+svn add . --force --quiet
 
 # SVN delete all deleted files
 # Also suppress stdout here
-svn status | grep '^\!' | sed 's/! *//' | xargs -I% svn rm %@ > /dev/null
+svn status | grep '^\!' | sed 's/! *//' | xargs -I% svn rm %@ --quiet
 
 # Copy tag locally to make this a single commit
 echo "➤ Copying tag..."
@@ -124,7 +90,7 @@ svn propset svn:mime-type image/jpeg assets/*.jpg || true
 svn status
 
 echo "➤ Committing files..."
-svn commit -m "Update to version $VERSION from GitHub" --no-auth-cache --non-interactive  --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
+# svn commit -m "Update to version $VERSION from GitHub" --no-auth-cache --non-interactive  --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
 
 echo "✓ Plugin deployed!"
 exit 0
