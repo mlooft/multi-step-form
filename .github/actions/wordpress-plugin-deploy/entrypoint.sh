@@ -90,7 +90,7 @@ svn propset svn:mime-type image/jpeg assets/*.jpg || true
 svn status
 
 echo "➤ Committing files..."
-# svn commit -m "Update to version $VERSION from GitHub" --no-auth-cache --non-interactive  --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
+svn commit -m "Update to version $VERSION from GitHub" --no-auth-cache --non-interactive  --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
 
 echo "➤ Setting outputs..."
 echo ::set-output name=version::"$VERSION"
