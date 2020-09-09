@@ -1,0 +1,43 @@
+name: Deploy to WordPress.org
+on:
+  push:
+    tags:
+    - "*"
+jobs:
+  tag:
+    name: New Tag
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Build
+      run: |
+        npm install
+        npm run lang
+        npm run zip
+    - name: WordPress Plugin Deploy
+      id: deploy
+      uses: ./.github/actions/wordpress-plugin-deploy
+      env:
+        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+    - name: Create release on GitHub
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        body: Version ${{ github.ref }} release.
+        draft: false
+        prerelease: false
+    - name: Upload release asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{github.workspace}}/pkg/${{ github.event.repository.name }}.zip
+        asset_name: ${{ github.event.repository.name }}.zip
+        asset_content_type: application/zip
