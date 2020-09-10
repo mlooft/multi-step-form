@@ -17,6 +17,8 @@ class Mondula_Form_Wizard_Admin {
 
 	private $_version;
 
+	private $_troubleshoot_mail_error;
+
 
 	public function __construct( Mondula_Form_Wizard_Wizard_Service $wizard_service, $token, $assets_url, $script_suffix, $version ) {
 		$this->_wizard_service = $wizard_service;
@@ -24,6 +26,7 @@ class Mondula_Form_Wizard_Admin {
 		$this->_assets_url = $assets_url;
 		$this->_script_suffix = $script_suffix;
 		$this->_version = $version;
+		$this->_troubleshoot_mail_error = "";
 		$this->init();
 	}
 
@@ -182,6 +185,7 @@ class Mondula_Form_Wizard_Admin {
 		$email_result = false;
 		if (isset($_POST['testmail-submit']) && isset($_POST['testmail-receiver']))
 		{
+			$this->_troubleshoot_mail_error = "";
 			$testmail = true;
 			$dest_email = sanitize_email($_POST['testmail-receiver']);
 			$subject = "Multi Step Form Testmail";
@@ -189,7 +193,17 @@ class Mondula_Form_Wizard_Admin {
 						" Plugin to test if wp_mail works.\n\n" .
 						"If you did not request this email you can " .
 						"ignore it or contact the sender of this mail.");
-			$email_result = wp_mail($dest_email, $subject, $message);
+			$headers = [];
+
+			$fromname = get_bloginfo('name');
+			$frommail = get_bloginfo('admin_email');
+			array_push($headers, 'From: ' . $fromname . ' <' . $frommail . '>' . "\r\n" );
+			
+			add_action('wp_mail_failed', function ($wp_error) {
+				$this->_troubleshoot_mail_error = $wp_error->get_error_message();
+			}, 10, 1);
+			$email_result = wp_mail($dest_email, $subject, $message, $headers);
+			$email_error = $this->_troubleshoot_mail_error;
 		}
 
 		require 'partials/msf-troubleshooting.php';

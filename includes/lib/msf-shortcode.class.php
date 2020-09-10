@@ -312,11 +312,9 @@ class Mondula_Form_Wizard_Shortcode {
 				$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
 			}
 
-			if ($settings['frommail'] || $settings['fromname']) {
-				$fromname = $settings['fromname'] != '' ? $settings['fromname'] : get_bloginfo( 'name' );
-				$frommail = $settings['frommail'] != '' ? $settings['frommail'] : get_bloginfo( 'admin_email' );
-				array_push( $headers, 'From: ' . $fromname . ' <' . $frommail . '>' . "\r\n" );
-			}
+			$fromname = !empty($settings['fromname']) ? $settings['fromname'] : get_bloginfo('name');
+			$frommail = !empty($settings['frommail']) ? $settings['frommail'] : get_bloginfo('admin_email');
+			array_push( $headers, 'From: ' . $fromname . ' <' . $frommail . '>' . "\r\n" );
 
 			if ($settings['replyto'] && $settings['replyto'] !== 'no-reply') {
 				$replyMail = $this->find_field($data, $settings['replyto']);
