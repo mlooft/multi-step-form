@@ -722,7 +722,7 @@ msgid "Enable user registration"
 msgstr ""
 
 #: includes/msf-settings.class.php:267
-msgid "Enable the registration block. You need to add it to each form. This block cant be required."
+msgid "Enable the registration block. You need to add it to each form."
 msgstr ""
 
 #: includes/msf-settings.class.php:273
