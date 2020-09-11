@@ -85,6 +85,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 = 1.6.1 =
 * Better Troubleshooting page
 * Default E-Mail Bugfix
+* Save a form using Ctrl-S/Command-S
 
 = 1.6.0 =
 * New Troubleshooting page allows faster debugging and better support

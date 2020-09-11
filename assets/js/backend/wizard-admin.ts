@@ -1522,6 +1522,16 @@ declare var wp: any;
 
 			$('.fw-button-save').click(save);
 
+			$(window).bind('keydown', function(event) {
+				if (event.ctrlKey || event.metaKey) {
+					if (String.fromCharCode(event.which).toLowerCase() == 's') {
+						event.preventDefault();
+						save();
+						return false;
+					}
+				}
+			});
+
 			//TODO: put all click handlers in the corresponding function
 
 			// make elements sticky
