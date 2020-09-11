@@ -76,7 +76,7 @@ class Mondula_Form_Wizard {
 	 */
 	public $script_suffix;
 
-		private $_wizard_service;
+	private $_wizard_service;
 
 	/**
 	 * Constructor function.

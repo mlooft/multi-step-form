@@ -7,7 +7,7 @@
 
     <h3><? _e('Send Testmail', 'multi-step-form'); ?></h3>
     <p><?php _e('Use the following form to check if the wp_mail function works.'.
-                ' This function is used by MSF and it is curcial for sending emails.', 'multi-step-form'); ?></p>
+                ' This function is used by MSF and it is crucial for sending emails.', 'multi-step-form'); ?></p>
     <form id="msf-testmail" method="post">
         <label for="testmail-receiver">Send to: </label>
         <input type="email" name="testmail-receiver" id="testmail-receiver" required>
@@ -55,7 +55,7 @@
     <h3><? _e('Upload Problems', 'multi-step-form'); ?></h3>
     <p>
         <?php _e('If you have problems with the upload of files, please check '.
-                'first the "Important System Information" on this page. Check if all limits and maximum sizes are'.
+                'the "Important System Information" on this page first. Check if all limits and maximum sizes are '.
                 'high enough to upload the files you want.', 'multi-step-form'); ?>
     </p>
     <p>

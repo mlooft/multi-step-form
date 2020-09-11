@@ -422,7 +422,7 @@ msgid "Send Testmail"
 msgstr ""
 
 #: includes/admin/partials/msf-troubleshooting.php:9
-msgid "Use the following form to check if the wp_mail function works.. This function is used by MSF and it is curcial for sending emails."
+msgid "Use the following form to check if the wp_mail function works.. This function is used by MSF and it is crucial for sending emails."
 msgstr ""
 
 #: includes/admin/partials/msf-troubleshooting.php:26
@@ -438,7 +438,7 @@ msgid "Upload Problems"
 msgstr ""
 
 #: includes/admin/partials/msf-troubleshooting.php:57
-msgid "If you have problems with the upload of files, please check .first the \"Important System Information\" on this page. Check if all limits and maximum sizes are.high enough to upload the files you want."
+msgid "If you have problems with the upload of files, please check .the \"Important System Information\" on this page first. Check if all limits and maximum sizes are .high enough to upload the files you want."
 msgstr ""
 
 #: includes/admin/partials/msf-troubleshooting.php:62
