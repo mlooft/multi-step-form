@@ -40,9 +40,9 @@
                     <p>
                         <?php
                             printf(__('Tried to send an email to <b>%s</b> but the'.
-                            ' wp_mail function failed.<br/> Please check you Wordpress Mail Configuration '.
-                            'as it seems to be broken.'
-                            , 'multi-step-form'), $dest_email);
+                            ' wp_mail function failed.<br/> Please check you Wordpress/PHP Mail Configuration '.
+                            'as it seems to be broken.<br/>Error Message: %s'
+                            , 'multi-step-form'), $dest_email, $email_error);
                         ?>
                         
                     </p>
@@ -81,4 +81,6 @@
     <b>PHP Upload Max Filesize:</b> <?php echo ini_get('upload_max_filesize'); ?><br/>
     <b>PHP Max Input Time:</b> <?php echo ini_get('max_input_time'); ?><br/>
     <b>PHP Max Execution Time:</b> <?php echo ini_get('max_execution_time'); ?><br/>
+    <b>Default E-Mail:</b> <?php echo get_bloginfo('admin_email'); ?><br/>
+    <b>Default E-Mail Name:</b> <?php echo get_bloginfo('name'); ?><br/>
 </div>
