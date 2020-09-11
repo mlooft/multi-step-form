@@ -277,9 +277,9 @@ declare var wp: any;
 	}
 
 	function renderRegistration(block) {
-		log("REG", block);
 		var registrationHtml = '';
-		registrationHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
+		// TODO: Allow required registration forms.
+		// registrationHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		registrationHtml += '<p class="msfp-registration-info">' + wizard.i18n.registration.info + '</p>';
 		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-email" checked disabled="disabled"/>' + wizard.i18n.registration.email + '</label>';
 		registrationHtml += '<label class="msfp-registration-option"><input type="checkbox" class="msfp-registration-username" checked disabled="disabled"/>' + wizard.i18n.registration.username + '</label>';
@@ -630,7 +630,8 @@ declare var wp: any;
 	}
 
 	function getRegistrationData($text, text) {
-		text['required'] = $text.find('.fw-required').prop('checked');
+		// TODO: Allow required registration.
+		text['required'] = false; //$text.find('.fw-required').prop('checked');
 		text['password'] = $text.find('.msfp-registration-password').prop('checked');
 		text['firstname'] = $text.find('.msfp-registration-firstname').prop('checked');
 		text['lastname'] = $text.find('.msfp-registration-lastname').prop('checked');
