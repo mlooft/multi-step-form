@@ -1,7 +1,7 @@
 === Multi Step Form ===
 Contributors: mondula2016
 Tags: multi, step, forms, multi step form, multi-step, steps, feedback, email, contact form, progress bar, form builder, dynamic, ajax, formular
-Requires at least: 4.8
+Requires at least: 5.0
 Tested up to: 5.5
 Stable tag: 1.6.1
 License: GPLv2 or later
@@ -48,7 +48,7 @@ The backend's structure is simple. Even less technical users can quickly underst
 *   **Calendar item**- Styled datepicker included.
 *   **Show summary**- At the end of each form you can display a short summary.
 *   **Multisite compatibility**- The plugin works on WordPress multisite installs.
-*   **reCAPTCHA v3**- You can enable reCAPTCHA v3 validation for your forms. 
+*   **reCAPTCHA v2**- You can enable reCAPTCHA v2 validation for your forms. 
 
 ### Watch the video
 [youtube http://www.youtube.com/watch?v=2hyF1SDewok]
@@ -84,8 +84,10 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 
 = 1.6.1 =
 * Better Troubleshooting page
-* Default E-Mail Bugfix
 * Save a form using Ctrl-S/Command-S
+* Replaced reCAPTCHA v3 with v2 because v3 caused too many problems
+* Default E-Mail Bugfix
+* Section Name Bugfix
 
 = 1.6.0 =
 * New Troubleshooting page allows faster debugging and better support

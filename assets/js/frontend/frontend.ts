@@ -9,6 +9,9 @@ jQuery(document).ready(function ($) {
 
 	let data = {};
 
+	let captchaId : any = null;
+	let useCaptcha : boolean = false;
+
 	const logStyle = "color: white; background-color: purple; padding: 3px; display: block; line-height: 25px; border-radius: 2px;";
 
 	/**
@@ -863,13 +866,22 @@ jQuery(document).ready(function ($) {
 			$(element).removeClass('fw-block-invalid');
 		})
 
-		var formValid = true;
+		let formValid = true;
 		$wizard.find('.fw-wizard-step').each(function (idx, element) {
-			var $step = $(element);
+			const $step = $(element);
 			if (!validateStep($step)) {
 				formValid = false;
 			}
 		});
+
+		if (formValid && useCaptcha) {
+			if (window.grecaptcha.getResponse(captchaId).length == 0)
+			{
+				alertUser(msfAjax.i18n.errors.noCaptcha, false);
+				formValid = false;
+			}
+		}
+
 		return formValid;
 	}
 
@@ -879,7 +891,7 @@ jQuery(document).ready(function ($) {
      * @param  {string} rsp the response message
      * @param  {boolean} success successful submit of fail
      */
-	function alertUser(message, success) {
+	function alertUser(message : string, success : boolean) {
 		$('.fw-alert-user').empty().removeClass('fw-alert-user-fail fw-alert-user-success');
 		if (success) {
 			$('.fw-alert-user').addClass('fw-alert-user-success')
@@ -911,8 +923,8 @@ jQuery(document).ready(function ($) {
 	}
 
 	function sendEmail(summary, email, files, reg) {
-		var id = $('#multi-step-form').attr('data-wizardid');
-		var token = $('.msf-recaptcha-token').val();
+		const id = $('#multi-step-form').attr('data-wizardid');
+		const token = useCaptcha ? window.grecaptcha.getResponse(captchaId) : "";
 		$('.fw-btn-submit').html('<i class="fa fa-spinner"></i> ' + msfAjax.i18n.sending);
 		$.post(
 			msfAjax.ajaxurl, {
@@ -937,7 +949,7 @@ jQuery(document).ready(function ($) {
 					}
 				} else {
 					$('.fw-btn-submit').addClass('fw-submit-fail').html('<i class="fa fa-times-circle"></i> ' + msfAjax.i18n.submitError);
-					warn('response', resp);
+					warn('Server Response', resp);
 				}
 			}
 		).fail(function (resp) {
@@ -1138,16 +1150,33 @@ jQuery(document).ready(function ($) {
 		$('.fw-select').on('change', selectOnChange);
 	}
 
-	function setup() {
+	function setupReCaptcha() {
+		const tokenFields = $('.msf-recaptcha-token');
 
-		var $wizard = $('.fw-wizard');
+		if (tokenFields.length > 0) {
+			useCaptcha = true;
+			const siteKey = tokenFields.data('sitekey');
+			const recaptchaElement = $('.msf-recaptcha-element')[0];
+			window.grecaptcha.ready(function () {
+				captchaId = window.grecaptcha.render(
+					recaptchaElement, 
+					{ 
+						sitekey: siteKey
+					}
+				);
+			});
+		}
+	}
+
+	function setup() {
+		const $wizard = $('.fw-wizard');
 
 		$wizard.each(function (idx, element) {
 			showStep($(element), 0);
 		});
 
-		var count = getStepCount($wizard);
-		var parentWidth = $wizard.parent().outerWidth();
+		const count = getStepCount($wizard);
+		const parentWidth = $wizard.parent().outerWidth();
 
 		if ((count >= 5 && parentWidth >= 769) ||
 			(parentWidth >= 500)) {
@@ -1155,51 +1184,31 @@ jQuery(document).ready(function ($) {
 		}
 
 		$('.fw-progress-step[data-id="0"]').addClass('fw-active');
-		$('.fw-button-previous').hide(); // prop('disabled', true);
+		$('.fw-button-previous').hide();
 		$('.fw-button-previous').click(previous);
 		$('.fw-button-next').click(next);
 
-		var showSummary = $('.fw-wizard-summary').attr('data-showsummary');
+		const showSummary = $('.fw-wizard-summary').attr('data-showsummary');
 		if (showSummary == 'off') {
 			$('.fw-toggle-summary').remove();
 		}
 
 		setupSelect2();
-
 		setupChangeListeners();
-
 		setupFileUpload();
-
 		setupDatepicker();
-
-		$('.fw-btn-submit').click(submit);
-
 		setupColors();
-
 		setupRegistration();
-
+		setupReCaptcha();
+		
+		$('.fw-btn-submit').click(submit);
 		updateSummary($('.fw-wizard'));
 	}
 
-	function validateReCaptcha() {
-		var tokenFields = $('.msf-recaptcha-token');
-
-		if (tokenFields.length > 0) {
-			var siteKey = tokenFields.data('sitekey');
-			window.grecaptcha.ready(function () {
-				window.grecaptcha.execute(siteKey, { action: 'homepage' }).then(function (token) {
-					tokenFields.val(token);
-				});
-			});
-		}
-	}
-
 	function init() {
-		
 		$(document).ready(function (evt) {
 			if ($('#multi-step-form').length) {
 				setup();
-				validateReCaptcha();
 				(window as any).msf = {};
 				(window as any).msf.info = info;
 			}

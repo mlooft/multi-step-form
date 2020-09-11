@@ -20,7 +20,7 @@ class Mondula_Form_Wizard_Shortcode {
 	/**
 	 * Constructor function
 	 */
-	public function __construct( Mondula_Form_Wizard $parent, $token, Mondula_Form_Wizard_Wizard_Service $wizard_service ) {
+	public function __construct(Mondula_Form_Wizard $parent, $token, Mondula_Form_Wizard_Wizard_Service $wizard_service) {
 		$this->_parent = $parent;
 		$this->_token = $token;
 		$this->_wizard_service = $wizard_service;
@@ -223,7 +223,7 @@ class Mondula_Form_Wizard_Shortcode {
 			}
 
 			$sanitizedSection = sanitize_text_field($section);
-			if ($sanitizedSection !== $section) {
+			if ($sanitizedSection != $section) {
 				$data[$sanitizedSection] = $fields;
 				unset($data[$section]);
 			}
@@ -260,19 +260,15 @@ class Mondula_Form_Wizard_Shortcode {
 
 		$remote_data = json_decode(wp_remote_retrieve_body($remote), true);
 
-		$score = isset($remote_data['score']) ? $remote_data['score'] : 0;
-
-		return $score > 0.25;
+		return isset($remote_data['success']) ? $remote_data['success'] : false;
 	}
 
 	public function fw_send_email() {
-		global $phpmailer;
-
-		$id = isset( $_POST['id'] ) && intval($_POST['id']) ? intval($_POST['id']) : '';
-		$data = isset( $_POST['fw_data'] ) ? $this->sanitize_data( $_POST['fw_data'] ) : array();
-		$email = isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : "";
-		$reg = isset( $_POST['reg'] ) ? $this->sanitize_user_reg( $_POST['reg'] ) : array();
-		$files = isset( $_POST['attachments'] ) ? $this->sanitize_attachments( $_POST['attachments'] ) : array();
+		$id    = isset($_POST['id']) && intval($_POST['id']) ? intval($_POST['id']) : '';
+		$data  = isset($_POST['fw_data']) ? $this->sanitize_data($_POST['fw_data']) : array();
+		$email = isset($_POST['email']) ? sanitize_email($_POST['email']) : "";
+		$reg   = isset($_POST['reg']) ? $this->sanitize_user_reg($_POST['reg']) : array();
+		$files = isset($_POST['attachments']) ? $this->sanitize_attachments($_POST['attachments']) : array();
 
 		$wizard = $this->get_wizard($id);
 		if ($wizard === null) {
@@ -280,7 +276,7 @@ class Mondula_Form_Wizard_Shortcode {
 			return;
 		}
 
-		if ( ! empty( $data ) ) {
+		if (!empty($data)) {
 			$use_captcha = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_enable' ,'fw_settings_captcha') === 'on';
 
 			if ($use_captcha) {

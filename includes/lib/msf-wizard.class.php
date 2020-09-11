@@ -65,13 +65,16 @@ class Mondula_Form_Wizard_Wizard {
 		$show_summary = Mondula_Form_Wizard_Wizard::fw_get_option('showsummary' ,'fw_settings_email', 'on') === 'on';
 		$use_captcha = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_enable' ,'fw_settings_captcha') === 'on';
 		$captcha_key = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_sitekey' ,'fw_settings_captcha', '');
+		$captcha_invisible = Mondula_Form_Wizard_Wizard::fw_get_option('recaptcha_invisible' ,'fw_settings_captcha', 'on') === 'on';
 
 		if ($use_captcha) {
 			$recaptcha_url = add_query_arg(
-				array('render' => $captcha_key),
+				array(
+					'render' => 'explicit',
+				),
 				'https://www.google.com/recaptcha/api.js'
 			);
-			wp_enqueue_script('google-recaptcha', $recaptcha_url, array(), '3.0', true);
+			wp_enqueue_script('google-recaptcha', $recaptcha_url, array(), '2.0', true);
 		}
 
 		ob_start();

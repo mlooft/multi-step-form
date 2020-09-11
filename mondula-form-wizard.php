@@ -6,7 +6,7 @@
  * Description: Create and embed Multi Step Form.
  * Author: Mondula GmbH
  * Author URI: http://www.mondula.com/
- * Requires at least: 4.8
+ * Requires at least: 5.0
  * Tested up to: 5.4
  *
  * Text Domain: multi-step-form

@@ -30,25 +30,36 @@
             ?>
             <div class="fw-wizard-step" data-stepId="<?php echo $i; ?>">
                 <?php
-                $step->render( $wizard_id, $i );
-                if ( $i == $len - 1 ) {
-                    if ( $show_summary ) {
-                    ?>
-                    <div class="fw-summary-container">
-                        <button type="button" class="fw-toggle-summary"><?php _e( 'SHOW SUMMARY', 'multi-step-form' ) ?></button>
-                        <div id="wizard-summary" class="fw-wizard-summary" style="display:none;" data-showsummary="on">
-                        <div class="fw-summary-alert"><?php _e( 'Some required Fields are empty', 'multi-step-form' ); ?><br><?php _e('Please check the highlighted fields.', 'multi-step-form') ?></div>
+                $step->render($wizard_id, $i);
+                if ($i == $len - 1) {
+                    if ($show_summary) {
+                        ?>
+                        <div class="fw-summary-container">
+                            <button type="button" class="fw-toggle-summary"><?php _e( 'SHOW SUMMARY', 'multi-step-form' ) ?></button>
+                            <div id="wizard-summary" class="fw-wizard-summary" style="display:none;" data-showsummary="on">
+                            <div class="fw-summary-alert"><?php _e( 'Some required Fields are empty', 'multi-step-form' ); ?><br><?php _e('Please check the highlighted fields.', 'multi-step-form') ?></div>
+                            </div>
                         </div>
-                    </div>
-                    <?php
+                        <?php
                     }
                     if ($use_captcha) {
-                    ?>
+                        ?>
                         <input 
                             type="hidden"
                             class="msf-recaptcha-token"
                             data-sitekey="<?php echo $captcha_key; ?>">
-                    <?php 
+                        <?php 
+                        if ($captcha_invisible)
+                        {
+                            
+                        } else {
+                            ?>
+                                <br/>
+                                <br/>
+                                <div class="msf-recaptcha-element"></div>
+                                <br/>
+                            <?php
+                        }
                     }
                     ?>
                     <button type="button" class="fw-btn-submit"><?php _e( 'Submit', 'multi-step-form' ); ?></button>

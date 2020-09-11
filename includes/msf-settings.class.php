@@ -170,7 +170,7 @@ class Mondula_Form_Wizard_Settings {
 				array(
 					'name' => 'recaptcha_enable',
 					'label' => __( 'reCAPTCHA', 'multi-step-form' ),
-					'desc' => __( 'Enable reCAPTCHA v3', 'multi-step-form' ),
+					'desc' => __( 'Enable reCAPTCHA v2', 'multi-step-form' ),
 					'type' => 'checkbox',
 					'default' => 'off',
 				),
@@ -188,6 +188,13 @@ class Mondula_Form_Wizard_Settings {
 					'type' => 'text',
 					'default' => '',
 				),
+				array(
+					'name' => 'recaptcha_invisible',
+					'label' => __( 'reCAPTCHA Invisible', 'multi-step-form' ),
+					'desc' => __( 'Use the invisible mode instead of the checkbox.<br/>Must be the same as in the reCAPTCHA admin console.', 'multi-step-form' ),
+					'type' => 'checkbox',
+					'default' => 'off',
+				),
 			),
 		);
 
@@ -196,7 +203,7 @@ class Mondula_Form_Wizard_Settings {
 			$settings_fields['fw_settings_plus']['license_key'] = array(
 				'name' => 'license_key',
 				'label' => __( 'License Key', 'multi-step-form' ),
-				'desc' => __( 'Please enter your MSF-Plus license key.<br> Having trouble? <a href="mailto:info@mondula.com">Leave us a message</a>.', 'multi-step-form' ),
+				'desc' => __( 'Please enter your MSF-Plus license key.<br/>Having trouble? <a href="mailto:info@mondula.com">Leave us a message</a>.', 'multi-step-form' ),
 				'type' => 'text',
 				'default' => '',
 			);

@@ -168,6 +168,7 @@ class Mondula_Form_Wizard {
 				'takenUsername' => __( 'Username is already registered', 'multi-step-form' ),
 				'invalidNumeric' => __( 'Invalid number', 'multi-step-form' ),
 				'invalidRegex' => __( 'Invalid input', 'multi-step-form' ),
+				'noCaptcha' => __( 'Please solve the captcha first!', 'multi-step-form' ),
 			),
 		);
 	}
