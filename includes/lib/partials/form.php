@@ -47,19 +47,21 @@
                         <input 
                             type="hidden"
                             class="msf-recaptcha-token"
-                            data-sitekey="<?php echo $captcha_key; ?>">
-                        <?php 
-                        if ($captcha_invisible)
-                        {
-                            
-                        } else {
-                            ?>
-                                <br/>
-                                <br/>
-                                <div class="msf-recaptcha-element"></div>
-                                <br/>
-                            <?php
-                        }
+                            data-sitekey="<?php echo $captcha_key; ?>"
+                            data-invisible="<?php echo $captcha_invisible ? "true" : "false"; ?>"
+                        >
+                        <br/><br/>
+                        <div 
+                            class="msf-recaptcha-element"
+                            <?php 
+                            if ($captcha_invisible)
+                            {
+                                echo 'data-size="invisible"';
+                            } 
+                        ?>
+                        ></div>
+                        <br/>
+                        <?php
                     }
                     ?>
                     <button type="button" class="fw-btn-submit"><?php _e( 'Submit', 'multi-step-form' ); ?></button>

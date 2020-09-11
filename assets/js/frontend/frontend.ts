@@ -11,6 +11,7 @@ jQuery(document).ready(function ($) {
 
 	let captchaId : any = null;
 	let useCaptcha : boolean = false;
+	let invisibleCaptcha : boolean = false;
 
 	const logStyle = "color: white; background-color: purple; padding: 3px; display: block; line-height: 25px; border-radius: 2px;";
 
@@ -875,8 +876,12 @@ jQuery(document).ready(function ($) {
 		});
 
 		if (formValid && useCaptcha) {
-			if (window.grecaptcha.getResponse(captchaId).length == 0)
-			{
+			if (invisibleCaptcha && !checkCaptchaSolved()) {
+				window.grecaptcha.execute(captchaId);
+				return false;
+			}
+
+			if (!checkCaptchaSolved()) {
 				alertUser(msfAjax.i18n.errors.noCaptcha, false);
 				formValid = false;
 			}
@@ -904,16 +909,15 @@ jQuery(document).ready(function ($) {
 			.fadeIn().delay(2000).fadeOut();
 	}
 
-	function submit(evt) {
-		var summary, email, reg;
-		var files = [];
-		var $wizard = $(this).closest('.fw-wizard');
-
+	function submit() {
+		const $wizard = $('.fw-wizard');
+		
 		if (validate($wizard)) {
 			$('.fw-spinner').show();
-			summary = getSummary($wizard);
-			files = getAttachments();
-			email = $wizard.find('[data-id="email"]').first().val();
+			const summary = getSummary($wizard);
+			const email = $wizard.find('[data-id="email"]').first().val();
+			const files = getAttachments();
+			let reg;
 			if ($wizard.find('[data-type=fw-registration]')) {
 				reg = getRegistration();
 			}
@@ -1155,17 +1159,27 @@ jQuery(document).ready(function ($) {
 
 		if (tokenFields.length > 0) {
 			useCaptcha = true;
+			invisibleCaptcha = tokenFields.data('invisible');
 			const siteKey = tokenFields.data('sitekey');
 			const recaptchaElement = $('.msf-recaptcha-element')[0];
+
 			window.grecaptcha.ready(function () {
+				let params = {
+					sitekey: siteKey,
+				};
+				if (invisibleCaptcha) {
+					params['callback'] = function(){submit()};
+				}
 				captchaId = window.grecaptcha.render(
 					recaptchaElement, 
-					{ 
-						sitekey: siteKey
-					}
+					params
 				);
 			});
 		}
+	}
+
+	function checkCaptchaSolved() {
+		return window.grecaptcha.getResponse(captchaId).length > 0;
 	}
 
 	function setup() {
