@@ -517,6 +517,17 @@ declare var wp: any;
 				$('.fw-mail-replyto').val(formSettings.replyto);
 				$('.fw-mail-replyto').trigger('change');
 			}
+			if (formSettings.usercopy) {
+				$('.fw-mail-usercopy').val(formSettings.usercopy);
+				$('.fw-mail-usercopy').trigger('change');
+			} else if (wizard.usedcc === 'on') {
+				const $usercopyOptions = $('.fw-mail-usercopy').find("option");
+				if ($usercopyOptions.length >= 2) {
+					const firstEmail = $($usercopyOptions[1]).val();
+					$('.fw-mail-usercopy').val(firstEmail);
+				$('.fw-mail-usercopy').trigger('change');
+				}
+			}
 		}
 	}
 
@@ -748,6 +759,7 @@ declare var wp: any;
 			header: $('.fw-mail-header').val(),
 			headers: $('.fw-mail-headers').val(),
 			replyto: $('.fw-mail-replyto').val(),
+			usercopy: $('.fw-mail-usercopy').val(),
 		};
 
 		return settings;
@@ -1457,13 +1469,13 @@ declare var wp: any;
 		});
 	}
 
-	function updateReplyTo() {
-		const $replyTo = $('.fw-mail-replyto');
-		const oldSelection = $replyTo.val();
+	function updateEmailSelection(classkey, noSelect) {
+		const $targetSelect = $(classkey);
+		const oldSelection = $targetSelect.val();
 		let foundOldSelection = false;
 
-		$replyTo.find("option").each((_, oldOption) => {
-			if ($(oldOption).val() !== "no-reply") {
+		$targetSelect.find("option").each((_, oldOption) => {
+			if ($(oldOption).val() !== noSelect) {
 				oldOption.remove();
 			}
 		});
@@ -1475,21 +1487,21 @@ declare var wp: any;
 				const selection = String($(element).find('.fw-block-label').val());
 				const escapedSelection = escapeAttribute(selection);
 
-				if (!$replyTo.find("option[value='" + escapedSelection + "']").length) {
+				if (!$targetSelect.find("option[value='" + escapedSelection + "']").length) {
 					if (oldSelection === escapedSelection) {
 						foundOldSelection = true;
 					}
 					var newOption = new Option(selection, escapedSelection, false, false);
-					$replyTo.append(newOption);
+					$targetSelect.append(newOption);
 				} 
 			}
 		});
 		if (foundOldSelection) {
-			$replyTo.val(oldSelection);
+			$targetSelect.val(oldSelection);
 		} else {
-			$replyTo.val('no-reply');
+			$targetSelect.val(noSelect);
 		}
-		$replyTo.trigger('change');
+		$targetSelect.trigger('change');
 	}
 
 	function setupReplyTo() {
@@ -1497,7 +1509,15 @@ declare var wp: any;
 			width: '60%'
 		});
 
-		updateReplyTo();
+		updateEmailSelection('.fw-mail-replyto', 'no-reply');
+	}
+
+	function setupUsercopy() {
+		$('.fw-mail-usercopy').select2({
+			width: '60%'
+		});
+
+		updateEmailSelection('.fw-mail-usercopy', 'no-usercopy');
 	}
 
     /**
@@ -1518,12 +1538,14 @@ declare var wp: any;
 			renderSteps(steps);
 
 			setupReplyTo();
+			setupUsercopy();
+
 			// get mail settings
 			renderFormSettings(w.wizard.settings);
 
-			$('.fw-button-save').click(save);
+			$('.fw-button-save').on("click", save);
 
-			$(window).bind('keydown', function(event) {
+			$(window).on('keydown', function(event) {
 				if (event.ctrlKey || event.metaKey) {
 					if (String.fromCharCode(event.which).toLowerCase() == 's') {
 						event.preventDefault();
@@ -1582,16 +1604,17 @@ declare var wp: any;
 			setupMedia($container);
 
 			// tab menu toggle
-			$('#fw-nav-settings').click(function (e) {
+			$('#fw-nav-settings').on("click", function (e) {
 				$('#fw-nav-steps').toggleClass('nav-tab-active');
 				$('#fw-nav-settings').toggleClass('nav-tab-active');
 				$(container).hide();
 				$(elementsContainer).hide();
-				updateReplyTo();
+				updateEmailSelection('.fw-mail-replyto', 'no-reply');
+				updateEmailSelection('.fw-mail-usercopy', 'no-usercopy');
 				$('.fw-mail-settings-container').show();
 			});
 
-			$('#fw-nav-steps').click(function (e) {
+			$('#fw-nav-steps').on("click", function (e) {
 				$('#fw-nav-steps').toggleClass('nav-tab-active');
 				$('#fw-nav-settings').toggleClass('nav-tab-active');
 				$('.fw-mail-settings-container').hide();

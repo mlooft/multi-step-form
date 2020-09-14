@@ -61,6 +61,17 @@
                     </td>
                 </tr>
                 <tr valign="top">
+                    <th scope="row"><?php _e('Send copy to user:', 'multi-step-form' ); ?></th>
+                    <td>
+                        <select class="fw-mail-usercopy">
+                            <option value="no-usercopy" selected>No Copy</option>
+                        </select>
+                        <p class="description"><?php _e('Should a copy of the submitted data be send to the user?', 'multi-step-form'); ?></p>
+                        <p class="description"><?php _e('If yes, select an email field in which the user should enter her/his email.', 'multi-step-form'); ?></p>
+                        <p class="description"><?php _e('This email will then be used for the copy.', 'multi-step-form'); ?></p>
+                    </td>
+                </tr>
+                <tr valign="top">
                     <th scope="row"><?php _e('Additional Email Headers:', 'multi-step-form' ); ?></th>
                     <td>
                         <textarea rows="4" cols="55" class="fw-mail-headers"></textarea>

@@ -915,18 +915,18 @@ jQuery(document).ready(function ($) {
 		if (validate($wizard)) {
 			$('.fw-spinner').show();
 			const summary = getSummary($wizard);
-			const email = $wizard.find('[data-id="email"]').first().val();
+			const firstEmail = $wizard.find('[data-id="email"]').first().val();
 			const files = getAttachments();
 			let reg;
 			if ($wizard.find('[data-type=fw-registration]')) {
 				reg = getRegistration();
 			}
 
-			sendEmail(summary, email, files, reg);
+			sendEmail(summary, firstEmail, files, reg);
 		}
 	}
 
-	function sendEmail(summary, email, files, reg) {
+	function sendEmail(summary, firstEmail, files, reg) {
 		const id = $('#multi-step-form').attr('data-wizardid');
 		const token = useCaptcha ? window.grecaptcha.getResponse(captchaId) : "";
 		$('.fw-btn-submit').html('<i class="fa fa-spinner"></i> ' + msfAjax.i18n.sending);
@@ -935,7 +935,7 @@ jQuery(document).ready(function ($) {
 				action: 'fw_send_email',
 				id: id,
 				fw_data: summary,
-				email: email,
+				first_email: firstEmail,
 				reg: reg,
 				attachments: files,
 				recaptchaToken: token,
