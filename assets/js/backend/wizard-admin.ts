@@ -198,6 +198,15 @@ declare var wp: any;
 		return emailHtml;
 	}
 
+	function renderGetVariable(block) {
+		var getVarHtml = '';
+		getVarHtml += '<label>' + wizard.i18n.label + '</label>';
+		getVarHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+		getVarHtml += '<label>' + wizard.i18n.get_var.get_param + '</label>';
+		getVarHtml += '<input type="text" class="fw-get-var-get-param fw-block-label" value="' + (block.get_param ? block.get_param : '') + '"></input><br/>';
+		return getVarHtml;
+	}
+
 	function renderNumeric(block) {
 		var numericHtml = '';
 		numericHtml += '<label>' + wizard.i18n.label + '</label>';
@@ -328,6 +337,9 @@ declare var wp: any;
 				break;
 			case 'email':
 				blockHtml += renderEmail(block);
+				break;
+			case 'get-variable':
+				blockHtml += renderGetVariable(block);
 				break;
 			case 'numeric':
 				blockHtml += renderNumeric(block);
@@ -600,6 +612,11 @@ declare var wp: any;
 		text['required'] = $text.find('.fw-required').prop('checked');
 	}
 
+	function getGetVariableData($text, text) {
+		text['label'] = $text.find('.fw-text-label').val();
+		text['get_param'] = $text.find('.fw-get-var-get-param').val();
+	}
+
 	function getNumericData($text, text) {
 		text['label'] = $text.find('.fw-text-label').val();
 		text['required'] = $text.find('.fw-required').prop('checked');
@@ -685,6 +702,9 @@ declare var wp: any;
 				break;
 			case 'email':
 				getEmailData($block, block);
+				break;
+			case 'get-variable':
+				getGetVariableData($block, block);
 				break;
 			case 'numeric':
 				getNumericData($block, block);
@@ -1190,6 +1210,22 @@ declare var wp: any;
 					type: 'email',
 					label: '',
 					value: ''
+				}));
+				var $part = $(thickEvent.target).parents('.fw-step-part');
+				$part.find('.inside').append(block);
+				setupClickHandlers();
+				if (msfp) {
+					setupConditionals($('.fw-step-block').index(block));
+				}
+			});
+			// GET VARIABLE
+			$("#fw-thickbox-get-variable").unbind('click').click(function (thickRadioEvent) {
+				tb_remove();
+				var block = $(renderBlock({
+					type: 'get-variable',
+					label: '',
+					value: '',
+					get_param: '',
 				}));
 				var $part = $(thickEvent.target).parents('.fw-step-part');
 				$part.find('.inside').append(block);

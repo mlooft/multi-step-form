@@ -21,14 +21,6 @@ class Mondula_Form_Wizard_Block_Paragraph extends Mondula_Form_Wizard_Block {
 		$this->_text = $text;
 	}
 
-	/**
-	 * Returns the '_required'-Status of the Object.
-	 * @return boolean $_required If true, Input for this field is required.
-	 */
-	public function get_required( ) {
-		return false;
-	}
-
 	public function render( $ids ) {
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-paragraph">

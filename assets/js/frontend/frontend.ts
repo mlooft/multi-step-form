@@ -136,15 +136,22 @@ jQuery(document).ready(function ($) {
 	}
 
 	function textSummary(summaryObj, $block, title, required) {
-		var header = $block.find('h3').text();
-		var value = $block.find('.fw-text-input').val().trim();
+		const header = $block.find('h3').text();
+		let value = $block.find('.fw-text-input').val().trim();
+		value = escapeHtml(value);
+		pushToSummary(summaryObj, title, header, value, required);
+	}
+
+	function hiddenSummary(summaryObj, $block, title, required) {
+		const header = $block.data('label');
+		let value = $block.find('.fw-text-input').val().trim();
 		value = escapeHtml(value);
 		pushToSummary(summaryObj, title, header, value, required);
 	}
 
 	function textareaSummary(summaryObj, $block, title, required) {
-		var header = $block.find('h3').text();
-		var value = $block.find('.fw-textarea').val().trim();
+		const header = $block.find('h3').text();
+		let value = $block.find('.fw-textarea').val().trim();
 		value = escapeHtml(value);
 		value = value.replace(/\n/g, "<br/>\n");
 		pushToSummary(summaryObj, title, header, value, required);
@@ -231,6 +238,10 @@ jQuery(document).ready(function ($) {
 				break;
 			case 'fw-registration':
 				registrationSummary(summaryObj, $block, title, required);
+				break;
+			case 'fw-get-variable':
+				hiddenSummary(summaryObj, $block, title, required);
+				break;
 			default:
 				break;
 		}
@@ -560,6 +571,14 @@ jQuery(document).ready(function ($) {
 		}
 	}
 
+	function validateGetVariable($element) {
+		if (!$element.find('.fw-text-input').val()) {
+			$element.addClass('fw-block-invalid');
+			return false;
+		}
+		return true;
+	}
+
 	function validateNumeric($element) {
 		var re = /^-?\d+$/;
 		var numeric = $element.find('.fw-text-input').val();
@@ -692,6 +711,9 @@ jQuery(document).ready(function ($) {
 						break;
 					case 'fw-email':
 						valid = validateEmail($element);
+						break;
+					case 'fw-get-variable':
+						valid = validateGetVariable($element);
 						break;
 					case 'fw-numeric':
 						valid = validateNumeric($element);
@@ -1178,6 +1200,24 @@ jQuery(document).ready(function ($) {
 		}
 	}
 
+	function setupGetVariables() {
+		const $wizard = $('.fw-wizard');
+
+		const browserParams = new URLSearchParams(window.location.search);
+
+		$wizard.find('.fw-step-block[data-type="fw-get-variable"]').each(
+			function (_, element) {
+				const $element = $(element);
+				const searchParam = $element.data("param");
+
+				if (browserParams.has(searchParam)) {
+					const param = browserParams.get(searchParam);
+					$element.find('.fw-text-input').val(param);
+				}
+			}
+		);
+	}
+
 	function checkCaptchaSolved() {
 		return window.grecaptcha.getResponse(captchaId).length > 0;
 	}
@@ -1214,6 +1254,7 @@ jQuery(document).ready(function ($) {
 		setupColors();
 		setupRegistration();
 		setupReCaptcha();
+		setupGetVariables();
 		
 		$('.fw-btn-submit').click(submit);
 		updateSummary($('.fw-wizard'));

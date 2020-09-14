@@ -40,6 +40,7 @@ require_once( 'includes/lib/msf-wizard-step-part.class.php' );
 require_once( 'includes/lib/msf-block.class.php' );
 require_once( 'includes/lib/msf-blocks/radio/msf-block-radio.class.php' );
 require_once( 'includes/lib/msf-blocks/email/msf-block-email.class.php' );
+require_once( 'includes/lib/msf-blocks/getvariable/msf-block-get-variable.class.php' );
 require_once( 'includes/lib/msf-blocks/numeric/msf-block-numeric.class.php' );
 require_once( 'includes/lib/msf-blocks/file/msf-block-file.class.php' );
 require_once( 'includes/lib/msf-blocks/date/msf-block-date.class.php' );

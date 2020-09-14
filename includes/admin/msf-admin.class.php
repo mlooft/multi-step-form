@@ -112,6 +112,9 @@ class Mondula_Form_Wizard_Admin {
 				'file_name' => __( 'Filename', 'multi-step-form' ),
 				'preview' => __( 'Preview', 'multi-step-form' ),
 			),
+			'get_var' => array(
+				'get_param' => __( 'GET Parameter', 'multi-step-form' ),
+			),
 			'numeric' => array(
 				'minimum' => __( 'Minimum', 'multi-step-form' ),
 				'maximum' => __( 'Maximum', 'multi-step-form' ),

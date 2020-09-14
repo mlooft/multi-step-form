@@ -27,14 +27,6 @@ class Mondula_Form_Wizard_Block_File extends Mondula_Form_Wizard_Block {
 		$this->_multi = $multi;
 	}
 
-	/**
-	 * Returns the '_required'-Status of the Object.
-	 * @return boolean $_required If true, Input for this field is required.
-	 */
-	public function get_required( ) {
-	  return $this->_required;
-	}
-
 	public function render( $ids ) {
 	  $group = $this->generate_id( $ids );
 	  ?>

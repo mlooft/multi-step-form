@@ -30,13 +30,6 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 			$this->_format = 'yy-mm-dd';
 		}
 	}
-	/**
-	 * Returns the '_required'-Status of the Object.
-	 * @return boolean $_required If true, Input for this field is required.
-	 */
-	public function get_required( ) {
-		return $this->_required;
-	}
 
 	public function render( $ids ) {
 		$locale = substr( get_locale(), 0, 2) === 'de' ? 'de' : 'en'; // TODO this is possibly not a good idea

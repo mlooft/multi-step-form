@@ -9,6 +9,7 @@ class Test_Msf_Lib_Blocks extends WP_UnitTestCase {
         $this->assertArrayHasKey('email', $actual);
         $this->assertArrayHasKey('file', $actual);
         $this->assertArrayHasKey('media', $actual);
+        $this->assertArrayHasKey('get-variable', $actual);
         $this->assertArrayHasKey('numeric', $actual);
         $this->assertArrayHasKey('paragraph', $actual);
         $this->assertArrayHasKey('radio', $actual);

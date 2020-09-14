@@ -23,14 +23,6 @@ class Mondula_Form_Wizard_Block_Text extends Mondula_Form_Wizard_Block {
 		$this->_required = $required;
 	}
 
-	/**
-	 * Returns the '_required'-Status of the Object.
-	 * @return boolean $_required If true, Input for this field is required.
-	 */
-	public function get_required( ) {
-	  return $this->_required;
-	}
-
 	// TODO: add text field label variable and ids
 	public function render( $ids ) {
 		?>

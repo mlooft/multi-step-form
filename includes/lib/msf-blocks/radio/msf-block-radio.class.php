@@ -27,14 +27,6 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
 		$this->_multichoice = $multichoice;
 	}
 
-	/**
-	 * Returns the '_required'-Status of the Object.
-	 * @return boolean $_required If true, Input for this field is required.
-	 */
-	public function get_required( ) {
-	  return $this->_required;
-	}
-
 	public function render( $ids ) {
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-radio" data-required="<?php echo $this->_required; ?>">
