@@ -86,12 +86,23 @@ class Mondula_Form_Wizard_Wizard {
 
 	public function render_mail($data, $mailformat) {
 		ob_start();
+
+		$mail_template = get_stylesheet_directory() . '/multi-step-form';
 		
 		if ($mailformat == 'text') {
-		  	require 'partials/mail-plain.php';
+		  	$filename = '/mail-plain.php';
 		} else {
-			require 'partials/mail-html.php';
+			$filename = '/mail-html.php';
 		}
+
+		$mail_template .= $filename;
+
+		if (!file_exists($mail_template)) {
+			// If the override template does NOT exist, fallback to the default template.
+			$mail_template = __DIR__ . '/partials' . $filename;
+		}
+
+		require $mail_template;
 
 		$result = ob_get_contents();
 		ob_end_clean();

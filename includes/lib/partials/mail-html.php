@@ -1,5 +1,11 @@
 <?php
-    if ( ! defined( 'ABSPATH' ) ) exit;
+	/**
+	 * Default HTML Mail Template.
+	 * 
+	 * To override this file, add a "mail-html.php" file to a "multi-step-form" directory in your
+	 * theme directory. 
+	 */
+    if (!defined('ABSPATH')) exit;
 ?>
 <html><body>
 		<table border="0" cellpadding="0" cellspacing="0" width="100%">
