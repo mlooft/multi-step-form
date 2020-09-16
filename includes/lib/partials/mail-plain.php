@@ -4,10 +4,13 @@
 	 * 
 	 * To override this file, add a "mail-plain.php" file to a "multi-step-form" directory in your
 	 * theme directory. 
+     * 
+	 * $data contains the filled form data.
+	 * $headline contains a message that can be set per form.
 	 */
     if (!defined('ABSPATH')) exit;
 
-    echo $this->_settings['header'] . PHP_EOL . PHP_EOL;
+    echo $headline . PHP_EOL . PHP_EOL;
 
     foreach ($data as $key => $value) {
         echo PHP_EOL .  $key . PHP_EOL . PHP_EOL;

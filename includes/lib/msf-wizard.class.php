@@ -78,15 +78,13 @@ class Mondula_Form_Wizard_Wizard {
 		}
 
 		ob_start();
-
 		require 'partials/form.php';
-
 		return ob_get_clean();
 	}
 
 	public function render_mail($data, $mailformat) {
-		ob_start();
-
+		$headline = $this->get_headline($data);
+		
 		$mail_template = get_stylesheet_directory() . '/multi-step-form';
 		
 		if ($mailformat == 'text') {
@@ -102,11 +100,55 @@ class Mondula_Form_Wizard_Wizard {
 			$mail_template = __DIR__ . '/partials' . $filename;
 		}
 
+		// Output E-Mail
+		ob_start();
 		require $mail_template;
+		return ob_get_clean();
+	}
 
-		$result = ob_get_contents();
-		ob_end_clean();
-		return $result;
+	public function get_subject($data) {
+		$subject = $this->_settings['subject'];
+		
+		if ($this->_settings['replacements']) {
+			preg_match_all("/[^\\\\]{(?P<tag>[^{}\\n]+)}/U", $subject, $matches);
+			
+			$replacements = array();
+			foreach ($matches['tag'] as $tag) {
+				$replacement = "";
+				foreach ($data as $section) {
+					foreach ($section as $pairs) {
+						foreach ($pairs as $key => $value) {
+							if ($key === $tag) {
+								$replacement = sanitize_text_field($value);
+							}
+						}
+					}
+				}
+				$replacements[$tag] = $replacement;
+			}
+
+			$subject = preg_replace_callback("/[^\\\\]{(?P<tag>[^{}\\n]+)}/U", function($match) use ($replacements) {
+				if (array_key_exists($match['tag'], $replacements)) {
+					return $match[0][0] . $replacements[$match['tag']];
+				} else {
+					return $match[0];
+				}
+			}, $subject);
+
+			$subject = str_replace("\\{", "{", $subject);
+		}
+
+		return $subject;
+	}
+
+	public function get_headline($data) {
+		$headline = $this->_settings['header'];
+		
+		if ($this->_settings['replacements']) {
+			// TODO
+		}
+
+		return $headline;
 	}
 
 	public function as_aa() {

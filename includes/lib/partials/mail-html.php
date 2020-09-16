@@ -4,6 +4,9 @@
 	 * 
 	 * To override this file, add a "mail-html.php" file to a "multi-step-form" directory in your
 	 * theme directory. 
+	 * 
+	 * $data contains the filled form data.
+	 * $headline contains a message that can be set per form.
 	 */
     if (!defined('ABSPATH')) exit;
 ?>
@@ -19,7 +22,7 @@
 									  <td>
 										  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 											  <tbody><tr>
-												  <td align="left" style="font-size: 22px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" colspan="2" class="padding-copy"><?php echo $this->_settings['header']?></td>
+												  <td align="left" style="font-size: 22px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" colspan="2" class="padding-copy"><?php echo $headline; ?></td>
 											  </tr>
                                               <?php
                                               foreach ( $data as $key => $value ) {

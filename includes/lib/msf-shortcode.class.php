@@ -145,9 +145,9 @@ class Mondula_Form_Wizard_Shortcode {
 		wp_die();
 	}
 
-	private function generate_attachment_paths( $files ) {
+	private function generate_attachment_paths($files) {
 		$attachments = array();
-		for ( $i = 0; $i < count( $files ); $i++ ) {
+		for ( $i = 0; $i < count($files); $i++ ) {
 			if ( $files[ $i ] != '' ) {
 				$attachments[ $i ] = WP_CONTENT_DIR . '/uploads/msf-temp/' . sanitize_file_name( $files[ $i ] );
 			}
@@ -162,7 +162,7 @@ class Mondula_Form_Wizard_Shortcode {
 		return $attachments;
 	}
 
-	private function sanitize_user_reg( &$reg ) {
+	private function sanitize_user_reg(&$reg) {
 		foreach ($reg as $key => &$value) {
 			switch ($key) {
 				case 'username':
@@ -293,12 +293,13 @@ class Mondula_Form_Wizard_Shortcode {
 		}
 
 		/* Send email */
-		$mailformat = Mondula_Form_Wizard_Wizard::fw_get_option( 'mailformat' ,'fw_settings_email', 'html' );
+		$mailformat = Mondula_Form_Wizard_Wizard::fw_get_option('mailformat' ,'fw_settings_email', 'html');
 		$content = $wizard->render_mail($data, $mailformat);
+		$subject = $wizard->get_subject($data);
 		$settings = $wizard->get_settings();
-		$attachments = $this->generate_attachment_paths( $files );
+		$attachments = $this->generate_attachment_paths($files);
 
-		if ( $mailformat == 'html' ) {
+		if ($mailformat == 'html') {
 			add_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
 			$headers = array( 'Content-Type: text/html; charset=UTF-8' );
 		} else {
@@ -322,7 +323,7 @@ class Mondula_Form_Wizard_Shortcode {
 			$headers = array_merge($headers, $additional_headers);
 		}
 		// send email to admin
-		$mail_success = wp_mail($settings['to'], $settings['subject'], $content, $headers, $attachments);
+		$mail_success = wp_mail($settings['to'], $subject, $content, $headers, $attachments);
 		
 		// send copy to user
 		$mail_copy_success = true;
@@ -332,7 +333,7 @@ class Mondula_Form_Wizard_Shortcode {
 					$userMail = $this->find_field($data, $settings['usercopy']);
 					if ($userMail) {
 						$userMail = sanitize_email($userMail);
-						$mail_copy_success = wp_mail($userMail, $settings['subject'], $content, $headers);
+						$mail_copy_success = wp_mail($userMail, $subject, $content, $headers);
 					}
 				}
 			} else {
@@ -340,7 +341,7 @@ class Mondula_Form_Wizard_Shortcode {
 				$firstEmail = isset($_POST['first_email']) ? sanitize_email($_POST['first_email']) : "";
 				if ($oldCc === "on" && !empty($firstEmail)) {
 					$firstEmail = sanitize_email($firstEmail);
-					$mail_copy_success = wp_mail($firstEmail, $settings['subject'], $content, $headers);
+					$mail_copy_success = wp_mail($firstEmail, $subject, $content, $headers);
 				}
 			}
 		}

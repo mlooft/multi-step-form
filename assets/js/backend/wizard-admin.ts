@@ -540,6 +540,9 @@ declare var wp: any;
 				$('.fw-mail-usercopy').trigger('change');
 				}
 			}
+			if (formSettings.replacements) {
+				$('.fw-mail-string-replacement').prop('checked', formSettings.replacements === "on");
+			}
 		}
 	}
 
@@ -780,6 +783,7 @@ declare var wp: any;
 			headers: $('.fw-mail-headers').val(),
 			replyto: $('.fw-mail-replyto').val(),
 			usercopy: $('.fw-mail-usercopy').val(),
+			replacements: $('.fw-mail-string-replacement').prop('checked') ? "on" : "off",
 		};
 
 		return settings;

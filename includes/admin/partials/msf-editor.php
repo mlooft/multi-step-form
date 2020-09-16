@@ -50,6 +50,7 @@
                     <th scope="row"><?php _e('Subject:', 'multi-step-form' ); ?></th>
                     <td>
                         <input type="text" class="fw-mail-subject" />
+                        <p class="description"><?php _e('If enabled, you can use string replacements in this field.', 'multi-step-form'); ?></p>
                     </td>
                 </tr>
                 <tr valign="top">
@@ -86,7 +87,25 @@
                     <th scope="row"><?php _e('Email Headline:', 'multi-step-form'); ?></th>
                     <td>
                         <textarea rows="5" cols="55" class="fw-mail-header"></textarea>
-                        <p class="description"><?php _e( 'Introductory text for email', 'multi-step-form' ); ?></p>
+                        <p class="description"><?php _e('Introductory text for email', 'multi-step-form'); ?></p>
+                        <p class="description"><?php _e('If enabled, you can use string replacements in this field.', 'multi-step-form'); ?></p>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row"><?php _e('String replacements:', 'multi-step-form' ); ?></th>
+                    <td>
+                        <label>
+                            <input type="checkbox" class="fw-mail-string-replacement" />
+                            Enable string replacements
+                        </label>
+                        <p class="description"><?php _e('If you enable string replacements, you can use a special syntax in the email subject and headline field.', 'multi-step-form'); ?>
+                        <?php _e('With that syntax it is possible to insert values entered by the user in this form.', 'multi-step-form'); ?>
+                        <?php _e('The syntax uses the curly brackets { and } to mark the start and end of a replacement.', 'multi-step-form'); ?>
+                        <?php _e('In between you enter the field label you want to insert: <b>{field label}</b>', 'multi-step-form'); ?></p>
+                        <p class="description"><?php _e('Example: Hello {first name} {last name}!', 'multi-step-form'); ?></p>
+                        <p class="description msf-warn"><?php _e('Please make sure there is only one field with that label.', 'multi-step-form'); ?></p>
+                        <p class="description msf-warn"><?php _e('If you want to use the { sign without a replacement, use \{. This will be reduced to one { sign.', 'multi-step-form'); ?></p>
+                        <p class="description msf-warn"><?php _e('If the field is not required and the user enters nothin, the replacement will just disappear without new content.', 'multi-step-form'); ?></p>
                     </td>
                 </tr>
             </table>
