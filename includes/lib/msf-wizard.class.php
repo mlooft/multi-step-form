@@ -106,48 +106,58 @@ class Mondula_Form_Wizard_Wizard {
 		return ob_get_clean();
 	}
 
-	public function get_subject($data) {
-		$subject = $this->_settings['subject'];
-		
+	private function str_replacements($input, $data) {
 		if ($this->_settings['replacements']) {
-			preg_match_all("/[^\\\\]{(?P<tag>[^{}\\n]+)}/U", $subject, $matches);
+			// Find all replacement positions in string
+			preg_match_all("/[^\\\\]{(?P<tag>[^{}\\n]+)}/U", $input, $matches);
 			
+			// PHP BigO https://stackoverflow.com/a/2484455
+			// n => Number of replacements
+			// m => Number of (filled) form fields
+
+			// Preallocate the required replacement keys O(n)
 			$replacements = array();
 			foreach ($matches['tag'] as $tag) {
-				$replacement = "";
-				foreach ($data as $section) {
-					foreach ($section as $pairs) {
-						foreach ($pairs as $key => $value) {
-							if ($key === $tag) {
-								$replacement = sanitize_text_field($value);
-							}
+				$replacements[$tag] = "";
+			}
+
+			// Go through the entire form O(m)
+			foreach ($data as $section) {
+				foreach ($section as $pairs) {
+					foreach ($pairs as $key => $value) {
+						// array_key_exists is O(n) but in reality due to using
+						// a hashmap performs more like O(1)
+						if (array_key_exists($key, $replacements)) {
+							$replacements[$key] = sanitize_text_field($value);
 						}
 					}
 				}
-				$replacements[$tag] = $replacement;
 			}
 
-			$subject = preg_replace_callback("/[^\\\\]{(?P<tag>[^{}\\n]+)}/U", function($match) use ($replacements) {
+			// Start replacing the keys with the actual values
+			$input = preg_replace_callback("/[^\\\\]{(?P<tag>[^{}\\n]+)}/U", function($match) use ($replacements) {
 				if (array_key_exists($match['tag'], $replacements)) {
 					return $match[0][0] . $replacements[$match['tag']];
 				} else {
 					return $match[0];
 				}
-			}, $subject);
+			}, $input);
 
-			$subject = str_replace("\\{", "{", $subject);
+			$input = str_replace("\\{", "{", $input);
 		}
 
+		return $input;
+	}
+
+	public function get_subject($data) {
+		$subject = $this->_settings['subject'];
+		$subject = $this->str_replacements($subject, $data);
 		return $subject;
 	}
 
 	public function get_headline($data) {
 		$headline = $this->_settings['header'];
-		
-		if ($this->_settings['replacements']) {
-			// TODO
-		}
-
+		$headline = $this->str_replacements($headline, $data);
 		return $headline;
 	}
 
