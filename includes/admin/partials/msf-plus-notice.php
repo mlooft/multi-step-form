@@ -1,5 +1,5 @@
 <?php
-    if ( ! defined( 'ABSPATH' ) ) exit;
+    if (!defined('ABSPATH')) exit;
 ?>
 
 <style>
@@ -64,7 +64,7 @@
             </p>
             <p>
                 <a href="https://mondula.com/multi-step-form-plus/" target="_blank">
-                    <img src="<?php echo plugins_url( 'assets/images/msf_plus_extension.png', dirname(__FILE__) ) ?>" alt="MSF Plus">
+                    <img src="<?php echo plugins_url('assets/images/msf_plus_extension.png', dirname(__FILE__)) ?>" alt="MSF Plus">
                 </a>
             </p>
             <p>

@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 class Mondula_Form_Wizard {
 
@@ -84,41 +84,41 @@ class Mondula_Form_Wizard {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	public function __construct ( $file = '', $version = '1.0.4' ) {
+	public function __construct ($file = '', $version = '1.0.4') {
 		$this->_version = $version;
 		$this->_token = 'mondula_form_wizard';
 
 		// Load plugin environment variables
 		$this->file = $file;
-		$this->dir = dirname( $this->file );
-		$this->assets_dir = trailingslashit( $this->dir ) . 'dist';
-		$this->assets_url = esc_url( trailingslashit( plugins_url( '/dist/', $this->file ) ) );
+		$this->dir = dirname($this->file);
+		$this->assets_dir = trailingslashit($this->dir) . 'dist';
+		$this->assets_url = esc_url(trailingslashit(plugins_url('/dist/', $this->file)));
 
-		$this->script_suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		$this->script_suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
 		register_activation_hook($this->file, array($this, 'install'));
 		register_deactivation_hook($this->file, array($this, 'uninstall'));
 
 		// Load frontend JS & CSS
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
+		add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'), 10);
 
 		// Setup cronjob
 		add_action('msf_cron_upload_clean', array($this, 'cleanup_upload_dir'));
-		if (!wp_next_scheduled('msf_cron_upload_clean') ) {
+		if (!wp_next_scheduled('msf_cron_upload_clean')) {
 			wp_schedule_event(time(), 'daily', 'msf_cron_upload_clean');
 		}
 
 		// Set up service
 		$this->_wizard_service = new Mondula_Form_Wizard_Wizard_Service(
-			new Mondula_Form_Wizard_Wizard_Repository( 'mondula_form_wizards' ),
+			new Mondula_Form_Wizard_Wizard_Repository('mondula_form_wizards'),
 				$this->_version
 		);
 
 		// Load admin JS & CSS
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10, 1 );
+		add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'), 10, 1);
 
 		// Load API for generic admin functions
-		if ( is_admin() ) {
+		if (is_admin()) {
 			$this->admin = new Mondula_Form_Wizard_Admin(
 				$this->_wizard_service,
 				$this->_token,
@@ -131,12 +131,12 @@ class Mondula_Form_Wizard {
 
 		// Handle localisation
 		$this->load_plugin_textdomain();
-		add_action( 'init', array( $this, 'load_localisation' ), 0 );
+		add_action('init', array($this, 'load_localisation'), 0);
 
 		// Setup shortcode
-		$this->shortcode = new Mondula_Form_Wizard_Shortcode( $this, $this->_token, $this->_wizard_service );
+		$this->shortcode = new Mondula_Form_Wizard_Shortcode($this, $this->_token, $this->_wizard_service);
 		/* Notify other plugins that Multi Step Form has loaded */
-		do_action( 'msf_loaded' );
+		do_action('msf_loaded');
 	} // End __construct ()
 
 
@@ -145,30 +145,30 @@ class Mondula_Form_Wizard {
 	 */
 	public static function get_translation() {
 		return array(
-			'sending' => __( 'sending data', 'multi-step-form' ),
-			'submitSuccess' => __( 'success', 'multi-step-form' ),
-			'submitError' => __( 'submit failed', 'multi-step-form' ),
-			'uploadingFile' => __( 'Uploading file', 'multi-step-form' ),
-			'chooseFile' => __( 'Choose a file', 'multi-step-form' ),
-			'showSummary' => __( 'show summary', 'multi-step-form' ),
-			'hideSummary' => __( 'hide summary', 'multi-step-form' ),
-			'registration' => __( 'Registration', 'multi-step-form' ),
-			'registrationAs' => __( 'You are registering as', 'multi-step-form' ),
-			'registrationFailed' => __( 'You will not be registered', 'multi-step-form' ),
+			'sending' => __('sending data', 'multi-step-form'),
+			'submitSuccess' => __('success', 'multi-step-form'),
+			'submitError' => __('submit failed', 'multi-step-form'),
+			'uploadingFile' => __('Uploading file', 'multi-step-form'),
+			'chooseFile' => __('Choose a file', 'multi-step-form'),
+			'showSummary' => __('show summary', 'multi-step-form'),
+			'hideSummary' => __('hide summary', 'multi-step-form'),
+			'registration' => __('Registration', 'multi-step-form'),
+			'registrationAs' => __('You are registering as', 'multi-step-form'),
+			'registrationFailed' => __('You will not be registered', 'multi-step-form'),
 			'errors' => array(
-				'requiredFields' => __( 'Please fill all the required fields!', 'multi-step-form' ),
-				'requiredField' => __( 'This field is required', 'multi-step-form' ),
-				'someRequired' => __( 'Some required Fields are empty', 'multi-step-form' ),
-				'checkFields' => __( 'Please check the highlighted fields.', 'multi-step-form' ),
-				'noEmail' => __( 'No email address provided', 'multi-step-form' ),
-				'invalidEmail' => __( 'Invalid email address', 'multi-step-form' ),
-				'takenEmail' => __( 'Email is already registered', 'multi-step-form' ),
-				'noUsername' => __( 'No username provided', 'multi-step-form' ),
-				'invalidUsername' => __( 'Invalid username', 'multi-step-form' ),
-				'takenUsername' => __( 'Username is already registered', 'multi-step-form' ),
-				'invalidNumeric' => __( 'Invalid number', 'multi-step-form' ),
-				'invalidRegex' => __( 'Invalid input', 'multi-step-form' ),
-				'noCaptcha' => __( 'Please solve the captcha first!', 'multi-step-form' ),
+				'requiredFields' => __('Please fill all the required fields!', 'multi-step-form'),
+				'requiredField' => __('This field is required', 'multi-step-form'),
+				'someRequired' => __('Some required Fields are empty', 'multi-step-form'),
+				'checkFields' => __('Please check the highlighted fields.', 'multi-step-form'),
+				'noEmail' => __('No email address provided', 'multi-step-form'),
+				'invalidEmail' => __('Invalid email address', 'multi-step-form'),
+				'takenEmail' => __('Email is already registered', 'multi-step-form'),
+				'noUsername' => __('No username provided', 'multi-step-form'),
+				'invalidUsername' => __('Invalid username', 'multi-step-form'),
+				'takenUsername' => __('Username is already registered', 'multi-step-form'),
+				'invalidNumeric' => __('Invalid number', 'multi-step-form'),
+				'invalidRegex' => __('Invalid input', 'multi-step-form'),
+				'noCaptcha' => __('Please solve the captcha first!', 'multi-step-form'),
 			),
 		);
 	}
@@ -176,13 +176,13 @@ class Mondula_Form_Wizard {
 	/**
 	 * Logs MSF-Specific Errors.
 	 */
-	public static function log( $message, $data ) {
+	public static function log($message, $data) {
 		$pre = 'Multi Step Form: ';
-		if ( WP_DEBUG === true ) {
-			if ( is_array( $data ) || is_object( $data ) ) {
-				error_log( $pre . $message . ' Data: ' . print_r( $data, true ) );
+		if (WP_DEBUG === true) {
+			if (is_array($data) || is_object($data)) {
+				error_log($pre . $message . ' Data: ' . print_r($data, true));
 			} else {
-				error_log( $pre . $message . ' Data: ' . $data );
+				error_log($pre . $message . ' Data: ' . $data);
 			}
 		}
 	}
@@ -195,21 +195,21 @@ class Mondula_Form_Wizard {
 	 */
 	public function enqueue_scripts() {
 		// Vendor
-		wp_register_style( $this->_token . '-vendor', esc_url( $this->assets_url ) . 'styles/msf-vendor.min.css', array(), $this->_version);
-		wp_register_script( $this->_token . '-vendor', esc_url( $this->assets_url ) . 'scripts/msf-vendor' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version, true);
+		wp_register_style($this->_token . '-vendor', esc_url($this->assets_url) . 'styles/msf-vendor.min.css', array(), $this->_version);
+		wp_register_script($this->_token . '-vendor', esc_url($this->assets_url) . 'scripts/msf-vendor' . $this->script_suffix . '.js', array('jquery'), $this->_version, true);
 
 		// CSS
-		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'styles/msf-frontend.min.css', array(), $this->_version);
+		wp_register_style($this->_token . '-frontend', esc_url($this->assets_url) . 'styles/msf-frontend.min.css', array(), $this->_version);
 
 		// JavaScript
 		$i18n = $this->get_translation();
-		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'scripts/msf-frontend' . $this->script_suffix . '.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->_version, true);
+		wp_register_script($this->_token . '-frontend', esc_url($this->assets_url) . 'scripts/msf-frontend' . $this->script_suffix . '.js', array('jquery', 'jquery-ui-datepicker'), $this->_version, true);
 		$ajax = array(
 			'i18n' => $i18n,
 			'version' => apply_filters('multi-step-form/version-filter', $this->_version),
 			'ajaxurl' => admin_url('admin-ajax.php'),
 		);
-		wp_localize_script( $this->_token . '-frontend', 'msfAjax', $ajax);
+		wp_localize_script($this->_token . '-frontend', 'msfAjax', $ajax);
 	}
 
 	/**
@@ -218,20 +218,20 @@ class Mondula_Form_Wizard {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	public function admin_enqueue_scripts ( $hook = '' ) {
+	public function admin_enqueue_scripts ($hook = '') {
 		// Vendor
-		wp_register_style( $this->_token . '-vendor', esc_url( $this->assets_url ) . 'styles/msf-vendor.min.css', array(), $this->_version);
-		wp_register_script( $this->_token . '-vendor', esc_url( $this->assets_url ) . 'scripts/msf-vendor' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version, true);
+		wp_register_style($this->_token . '-vendor', esc_url($this->assets_url) . 'styles/msf-vendor.min.css', array(), $this->_version);
+		wp_register_script($this->_token . '-vendor', esc_url($this->assets_url) . 'scripts/msf-vendor' . $this->script_suffix . '.js', array('jquery'), $this->_version, true);
 		
-		wp_enqueue_style( $this->_token . '-admin' );
-		wp_enqueue_script( $this->_token . '-admin' );
+		wp_enqueue_style($this->_token . '-admin');
+		wp_enqueue_script($this->_token . '-admin');
 	}
 
 	/**
 	 * Deletes old files in the upload directory.
 	 */
 	public function cleanup_upload_dir() {
-		if ( !function_exists('getlist_files_plugins') ){
+		if (!function_exists('getlist_files_plugins')){
 			require_once(ABSPATH . '/wp-admin/includes/file.php');
 		}
 
@@ -254,7 +254,7 @@ class Mondula_Form_Wizard {
 	 * @return  void
 	 */
 	public function load_localisation () {
-		load_plugin_textdomain( 'multi-step-form', false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
+		load_plugin_textdomain('multi-step-form', false, dirname(plugin_basename($this->file)) . '/lang/');
 	}
 
 	/**
@@ -266,10 +266,10 @@ class Mondula_Form_Wizard {
 	public function load_plugin_textdomain () {
 		$domain = 'multi-step-form';
 
-		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
+		$locale = apply_filters('plugin_locale', get_locale(), $domain);
 
-		load_textdomain( $domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $domain, false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
+		load_textdomain($domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo');
+		load_plugin_textdomain($domain, false, dirname(plugin_basename($this->file)) . '/lang/');
 	}
 
 	/**
@@ -282,9 +282,9 @@ class Mondula_Form_Wizard {
 	 * @see Mondula_Form_Wizard()
 	 * @return Main Mondula_Form_Wizard instance
 	 */
-	public static function instance( $file = '', $version = '1.0.0' ) {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self( $file, $version );
+	public static function instance($file = '', $version = '1.0.0') {
+		if (is_null(self::$_instance)) {
+			self::$_instance = new self($file, $version);
 		}
 		return self::$_instance;
 	}
@@ -295,7 +295,7 @@ class Mondula_Form_Wizard {
 	 * @since 1.0.0
 	 */
 	public function __clone () {
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), $this->_version );
+		_doing_it_wrong(__FUNCTION__, __('Cheatin&#8217; huh?'), $this->_version);
 	}
 
 	/**
@@ -304,7 +304,7 @@ class Mondula_Form_Wizard {
 	 * @since 1.0.0
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), $this->_version );
+		_doing_it_wrong(__FUNCTION__, __('Cheatin&#8217; huh?'), $this->_version);
 	}
 
 	/**
@@ -335,7 +335,7 @@ class Mondula_Form_Wizard {
 	 * @return  void
 	 */
 	private function _log_version_number () {
-		update_option( $this->_token . '_version', $this->_version );
+		update_option($this->_token . '_version', $this->_version);
 	}
 
 }

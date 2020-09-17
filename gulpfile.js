@@ -165,7 +165,7 @@ gulp.task('css-backend:production', gulp.series(function cssBackendProd() {
     .pipe(gulp.dest('dist/styles'));
 }));
 
-gulp.task('js-frontend:production', gulp.series( function jsFrontendProd() {
+gulp.task('js-frontend:production', gulp.series(function jsFrontendProd() {
   return gulp.src(['assets/js/frontend/*.ts'])
     .pipe(ts({outFile: 'msf-frontend.min.js'}))
     .pipe(stripDebug())

@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 /**
  * Representation of a textarea input field.
@@ -19,13 +19,13 @@ class Mondula_Form_Wizard_Block_Textarea extends Mondula_Form_Wizard_Block {
 	 * @param string $label The Label the Object is being created with.
 	 * @param boolean $required If true, Input for this field is required.
 	 */
-	public function __construct ( $label, $required ) {
+	public function __construct ($label, $required) {
 		$this->_label = $label;
 		$this->_required = $required;
 	}
 
 	// TODO: add text field label variable and ids
-	public function render( $ids ) {
+	public function render($ids) {
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-textarea" data-required="<?php echo $this->_required; ?>">
 			<div class="fw-input-container">
@@ -49,10 +49,10 @@ class Mondula_Form_Wizard_Block_Textarea extends Mondula_Form_Wizard_Block {
 		);
 	}
 
-	public static function from_aa( $aa , $current_version, $serialized_version ) {
+	public static function from_aa($aa , $current_version, $serialized_version) {
 		$label = $aa['label'];
 		$required = $aa['required'];
-		return new Mondula_Form_Wizard_Block_Textarea( $label, $required );
+		return new Mondula_Form_Wizard_Block_Textarea($label, $required);
 	}
 
 	public static function addType($types) {

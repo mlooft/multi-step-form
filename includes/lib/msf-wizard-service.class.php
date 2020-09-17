@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 
@@ -16,16 +16,16 @@ class Mondula_Form_Wizard_Wizard_Service {
 
 	private $_plugin_version;
 
-	public function __construct( Mondula_Form_Wizard_Wizard_Repository $repository, $plugin_version ) {
+	public function __construct(Mondula_Form_Wizard_Wizard_Repository $repository, $plugin_version) {
 		$this->_repository = $repository;
 		$this->_plugin_version = $plugin_version;
 	}
 
-	public function get_by_id( $id ) {
-		$row = $this->_repository->find_by_id( $id );
+	public function get_by_id($id) {
+		$row = $this->_repository->find_by_id($id);
 		if ($row)
 		{
-			return Mondula_Form_Wizard_Wizard::from_aa( json_decode( $row->json, true ), $this->_plugin_version, $row->version );
+			return Mondula_Form_Wizard_Wizard::from_aa(json_decode($row->json, true), $this->_plugin_version, $row->version);
 		} else {
 			return null;
 		}
@@ -35,10 +35,10 @@ class Mondula_Form_Wizard_Wizard_Service {
 		return $this->_repository->find();
 	}
 
-	public function get_as_json( $id ) {
+	public function get_as_json($id) {
 		$all = $this->get_all();
-		if ( ! empty( $id ) ) {
-			$wizard = $this->get_by_id( $id );
+		if (!empty($id)) {
+			$wizard = $this->get_by_id($id);
 			if ($wizard === null) {
 				$wizard = new Mondula_Form_Wizard_Wizard();
 			}
@@ -53,26 +53,26 @@ class Mondula_Form_Wizard_Wizard_Service {
 		);
 	}
 
-	public function save( $id, $data ) {
+	public function save($id, $data) {
 		$row = array();
-		$row['date'] = current_time( 'mysql' );
-		$row['json'] = json_encode( $data['wizard'] );
+		$row['date'] = current_time('mysql');
+		$row['json'] = json_encode($data['wizard']);
 		$row['version'] = $this->_plugin_version;
-		// var_dump ( $row );
-		if ( ! empty( $id ) ) {
+		// var_dump ($row);
+		if (!empty($id)) {
 			// echo "data" . PHP_EOL;
-			return $this->_repository->update( $id, $row );
+			return $this->_repository->update($id, $row);
 		} else {
-			return $this->_repository->save( $row );
+			return $this->_repository->save($row);
 		}
 	}
 
-	public function delete( $id ) {
-		$this->_repository->delete( $id );
+	public function delete($id) {
+		$this->_repository->delete($id);
 	}
 
-	public function duplicate( $id ) {
-		$this->_repository->duplicate( $id );
+	public function duplicate($id) {
+		$this->_repository->duplicate($id);
 	}
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 /**
  * Representation of a numeric input field.
@@ -28,7 +28,7 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 		$this->_maximum = $maximum;
 	}
 
-	public function render( $ids ) {
+	public function render($ids) {
 		$minimumDefined = strlen($this->_minimum) > 0;
 		$maximumDefined = strlen($this->_maximum) > 0;
 	?>

@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 /**
  * Representation of a date input field.
@@ -21,18 +21,18 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 	 * @param boolean $required The If true, Input for this field is required.
 	 * @param string $format The Format the Date will be shown in.
 	 */
-	public function __construct ( $label, $required, $format ) {
+	public function __construct ($label, $required, $format) {
 		$this->_label = $label;
 		$this->_required = $required;
-		if ( ! empty( $format ) ) {
+		if (!empty($format)) {
 			$this->_format = $format;
 		} else {
 			$this->_format = 'yy-mm-dd';
 		}
 	}
 
-	public function render( $ids ) {
-		$locale = substr( get_locale(), 0, 2) === 'de' ? 'de' : 'en'; // TODO this is possibly not a good idea
+	public function render($ids) {
+		$locale = substr(get_locale(), 0, 2) === 'de' ? 'de' : 'en'; // TODO this is possibly not a good idea
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-date" data-required="<?php echo $this->_required; ?>">
 			<div class="fw-input-container">
@@ -52,11 +52,11 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 		);
 	}
 
-	public static function from_aa( $aa , $current_version, $serialized_version ) {
+	public static function from_aa($aa , $current_version, $serialized_version) {
 		$label = $aa['label'];
 		$required = $aa['required'];
 		$format = $aa['format'];
-		return new Mondula_Form_Wizard_Block_Date( $label, $required, $format );
+		return new Mondula_Form_Wizard_Block_Date($label, $required, $format);
 	}
 
 	public static function addType($types) {

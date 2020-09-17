@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 
@@ -15,12 +15,12 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
 
 	protected $_blocks;
 
-	public function __construct( $title, $blocks ) {
+	public function __construct($title, $blocks) {
 		$this->_title = $title;
 		$this->_blocks = $blocks;
 	}
 
-	public function same_title( Mondula_Form_Wizard_Wizard_Step_Part $that ) {
+	public function same_title(Mondula_Form_Wizard_Wizard_Step_Part $that) {
 		return $this->_title === $that->_title;
 	}
 
@@ -28,18 +28,18 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
 		echo $this->_title;
 	}
 
-	public function render_body( $wizard_id, $step_id, $part_id ) {
-		$cnt = count( $this->_blocks );
-		$ids = array( $wizard_id, $step_id, $part_id );
+	public function render_body($wizard_id, $step_id, $part_id) {
+		$cnt = count($this->_blocks);
+		$ids = array($wizard_id, $step_id, $part_id);
 
-		for ( $i = 0; $i < $cnt; $i++ ) {
+		for ($i = 0; $i < $cnt; $i++) {
 			$block = $this->_blocks[ $i ];
 			?>
 				<?php
-				if ( isset( $block ) ) {
-					array_push( $ids, $i );
-					$block->render( $ids );
-					array_pop( $ids );
+				if (isset($block)) {
+					array_push($ids, $i);
+					$block->render($ids);
+					array_pop($ids);
 				}
 				?>
 			<?php
@@ -48,8 +48,8 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
 
 	public function as_aa() {
 		$blocks_aa = array();
-		foreach ( $this->_blocks as $block ) {
-			if ( $block ) {
+		foreach ($this->_blocks as $block) {
+			if ($block) {
 				$blocks_aa[] = $block->as_aa();
 			}
 		}
@@ -59,16 +59,16 @@ class Mondula_Form_Wizard_Wizard_Step_Part {
 		);
 	}
 
-	public static function from_aa( $aa, $current_version, $serialized_version ) {
-		$title = isset( $aa['title'] ) ? $aa['title'] : '';
+	public static function from_aa($aa, $current_version, $serialized_version) {
+		$title = isset($aa['title']) ? $aa['title'] : '';
 		$blocks = array();
 
-		if ( isset( $aa['blocks'] ) ) {
-			foreach ( $aa['blocks'] as $block ) {
-				$blocks[] = Mondula_Form_Wizard_Block::from_aa( $block, $current_version, $serialized_version );
+		if (isset($aa['blocks'])) {
+			foreach ($aa['blocks'] as $block) {
+				$blocks[] = Mondula_Form_Wizard_Block::from_aa($block, $current_version, $serialized_version);
 			}
 		}
 
-		return new Mondula_Form_Wizard_Wizard_Step_Part( $title, $blocks );
+		return new Mondula_Form_Wizard_Wizard_Step_Part($title, $blocks);
 	}
 }

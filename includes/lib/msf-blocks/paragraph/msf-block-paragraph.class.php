@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 /**
  * Representation of a paragraph output field.
@@ -17,11 +17,11 @@ class Mondula_Form_Wizard_Block_Paragraph extends Mondula_Form_Wizard_Block {
 	 * Creates an Object of this Class.
 	 * @param string $text Content of the Paragraph.
 	 */
-	public function __construct ( $text ) {
+	public function __construct ($text) {
 		$this->_text = $text;
 	}
 
-	public function render( $ids ) {
+	public function render($ids) {
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-paragraph">
 			<div class="fw-paragraph-container">
@@ -39,12 +39,12 @@ class Mondula_Form_Wizard_Block_Paragraph extends Mondula_Form_Wizard_Block {
 		);
 	}
 
-	public static function from_aa( $aa , $current_version, $serialized_version ) {
+	public static function from_aa($aa , $current_version, $serialized_version) {
 		$text = $aa['text'];
-		return new Mondula_Form_Wizard_Block_Paragraph( $text );
+		return new Mondula_Form_Wizard_Block_Paragraph($text);
 	}
 
-	public static function sanitize_admin( $block ) {
+	public static function sanitize_admin($block) {
 		$allowedTags = wp_kses_allowed_html('post');
 		unset($allowedTags['textarea']);
 

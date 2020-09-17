@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 
 /**
@@ -12,54 +12,54 @@ class Mondula_Form_Wizard_Wizard_Repository {
 
 	private $_table;
 
-	public function __construct( $table_name ) {
+	public function __construct($table_name) {
 		global $wpdb;
 
 		$this->_table = $wpdb->prefix . $table_name;
 	}
 
-	public function find_by_id( $id ) {
+	public function find_by_id($id) {
 		global $wpdb;
 
-		$sql = $wpdb->prepare( "SELECT * FROM {$this->_table} WHERE id = %d", $id );
+		$sql = $wpdb->prepare("SELECT * FROM {$this->_table} WHERE id = %d", $id);
 
-		return $wpdb->get_row( $sql );
+		return $wpdb->get_row($sql);
 	}
 
-	public function find( ) {
+	public function find() {
 		global $wpdb;
 
 		$sql = "SELECT * FROM {$this->_table}";
 
-		return $wpdb->get_results( $sql, ARRAY_A );
+		return $wpdb->get_results($sql, ARRAY_A);
 	}
 
-	public function update( $id, $data ) {
+	public function update($id, $data) {
 		global $wpdb;
 
-		$wpdb->update( $this->_table, $data, array( 'id' => $id ) );
+		$wpdb->update($this->_table, $data, array('id' => $id));
 
 		return $id;
 	}
 
-	public function save( $data ) {
+	public function save($data) {
 		global $wpdb;
 
-		$wpdb->insert( $this->_table, $data);
+		$wpdb->insert($this->_table, $data);
 
 		return $wpdb->insert_id;
 	}
 
-	public function delete( $id ) {
+	public function delete($id) {
 		global $wpdb;
 
-		$wpdb->delete( $this->_table, array( 'id' => $id ) );
+		$wpdb->delete($this->_table, array('id' => $id));
 	}
 	
-	public function duplicate( $id ) {
-	  $row = $this->find_by_id( $id );
+	public function duplicate($id) {
+	  $row = $this->find_by_id($id);
 	  $data = array();
-	  $data['date'] = current_time( 'mysql' );
+	  $data['date'] = current_time('mysql');
 	  $data['json'] = $row->json;
 	  $data['version'] = $row->version;
 	  $this->save($data);

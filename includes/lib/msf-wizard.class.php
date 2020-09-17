@@ -1,7 +1,7 @@
 <?php
 
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 
 class Mondula_Form_Wizard_Wizard {
@@ -14,7 +14,7 @@ class Mondula_Form_Wizard_Wizard {
 	  return $this->_settings;
 	}
 
-	public function set_settings ( $settings ) {
+	public function set_settings ($settings) {
 	  $this->_settings = $settings;
 	}
 
@@ -22,7 +22,7 @@ class Mondula_Form_Wizard_Wizard {
 		return $this->_title;
 	}
 
-	public function set_title ( $title ) {
+	public function set_title ($title) {
 	  $this->_title = $title;
 	}
 
@@ -31,20 +31,20 @@ class Mondula_Form_Wizard_Wizard {
 	 * @param $array $elements Elements of the step to add
 	 * @return void
 	 */
-	public function add_step ( $steps ) {
+	public function add_step ($steps) {
 		$this->_steps[] = $steps;
 	}
 
 	public static function fw_get_option($option, $section, $default = '') {
 	  $options = get_option($section);
-	  if ( isset( $options[$option] ) )
+	  if (isset($options[$option]))
 			return $options[$option];
 		else
 			return $default;
 	}
 
 	private function render_progress_bar () {
-		$cnt = count( $this->_steps );
+		$cnt = count($this->_steps);
 		
 		require 'partials/progress-bar.php';
 	}
@@ -52,14 +52,14 @@ class Mondula_Form_Wizard_Wizard {
 	/**
 	 * Renders the form to the client.
 	 */
-	public function render( $wizard_id ) {
-		$progressbar = $this->fw_get_option( 'progressbar', 'fw_settings_styling', 'on' ) === 'on';
-		$count = count( $this->_steps );
+	public function render($wizard_id) {
+		$progressbar = $this->fw_get_option('progressbar', 'fw_settings_styling', 'on') === 'on';
+		$count = count($this->_steps);
 		$classes = 'fw-wizard';
-		if ( ! $progressbar ) {
+		if (!$progressbar) {
 			$classes .= ' fw-no-progressbar';
 		}
-		if ( $count > 5 ) {
+		if ($count > 5) {
 			$classes .= ' fw-more-than-five';
 		}
 		$show_summary = Mondula_Form_Wizard_Wizard::fw_get_option('showsummary' ,'fw_settings_email', 'on') === 'on';
@@ -173,13 +173,13 @@ class Mondula_Form_Wizard_Wizard {
 		);
 	}
 
-	public static function from_aa( $aa, $current_version, $serialized_version ) {
+	public static function from_aa($aa, $current_version, $serialized_version) {
 		$wizard = new Mondula_Form_Wizard_Wizard();
-		$wizard->set_settings( $aa['settings'] );
-		$wizard->set_title( $aa['title'] );
-		foreach ( $aa['steps'] as $step ) {
+		$wizard->set_settings($aa['settings']);
+		$wizard->set_title($aa['title']);
+		foreach ($aa['steps'] as $step) {
 			$wizard->add_step(
-				Mondula_Form_Wizard_Wizard_Step::from_aa( $step, $current_version, $serialized_version )
+				Mondula_Form_Wizard_Wizard_Step::from_aa($step, $current_version, $serialized_version)
 			);
 		}
 		return $wizard;

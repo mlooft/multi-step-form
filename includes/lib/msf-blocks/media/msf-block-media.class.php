@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 /**
  * Representation of a media output field.
@@ -17,11 +17,11 @@ class Mondula_Form_Wizard_Block_Media extends Mondula_Form_Wizard_Block {
 	 * Creates an Object of this Class.
 	 * @param string $text Content of the Paragraph.
 	 */
-	public function __construct ( $attachmentId ) {
+	public function __construct ($attachmentId) {
 		$this->_attachmentId = $attachmentId;
 	}
 
-	public function render( $ids ) {
+	public function render($ids) {
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-media">
 			<div class="fw-media-container">
@@ -31,7 +31,7 @@ class Mondula_Form_Wizard_Block_Media extends Mondula_Form_Wizard_Block {
                     } else if (wp_attachment_is('video', $this->_attachmentId)) {
                         echo do_shortcode('[video src=' . wp_get_attachment_url($this->_attachmentId) . ']');
                     } else {
-                        echo $GLOBALS['wp_embed']->run_shortcode( '[embed]' . wp_get_attachment_url($this->_attachmentId) . '[/embed]' );
+                        echo $GLOBALS['wp_embed']->run_shortcode('[embed]' . wp_get_attachment_url($this->_attachmentId) . '[/embed]');
                     }
                 ?>
 			</div>
@@ -47,9 +47,9 @@ class Mondula_Form_Wizard_Block_Media extends Mondula_Form_Wizard_Block {
 		);
 	}
 
-	public static function from_aa( $aa , $current_version, $serialized_version ) {
+	public static function from_aa($aa , $current_version, $serialized_version) {
 		$attachmentId = $aa['attachmentId'];
-		return new Mondula_Form_Wizard_Block_Media( $attachmentId );
+		return new Mondula_Form_Wizard_Block_Media($attachmentId);
 	}
 
 	public static function addType($types) {

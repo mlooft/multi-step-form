@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 
@@ -25,34 +25,34 @@ class Mondula_Form_Wizard_Shortcode {
 		$this->_token = $token;
 		$this->_wizard_service = $wizard_service;
 
-		add_shortcode( self::CODE_OLD, array( $this, 'handler' ) );
-		add_shortcode( self::CODE, array( $this, 'handler' ) );
-		multi_step_form_block_init(array( $this, 'handler' ));
+		add_shortcode(self::CODE_OLD, array($this, 'handler'));
+		add_shortcode(self::CODE, array($this, 'handler'));
+		multi_step_form_block_init(array($this, 'handler'));
 
-		add_action('wp_ajax_fw_send_email', array( $this, 'fw_send_email' ) );
-		add_action('wp_ajax_nopriv_fw_send_email', array( $this, 'fw_send_email' ) );
+		add_action('wp_ajax_fw_send_email', array($this, 'fw_send_email'));
+		add_action('wp_ajax_nopriv_fw_send_email', array($this, 'fw_send_email'));
 
-		add_action('wp_ajax_fw_upload_file', array( $this, 'fw_upload_file' ) );
-		add_action('wp_ajax_nopriv_fw_upload_file', array( $this, 'fw_upload_file' ) );
+		add_action('wp_ajax_fw_upload_file', array($this, 'fw_upload_file'));
+		add_action('wp_ajax_nopriv_fw_upload_file', array($this, 'fw_upload_file'));
 
-		add_action('wp_ajax_fw_delete_files', array( $this, 'fw_delete_files' ) );
-		add_action('wp_ajax_nopriv_fw_delete_files', array( $this, 'fw_delete_files' ) );
+		add_action('wp_ajax_fw_delete_files', array($this, 'fw_delete_files'));
+		add_action('wp_ajax_nopriv_fw_delete_files', array($this, 'fw_delete_files'));
 	}
 
-	public function get_wizard( $id ) {
-		return $this->_wizard_service->get_by_id( $id );
+	public function get_wizard($id) {
+		return $this->_wizard_service->get_by_id($id);
 	}
 
 	/**
 	*  Queries the Database, gets and unserializes entries. Triggers rendering.
 	**/
-	public function handler( $atts ) {
+	public function handler($atts) {
 
-		wp_enqueue_style( $this->_token . '-vendor' );
-		wp_enqueue_style( $this->_token . '-frontend' );
+		wp_enqueue_style($this->_token . '-vendor');
+		wp_enqueue_style($this->_token . '-frontend');
 		
 		wp_enqueue_script($this->_token . '-vendor');
-		wp_enqueue_script( $this->_token . '-frontend');
+		wp_enqueue_script($this->_token . '-frontend');
 
 		if (!isset($atts['id'])) {
 			return;
@@ -74,14 +74,14 @@ class Mondula_Form_Wizard_Shortcode {
 	 * a user has already uploaded files but decides to exit the form.
 	 **/
 	public function fw_delete_files() {
-		$filenames = isset( $_POST['filenames'] ) ? $_POST['filenames'] : array();
+		$filenames = isset($_POST['filenames']) ? $_POST['filenames'] : array();
 		/* Sanitize File names */
-		foreach ( $filenames as &$fn ) {
-			$fn = sanitize_file_name( $fn );
+		foreach ($filenames as &$fn) {
+			$fn = sanitize_file_name($fn);
 		}
-		$filepaths = $this->generate_attachment_paths( $filenames );
-		if ( count( $filepaths ) != 0 ) {
-			$this->delete_files( $filepaths );
+		$filepaths = $this->generate_attachment_paths($filenames);
+		if (count($filepaths) != 0) {
+			$this->delete_files($filepaths);
 			echo 'tempfiles deleted';
 		}
 	}
@@ -90,8 +90,8 @@ class Mondula_Form_Wizard_Shortcode {
 	 * Helper for fw_delete_files. Deletes an uploaded file
 	 * from the msf-temp directory.
 	 **/
-	private function delete_files( $filepaths ) {
-		foreach ( $filepaths as $filepath ) {
+	private function delete_files($filepaths) {
+		foreach ($filepaths as $filepath) {
 			wp_delete_file($filepath);
 		}
 	}
@@ -106,13 +106,13 @@ class Mondula_Form_Wizard_Shortcode {
 			'test_form' => false,
 		);
 
-		add_filter( 'upload_dir', 'wpse_change_upload_dir_temporarily' );
+		add_filter('upload_dir', 'wpse_change_upload_dir_temporarily');
 
 		/**
 		* Temporarily change the WP upload directory to wp-content/uploads/temp
 		*
 		*/
-		function wpse_change_upload_dir_temporarily( $dirs ) {
+		function wpse_change_upload_dir_temporarily($dirs) {
 			$dirs['subdir'] = '/msf-temp';
 			$dirs['path'] = $dirs['basedir'] . '/msf-temp';
 			$dirs['url'] = $dirs['baseurl'] . '/msf-temp';
@@ -123,41 +123,41 @@ class Mondula_Form_Wizard_Shortcode {
 		$response = array();
 		$response['filenames'] = array();
 
-		foreach ( $_FILES as $file ) {
-			$uploaded_file = wp_handle_upload( $file, $upload_overrides );
-			if ( ! isset( $uploaded_file['error'] ) ) {
-				array_push( $uploaded_files,  $uploaded_file );
+		foreach ($_FILES as $file) {
+			$uploaded_file = wp_handle_upload($file, $upload_overrides);
+			if (!isset($uploaded_file['error'])) {
+				array_push($uploaded_files,  $uploaded_file);
 			} else {
 				$response['error'] = $uploaded_file['error'];
 			}
 		}
 
-		if ( ! isset( $response['error'] ) && count( $uploaded_files ) === count( $_FILES ) ) {
+		if (!isset($response['error']) && count($uploaded_files) === count($_FILES)) {
 			$response['success'] = true;
-			foreach ( $uploaded_files as $file ) {
-				array_push( $response['filenames'], basename( $file['url'] ) );
+			foreach ($uploaded_files as $file) {
+				array_push($response['filenames'], basename($file['url']));
 			}
 		} else {
 			$response['success'] = false;
 		}
-		echo json_encode( $response );
-		remove_filter( 'upload_dir', 'wpse_change_upload_dir_temporarily' );
+		echo json_encode($response);
+		remove_filter('upload_dir', 'wpse_change_upload_dir_temporarily');
 		wp_die();
 	}
 
 	private function generate_attachment_paths($files) {
 		$attachments = array();
-		for ( $i = 0; $i < count($files); $i++ ) {
-			if ( $files[ $i ] != '' ) {
-				$attachments[ $i ] = WP_CONTENT_DIR . '/uploads/msf-temp/' . sanitize_file_name( $files[ $i ] );
+		for ($i = 0; $i < count($files); $i++) {
+			if ($files[ $i ] != '') {
+				$attachments[ $i ] = WP_CONTENT_DIR . '/uploads/msf-temp/' . sanitize_file_name($files[ $i ]);
 			}
 		}
 		return $attachments;
 	}
 
-	private function sanitize_attachments( &$attachments ) {
-		foreach ( $attachments as &$fn ) {
-		 	$fn = sanitize_file_name( $fn );
+	private function sanitize_attachments(&$attachments) {
+		foreach ($attachments as &$fn) {
+		 	$fn = sanitize_file_name($fn);
 		}
 		return $attachments;
 	}
@@ -166,21 +166,21 @@ class Mondula_Form_Wizard_Shortcode {
 		foreach ($reg as $key => &$value) {
 			switch ($key) {
 				case 'username':
-					$value = sanitize_user( $value );
+					$value = sanitize_user($value);
 					break;
 				case 'email':
-					$value = sanitize_email( $value );
+					$value = sanitize_email($value);
 					break;
 				case 'password':
 				case 'firstname':
 				case 'lastname':
-					$value = sanitize_text_field( $value );
+					$value = sanitize_text_field($value);
 					break;
 				case 'website':
-					$value = esc_url( $value );
+					$value = esc_url($value);
 					break;
 				case 'bio':
-					$value = sanitize_textarea_field( $value );
+					$value = sanitize_textarea_field($value);
 					break;
 				default:
 					unset($reg[$ke]); // Avoid injected fields
@@ -191,8 +191,8 @@ class Mondula_Form_Wizard_Shortcode {
 	}
 
 	private function find_field($data, $name) {
-		foreach ($data as $fields ) {
-			foreach ( $fields as $field) {
+		foreach ($data as $fields) {
+			foreach ($fields as $field) {
 				foreach ($field as $key => $value) {
 					if ($key === $name) {
 						return $value;
@@ -205,8 +205,8 @@ class Mondula_Form_Wizard_Shortcode {
 	}
 
 	private function sanitize_data(&$data) {
-		foreach ( $data as $section => &$fields ) {
-			foreach ( $fields as &$field) {
+		foreach ($data as $section => &$fields) {
+			foreach ($fields as &$field) {
 				foreach ($field as $key => &$value) {
 					if (is_email($value)) {
 						$value = sanitize_email($value);
@@ -300,21 +300,21 @@ class Mondula_Form_Wizard_Shortcode {
 		$attachments = $this->generate_attachment_paths($files);
 
 		if ($mailformat == 'html') {
-			add_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
-			$headers = array( 'Content-Type: text/html; charset=UTF-8' );
+			add_filter('wp_mail_content_type', array($this, 'set_html_content_type'));
+			$headers = array('Content-Type: text/html; charset=UTF-8');
 		} else {
-			$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
+			$headers = array('Content-Type: text/plain; charset=UTF-8');
 		}
 
 		$fromname = !empty($settings['fromname']) ? $settings['fromname'] : get_bloginfo('name');
 		$frommail = !empty($settings['frommail']) ? $settings['frommail'] : get_bloginfo('admin_email');
-		array_push( $headers, 'From: ' . $fromname . ' <' . $frommail . '>' . "\r\n" );
+		array_push($headers, 'From: ' . $fromname . ' <' . $frommail . '>' . "\r\n");
 
 		if ($settings['replyto'] && $settings['replyto'] !== 'no-reply') {
 			$replyMail = $this->find_field($data, $settings['replyto']);
 			if ($replyMail) {
 				$replyMail = sanitize_email($replyMail);
-				array_push($headers, 'Reply-To: ' . $replyMail . "\r\n" );
+				array_push($headers, 'Reply-To: ' . $replyMail . "\r\n");
 			}
 		}
 
@@ -346,7 +346,7 @@ class Mondula_Form_Wizard_Shortcode {
 			}
 		}
 
-		remove_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
+		remove_filter('wp_mail_content_type', array($this, 'set_html_content_type'));
 
 		// delete temporary files from webserver after mail is sent
 		$this->delete_files($attachments);

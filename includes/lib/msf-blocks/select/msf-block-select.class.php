@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 /**
  * Representation of a select input field.
@@ -25,7 +25,7 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
 	 * @param string $placeholder Placeholder-Value before anything has been selected.
 	 * @param boolean $search If true, enables the Option to search.
 	 */
-	public function __construct ( $elements, $required, $label, $placeholder, $search ) {
+	public function __construct ($elements, $required, $label, $placeholder, $search) {
 		$this->_elements = $elements;
 		$this->_required = $required;
 		$this->_label = $label;
@@ -33,9 +33,9 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
 		$this->_search = $search;
 	}
 
-	public function render( $ids ) {
-		$cnt = count( $this->_elements );
-		$group = $this->generate_id( $ids );
+	public function render($ids) {
+		$cnt = count($this->_elements);
+		$group = $this->generate_id($ids);
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-select" data-required="<?php echo $this->_required; ?>">	
 			<h3><?php echo $this->_label ?></h3>
@@ -45,7 +45,7 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
 				data-required="<?php echo $this->_required; ?>"
 				id="msf-select-<?php echo str_replace(' ', '-', strtolower($this->_label)); ?>">
 				<option></option>
-				<?php for ( $i = 0; $i < $cnt; $i++ ) {
+				<?php for ($i = 0; $i < $cnt; $i++) {
 					$element = $this->_elements[$i];
 				?>
 				<option id="<?php echo $group.'-'.$i ?>" type="select" name="<?php echo $group; ?>"><?php echo $element; ?></option>
@@ -66,22 +66,22 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
 		);
 	}
 
-	public static function from_aa( $aa , $current_version, $serialized_version ) {
-		$elements = isset( $aa['elements'] ) ? $aa['elements'] : array();
+	public static function from_aa($aa , $current_version, $serialized_version) {
+		$elements = isset($aa['elements']) ? $aa['elements'] : array();
 		$required = $aa['required'];
 		$label = $aa['label'];
 		$search = $aa['search'];
 		$placeholder = $aa['placeholder'];
-		return new Mondula_Form_Wizard_Block_Select( $elements, $required, $label, $placeholder, $search);
+		return new Mondula_Form_Wizard_Block_Select($elements, $required, $label, $placeholder, $search);
 	}
 
-	public static function sanitize_admin( $block ) {
-		$block['required'] = sanitize_text_field( $block['required'] );
-		$block['search'] = sanitize_text_field( $block['search'] );
-		$block['label'] = sanitize_text_field( $block['label'] );
-		$block['placeholder'] = sanitize_text_field( $block['placeholder'] );
+	public static function sanitize_admin($block) {
+		$block['required'] = sanitize_text_field($block['required']);
+		$block['search'] = sanitize_text_field($block['search']);
+		$block['label'] = sanitize_text_field($block['label']);
+		$block['placeholder'] = sanitize_text_field($block['placeholder']);
 		foreach ($block['elements'] as &$element) {
-			$element = sanitize_text_field( $element );
+			$element = sanitize_text_field($element);
 		}
 
 		return $block;
