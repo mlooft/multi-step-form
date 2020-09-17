@@ -10,16 +10,10 @@ class Mondula_Form_Wizard_Shortcode {
 	const CODE = 'multi-step-form';
 
 	private $_parent;
-
 	private $_token;
-
 	private $_wizard_service;
-
 	private $_id;
 
-	/**
-	 * Constructor function
-	 */
 	public function __construct(Mondula_Form_Wizard $parent, $token, Mondula_Form_Wizard_Wizard_Service $wizard_service) {
 		$this->_parent = $parent;
 		$this->_token = $token;
@@ -47,7 +41,6 @@ class Mondula_Form_Wizard_Shortcode {
 	*  Queries the Database, gets and unserializes entries. Triggers rendering.
 	**/
 	public function handler($atts) {
-
 		wp_enqueue_style($this->_token . '-vendor');
 		wp_enqueue_style($this->_token . '-frontend');
 		

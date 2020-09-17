@@ -4,16 +4,9 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-
-/**
- * Description of class-mondula-multistep-forms-wizard-repository
- *
- * @author alex
- */
 class Mondula_Form_Wizard_Wizard_Service {
 
 	private $_repository;
-
 	private $_plugin_version;
 
 	public function __construct(Mondula_Form_Wizard_Wizard_Repository $repository, $plugin_version) {
@@ -58,9 +51,8 @@ class Mondula_Form_Wizard_Wizard_Service {
 		$row['date'] = current_time('mysql');
 		$row['json'] = json_encode($data['wizard']);
 		$row['version'] = $this->_plugin_version;
-		// var_dump ($row);
+
 		if (!empty($id)) {
-			// echo "data" . PHP_EOL;
 			return $this->_repository->update($id, $row);
 		} else {
 			return $this->_repository->save($row);
@@ -74,5 +66,4 @@ class Mondula_Form_Wizard_Wizard_Service {
 	public function duplicate($id) {
 		$this->_repository->duplicate($id);
 	}
-
 }

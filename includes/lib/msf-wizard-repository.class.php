@@ -1,13 +1,9 @@
 <?php
 
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+	exit;
+}
 
-
-/**
- * Description of class-mondula-multistep-forms-wizard-repository
- *
- * @author alex
- */
 class Mondula_Form_Wizard_Wizard_Repository {
 
 	private $_table;
@@ -57,11 +53,11 @@ class Mondula_Form_Wizard_Wizard_Repository {
 	}
 	
 	public function duplicate($id) {
-	  $row = $this->find_by_id($id);
-	  $data = array();
-	  $data['date'] = current_time('mysql');
-	  $data['json'] = $row->json;
-	  $data['version'] = $row->version;
-	  $this->save($data);
+		$row = $this->find_by_id($id);
+		$data = array();
+		$data['date'] = current_time('mysql');
+		$data['json'] = $row->json;
+		$data['version'] = $row->version;
+		$this->save($data);
 	}
 }
