@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Wordpress Support Forum
+    url: https://wordpress.org/support/plugin/multi-step-form/
+    about: Please aks questions regarding the usage of the plugin here.
+  - name: Mondula Contact
+    url: https://mondula.com/en/contact/
+    about: If you want a direct contact with us, please write us here.
