@@ -103,7 +103,7 @@
                         <?php _e('The syntax uses the curly brackets { and } to mark the start and end of a replacement.', 'multi-step-form'); ?>
                         <?php _e('In between you enter the field label you want to insert: <b>{field label}</b>', 'multi-step-form'); ?></p>
                         <p class="description"><?php _e('Example: Hello {first name} {last name}!', 'multi-step-form'); ?></p>
-                        <p class="description msf-warn"><?php _e('Please make sure there is only one field with that label.', 'multi-step-form'); ?></p>
+                        <p class="description msf-warn"><?php _e('Please make sure there is only one field with that label. Also make sure you have written it here exactly as in the form, including case.', 'multi-step-form'); ?></p>
                         <p class="description msf-warn"><?php _e('If you want to use the { sign without a replacement, use \{. This will be reduced to one { sign.', 'multi-step-form'); ?></p>
                         <p class="description msf-warn"><?php _e('If the field is not required and the user enters nothin, the replacement will just disappear without new content.', 'multi-step-form'); ?></p>
                     </td>

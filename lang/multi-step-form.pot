@@ -438,7 +438,7 @@ msgid "Example: Hello {first name} {last name}!"
 msgstr ""
 
 #: includes/admin/partials/msf-editor.php:106
-msgid "Please make sure there is only one field with that label."
+msgid "Please make sure there is only one field with that label. Also make sure you have written it here exactly as in the form, including case."
 msgstr ""
 
 #: includes/admin/partials/msf-editor.php:107
