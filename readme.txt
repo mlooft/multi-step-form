@@ -85,6 +85,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 = 1.6.2 =
 * Per form settings for email copy to user
 * Added variable get parameter field
+* String replacements for email subject and headline
 
 = 1.6.1 =
 * Better Troubleshooting page
