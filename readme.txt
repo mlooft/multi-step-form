@@ -49,6 +49,8 @@ The backend's structure is simple. Even less technical users can quickly underst
 *   **Show summary**- At the end of each form you can display a short summary.
 *   **Multisite compatibility**- The plugin works on WordPress multisite installs.
 *   **reCAPTCHA v2**- You can enable reCAPTCHA v2 validation for your forms. 
+*   **GET Parameters**- You can integrate GET parameters in your forms.
+*   **String replacements**- Use string replacements to create subjects based on form inputs.
 
 ### Watch the video
 [youtube http://www.youtube.com/watch?v=2hyF1SDewok]
