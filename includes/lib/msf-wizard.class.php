@@ -106,8 +106,62 @@ class Mondula_Form_Wizard_Wizard {
 		return ob_get_clean();
 	}
 
-	public function send_mail() {
+	public function send_mail($data, $attachments = array()) {
+		$mailformat = Mondula_Form_Wizard_Wizard::fw_get_option('mailformat' ,'fw_settings_email', 'html');
+		$content = $this->render_mail($data, $mailformat);
+		$subject = $this->get_subject($data);
+		$settings = $this->get_settings();
+
+		if ($mailformat == 'html') {
+			$headers = array('Content-Type: text/html; charset=UTF-8');
+		} else {
+			$headers = array('Content-Type: text/plain; charset=UTF-8');
+		}
+
+		$fromname = !empty($settings['fromname']) ? $settings['fromname'] : get_bloginfo('name');
+		$frommail = !empty($settings['frommail']) ? $settings['frommail'] : get_bloginfo('admin_email');
+		array_push($headers, 'From: ' . $fromname . ' <' . $frommail . '>' . "\r\n");
+
+		if ($settings['replyto'] && $settings['replyto'] !== 'no-reply') {
+			$replyMail = $this->find_field($data, $settings['replyto']);
+			if ($replyMail) {
+				$replyMail = sanitize_email($replyMail);
+				array_push($headers, 'Reply-To: ' . $replyMail . "\r\n");
+			}
+		}
+
+		if (isset($settings['headers']) && $settings['headers']) {
+			$additional_headers = explode("\n", $settings['headers']);
+			$headers = array_merge($headers, $additional_headers);
+		}
+		// send email to admin
+		$mail_success = wp_mail($settings['to'], $subject, $content, $headers, $attachments);
 		
+		// send copy to user
+		$mail_copy_success = true;
+		if ($mail_success) {
+			if (isset($settings['usercopy'])) {
+				if ($settings['usercopy'] !== 'no-usercopy') {
+					$userMail = $this->find_field($data, $settings['usercopy']);
+					if ($userMail) {
+						$userMail = sanitize_email($userMail);
+						$mail_copy_success = wp_mail($userMail, $subject, $content, $headers);
+					}
+				}
+			} else {
+				$oldCc = Mondula_Form_Wizard_Wizard::fw_get_option('cc' ,'fw_settings_email', 'off');
+				$firstEmail = isset($_POST['first_email']) ? sanitize_email($_POST['first_email']) : "";
+				if ($oldCc === "on" && !empty($firstEmail)) {
+					$firstEmail = sanitize_email($firstEmail);
+					$mail_copy_success = wp_mail($firstEmail, $subject, $content, $headers);
+				}
+			}
+		}
+
+		return array(
+			'mail' => $mail_success,
+			'usercopy' => $mail_copy_success,
+		);
 	}
 
 	private function str_replacements($input, $data) {

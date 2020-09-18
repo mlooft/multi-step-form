@@ -9,9 +9,13 @@ class Mondula_Form_Wizard_Wizard_Service {
 	private $_repository;
 	private $_plugin_version;
 
+	private static $_instance = null;
+
 	public function __construct(Mondula_Form_Wizard_Wizard_Repository $repository, $plugin_version) {
 		$this->_repository = $repository;
 		$this->_plugin_version = $plugin_version;
+
+		static::$_instance = $this;
 	}
 
 	public function get_by_id($id) {
@@ -22,6 +26,14 @@ class Mondula_Form_Wizard_Wizard_Service {
 		} else {
 			return null;
 		}
+	}
+
+	public static function get_form_by_id($id) {
+		if (static::$_instance === null) {
+			return null;
+		}
+
+		return static::$_instance->get_by_id($id);
 	}
 
 	public function get_all() {
