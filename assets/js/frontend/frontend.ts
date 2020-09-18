@@ -1185,6 +1185,11 @@ jQuery(document).ready(function ($) {
 			const siteKey = tokenFields.data('sitekey');
 			const recaptchaElement = $('.msf-recaptcha-element')[0];
 
+			if (!window.grecaptcha) {
+				useCaptcha = false;
+				warn("ReCaptcha Object not found! This is likely because the ReCaptcha script couldn't be loaded!");
+			}
+
 			window.grecaptcha.ready(function () {
 				let params = {
 					sitekey: siteKey,
