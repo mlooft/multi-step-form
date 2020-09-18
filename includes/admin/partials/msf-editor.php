@@ -72,6 +72,23 @@
                         <p class="description"><?php _e('This email will then be used for the copy.', 'multi-step-form'); ?></p>
                     </td>
                 </tr>
+                
+                <tr valign="top"
+                <?php if (!is_plugin_active('multi-step-form-plus/multi-step-form-plus.php')) { echo 'style="display: none;"'; } ?>
+                >
+                    <th scope="row"><?php _e('(BETA)', 'multi-step-form'); ?> <?php _e('Double Opt-In:', 'multi-step-form'); ?></th>
+                    <td>
+                        <select class="fw-mail-optin">
+                            <option value="no-optin" selected>No Double Opt-In</option>
+                        </select>
+                        <p class="description msf-warn"><?php _e('This is a beta function. Please be aware that there may occur problems.', 'multi-step-form'); ?></p>
+                        <p class="description"><?php _e('If you enable double opt-in, instead of the normal e-mail an opt-in request e-mail is generated and send to the e-mail the user has entered in the field specified here.', 'multi-step-form'); ?></p>
+                        <p class="description"><?php _e('The entry is saved but displayed as pending. The opt-in request e-mail contains a link that the user have to open. Only after that the normal e-mail is generated and send. Also the entry is displayed as verified.', 'multi-step-form'); ?></p>
+                        <p class="description"><?php _e('You can choose in the settings how long pending entries are stored before they get deleted automatically.', 'multi-step-form'); ?></p>
+                        <p class="description msf-warn"><?php _e('Make sure that the e-mail field has the required flag set. If not, the user may send the form without filling out the required email field. This causes an error, as no opt-in request can be send.', 'multi-step-form'); ?></p>
+                        <p class="description msf-warn"><?php _e('This feature currently does NOT work with registration and file upload fields.', 'multi-step-form'); ?></p>
+                    </td>
+                </tr>
                 <tr valign="top">
                     <th scope="row"><?php _e('Additional Email Headers:', 'multi-step-form'); ?></th>
                     <td>

@@ -540,6 +540,10 @@ declare var wp: any;
 				$('.fw-mail-usercopy').trigger('change');
 				}
 			}
+			if (formSettings.optin) {
+				$('.fw-mail-optin').val(formSettings.optin);
+				$('.fw-mail-optin').trigger('change');
+			}
 			if (formSettings.replacements) {
 				$('.fw-mail-string-replacement').prop('checked', formSettings.replacements === "on");
 			}
@@ -783,6 +787,7 @@ declare var wp: any;
 			headers: $('.fw-mail-headers').val(),
 			replyto: $('.fw-mail-replyto').val(),
 			usercopy: $('.fw-mail-usercopy').val(),
+			optin: $('.fw-mail-optin').val(),
 			replacements: $('.fw-mail-string-replacement').prop('checked') ? "on" : "off",
 		};
 
@@ -1560,6 +1565,14 @@ declare var wp: any;
 		updateEmailSelection('.fw-mail-usercopy', 'no-usercopy');
 	}
 
+	function setupOptin() {
+		$('.fw-mail-optin').select2({
+			width: '60%'
+		});
+
+		updateEmailSelection('.fw-mail-optin', 'no-optin');
+	}
+
     /**
      * run - this function sets everything up
      */
@@ -1579,6 +1592,7 @@ declare var wp: any;
 
 			setupReplyTo();
 			setupUsercopy();
+			setupOptin();
 
 			// get mail settings
 			renderFormSettings(w.wizard.settings);
@@ -1651,6 +1665,7 @@ declare var wp: any;
 				$(elementsContainer).hide();
 				updateEmailSelection('.fw-mail-replyto', 'no-reply');
 				updateEmailSelection('.fw-mail-usercopy', 'no-usercopy');
+				updateEmailSelection('.fw-mail-optin', 'no-optin');
 				$('.fw-mail-settings-container').show();
 			});
 

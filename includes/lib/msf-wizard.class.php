@@ -161,6 +161,20 @@ class Mondula_Form_Wizard_Wizard {
 		return $headline;
 	}
 
+	public function find_field($data, $name) {
+		foreach ($data as $fields) {
+			foreach ($fields as $field) {
+				foreach ($field as $key => $value) {
+					if ($key === $name) {
+						return $value;
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+
 	public function as_aa() {
 		$steps_json = array();
 		foreach ($this->_steps as $step) {
