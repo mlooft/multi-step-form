@@ -276,14 +276,13 @@ class Mondula_Form_Wizard_Shortcode {
 		/* Send email */
 		if ($send_mail)
 		{
+			$attachments = $this->generate_attachment_paths($files);
 			$mailformat = Mondula_Form_Wizard_Wizard::fw_get_option('mailformat' ,'fw_settings_email', 'html');
 			$content = $wizard->render_mail($data, $mailformat);
 			$subject = $wizard->get_subject($data);
 			$settings = $wizard->get_settings();
-			$attachments = $this->generate_attachment_paths($files);
 
 			if ($mailformat == 'html') {
-				add_filter('wp_mail_content_type', array($this, 'set_html_content_type'));
 				$headers = array('Content-Type: text/html; charset=UTF-8');
 			} else {
 				$headers = array('Content-Type: text/plain; charset=UTF-8');
@@ -328,8 +327,6 @@ class Mondula_Form_Wizard_Shortcode {
 					}
 				}
 			}
-
-			remove_filter('wp_mail_content_type', array($this, 'set_html_content_type'));
 		} else {
 			$mail_success = true;
 			$mail_copy_success = true;
@@ -345,9 +342,5 @@ class Mondula_Form_Wizard_Shortcode {
 		} else {
 			wp_send_json_error('Could not send the mail copy to the user.');
 		}
-	}
-
-	public function set_html_content_type() {
-		return 'text/html';
 	}
 }

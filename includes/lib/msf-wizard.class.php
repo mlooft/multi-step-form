@@ -106,6 +106,10 @@ class Mondula_Form_Wizard_Wizard {
 		return ob_get_clean();
 	}
 
+	public function send_mail() {
+		
+	}
+
 	private function str_replacements($input, $data) {
 		if ($this->_settings['replacements']) {
 			// Find all replacement positions in string
