@@ -23,7 +23,6 @@ class Mondula_Form_Wizard_Block_Text extends Mondula_Form_Wizard_Block {
 		$this->_required = $required;
 	}
 
-	// TODO: add text field label variable and ids
 	public function render($ids) {
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-text" data-required="<?php echo $this->_required; ?>">

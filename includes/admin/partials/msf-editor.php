@@ -72,7 +72,6 @@
                         <p class="description"><?php _e('This email will then be used for the copy.', 'multi-step-form'); ?></p>
                     </td>
                 </tr>
-                
                 <tr valign="top"
                 <?php if (!is_plugin_active('multi-step-form-plus/multi-step-form-plus.php')) { echo 'style="display: none;"'; } ?>
                 >
@@ -87,6 +86,16 @@
                         <p class="description"><?php _e('You can choose in the settings how long pending entries are stored before they get deleted automatically.', 'multi-step-form'); ?></p>
                         <p class="description msf-warn"><?php _e('Make sure that the e-mail field has the required flag set. If not, the user may send the form without filling out the required email field. This causes an error, as no opt-in request can be send.', 'multi-step-form'); ?></p>
                         <p class="description msf-warn"><?php _e('This feature currently does NOT work with registration and file upload fields.', 'multi-step-form'); ?></p>
+                    </td>
+                </tr>
+                <tr valign="top"
+                <?php if (!is_plugin_active('multi-step-form-plus/multi-step-form-plus.php')) { echo 'style="display: none;"'; } ?>
+                >
+                    <th scope="row"><?php _e('Double Opt-In Success Page:', 'multi-step-form'); ?></th>
+                    <td>
+                        <input type="text" class="fw-mail-optin-success" />
+                        <p class="description msf-warn"><?php _e('This is a beta function. Please be aware that there may occur problems.', 'multi-step-form'); ?></p>
+                        <p class="description"><?php _e('This field is only used if double opt-in is active. In that case the user will be redirected to this URL after double opt-in was validated.', 'multi-step-form'); ?></p>
                     </td>
                 </tr>
                 <tr valign="top">

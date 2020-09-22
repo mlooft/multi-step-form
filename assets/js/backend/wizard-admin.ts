@@ -544,6 +544,9 @@ declare var wp: any;
 				$('.fw-mail-optin').val(formSettings.optin);
 				$('.fw-mail-optin').trigger('change');
 			}
+			if (formSettings.optin_success) {
+				$('.fw-mail-optin-success').val(formSettings.optin_success);
+			}
 			if (formSettings.replacements) {
 				$('.fw-mail-string-replacement').prop('checked', formSettings.replacements === "on");
 			}
@@ -654,7 +657,6 @@ declare var wp: any;
 
 	function getMediaData($text, text) {
 		text['attachmentId'] = $text.find('.fw-media-element').val();
-		// TODO
 	}
 
 	function getRegexData($text, text) {
@@ -788,6 +790,7 @@ declare var wp: any;
 			replyto: $('.fw-mail-replyto').val(),
 			usercopy: $('.fw-mail-usercopy').val(),
 			optin: $('.fw-mail-optin').val(),
+			optin_success: $('.fw-mail-optin-success').val(),
 			replacements: $('.fw-mail-string-replacement').prop('checked') ? "on" : "off",
 		};
 
@@ -1608,8 +1611,6 @@ declare var wp: any;
 					}
 				}
 			});
-
-			//TODO: put all click handlers in the corresponding function
 
 			// make elements sticky
 			$(window).scroll(function () {

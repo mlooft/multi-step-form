@@ -102,33 +102,3 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 * Confirmation dialog before form deletion
 * Fixed bug with additional email headers
 * Display max. filesize for upload fields
-
-= 1.5.6 =
-* User copy bugfix
-
-= 1.5.5 =
-* Small changes
-* Wordpress 5.4 compatibility tested
-
-= 1.5.4 =
-* Bugfix: wp_register_ error message
-
-= 1.5.3 =
-* Custom Reply-To email from input
-* JSON Quote Bugfix
-* Removed limitation on element count
-* Better code quality
-* Higher compatibility with caching plugins
-* Gutenberg Bugfix
-* Select Bugfix
-* Upgraded vendor scripts
-
-= 1.5.2 =
-* JS Media Bugfix
-
-= 1.5.1 =
-* New, more stable core
-* More translations
-* Media block
-* Embed shortcode in paragraph
-* Form upload bugfix

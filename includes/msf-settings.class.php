@@ -226,14 +226,6 @@ class Mondula_Form_Wizard_Settings {
 					'type' => 'text',
 					'default' => ',',
 				),
-				// TODO: Plus feature on next update
-				// array(
-				// 	'name'  => 'entries_unread',
-				// 	'label' => __('Highlight unread', 'multi-step-form'),
-				// 	'desc'  => __('Print new entries in bold', 'multi-step-form'),
-				// 	'type'  => 'checkbox',
-				// 	'default' => 'off',
-				//),
 			);
 			/* Conditional fields Settings */
 			$settings_fields['fw_settings_conditional'] = array(

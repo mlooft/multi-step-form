@@ -357,7 +357,7 @@ msgstr ""
 msgid "Subject:"
 msgstr ""
 
-#: includes/admin/partials/msf-editor.php:53, includes/admin/partials/msf-editor.php:91
+#: includes/admin/partials/msf-editor.php:53, includes/admin/partials/msf-editor.php:108
 msgid "If enabled, you can use string replacements in this field."
 msgstr ""
 
@@ -381,83 +381,115 @@ msgstr ""
 msgid "This email will then be used for the copy."
 msgstr ""
 
-#: includes/admin/partials/msf-editor.php:76
-msgid "Additional Email Headers:"
+#: includes/admin/partials/msf-editor.php:79
+msgid "(BETA)"
 msgstr ""
 
 #: includes/admin/partials/msf-editor.php:79
-msgid "You can add additional email headers for CC/BCC or others. One per line e.g.:"
+msgid "Double Opt-In:"
 msgstr ""
 
-#: includes/admin/partials/msf-editor.php:80
-msgid "CC: John Doe &lt;doe@example.com&gt;"
+#: includes/admin/partials/msf-editor.php:84
+msgid "This is a beta function. Please be aware that there may occur problems."
 msgstr ""
 
-#: includes/admin/partials/msf-editor.php:81
-msgid "BCC: Jane Doe &lt;doe@example.com&gt;"
+#: includes/admin/partials/msf-editor.php:85
+msgid "If you enable double opt-in, instead of the normal e-mail an opt-in request e-mail is generated and send to the e-mail the user has entered in the field specified here."
 msgstr ""
 
-#: includes/admin/partials/msf-editor.php:82
-msgid "WARNING: only enter custom email headers if you know what you're doing - it can break your form."
-msgstr ""
-
-#: includes/admin/partials/msf-editor.php:83
-msgid "These settings may cause more problems on Windows Servers."
+#: includes/admin/partials/msf-editor.php:86
+msgid "The entry is saved but displayed as pending. The opt-in request e-mail contains a link that the user have to open. Only after that the normal e-mail is generated and send. Also the entry is displayed as verified."
 msgstr ""
 
 #: includes/admin/partials/msf-editor.php:87
-msgid "Email Headline:"
+msgid "You can choose in the settings how long pending entries are stored before they get deleted automatically."
 msgstr ""
 
-#: includes/admin/partials/msf-editor.php:90
-msgid "Introductory text for email"
+#: includes/admin/partials/msf-editor.php:88
+msgid "Make sure that the e-mail field has the required flag set. If not, the user may send the form without filling out the required email field. This causes an error, as no opt-in request can be send."
 msgstr ""
 
-#: includes/admin/partials/msf-editor.php:95
-msgid "String replacements:"
+#: includes/admin/partials/msf-editor.php:89
+msgid "This feature currently does NOT work with registration and file upload fields."
 msgstr ""
 
-#: includes/admin/partials/msf-editor.php:101
-msgid "If you enable string replacements, you can use a special syntax in the email subject and headline field."
+#: includes/admin/partials/msf-editor.php:93
+msgid "Additional Email Headers:"
 msgstr ""
 
-#: includes/admin/partials/msf-editor.php:102
-msgid "With that syntax it is possible to insert values entered by the user in this form."
+#: includes/admin/partials/msf-editor.php:96
+msgid "You can add additional email headers for CC/BCC or others. One per line e.g.:"
 msgstr ""
 
-#: includes/admin/partials/msf-editor.php:103
-msgid "The syntax uses the curly brackets { and } to mark the start and end of a replacement."
+#: includes/admin/partials/msf-editor.php:97
+msgid "CC: John Doe &lt;doe@example.com&gt;"
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:98
+msgid "BCC: Jane Doe &lt;doe@example.com&gt;"
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:99
+msgid "WARNING: only enter custom email headers if you know what you're doing - it can break your form."
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:100
+msgid "These settings may cause more problems on Windows Servers."
 msgstr ""
 
 #: includes/admin/partials/msf-editor.php:104
-msgid "In between you enter the field label you want to insert: <b>{field label}</b>"
-msgstr ""
-
-#: includes/admin/partials/msf-editor.php:105
-msgid "Example: Hello {first name} {last name}!"
-msgstr ""
-
-#: includes/admin/partials/msf-editor.php:106
-msgid "Please make sure there is only one field with that label. Also make sure you have written it here exactly as in the form, including case."
+msgid "Email Headline:"
 msgstr ""
 
 #: includes/admin/partials/msf-editor.php:107
-msgid "If you want to use the { sign without a replacement, use {. This will be reduced to one { sign."
+msgid "Introductory text for email"
 msgstr ""
 
-#: includes/admin/partials/msf-editor.php:108
-msgid "If the field is not required and the user enters nothin, the replacement will just disappear without new content."
+#: includes/admin/partials/msf-editor.php:112
+msgid "String replacements:"
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:118
+msgid "If you enable string replacements, you can use a special syntax in the email subject and headline field."
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:119
+msgid "With that syntax it is possible to insert values entered by the user in this form."
 msgstr ""
 
 #: includes/admin/partials/msf-editor.php:120
-msgid "Multi Step Form"
+msgid "The syntax uses the curly brackets { and } to mark the start and end of a replacement."
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:121
+msgid "In between you enter the field label you want to insert: <b>{field label}</b>"
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:122
+msgid "Example: Hello {first name} {last name}!"
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:123
+msgid "Please make sure there is only one field with that label. Also make sure you have written it here exactly as in the form, including case."
 msgstr ""
 
 #: includes/admin/partials/msf-editor.php:124
+msgid "If you want to use the { sign without a replacement, use {. This will be reduced to one { sign."
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:125
+msgid "If the field is not required and the user enters nothin, the replacement will just disappear without new content."
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:137
+msgid "Multi Step Form"
+msgstr ""
+
+#: includes/admin/partials/msf-editor.php:141
 msgid "Form Title"
 msgstr ""
 
-#: includes/admin/partials/msf-editor.php:126
+#: includes/admin/partials/msf-editor.php:143
 msgid "Drag &amp; Drop an element from below to a section"
 msgstr ""
 
