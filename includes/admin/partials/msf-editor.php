@@ -96,6 +96,7 @@
                         <input type="text" class="fw-mail-optin-success" />
                         <p class="description msf-warn"><?php _e('This is a beta function. Please be aware that there may occur problems.', 'multi-step-form'); ?></p>
                         <p class="description"><?php _e('This field is only used if double opt-in is active. In that case the user will be redirected to this URL after double opt-in was validated.', 'multi-step-form'); ?></p>
+                        <p class="description"><?php _e('If double opt-in is active and you leave this field blank, than the user will be redirected to the homepage.', 'multi-step-form'); ?></p>
                     </td>
                 </tr>
                 <tr valign="top">
