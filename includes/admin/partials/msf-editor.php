@@ -82,8 +82,8 @@
                         </select>
                         <p class="description msf-warn"><?php _e('This is a beta function. Please be aware that there may occur problems.', 'multi-step-form'); ?></p>
                         <p class="description"><?php _e('If you enable double opt-in, instead of the normal e-mail an opt-in request e-mail is generated and send to the e-mail the user has entered in the field specified here.', 'multi-step-form'); ?></p>
-                        <p class="description"><?php _e('The entry is saved but displayed as pending. The opt-in request e-mail contains a link that the user have to open. Only after that the normal e-mail is generated and send. Also the entry is displayed as verified.', 'multi-step-form'); ?></p>
-                        <p class="description"><?php _e('You can choose in the settings how long pending entries are stored before they get deleted automatically.', 'multi-step-form'); ?></p>
+                        <p class="description"><?php _e('The entry is saved but displayed as pending. The opt-in request e-mail contains a link that the user has to open. Only after that the normal e-mail is generated and send. Also the entry is displayed as verified.', 'multi-step-form'); ?></p>
+                        <p class="description"><?php _e('You can specify how long pending entries are stored before they get deleted automatically in the settings.', 'multi-step-form'); ?></p>
                         <p class="description msf-warn"><?php _e('Make sure that the e-mail field has the required flag set. If not, the user may send the form without filling out the required email field. This causes an error, as no opt-in request can be send.', 'multi-step-form'); ?></p>
                         <p class="description msf-warn"><?php _e('This feature currently does NOT work with registration and file upload fields.', 'multi-step-form'); ?></p>
                     </td>
@@ -96,7 +96,7 @@
                         <input type="text" class="fw-mail-optin-success" />
                         <p class="description msf-warn"><?php _e('This is a beta function. Please be aware that there may occur problems.', 'multi-step-form'); ?></p>
                         <p class="description"><?php _e('This field is only used if double opt-in is active. In that case the user will be redirected to this URL after double opt-in was validated.', 'multi-step-form'); ?></p>
-                        <p class="description"><?php _e('If double opt-in is active and you leave this field blank, than the user will be redirected to the homepage.', 'multi-step-form'); ?></p>
+                        <p class="description"><?php _e('If double opt-in is active and you leave this field blank, the user will be redirected to the homepage.', 'multi-step-form'); ?></p>
                     </td>
                 </tr>
                 <tr valign="top">
