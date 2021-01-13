@@ -1657,6 +1657,9 @@ declare var wp: any;
 			setupThickbox();
 			setupClickHandlers();
 			setupMedia($container);
+			if (msfp) {
+				setupConditionals(-1);
+			}
 
 			// tab menu toggle
 			$('#fw-nav-settings').on("click", function (e) {
