@@ -1,6 +1,9 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.1
+* Small improvements
+
 ## 1.7.0
 * Per form settings for email copy to user
 * Added variable get parameter field
