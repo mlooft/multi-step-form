@@ -1657,7 +1657,7 @@ declare var wp: any;
 			setupThickbox();
 			setupClickHandlers();
 			setupMedia($container);
-			if (msfp) {
+			if (typeof msfp !== 'undefined' && msfp) {
 				setupConditionals(-1);
 			}
 

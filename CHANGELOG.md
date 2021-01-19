@@ -1,6 +1,9 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.2
+* More small improvements
+
 ## 1.7.1
 * Small improvements
 
