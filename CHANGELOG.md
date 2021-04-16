@@ -1,6 +1,9 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.3
+* tested up to bumped to 5.7
+
 ## 1.7.2
 * More small improvements
 
