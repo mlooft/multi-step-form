@@ -3,7 +3,7 @@ Contributors: mondula2016
 Tags: multi, step, forms, multi step form, multi-step, steps, feedback, email, contact form, progress bar, form builder, dynamic, ajax, formular
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 1.7.4
+Stable tag: 1.7.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -84,7 +84,7 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 
 == Changelog ==
 
-= 1.7.4 =
+= 1.7.5 =
 * New EMail Block Option: Confirmation
 * tested up to bumped to 5.8
 

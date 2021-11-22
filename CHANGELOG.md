@@ -1,7 +1,7 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
-## 1.7.4
+## 1.7.5
 * New EMail Block Option: Confirmation
 * tested up bumped to 5.8
 
