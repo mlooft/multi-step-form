@@ -136,7 +136,7 @@ jQuery(document).ready(function ($) {
 	}
 
 	function textSummary(summaryObj, $block, title, required) {
-		const header = $block.find('h3').text();
+		const header = $block.find('h3').first().text();
 		let value = $block.find('.fw-text-input').val().trim();
 		value = escapeHtml(value);
 		pushToSummary(summaryObj, title, header, value, required);
@@ -551,9 +551,14 @@ jQuery(document).ready(function ($) {
 
 	function validateEmail($element) {
 		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		var email = $element.find('.fw-text-input').val();
+		var email = $element.find('.fw-text-input.one').val();
+		var confirm = $element.find('.fw-text-input.two').val();
 		if (!email || !re.test(email.trim())) {
 			$element.addClass('fw-block-invalid');
+			$element.removeClass('noMatch');
+			return false;
+		} else if (confirm != null && email !== confirm) {
+			$element.addClass('fw-block-invalid noMatch');
 			return false;
 		} else {
 			return true;
@@ -790,7 +795,11 @@ jQuery(document).ready(function ($) {
 					if ($(element).attr('data-type') == 'fw-registration') {
 						$(element).append('<div class="fw-block-invalid-alert">' + msfAjax.i18n.errors.checkFields + '</div>');
 					} else if ($(element).attr('data-type') == 'fw-email') {
-						$(element).append('<div class="fw-block-invalid-alert">' + msfAjax.i18n.errors.invalidEmail + '</div>');
+						if ($(element).hasClass('noMatch')) {
+							$(element).append('<div class="fw-block-invalid-alert">' + msfAjax.i18n.errors.emailsDontMatch + '</div>');
+						} else {
+							$(element).append('<div class="fw-block-invalid-alert">' + msfAjax.i18n.errors.invalidEmail + '</div>');
+						}
 					} else if ($(element).attr('data-type') == 'fw-numeric') {
 						$(element).append('<div class="fw-block-invalid-alert">' + msfAjax.i18n.errors.invalidNumeric + '</div>');
 					} else if ($(element).attr('data-type') == 'fw-regex') {
@@ -1260,7 +1269,7 @@ jQuery(document).ready(function ($) {
 		setupRegistration();
 		setupReCaptcha();
 		setupGetVariables();
-		
+
 		$('.fw-btn-submit').click(submit);
 		updateSummary($('.fw-wizard'));
 	}

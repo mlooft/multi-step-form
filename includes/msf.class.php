@@ -169,6 +169,7 @@ class Mondula_Form_Wizard {
 				'invalidNumeric' => __('Invalid number', 'multi-step-form'),
 				'invalidRegex' => __('Invalid input', 'multi-step-form'),
 				'noCaptcha' => __('Please solve the captcha first!', 'multi-step-form'),
+				'emailsDontMatch' => __('Emails provided don\'t match!', 'multi-step-form'),
 			),
 		);
 	}

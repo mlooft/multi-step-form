@@ -195,6 +195,7 @@ declare var wp: any;
 		emailHtml += '<label>' + wizard.i18n.label + '</label>';
 		emailHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
 		emailHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
+		emailHtml += '<label><input type="checkbox" class="fw-email-confirm"' + isChecked(block.confirm) + '/>' + wizard.i18n.email.confirm  + '</label>';
 		return emailHtml;
 	}
 
@@ -620,6 +621,7 @@ declare var wp: any;
 	function getEmailData($text, text) {
 		text['label'] = $text.find('.fw-text-label').val();
 		text['required'] = $text.find('.fw-required').prop('checked');
+		text['confirm'] = $text.find('.fw-email-confirm').prop('checked');
 	}
 
 	function getGetVariableData($text, text) {

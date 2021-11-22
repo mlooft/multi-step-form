@@ -121,6 +121,9 @@ class Mondula_Form_Wizard_Admin {
 				'no_minimum' => __('No Minimum', 'multi-step-form'),
 				'no_maximum' => __('No Maximum', 'multi-step-form'),
 			),
+			'email' => array(
+				'confirm' => __('Confirm', 'multi-step-form'),
+			),
 			'filter' => __('RegEx Filter', 'multi-step-form'),
 			'filterError' => __('Custom RegEx Error Message', 'multi-step-form'),
 			'registration' => array(
