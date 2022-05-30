@@ -283,7 +283,7 @@ class Mondula_Form_Wizard_Settings {
 				<h2>Multi Step Form Plus</h2> 
 				<p>
 					Our first extension for Multi Step Form is now available. <br>
-					Get new feautres, such as "conditional fields", "up to 10 steps", "save form data" and more... 
+					Get new features, such as "conditional fields", "up to 10 steps", "save form data" and more... 
 				</p>
 				<p>
 					<a class="button" href="https://mondula.com/multi-step-form-plus/" title="More about MSF Plus" target="_blank">Get your upgrade now</a> 

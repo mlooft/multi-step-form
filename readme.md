@@ -85,6 +85,8 @@ npm run zip
 
 **Make sure you are on the master branch!**
 
+**Make sure you pushed your changes to origin!**
+
 **Always test before releasing a new version!**
 
 Publishing a new version can only be done by listed and approved contributors of this plugin. To create a new release, just tag the repository locally with:
