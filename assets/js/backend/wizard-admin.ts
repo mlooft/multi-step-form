@@ -80,6 +80,15 @@ declare var wp: any;
 		return ('' + s).replace(/\\/g, '\\\\').replace(/"/g, '\\\"').replace(/'/g, '\\\'');
 	}
 
+	function escapeHtml(s: any) : string {	
+		return !s ? "" : s
+			.replace(/&/g, "&amp;")
+			.replace(/</g, "&lt;")
+			.replace(/>/g, "&gt;")
+			.replace(/"/g, "&quot;")
+			.replace(/'/g, "&#039;");
+	}
+
 	/**
 	 * Creates a HTML string to dusplay the type of a block.
 	 * 
@@ -102,11 +111,10 @@ declare var wp: any;
      */
 	function renderRadioHeader(radioHeader : string) : string {
 		let radioHeaderHtml = '<div class="fw-radio-option-element" data-type="header"><label>' + wizard.i18n.label + '</label>';
-		radioHeaderHtml += '<input type="text" class="fw-radio-header fw-block-label" value="' + radioHeader + '"></input>';
+		radioHeaderHtml += '<input type="text" class="fw-radio-header fw-block-label" value="' + escapeHtml(radioHeader) + '"></input>';
 		radioHeaderHtml += '</div>';
 		return radioHeaderHtml;
 	}
-
 
     /**
      * renderRadioOption - renders a single option for a radio
@@ -117,7 +125,7 @@ declare var wp: any;
      */
 	function renderRadioOption(radioOption : any, idx : number) : string {
 		let radioOptionHtml = '<div class="fw-radio-option-element" data-type="option">'; //'<label>Option ' + idx + '</label>';
-		radioOptionHtml += '<input type="text" class="fw-radio-option" placeholder="' + wizard.i18n.radio.option + ' ' + idx + '" value="' + escapeAttribute(radioOption) + '"></input>';
+		radioOptionHtml += '<input type="text" class="fw-radio-option" placeholder="' + wizard.i18n.radio.option + ' ' + idx + '" value="' + escapeHtml(radioOption) + '"></input>';
 		radioOptionHtml += '<div class="fw-remove-radio-option"><i class="fa fa-minus-circle" aria-hidden="true"></i></div></div>';
 		return radioOptionHtml;
 	}
@@ -158,9 +166,9 @@ declare var wp: any;
 		const placeholder = wizard.i18n.select.placeholder ? wizard.i18n.select.placeholder : '';
 		selectHtml += '<div class="fw-select-option-container">';
 		selectHtml += '<label>' + wizard.i18n.label + '</label>';
-		selectHtml += '<input type="text" class="fw-block-label" value="' + select.label + '"></input>';
+		selectHtml += '<input type="text" class="fw-block-label" value="' + escapeHtml(select.label) + '"></input>';
 		selectHtml += '<label>' + placeholder + '</label>';
-		selectHtml += '<input type="text" class="fw-select-placeholder" value="' + select.placeholder + '"></input>';
+		selectHtml += '<input type="text" class="fw-select-placeholder" value="' + escapeHtml(select.placeholder) + '"></input>';
 		selectHtml += '<label>' + wizard.i18n.select.options + '</label>';
 		selectHtml += '<textarea class="fw-select-options" rows="4" cols="50">';
 		for (i = 0; i < select.elements.length; i++) {
@@ -177,7 +185,7 @@ declare var wp: any;
 	function renderCheckbox(block) {
 		var textHtml = '';
 		textHtml += '<label>' + wizard.i18n.label + '</label>';
-		textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+		textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + escapeHtml(block.label) + '"></input><br/>';
 		textHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		return textHtml;
 	}
@@ -185,7 +193,7 @@ declare var wp: any;
 	function renderTextInput(block) {
 		var textHtml = '';
 		textHtml += '<label>' + wizard.i18n.label + '</label>';
-		textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+		textHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + escapeHtml(block.label) + '"></input><br/>';
 		textHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		return textHtml;
 	}
@@ -193,7 +201,7 @@ declare var wp: any;
 	function renderEmail(block) {
 		var emailHtml = '';
 		emailHtml += '<label>' + wizard.i18n.label + '</label>';
-		emailHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+		emailHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + escapeHtml(block.label) + '"></input><br/>';
 		emailHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		emailHtml += '<label><input type="checkbox" class="fw-email-confirm"' + isChecked(block.confirm) + '/>' + wizard.i18n.email.confirm  + '</label>';
 		return emailHtml;
@@ -202,16 +210,16 @@ declare var wp: any;
 	function renderGetVariable(block) {
 		var getVarHtml = '';
 		getVarHtml += '<label>' + wizard.i18n.label + '</label>';
-		getVarHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+		getVarHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + escapeHtml(block.label) + '"></input><br/>';
 		getVarHtml += '<label>' + wizard.i18n.get_var.get_param + '</label>';
-		getVarHtml += '<input type="text" class="fw-get-var-get-param fw-block-label" value="' + (block.get_param ? block.get_param : '') + '"></input><br/>';
+		getVarHtml += '<input type="text" class="fw-get-var-get-param fw-block-label" value="' + escapeHtml(block.get_param ? block.get_param : '') + '"></input><br/>';
 		return getVarHtml;
 	}
 
 	function renderNumeric(block) {
 		var numericHtml = '';
 		numericHtml += '<label>' + wizard.i18n.label + '</label>';
-		numericHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+		numericHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + escapeHtml(block.label) + '"></input><br/>';
 		numericHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		numericHtml += '<label>' + wizard.i18n.numeric.minimum + '</label>';
 		numericHtml += '<input type="text" class="fw-numeric-minimum fw-block-label" placeholder="' + wizard.i18n.numeric.no_minimum + '" value="' + (block.minimum ? block.minimum : '') + '" pattern="-?\\d*"></input><br/><br/>';
@@ -223,7 +231,16 @@ declare var wp: any;
 	function renderFile(block) {
 		var fileHtml = '';
 		fileHtml += '<label>' + wizard.i18n.label + '</label>';
-		fileHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+		fileHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + escapeHtml(block.label) + '"></input><br/>';
+		fileHtml += '<label><input type="checkbox" class="fw-file-multi"' + isChecked(block.multi) + '/>' + wizard.i18n.multifile + '</label>';
+		fileHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
+		return fileHtml;
+	}
+
+	function renderGDriveUpload(block) {
+		var fileHtml = '';
+		fileHtml += '<label>' + wizard.i18n.label + '</label>';
+		fileHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + escapeHtml(block.label) + '"></input><br/>';
 		fileHtml += '<label><input type="checkbox" class="fw-file-multi"' + isChecked(block.multi) + '/>' + wizard.i18n.multifile + '</label>';
 		fileHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		return fileHtml;
@@ -232,9 +249,9 @@ declare var wp: any;
 	function renderDate(block) {
 		var dateHtml = '';
 		dateHtml += '<label>' + wizard.i18n.label + '</label>';
-		dateHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+		dateHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + escapeHtml(block.label) + '"></input><br/>';
 		dateHtml += '<label>' + wizard.i18n.dateformat + '<a target="_blank" href="http://t1m0n.name/air-datepicker/docs/#sub-section-9"><i class="fa fa-info-circle" aria-hidden="true" title="' + wizard.i18n.tooltips.dateformat + '"></i></a></label>';
-		dateHtml += '<input type="text" class="fw-date-format fw-block-label" placeholder="' + wizard.i18n.dateformat + '" value="' + (block.format ? block.format : 'yy-mm-dd') + '" ></input><br/>';
+		dateHtml += '<input type="text" class="fw-date-format fw-block-label" placeholder="' + wizard.i18n.dateformat + '" value="' + escapeHtml(block.format ? block.format : 'yy-mm-dd') + '" ></input><br/>';
 		dateHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		return dateHtml;
 	}
@@ -242,7 +259,7 @@ declare var wp: any;
 	function renderTextArea(block) {
 		var textAreaHtml = '';
 		textAreaHtml += '<label>' + wizard.i18n.label + '</label>';
-		textAreaHtml += '<input type="text" class="fw-textarea-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+		textAreaHtml += '<input type="text" class="fw-textarea-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + escapeHtml(block.label) + '"></input><br/>';
 		textAreaHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		return textAreaHtml;
 	}
@@ -277,11 +294,11 @@ declare var wp: any;
 	function renderRegex(block) {
 		var regexHtml = '';
 		regexHtml += '<label>' + wizard.i18n.label + '</label>';
-		regexHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + block.label + '"></input><br/>';
+		regexHtml += '<input type="text" class="fw-text-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + escapeHtml(block.label) + '"></input><br/>';
 		regexHtml += '<label>' + wizard.i18n.filter + '</label>';
-		regexHtml += '<input type="text" class="fw-regex-filter fw-block-label" placeholder="' + wizard.i18n.filter + '" value="' + (block.filter ? block.filter : '') + '"></input><br/>';
+		regexHtml += '<input type="text" class="fw-regex-filter fw-block-label" placeholder="' + wizard.i18n.filter + '" value="' + escapeHtml(block.filter ? block.filter : '') + '"></input><br/>';
 		regexHtml += '<label>' + wizard.i18n.filterError + '</label>';
-		regexHtml += '<input type="text" class="fw-regex-error fw-block-label" placeholder="' + wizard.i18n.filterError + '" value="' + (block.customError ? block.customError : '') + '"></input><br/>';
+		regexHtml += '<input type="text" class="fw-regex-error fw-block-label" placeholder="' + wizard.i18n.filterError + '" value="' + escapeHtml(block.customError ? block.customError : '') + '"></input><br/>';
 		regexHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		return regexHtml;
 	}
@@ -412,7 +429,7 @@ declare var wp: any;
 		partHtml += '<div class="fw-section-hndle"><i class="fa fa-arrows"></i></div>';
 
 		// title
-		partHtml += '<input type="text" class="fw-part-title" value="' + part.title + '" placeholder="' + wizard.i18n.partTitle + '"></input>';
+		partHtml += '<input type="text" class="fw-part-title" value="' + escapeHtml(part.title) + '" placeholder="' + wizard.i18n.partTitle + '"></input>';
 
 		// removepart button
 		partHtml += '<div class="fw-remove-part" title="' + wizard.i18n.removeSection + '">';
@@ -463,21 +480,21 @@ declare var wp: any;
 		stepHtml += '<div class="input form-field">';
 		stepHtml += '<label for="' + titleId + '"><b>' + wizard.i18n.title + '</b>';
 		stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="' + wizard.i18n.tooltips.title + '"></i></label>';
-		stepHtml += '<input type="text" class="fw-step-title" value="' + step.title + '"></input>';
+		stepHtml += '<input type="text" class="fw-step-title" value="' + escapeHtml(step.title) + '"></input>';
 		stepHtml += '</div>';
 
 		// headline
 		stepHtml += '<div class="input form-field">';
 		stepHtml += '<label for="' + headlineId + '"><b>' + wizard.i18n.headline + '</b>';
 		stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="' + wizard.i18n.tooltips.headline + '"></i></label>';
-		stepHtml += '<input type="text" class="fw-step-headline" value="' + step.headline + '"></input>';
+		stepHtml += '<input type="text" class="fw-step-headline" value="' + escapeHtml(step.headline) + '"></input>';
 		stepHtml += '</div>';
 
 		// copy text
 		stepHtml += '<div class="input form-field">';
 		stepHtml += '<label for="' + copyTextId + '"><b>' + wizard.i18n.copyText + '</b>';
 		stepHtml += '<i class="fa fa-info-circle" aria-hidden="true" title="' + wizard.i18n.copyText + '"></i></label>';
-		stepHtml += '<input type="text" class="fw-step-copy_text" value="' + step.copy_text + '"></input>';
+		stepHtml += '<input type="text" class="fw-step-copy_text" value="' + escapeHtml(step.copy_text) + '"></input>';
 		stepHtml += '</div>';
 
 		// parts
@@ -490,7 +507,7 @@ declare var wp: any;
 		var stepHtml = '<div class="postbox">';
 		stepHtml += '<div class="fw-movediv hndle ui-sortable-handle"><i class="fa fa-arrows"></i></div>';
 		stepHtml += '<h1 class="fw-step-h1 hndle ui-sortable-handle"><span>';
-		stepHtml += step.title + '</span></h1>';
+		stepHtml += escapeHtml(step.title) + '</span></h1>';
 		stepHtml += '<div class="fw-step-controls">';
 		stepHtml += '<i class="fa fa-remove fw-remove-step" title="' + wizard.i18n.tooltips.removeStep + '" aria-hidden="true"></i>';
 		stepHtml += '<i class="fa fa-caret-up fw-toggle-step" aria-hidden="true"></i>';
@@ -566,7 +583,6 @@ declare var wp: any;
 		$(container).html(stepsHtml);
 	}
 
-
     /**
      * getRadioElementData - retrieve the data for a set of radio buttons
      *
@@ -588,6 +604,7 @@ declare var wp: any;
 	}
 
 	function getRadioData($radio, radio) {
+		radio['label'] = $radio.find('.fw-block-label').val();
 		var elements = radio['elements'] = [];
 		$radio.find('.fw-radio-option-element').each(function (idx, element) {
 			elements.push(getRadioElementData($(element)));
@@ -604,7 +621,6 @@ declare var wp: any;
 		select['placeholder'] = $select.find('.fw-select-placeholder').val();
 		select['elements'] = options.filter(function (v) { return v !== '' && v !== ' ' });
 	}
-
 
 	// TODO: redundant functions
 
