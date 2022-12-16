@@ -14,7 +14,7 @@
         <li class="fw-progress-step"
             data-id="<?php echo $i; ?>">
             <span class="fw-progress-bar-bar"></span>
-            <span class="fw-txt-ellipsis" data-title="<?php echo $step->render_title(); ?>"><?php echo $step->render_title(); ?></span>
+            <span class="fw-txt-ellipsis" data-title="<?php echo $step->render_title_escaped(); ?>"><?php echo $step->render_title(); ?></span>
             <?php if ($i == 4 && ($i < ($cnt - 1))): ?>
                 <span class="fw-circle"></span>
                 <span class="fw-circle-1"></span>

@@ -1,6 +1,9 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.8
+* Fixed some bugs
+
 ## 1.7.7
 * Improved sanitization
 
