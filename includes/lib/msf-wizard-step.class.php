@@ -67,6 +67,10 @@ class Mondula_Form_Wizard_Wizard_Step {
 		echo $this->_title;
 	}
 
+	public function render_title_escaped () {
+		echo esc_attr($this->_title);
+	}
+
 	public function render_headline () {
 		echo $this->_headline;
 	}

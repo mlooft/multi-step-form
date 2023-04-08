@@ -2,8 +2,8 @@
 Contributors: mondula2016
 Tags: multi, step, forms, multi step form, multi-step, steps, feedback, email, contact form, progress bar, form builder, dynamic, ajax, formular
 Requires at least: 5.0
-Tested up to: 6.0
-Stable tag: 1.7.6
+Tested up to: 6.1.1
+Stable tag: 1.7.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,6 +83,15 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 2. Use our customizable and animated progress bar to guide your users through your forms. Change the colors to match your CI.
 
 == Changelog ==
+
+= 1.7.9 = 
+* tested up to bumped to 6.1.1
+
+= 1.7.8 =
+* Fixed some bugs
+
+= 1.7.7 =
+* Improved sanitization
 
 = 1.7.6 = 
 * tested up to bumped to 6.0

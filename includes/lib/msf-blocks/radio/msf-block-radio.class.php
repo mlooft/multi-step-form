@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) exit;
  */
 class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
 
+	private $_label;
 	private $_elements;
 	private $_required;
 	private $_multichoice;
@@ -21,7 +22,8 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
 	 * @param boolean $required $required If true, Input for this field is required. 
 	 * @param boolean $multichoice If true, turn Radio into Checkbox.
 	 */
-	public function __construct ($elements, $required, $multichoice) {
+	public function __construct ($label, $elements, $required, $multichoice) {
+		$this->_label = $label;
 		$this->_elements = $elements;
 		$this->_required = $required;
 		$this->_multichoice = $multichoice;
@@ -65,6 +67,7 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
 	public function as_aa() {
 		return array(
 			'type' => 'radio',
+			'label' => $this->_label,
 			'elements' => $this->_elements,
 			'required' => $this->_required,
 			'multichoice' => $this->_multichoice
@@ -72,22 +75,24 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
 	}
 
 	public static function from_aa($aa , $current_version, $serialized_version) {
+		$label = $aa['label'];
 		$elements = isset($aa['elements']) ? $aa['elements'] : array();
 		$required = $aa['required'];
 		$multichoice = $aa['multichoice'];
-		return new Mondula_Form_Wizard_Block_Radio($elements, $required, $multichoice);
+		return new Mondula_Form_Wizard_Block_Radio($label, $elements, $required, $multichoice);
 	}
 
 	public static function sanitize_admin($block) {
-		$allowedTags = wp_kses_allowed_html('post');
-		unset($allowedTags['textarea']);
+		//$allowedTags = wp_kses_allowed_html('post');
+		//unset($allowedTags['textarea']);
+		$block['required'] = sanitize_text_field($block['required']);
+		$block['multichoice'] = sanitize_text_field($block['multichoice']);
+		$block['label'] = sanitize_text_field($block['label']);
 		
 		foreach ($block['elements'] as &$element) {
 			$element['type'] = sanitize_text_field($element['type']);
-			$element['value'] = wp_kses($element['value'], $allowedTags);
+			$element['value'] = sanitize_text_field($element['value']);
 		}
-		$block['required'] = sanitize_text_field($block['required']);
-		$block['multichoice'] = sanitize_text_field($block['multichoice']);
 
 		return $block;
 	}

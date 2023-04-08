@@ -1,6 +1,15 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.9
+* tested up to bumped to 6.1.1
+
+## 1.7.8
+* Fixed some bugs
+
+## 1.7.7
+* Improved sanitization
+
 ## 1.7.6
 * tested up to bumped to 6.0
 
