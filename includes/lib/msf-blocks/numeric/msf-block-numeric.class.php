@@ -42,7 +42,7 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 		>
 
 			<div class="fw-input-container">
-				<h3><?php echo $this->_label ?></h3>
+				<label for="msf-numeric-<?php echo str_replace(' ', '-', strtolower($this->_label)); ?>"><h3><?php echo $this->_label ?></h3></label>
 				<input 
 					type="text" 
 					class="fw-text-input" 

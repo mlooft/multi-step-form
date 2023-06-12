@@ -36,7 +36,9 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-date" data-required="<?php echo $this->_required; ?>">
 			<div class="fw-input-container">
-				<h3><?php echo $this->_label ?></h3><input type="text" id="msf-date-<?php echo str_replace(' ', '-', strtolower($this->_label)); ?>"  class="fw-text-input fw-datepicker-here" data-id="date" data-language="<?php echo $locale; ?>" data-dateformat="<?php echo esc_attr($this->_format) ?>"><span class="fa fa-calendar form-control-feedback" aria-hidden="true"></span>
+				<label for="msf-date-<?php echo str_replace(' ', '-', strtolower($this->_label)); ?>"><h3><?php echo $this->_label ?></h3></label>
+				<input type="text" id="msf-date-<?php echo str_replace(' ', '-', strtolower($this->_label)); ?>"  class="fw-text-input fw-datepicker-here" data-id="date" data-language="<?php echo $locale; ?>" data-dateformat="<?php echo esc_attr($this->_format) ?>">
+				<span class="fa fa-calendar form-control-feedback" aria-hidden="true"></span>
 			</div>
 			<div class="fw-clearfix"></div>
 		</div>

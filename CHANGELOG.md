@@ -1,6 +1,9 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.10
+* Accessibility improvements
+
 ## 1.7.9
 * tested up to bumped to 6.1.1
 
