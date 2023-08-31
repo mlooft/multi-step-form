@@ -1274,10 +1274,48 @@ jQuery(document).ready(function ($) {
 		updateSummary($('.fw-wizard'));
 	}
 
+    /**
+     * Fixing select2 positioning.
+     */
+    function select2Fix() {
+        $("select").on("select2:open", function (e) {
+            const select = $(e.target).next();
+            const dropdown = $(".select2-dropdown");
+            const selectOffset = select.offset();
+            const selectHeight = select.outerHeight();
+            const dropdownOffset = dropdown.offset();
+            const dropdownHeight = dropdown.outerHeight();
+            const selectTop = selectOffset?.top;
+            const selectBottom = (selectTop || 0) + (selectHeight || 0);
+            const dropdownTop = dropdownOffset?.top;
+            const dropdownBottom = (dropdownTop || 0) + (dropdownHeight || 0);
+            let distance;
+            if (select.is('[class*="below"]')) {
+                distance = selectBottom - (dropdownTop || 0);
+            } else {
+                distance = (selectTop || 0) - dropdownBottom;
+            }
+            const dropdownParent = dropdown.parent();
+
+            if (distance && dropdownParent) {
+                dropdownParent.css("transform", `translateY(${distance}px)`);
+            }
+        });
+
+        $("select").on("select2:closing", function (e) {
+            const dropdown = $(".select2-dropdown");
+            const dropdownParent = dropdown.parent();
+            if (dropdownParent.length > 0) {
+                dropdownParent.css("transform", "");
+            }
+        });
+    }
+
 	function init() {
 		$(document).ready(function (evt) {
 			if ($('#multi-step-form').length) {
 				setup();
+                select2Fix();
 				(window as any).msf = {};
 				(window as any).msf.info = info;
 			}
