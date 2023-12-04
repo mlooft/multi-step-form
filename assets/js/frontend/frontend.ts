@@ -970,6 +970,7 @@ jQuery(document).ready(function ($) {
 				reg: reg,
 				attachments: files,
 				recaptchaToken: token,
+				nonce: msfAjax.nonce
 			},
 			function (resp) {
 				if (resp.success) {

@@ -1,6 +1,9 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.12
+* fixed the vulnerable to Cross Site Request Forgery (CSRF) 
+
 ## 1.7.11
 * tested up to bumped to 6.3.1
 * fixed a bug with the select block

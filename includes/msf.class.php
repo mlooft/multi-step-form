@@ -195,6 +195,9 @@ class Mondula_Form_Wizard {
 	 * @return  void
 	 */
 	public function enqueue_scripts() {
+		// Generate nonce
+		$nonce = wp_create_nonce('my_action_nonce');
+
 		// Vendor
 		wp_register_style($this->_token . '-vendor', esc_url($this->assets_url) . 'styles/msf-vendor.min.css', array(), $this->_version);
 		wp_register_script($this->_token . '-vendor', esc_url($this->assets_url) . 'scripts/msf-vendor' . $this->script_suffix . '.js', array('jquery'), $this->_version, true);
@@ -209,6 +212,7 @@ class Mondula_Form_Wizard {
 			'i18n' => $i18n,
 			'version' => apply_filters('multi-step-form/version-filter', $this->_version),
 			'ajaxurl' => admin_url('admin-ajax.php'),
+			'nonce' => $nonce,
 		);
 		wp_localize_script($this->_token . '-frontend', 'msfAjax', $ajax);
 	}

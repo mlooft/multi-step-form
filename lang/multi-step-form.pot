@@ -17,295 +17,295 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: includes/admin/msf-admin.class.php:54
+#: includes/admin/msf-admin.class.php:53
 msgid "The step title is displayed below the progress bar"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:55
+#: includes/admin/msf-admin.class.php:54
 msgid "The step headline is displayed above the progress bar"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:56
+#: includes/admin/msf-admin.class.php:55
 msgid "The step description is displayed below the step headline"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:57
+#: includes/admin/msf-admin.class.php:56
 msgid "remove step"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:58
+#: includes/admin/msf-admin.class.php:57
 msgid "Remove section"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:59
+#: includes/admin/msf-admin.class.php:58
 msgid "Remove element"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:60
+#: includes/admin/msf-admin.class.php:59
 msgid "Multi-Select uses checkboxes. Single-Select has radio-buttons."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:61
+#: includes/admin/msf-admin.class.php:60
 msgid "Provide a static text block for explanations or additional info. You can use HTML for formatting."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:62
+#: includes/admin/msf-admin.class.php:61
 msgid "Click for date format specifications"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:65
+#: includes/admin/msf-admin.class.php:64
 msgid "You need to enter a valid email address"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:66
+#: includes/admin/msf-admin.class.php:65
 msgid "You need to provide an email subject"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:67
+#: includes/admin/msf-admin.class.php:66
 msgid "WARNING: You need to provide a title for each step"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:68
+#: includes/admin/msf-admin.class.php:67
 msgid "WARNING: You need to provide a title for each section"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:69
+#: includes/admin/msf-admin.class.php:68
 msgid "WARNING: You need to provide title for the form"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:70
+#: includes/admin/msf-admin.class.php:69
 msgid "WARNING: Every block needs a label/title."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:71
+#: includes/admin/msf-admin.class.php:70
 msgid "ERROR: only 5 steps are allowed in the free version"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:72
+#: includes/admin/msf-admin.class.php:71
 msgid "ERROR: only 10 steps are possible"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:73
+#: includes/admin/msf-admin.class.php:72
 msgid "Do you really want to delete this step?"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:74
+#: includes/admin/msf-admin.class.php:73
 msgid "Do you really want to delete this section?"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:75
+#: includes/admin/msf-admin.class.php:74
 msgid "Do you really want to delete this block?"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:76
+#: includes/admin/msf-admin.class.php:75
 msgid "Only one registration block allowed!"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:77
+#: includes/admin/msf-admin.class.php:76
 msgid "Form couldn't be saved. Check your internet connection."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:79
+#: includes/admin/msf-admin.class.php:78
 msgid "Step Title"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:80
+#: includes/admin/msf-admin.class.php:79
 msgid "Step Headline"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:81
+#: includes/admin/msf-admin.class.php:80
 msgid "Step description"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:82
+#: includes/admin/msf-admin.class.php:81
 msgid "Section Title"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:83
+#: includes/admin/msf-admin.class.php:82
 msgid "Sections"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:84
+#: includes/admin/msf-admin.class.php:83
 msgid "Add Step"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:85
+#: includes/admin/msf-admin.class.php:84
 msgid "Add Section"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:86
+#: includes/admin/msf-admin.class.php:85
 msgid "Add Element"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:87
+#: includes/admin/msf-admin.class.php:86
 msgid "Label"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:88
+#: includes/admin/msf-admin.class.php:87
 msgid "Multiple Files"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:89
+#: includes/admin/msf-admin.class.php:88
 msgid "Date Format"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:90
+#: includes/admin/msf-admin.class.php:89
 msgid "Required"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:92
+#: includes/admin/msf-admin.class.php:91
 msgid "Header"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:93
+#: includes/admin/msf-admin.class.php:92
 msgid "Option"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:94
+#: includes/admin/msf-admin.class.php:93
 msgid "Options"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:95
+#: includes/admin/msf-admin.class.php:94
 msgid "Add option"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:96
+#: includes/admin/msf-admin.class.php:95
 msgid "Multiple Selection"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:99
+#: includes/admin/msf-admin.class.php:98
 msgid "Options (one per line)"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:100
+#: includes/admin/msf-admin.class.php:99
 msgid "Enable search"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:101
+#: includes/admin/msf-admin.class.php:100
 msgid "Set placeholder"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:104
+#: includes/admin/msf-admin.class.php:103
 msgid "Text/HTML"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:105
+#: includes/admin/msf-admin.class.php:104
 msgid "Paragraph text"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:108, includes/lib/msf-blocks/media/msf-block-media.class.php:59
+#: includes/admin/msf-admin.class.php:107, includes/lib/msf-blocks/media/msf-block-media.class.php:59
 msgid "Media"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:109
+#: includes/admin/msf-admin.class.php:108
 msgid "Select Media"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:110
+#: includes/admin/msf-admin.class.php:109
 msgid "Place an image or video in your form."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:111
+#: includes/admin/msf-admin.class.php:110
 msgid "Select a media element"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:112
+#: includes/admin/msf-admin.class.php:111
 msgid "Title"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:113
+#: includes/admin/msf-admin.class.php:112
 msgid "Filename"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:114
+#: includes/admin/msf-admin.class.php:113
 msgid "Preview"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:117
+#: includes/admin/msf-admin.class.php:116
 msgid "GET Parameter"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:120
+#: includes/admin/msf-admin.class.php:119
 msgid "Minimum"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:121
+#: includes/admin/msf-admin.class.php:120
 msgid "Maximum"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:122
+#: includes/admin/msf-admin.class.php:121
 msgid "No Minimum"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:123
+#: includes/admin/msf-admin.class.php:122
 msgid "No Maximum"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:126
+#: includes/admin/msf-admin.class.php:125
 msgid "Confirm"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:128
+#: includes/admin/msf-admin.class.php:127
 msgid "RegEx Filter"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:129
+#: includes/admin/msf-admin.class.php:128
 msgid "Custom RegEx Error Message"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:131
+#: includes/admin/msf-admin.class.php:130
 msgid "Please select the registration fields to be displayed to the user. Email is always required. If the user does not specify a username or password, WordPress is auto-generating these and sending them to the user via email."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:132
+#: includes/admin/msf-admin.class.php:131
 msgid "You are already registered and logged in."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:133
+#: includes/admin/msf-admin.class.php:132
 msgid "Username"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:134, includes/lib/msf-blocks/email/msf-block-email.class.php:69, includes/msf-settings.class.php:48
+#: includes/admin/msf-admin.class.php:133, includes/lib/msf-blocks/email/msf-block-email.class.php:69, includes/msf-settings.class.php:48
 msgid "Email"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:135
+#: includes/admin/msf-admin.class.php:134
 msgid "Password"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:136
+#: includes/admin/msf-admin.class.php:135
 msgid "Confirm Password"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:137
+#: includes/admin/msf-admin.class.php:136
 msgid "First Name"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:138
+#: includes/admin/msf-admin.class.php:137
 msgid "Last Name"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:139
+#: includes/admin/msf-admin.class.php:138
 msgid "Website"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:140
+#: includes/admin/msf-admin.class.php:139
 msgid "Biographical Info"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:189
+#: includes/admin/msf-admin.class.php:188
 msgid "Not installed/active"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:276
+#: includes/admin/msf-admin.class.php:275
 msgid "Invalid JSON-File. Check your syntax."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:304
+#: includes/admin/msf-admin.class.php:303
 msgid "Forms must be imported as JSON files"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:409, includes/admin/partials/msf-editor.php:8
+#: includes/admin/msf-admin.class.php:408, includes/admin/partials/msf-editor.php:8
 msgid "Success. Form saved."
 msgstr ""
 

@@ -248,6 +248,11 @@ class Mondula_Form_Wizard_Shortcode {
 		$reg   = isset($_POST['reg']) ? $this->sanitize_user_reg($_POST['reg']) : array();
 		$files = isset($_POST['attachments']) ? $this->sanitize_attachments($_POST['attachments']) : array();
 
+		if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'my_action_nonce')) {
+			wp_send_json_error('Nonce verification failed');
+			return;
+		}
+
 		$wizard = $this->get_wizard($id);
 		if ($wizard === null) {
 			wp_send_json_error('Nonexistent wizard!');
