@@ -232,9 +232,21 @@ class Mondula_Form_Wizard_Admin {
 		if ($edit) {
 			$this->edit($_GET['edit']);
 		} elseif ($delete) {
-			$this->delete($_GET['delete']);
+			// Verify the nonce for deleting
+			if (isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'delete_nonce')) {
+				$this->delete($_GET['delete']);
+			} else {
+				// Handle the case where the nonce is invalid
+				wp_die('Security check failed');
+			}
 		} elseif ($duplicate) {
-			$this->duplicate($_GET['duplicate']);
+			// Verify the nonce for duplicating
+			if (isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'duplicate_nonce')) {
+				$this->duplicate($_GET['duplicate']);
+			} else {
+				// Handle the case where the nonce is invalid
+				wp_die('Security check failed');
+			}
 		} else {
 			$this->table();
 		}

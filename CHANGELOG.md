@@ -1,6 +1,9 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.13
+* added nonce checks to msf form admin delete and duplicate
+
 ## 1.7.12
 * fixed the vulnerable to Cross Site Request Forgery (CSRF) 
 

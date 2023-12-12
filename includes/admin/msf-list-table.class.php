@@ -57,13 +57,13 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 
 	private function generate_query_url($action, $id) {
 		$query = remove_query_arg(array('edit', 'delete', 'duplicate'));
-		return esc_url(
-			add_query_arg(
-				array(
-					$action => $id,
-				), $query
-			)
-		);
+		$url = add_query_arg(array($action => $id), $query);
+
+		// Create a unique action name for the nonce based on the action and the ID
+		$nonce_action = $action . '_nonce';
+
+		// Add the nonce to the URL
+		return wp_nonce_url($url, $nonce_action);
 	}
 
 	public function column_title($item) {

@@ -297,15 +297,15 @@ msgstr ""
 msgid "Not installed/active"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:275
+#: includes/admin/msf-admin.class.php:287
 msgid "Invalid JSON-File. Check your syntax."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:303
+#: includes/admin/msf-admin.class.php:315
 msgid "Forms must be imported as JSON files"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:408, includes/admin/partials/msf-editor.php:8
+#: includes/admin/msf-admin.class.php:420, includes/admin/partials/msf-editor.php:8
 msgid "Success. Form saved."
 msgstr ""
 
