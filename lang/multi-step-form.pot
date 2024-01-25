@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Multi Step Form
+# Copyright (C) 2024 Multi Step Form
 # This file is distributed under the same license as the Multi Step Form package.
 msgid ""
 msgstr ""
@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mondula <info@mondula.com>\n"
 "Language-Team: Mondula GmbH <wp-plugins@mondula.com>\n"
 "X-Poedit-Basepath: ..\n"
@@ -46,7 +46,7 @@ msgid "Multi-Select uses checkboxes. Single-Select has radio-buttons."
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:60
-msgid "Provide a static text block for explanations or additional info. You can use HTML for formatting."
+msgid "Provide a static text block for explanations or additional info."
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:61
@@ -186,7 +186,7 @@ msgid "Set placeholder"
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:103
-msgid "Text/HTML"
+msgid "Text"
 msgstr ""
 
 #: includes/admin/msf-admin.class.php:104
@@ -597,7 +597,7 @@ msgstr ""
 msgid "Numeric"
 msgstr ""
 
-#: includes/lib/msf-blocks/paragraph/msf-block-paragraph.class.php:60
+#: includes/lib/msf-blocks/paragraph/msf-block-paragraph.class.php:51
 msgid "Paragraph"
 msgstr ""
 

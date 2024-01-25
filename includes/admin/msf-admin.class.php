@@ -57,7 +57,7 @@ class Mondula_Form_Wizard_Admin {
 				'removeSection' => __('Remove section', 'multi-step-form'),
 				'removeBlock' => __('Remove element', 'multi-step-form'),
 				'multiChoice' => __('Multi-Select uses checkboxes. Single-Select has radio-buttons.', 'multi-step-form'),
-				'paragraph' => __('Provide a static text block for explanations or additional info. You can use HTML for formatting.', 'multi-step-form'),
+				'paragraph' => __('Provide a static text block for explanations or additional info.', 'multi-step-form'),
 				'dateformat' => __('Click for date format specifications', 'multi-step-form'),
 			),
 			'alerts' => array(
@@ -100,7 +100,7 @@ class Mondula_Form_Wizard_Admin {
 				'placeholder' => __('Set placeholder', 'multi-step-form'),
 			),
 			'paragraph' => array(
-				'textHtml' => __('Text/HTML', 'multi-step-form'),
+				'textHtml' => __('Text', 'multi-step-form'),
 				'text' => __('Paragraph text', 'multi-step-form'),
 			),
 			'media' => array(
