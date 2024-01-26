@@ -600,13 +600,13 @@ jQuery(document).ready(function ($) {
 				return false;
 			}
 			if (minimum !== undefined && parseInt(minimum, 10) !== NaN) {
-				if (parseInt(minimum, 10) > numericValue) {
+				if (parseInt(minimum, 10) > numeric.length) {
 					$element.addClass('fw-block-invalid');
 					return false;
 				}
 			}
 			if (maximum !== undefined && parseInt(maximum, 10) !== NaN) {
-				if (parseInt(maximum, 10) < numericValue) {
+				if (parseInt(maximum, 10) < numeric.length) {
 					$element.addClass('fw-block-invalid');
 					return false;
 				}
