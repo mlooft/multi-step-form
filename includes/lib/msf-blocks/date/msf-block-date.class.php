@@ -12,6 +12,7 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 	private $_label;
 	private $_required;
 	private $_format;
+	private $_allowfuturedates;
 
 	protected static $type = "fw-date";
 
@@ -21,7 +22,7 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 	 * @param boolean $required The If true, Input for this field is required.
 	 * @param string $format The Format the Date will be shown in.
 	 */
-	public function __construct ($label, $required, $format) {
+	public function __construct ($label, $required, $format, $allowfuturedates = true) {
 		$this->_label = $label;
 		$this->_required = $required;
 		if (!empty($format)) {
@@ -29,6 +30,7 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 		} else {
 			$this->_format = 'yy-mm-dd';
 		}
+		$this->_allowfuturedates = $allowfuturedates;
 	}
 
 	public function render($ids) {
@@ -50,7 +52,8 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 			'type' => 'date',
 			'label' => $this->_label,
 			'required' => $this->_required,
-			'format' => $this->_format
+			'format' => $this->_format,
+			'allowfuturedates' => $this->_allowfuturedates
 		);
 	}
 
@@ -58,7 +61,8 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 		$label = $aa['label'];
 		$required = $aa['required'];
 		$format = $aa['format'];
-		return new Mondula_Form_Wizard_Block_Date($label, $required, $format);
+		$allowfuturedates = $aa['allowfuturedates'];
+		return new Mondula_Form_Wizard_Block_Date($label, $required, $format, $allowfuturedates);
 	}
 
 	public static function addType($types) {
