@@ -1055,7 +1055,7 @@ declare var wp: any;
 
 		log('titleOnChangeU', $this.val());
 
-		$this.closest('.postbox').find('h1 > span').html($this.val().toString());
+		$this.closest('.postbox').find('h1 > span').text($this.val().toString());
 	}
 
 
