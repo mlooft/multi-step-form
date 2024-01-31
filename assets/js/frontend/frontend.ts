@@ -629,6 +629,35 @@ jQuery(document).ready(function ($) {
 			$element.addClass('fw-block-invalid');
 			return false;
 		} else {
+			const allowFutureDates = $element[0].getAttribute('data-allowfuturedates') === 'true'
+			if (!allowFutureDates) {
+				const input        = $element[0].querySelector('.fw-datepicker-here')
+				const dateFormat   = input.getAttribute('data-dateformat')
+				let day, month, year
+				switch (dateFormat) {
+					case 'yy-mm-dd':
+						[year, month, day] = input.value.split('-')
+						break
+					case 'dd-mm-yy':
+						[day, month, year] = input.value.split('-')
+						break
+					case 'yy/mm/dd':
+						[year, month, day] = input.value.split('/')
+						break
+					case 'dd/mm/yy':
+						[day, month, year] = input.value.split('/')
+						break
+					default:
+						throw new Error('Future dates are not allowed, but the chosen date could not be parsed')
+				}
+				const chosenDate  = Date.parse(`${year}-${month}-${day}T00:00:00.000`)
+				const today       = new Date()
+				const thisMonth   = today.getMonth() < 9 ? `0${today.getMonth() + 1}` : today.getMonth() + 1
+				const formatToday = Date.parse(
+					`${today.getFullYear()}-${thisMonth}-${today.getDate()}T00:00:00.000`
+				)
+				return chosenDate < (formatToday + 86400000)
+			}
 			return true;
 		}
 	}

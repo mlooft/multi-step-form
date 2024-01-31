@@ -36,7 +36,7 @@ class Mondula_Form_Wizard_Block_Date extends Mondula_Form_Wizard_Block {
 	public function render($ids) {
 		$locale = substr(get_locale(), 0, 2) === 'de' ? 'de' : 'en'; // TODO this is possibly not a good idea
 		?>
-		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-date" data-required="<?php echo $this->_required; ?>">
+		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-date" data-required="<?php echo $this->_required; ?>" data-allowfuturedates="<?php echo $this->_allowfuturedates; ?>">
 			<div class="fw-input-container">
 				<label for="msf-date-<?php echo str_replace(' ', '-', strtolower($this->_label)); ?>"><h3><?php echo $this->_label ?></h3></label>
 				<input type="text" id="msf-date-<?php echo str_replace(' ', '-', strtolower($this->_label)); ?>"  class="fw-text-input fw-datepicker-here" data-id="date" data-language="<?php echo $locale; ?>" data-dateformat="<?php echo esc_attr($this->_format) ?>">
