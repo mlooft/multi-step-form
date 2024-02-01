@@ -47,8 +47,8 @@
                         <input 
                             type="hidden"
                             class="msf-recaptcha-token"
-                            data-sitekey="<?php echo $captcha_key; ?>"
-                            data-invisible="<?php echo $captcha_invisible ? "true" : "false"; ?>"
+                            data-sitekey="<?php echo esc_attr($captcha_key); ?>"
+                            data-invisible="<?php echo esc_attr($captcha_invisible) ? "true" : "false"; ?>"
                         >
                         <br/><br/>
                         <div 
