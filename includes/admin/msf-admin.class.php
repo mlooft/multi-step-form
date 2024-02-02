@@ -281,22 +281,73 @@ class Mondula_Form_Wizard_Admin {
 		<?php
 	}
 
-	private function import_json($json) {
-		$aa = json_decode($json, true);
-		if (!$aa) {
-			$this->notice('error', __('Invalid JSON-File. Check your syntax.', 'multi-step-form'));
-		} else {
-			if (!class_exists('Multi_Step_Form_Plus')) {
-				$step_count = count($aa['wizard']['steps']);
-				for ($i = 0; $i < $step_count; $i++) {
-					if ($i > 4) {
-						unset($aa['wizard']['steps'][ $i ]);
-					}
-				}
-			}
-			$this->_wizard_service->save(0, $aa);
-		}
-	}
+	function sanitize_json_data($data) {
+    
+        // Sanitizing the wizard title
+        $data['wizard']['title'] = sanitize_text_field($data['wizard']['title']);
+    
+        foreach ($data['wizard']['steps'] as &$step) {
+            // Sanitize step fields
+            $step['title'] = sanitize_text_field($step['title']);
+            $step['headline'] = sanitize_text_field($step['headline']);
+            $step['copy_text'] = sanitize_text_field($step['copy_text']);
+    
+            foreach ($step['parts'] as &$part) {
+                // Sanitize part title
+                $part['title'] = sanitize_text_field($part['title']);
+    
+                foreach ($part['blocks'] as &$block) {
+                
+                    if (isset($block['label'])) {
+                        $block['label'] = sanitize_text_field($block['label']);
+                    }
+    
+                    if (isset($block['customError'])) {
+                        $block['customError'] = sanitize_text_field($block['customError']);
+                    }
+                    if (isset($block['text'])) {
+                        $block['text'] = sanitize_text_field($block['text']);
+                    }
+                    if (isset($block['elements'])) {
+                        $block['elements'] = array_map('sanitize_text_field', $block['elements']);
+                    }
+                
+                }
+            }
+        }
+    
+        // Sanitize settings fields
+        $settings_fields = ['thankyou', 'to', 'frommail', 'fromname', 'subject', 'header', 'headers', 'replyto', 'usercopy', 'optin', 'optin_success', 'replacements'];
+        foreach ($settings_fields as $field) {
+            if (isset($data['wizard']['settings'][$field])) {
+                $data['wizard']['settings'][$field] = sanitize_text_field($data['wizard']['settings'][$field]);
+            }
+        }
+    
+        // Return the sanitized array directly
+        return $data;
+    }
+    
+    private function import_json($json) {
+        $aa = json_decode($json, true);
+        if (!$aa) {
+            $this->notice('error', __('Invalid JSON-File. Check your syntax.', 'multi-step-form'));
+        } else {
+            // Sanitize the JSON data
+            $sanitizedData = $this->sanitize_json_data($aa); // because $aa is the array
+    
+            if (!class_exists('Multi_Step_Form_Plus')) {
+                $step_count = count($aa['wizard']['steps']);
+                for ($i = 0; $i < $step_count; $i++) {
+                    if ($i > 4) {
+                        unset($aa['wizard']['steps'][$i]);
+                    }
+                }
+            }
+            // Proceed to save the sanitized data
+            $this->_wizard_service->save(0, $sanitizedData);
+        }
+    }
 
 	private function handle_json_upload() {
 		if (isset($_FILES['json-import'])) {
