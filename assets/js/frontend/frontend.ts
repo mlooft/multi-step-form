@@ -650,6 +650,8 @@ jQuery(document).ready(function ($) {
 					default:
 						throw new Error('Future dates are not allowed, but the chosen date could not be parsed')
 				}
+				day = Number(day) < 10 ? `0${Number(day)}` : Number(day)
+				month = Number(month) < 10 ? `0${Number(month)}` : Number(month)
 				const chosenDate  = Date.parse(`${year}-${month}-${day}T00:00:00.000`)
 				const today       = new Date()
 				const thisMonth   = today.getMonth() < 9 ? `0${today.getMonth() + 1}` : today.getMonth() + 1
