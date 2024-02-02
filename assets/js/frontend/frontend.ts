@@ -653,8 +653,9 @@ jQuery(document).ready(function ($) {
 				const chosenDate  = Date.parse(`${year}-${month}-${day}T00:00:00.000`)
 				const today       = new Date()
 				const thisMonth   = today.getMonth() < 9 ? `0${today.getMonth() + 1}` : today.getMonth() + 1
+				const thisDate    = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate()
 				const formatToday = Date.parse(
-					`${today.getFullYear()}-${thisMonth}-${today.getDate()}T00:00:00.000`
+					`${today.getFullYear()}-${thisMonth}-${thisDate}T00:00:00.000`
 				)
 				return chosenDate < (formatToday + 86400000)
 			}
