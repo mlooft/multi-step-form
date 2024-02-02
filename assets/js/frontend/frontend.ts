@@ -657,6 +657,9 @@ jQuery(document).ready(function ($) {
 				const formatToday = Date.parse(
 					`${today.getFullYear()}-${thisMonth}-${thisDate}T00:00:00.000`
 				)
+				if (chosenDate >= (formatToday + 86400000)) {
+					alert(msfAjax.i18n.errors.noFutureDates)
+				}
 				return chosenDate < (formatToday + 86400000)
 			}
 			return true;

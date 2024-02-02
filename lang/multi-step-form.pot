@@ -928,3 +928,7 @@ msgstr ""
 #: includes/msf.class.php:172
 msgid "Emails provided don't match!"
 msgstr ""
+
+#: includes/msf.class.php:173
+msgid "No future dates allowed"
+msgstr ""
