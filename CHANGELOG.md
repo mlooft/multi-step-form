@@ -1,6 +1,12 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.16
+* fixed a problem with the recaptcha form
+
+## 1.7.15
+* frontend step title bug fix
+
 ## 1.7.14
 * removed option to add HTML to Paragraph block
 
