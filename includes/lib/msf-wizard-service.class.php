@@ -22,7 +22,6 @@ class Mondula_Form_Wizard_Wizard_Service {
 		$row = $this->_repository->find_by_id($id);
 		if ($row)
 		{
-			file_put_contents('test.txt', var_export(Mondula_Form_Wizard_Wizard::from_aa(json_decode($row->json, true), $this->_plugin_version, $row->version), true));
 			return Mondula_Form_Wizard_Wizard::from_aa(json_decode($row->json, true), $this->_plugin_version, $row->version);
 		} else {
 			return null;
