@@ -86,6 +86,7 @@ class Mondula_Form_Wizard_Admin {
 			'label' => __('Label', 'multi-step-form'),
 			'multifile' => __('Multiple Files', 'multi-step-form'),
 			'dateformat' => __('Date Format', 'multi-step-form'),
+			'allowfuturedates' => __('Allow future dates', 'multi-step-form'),
 			'required' => __('Required', 'multi-step-form'),
 			'radio' => array(
 				'header' => __('Header', 'multi-step-form'),
