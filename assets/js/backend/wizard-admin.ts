@@ -258,9 +258,12 @@ declare var wp: any;
 	}
 
 	function renderTextArea(block) {
+		console.log(block)
 		var textAreaHtml = '';
 		textAreaHtml += '<label>' + wizard.i18n.label + '</label>';
 		textAreaHtml += '<input type="text" class="fw-textarea-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + escapeHtml(block.label) + '"></input><br/>';
+		textAreaHtml += '<label>' + wizard.i18n.description + '</label>';
+		textAreaHtml += `<textarea cols="3" class="fw-textarea-desc" style="width: 100%;">${block.description === undefined ? '' : block.description}</textarea>`
 		textAreaHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		return textAreaHtml;
 	}
@@ -669,6 +672,7 @@ declare var wp: any;
 	function getTextareaData($text, text) {
 		text['label'] = $text.find('.fw-textarea-label').val();
 		text['required'] = $text.find('.fw-required').prop('checked');
+		text['description'] = $text.find('.fw-textarea-desc').val()
 	}
 
 	function getParagraphData($text, text) {

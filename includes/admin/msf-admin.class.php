@@ -84,6 +84,7 @@ class Mondula_Form_Wizard_Admin {
 			'addSection' => __('Add Section', 'multi-step-form'),
 			'addElement' => __('Add Element', 'multi-step-form'),
 			'label' => __('Label', 'multi-step-form'),
+			'description' => __('Description', 'multi-step-form'),
 			'multifile' => __('Multiple Files', 'multi-step-form'),
 			'dateformat' => __('Date Format', 'multi-step-form'),
 			'allowfuturedates' => __('Allow future dates', 'multi-step-form'),
