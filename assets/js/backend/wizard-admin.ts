@@ -253,13 +253,17 @@ declare var wp: any;
 		dateHtml += '<label>' + wizard.i18n.dateformat + '<a target="_blank" href="http://t1m0n.name/air-datepicker/docs/#sub-section-9"><i class="fa fa-info-circle" aria-hidden="true" title="' + wizard.i18n.tooltips.dateformat + '"></i></a></label>';
 		dateHtml += '<input type="text" class="fw-date-format fw-block-label" placeholder="' + wizard.i18n.dateformat + '" value="' + escapeHtml(block.format ? block.format : 'yy-mm-dd') + '" ></input><br/>';
 		dateHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
+		dateHtml += '<label><input type="checkbox" class="fw-allowfuturedates"' + isChecked(block.allowfuturedates) + '/>' + wizard.i18n.allowfuturedates + '</label>';
 		return dateHtml;
 	}
 
 	function renderTextArea(block) {
+		console.log(block)
 		var textAreaHtml = '';
 		textAreaHtml += '<label>' + wizard.i18n.label + '</label>';
 		textAreaHtml += '<input type="text" class="fw-textarea-label fw-block-label" placeholder="' + wizard.i18n.label + '" value="' + escapeHtml(block.label) + '"></input><br/>';
+		textAreaHtml += '<label>' + wizard.i18n.description + '</label>';
+		textAreaHtml += `<textarea cols="3" class="fw-textarea-desc" style="width: 100%;">${block.description === undefined ? '' : block.description}</textarea>`
 		textAreaHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		return textAreaHtml;
 	}
@@ -662,11 +666,13 @@ declare var wp: any;
 		text['label'] = $text.find('.fw-text-label').val();
 		text['format'] = $text.find('.fw-date-format').val();
 		text['required'] = $text.find('.fw-required').prop('checked');
+		text['allowfuturedates'] = $text.find('.fw-allowfuturedates').prop('checked');
 	}
 
 	function getTextareaData($text, text) {
 		text['label'] = $text.find('.fw-textarea-label').val();
 		text['required'] = $text.find('.fw-required').prop('checked');
+		text['description'] = $text.find('.fw-textarea-desc').val()
 	}
 
 	function getParagraphData($text, text) {

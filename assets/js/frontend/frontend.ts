@@ -600,13 +600,13 @@ jQuery(document).ready(function ($) {
 				return false;
 			}
 			if (minimum !== undefined && parseInt(minimum, 10) !== NaN) {
-				if (parseInt(minimum, 10) > numericValue) {
+				if (parseInt(minimum, 10) > numeric.length) {
 					$element.addClass('fw-block-invalid');
 					return false;
 				}
 			}
 			if (maximum !== undefined && parseInt(maximum, 10) !== NaN) {
-				if (parseInt(maximum, 10) < numericValue) {
+				if (parseInt(maximum, 10) < numeric.length) {
 					$element.addClass('fw-block-invalid');
 					return false;
 				}
@@ -629,6 +629,41 @@ jQuery(document).ready(function ($) {
 			$element.addClass('fw-block-invalid');
 			return false;
 		} else {
+			const allowFutureDates = $element[0].getAttribute('data-allowfuturedates') === 'true'
+			if (!allowFutureDates) {
+				const input        = $element[0].querySelector('.fw-datepicker-here')
+				const dateFormat   = input.getAttribute('data-dateformat')
+				let day, month, year
+				switch (dateFormat) {
+					case 'yy-mm-dd':
+						[year, month, day] = input.value.split('-')
+						break
+					case 'dd-mm-yy':
+						[day, month, year] = input.value.split('-')
+						break
+					case 'yy/mm/dd':
+						[year, month, day] = input.value.split('/')
+						break
+					case 'dd/mm/yy':
+						[day, month, year] = input.value.split('/')
+						break
+					default:
+						throw new Error('Future dates are not allowed, but the chosen date could not be parsed')
+				}
+				day = Number(day) < 10 ? `0${Number(day)}` : Number(day)
+				month = Number(month) < 10 ? `0${Number(month)}` : Number(month)
+				const chosenDate  = Date.parse(`${year}-${month}-${day}T00:00:00.000`)
+				const today       = new Date()
+				const thisMonth   = today.getMonth() < 9 ? `0${today.getMonth() + 1}` : today.getMonth() + 1
+				const thisDate    = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate()
+				const formatToday = Date.parse(
+					`${today.getFullYear()}-${thisMonth}-${thisDate}T00:00:00.000`
+				)
+				if (chosenDate >= (formatToday + 86400000)) {
+					alert(msfAjax.i18n.errors.noFutureDates)
+				}
+				return chosenDate < (formatToday + 86400000)
+			}
 			return true;
 		}
 	}
