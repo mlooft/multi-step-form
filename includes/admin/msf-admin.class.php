@@ -193,6 +193,11 @@ class Mondula_Form_Wizard_Admin {
 		$email_result = false;
 		if (isset($_POST['testmail-submit']) && isset($_POST['testmail-receiver']))
 		{
+			if (!wp_verify_nonce($_POST['testmail_nonce'], 'testmail_action')) {
+				// Handle nonce verification failure
+				wp_die(__('Nonce verification failed.', 'multi-step-form'));
+			}
+
 			$this->_troubleshoot_mail_error = "";
 			$testmail = true;
 			$dest_email = sanitize_email($_POST['testmail-receiver']);
@@ -351,6 +356,11 @@ class Mondula_Form_Wizard_Admin {
 
 	private function handle_json_upload() {
 		if (isset($_FILES['json-import'])) {
+
+			if (!isset($_POST['json_upload_nonce']) || !wp_verify_nonce($_POST['json_upload_nonce'], 'json_upload_action')) {
+				wp_die('Security check failed');
+			}
+
 			$overrides = array(
 				'test_form' => false,
 				'test_type' => false // WordPress is too restricted to easily allow json upload
@@ -453,6 +463,13 @@ class Mondula_Form_Wizard_Admin {
 	 * Saves a Form after editing in the admin form builder.
 	 */
 	public function save() {
+
+		// First, check if the user has the 'edit_posts' capability.
+		if (!current_user_can('edit_posts')) {
+			wp_send_json_error(array('msg' => 'Unauthorized action.'));
+			return;
+		}
+
 		$_POST = stripslashes_deep($_POST);
 		$id = isset($_POST['id']) ? intval($_POST['id']) : '';
 		$nonce = isset($_POST['nonce']) ? $_POST['nonce'] : '';

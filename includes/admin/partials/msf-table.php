@@ -15,6 +15,7 @@
     <h2><?php echo __('Import a Form', 'multi-step-form'); ?></h2>
     <form id="msf-import" method="post" enctype="multipart/form-data">
         <input type='file' id='json-import' name='json-import' accept='application/json,.json'>
+        <?php wp_nonce_field('json_upload_action', 'json_upload_nonce'); ?>
         <input name="submit" id="submit" class="button button-primary" value="<?php echo __('Upload & Import', 'multi-step-form'); ?>" type="submit">
     </form>
 </div>

@@ -1,6 +1,12 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.18
+* security patch
+
+## 1.7.17
+* json form sanitization
+
 ## 1.7.16
 * fixed a problem with the recaptcha form
 

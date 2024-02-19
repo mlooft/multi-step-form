@@ -11,6 +11,7 @@
     <form id="msf-testmail" method="post">
         <label for="testmail-receiver">Send to: </label>
         <input type="email" name="testmail-receiver" id="testmail-receiver" required>
+        <?php wp_nonce_field('testmail_action', 'testmail_nonce'); ?>
         <input name="testmail-submit" class="button button-primary" value="<?php echo __('Send Testmail', 'multi-step-form'); ?>" type="submit">
     </form>
 
