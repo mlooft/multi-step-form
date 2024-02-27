@@ -130,6 +130,10 @@ class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
 
 			case 'delete':
 				// wp_die('Delete something');
+				if ( !check_admin_referer('bulk-delete-action', 'bulk_delete_nonce')) {
+					wp_die('Security check failed. Please try again.');
+					break;
+				}
 				$wizard_ids = $_GET['wizard'];
 				foreach ($wizard_ids as $wizard_id) {
 					$this->_wizard_service->delete($wizard_id);

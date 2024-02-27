@@ -1,6 +1,9 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.19
+* bugfix
+
 ## 1.7.18
 * security patch
 

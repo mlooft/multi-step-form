@@ -10,6 +10,7 @@
     </h2>
     <form id="fw-wizard-table" method="get">
         <input type="hidden" name="page" value="mondula-multistep-forms" />
+        <?php wp_nonce_field('bulk-delete-action', 'bulk_delete_nonce'); ?>
         <?php $table->display(); ?>
     </form>
     <h2><?php echo __('Import a Form', 'multi-step-form'); ?></h2>
