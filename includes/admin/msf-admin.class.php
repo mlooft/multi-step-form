@@ -88,6 +88,7 @@ class Mondula_Form_Wizard_Admin {
 			'dateformat' => __('Date Format', 'multi-step-form'),
 			'required' => __('Required', 'multi-step-form'),
 			'radio' => array(
+				'sideLabel' => __('Radio/Checkbox', 'multi-step-form'),
 				'header' => __('Header', 'multi-step-form'),
 				'option' => __('Option', 'multi-step-form'),
 				'options' => __('Options', 'multi-step-form'),
@@ -95,15 +96,41 @@ class Mondula_Form_Wizard_Admin {
 				'multiple' => __('Multiple Selection', 'multi-step-form'),
 			),
 			'select' => array(
+				'sideLabel' => __('Select/Dropdown', 'multi-step-form'),
 				'options' => __('Options (one per line)', 'multi-step-form'),
 				'search' => __('Enable search', 'multi-step-form'),
 				'placeholder' => __('Set placeholder', 'multi-step-form'),
 			),
+			'text' => array(
+				'sideLabel' => __('Text field', 'multi-step-form'),
+			),
+			'textarea' => array(
+				'sideLabel' => __('Textarea', 'multi-step-form'),
+			),
+			'email' => array(
+				'sideLabel' => __('Email', 'multi-step-form'),
+				'confirm' => __('Confirm', 'multi-step-form'),
+			),
+			'numeric' => array(
+				'sideLabel' => __('Numeric', 'multi-step-form'),
+				'minimum' => __('Minimum', 'multi-step-form'),
+				'maximum' => __('Maximum', 'multi-step-form'),
+				'no_minimum' => __('No Minimum', 'multi-step-form'),
+				'no_maximum' => __('No Maximum', 'multi-step-form'),
+			),
+			'file' => array(
+				'sideLabel' => __('File Upload', 'multi-step-form'),
+			),
+			'date' => array(
+				'sideLabel' => __('Date', 'multi-step-form'),
+			),
 			'paragraph' => array(
+				'sideLabel' => __('Paragraph', 'multi-step-form'),
 				'textHtml' => __('Text', 'multi-step-form'),
 				'text' => __('Paragraph text', 'multi-step-form'),
 			),
 			'media' => array(
+				'sideLabel' => __('Media', 'multi-step-form'),
 				'title' => __('Media', 'multi-step-form'),
 				'frame_title' => __('Select Media', 'multi-step-form'),
 				'tooltip' => __('Place an image or video in your form.', 'multi-step-form'),
@@ -112,21 +139,19 @@ class Mondula_Form_Wizard_Admin {
 				'file_name' => __('Filename', 'multi-step-form'),
 				'preview' => __('Preview', 'multi-step-form'),
 			),
+			'regex' => array(
+				'sideLabel' => __('Regex', 'multi-step-form'),
+			),
+			'get-variable' => array(
+				'sideLabel' => __('Get Variable', 'multi-step-form'),
+			),
 			'get_var' => array(
 				'get_param' => __('GET Parameter', 'multi-step-form'),
-			),
-			'numeric' => array(
-				'minimum' => __('Minimum', 'multi-step-form'),
-				'maximum' => __('Maximum', 'multi-step-form'),
-				'no_minimum' => __('No Minimum', 'multi-step-form'),
-				'no_maximum' => __('No Maximum', 'multi-step-form'),
-			),
-			'email' => array(
-				'confirm' => __('Confirm', 'multi-step-form'),
 			),
 			'filter' => __('RegEx Filter', 'multi-step-form'),
 			'filterError' => __('Custom RegEx Error Message', 'multi-step-form'),
 			'registration' => array(
+				'sideLabel' => __('Registration', 'multi-step-form'),
 				'info' => __('Please select the registration fields to be displayed to the user. Email is always required. If the user does not specify a username or password, WordPress is auto-generating these and sending them to the user via email.', 'multi-step-form'),
 				'loggedin' => __('You are already registered and logged in.', 'multi-step-form'),
 				'username' => __('Username', 'multi-step-form'),

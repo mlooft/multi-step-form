@@ -98,7 +98,7 @@ declare var wp: any;
 	function renderBlockAction(type : string) : string {
 		let blockAction = '<div class="fw-block-action fw-block-hndle">';
 		blockAction += '<i class="fa fa-arrows fw-move-block fw-block-hndle" aria-hidden="true"></i>';
-		blockAction += '<h4>' + type + '</h4>';
+		blockAction += '<h4>' + wizard.i18n[type].sideLabel + '</h4>';
 		blockAction += '</div>';
 		return blockAction;
 	}

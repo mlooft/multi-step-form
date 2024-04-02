@@ -1,6 +1,9 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.20
+* added more translation
+
 ## 1.7.19
 * bugfix
 
