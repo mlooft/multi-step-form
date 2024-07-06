@@ -9,7 +9,7 @@
     "@types/jqueryui": "^1.12.16",
     "@types/select2": "^4.0.55",
     "del": "^7.0.0",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-concat": "*",
     "gulp-debug-streams": "*",
     "gulp-less": "^5.0.0",
