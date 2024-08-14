@@ -9,9 +9,8 @@ if (!class_exists('WP_List_Table')) {
  * Table UI for Forms.
  */
 class Mondula_Form_Wizard_List_Table extends WP_LIST_TABLE {
-
+	protected $_text_domain = 'multi-step-form';
 	private $_wizard_service;
-
 
 	public function __construct(Mondula_Form_Wizard_Wizard_Service $wizard_service) {
 		parent::__construct(array(
