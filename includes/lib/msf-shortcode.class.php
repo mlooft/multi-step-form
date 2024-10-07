@@ -67,6 +67,10 @@ class Mondula_Form_Wizard_Shortcode {
 	 * a user has already uploaded files but decides to exit the form.
 	 **/
 	public function fw_delete_files() {
+		if (!current_user_can('manage_options') || !wp_verify_nonce('action', 'action')) {
+			exit;
+		}
+
 		$filenames = isset($_POST['filenames']) ? $_POST['filenames'] : array();
 		/* Sanitize File names */
 		foreach ($filenames as &$fn) {

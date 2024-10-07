@@ -1,6 +1,9 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.22
+* fixed a security issue for file upload
+
 ## 1.7.21
 * fixed a bug and tested up to bumped to 6.6.1
 
