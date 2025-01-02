@@ -97,7 +97,14 @@ class Mondula_Form_Wizard_Shortcode {
 	 * Temporarily upload a file to wp-content/uploads/msf-temp directory.
 	 * The file remains on the server until the form is submitted by the client.
 	 **/
-	 public function fw_upload_file() {
+	public function fw_upload_file()
+	{
+		// Add nonce verification
+		if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'my_action_nonce')) {
+			wp_send_json_error('Nonce verification failed');
+			return;
+		}
+
 		$tempdir = wp_upload_dir();
 		$upload_overrides = array(
 			'test_form' => false,

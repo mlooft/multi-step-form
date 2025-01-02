@@ -1001,6 +1001,7 @@ jQuery(document).ready(function ($) {
 		var formData = new FormData();
 
 		formData.append('action', 'fw_upload_file');
+		formData.append('nonce', msfAjax.nonce);
 		for (var i = 0; i < files.length; i++) {
 			formData.append('file' + i, files[i]);
 		}
