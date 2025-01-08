@@ -25,7 +25,10 @@ class Mondula_Form_Wizard_Block_Paragraph extends Mondula_Form_Wizard_Block {
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-paragraph">
 			<div class="fw-paragraph-container">
-				<p><?php echo $GLOBALS['wp_embed']->run_shortcode($this->_text); ?></p>
+				<?php 
+				$content = htmlspecialchars_decode($this->_text, ENT_QUOTES | ENT_HTML5);
+				echo wp_kses_post($GLOBALS['wp_embed']->run_shortcode($content)); 
+				?>
 			</div>
 			<div class="fw-clearfix"></div>
 		</div>
@@ -35,7 +38,7 @@ class Mondula_Form_Wizard_Block_Paragraph extends Mondula_Form_Wizard_Block {
 	public function as_aa() {
 		return array(
 			'type' => 'paragraph',
-			'text' => str_replace('&quot;', '"', $this->_text)
+			'text' => htmlspecialchars_decode($this->_text, ENT_QUOTES | ENT_HTML5)
 		);
 	}
 

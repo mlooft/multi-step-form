@@ -86,7 +86,9 @@ declare var wp: any;
 			.replace(/</g, "&lt;")
 			.replace(/>/g, "&gt;")
 			.replace(/"/g, "&quot;")
-			.replace(/'/g, "&#039;");
+			.replace(/'/g, "&#039;")
+			// Unescape allowed tags: <b>, <a href="">, <br>
+			.replace(/&lt;(\/?b|a href=["']?[^"'>]*["']?|br)>/g, "<$1>");
 	}
 
 	/**
@@ -263,11 +265,17 @@ declare var wp: any;
 		textAreaHtml += '<label><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		return textAreaHtml;
 	}
-
 	function renderParagraph(block) {
 		var paragraphHtml = '';
 		paragraphHtml += '<label>' + wizard.i18n.paragraph.textHtml + ' <i class="fa fa-info-circle" aria-hidden="true" title="' + wizard.i18n.tooltips.paragraph + '"></i></label>';
-		paragraphHtml += '<textarea class="fw-paragraph-text fw-block-label" placeholder="' + wizard.i18n.paragraph.text + '">' + (block.text ? block.text : '') + '</textarea>';
+		paragraphHtml += `
+			<div class="fw-paragraph-toolbar">
+				<button type="button" class="fw-bold-btn">B</button>
+				<button type="button" class="fw-link-btn">Link</button>
+			</div>
+			<div class="fw-textarea  fw-paragraph-text fw-block-label" contenteditable="true" placeholder="${wizard.i18n.paragraph.text}">${
+			block.text ? (block.text) : ''
+		}</div>`;
 		paragraphHtml += '<label style="display:none;"><input type="checkbox" class="fw-required"' + isChecked(block.required) + '/>' + wizard.i18n.required + '</label>';
 		return paragraphHtml;
 	}
@@ -670,7 +678,8 @@ declare var wp: any;
 	}
 
 	function getParagraphData($text, text) {
-		text['text'] = $text.find('.fw-paragraph-text').val();
+		let content = $text.find('.fw-paragraph-text').html();	
+		text['text'] = escapeHtml(content);	
 	}
 
 	function getMediaData($text, text) {
@@ -932,6 +941,61 @@ declare var wp: any;
 		}
 	}
 
+	/**
+	 * Sets up the paragraph HTML editor functionality including keyboard shortcuts and formatting buttons
+	 */
+	function setupParagraphHtml() {
+		$('.fw-paragraph-text').on('keydown', function(e) {
+			if (e.key === 'Enter') {
+				e.preventDefault();
+
+				var selection = window.getSelection();
+				var range = selection.getRangeAt(0);
+				var anchor = selection.anchorNode.parentElement.closest('a');
+				var br = document.createElement('br');
+
+				if (anchor) {
+					// Exit the link by inserting a <br> after it
+					anchor.parentNode.insertBefore(br, anchor.nextSibling);
+				} else {
+					// Normal behavior: insert a <br> at the caret position
+					range.insertNode(br);
+				}
+
+				range.setStartAfter(br);
+				range.setEndAfter(br);
+				selection.removeAllRanges();
+				selection.addRange(range);
+			}
+		});
+
+		$('.fw-bold-btn').click(function() {
+			document.execCommand('bold');
+		});
+
+		$('.fw-link-btn').click(function() {
+			var selection = window.getSelection();
+			var range = selection.getRangeAt(0);
+			var anchor = selection.anchorNode.parentElement.closest('a');
+
+			if (selection.isCollapsed) {
+				alertMessage(wizard.i18n.alerts.selectText, false);
+				return;
+			}
+
+			if (anchor) {
+				// If already a link, remove it
+				document.execCommand('unlink');
+			} else {
+				// If not a link, prompt for URL and add link
+				var url = prompt('Enter the URL:', 'https://');
+				if (url) {
+					document.execCommand('createLink', false, url);
+				}
+			}
+		});
+	}
+	
     /**
      * setupDragNDrop - prepare the draggables, sortables and droppables
      *
@@ -1675,6 +1739,7 @@ declare var wp: any;
 			setupThickbox();
 			setupClickHandlers();
 			setupMedia($container);
+			setupParagraphHtml();
 			if (typeof msfp !== 'undefined' && msfp) {
 				setupConditionals(-1);
 			}
