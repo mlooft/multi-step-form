@@ -1,6 +1,9 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.24
+* added bold and link functionality to the paragraph block
+
 ## 1.7.23
 * fixed a security issue for file upload
 

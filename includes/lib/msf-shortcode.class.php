@@ -97,11 +97,39 @@ class Mondula_Form_Wizard_Shortcode {
 	 * Temporarily upload a file to wp-content/uploads/msf-temp directory.
 	 * The file remains on the server until the form is submitted by the client.
 	 **/
-	public function fw_upload_file()
-	{
-		// Add nonce verification
+	public function fw_upload_file() {
+		// Keep nonce verification
 		if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'my_action_nonce')) {
 			wp_send_json_error('Nonce verification failed');
+			return;
+		}
+
+		$id = isset($_POST['id']) ? intval($_POST['id']) : '';
+		
+		// Get and decode form JSON
+		$form_data = json_decode($this->_wizard_service->get_as_json($id), true);
+		
+		// Check if form contains file upload field
+		$has_file_upload = false;
+		if (isset($form_data['wizard']['steps'])) {
+			foreach ($form_data['wizard']['steps'] as $step) {
+				if (isset($step['parts'])) {
+					foreach ($step['parts'] as $part) {
+						if (isset($part['blocks'])) {
+							foreach ($part['blocks'] as $block) {
+								if (isset($block['type']) && $block['type'] === 'file') {
+									$has_file_upload = true;
+									break 3;  // Exit all loops once we find a file upload
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if (!$has_file_upload) {
+			wp_send_json_error('This form does not contain a file upload field');
 			return;
 		}
 

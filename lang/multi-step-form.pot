@@ -237,7 +237,7 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:128, includes/lib/msf-blocks/paragraph/msf-block-paragraph.class.php:51
+#: includes/admin/msf-admin.class.php:128, includes/lib/msf-blocks/paragraph/msf-block-paragraph.class.php:54
 msgid "Paragraph"
 msgstr ""
 
