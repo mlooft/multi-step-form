@@ -38,7 +38,7 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
 		$group = $this->generate_id($ids);
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-select" data-required="<?php echo $this->_required; ?>">	
-			<label for="msf-select-<?php echo str_replace(' ', '-', strtolower($this->_label)); ?>"><h3><?php echo $this->_label ?></h3></label>
+			<label for="msf-select-<?php echo str_replace(' ', '-', strtolower($this->_label)); ?>"><span class="h3"><?php echo $this->_label ?></span></label>
 			<select class="fw-select" 
 				data-search="<?php echo $this->_search?>" 
 				data-placeholder="<?php echo $this->_placeholder?>" 

@@ -136,7 +136,7 @@ jQuery(document).ready(function ($) {
 	}
 
 	function textSummary(summaryObj, $block, title, required) {
-		const header = $block.find('h3').first().text();
+		const header = $block.find('.h3').first().text();
 		let value = $block.find('.fw-text-input').val().trim();
 		value = escapeHtml(value);
 		pushToSummary(summaryObj, title, header, value, required);
@@ -150,7 +150,7 @@ jQuery(document).ready(function ($) {
 	}
 
 	function textareaSummary(summaryObj, $block, title, required) {
-		const header = $block.find('h3').text();
+		const header = $block.find('.h3').text();
 		let value = $block.find('.fw-textarea').val().trim();
 		value = escapeHtml(value);
 		value = value.replace(/\n/g, "<br/>\n");
@@ -170,7 +170,7 @@ jQuery(document).ready(function ($) {
 	}
 
 	function radioSummary(summaryObj, $block, title, required) {
-		var header = $block.find('h3').text();
+		var header = $block.find('.h3').text();
 		var value = '';
 		$block.find('.fw-choice').each(function (idx, element) {
 			if ($(element).find('input').is(':checked')) {
@@ -184,7 +184,7 @@ jQuery(document).ready(function ($) {
 	}
 
 	function selectSummary(summaryObj, $block, title, required) {
-		var header = $block.find('h3').text();
+		var header = $block.find('.h3').text();
 		var value = $block.find('select').select2('data')[0].text;
 		pushToSummary(summaryObj, title, header, value, required);
 	}

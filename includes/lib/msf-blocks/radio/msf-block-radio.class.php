@@ -55,7 +55,8 @@ class Mondula_Form_Wizard_Block_Radio extends Mondula_Form_Wizard_Block {
 				}
 				} else if ($element['type'] === 'header') {
 					?>
-					<h3><?php echo $element['value']; ?></h3>
+					<span class="h3"><?php echo $element['value']; ?></span>
+					<br>
 					<?php
 				}
 			}

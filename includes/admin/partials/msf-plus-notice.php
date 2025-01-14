@@ -24,14 +24,14 @@
         border: 1px solid #ddd;
     }
 
-    #sidebar h2 {
+    #sidebar .h2 {
         font-size: 22px;
         font-weight: 400;
         margin: 10px 0px 20px 0px;
         color:#00b0a4;
     }
 
-    #sidebar h4 {
+    #sidebar .h4 {
         margin: 20px 0px 0px 0px;
         color:#ff6d00;
     }
@@ -49,16 +49,16 @@
 <div class="msf_content_cell" id="msf-sidebar-container">
     <div id="sidebar">
         <div>
-            <h2>Multi Step Form Plus</h2>
-            <h4>Up to 10 steps</h4>
+            <span class="h2">Multi Step Form Plus</span>
+            <span class="h4">Up to 10 steps</span>
             <p>
                 You can now divide your form in up to 10 Steps.
             </p>
-            <h4>Save and export Form Data</h4>
+            <span class="h4">Save and export Form Data</span>
             <p>
                 With PLUS, you can save filled forms in the database and export them as CSV
             </p>
-            <h4>Conditional fields</h4>
+            <span class="h4">Conditional fields</span>
             <p>
                 You want to bring more flexibility into your forms? Use conditional fields.
             </p>

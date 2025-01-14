@@ -280,7 +280,7 @@ class Mondula_Form_Wizard_Settings {
 		$this->settings_api->show_navigation();
 		if (!is_plugin_active('multi-step-form-plus/multi-step-form-plus.php')) {
 			echo '<div class="notice notice-info msf-notice" style="border-left-color: #ff6d00;	margin: 20px 0;	border-width: 8px; padding: 15px 10px;">
-				<h2>Multi Step Form Plus</h2> 
+				<span class="h2">Multi Step Form Plus</span> 
 				<p>
 					Our first extension for Multi Step Form is now available. <br>
 					Get new features, such as "conditional fields", "up to 10 steps", "save form data" and more... 

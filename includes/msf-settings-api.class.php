@@ -366,11 +366,11 @@ class Mondula_Form_Wizard_Settings_API {
 	 * Shows all the settings section labels as tab
 	 */
 	function show_navigation() {
-		$html = '<h2 class="nav-tab-wrapper">';
+		$html = '<span class="h2 nav-tab-wrapper">';
 		foreach ( $this->settings_sections as $tab ) {
 			$html .= sprintf( '<a href="#%1$s" class="nav-tab" id="%1$s-tab">%2$s</a>', $tab['id'], $tab['title'] );
 		}
-		$html .= '</h2>';
+		$html .= '</span>';
 		echo $html;
 	}
 	/**

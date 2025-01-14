@@ -241,6 +241,13 @@
 	.fw-conditional-then.fw-selected {
 		visibility: visible;
 	}
+	.fw-select{
+		width: 100%;
+		height: 40px;
+		background-color: #fff;
+		border-radius: 0px;
+		border: 1px solid #ddd;
+	}
 	.fw-step-block {
 		margin-bottom: 40px;
 		&:last-child {
@@ -356,7 +363,7 @@
 		}
 	}
 	div[data-required="true"] {
-			h3 {
+			.h3 {
 				&:after {
 					content: "*";
 					color: @color_user-fail;
@@ -399,7 +406,7 @@
 	.fw-wizard-step-header {
 		height: 0;
 		overflow: hidden;
-		h2 {
+		.h2 {
 			font-size: 2.5em;
 			font-family: inherit;
 			line-height:1.2;
@@ -409,7 +416,7 @@
 		    font-family: inherit;
 		}
 	}
-	h2.fw-step-part-title {
+	.fw-step-part-title {
 		float: left;
 		margin:0px 20px 20px 20px;
 		font-size: 1.8em;
@@ -417,7 +424,7 @@
 		line-height:1.2;
 	}
 	.fw-wizard-step-container {
-	    h3 {
+	    .h3 {
 	        font-weight:normal;
 	        font-size: 1.2em;
 	        margin:10px 0px 10px 0px;
@@ -515,7 +522,7 @@
 		.msfp-input-container-lastname, 
 		.msfp-input-container-website, 
 		.msfp-input-container-bio {
-			h3::after {
+			.h3::after {
 				content: " ";
 			}
 		}
@@ -672,7 +679,7 @@
 			padding: 30px 0px 30px 0px;
 			border-left: 55px solid #546e7a;
 		}
-		.fw-wizard-step-header h2 {
+		.fw-wizard-step-header .h2 {
 			margin: 0 0 25px;
 			line-height:1.4;
 		}
@@ -687,11 +694,11 @@
 		.select2.select2-container.select2-container--default{
 			width: 50% !important;
 		}
-		h2.fw-step-part-title {
+		.fw-step-part-title {
 			margin:0px 20px 20px 20px!important;
 		}
 		.fw-wizard-step-container {
-			h3 {
+			.h3 {
 				margin:10px 0px 10px 0px;
 			}
 		}

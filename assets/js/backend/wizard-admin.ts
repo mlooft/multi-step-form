@@ -100,7 +100,7 @@ declare var wp: any;
 	function renderBlockAction(type : string) : string {
 		let blockAction = '<div class="fw-block-action fw-block-hndle">';
 		blockAction += '<i class="fa fa-arrows fw-move-block fw-block-hndle" aria-hidden="true"></i>';
-		blockAction += '<h4>' + wizard.i18n[type].sideLabel + '</h4>';
+		blockAction += '<span class="h4">' + wizard.i18n[type].sideLabel + '</span>';
 		blockAction += '</div>';
 		return blockAction;
 	}
@@ -459,7 +459,7 @@ declare var wp: any;
 
 	function renderParts(parts) {
 		const partCount = parts.length;
-		let partsHtml = '<div><div class="fw-parts-header"><h3>' + wizard.i18n.sections + '</h3></div>';
+		let partsHtml = '<div><div class="fw-parts-header"><span class="h3">' + wizard.i18n.sections + '</span></div>';
 		partsHtml += '<div class="fw-column-buttons">';
 		partsHtml += '<button type="button" class="fw-button-one-column"><i class="fa fa-align-justify"></i></button>';
 		partsHtml += '<button type="button" class="fw-button-two-columns"><i class="fa fa-align-justify"></i> <i class="fa fa-align-justify"></i></button>';
@@ -514,8 +514,8 @@ declare var wp: any;
 	function renderStep(step, idx) {
 		var stepHtml = '<div class="postbox">';
 		stepHtml += '<div class="fw-movediv hndle ui-sortable-handle"><i class="fa fa-arrows"></i></div>';
-		stepHtml += '<h1 class="fw-step-h1 hndle ui-sortable-handle"><span>';
-		stepHtml += escapeHtml(step.title) + '</span></h1>';
+		stepHtml += '<span class="fw-step-h1 hndle ui-sortable-handle"><span>';
+		stepHtml += escapeHtml(step.title) + '</span></span>';
 		stepHtml += '<div class="fw-step-controls">';
 		stepHtml += '<i class="fa fa-remove fw-remove-step" title="' + wizard.i18n.tooltips.removeStep + '" aria-hidden="true"></i>';
 		stepHtml += '<i class="fa fa-caret-up fw-toggle-step" aria-hidden="true"></i>';
@@ -1119,7 +1119,7 @@ declare var wp: any;
 
 		log('titleOnChangeU', $this.val());
 
-		$this.closest('.postbox').find('h1 > span').text($this.val().toString());
+		$this.closest('.postbox').find('.fw-step-h1 > span').text($this.val().toString());
 	}
 
 
@@ -1589,11 +1589,11 @@ declare var wp: any;
 				if (Array.isArray(label)) {
 					label = label.join(" ");
 				}
-				$block.find('h4').text(label);
+				$block.find('.h4').text(label);
 				$(this).addClass('fw-icon-rotated');
 			} else {
 				var blockType = $block.data('type');
-				$block.find('h4').text(blockType);
+				$block.find('.h4').text(blockType);
 				$(this).removeClass('fw-icon-rotated');
 			}
 		});

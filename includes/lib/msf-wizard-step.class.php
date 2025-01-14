@@ -47,11 +47,11 @@ class Mondula_Form_Wizard_Wizard_Step {
 			}
 			?>
 <div class="fw-step-part <?php echo $width; echo $boxlayout; ?>" data-partId="<?php echo $i ?>">
-	<h2 class="fw-step-part-title <?php echo $hidden; ?>">
+	<span class="fw-step-part-title <?php echo $hidden; ?>">
 			<?php
 			  $part->render_title();
 			?>
-	</h2>
+	</span>
 	<div class="fw-clearfix"></div>
 	<div class="fw-step-part-body">
 			<?php
