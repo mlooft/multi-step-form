@@ -927,14 +927,21 @@ jQuery(document).ready(function ($) {
      * @param  {string} rsp the response message
      * @param  {boolean} success successful submit of fail
      */
-	function alertUser(message : string, success : boolean) {
-		$('.fw-alert-user').empty().removeClass('fw-alert-user-fail fw-alert-user-success');
+	function alertUser(message, success) {
+		$('.fw-alert-user').empty().removeClass('fw-alert-user-fail fw-alert-user-success');	
 		if (success) {
 			$('.fw-alert-user').addClass('fw-alert-user-success')
 				.append('<i class="fa fa-check-circle" aria-hidden="true"></i>');
 		} else {
 			$('.fw-alert-user').addClass('fw-alert-user-fail')
 				.append('<i class="fa fa-times-circle" aria-hidden="true"></i>');
+			// Scroll to the first error message
+			const firstError = $('.fw-block-invalid:visible').first(); // Replace '.form-error' with the actual class of your error messages
+			if (firstError.length) {
+				$('html, body').animate({
+					scrollTop: firstError.offset().top - 20 // Optional: Add offset for better visibility
+				}, 500); // 500ms scroll duration
+			}
 		}
 		$('.fw-alert-user').append(message)
 			.fadeIn().delay(2000).fadeOut();
