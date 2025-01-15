@@ -34,27 +34,42 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
 	}
 
 	public function render($ids) {
-		$cnt = count($this->_elements);
-		$group = $this->generate_id($ids);
-		?>
-		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-select" data-required="<?php echo $this->_required; ?>">	
-			<label for="msf-select-<?php echo str_replace(' ', '-', strtolower($this->_label)); ?>"><span class="h3"><?php echo $this->_label ?></span></label>
-			<select class="fw-select" 
-				data-search="<?php echo $this->_search?>" 
-				data-placeholder="<?php echo $this->_placeholder?>" 
-				data-required="<?php echo $this->_required; ?>"
-				id="msf-select-<?php echo str_replace(' ', '-', strtolower($this->_label)); ?>">
-				<option></option>
-				<?php for ($i = 0; $i < $cnt; $i++) {
-					$element = $this->_elements[$i];
-				?>
-				<option id="<?php echo $group.'-'.$i ?>" type="select" name="<?php echo $group; ?>"><?php echo $element; ?></option>
-				<?php } ?>
-			</select>
-		</div>
-		  <?php
+	    $cnt = count($this->_elements);
+	    $group = $this->generate_id($ids);
+	    $labelId = 'msf-select-label-' . str_replace(' ', '-', strtolower($this->_label));
+	    $selectId = 'msf-select-' . str_replace(' ', '-', strtolower($this->_label));
+	    ?>
+	   <div class="fw-step-block"
+	         data-blockId="<?php echo htmlspecialchars($ids[0]); ?>"
+	         data-type="fw-select"
+	         data-required="<?php echo htmlspecialchars($this->_required); ?>">
+	
+	        <label id="<?php echo $labelId; ?>">
+			<span class="h3"><?php echo htmlspecialchars($this->_label); ?></span> 
+	        </label>
+	
+	        <select class="fw-select"
+	                id="<?php echo $selectId; ?>"
+	                name="<?php echo htmlspecialchars($group); ?>"
+	                <?php if ($this->_required) echo 'required'; ?>
+	                data-search="<?php echo htmlspecialchars($this->_search); ?>"
+	                data-placeholder="<?php echo htmlspecialchars($this->_placeholder); ?>">
+	
+	            <option value="">
+	                <?php echo htmlspecialchars($this->_placeholder); ?>
+	            </option>
+	            <?php for ($i = 0; $i < $cnt; $i++) {
+	                $element = $this->_elements[$i];
+	                $optionId = $group . '-' . $i;
+	            ?>
+	            <option id="<?php echo htmlspecialchars($optionId); ?>" value="<?php echo htmlspecialchars($element); ?>">
+	                <?php echo htmlspecialchars($element); ?>
+	            </option>
+	            <?php } ?>
+	        </select>
+	    </div>
+	    <?php
 	}
-
 	public function as_aa() {
 		return array(
 			'type' => 'select',

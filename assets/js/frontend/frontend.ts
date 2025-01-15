@@ -1123,22 +1123,52 @@ jQuery(document).ready(function ($) {
 	}
 
 	function setupSelect2() {
-		$('.fw-select').each(function (idx, element) {
-			if (!$(element).data('search')) {
-				$(element).select2({
-					minimumResultsForSearch: Infinity,
-					allowClear: $(element).data('required') !== true,
-					placeholder: ""
+		$('.fw-select').each(function () {
+			const $element = $(this);
+			const isSearchable = $element.data('search') === true;
+			const isRequired = $element.data('required') === true;
+			const placeholder = $element.data('placeholder') || "";
+			const labelId = $element.prev('label').attr('id');
+	
+			// Initialize Select2
+			$element.select2({
+				minimumResultsForSearch: isSearchable ? 0 : Infinity,
+				allowClear: !isRequired,
+				placeholder: placeholder,
+				width: '100%',
+				language: {
+					noResults: function () {
+						return "No results found.";
+					}
+				}
+			}).on('select2:open', function() {
+				// Handle search input accessibility
+				const searchInput = document.querySelector('.select2-search__field');
+				if (searchInput) {
+					searchInput.setAttribute('aria-label', 'Search options');
+				}
+			});
+	
+			// Fix accessibility after Select2 initialization
+			const $select2Container = $element.next('.select2-container');
+			const $selection = $select2Container.find('.select2-selection');
+	
+			// Set proper attributes on the selection element
+			$selection
+				.attr({
+					'role': 'combobox',
+					'aria-labelledby': labelId,
+					'aria-haspopup': 'listbox',
+					'aria-expanded': 'false'
 				});
-			} else {
-				$(element).select2({
-					allowClear: $(element).data('required') !== true,
-					placeholder: ""
-				});
-			}
+	
+			// Remove redundant roles and attributes
+			$selection.find('.select2-selection__rendered')
+				.removeAttr('role')
+				.removeAttr('aria-readonly');
 		});
 	}
-
+	
 	function setupColors() {
 		var activeColor = $('.fw-progress-bar').attr('data-activecolor');
 		var doneColor = $('.fw-progress-bar').attr('data-donecolor');
