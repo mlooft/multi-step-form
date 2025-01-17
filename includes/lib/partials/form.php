@@ -7,7 +7,7 @@
             $step = $this->_steps[ $i ];
             ?>
         <div class="fw-wizard-step-header" data-stepId="<?php echo $i; ?>">
-            <span class="h2"><?php echo $step->render_headline(); ?></span>
+            <span class="msf-h2"><?php echo $step->render_headline(); ?></span>
             <p class="fw-copytext"><?php $step->render_copy_text(); ?></p>
         </div>
         <?php

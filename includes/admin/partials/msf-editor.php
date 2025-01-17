@@ -14,7 +14,7 @@
 </span>
     <div class="fw-mail-settings-container" style="display:none;">
         <div class="wrap">
-            <span class="h1"><?php _e('General settings', 'multi-step-form'); ?></span>
+            <span class="msf-h1"><?php _e('General settings', 'multi-step-form'); ?></span>
             <table class="form-table">
                 <tr valign="top">
                     <th scope="row"><?php _e('"Thank you"-page:', 'multi-step-form'); ?></th>
@@ -24,7 +24,7 @@
                     </td>
                 </tr>
             </table>
-            <span class="h1"><?php _e('Mail settings', 'multi-step-form'); ?></span>
+            <span class="msf-h1"><?php _e('Mail settings', 'multi-step-form'); ?></span>
             <table class="form-table">
                 <tr valign="top">
                     <th scope="row"><?php _e('Send To:', 'multi-step-form'); ?></th>
@@ -143,14 +143,14 @@
         <div class="postbox-container">
             <div class="metabox-holder">
                 <div class="postbox">
-                    <span class="h3">
+                    <span class="msf-h3">
                         <?php echo apply_filters('multi-step-form/title-filter', __('Multi Step Form', 'multi-step-form')); ?>
                     </span>
                     <div class="inside">
                         <div class="fw-elements">
                             <input type="text" class="fw-wizard-title" value="Form Wizard" placeholder="<?php _e('Form Title', 'multi-step-form'); ?>">
                             <a class="fw-element-step"><i class="fa fa-plus"></i> <?php _e('Add Step'); ?></a>
-                            <span class="h4"><?php _e('Drag &amp; Drop an element from below to a section', 'multi-step-form'); ?></span>
+                            <span class="msf-h4"><?php _e('Drag &amp; Drop an element from below to a section', 'multi-step-form'); ?></span>
 
                             <?php 
                             foreach ($block_types as $type => $type_data) {

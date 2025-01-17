@@ -45,7 +45,7 @@ class Mondula_Form_Wizard_Block_Select extends Mondula_Form_Wizard_Block {
 	         data-required="<?php echo htmlspecialchars($this->_required); ?>">
 	
 	        <label id="<?php echo $labelId; ?>">
-			<span class="h3"><?php echo htmlspecialchars($this->_label); ?></span> 
+			<span class="msf-h3"><?php echo htmlspecialchars($this->_label); ?></span> 
 	        </label>
 	
 	        <select class="fw-select"

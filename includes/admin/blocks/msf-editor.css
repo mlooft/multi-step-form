@@ -11,7 +11,7 @@
     padding: 10px;
 }
 
-.msf-block > p, .msf-block > .h4 {
+.msf-block > p, .msf-block > .msf-h4 {
     color: #FFF !important;
     margin: 2px !important;
 }

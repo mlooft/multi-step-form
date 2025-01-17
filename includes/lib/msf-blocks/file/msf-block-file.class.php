@@ -32,7 +32,7 @@ class Mondula_Form_Wizard_Block_File extends Mondula_Form_Wizard_Block {
 	  ?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-file" data-required="<?php echo $this->_required; ?>">
 			<div class="fw-input-container">
-				<span class="h3"><?php echo $this->_label ?></span>
+				<span class="msf-h3"><?php echo $this->_label ?></span>
 				<input type="file" name="<?php echo $group; ?>" id="<?php echo $group ?>" class="fw-file-upload-input" <?php echo $this->_multi === 'true' ? 'multiple' : ''; ?>>
 				<label class="fw-btn fw-button-fileupload" for="<?php echo $group ?>"><i class="fa fa-upload fw-file-upload-status" aria-hidden="true"></i><span><?php _e('Choose a file', 'multi-step-form') ?></span></label>
 				<p><?php printf(__('Max. size: %s', 'multi-step-form'), size_format(wp_max_upload_size(), 1)); ?></p>

@@ -27,7 +27,7 @@ class Mondula_Form_Wizard_Block_Text extends Mondula_Form_Wizard_Block {
 		?>
 		<div class="fw-step-block" data-blockId="<?php echo $ids[0]; ?>" data-type="fw-text" data-required="<?php echo $this->_required; ?>">
 			<div class="fw-input-container">
-				<label for="msf-text-<?php echo str_replace(' ', '-', strtolower($this->_label)); ?>"><span class="h3"><?php echo $this->_label ?></span></label>
+				<label for="msf-text-<?php echo str_replace(' ', '-', strtolower($this->_label)); ?>"><span class="msf-h3"><?php echo $this->_label ?></span></label>
 				<input 
 					type="text" 
 					class="fw-text-input" 

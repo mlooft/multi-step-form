@@ -100,7 +100,7 @@ declare var wp: any;
 	function renderBlockAction(type : string) : string {
 		let blockAction = '<div class="fw-block-action fw-block-hndle">';
 		blockAction += '<i class="fa fa-arrows fw-move-block fw-block-hndle" aria-hidden="true"></i>';
-		blockAction += '<span class="h4">' + wizard.i18n[type].sideLabel + '</span>';
+		blockAction += '<span class="msf-h4">' + wizard.i18n[type].sideLabel + '</span>';
 		blockAction += '</div>';
 		return blockAction;
 	}
@@ -459,7 +459,7 @@ declare var wp: any;
 
 	function renderParts(parts) {
 		const partCount = parts.length;
-		let partsHtml = '<div><div class="fw-parts-header"><span class="h3">' + wizard.i18n.sections + '</span></div>';
+		let partsHtml = '<div><div class="fw-parts-header"><span class="msf-h3">' + wizard.i18n.sections + '</span></div>';
 		partsHtml += '<div class="fw-column-buttons">';
 		partsHtml += '<button type="button" class="fw-button-one-column"><i class="fa fa-align-justify"></i></button>';
 		partsHtml += '<button type="button" class="fw-button-two-columns"><i class="fa fa-align-justify"></i> <i class="fa fa-align-justify"></i></button>';
@@ -1589,11 +1589,11 @@ declare var wp: any;
 				if (Array.isArray(label)) {
 					label = label.join(" ");
 				}
-				$block.find('.h4').text(label);
+				$block.find('.msf-h4').text(label);
 				$(this).addClass('fw-icon-rotated');
 			} else {
 				var blockType = $block.data('type');
-				$block.find('.h4').text(blockType);
+				$block.find('.msf-h4').text(blockType);
 				$(this).removeClass('fw-icon-rotated');
 			}
 		});

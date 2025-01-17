@@ -3,9 +3,9 @@
 ?>
 
 <div class="wrap">
-    <span class="h2"><? _e('Multi Step Form Troubleshooting', 'multi-step-form'); ?></h2>
+    <span class="msf-h2"><? _e('Multi Step Form Troubleshooting', 'multi-step-form'); ?></h2>
 
-    <span class="h3"><? _e('Send Testmail', 'multi-step-form'); ?></span>
+    <span class="msf-h3"><? _e('Send Testmail', 'multi-step-form'); ?></span>
     <p><?php _e('Use the following form to check if the wp_mail function works.'.
                 ' This function is used by MSF and it is crucial for sending emails.', 'multi-step-form'); ?></p>
     <form id="msf-testmail" method="post">
@@ -53,7 +53,7 @@
         }
     ?>
 
-    <span class="h3"><? _e('Upload Problems', 'multi-step-form'); ?></span>
+    <span class="msf-h3"><? _e('Upload Problems', 'multi-step-form'); ?></span>
     <p>
         <?php _e('If you have problems with the upload of files, please check '.
                 'the "Important System Information" on this page first. Check if all limits and maximum sizes are '.
@@ -66,7 +66,7 @@
                 'In that case contact your provider and ask for support or a higher upload limit.', 'multi-step-form'); ?>
     </p>
 
-    <span class="h3"><? _e('Important System Information', 'multi-step-form'); ?></span>
+    <span class="msf-h3"><? _e('Important System Information', 'multi-step-form'); ?></span>
     <p><?php _e('Please send us a screenshot of the following information, if you write us because of a technical problem.', 'multi-step-form'); ?></p>
 
     <b>OS:</b> <?php echo php_uname(); ?><br/>
