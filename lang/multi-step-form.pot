@@ -153,7 +153,7 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:91, includes/lib/msf-blocks/radio/msf-block-radio.class.php:104
+#: includes/admin/msf-admin.class.php:91, includes/lib/msf-blocks/radio/msf-block-radio.class.php:105
 msgid "Radio/Checkbox"
 msgstr ""
 
@@ -177,7 +177,7 @@ msgstr ""
 msgid "Multiple Selection"
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:99, includes/lib/msf-blocks/select/msf-block-select.class.php:94
+#: includes/admin/msf-admin.class.php:99, includes/lib/msf-blocks/select/msf-block-select.class.php:109
 msgid "Select/Dropdown"
 msgstr ""
 
