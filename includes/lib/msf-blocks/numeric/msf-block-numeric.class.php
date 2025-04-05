@@ -94,7 +94,7 @@ class Mondula_Form_Wizard_Block_Numeric extends Mondula_Form_Wizard_Block {
 		}
 
 		if (strlen($minimum) > 0 && strlen($maximum) > 0) {
-			if (intval($minimum) >= intval($maximum)) {
+			if (intval($minimum) > intval($maximum)) {
 				$maximum = strval(intval($minimum) + 1);
 			}
 		}
