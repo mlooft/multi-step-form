@@ -349,11 +349,23 @@ msgstr ""
 msgid "Invalid JSON-File. Check your syntax."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:401
-msgid "Forms must be imported as JSON files"
+#: includes/admin/msf-admin.class.php:405
+msgid "Only JSON files are allowed for import."
 msgstr ""
 
-#: includes/admin/msf-admin.class.php:513, includes/admin/partials/msf-editor.php:8
+#: includes/admin/msf-admin.class.php:413
+msgid "File contains PHP code and is not allowed for security reasons."
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:421
+msgid "Invalid JSON file. Please check your file format."
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:428
+msgid "Invalid form structure. The JSON file must contain a valid form configuration."
+msgstr ""
+
+#: includes/admin/msf-admin.class.php:543, includes/admin/partials/msf-editor.php:8
 msgid "Success. Form saved."
 msgstr ""
 

@@ -2,12 +2,12 @@
 This file hosts the complete changelog of this plugin.
 
 ## 1.7.26
-* **SECURITY FIX**: Fixed critical file upload vulnerability that allowed arbitrary file uploads
-* Enhanced file type validation for JSON imports
-* Added PHP code detection in uploaded files
-* Improved JSON structure validation
-* Added automatic cleanup of malicious files
-* Maintained JSON upload functionality while improving security
+* **SECURITY**: Enhanced file upload validation for improved security
+* Improved file type checking for JSON imports
+* Added content validation for uploaded files
+* Enhanced JSON structure validation
+* Better error handling and file cleanup
+* Maintained full JSON import functionality
 
 ## 1.7.25
 * improved
