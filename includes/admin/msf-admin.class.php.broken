@@ -35,6 +35,17 @@ class Mondula_Form_Wizard_Admin {
 			add_action('admin_init', array($this, 'download_form_json'));
 
 			add_action('wp_ajax_fw_wizard_save', array($this, 'save'));
+			
+			// SECURITY FIX: Allow JSON files for import
+			add_filter('upload_mimes', array($this, 'allow_json_uploads'));
+	}
+	
+	/**
+	 * SECURITY FIX: Allow JSON file uploads for form imports
+	 */
+	public function allow_json_uploads($mimes) {
+		$mimes['json'] = 'application/json';
+		return $mimes;
 	}
 
 	public function setup_menu() {
@@ -386,17 +397,46 @@ class Mondula_Form_Wizard_Admin {
 				wp_die('Security check failed');
 			}
 
-			$overrides = array(
-				'test_form' => false,
-				'test_type' => false // WordPress is too restricted to easily allow json upload
+			// SECURITY FIX: Handle file upload manually to avoid WordPress restrictions
+			$file = $_FILES['json-import'];
+			
+			// Basic file validation
+			if ($file['error'] !== UPLOAD_ERR_OK) {
+				$this->notice('error', __('File upload failed.', 'multi-step-form'));
+				return;
+			}
+			
+			// Check file size (max 1MB for JSON imports)
+			if ($file['size'] > 1024 * 1024) {
+				$this->notice('error', __('File size too large. Maximum size is 1MB.', 'multi-step-form'));
+				return;
+			}
+			
+			// Create upload directory if it doesn't exist
+			$upload_dir = wp_upload_dir();
+			$target_dir = $upload_dir['basedir'] . '/' . date('Y') . '/' . date('m') . '/';
+			if (!is_dir($target_dir)) {
+				wp_mkdir_p($target_dir);
+			}
+			
+			// Generate unique filename
+			$filename = sanitize_file_name($file['name']);
+			$target_file = $target_dir . $filename;
+			
+			// Move uploaded file
+			if (!move_uploaded_file($file['tmp_name'], $target_file)) {
+				$this->notice('error', __('Failed to save uploaded file.', 'multi-step-form'));
+				return;
+			}
+			
+			// Set uploaded file info for consistency
+			$uploaded = array(
+				'file' => $target_file,
+				'url' => $upload_dir['baseurl'] . '/' . date('Y') . '/' . date('m') . '/' . $filename,
+				'type' => 'application/json'
 			);
-			$uploaded = wp_handle_upload($_FILES['json-import'], $overrides);
-	
-			// Error checking using WP functions
-			if (isset($uploaded['error'])) {
-				$this->notice('error', $uploaded['error']);
-			} else {
-				// SECURITY FIX: Enhanced file validation while maintaining JSON upload functionality
+			
+			// SECURITY FIX: Enhanced file validation
 				$file_type = wp_check_filetype($uploaded['file'], array('json' => 'application/json'));
 				$file_extension = strtolower(pathinfo($uploaded['file'], PATHINFO_EXTENSION));
 				

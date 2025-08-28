@@ -1,6 +1,17 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.26
+* **SECURITY FIX**: Fixed critical file upload vulnerability that allowed arbitrary file uploads
+* Enhanced file type validation for JSON imports
+* Added PHP code detection in uploaded files
+* Improved JSON structure validation
+* Added automatic cleanup of malicious files
+* Maintained JSON upload functionality while improving security
+
+## 1.7.25
+* improved
+
 ## 1.7.24
 * added bold and link functionality to the paragraph block
 
