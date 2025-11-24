@@ -1,6 +1,9 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.27
+* tested up to bumped to 6.8.3
+
 ## 1.7.26
 * **SECURITY**: Enhanced file upload validation for improved security
 * Improved file type checking for JSON imports
