@@ -1,4 +1,4 @@
-# Copyright (C) 2025 Multi Step Form
+# Copyright (C) 2026 Multi Step Form
 # This file is distributed under the same license as the Multi Step Form package.
 msgid ""
 msgstr ""
@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mondula <info@mondula.com>\n"
 "Language-Team: Mondula GmbH <wp-plugins@mondula.com>\n"
 "X-Poedit-Basepath: ..\n"
@@ -639,6 +639,10 @@ msgstr ""
 
 #: includes/lib/msf-blocks/numeric/msf-block-numeric.class.php:57
 msgid "max. "
+msgstr ""
+
+#: includes/lib/msf-shortcode.class.php:192
+msgid "File exceeds the maximum allowed size"
 msgstr ""
 
 #: includes/lib/partials/form.php:38

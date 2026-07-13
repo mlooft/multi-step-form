@@ -1,6 +1,9 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.28
+* **SECURITY**: Hardened the unauthenticated file upload handler (CWE-862). Uploads are now restricted to a safe file-type whitelist and limited in size and number of files per request to prevent file-hosting abuse and resource exhaustion.
+
 ## 1.7.27
 * tested up to bumped to 6.8.3
 

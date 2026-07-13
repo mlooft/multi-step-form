@@ -133,9 +133,41 @@ class Mondula_Form_Wizard_Shortcode {
 			return;
 		}
 
-		$tempdir = wp_upload_dir();
+		if (empty($_FILES)) {
+			wp_send_json_error('No files were uploaded');
+			return;
+		}
+
+		// This endpoint is reachable by unauthenticated visitors, so constrain what
+		// it accepts to curb file-hosting abuse and resource exhaustion.
+		$max_files = apply_filters('multi-step-form/max-upload-files', 10);
+		if (count($_FILES) > $max_files) {
+			wp_send_json_error('Too many files');
+			return;
+		}
+
+		// Restrict accepted file types to a safe whitelist and cap the size. Both are
+		// filterable so a site can widen them when a form legitimately needs to.
+		$allowed_mimes = apply_filters('multi-step-form/allowed-upload-mimes', array(
+			'jpg|jpeg|jpe' => 'image/jpeg',
+			'gif'          => 'image/gif',
+			'png'          => 'image/png',
+			'pdf'          => 'application/pdf',
+			'doc'          => 'application/msword',
+			'docx'         => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+			'xls'          => 'application/vnd.ms-excel',
+			'xlsx'         => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+			'ppt'          => 'application/vnd.ms-powerpoint',
+			'pptx'         => 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+			'txt'          => 'text/plain',
+			'csv'          => 'text/csv',
+			'zip'          => 'application/zip',
+		));
+		$max_size = apply_filters('multi-step-form/max-upload-size', wp_max_upload_size());
+
 		$upload_overrides = array(
 			'test_form' => false,
+			'mimes'     => $allowed_mimes,
 		);
 
 		add_filter('upload_dir', 'wpse_change_upload_dir_temporarily');
@@ -156,6 +188,10 @@ class Mondula_Form_Wizard_Shortcode {
 		$response['filenames'] = array();
 
 		foreach ($_FILES as $file) {
+			if ($max_size && isset($file['size']) && $file['size'] > $max_size) {
+				$response['error'] = __('File exceeds the maximum allowed size', 'multi-step-form');
+				continue;
+			}
 			$uploaded_file = wp_handle_upload($file, $upload_overrides);
 			if (!isset($uploaded_file['error'])) {
 				array_push($uploaded_files,  $uploaded_file);
