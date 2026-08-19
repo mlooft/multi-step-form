@@ -76,6 +76,22 @@ class Mondula_Form_Wizard {
 	 */
 	public $script_suffix;
 
+	/**
+	 * Admin class object
+	 * @var     object
+	 * @access  public
+	 * @since   1.0.0
+	 */
+	public $admin = null;
+
+	/**
+	 * Shortcode class object
+	 * @var     object
+	 * @access  public
+	 * @since   1.0.0
+	 */
+	public $shortcode = null;
+
 	private $_wizard_service;
 
 	/**
