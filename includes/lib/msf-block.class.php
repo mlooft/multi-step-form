@@ -35,9 +35,18 @@ abstract class Mondula_Form_Wizard_Block {
 		return null;
 	}
 
+	/**
+	 * Generic fallback sanitization: every scalar value is run through sanitize_text_field().
+	 * Nested arrays (e.g. the elements of a block type without its own sanitize_admin()) are
+	 * sanitized recursively instead of being dropped.
+	 */
 	public static function sanitize_admin($block) {
 		foreach ($block as &$value) {
-			$value = sanitize_text_field($value);
+			if (is_array($value)) {
+				$value = self::sanitize_admin($value);
+			} else {
+				$value = sanitize_text_field($value);
+			}
 		}
 
 		return $block;

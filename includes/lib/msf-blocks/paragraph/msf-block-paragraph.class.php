@@ -47,6 +47,23 @@ class Mondula_Form_Wizard_Block_Paragraph extends Mondula_Form_Wizard_Block {
 		return new Mondula_Form_Wizard_Block_Paragraph($text);
 	}
 
+	/**
+	 * The paragraph text is HTML (bold, links and line breaks from the editor; exports contain
+	 * it decoded), so it must not go through sanitize_text_field(), which strips all tags and
+	 * collapses line breaks. Dangerous markup is removed by wp_kses(); render() filters the
+	 * text again on output.
+	 */
+	public static function sanitize_admin($block) {
+		$text = isset($block['text']) ? $block['text'] : '';
+		$block = parent::sanitize_admin($block);
+
+		$allowed_tags = wp_kses_allowed_html('post');
+		unset($allowed_tags['textarea']);
+		$block['text'] = wp_kses($text, $allowed_tags);
+
+		return $block;
+	}
+
 	public static function addType($types) {
 
 		$types['paragraph'] = array(

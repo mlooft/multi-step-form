@@ -311,73 +311,33 @@ class Mondula_Form_Wizard_Admin {
 		<?php
 	}
 
-	function sanitize_json_data($data) {
-    
-        // Sanitizing the wizard title
-        $data['wizard']['title'] = sanitize_text_field($data['wizard']['title']);
-    
-        foreach ($data['wizard']['steps'] as &$step) {
-            // Sanitize step fields
-            $step['title'] = sanitize_text_field($step['title']);
-            $step['headline'] = sanitize_text_field($step['headline']);
-            $step['copy_text'] = sanitize_text_field($step['copy_text']);
-    
-            foreach ($step['parts'] as &$part) {
-                // Sanitize part title
-                $part['title'] = sanitize_text_field($part['title']);
-    
-                foreach ($part['blocks'] as &$block) {
-                
-                    if (isset($block['label'])) {
-                        $block['label'] = sanitize_text_field($block['label']);
-                    }
-    
-                    if (isset($block['customError'])) {
-                        $block['customError'] = sanitize_text_field($block['customError']);
-                    }
-                    if (isset($block['text'])) {
-                        $block['text'] = sanitize_text_field($block['text']);
-                    }
-                    if (isset($block['elements'])) {
-                        $block['elements'] = array_map('sanitize_text_field', $block['elements']);
-                    }
-                
-                }
-            }
-        }
-    
-        // Sanitize settings fields
-        $settings_fields = ['thankyou', 'to', 'frommail', 'fromname', 'subject', 'header', 'headers', 'replyto', 'usercopy', 'optin', 'optin_success', 'replacements'];
-        foreach ($settings_fields as $field) {
-            if (isset($data['wizard']['settings'][$field])) {
-                $data['wizard']['settings'][$field] = sanitize_text_field($data['wizard']['settings'][$field]);
-            }
-        }
-    
-        // Return the sanitized array directly
-        return $data;
-    }
-    
-    private function import_json($json) {
-        $aa = json_decode($json, true);
-        if (!$aa) {
-            $this->notice('error', __('Invalid JSON-File. Check your syntax.', 'multi-step-form'));
-        } else {
-            // Sanitize the JSON data
-            $sanitizedData = $this->sanitize_json_data($aa); // because $aa is the array
-    
-            if (!class_exists('Multi_Step_Form_Plus')) {
-                $step_count = count($aa['wizard']['steps']);
-                for ($i = 0; $i < $step_count; $i++) {
-                    if ($i > 4) {
-                        unset($aa['wizard']['steps'][$i]);
-                    }
-                }
-            }
-            // Proceed to save the sanitized data
-            $this->_wizard_service->save(0, $sanitizedData);
-        }
-    }
+	/**
+	 * Sanitizes imported JSON form data and applies the step limit of the free version.
+	 *
+	 * Uses the same block-type aware sanitization as the form builder (see save()), so
+	 * nested structures like radio/checkbox elements or conditional blocks survive the import.
+	 *
+	 * @param array $data decoded JSON document ({"wizard": {...}})
+	 * @return array sanitized data, ready for Mondula_Form_Wizard_Wizard_Service::save()
+	 */
+	public static function sanitize_import_data($data) {
+		self::sanitize_form_data($data);
+
+		if (!class_exists('Multi_Step_Form_Plus') && isset($data['wizard']['steps']) && count($data['wizard']['steps']) > 5) {
+			$data['wizard']['steps'] = array_slice($data['wizard']['steps'], 0, 5);
+		}
+
+		return $data;
+	}
+
+	private function import_json($json) {
+		$aa = json_decode($json, true);
+		if (!$aa) {
+			$this->notice('error', __('Invalid JSON-File. Check your syntax.', 'multi-step-form'));
+		} else {
+			$this->_wizard_service->save(0, self::sanitize_import_data($aa));
+		}
+	}
 
 	private function handle_json_upload() {
 		if (isset($_FILES['json-import'])) {
@@ -463,29 +423,50 @@ class Mondula_Form_Wizard_Admin {
 
 	public static function sanitize_form_block(&$block) {
 		$block_type_arr = Mondula_Form_Wizard_Block::get_block_types();
-		if (array_key_exists($block['type'], $block_type_arr)) {
+		if (is_array($block) && isset($block['type']) && array_key_exists($block['type'], $block_type_arr)) {
 			$block = call_user_func($block_type_arr[$block['type']]['class'] . '::sanitize_admin', $block);
 		} else {
-			$block = Mondula_Form_Wizard_Block::sanitize_admin($block);
+			$block = Mondula_Form_Wizard_Block::sanitize_admin(is_array($block) ? $block : array());
 		}
 	}
 
-	private function sanitize_form_data(&$data) {
-		$data['wizard']['title'] = sanitize_text_field($data['wizard']['title']);
+	/**
+	 * Sanitizes a complete form (title, steps, parts, blocks, settings) in place.
+	 * Shared by the form builder (save()) and the JSON import (sanitize_import_data()),
+	 * so both paths apply the same block-type specific rules.
+	 */
+	public static function sanitize_form_data(&$data) {
+		if (!isset($data['wizard']) || !is_array($data['wizard'])) {
+			return;
+		}
+		$wizard = &$data['wizard'];
+		$wizard['title'] = sanitize_text_field(isset($wizard['title']) ? $wizard['title'] : '');
 		/* Sanitize form Steps */
-		foreach ($data['wizard']['steps'] as &$step) {
-			$step['title'] = sanitize_text_field($step['title']);
-			$step['headline'] = sanitize_text_field($step['headline']);
-			$step['copy_text'] = sanitize_text_field($step['copy_text']);
+		if (!isset($wizard['steps']) || !is_array($wizard['steps'])) {
+			$wizard['steps'] = array();
+		}
+		foreach ($wizard['steps'] as &$step) {
+			$step['title'] = sanitize_text_field(isset($step['title']) ? $step['title'] : '');
+			$step['headline'] = sanitize_text_field(isset($step['headline']) ? $step['headline'] : '');
+			$step['copy_text'] = sanitize_text_field(isset($step['copy_text']) ? $step['copy_text'] : '');
+			if (!isset($step['parts']) || !is_array($step['parts'])) {
+				$step['parts'] = array();
+			}
 			foreach ($step['parts'] as &$part) {
-				$part['title'] = sanitize_text_field($part['title']);
+				$part['title'] = sanitize_text_field(isset($part['title']) ? $part['title'] : '');
+				if (!isset($part['blocks']) || !is_array($part['blocks'])) {
+					$part['blocks'] = array();
+				}
 				foreach ($part['blocks'] as &$block) {
 					self::sanitize_form_block($block);
 				}
 			}
 		}
 		/* Sanitize Form Settings */
-		foreach ($data['wizard']['settings'] as $key => &$setting) {
+		if (!isset($wizard['settings']) || !is_array($wizard['settings'])) {
+			$wizard['settings'] = array();
+		}
+		foreach ($wizard['settings'] as $key => &$setting) {
 			switch ($key) {
 				case 'thankyou':
 					$setting = esc_url($setting);
@@ -531,7 +512,7 @@ class Mondula_Form_Wizard_Admin {
 		$data = isset($_POST['data']) ? $_POST['data'] : '{}';
 		$data = json_decode($data, true);
 
-		$this->sanitize_form_data($data);
+		self::sanitize_form_data($data);
 
 		if (wp_verify_nonce($nonce, $this->_token . $id)) {
 			if (!empty($data)) {

@@ -3,7 +3,7 @@ Contributors: mondula2016
 Tags: multi, step, forms, multi step form, multi-step, steps, feedback, email, contact form, progress bar, form builder, dynamic, ajax, formular
 Requires at least: 5.0
 Tested up to: 6.8.3
-Stable tag: 1.7.29
+Stable tag: 1.7.30
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,6 +83,10 @@ A.  **[Find them here](https://mondula.com/en/multi-step-form-faqs/ "Multi Step 
 2. Use our customizable and animated progress bar to guide your users through your forms. Change the colors to match your CI.
 
 == Changelog ==
+
+= 1.7.30 =
+* Fixed the JSON import losing field information: all options of radio/checkbox blocks were imported empty, paragraph text lost line breaks and formatting. The import now uses the same block-type specific sanitization as the form builder. The 5-step limit of the free version is now applied correctly on import.
+* Paragraph blocks keep bold text, links and line breaks when a form is saved (sanitized with wp_kses).
 
 = 1.7.29 =
 * Fixed PHP 8.2+ deprecation notices "Creation of dynamic property Mondula_Form_Wizard::$admin/$shortcode is deprecated". Both properties are now declared on the class. On servers with `display_errors` enabled the notices were emitted into page output and could break the frontend and the Elementor editor.

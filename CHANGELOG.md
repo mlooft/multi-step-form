@@ -1,6 +1,10 @@
 # Changelog
 This file hosts the complete changelog of this plugin.
 
+## 1.7.30
+* Fixed the JSON import losing field information: all options of radio/checkbox blocks were imported empty, paragraph text lost line breaks and formatting. The import now uses the same block-type specific sanitization as the form builder. The 5-step limit of the free version is now applied correctly on import.
+* Paragraph blocks keep bold text, links and line breaks when a form is saved (sanitized with wp_kses).
+
 ## 1.7.29
 * Fixed PHP 8.2+ deprecation notices "Creation of dynamic property Mondula_Form_Wizard::$admin/$shortcode is deprecated". Both properties are now declared on the class. On servers with `display_errors` enabled the notices were emitted into page output and could break the frontend and the Elementor editor.
 
